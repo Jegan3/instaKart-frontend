@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
 import Routes from './routes';
 
-const RootContainer = ({ store }) => (
+const Root = ({ store }) => (
   <Provider store={store}>
     <Routes />
   </Provider>
 );
 
-RootContainer.propTypes = {
+Root.propTypes = {
   store: PropTypes.object.isRequired,
 };
 
-export default RootContainer;
+export default Root;

@@ -1,25 +1,35 @@
-
 .Body {
   width: 50% !important ;
   margin: auto;
 }
+.IntroDiv{
+  margin-top: 5%;
+  width: 50% !important ;
+  margin-left: 332px;
+}
 .Arrivals {
-  margin-top: 3%;
+  margin-top: 2%;
   width: 50% !important ;
   margin-left: 332px;
 }
 .Arrival {
-  margin-top: 3%;
+  margin-top: 2%;
   width: 50% !important ;
   margin-left: 332px;
-  color: white;
 }
 h2 {
   text-align: center;
-  margin-top:4px;
+  margin-top: 4px;
 }
-.bg1{
-  background-color:skyblue;
+h5 {
+  color: white;
+  font-size: 20px;
+}
+h4 {
+  font-size: 20px;
+}
+.bg1 {
+  background-color: skyblue;
 }
 .AddPic {
   height: 72px;

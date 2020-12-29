@@ -17,6 +17,7 @@ const ManifestPlugin = require('webpack-manifest-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const ESLintPlugin = require('eslint-webpack-plugin');
 
 const appEnv = process.env.NODE_ENV || 'development';
 const config = {
@@ -39,12 +40,12 @@ const config = {
     rules: [
       // First, run the linter.
       // It's important to do this before Babel processes the JS.
-      {
-        enforce: "pre",
-        test: /\.(js|jsx)$/,
-        exclude: paths.nodePaths,
-        loader: 'eslint-loader',
-      },
+      // {
+      //   enforce: "pre",
+      //   test: /\.(js|jsx)$/,
+      //   exclude: paths.nodePaths,
+      //   loader: 'eslint-loader',
+      // },
       // Process JS with Babel.
       {
         test: /\.js$/,
@@ -147,7 +148,8 @@ const config = {
     // The copy-webpack-plugin that copies individual files or entire directories to the build directory.
     new CopyWebpackPlugin([
       { from: './assets/images', to: 'images' },
-    ])
+    ]),
+    new ESLintPlugin()
   ]
 }
 

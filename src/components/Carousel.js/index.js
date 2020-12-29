@@ -42,7 +42,7 @@
 import React from 'react';
 import Carousel from 'react-multi-carousel';
 // import { Image } from 'semantic-ui-react';
-import Card from '../Card';
+import Card from '../Card.js';
 
 const responsive = {
   desktop: {
