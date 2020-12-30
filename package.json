@@ -13,6 +13,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.32",
+    "@fortawesome/free-brands-svg-icons": "^5.15.1",
+    "@fortawesome/free-solid-svg-icons": "^5.15.1",
+    "@fortawesome/react-fontawesome": "^0.1.14",
     "babel-polyfill": "^6.26.0",
     "bootstrap": "^3.3.7",
     "classnames": "^2.2.5",
@@ -25,6 +29,7 @@
     "react-redux": "^5.0.7",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
+    "react-slideshow-image": "^3.4.3",
     "redux": "^4.0.0",
     "redux-saga": "^0.16.0",
     "whatwg-fetch": "^2.0.4"

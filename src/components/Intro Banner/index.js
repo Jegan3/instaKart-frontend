@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React from 'react';
 
+
 function index() {
   return (
     <div className="Body">
@@ -22,7 +23,6 @@ function index() {
       </div>
       <div className="Full-pic">
         <img className="pic" src="https://unsplash.it/200/206" />
-
       </div>
     </div>
   );

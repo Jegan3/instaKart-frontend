@@ -1,13 +1,13 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React from 'react';
-import ReactCarousel from '../../components/Carousel.js';
-import Intro from '../../components/Intro';
-import Sports from '../../components/Sports';
+import ReactCarousel from '../../components/Carousel';
+import Intro from '../../components/Intro Banner';
+import Sports from '../../components/Sports Banner';
 import Footer from '../../components/Footer';
 import Header from '../../components/Headers';
 
 const Welcome = () => (
-  <div className="BodyContainer">
+  <div className="bodyContainer">
     <div className="IntroDiv">
       <Header />
     </div>
@@ -34,7 +34,7 @@ const Welcome = () => (
     <div className="bg1">
       <div className="Arrival">
         <h5>
-          # RESTAURENTS NEAR YOU #
+          # RESTAURANTS NEAR YOU #
         </h5>
         <ReactCarousel />
       </div>
