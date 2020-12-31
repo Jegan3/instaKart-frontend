@@ -1,44 +1,43 @@
-.Sports-pic {
-  margin-left: 10px;
-  height: 380px;
-  /* margin-top: 1%; */
-  width: 300px;
+.sports {
+  margin-top: 5%;
+  display: inline-flex;
 }
+
+.sports-pic {
+  height: 380px;
+}
+
 .button {
-  position: absolute;
-  margin-left: 142px;
-  margin-top: -50px;
+  position: relative;
+  height: 7%;
   width: 73px;
   border-color: whitesmoke;
   background-color: whitesmoke;
-//   color:black;
   text-align: center;
-  display: inline-block;
   font-size: 12px;
+  bottom: 10%;
+  left: 40%;
 }
+
 .Button {
-    position: absolute;
-    margin-top: -61px;
-    margin-left: 39px;
-    width: 97px;
-    background-color: whitesmoke;
-    // color:black;
-    border-color: whitesmoke;
-    text-align: center;
-    display: inline-block;
-    font-size: 12px;
-  }
+  position: relative;
+  height: 7%;
+  border-color: whitesmoke;
+  background-color: whitesmoke;
+  text-align: center;
+  font-size: 12px;
+  bottom: 15%;
+  left: 5%;
+  height: 7%
+}
+
 .ShoePic {
-  width: 173%;
+  width: 100%;
   height: 190px;
+  margin-bottom: -7%;
 }
-.ShoeDownPic {
-  float: right;
-  margin-right: 165px;
-  margin-top: -28.4%;
-}
-.ShoeUpPic {
-  float: right;
-  margin-right: 165px;
-  margin-top: -56.4%;
+
+.ShoePic2 {
+  width: 100%;
+  height: 190px;
 }

@@ -17,7 +17,7 @@ const Welcome = () => (
     <div className="introBanner">
       <Banner />
     </div>
-    <div className="IntroDiv">
+    <div>
       <Intro />
     </div>
     <div className="bg1">
@@ -62,13 +62,13 @@ const Welcome = () => (
       </div>
       <br />
     </div>
-    <div className="PicRow">
-      <img className="AddPic" src="https://image.shutterstock.com/image-vector/hardcore-stylized-logo-600w-248196712.jpg" />
-      <img className="AddPic" src="https://png.pngtree.com/png-clipart/20200709/original/pngtree-fitness-logo-png-png-image_3586442.jpg" />
-      <img className="AddPic" src="https://png.pngtree.com/element_pic/00/16/07/08577e840a3202a.jpg" />
-      <img className="AddPic" src="https://image.shutterstock.com/image-vector/hardcore-stylized-logo-600w-248196712.jpg" />
-      <img className="AddPic" src="https://png.pngtree.com/png-clipart/20200709/original/pngtree-fitness-logo-png-png-image_3586442.jpg" />
-      <img className="AddPic" src="https://png.pngtree.com/element_pic/00/16/07/08577e840a3202a.jpg" />
+    <div className="fitness-pic">
+      <img className="addpic" src="https://image.shutterstock.com/image-vector/hardcore-stylized-logo-600w-248196712.jpg" />
+      <img className="addpic" src="https://png.pngtree.com/png-clipart/20200709/original/pngtree-fitness-logo-png-png-image_3586442.jpg" />
+      <img className="addpic" src="https://png.pngtree.com/element_pic/00/16/07/08577e840a3202a.jpg" />
+      <img className="addpic" src="https://image.shutterstock.com/image-vector/hardcore-stylized-logo-600w-248196712.jpg" />
+      <img className="addpic" src="https://png.pngtree.com/png-clipart/20200709/original/pngtree-fitness-logo-png-png-image_3586442.jpg" />
+      <img className="addpic" src="https://png.pngtree.com/element_pic/00/16/07/08577e840a3202a.jpg" />
     </div>
     <div>
       <Footer />

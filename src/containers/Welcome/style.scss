@@ -1,43 +1,55 @@
 .Body {
-  width: 50% !important ;
+  width: 50% !important;
   margin: auto;
 }
+
 .bodyContainer {
   overflow-x: hidden;
 }
-.IntroDiv{
+
+.IntroDiv {
   margin-top: 5%;
-  width: 50% !important ;
+  width: 50% !important;
   margin-left: 332px;
 }
+
 .Arrivals {
   margin-top: 2%;
-  width: 50% !important ;
-  margin-left: 332px;
+  width: 50% !important;
+  margin: auto;
 }
+
 .Arrival {
   margin-top: 2%;
-  width: 50% !important ;
-  margin-left: 332px;
+  width: 50% !important;
+  margin: auto;
 }
+
 h2 {
   text-align: center;
   margin-top: 4px;
 }
+
 h5 {
   color: white;
   font-size: 20px;
 }
+
 h4 {
   font-size: 20px;
 }
+
 .bg1 {
   background-color: skyblue;
 }
-.AddPic {
+
+.addpic {
   height: 72px;
   width: 100px;
-  margin-right: 124px;
-  margin-top: 10px;
-  margin-bottom: -81px;
+  margin: 25px 76.5px;
+}
+
+.fitness-pic {
+  text-align: center;
+  height: 20px;
 }

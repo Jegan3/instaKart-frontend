@@ -1,102 +1,81 @@
-.Body{
+.Body {
   margin-top: auto;
   // width: 50% !important ;
   margin: auto;
 }
+
 .photo {
-  height: 250px;
-  width: 200px;
-}
-.photos {
-  height: 116px;
-  margin-bottom: 2px;
-  width: 229px;
-}
-.flex_group__1 {
-  margin-top: -14.5%;
-  margin-left: -368px;
-  text-align: center;
-  /* top: 87px; */
-}
-.flex_group__4 {
-  float: right;
-  margin-right: -272px;
-  margin-top: -75%;
-}
-.flex_group__2 {
-  margin-top: -74%;
-  margin-right: -125px;
-  text-align: center;
-}
-.flex_group__3 {
-    margin-top: 4.5%;
-    margin-right: -145px;
-    text-align: center;
-}
-.pic {
-  margin-left: -159px;
-  height: 360px;
-  margin-top: 6%;
-  width: 654px;
-}
-.Food {
-    position: relative;
-    cursor: pointer;
-    border: 1px solid white;
-    background-color: transparent;
-    height: 50px;
-    margin-top: 9px;
-    width: auto;
-    height: auto;
-    left: -147px;
-    color: white;
-    text-align: center;
-    font-size: 13px;
-    
-}
-.HEALTH {
-    position: relative;
-    cursor: pointer;
-    border: 1px solid white;
-    background-color: transparent;
-    height: 50px;
-    margin-top: 9px;
-    width: auto;
-    height: 29px;
-    left: -174px;
-    color: white;
-    text-align: center;
-    font-size: 13px;
-    box-shadow: 0 6px 6px rgba(0, 0, 0, 0.6);
+  height: 300px;
+  width: 225px;
 }
 
-.SERVICES {
-    position: relative;
-    cursor: pointer;
-    border: 1px solid white;
-    background-color: transparent;
-    height: 50px;
-    margin-top: 9px;
-    width: auto;
-    height: 29px;
-    left: -187px;
-    color: white;
-    text-align: center;
-    font-size: 13px;
-    box-shadow: 0 6px 6px rgba(0, 0, 0, 0.6);
+.photos {
+  height: 140px;
+  width: 250px;
 }
-.DESERT {
-    position: relative;
-    cursor: pointer;
-    border: 1px solid white;
-    background-color: transparent;
-    height: 50px;
-    margin-top: 9px;
-    width: auto;
-    height: 29px;
-    left: -160px;
-    color: white;
-    text-align: center;
-    font-size: 13px;
-    box-shadow: 0 6px 6px rgba(0, 0, 0, 0.6);
+
+.flex-group {
+  display: inline-flex;
+  margin-top: 5%;
+}
+
+.flex-group-centre {
+  margin: 0 30px;
+}
+
+.pic {
+  height: 375px;
+  width: 100%;
+}
+
+.food {
+  position: relative;
+  cursor: pointer;
+  border: 1px solid white;
+  background-color: transparent;
+  height: 7%;
+  font-size: 13px;
+  bottom: 45%;
+  left: 30%;
+  box-shadow: 0 6px 6px rgba(0, 0, 0, 0.6);
+  color: white;
+}
+
+.health {
+  position: relative;
+  cursor: pointer;
+  border: 1px solid white;
+  background-color: transparent;
+  height: 7%;
+  font-size: 13px;
+  bottom: 30%;
+  left: 25%;
+  box-shadow: 0 6px 6px rgba(0, 0, 0, 0.6);
+  color: white;
+}
+
+.services {
+  position: relative;
+  cursor: pointer;
+  border: 1px solid white;
+  background-color: transparent;
+  height: 7%;
+  font-size: 13px;
+  bottom: 30%;
+  left: 25%;
+  box-shadow: 0 6px 6px rgba(0, 0, 0, 0.6);
+  color: white;
+}
+
+.desert {
+  position: relative;
+  cursor: pointer;
+  border: 1px solid white;
+  background-color: transparent;
+  height: 7%;
+  font-size: 13px;
+  bottom: 45%;
+  left: 30%;
+  box-shadow: 0 6px 6px rgba(0, 0, 0, 0.6);
+  color: white;
 }
