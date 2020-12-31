@@ -5,6 +5,7 @@ import Intro from '../../components/Intro Banner';
 import Sports from '../../components/Sports Banner';
 import Footer from '../../components/Footer';
 import Header from '../../components/Headers';
+import Banner from '../../components/Banners';
 
 const Welcome = () => (
   <div className="bodyContainer">
@@ -13,6 +14,9 @@ const Welcome = () => (
     </div>
     <h2>WELCOME TO THE WORLD LARGEST</h2>
     <h2>VIRTUAL SHOPPING MALL</h2>
+    <div className="introBanner">
+      <Banner />
+    </div>
     <div className="IntroDiv">
       <Intro />
     </div>
