@@ -4,9 +4,11 @@ import 'react-slideshow-image/dist/styles.css';
 
 
 const slideImages = [
-  'images/pic1.jpg',
-  'images/pic2.jpg',
-  'images/pic3.jpg',
+  'images/pic1.png',
+  'images/pic2.png',
+  'images/pic3.png',
+  'images/pic4.png',
+
 ];
 function index() {
   return (
@@ -23,6 +25,10 @@ function index() {
           </div>
           <div className="each-slide">
             <div style={{ backgroundImage: `url(${slideImages[2]})` }}>
+            </div>
+          </div>
+          <div className="each-slide">
+            <div style={{ backgroundImage: `url(${slideImages[3]})` }}>
             </div>
           </div>
         </Slide>

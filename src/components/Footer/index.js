@@ -4,6 +4,8 @@ import {
   faFacebook,
   faTwitter,
   faInstagram,
+  faGooglePlay,
+  faApple,
 } from '@fortawesome/free-brands-svg-icons';
 
 const Footer = () => (
@@ -80,6 +82,26 @@ const Footer = () => (
                 if u have any Question plz contact our support @gmail.com
               </div>
               <div className="number">800 456 789</div>
+              <div className="side-Button">
+                <button className="btn draw-border">
+                  <FontAwesomeIcon className="appBtn" icon={faGooglePlay} />
+                  <p>
+                    Download
+                  </p>
+                  <strong>
+                    For Andriod
+                  </strong>
+                </button>
+                <button className="btn draw-border">
+                  <FontAwesomeIcon className="appBtn" icon={faApple} />
+                  <p>
+                    Download
+                  </p>
+                  <strong>
+                    For Ios
+                  </strong>
+                </button>
+              </div>
             </div>
           </div>
           <div className="row">

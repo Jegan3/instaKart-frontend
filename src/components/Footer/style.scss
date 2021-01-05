@@ -42,6 +42,7 @@ footer a:hover {
 }
 
 
+
 /*SOCİAL İCONS*/
 
 /* footer social icons */
@@ -166,8 +167,8 @@ ul li:before {
 .number {
   font-size: 24px;
   position: relative;
-  top: 12px;
-  left: 38px;
+  top: 10px;
+  left: 37px;
 }
 
 .text-right {
@@ -255,6 +256,109 @@ ul li:before {
   height: 132px;
   bottom: 35px;
   position: relative;
+}
+  .side-Button {
+    position: relative;
+    display: flex;
+    text-align: right;
+    left: 3px;
+}
+
+
+
+
+@mixin btn-border-drawing($color: #ccc, $hover: black, $width: 2px, $vertical: top, $horizontal: left, $duration: 0.25s) {
+  //box-shadow: inset 0 0 0 $width $color;
+  color: $color;
+  transition: color $duration $duration/3;
+  position: relative;
+  
+  &::before,
+  &::after {
+    border: 0 solid transparent;
+    border-radius: 30px;
+    box-sizing: border-box;
+    content: '';
+    pointer-events: none;
+    position: absolute;
+    width: 0; height: 0;
+    #{$vertical}: 0; 
+    #{$horizontal}: 0;
+  }
+
+  &::before {
+    $h-side: if($horizontal == 'left', 'right', 'left');
+    border-#{$vertical}-width: $width;
+    border-#{$h-side}-width: $width;
+  }
+  
+  &::after {
+    $v-side: if($vertical == 'top', 'bottom', 'top');
+    border-#{$v-side}-width: $width;
+    border-#{$horizontal}-width: $width;
+  }
+  
+  &:hover {
+    color: $hover;
+    
+    &::before,
+    &::after {
+      border-color: $hover;
+      transition: border-color 0s, width $duration, height $duration;
+      width: 100%;
+      height: 100%;
+    }
+    
+    &::before { transition-delay: 0s, 0s, $duration; }
+    &::after { transition-delay: 0s, $duration, 0s; }
+  }
+}
+
+.draw-border {
+  @include btn-border-drawing(#58afd1, #ffe593, 4px, bottom, right);
+  border-radius: 30px;
+  
+}
+
+//=== Button styling, semi-ignore
+
+.appBtn {
+  position: relative;
+  /* margin-right: 125px; */
+  font-size: 14px;
+  right: 37px;
+  top: 6px;
+}
+
+.btn {
+  top: 20px;
+  background: dodgerblue;
+  height: 30px;
+  width:60%;
+  color: white;
+  border-radius: 30px;
+  margin-right: 1rem;
+  cursor: pointer;
+  line-height: 1.5;
+  font: 700 1.2rem 'Roboto Slab', sans-serif;
+  //  padding: 0em 1.5em 0em 4.5em;
+   padding: 0em 0em 0em 0em;
+  letter-spacing: 0.05rem;
+  text-align: center;
+  &:focus { outline: 2px dotted #55d7dc; }
+  p {
+    bottom: 11px;
+    /* top: 13px; */
+    position: relative;
+    font-size: 10px;
+    left: 7px;
+} strong {
+  left: 1px;
+  bottom: 27px;
+  /* top: 13px; */
+  position: relative;
+  font-size: 6px;
+}
 }
 
 
