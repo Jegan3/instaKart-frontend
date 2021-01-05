@@ -1,0 +1,80 @@
+.sports {
+  margin-top: 5%;
+  display: flex;
+  margin-bottom: 5%;
+}
+
+.sports-left {
+  position: relative;
+    width: 75%;
+}
+
+.sports-left img {
+  height: 380px;
+  width: 100%;
+}
+
+.sports-right {
+  position: relative;
+    width: 75%;
+}
+
+.pic-top {
+  position: relative;
+}
+
+.pic-top img {
+  width: 100%;
+  height: 190px;
+}
+
+/* Style the button and place it in the middle of the container/image */
+.pic-top button {
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  font-size: 12px;
+  padding: .5em .5em;
+  border: none;
+  cursor: pointer;
+  border-radius: 7px;
+  box-shadow: 0 6px 6px rgba(0, 0, 0, 0.6);
+  background-color: whitesmoke;
+  border: 1px solid white;
+}
+
+.pic-top button:hover {
+  background-color: whitesmoke;
+}
+
+.pic-bottom {
+  position: relative;
+}
+
+.pic-bottom img {
+  width: 100%;
+  height: 190px;
+}
+
+/* Style the button and place it in the middle of the container/image */
+.pic-bottom button {
+  position: absolute;
+  top: 70%;
+  left: 20%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  font-size: 12px;
+  padding: .5em .5em;
+  border: none;
+  cursor: pointer;
+  border-radius: 7px;
+  box-shadow: 0 6px 6px rgba(0, 0, 0, 0.6);
+  background-color: whitesmoke;
+  border: 1px solid white;
+}
+
+.pic-bottom button:hover {
+  background-color: whitesmoke;
+}

@@ -1,10 +1,11 @@
 @import "~bootstrap/dist/css/bootstrap.css";
+// @import 'bootstrap/dist/css/bootstrap.min.css';
 @import "../../src/containers/Welcome/style.scss";
 @import '~react-multi-carousel/lib/styles.css';
 @import '../../src/components/Carousel/style.scss';
 @import '../../src/components/Card/style.scss';
-@import '../../src/components/Intro Banner/style.scss';
-@import '../../src/components/Sports Banner/style.scss';
+@import '../../src/components/IntroBanner/style.scss';
+@import '../../src/components/SportsBanner/style.scss';
 @import '../../src/components/Footer/style.scss';
 @import '../../src/components/Headers/style.scss';
 @import '../../src/components/Banners/style.scss';

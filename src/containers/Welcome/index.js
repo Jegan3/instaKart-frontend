@@ -1,8 +1,8 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React from 'react';
 import ReactCarousel from '../../components/Carousel';
-import Intro from '../../components/Intro Banner';
-import Sports from '../../components/Sports Banner';
+import IntroBanner from '../../components/IntroBanner';
+import SportsBanner from '../../components/SportsBanner';
 import Footer from '../../components/Footer';
 import Header from '../../components/Headers';
 import Banner from '../../components/Banners';
@@ -18,7 +18,7 @@ const Welcome = () => (
       <Banner />
     </div>
     <div>
-      <Intro />
+      <IntroBanner />
     </div>
     <div className="bg1">
       <div className="Arrival">
@@ -45,7 +45,7 @@ const Welcome = () => (
       <br />
     </div>
     <div className="Arrivals">
-      <Sports />
+      <SportsBanner />
     </div>
     <div className="Arrivals">
       <h4>
