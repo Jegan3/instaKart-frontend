@@ -5,15 +5,15 @@ import IntroBanner from '../../components/IntroBanner';
 import SportsBanner from '../../components/SportsBanner';
 import Footer from '../../components/Footer';
 import Header from '../../components/Headers';
-import Banner from '../../components/Banners';
+import Banners from '../../components/Banners';
 
 const Welcome = () => (
   <div className="bodyContainer">
     <div className="IntroDiv">
       <Header />
     </div>
-    <div className="introBanner">
-      <Banner />
+    <div className="intro-banner">
+      <Banners />
     </div>
     <h2>WELCOME TO THE WORLD LARGEST</h2>
     <h2>VIRTUAL SHOPPING MALL</h2>
