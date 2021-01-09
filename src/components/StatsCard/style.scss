@@ -1,0 +1,45 @@
+.card {
+    border-radius: $border-radius-base;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(63, 63, 68, 0.1);
+    background-color: #ffffff;
+    margin-bottom: 30px;
+}
+
+.card-stats {
+    .icon-big {
+        font-size: 3em;
+        min-height: 64px;
+
+        i {
+            font-weight: bold;
+            line-height: 59px;
+        }
+    }
+
+    .numbers {
+        font-size: 2em;
+        text-align: right;
+
+        p {
+            // margin-right: 7%;
+            font-size: 16px;
+        }
+    }
+}
+
+.content {
+    padding: $padding-default-horizontal;
+
+    .table-responsive {
+        padding: $padding-default-horizontal;
+    }
+}
+
+.icon {
+    margin-left: 1%;
+}
+
+.icon-center {
+    text-align: center;
+}
+
