@@ -1,14 +1,14 @@
 /*FOOTER*/
-.container {
+.footer-container {
   position: relative;
-  width: 96%;
+  width: 98% !important;
   margin: auto;
 }
 
 footer {
   background: #16222A;
   color: white;
-  margin-top: 100px;
+  // margin-top: 100px;
 }
 
 footer a {
@@ -22,16 +22,11 @@ footer a:hover {
   text-decoration: none;
 }
 
-.copy {
-  font-size: 12px;
-  padding: 10px;
-  border-top: 1px solid #FFFFFF;
-}
-
-.footer-middle {
-  padding-top: 2em;
-  color: white;
-}
+// .copy {
+//   font-size: 12px;
+//   padding: 10px;
+//   border-top: 1px solid #FFFFFF;
+// }
 
 .footer-pad {
   h4 {
@@ -204,72 +199,37 @@ ul li:before {
 }
 
 .copy {
-  height: 50px;
+  height: 70px;
   font-size: 12px;
-  padding: 10px;
-  border-top: 1px solid #FFFFFF;
+  // padding: 10px;
+  border-top: 1px solid grey;
 }
 
-.header-left {
-  top: 51px;
-  text-align: left;
-  right: 132px;
+.footer-header {
+  border-bottom: 1px solid grey;
   position: relative;
-  
+  text-align: center;
 
-  h1{
-    font-size:17px;
+  h5 {
+    font-size: 14px;
+    margin-top: 15%;
   }
+
   p {
-    font-size: 12px;
-    left: 230px;
-    position: relative;
-    color: grey;
+    margin-bottom: 15%;
+  }
 }
-}
-  .header-center {
-    text-align: center;
-    position: relative;
-    right: 130px;
-  h1{
-    font-size:17px;
-  }
-  p {
-    font-size: 12px;
-    left: 89px;
-    position: relative;
-    color: grey;
-}
-  }
-    .header-right {
-      bottom: 51px;
-      text-align: right;
-      right: 132px;
-      position: relative;
- 
-    h1{
-      font-size:17px;
-    }
-    p {
-      font-size: 12px;
-      right: 25px;
-      position: relative;
-      color: grey;
-  }
-  }
-.footer-Header-row{
-  border-bottom: 1px solid #FFFFFF;
-  height: 132px;
-  bottom: 35px;
+
+.side-Button {
   position: relative;
-}
-  .side-Button {
-    position: relative;
-    display: flex;
-    text-align: right;
-    left: 3px;
+  display: flex;
+  text-align: right;
+  left: 3px;
 }
 
+.footer-top {
+margin: 5% 0;
+}
 
 
 
@@ -278,7 +238,7 @@ ul li:before {
   color: $color;
   transition: color $duration $duration/3;
   position: relative;
-  
+
   &::before,
   &::after {
     border: 0 solid transparent;
@@ -287,26 +247,27 @@ ul li:before {
     content: '';
     pointer-events: none;
     position: absolute;
-    width: 0; height: 0;
-    #{$vertical}: 0; 
+    width: 0;
+    height: 0;
+    #{$vertical}: 0;
     #{$horizontal}: 0;
   }
 
   &::before {
-    $h-side: if($horizontal == 'left', 'right', 'left');
+    $h-side: if($horizontal=='left', 'right', 'left');
     border-#{$vertical}-width: $width;
     border-#{$h-side}-width: $width;
   }
-  
+
   &::after {
-    $v-side: if($vertical == 'top', 'bottom', 'top');
+    $v-side: if($vertical=='top', 'bottom', 'top');
     border-#{$v-side}-width: $width;
     border-#{$horizontal}-width: $width;
   }
-  
+
   &:hover {
     color: $hover;
-    
+
     &::before,
     &::after {
       border-color: $hover;
@@ -314,16 +275,21 @@ ul li:before {
       width: 100%;
       height: 100%;
     }
-    
-    &::before { transition-delay: 0s, 0s, $duration; }
-    &::after { transition-delay: 0s, $duration, 0s; }
+
+    &::before {
+      transition-delay: 0s, 0s, $duration;
+    }
+
+    &::after {
+      transition-delay: 0s, $duration, 0s;
+    }
   }
 }
 
 .draw-border {
   @include btn-border-drawing(#58afd1, #ffe593, 4px, bottom, right);
   border-radius: 30px;
-  
+
 }
 
 //=== Button styling, semi-ignore
@@ -333,14 +299,14 @@ ul li:before {
   /* margin-right: 125px; */
   font-size: 14px;
   right: 37px;
-  top: 6px;
+  top: 2px;
 }
 
 .btn {
   top: 20px;
   background: dodgerblue;
   height: 30px;
-  width:60%;
+  width: 60%;
   color: white;
   border-radius: 30px;
   margin-right: 1rem;
@@ -348,25 +314,27 @@ ul li:before {
   line-height: 1.5;
   font: 700 1.2rem 'Roboto Slab', sans-serif;
   //  padding: 0em 1.5em 0em 4.5em;
-   padding: 0em 0em 0em 0em;
+  padding: 0em 0em 0em 0em;
   letter-spacing: 0.05rem;
   text-align: center;
-  &:focus { outline: 2px dotted #55d7dc; }
+
+  &:focus {
+    outline: 2px dotted #55d7dc;
+  }
+
   p {
-    bottom: 11px;
+    bottom: 20px;
     /* top: 13px; */
     position: relative;
     font-size: 10px;
     left: 7px;
-} strong {
-  left: 1px;
-  bottom: 27px;
-  /* top: 13px; */
-  position: relative;
-  font-size: 6px;
+  }
+
+  strong {
+    left: 7px;
+    bottom: 50px;
+    /* top: 13px; */
+    position: relative;
+    font-size: 6px;
+  }
 }
-}
-
-
-
- 

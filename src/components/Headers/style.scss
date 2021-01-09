@@ -1,124 +1,59 @@
-.HeadContainer {
+.header-container {
   box-sizing: border-box;
-  margin-left: -330px;
   display: flex;
   align-items: baseline;
   padding: 1em;
-  margin-bottom: 2em;
   background-color: black;
   color: #fff;
-  width: 200%;
-  height: 40px;
-  margin-top: -67px;
-  p {
-    position: relative;
-    margin-left: 182px;
-    font-size: 12px;
-    left: 55px;
-  }
-  h6 {
-    right: -291px;
-    position: relative;
-    margin-top: -6px;
-    margin-bottom: 12px;
-    font-size: 12px;
-    margin-left: 31px;
-  }
 }
+
+.svg-inline--fa {
+  height: 25px !important;
+}
+
 .flag {
-  width: 30px;
+  width: 7%;
+  height: 15px;
   position: relative;
-  margin-left: -169px;
+  top: 5px;
+
 }
+
 .Location {
   position: relative;
   margin-right: 20px;
 }
-.LoginDetails {
-  position: relative;
-  bottom: -43px;
-  p {
-    right: -291px;
-    position: relative;
-    margin-bottom: -2px;
-    font-size: 10px;
-    margin-left: 319px;
-    margin-top: 0px;
-    top: -64px;
-    color: black;
-    font-weight: 700;
-  }
-}
-.Search {
-  position: relative;
-  font-size: 13px;
-  color: red;
-  left: -413px;
-  top: 2px;
-}
-.userPlus {
-  margin-left: 575px;
-  top: -36px;
-  position: relative;
-  font-size: 25px;
-}
-.CartPlus {
-  margin-left: 688px;
-  top: -93px;
-  position: relative;
-  font-size: 15px;
-}
+
 .Location {
   position: relative;
   margin-left: 20px;
 }
-.SubHeadContainer {
-  box-sizing: border-box;
-  margin-left: -330px;
+
+.header-container-bottom {
+  margin-top: 1%;
   display: flex;
-  align-items: baseline;
-  padding: 1em;
-  margin-bottom: -4em;
-  width: 200%;
-  margin-top: -28px;
 }
 
 .back-pic {
   border: 0;
   margin-left: -330px;
   width: 200%;
-  //   top: 21px;
   height: 600px;
 }
 
 
 .input {
-  width: 32%;
-  margin-left: 49px;
-  height: 31px;
-  top: -1px;
+  margin: 2% 5%;
+  height: 30px;
+  top: 1px;
   position: relative;
 }
 
-h1 {
-  font-size: 27px;
-  margin-left: 232px;
-  margin-top: -3px;
-}
-.searchBtn {
-  width: 72px;
-  background-color: #ff4533;
-  color: white;
-  font-weight: bold;
-  position: relative;
-  left: -89px;
-  top: -1px;
-  border-radius: 7px;
-}
 ::placeholder {
   font-weight: 5px;
   padding-left: 30px;
 }
+
 .loginBtn {
   position: relative;
   left: 609px;
@@ -128,4 +63,81 @@ h1 {
   font-size: 10px;
   background-color: transparent;
   border: 1px solid white;
+}
+
+.header-top-left {
+  display: flex;
+  float: left;
+
+  p {
+    margin: 0 2%;
+  }
+}
+
+.header-top-right {
+  display: flex;
+  float: right;
+
+  p {
+    margin: 0 2%;
+  }
+}
+
+.instakart {
+  max-width: 150px;
+  height: 30px;
+  margin-right: 3%;
+}
+
+.search-icon {
+  color: #ff4533;
+}
+
+.search-btn {
+  background-color: #ff4533 !important;
+  color: #fff !important;
+  text-transform: capitalize !important;
+  color: white;
+  font-weight: bold;
+  position: relative;
+  border-radius: 7px;
+}
+
+.small-text {
+  font-size: 10px;
+}
+
+.bold-text {
+  font-size: 12px;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.self-center {
+  align-self: center;
+}
+
+.cart {
+  font-size: 1.5rem !important;
+}
+
+.user {
+  margin: 0 2%;
+  display: flex;
+}
+
+.text {
+  margin: 0 7%;
+}
+
+.MuiOutlinedInput-adornedEnd {
+  padding-right: 0px !important;
+}
+
+.MuiOutlinedInput-adornedStart {
+  padding-left: 0px !important;
+}
+
+#search-input {
+  font-size: 12px;
 }

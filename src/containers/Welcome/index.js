@@ -2,28 +2,28 @@
 import React from 'react';
 import ReactCarousel from '../../components/Carousel';
 import IntroBanner from '../../components/IntroBanner';
-import SportsBanner from '../../components/SportsBanner';
+// import SportsBanner from '../../components/SportsBanner';
 import Footer from '../../components/Footer';
 import Header from '../../components/Headers';
 import Banners from '../../components/Banners';
 
 const Welcome = () => (
   <div className="bodyContainer">
-    <div className="IntroDiv">
+    <div>
       <Header />
     </div>
     <div className="intro-banner">
       <Banners />
     </div>
-    <h2>WELCOME TO THE WORLD LARGEST</h2>
-    <h2>VIRTUAL SHOPPING MALL</h2>
+    <h2>WELCOME TO CARRIBBEAN BIGEST</h2>
+    <h2>ECOMMERCE PORTAL</h2>
     <div>
       <IntroBanner />
     </div>
     <div className="bg1">
       <div className="Arrival">
         <h5>
-          # NEW ARRIVALS #
+          # E-LEARNING COURSES #
         </h5>
         <ReactCarousel />
       </div>
@@ -44,7 +44,7 @@ const Welcome = () => (
       </div>
       <br />
     </div>
-    <div className="Arrivals">
+    {/* <div className="Arrivals">
       <SportsBanner />
     </div>
     <div className="Arrivals">
@@ -52,8 +52,8 @@ const Welcome = () => (
         # FASHION STORES NEAR YOU #
       </h4>
       <ReactCarousel />
-    </div>
-    <div className="bg1">
+    </div> */}
+    {/* <div className="bg1">
       <div className="Arrival">
         <h5>
           # SPECIALITY STORES NEAR YOU #
@@ -61,7 +61,7 @@ const Welcome = () => (
         <ReactCarousel />
       </div>
       <br />
-    </div>
+    </div> */}
     <div className="fitness-pic">
       <img className="addpic" src="https://image.shutterstock.com/image-vector/hardcore-stylized-logo-600w-248196712.jpg" />
       <img className="addpic" src="https://png.pngtree.com/png-clipart/20200709/original/pngtree-fitness-logo-png-png-image_3586442.jpg" />

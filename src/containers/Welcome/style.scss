@@ -5,6 +5,7 @@
 
 .bodyContainer {
   overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 .IntroDiv {
@@ -44,16 +45,20 @@ h4 {
 }
 
 .addpic {
-  height: 72px;
-  width: 100px;
-  margin: 25px 76.5px;
-}
-
-.fitness-pic {
-  text-align: center;
-  height: 20px;
+  height: 125px;
+  color: white;
+  padding: 1em 1em;
+  border: none;
+  border: 1px solid white;
+  margin: 0 5%;
 }
 
 .intro-banner {
   margin-bottom: 3%;
+}
+
+.fitness-pic {
+  position: relative;
+  text-align: center;
+  // top: 5rem;
 }
