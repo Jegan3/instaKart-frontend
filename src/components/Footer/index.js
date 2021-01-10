@@ -7,7 +7,7 @@ const Footer = () => (
     <footer className="mainfooter" role="contentinfo">
       <div className="footer-header">
         <div className="row">
-          <div className="col-md-4 col-sm-6">
+          <div className="col-md-4 col-sm-4">
             <h5 >
               FREE DELIVERY
             </h5>
@@ -15,7 +15,7 @@ const Footer = () => (
               When order from $500
             </p>
           </div>
-          <div className="col-md-4 col-sm-6">
+          <div className="col-md-4 col-sm-4">
             <h5 >
               100% REFUND OF MONEY
             </h5>
@@ -23,7 +23,7 @@ const Footer = () => (
               14-days of complaint
             </p>
           </div>
-          <div className="col-md-4 col-sm-6">
+          <div className="col-md-4 col-sm-4">
             <h5 >
               QUALITY INSPECTIONS
             </h5>
@@ -35,43 +35,26 @@ const Footer = () => (
       </div>
       <div className="footer-container">
         <div className="row footer-top">
-          <div className="col-xl-3 col-md-4 col-sm-6">
+          <div className="col-md-4 col-sm-4">
             <div className="footer-pad">
               <h4>Information</h4>
               <ul className="list-unstyled">
-                <li>Gift Cards</li>
-                <li>Affiliates</li>
                 <li>About Us</li>
-                <li>Careers</li>
-                <li>Order Status</li>
+                <li>Terms and Conditions</li>
+                <li>FAQ</li>
               </ul>
             </div>
           </div>
-          <div className="col-xl-3 col-md-4 col-sm-6">
+          <div className="col-md-4 col-sm-4">
             <div className="footer-pad">
               <h4>Help</h4>
               <ul className="list-unstyled">
-                <li>Payments</li>
-                <li>Faq</li>
-                <li>Cancellation & Return</li>
-                <li>Shipping</li>
-                <li>Report Infringement</li>
+                <li>Login</li>
+                <li>Register</li>
               </ul>
             </div>
           </div>
-          <div className="col-xl-3 col-md-4 col-sm-6">
-            <div className="footer-pad">
-              <h4>Policy</h4>
-              <ul className="list-unstyled">
-                <li>Return Policy</li>
-                <li>Terms Of Use</li>
-                <li>Security</li>
-                <li>Privacy</li>
-                <li>EPR Compliance</li>
-              </ul>
-            </div>
-          </div>
-          <div className="col-xl-3 col-md-4 col-sm-6">
+          <div className=" col-md-4 col-sm-4">
             <h4>Contact us</h4>
             <div className="support">
               if u have any Question plz contact our support @gmail.com

@@ -4,7 +4,7 @@
 /* eslint-disable react/jsx-closing-tag-location */
 /* eslint-disable react/jsx-indent */
 import React, { Component } from 'react';
-import { Grid, Col, Row } from 'react-bootstrap';
+import { Col, Row, Grid } from 'react-bootstrap';
 import Headerbar from '../../components/HeaderBar';
 import Sidebar from '../../components/SideBar';
 import { history } from '../../routes';

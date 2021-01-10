@@ -166,7 +166,7 @@ ul li:before {
   left: 37px;
 }
 
- .zip{
+.zip {
   font-size: 12px;
   position: relative;
   bottom: 1em;
@@ -228,7 +228,7 @@ ul li:before {
 }
 
 .footer-top {
-margin: 5% 0;
+  margin: 5% 7%;
 }
 
 
@@ -302,39 +302,47 @@ margin: 5% 0;
   top: 2px;
 }
 
-.btn {
-  top: 20px;
-  background: dodgerblue;
-  height: 30px;
-  width: 60%;
-  color: white;
-  border-radius: 30px;
-  margin-right: 1rem;
-  cursor: pointer;
-  line-height: 1.5;
-  font: 700 1.2rem 'Roboto Slab', sans-serif;
-  //  padding: 0em 1.5em 0em 4.5em;
-  padding: 0em 0em 0em 0em;
-  letter-spacing: 0.05rem;
-  text-align: center;
+.side-Button {
+  position: relative;
+  display: flex;
+  text-align: right;
+  left: 3px;
 
-  &:focus {
-    outline: 2px dotted #55d7dc;
-  }
 
-  p {
-    bottom: 20px;
-    /* top: 13px; */
-    position: relative;
-    font-size: 10px;
-    left: 7px;
-  }
+  button {
+    top: 20px;
+    background: dodgerblue;
+    height: 45px;
+    width: 60%;
+    color: white;
+    border-radius: 30px;
+    margin-right: 1rem;
+    cursor: pointer;
+    line-height: 1.5;
+    font: 700 1.2rem 'Roboto Slab', sans-serif;
+    //  padding: 0em 1.5em 0em 4.5em;
+    padding: 0em 0em 0em 0em;
+    letter-spacing: 0.05rem;
+    text-align: center;
 
-  strong {
-    left: 7px;
-    bottom: 50px;
-    /* top: 13px; */
-    position: relative;
-    font-size: 6px;
+    &:focus {
+      outline: 2px dotted #55d7dc;
+    }
+
+    p {
+      bottom: 18px;
+      /* top: 13px; */
+      position: relative;
+      font-size: 14px;
+      left: 7px;
+    }
+
+    strong {
+      left: 7px;
+      bottom: 30px;
+      /* top: 13px; */
+      position: relative;
+      font-size: 10px;
+    }
   }
 }
