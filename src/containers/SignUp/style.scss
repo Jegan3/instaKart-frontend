@@ -1,18 +1,7 @@
-* {
-    box-sizing: border-box;
-}
-
 label {
     font-weight: 500;
     max-width: 100%;
     white-space: nowrap;
-}
-
-.signup-image {
-    top: 10%;
-    width: 100%;
-    height: 500px;
-    z-index: auto;
 }
 
 .title {
@@ -53,7 +42,7 @@ label {
 }
 
 .right-div {
-    // left:3%;
+    bottom: 35px;
     max-width: 100%;
 }
 
@@ -73,14 +62,10 @@ label {
     left: 10%;
     height: 30px;
     position: absolute;
-    top: 30px;
+    bottom: -11px;
 }
 
-.container-fluid,
-.container-sm,
-.container-md,
-.container-lg,
-.container-xl {
+.container-fluid {
     overflow-x: hidden;
 }
 
@@ -89,6 +74,16 @@ label {
     border-radius: 5px;
 }
 
+.logo-insta {
+    height: 10px;
+}
+
 .signup-submit {
-    top:20px;
+    top: 20px;
+}
+
+.jumbotron {
+    background: url('../images/banner.jpg')no-repeat center center /cover !important;
+    width: auto;
+    margin-bottom: 0%;
 }
