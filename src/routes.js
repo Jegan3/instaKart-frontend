@@ -1,13 +1,11 @@
 import React from 'react';
 import { createBrowserHistory } from 'history';
 import { Router, Route, Switch } from 'react-router-dom';
-// import Header from './components/Header';
-// import Footer from './components/Footer';
 // import ContactsContainer from './containers/ContactsContainer';
 // import RouteConstants from './constants/RouteConstants';
 import Welcome from './containers/Welcome';
 // import Dashboard from './containers/Dashboard';
-// import NewArrivals from './containers/NewArrivals'
+// import SignUp from './containers/SignUp';
 
 export const history = createBrowserHistory();
 

@@ -67,7 +67,7 @@
 
 .header-top-left {
   display: flex;
-  float: left;
+  // float: left;
 
   p {
     margin: 0 2%;
@@ -76,7 +76,8 @@
 
 .header-top-right {
   display: flex;
-  float: right;
+  white-space: nowrap;
+  // float: right;
 
   p {
     margin: 0 2%;
