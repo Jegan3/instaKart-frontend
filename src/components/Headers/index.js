@@ -63,10 +63,10 @@ const Header = () => (
               placeholder="Search Shops, Restaurants, Medicine, Essentials"
               InputProps={{
                 startAdornment: <InputAdornment position="start"><SearchIcon className="search-icon" /></InputAdornment>,
+                endAdornment: <Button variant="contained" size="medium" className="search-btn">Search</Button>,
               }}
               fullWidth
             />
-            <Button variant="contained" size="medium" className="search-btn">Search</Button>
           </div>
           <div className="col-md-2 col-sm-2 header-top-right">
             <div className="user">
