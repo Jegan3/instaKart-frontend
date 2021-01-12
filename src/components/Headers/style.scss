@@ -109,11 +109,13 @@
   max-width: 150px;
   height: 30px;
   margin-right: 3%;
+  margin-left: -75px;
 }
 
 .search-icon {
   color: #ff4533;
   transform: translateX(4px);
+  margin-left: 5px;
 }
 
 .search-btn {
@@ -125,6 +127,7 @@
   position: relative;
   border-radius: 7px;
   transform: translateX(-5px);
+  margin-right: 10px;
 }
 
 .small-text {

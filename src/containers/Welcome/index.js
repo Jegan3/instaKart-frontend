@@ -15,7 +15,7 @@ const Welcome = () => (
     <div className="intro-banner">
       <Banners />
     </div>
-    <h2>WELCOME TO CARRIBBEAN BIGEST</h2>
+    <h2>WELCOME TO CARRIBBEAN BIGGEST</h2>
     <h2>ECOMMERCE PORTAL</h2>
     <div>
       <IntroBanner />
