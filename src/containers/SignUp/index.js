@@ -4,11 +4,10 @@ import Footer from '../../components/Footer';
 
 const SignUp = () => (
   <Grid fluid>
-    <Row className="jumbotron signup-image">
+    <Row className="jumbotron">
       <Col md={6} sm={6}>
         <Image className="signup-logo" src="images/logo.png" fluid />
       </Col>
-
       <Col md={6} sm={6} className="right-div" fluid>
         <Row>
           <Col lg={12} className="heading">
@@ -20,7 +19,7 @@ const SignUp = () => (
             Basic Information
           </Col>
         </Row>
-        <Form className="form ">
+        <Form className="login-form ">
           <Row>
             <Col md={6} sm={12}>
               <label >Plan *</label>

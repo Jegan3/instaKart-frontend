@@ -1,89 +1,32 @@
-label {
-    font-weight: 500;
-    max-width: 100%;
-    white-space: nowrap;
+.signup-logo {
+    width: 15em;
 }
 
-.title {
-    height: 20px;
-    width: 100%;
-
+.sub-heading {
+    font-size: 1.5em;
+    padding-top: 0.5%;
 }
 
 .heading {
-    top: 25px;
     font-size: 2em;
     font-weight: 600;
 }
 
-.sub-heading {
-    top: 29px;
-    font-size: 1.5em;
-}
-
-.few-clicks {
-    bottom: 210px;
-    text-align: right;
-    width: 244px;
-    font-weight: 600;
-    position: sticky;
-    font-size: 1rem;
-    max-width: 100%;
-}
-
-.few-cli {
-    bottom: 180px;
-    text-align: right;
-    width: 244px;
-    font-weight: 600;
-    position: sticky;
-    font-size: 12px;
-    max-width: 100%;
-}
-
-.right-div {
-    bottom: 35px;
-    max-width: 100%;
-}
-
-.form {
-    top: 42px;
-    position: relative;
-}
-
-.form-control {
-    margin-bottom: 10px;
-    position: relative;
-    max-width: 100%;
-}
-
-.signup-logo {
-    width: 35%;
-    left: 10%;
-    height: 30px;
-    position: absolute;
-    bottom: -11px;
-}
-
-.container-fluid {
-    overflow-x: hidden;
-}
-
-.signup-button {
-    width: 100%;
-    border-radius: 5px;
-}
-
-.logo-insta {
-    height: 10px;
+.login-form {
+    padding-top: 2%;
 }
 
 .signup-submit {
-    top: 20px;
+    padding-top: 5%;
 }
 
 .jumbotron {
     background: url('../images/banner.jpg')no-repeat center center /cover !important;
     width: auto;
     margin-bottom: 0%;
+
+}
+
+.container-fluid {
+    overflow-x: hidden;
 }
