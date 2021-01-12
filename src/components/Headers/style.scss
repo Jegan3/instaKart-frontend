@@ -10,12 +10,15 @@
 .svg-inline--fa {
   height: 25px !important;
 }
-
+.location{
+  bottom: 3px;
+    position: relative;
+}
 .flag {
   width: 7%;
   height: 15px;
   position: relative;
-  top: 5px;
+  top: 2px;
 
 }
 
@@ -67,6 +70,16 @@
 
 .header-top-left {
   display: flex;
+  top: 5px;
+  // float: left;
+
+  p {
+    margin: 0 2%;
+    
+  }
+}
+.logo-header-top-left{
+  display: flex;
   // float: left;
 
   p {
@@ -74,13 +87,21 @@
   }
 }
 
+.login-header-top-right {
+  display: flex;
+  white-space: nowrap;
+}
 .header-top-right {
   display: flex;
   white-space: nowrap;
+  top: 5px;
+  left: 30%;
   // float: right;
 
   p {
     margin: 0 2%;
+    position: relative;
+    right: 30%;
   }
 }
 
@@ -92,6 +113,7 @@
 
 .search-icon {
   color: #ff4533;
+  transform: translateX(4px);
 }
 
 .search-btn {
@@ -102,6 +124,7 @@
   font-weight: bold;
   position: relative;
   border-radius: 7px;
+  transform: translateX(-5px);
 }
 
 .small-text {

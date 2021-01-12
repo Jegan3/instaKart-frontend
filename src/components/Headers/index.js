@@ -25,7 +25,7 @@ const Header = () => (
       <div className="header-container">
         <div className="Body">
           <div className="col-md-6 col-sm-6 header-top-left">
-            <FontAwesomeIcon icon={faMapMarkerAlt} />
+            <FontAwesomeIcon icon={faMapMarkerAlt} className="location" />
             <p>
               Select Location
             </p>
@@ -49,7 +49,7 @@ const Header = () => (
     <div className="Row">
       <div className="header-container-bottom">
         <div className="Body">
-          <div className="col-md-10 col-sm-10 header-top-left">
+          <div className="col-md-10 col-sm-10 logo-header-top-left">
             <img
               className="instakart"
               src="images/logo.png"
@@ -68,7 +68,7 @@ const Header = () => (
               fullWidth
             />
           </div>
-          <div className="col-md-2 col-sm-2 header-top-right">
+          <div className="col-md-2 col-sm-2 login-header-top-right">
             <div className="user">
               <FontAwesomeIcon icon={faUserPlus} className="userPlus" />
               <div className="text">
