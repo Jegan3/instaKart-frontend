@@ -5,7 +5,7 @@ const IntroBanner = () => (
     <div className="flex-group">
       <div className="food">
         <img className="photo" alt="#" src="images/L.png" />
-        <button >FOOD COURT</button>
+        <button >LEARN NOW</button>
       </div>
       <div className="flex-group-centre">
         <div className="health">
@@ -19,7 +19,7 @@ const IntroBanner = () => (
       </div>
       <div className="desert">
         <img className="photo" alt="#" src="images/5.png" />
-        <button >FASHION DESERT</button>
+        <button >BOOK NOW</button>
       </div>
     </div>
     <div>
