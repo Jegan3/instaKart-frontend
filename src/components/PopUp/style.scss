@@ -52,21 +52,14 @@ top:100px;
   .form-control {
     padding: 0px;
   }
+  label{
+    font-weight: 500;
+  }
 }
 
 .modal-row {
   top: 62px;
 }
-
-// .signup-button {
-//   width: 100%;
-//   top: 61px;
-//   position: relative;
-//   border-radius: 5px;
-// }
-// .check-recovery{
-//   top: 58px;
-// }
 
 .check-recovery{
   top: 57px;
@@ -87,3 +80,24 @@ top:100px;
 .signup-submit{
   top: 4px;
 }
+.modal-button {
+      -ms-transform: translate(-50%, -50%);
+      color: black;
+      font-size: 12px;
+      left: 15%;
+    position: relative;
+      margin-bottom: 20px;
+      border: none;
+      cursor: pointer;
+      border-radius: 7px;
+      box-shadow: 0 6px 6px rgba(0, 0, 0, 0.6);
+      color: black;
+      background-color: transparent;
+      border: 1px solid #808080;
+  }
+  .modal-popup{
+    padding-right: 0px;
+    padding-left: 0px;
+    overflow-y: hidden;
+   // padding-bottom: 0px;
+  }

@@ -30,7 +30,7 @@ class PopUp extends React.Component {
           aria-labelledby="contained-modal-title"
         >
           <Modal.Body>
-            <Grid fluid>
+            <Grid className="modal-popup"fluid>
               <Row>
                 {/* <left-div> */}
                 <Col md={6} sm={12}>
@@ -42,7 +42,7 @@ class PopUp extends React.Component {
                 </Col>
                 {/* <right div> */}
 
-                <Col className="right-pop" md={6} sm={12}>
+                <Col className="right-pop" md={6} sm={11}>
                   <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
@@ -57,11 +57,11 @@ class PopUp extends React.Component {
                     </Col>
                   </Row >
                   <Row className="login-details">
-                    <Col md={12} sm={12}>
+                    <Col md={11} sm={12}>
                       <label >User Name </label>
                       <input type="email" className="form-control" placeholder="Enter name" />
                     </Col>
-                    <Col md={12} sm={12}>
+                    <Col md={11} sm={12}>
                       <label >Password</label>
                       <input type="text" className="form-control" placeholder="password" />
                     </Col>
@@ -77,7 +77,7 @@ class PopUp extends React.Component {
                     </Col>
                   </Row>
                   <Row>
-                    <Col md={6} sm={12} className="modal-row" >
+                    <Col md={5} sm={12} className="modal-row" >
                       <button
                         type="button"
                         className="btn btn-primary btn-lg btn-block modal-button "
@@ -85,7 +85,7 @@ class PopUp extends React.Component {
                         Login
                       </button>
                     </Col>
-                    <Col md={6} sm={12} className="modal-row" >
+                    <Col md={5} sm={12} className="modal-row" >
                       <button
                         type="button"
                         className="btn btn-primary btn-lg btn-block modal-button "
