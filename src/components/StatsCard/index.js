@@ -18,7 +18,7 @@ export class StatsCard extends Component {
             </div>
             <div className="col-xs-7">
               <div className="numbers">
-                <p>{this.props.statsText}<span className="icon" ><FontAwesomeIcon icon={faInfoCircle} /></span></p>
+                <p>{this.props.statsText}<span className="info-icon" ><FontAwesomeIcon icon={faInfoCircle} /></span></p>
                 {this.props.statsValue}
               </div>
             </div>

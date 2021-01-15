@@ -163,10 +163,10 @@ svg {
 // styles added
 
 .card-stats .numbers p {
-    font-size: 16px;
+    font-size: 12px;
     right: 10%;
     position: relative;
-    white-space: nowrap;
+   
 }
 
 .sidebar .sidebar-wrapper {
@@ -212,3 +212,4 @@ svg {
     background: #ba60da;
     @extend circle-icon;
 }
+

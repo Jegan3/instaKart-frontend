@@ -104,7 +104,7 @@ class Dashboard extends Component {
                     <div className="main-content">
                         <Grid fluid>
                             <Row>
-                                <Col lg={3} sm={6}>
+                                <Col lg={3} md={12}>
                                     <StatsCard
                                       bigIcon={<i className="fas fa-archive fa-sm circle-icon-1" />}
                                       statsText="Order Received"
@@ -113,7 +113,7 @@ class Dashboard extends Component {
                                     // statsIconText="Updated now"
                                     />
                                 </Col>
-                                <Col lg={3} sm={6}>
+                                <Col lg={3} md={6}>
                                     <StatsCard
                                       bigIcon={<i className="fas fa-truck fa-sm circle-icon-2" />}
                                       statsText="Total Delivery"
@@ -122,7 +122,7 @@ class Dashboard extends Component {
                                     // statsIconText="Last day"
                                     />
                                 </Col>
-                                <Col lg={3} sm={6}>
+                                <Col lg={3} md={12}>
                                     <StatsCard
                                       bigIcon={<i className="fa fa-cart-plus fa-sm circle-icon-3" />}
                                       statsText="Cancel Orders"
@@ -131,7 +131,7 @@ class Dashboard extends Component {
                                     // statsIconText="In the last hour"
                                     />
                                 </Col>
-                                <Col lg={3} sm={6}>
+                                <Col lg={3} md={12}>
                                     <StatsCard
                                       bigIcon={<i className="fas fa-rupee-sign fa-sm circle-icon-4" />}
                                       statsText="Net Earning"
@@ -142,7 +142,7 @@ class Dashboard extends Component {
                                 </Col>
                             </Row>
                             <Row>
-                                <Col lg={3} sm={6}>
+                                <Col lg={3} md={12}>
                                     <StatsCard
                                       bigIcon={<i className="fa fa-cart-plus fa-sm circle-icon-5" />}
                                       statsText="Today Ordered"
@@ -151,16 +151,16 @@ class Dashboard extends Component {
                                     // statsIconText="Updated now"
                                     />
                                 </Col>
-                                <Col lg={3} sm={6}>
+                                <Col lg={3} md={12}>
                                     <StatsCard
                                       bigIcon={<i className="fas fa-shipping-fast fa-sm circle-icon-6" />}
-                                      statsText="Today Delivered"
+                                      statsText="Today Delivered  "
                                       statsValue="0"
                                     //   statsIcon={<i className="fa fa-calendar-o" />}
                                     // statsIconText="Last day"
                                     />
                                 </Col>
-                                <Col lg={3} sm={6}>
+                                <Col lg={3} md={12}>
                                     <StatsCard
                                       bigIcon={<i className="fas fa-rupee-sign fa-sm circle-icon-7" />}
                                       statsText="Today Sales"
@@ -169,7 +169,7 @@ class Dashboard extends Component {
                                     // statsIconText="In the last hour"
                                     />
                                 </Col>
-                                <Col lg={3} sm={6}>
+                                <Col lg={3} md={12}>
                                     <StatsCard
                                       bigIcon={<i className="fas fa-users fa-sm circle-icon-8" />}
                                       statsText="Total Customers"

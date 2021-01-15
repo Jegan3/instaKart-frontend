@@ -35,7 +35,7 @@ const Footer = () => (
       </div>
       <div className="footer-container">
         <div className="row footer-top">
-          <div className="col-md-4 col-sm-4">
+          <div className="information col-md-5 col-sm-4">
             <div className="footer-pad">
               <h4>Information</h4>
               <ul className="list-unstyled">
@@ -45,7 +45,7 @@ const Footer = () => (
               </ul>
             </div>
           </div>
-          <div className="col-md-4 col-sm-4">
+          <div className="help col-md-4 col-sm-4">
             <div className="footer-pad">
               <h4>Help</h4>
               <ul className="list-unstyled">
@@ -54,14 +54,14 @@ const Footer = () => (
               </ul>
             </div>
           </div>
-          <div className=" col-md-4 col-sm-4">
+          <div className="contact col-md-3 col-sm-4">
             <h4>Contact us</h4>
             <div className="support">
               if u have any Question plz contact our support @gmail.com
             </div>
             <div className="number">800 456 789</div>
             <div className="zip">+048</div>
-            <div className="side-Button">
+            <div className="side-Button ">
               <button className="btn draw-border">
                 <FontAwesomeIcon className="appBtn" icon={faGooglePlay} />
                 <p>
@@ -84,37 +84,45 @@ const Footer = () => (
           </div>
         </div>
         <div className="row">
-          <div className="col-md-12 copy">
-            <p className="text-left">
-              &copy; Copyright 2018 - Company Name. All rights reserved.
-            </p>
-            <p className="text-center">
-              <a
-                href="https://www.facebook.com/"
-                className="social"
-              >
-                <FontAwesomeIcon icon={faFacebook} size="1x" />
-              </a>
-              <a
-                href="https://www.twitter.com/"
-                className=" social"
-              >
-                <FontAwesomeIcon icon={faTwitter} size="1x" />
-              </a>
-              <a
-                href="https://www.instagram.com/"
-                className=" social"
-              >
-                <FontAwesomeIcon icon={faInstagram} size="1x" />
-              </a>
-            </p>
-            <p className="text-right">
-              <img
-                src="  https://payals.co.uk/wp-content/uploads/2017/07/payment-icons.png "
-                width="150px"
-                alt="new"
-              />
-            </p>
+          <div className="copy col-md-12 ">
+            <div className="row">
+              <div className="col-sm-4">
+                <p className="text-left">
+                  &copy; Copyright 2018 - Company Name. All rights reserved.
+                </p>
+              </div>
+              <div className="col-sm-4">
+                <p className="text-center">
+                  <a
+                    href="https://www.facebook.com/"
+                    className="social"
+                  >
+                    <FontAwesomeIcon icon={faFacebook} size="1x" />
+                  </a>
+                  <a
+                    href="https://www.twitter.com/"
+                    className=" social"
+                  >
+                    <FontAwesomeIcon icon={faTwitter} size="1x" />
+                  </a>
+                  <a
+                    href="https://www.instagram.com/"
+                    className=" social"
+                  >
+                    <FontAwesomeIcon icon={faInstagram} size="1x" />
+                  </a>
+                </p>
+              </div>
+              <div className="col-sm-4">
+                <p className="text-right">
+                  <img
+                    src="  https://payals.co.uk/wp-content/uploads/2017/07/payment-icons.png "
+                    width="150px"
+                    alt="new"
+                  />
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
