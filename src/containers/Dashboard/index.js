@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable react/prefer-stateless-function */
 /* eslint-disable no-plusplus */
 /* eslint-disable indent */
@@ -5,14 +6,67 @@
 /* eslint-disable react/jsx-indent */
 import React, { Component } from 'react';
 import { Col, Row, Grid } from 'react-bootstrap';
+import ReactTable from 'react-table';
 import Headerbar from '../../components/HeaderBar';
 import Sidebar from '../../components/SideBar';
 import { history } from '../../routes';
 // react component used to create charts
 // react components used to create a SVG / Vector map
 // import { VectorMap } from 'react-jvectormap';
-// import Card from '../../components/Card';
+import Table from '../../components/Table';
 import StatsCard from '../../components/StatsCard';
+// import Card from '../../components/Card';
+
+const dataTable = [
+    {
+        name: 'Tanner Linsley',
+        age: 26,
+        friend: {
+          name: 'Jason Maurer',
+          age: 23,
+        },
+      },
+      {
+        name: 'Tanner Linsley',
+        age: 26,
+        friend: {
+          name: 'Jason Maurer',
+          age: 23,
+        },
+      },
+      {
+        name: 'Tanner Linsley',
+        age: 26,
+        friend: {
+          name: 'Jason Maurer',
+          age: 23,
+        },
+      },
+      {
+        name: 'Tanner Linsley',
+        age: 26,
+        friend: {
+          name: 'Jason Maurer',
+          age: 23,
+        },
+      },
+];
+
+const columns = [{
+    Header: 'Name',
+    accessor: 'name', // String-based value accessors!
+  }, {
+    Header: 'Age',
+    accessor: 'age',
+    Cell: (props) => <span className="number">{props.value}</span>, // Custom cell components!
+  }, {
+    id: 'friendName', // Required because our accessor is not a string
+    Header: 'Friend Name',
+    accessor: (d) => d.friend.name, // Custom value accessors!
+  }, {
+    Header: () => <span>Friend Age</span>, // Custom header components!
+    accessor: 'friend.age',
+  }];
 
 // import {
 //   dataPie,
@@ -40,6 +94,7 @@ import StatsCard from '../../components/StatsCard';
 // };
 
 class Dashboard extends Component {
+    // const data = dataTable.map(val => val)
     render() {
         return (
             <div className="wrapper">
@@ -124,6 +179,49 @@ class Dashboard extends Component {
                                     />
                                 </Col>
                             </Row>
+                            <Grid>
+                            <ReactTable
+                              data={dataTable}
+                              columns={columns}
+                            />
+                            </Grid>
+                            <Table
+                              title=""
+                              content={
+                                <ReactTable
+                                  data={dataTable}
+                                  filterable
+                                  columns={[
+                                        {
+                                            Header: 'Name',
+                                            accessor: 'id',
+                                        },
+                                        {
+                                            Header: 'Position',
+                                            accessor: 'language',
+                                        },
+                                        {
+                                            Header: 'Office',
+                                            accessor: 'office',
+                                        },
+                                        {
+                                            Header: 'Age',
+                                            accessor: 'author',
+                                        },
+                                        {
+                                            Header: 'Actions',
+                                            accessor: 'actions',
+                                            sortable: false,
+                                            filterable: false,
+                                        },
+                                    ]}
+                                  defaultPageSize={10}
+                                  showPaginationTop
+                                  showPaginationBottom={false}
+                                  className="-striped -highlight"
+                                />
+                    }
+                            />
                         </Grid>
                     </div>
                 </div>

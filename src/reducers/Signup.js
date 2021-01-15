@@ -1,23 +1,23 @@
-import * as CONTACTS from '../actionTypes/Contacts';
+import * as INSTAKART from '../actionTypes/Signup';
 
 const initialState = {
-  contacts: [],
+  // contacts: [],
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case CONTACTS.GET_CONTACTS:
+    case INSTAKART.SIGNUP_REQUEST:
       return {
         ...state,
         isLoading: true,
       };
-    case CONTACTS.GET_CONTACTS_SUCCESS:
+    case INSTAKART.SIGNUP_SUCCESS:
       return {
         ...state,
         isLoading: false,
-        contacts: action.contacts,
+        signup: action.signup,
       };
-    case CONTACTS.GET_CONTACTS_FAILURE:
+    case INSTAKART.SIGNUP_FAILURE:
       return {
         ...state,
         isLoading: false,

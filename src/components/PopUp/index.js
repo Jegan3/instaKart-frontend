@@ -1,10 +1,22 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Modal, Row, Col, Image, Grid } from 'react-bootstrap';
 import { history } from '../../routes';
 
 const PopUp = ({ show }) => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const dispatch = useDispatch();
+  // const validLogin = useSelector((state) => state.loginState.login);
   const Login = () => {
+    const loginDetails = {
+      // username: 'Keith7',
+      // password: 'Football7&',
+      email,
+      password,
+    };
+    dispatch({ type: 'LOGIN_REQUEST', login: loginDetails });
     history.push({
       pathname: '/dashboard',
     });
@@ -49,11 +61,11 @@ const PopUp = ({ show }) => {
                   <Row className="login-details">
                     <Col md={12} sm={12}>
                       <label >User Name </label>
-                      <input type="email" className="form-control" placeholder="Enter name" />
+                      <input type="email" className="form-control" placeholder="Enter name" onChange={(e) => setEmail(e.target.value)} />
                     </Col>
                     <Col md={12} sm={12}>
                       <label >Password</label>
-                      <input type="text" className="form-control" placeholder="password" />
+                      <input type="text" className="form-control" placeholder="password" onChange={(e) => setPassword(e.target.value)} />
                     </Col>
                   </Row>
                   <Row className="check-recovery">
@@ -65,7 +77,7 @@ const PopUp = ({ show }) => {
                     <Col md={6} sm={12} className="modal-row" >
                       <button
                         type="button"
-                        className="btn btn-primary btn-lg btn-block modal-button "
+                        className="btn btn-primary btn-block modal-button "
                         onClick={Login}
                       >
                         Login
@@ -74,7 +86,7 @@ const PopUp = ({ show }) => {
                     <Col md={6} sm={12} className="modal-row" >
                       <button
                         type="button"
-                        className="btn btn-primary btn-lg btn-block modal-button "
+                        className="btn btn-primary btn-block modal-button "
                         onClick={Signup}
                       >
                         Sign Up

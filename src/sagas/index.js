@@ -1,7 +1,9 @@
-import { contactsWatchers } from './Contacts';
+import { signupWatchers } from './Signup';
+import { loginWatchers } from './Login';
 
 export default function* rootWatchers() {
   yield [
-    contactsWatchers(),
+    signupWatchers(),
+    loginWatchers(),
   ];
 }
