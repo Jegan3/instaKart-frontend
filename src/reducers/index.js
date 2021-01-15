@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
-import contacts from './Contacts';
+import signup from './Signup';
+import login from './Login';
 
 const rootReducer = combineReducers({
-  contactsState: contacts,
+  signupState: signup,
+  loginState: login,
 });
 
 export default rootReducer;

@@ -1,9 +1,10 @@
 export default {
   apiEndPoints: {
-    getContacts: '/contacts',
+    getSignup: '/api/user/signUp',
+    getLogin: '/api/user/login',
   },
   apiBaseUrl: {
-    dev: 'http://localhost:8000',
+    dev: 'http://localhost:8081',
     prod: '',
   },
 };

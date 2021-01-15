@@ -1,10 +1,22 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Modal, Row, Col, Image, Grid } from 'react-bootstrap';
 import { history } from '../../routes';
 
 const PopUp = ({ show }) => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const dispatch = useDispatch();
+  // const validLogin = useSelector((state) => state.loginState.login);
   const Login = () => {
+    const loginDetails = {
+      // username: 'Keith7',
+      // password: 'Football7&',
+      email,
+      password,
+    };
+    dispatch({ type: 'LOGIN_REQUEST', login: loginDetails });
     history.push({
       pathname: '/dashboard',
     });
@@ -54,11 +66,11 @@ const PopUp = ({ show }) => {
                 <Row className="login-details">
                   <Col md={11} sm={12}>
                     <label >User Name </label>
-                    <input type="email" className="form-control" placeholder="Enter name" />
+                    <input type="email" className="form-control" placeholder="Enter name" onChange={(e) => setEmail(e.target.value)} />
                   </Col>
                   <Col md={11} sm={12}>
                     <label >Password</label>
-                    <input type="text" className="form-control" placeholder="password" />
+                    <input type="text" className="form-control" placeholder="password" onChange={(e) => setPassword(e.target.value)} />
                   </Col>
                 </Row>
                 <Row className="check-recovery">
