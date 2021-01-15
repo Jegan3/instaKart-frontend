@@ -50,23 +50,29 @@ const Header = () => {
                   Trinidad & Tobago
                 </p>
               </div>
-              <div className="col-md-6 col-sm-6 header-top-right">
+              <div className="col-md-1 col-sm-3 header-top-right">
                 <p>Help</p>
+              </div>
+              <div className="col-md-2 col-sm-3 header-top-right">
                 <p>How it Works</p>
+              </div>
+              <div className="col-md-2 col-sm-3 header-top-right">
                 <p>List Ur Purchase</p>
               </div>
             </div>
           </div>
         </div>
-        <div className="Row">
+        <div>
           <div className="header-container-bottom">
             <div className="Body">
-              <div className="col-md-10 col-sm-10 logo-header-top-left">
+              <div className="col-md-3 col-sm-3 logo-header-top-left">
                 <img
                   className="instakart"
                   src="images/logo.png"
                   alt="new"
                 />
+              </div>
+              <div className="col-md-7 col-sm-6 search box justify-content-md-center">
                 <TextField
                   id="search-input"
                   name="search"
@@ -76,7 +82,7 @@ const Header = () => {
                   style={{ marginRight: '-4px' }}
                   InputProps={{
                     startAdornment: <InputAdornment position="start"><SearchIcon className="search-icon" /></InputAdornment>,
-                    endAdornment: <Button variant="contained" size="medium" className="search-btn" style={{ marginRight: '10px' }}>Search</Button>,
+                    endAdornment: <Button variant="contained" size="medium" className="search-btn" style={{ marginRight: '0px' }}>Search</Button>,
                   }}
                   fullWidth
                 />
