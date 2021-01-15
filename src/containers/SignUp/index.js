@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Row, Col, Image, Form, Grid } from 'react-bootstrap';
+import { history } from '../../routes';
 import Footer from '../../components/Footer';
 
 const SignUp = () => {
@@ -17,6 +18,9 @@ const SignUp = () => {
       type: 'admin',
     };
     dispatch({ type: 'SIGNUP_REQUEST', signup: signupDetails });
+    history.push({
+      pathname: '/',
+    });
   };
 
   return (

@@ -2,6 +2,7 @@
 /*!
 */
 import Dashboard from '../src/containers/Dashboard';
+import Welcome from '../src/containers/Welcome';
 // import DevicesList from '../src/containers/DevicesList';
 // import UsersList from './containers/UsersList';
 // import Settings from '../src/containers/Settings';
@@ -123,6 +124,13 @@ const routes = [
         component: Dashboard,
       },
     ],
+  },
+  {
+    path: '',
+    name: 'Logout',
+    layout: '/admin',
+    icon: 'pe-7s-moon',
+    component: Welcome,
   },
 ];
 

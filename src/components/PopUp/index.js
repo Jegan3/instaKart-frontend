@@ -1,15 +1,27 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Modal, Row, Col, Image, Grid } from 'react-bootstrap';
 import { history } from '../../routes';
 
 const PopUp = ({ show }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [login, setLogin] = useState(false);
   const dispatch = useDispatch();
-  // const validLogin = useSelector((state) => state.loginState.login);
+  const validLogin = useSelector((state) => state.loginState.login);
+
+  if (validLogin && login) {
+    history.push({
+      pathname: '/dashboard',
+    });
+  } else if (validLogin && login === false) {
+    sessionStorage.clear();
+    dispatch({ type: 'LOGOUT_SUCCESS' });
+  }
+
   const Login = () => {
+    setLogin(true);
     const loginDetails = {
       // username: 'Keith7',
       // password: 'Football7&',
@@ -17,9 +29,6 @@ const PopUp = ({ show }) => {
       password,
     };
     dispatch({ type: 'LOGIN_REQUEST', login: loginDetails });
-    history.push({
-      pathname: '/dashboard',
-    });
   };
 
   const Signup = () => {
@@ -54,7 +63,13 @@ const PopUp = ({ show }) => {
                     </Col>
                     <Col md={12} className="right-welcome" >
                       <p>
-                        Welcome To the World Largest  Virtual Shopping Mall
+                        WELCOME TO THE WORLD&apos;S
+                      </p>
+                      <p>
+                        LARGEST VIRTUAL SHOPPING
+                      </p>
+                      <p>
+                        MALL
                       </p>
                     </Col>
                   </Row >
@@ -65,12 +80,12 @@ const PopUp = ({ show }) => {
                     </Col>
                     <Col md={12} sm={12}>
                       <label >Password</label>
-                      <input type="text" className="form-control" placeholder="password" onChange={(e) => setPassword(e.target.value)} />
+                      <input type="password" className="form-control" placeholder="password" onChange={(e) => setPassword(e.target.value)} />
                     </Col>
                   </Row>
                   <Row className="check-recovery">
                     <Col md={5} sm={12} >
-                      <a className="form-recovery" href="www.google.com">Forgot Password?</a>
+                      <a className="form-recovery" href="www.google.com">Forgot Password</a>
                     </Col>
                   </Row>
                   <Row className="bnts">

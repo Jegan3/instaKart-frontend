@@ -1,7 +1,6 @@
 .inst-logo {
-  width: 83%;
+  width: 100%;
   padding-bottom: 10%;
-  padding-left: 5%;
 }
 
 .left-login {
@@ -15,11 +14,10 @@
   text-align: center;
 
   p {
-    left: 7%;
     font-size: 16px;
-    width: 73%;
     font-weight: 500;
     position: relative;
+    margin: 0px;
   }
 }
 
@@ -76,6 +74,7 @@
 .fade {
   padding-left: 0% !important;
 }
-.modal-open{
+
+.modal-open {
   padding-right: 0% !important;
 }
