@@ -4,7 +4,7 @@ export default {
     getLogin: '/api/user/login',
   },
   apiBaseUrl: {
-    dev: 'http://localhost:8081',
+    dev: 'http://18.206.174.119:8081',
     prod: '',
   },
 };
