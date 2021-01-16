@@ -1,103 +1,80 @@
-.left-login{
-  width:100%;
-  height: 350px;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-.img-fluid {
-  max-width: 100%;
-  height: auto
-}
-.modal-body {
-   padding: 0px;
+.inst-logo {
+  width: 100%;
+  padding-bottom: 10%;
 }
 
-.sign-up{
-  top:20px;
-}
-
-.right-logo{
-  top: 22px;
-}
-
-.right-welcome{
-  top: 42px;
-  text-align: center;
-  p {
-    left: 7%;
-    font-size: 16px;
-    width: 73%;
-    font-weight: 500;
-    position: relative;
-}
-}
-.right-username{
-  top:10px;
-}
-.right-email{
-  top: 50px;
-}
-.check-box{
-  top: 50px;
-}
-.pswd{
-  top: 103px;
-}
-.btn-row{
-top:100px;
-}
-.login-details{
-  top: 45px;
+.left-login {
+  width: 106%;
   position: relative;
-  .form-control {
-    padding: 0px;
-  }
-  label{
+  left: -16px;
+  height: 26em;
+}
+
+.right-welcome {
+  text-align: center;
+
+  p {
+    font-size: 16px;
     font-weight: 500;
+    position: relative;
+    margin: 0px;
   }
 }
 
-.modal-row {
-  top: 62px;
-}
-
-.check-recovery{
-  top: 57px;
-    position: relative;
-}
 .form-recovery {
   white-space: nowrap;
   font-size: 12px;
 }
 
-.inst-logo {
-  width: 40%;
-  left: 25%;
-  bottom: -8px;
-  height: 30px;
-  position: absolute;
-}
-.signup-submit{
-  top: 4px;
-}
 .modal-button {
-      -ms-transform: translate(-50%, -50%);
-      color: black;
-      font-size: 12px;
-      left: 15%;
-    position: relative;
-      margin-bottom: 20px;
-      border: none;
-      cursor: pointer;
-      border-radius: 7px;
-      box-shadow: 0 6px 6px rgba(0, 0, 0, 0.6);
-      color: black;
-      background-color: transparent;
-      border: 1px solid #808080;
-  }
-  .modal-popup{
-    padding-right: 0px;
-    padding-left: 0px;
-    overflow-y: hidden;
-   // padding-bottom: 0px;
-  }
+  color: black;
+  font-size: 12px;
+  border: none;
+  cursor: pointer;
+  border-radius: 7px;
+  box-shadow: 0 6px 6px rgba(0, 0, 0, 0.6);
+  color: black;
+  background-color: transparent;
+  border: 1px solid #808080;
+}
+
+.modal-row {
+  padding: 3%;
+  padding-left: 7%;
+  padding-right: 7%;
+
+}
+
+.in-body {
+  width: 100%;
+  margin: 0%;
+}
+
+.right-pop {
+  left: 0%;
+  //width: 100%;
+}
+
+.login-img {
+  padding: 0%;
+}
+
+.mdl-body {
+  padding: 0%;
+}
+
+.bnts {
+  margin-left: -4%;
+}
+
+.modal-popup {
+  padding: 0%;
+}
+
+.fade {
+  padding-left: 0% !important;
+}
+
+.modal-open {
+  padding-right: 0% !important;
+}

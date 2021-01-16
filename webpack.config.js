@@ -18,7 +18,6 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
-
 const appEnv = process.env.NODE_ENV || 'development';
 const config = {
   mode: appEnv,

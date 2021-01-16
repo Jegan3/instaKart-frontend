@@ -21,7 +21,9 @@ footer a:hover {
   color: #FA944B;
   text-decoration: none;
 }
-
+.contact{
+  right: 4%;
+}
 // .copy {
 //   font-size: 12px;
 //   padding: 10px;
@@ -173,25 +175,21 @@ ul li:before {
 }
 
 .text-right {
+  margin-top: 10px;
   text-align: right;
   position: relative;
-  bottom: 50px;
-}
-
-.text-center {
-  text-align: center;
-  margin-left: 10px;
-  position: relative;
-  bottom: 22px;
 }
 
 .text-left {
-  text-align: left;
-  position: relative;
-  top: 6px;
-  right: 23px;
+  margin-top: 13px;
+  white-space: nowrap;
   color: grey;
   font-size: 10px;
+}
+
+.text-center {
+  margin-top: 10px;
+  text-align: center;
 }
 
 .social {
@@ -199,9 +197,8 @@ ul li:before {
 }
 
 .copy {
-  height: 70px;
+  top:10px;
   font-size: 12px;
-  // padding: 10px;
   border-top: 1px solid grey;
 }
 
@@ -296,10 +293,9 @@ ul li:before {
 
 .appBtn {
   position: relative;
-  /* margin-right: 125px; */
-  font-size: 14px;
-  right: 37px;
-  top: 2px;
+  font-size: 15px;
+  right: 60%;
+  top: 5px;
 }
 
 .side-Button {
@@ -310,28 +306,25 @@ ul li:before {
 
 
   button {
-    top: 20px;
-    background: dodgerblue;
-    height: 45px;
-    width: 60%;
-    color: white;
-    border-radius: 30px;
-    margin-right: 1rem;
-    cursor: pointer;
-    line-height: 1.5;
-    font: 700 1.2rem 'Roboto Slab', sans-serif;
-    //  padding: 0em 1.5em 0em 4.5em;
-    padding: 0em 0em 0em 0em;
-    letter-spacing: 0.05rem;
-    text-align: center;
+  top: 20px;
+  background: dodgerblue;
+  height: 35px;
+  color: white;
+  border-radius: 30px;
+  margin-right: 1rem;
+  cursor: pointer;
+  line-height: 1.5;
+  font: 700 1.2rem 'Roboto Slab', sans-serif;
+  padding: 0em 2em;
+  letter-spacing: 0.05rem;
+  text-align: center;
 
     &:focus {
       outline: 2px dotted #55d7dc;
     }
 
     p {
-      bottom: 18px;
-      /* top: 13px; */
+      bottom: 22px;
       position: relative;
       font-size: 14px;
       left: 7px;
@@ -339,8 +332,7 @@ ul li:before {
 
     strong {
       left: 7px;
-      bottom: 30px;
-      /* top: 13px; */
+      bottom: 35px;
       position: relative;
       font-size: 10px;
     }
