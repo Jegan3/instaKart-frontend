@@ -24,10 +24,10 @@ const PopUp = ({ show }) => {
   const Login = () => {
     setLogin(true);
     const loginDetails = {
-      email: 'gopinath.chandar@gmail.com',
-      password: 'Football7&',
-    //   email,
-    //   password,
+      // email: 'gopinath.chandar@gmail.com',
+      // password: 'Football7&',
+      email,
+      password,
     };
     dispatch({ type: 'LOGIN_REQUEST', login: loginDetails });
   };
