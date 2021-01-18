@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useState } from 'react';
+import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkerAlt, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 import TextField from '@material-ui/core/TextField';
@@ -33,36 +34,43 @@ const Header = () => {
     <div>
       <PopUp show={login} />
       <div className="head">
-        <div className="Row">
-          <div className="header-container">
-            <div className="Body">
-              <div className="col-md-6 col-sm-6 header-top-left">
-                <FontAwesomeIcon icon={faMapMarkerAlt} className="location" />
-                <p>
-                  Select Location
-                </p>
-                <img
-                  className="flag"
-                  src="images/trinidad-and-tobago-flag.png"
-                  alt="new"
-                />
-                <p>
-                  Trinidad & Tobago
-                </p>
-              </div>
-              <div className="Row">
-                <div className="col-md-1 col-sm-3 header-top-right">
+        <div>
+          <Navbar inverse collapseOnSelect>
+            <Navbar.Header>
+              <Navbar.Toggle />
+            </Navbar.Header>
+            <Navbar.Collapse>
+              <Nav>
+                <NavItem >
+                  <FontAwesomeIcon icon={faMapMarkerAlt} className="location" />
+                  <p>
+                    Select Location
+                  </p>
+                </NavItem>
+                <NavItem >
+                  <img
+                    className="flag"
+                    src="images/trinidad-and-tobago-flag.png"
+                    alt="new"
+                  />
+                  <p>
+                    Trinidad & Tobago
+                  </p>
+                </NavItem>
+              </Nav>
+              <Nav pullRight>
+                <NavItem eventKey={1} href="#">
                   <p>Help</p>
-                </div>
-                <div className="col-md-2 col-sm-3 header-top-right">
+                </NavItem>
+                <NavItem eventKey={2} href="#">
                   <p>How it Works</p>
-                </div>
-                <div className="col-md-2 col-sm-3 header-top-right">
+                </NavItem>
+                <NavItem eventKey={3} href="#">
                   <p>List Ur Purchase</p>
-                </div>
-              </div>
-            </div>
-          </div>
+                </NavItem>
+              </Nav>
+            </Navbar.Collapse>
+          </Navbar>
         </div>
         <div>
           <div className="header-container-bottom">

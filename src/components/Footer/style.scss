@@ -3,6 +3,31 @@
   position: relative;
   width: 98% !important;
   margin: auto;
+
+  ul li {
+    position: relative;
+    padding-bottom: 10px;
+    font-size: 10px;
+    color: grey;
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  ul li:before {
+    content: '';
+    position: absolute;
+    border-right: 2px solid white;
+    border-bottom: 2px solid white;
+    width: 6;
+    width: 6px;
+    height: 6px;
+    color: grey;
+    top: calc(50% - 4px);
+    left: -25px;
+    transform: translateY(-50%) rotate(-45deg);
+  }
 }
 
 footer {
@@ -21,14 +46,10 @@ footer a:hover {
   color: #FA944B;
   text-decoration: none;
 }
-.contact{
+
+.contact {
   right: 4%;
 }
-// .copy {
-//   font-size: 12px;
-//   padding: 10px;
-//   border-top: 1px solid #FFFFFF;
-// }
 
 .footer-pad {
   h4 {
@@ -122,40 +143,6 @@ ul.social-network li {
   background-color: #F9F9F9;
 }
 
-#arrow {
-  border-right: 2px solid white;
-  border-bottom: 2px solid white;
-  width: 10px;
-  height: 10px;
-  transform: rotate(-45deg);
-  margin-top: 40px;
-}
-
-ul li {
-  position: relative;
-  padding-bottom: 10px;
-  font-size: 10px;
-  color: grey;
-}
-
-ul {
-  list-style: none;
-}
-
-ul li:before {
-  content: '';
-  position: absolute;
-  border-right: 2px solid white;
-  border-bottom: 2px solid white;
-  width: 6;
-  width: 6px;
-  height: 6px;
-  color: grey;
-  top: calc(50% - 4px);
-  left: -25px;
-  transform: translateY(-50%) rotate(-45deg);
-}
-
 .support {
   color: grey;
   font-size: 9px;
@@ -197,7 +184,7 @@ ul li:before {
 }
 
 .copy {
-  top:10px;
+  top: 10px;
   font-size: 12px;
   border-top: 1px solid grey;
 }
@@ -306,18 +293,18 @@ ul li:before {
 
 
   button {
-  top: 20px;
-  background: dodgerblue;
-  height: 35px;
-  color: white;
-  border-radius: 30px;
-  margin-right: 1rem;
-  cursor: pointer;
-  line-height: 1.5;
-  font: 700 1.2rem 'Roboto Slab', sans-serif;
-  padding: 0em 2em;
-  letter-spacing: 0.05rem;
-  text-align: center;
+    top: 20px;
+    background: dodgerblue;
+    height: 35px;
+    color: white;
+    border-radius: 30px;
+    margin-right: 1rem;
+    cursor: pointer;
+    line-height: 1.5;
+    font: 700 1.2rem 'Roboto Slab', sans-serif;
+    padding: 0em 2em;
+    letter-spacing: 0.05rem;
+    text-align: center;
 
     &:focus {
       outline: 2px dotted #55d7dc;

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -23,10 +24,10 @@ const PopUp = ({ show }) => {
   const Login = () => {
     setLogin(true);
     const loginDetails = {
-      // username: 'Keith7',
-      // password: 'Football7&',
-      email,
-      password,
+      email: 'gopinath.chandar@gmail.com',
+      password: 'Football7&',
+    //   email,
+    //   password,
     };
     dispatch({ type: 'LOGIN_REQUEST', login: loginDetails });
   };
