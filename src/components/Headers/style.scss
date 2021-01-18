@@ -72,8 +72,8 @@
 
 .header-top-left {
   display: flex;
+  justify-content: center !important;
   top: 5px;
-  right: 5%;
 
   p {
     margin: 0 2%;
@@ -83,6 +83,7 @@
 
 .logo-header-top-left {
   display: flex;
+  justify-content: center !important;
 
   p {
     margin: 0 2%;
@@ -92,18 +93,18 @@
 .login-header-top-right {
   display: flex;
   white-space: nowrap;
+  justify-content: center !important;
 }
 
 .header-top-right {
   display: flex;
   white-space: nowrap;
   top: 5px;
-  left: 30%;
+  justify-content: center !important;
 
   p {
     margin: 0 2%;
     position: relative;
-    right: 20%;
   }
 }
 
@@ -168,4 +169,12 @@
 
 #search-input {
   font-size: 12px;
+}
+
+.Body {
+  width: 70% !important;
+}
+
+.p {
+  font-size: 15px !important;
 }

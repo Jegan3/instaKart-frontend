@@ -50,14 +50,16 @@ const Header = () => {
                   Trinidad & Tobago
                 </p>
               </div>
-              <div className="col-md-1 col-sm-3 header-top-right">
-                <p>Help</p>
-              </div>
-              <div className="col-md-2 col-sm-3 header-top-right">
-                <p>How it Works</p>
-              </div>
-              <div className="col-md-2 col-sm-3 header-top-right">
-                <p>List Ur Purchase</p>
+              <div className="Row">
+                <div className="col-md-1 col-sm-3 header-top-right">
+                  <p>Help</p>
+                </div>
+                <div className="col-md-2 col-sm-3 header-top-right">
+                  <p>How it Works</p>
+                </div>
+                <div className="col-md-2 col-sm-3 header-top-right">
+                  <p>List Ur Purchase</p>
+                </div>
               </div>
             </div>
           </div>
@@ -87,7 +89,7 @@ const Header = () => {
                   fullWidth
                 />
               </div>
-              <div className="col-md-2 col-sm-2 login-header-top-right">
+              <div className="col-md-2 col-sm-3 login-header-top-right">
                 <div className="user" onClick={loginAccount}>
                   <FontAwesomeIcon icon={faUserPlus} className="userPlus" />
                   <div className="text">
