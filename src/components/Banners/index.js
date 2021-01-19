@@ -1,38 +1,42 @@
 import React from 'react';
-import { Slide } from 'react-slideshow-image';
-import 'react-slideshow-image/dist/styles.css';
+import { Carousel } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.css';
 
-const slideImages = [
-  'images/pic1.png',
-  'images/pic2.png',
-  'images/pic3.png',
-  'images/pic4.png',
-
-];
-
-const Banners = () => (
-  <div className="banner">
-    <div>
-      <Slide easing="ease" arrows={false}>
-        <div className="each-slide">
-          <div style={{ backgroundImage: `url(${slideImages[0]})` }}>
-          </div>
-        </div>
-        <div className="each-slide">
-          <div style={{ backgroundImage: `url(${slideImages[1]})` }}>
-          </div>
-        </div>
-        <div className="each-slide">
-          <div style={{ backgroundImage: `url(${slideImages[2]})` }}>
-          </div>
-        </div>
-        <div className="each-slide">
-          <div style={{ backgroundImage: `url(${slideImages[3]})` }}>
-          </div>
-        </div>
-      </Slide>
+function Banners() {
+  return (
+    <div className="banners">
+      <Carousel>
+        <Carousel.Item>
+          <img
+            className="d-block w-100"
+            src="images/pic1.png"
+            alt="First slide"
+          />
+        </Carousel.Item>
+        <Carousel.Item>
+          <img
+            className="d-block w-100"
+            src="images/pic2.png"
+            alt="Third slide"
+          />
+        </Carousel.Item>
+        <Carousel.Item>
+          <img
+            className="d-block w-100"
+            src="images/pic3.png"
+            alt="Third slide"
+          />
+        </Carousel.Item>
+        <Carousel.Item>
+          <img
+            className="d-block w-100"
+            src="images/pic4.png"
+            alt="fourth slide"
+          />
+        </Carousel.Item>
+      </Carousel>
     </div>
-  </div>
-);
+  );
+}
 
 export default Banners;

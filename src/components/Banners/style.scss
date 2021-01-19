@@ -2,11 +2,21 @@
   position: relative;
 }
 
-.each-slide>div {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-repeat: no-repeat, repeat;
-  background-size: cover;
-  height: 500px;
+.carousel-indicators {
+  display: none;
+}
+
+//for left and right arrows
+.carousel-control.left {
+  display: none;
+}
+
+.carousel-control.right {
+  display: none;
+}
+
+.carousel-inner>.item>img,
+.carousel-inner>.item>a>img {
+  cursor: pointer;
+  width: 100%;
 }
