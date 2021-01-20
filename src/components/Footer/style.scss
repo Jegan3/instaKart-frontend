@@ -164,7 +164,7 @@ ul.social-network li {
 .text-right {
   margin-top: 10px;
   text-align: right;
-  position: relative;
+  margin-bottom: 20px;
 }
 
 .text-left {
@@ -185,7 +185,6 @@ ul.social-network li {
 
 .copy {
   top: 10px;
-  font-size: 12px;
   border-top: 1px solid grey;
 }
 
@@ -282,7 +281,7 @@ ul.social-network li {
   position: relative;
   font-size: 15px;
   right: 60%;
-  top: 5px;
+   top: 8px;
 }
 
 .side-Button {
@@ -311,15 +310,15 @@ ul.social-network li {
     }
 
     p {
-      bottom: 22px;
+      bottom: 15px;
       position: relative;
-      font-size: 14px;
+      font-size: 12px;
       left: 7px;
     }
 
     strong {
       left: 7px;
-      bottom: 35px;
+      bottom: 28px;
       position: relative;
       font-size: 10px;
     }
