@@ -4,10 +4,12 @@
 }
 
 .left-login {
-  width: 106%;
-  position: relative;
-  left: -16px;
-  height: 26em;
+  // width: 106%;
+  // position: relative;
+  // left: -16px;
+  // height: 26em;
+  width: 100%;
+  height: 29em;
 }
 
 .right-welcome {
@@ -64,7 +66,8 @@
 }
 
 .bnts {
-  margin-left: -4%;
+  // margin-left: -4%;
+  // margin-bottom: 10%;
 }
 
 .modal-popup {
@@ -77,4 +80,13 @@
 
 .modal-open {
   padding-right: 0% !important;
+}
+
+.right-logo {
+  margin-top: 10%;
+}
+
+.login-error-msg {
+  color: red;
+  white-space: nowrap;
 }

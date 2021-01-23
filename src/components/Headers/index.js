@@ -30,9 +30,13 @@ const Header = () => {
     setLogin(true);
   };
 
+  const hidePopup = () => {
+    setLogin(false);
+  };
+
   return (
     <div>
-      <PopUp show={login} />
+      <PopUp showPopup={login} hidePopup={hidePopup} />
       <div className="head">
         <div>
           <Navbar inverse collapseOnSelect>

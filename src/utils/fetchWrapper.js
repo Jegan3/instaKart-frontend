@@ -79,6 +79,8 @@ export const doPost = (url, body, urlPrefix = baseUrl) => timeoutPromise(fetch(
     let response = null;
     if (res.ok) {
       response = res.json();
+    } else {
+      throw new Error(res.statusText);
     }
     return response;
   });

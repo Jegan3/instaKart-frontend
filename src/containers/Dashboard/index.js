@@ -1,9 +1,3 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable react/prefer-stateless-function */
-/* eslint-disable no-plusplus */
-/* eslint-disable indent */
-/* eslint-disable react/jsx-closing-tag-location */
-/* eslint-disable react/jsx-indent */
 import React, { Component } from 'react';
 import { Col, Row, Grid, Button } from 'react-bootstrap';
 import ReactTable from 'react-table';
@@ -41,63 +35,27 @@ const dataTable = [
   },
 ];
 
-// const columns = [{
-//     Header: 'Name',
-//     accessor: 'name', // String-based value accessors!
-//   }, {
-//     Header: 'Age',
-//     accessor: 'age',
-//     Cell: (props) => <span className="number">{props.value}</span>, // Custom cell components!
-//   }, {
-//     id: 'friendName', // Required because our accessor is not a string
-//     Header: 'Friend Name',
-//     accessor: (d) => d.friend.name, // Custom value accessors!
-//   }, {
-//     Header: () => <span>Friend Age</span>, // Custom header components!
-//     accessor: 'friend.age',
-//   }];
-
-// import {
-//   dataPie,
-//   dataSales,
-//   optionsSales,
-//   responsiveSales,
-//   // dataBar,
-//   // optionsBar,
-//   // responsiveBar,
-//   tableData,
-// } from '../../constants/Variables';
-
-// const mapData = {
-//     AU: 760,
-//     BR: 550,
-//     CA: 120,
-//     DE: 1300,
-//     FR: 540,
-//     GB: 690,
-//     GE: 200,
-//     IN: 200,
-//     RO: 600,
-//     RU: 300,
-//     US: 2920,
-// };
-
 class Dashboard extends Component {
   constructor(props) {
     super(props);
-this.state = {
-  show: false,
-};
-}
+    this.state = {
+      show: false,
+    };
+  }
 
-  onClick =() => {
-  this.setState({ show: true });
-}
+  onClick = () => {
+    this.setState({ show: true });
+  }
+
+  hidePopup = () => {
+    this.setState({ show: false });
+  }
   // const data = dataTable.map(val => val)
   render() {
+    const { show } = this.state;
     return (
       <div className="wrapper">
-        <Upload show={this.state.show} />
+        <Upload showPopup={show} hidePopup={this.hidePopup} />
         <Sidebar history={history} />
         <div className="main-panel">
           <Headerbar headerName="Lunch Box" />
@@ -219,8 +177,10 @@ this.state = {
                       {
                         Header: 'Status',
                         accessor: 'name',
-                        Cell: (original) => (<div className="actions-right">
-                        <Button className="btn btn-danger" simple onClick={() => this.onClick(original)}>Pending</Button></div>),
+                        Cell: (original) => (
+                          <div className="actions-right">
+                            <Button className="btn btn-danger" simple onClick={() => this.onClick(original)}>Upload</Button>
+                          </div>),
                         // sortable: false,
                         // filterable: false,
                       },
