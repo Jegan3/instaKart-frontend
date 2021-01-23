@@ -12,7 +12,7 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import IconButton from '@material-ui/core/IconButton';
 import Badge from '@material-ui/core/Badge';
 import { withStyles } from '@material-ui/core/styles';
-import PopUp from '../PopUp';
+import PopUp from '../LoginModal';
 
 const StyledBadge = withStyles((theme) => ({
   badge: {

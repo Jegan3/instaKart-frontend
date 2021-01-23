@@ -16,6 +16,7 @@ import { history } from '../../routes';
 import Table from '../../components/Table';
 import StatsCard from '../../components/StatsCard';
 // import Card from '../../components/Card';
+import Upload from '../../components/Upload';
 
 const dataTable = [
   {
@@ -82,10 +83,21 @@ const dataTable = [
 // };
 
 class Dashboard extends Component {
+  constructor(props) {
+    super(props);
+this.state = {
+  show: false,
+};
+}
+
+  onClick =() => {
+  this.setState({ show: true });
+}
   // const data = dataTable.map(val => val)
   render() {
     return (
       <div className="wrapper">
+        <Upload show={this.state.show} />
         <Sidebar history={history} />
         <div className="main-panel">
           <Headerbar headerName="Lunch Box" />
@@ -208,7 +220,7 @@ class Dashboard extends Component {
                         Header: 'Status',
                         accessor: 'name',
                         Cell: (original) => (<div className="actions-right">
-                        <Button className="btn btn-danger" simple onClick={() => this.editDevices(original)}>Pending</Button></div>),
+                        <Button className="btn btn-danger" simple onClick={() => this.onClick(original)}>Pending</Button></div>),
                         // sortable: false,
                         // filterable: false,
                       },

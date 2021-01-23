@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Modal, Row, Col, Image, Grid } from 'react-bootstrap';
 import { history } from '../../routes';
 
-const PopUp = ({ show }) => {
+const LoginModal = ({ show }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [login, setLogin] = useState(false);
@@ -119,5 +119,5 @@ const PopUp = ({ show }) => {
   );
 };
 
-export default PopUp;
+export default LoginModal;
 
