@@ -156,3 +156,46 @@
 .desert button:hover {
   background-color: whitesmoke;
 }
+
+@media screen and (max-width: 720px) {
+  .flex-group {
+    display: block;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    width: 100%;
+  }
+
+  .food {
+    position: relative;
+    width: 100%;
+    margin-bottom: 5%;
+  }
+
+  .flex-group-centre {
+    margin: 5% 0%;
+    width: 100%;
+  }
+
+  .desert {
+    position: relative;
+    width: 100%;
+    margin-bottom: 5%;
+  }
+
+  .health {
+    position: relative;
+    margin-bottom: 5%;
+  }
+
+  .photo {
+    height: auto;
+  }
+
+  .photos {
+    height: auto;
+  }
+
+  .pic {
+    height: auto;
+  }
+}
