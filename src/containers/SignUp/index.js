@@ -1,14 +1,17 @@
+/* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Row, Col, Image, Form, Grid } from 'react-bootstrap';
 import { history } from '../../routes';
 import Footer from '../../components/Footer';
 
-const SignUp = () => {
+const SignUp = (props) => {
   const [userName, setUserName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
+  const { state } = props.location;
+  const vendor = state === 'vendor';
 
   const Submit = () => {
     const signupDetails = {
@@ -18,9 +21,17 @@ const SignUp = () => {
       type: 'admin',
     };
     dispatch({ type: 'SIGNUP_REQUEST', signup: signupDetails });
-    history.push({
-      pathname: '/',
-    });
+
+    // temp fix for vendor login
+    if (vendor) {
+      history.push({
+        pathname: '/dashboard',
+      });
+    } else {
+      history.push({
+        pathname: '/',
+      });
+    }
   };
 
   return (
@@ -41,34 +52,37 @@ const SignUp = () => {
             </Col>
           </Row>
           <Form className="login-form ">
-            <Row>
-              <Col md={6} sm={12}>
-                <label >Plan *</label>
-                <select className="form-control">
-                  <option>Default select</option>
-                </select>
-              </Col>
-              <Col md={6} sm={12}>
-                <label >Select Industry Type *</label>
-                <select className="form-control">
-                  <option>Default select</option>
-                </select>
-              </Col>
-            </Row>
-            <Row>
-              <Col md={6} sm={12}>
-                <label >Select Country *</label>
-                <select className="form-control">
-                  <option>Default select</option>
-                </select>
-              </Col>
-              <Col md={6} sm={12} >
-                <label >Select City *</label>
-                <select className="form-control">
-                  <option>Default select</option>
-                </select>
-              </Col>
-            </Row>
+            {/* <Row> */}
+            {vendor &&
+              <Row>
+                <Col md={6} sm={12}>
+                  <label >Plan *</label>
+                  <select className="form-control">
+                    <option>Default select</option>
+                  </select>
+                </Col>
+                <Col md={6} sm={12}>
+                  <label >Select Industry Type *</label>
+                  <select className="form-control">
+                    <option>Default select</option>
+                  </select>
+                </Col>
+              </Row>}
+            {vendor &&
+              <Row>
+                <Col md={6} sm={12}>
+                  <label >Select Country *</label>
+                  <select className="form-control">
+                    <option>Default select</option>
+                  </select>
+                </Col>
+                <Col md={6} sm={12} >
+                  <label >Select City *</label>
+                  <select className="form-control">
+                    <option>Default select</option>
+                  </select>
+                </Col>
+              </Row>}
             <Row>
               <Col md={6} sm={12}>
                 <label >User Name *</label>

@@ -1,7 +1,5 @@
-/* eslint-disable indent */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkerAlt, faUserPlus } from '@fortawesome/free-solid-svg-icons';
@@ -27,30 +25,20 @@ const StyledBadge = withStyles((theme) => ({
 
 const Header = () => {
   const [login, setLogin] = useState(false);
-  const [country, setCountry] = useState('Select Location');
-
+  const [country, setCountry] = useState(<div><FontAwesomeIcon icon={faMapMarkerAlt} className="location" /><p>Location</p></div>);
+  const signup = useSelector((state) => state.signupState.signup);
+  let name = signup && signup.data.name;
+  name = name || 'My Account';
   const flags = Country.map((item) => (
     <MenuItem
       eventKey={
-        <div><img
-          className="flag"
-          src={item.flag}
-          alt="new"
-        />
+        <div>
+          <img className="flag" src={item.flag} alt="new" />
           <p className="p-text" >{item.country}</p>
         </div>}
     >
-      <img
-        className="flag"
-        src={item.flag}
-        alt="new"
-      /> {' '}
-      <p className="p-text">
-        {item.country}
-      </p>
+      <img className="flag" src={item.flag} alt="new" />  <p className="p-text">{item.country}  </p>
     </MenuItem>));
-
-  console.log('dasdasdas', flags);
 
   const loginAccount = () => {
     setLogin(true);
@@ -76,17 +64,17 @@ const Header = () => {
             </Navbar.Header>
             <Navbar.Collapse>
               <Nav>
-                <NavItem >
+                {/* <NavItem >
                   <FontAwesomeIcon icon={faMapMarkerAlt} className="location" />
                   <p>
                     {country}
                   </p>
-                </NavItem>
+                </NavItem> */}
                 <NavItem >
                   <NavDropdown
-                    eventKey={3}
+                    eventKey={country}
                     title={country}
-                    alt="Dropdown"
+                    // alt="Dropdown"
                     id="basic-nav-dropdown"
                     onSelect={handleSelect}
                   >{flags}
@@ -133,11 +121,11 @@ const Header = () => {
                 />
               </div>
               <div className="col-md-2 col-sm-3 login-header-top-right">
-                <div className="user" onClick={loginAccount}>
+                <div className="user" onClick={loginAccount} onKeyDown={loginAccount} aria-hidden="true">
                   <FontAwesomeIcon icon={faUserPlus} className="userPlus" />
                   <div className="text">
                     <div className="small-text">Login</div>
-                    <div className="bold-text">My Account</div>
+                    <div className="bold-text">{name}</div>
                   </div>
                 </div>
                 <IconButton aria-label="cart" >
@@ -153,4 +141,5 @@ const Header = () => {
     </div>
   );
 };
+
 export default Header;

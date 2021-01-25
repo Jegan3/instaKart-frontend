@@ -6,24 +6,28 @@
   background-color: black;
   color: #fff;
 }
+
 .dropdown-menu {
   background-color: #222;
-  
+
 }
-.p-text{
-  font-size:12px;
+
+.p-text {
+  font-size: 12px;
 }
 
 .flag {
   width: 20px;
   height: 12px;
   position: relative;
- 
+
 }
+
 .dropdown-menu>li>a {
   padding: 8px 16px;
   color: white;
 }
+
 .header-container-bottom {
   // margin-top: 1%;
   // margin: 1% 0;
@@ -167,4 +171,12 @@
   .Body {
     width: 70% !important;
   }
+}
+
+
+// to remove the dropdown caret
+.dropdown-menu::before, 
+.dropdown-menu::after {
+    border: none;
+    content: none;
 }

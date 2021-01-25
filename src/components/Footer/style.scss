@@ -281,7 +281,7 @@ ul.social-network li {
   position: relative;
   font-size: 15px;
   right: 60%;
-   top: 8px;
+  top: 8px;
 }
 
 .side-Button {
@@ -293,7 +293,7 @@ ul.social-network li {
 
   button {
     top: 20px;
-    background: dodgerblue;
+    background: #337ab7;
     height: 35px;
     color: white;
     border-radius: 30px;
@@ -323,4 +323,10 @@ ul.social-network li {
       font-size: 10px;
     }
   }
+}
+
+.vendor-signup {
+  color: #fff !important;
+  background-color: #337ab7 !important;
+  border-color: #2e6da4 !important;
 }
