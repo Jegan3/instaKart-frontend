@@ -1,7 +1,8 @@
+/* eslint-disable indent */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useState } from 'react';
-import { Navbar, Nav, NavItem } from 'react-bootstrap';
+import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkerAlt, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 import TextField from '@material-ui/core/TextField';
@@ -13,6 +14,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Badge from '@material-ui/core/Badge';
 import { withStyles } from '@material-ui/core/styles';
 import PopUp from '../LoginModal';
+import { Country } from '../../constants/Country';
 
 const StyledBadge = withStyles((theme) => ({
   badge: {
@@ -25,6 +27,30 @@ const StyledBadge = withStyles((theme) => ({
 
 const Header = () => {
   const [login, setLogin] = useState(false);
+  const [country, setCountry] = useState('Select Location');
+
+  const flags = Country.map((item) => (
+    <MenuItem
+      eventKey={
+        <div><img
+          className="flag"
+          src={item.flag}
+          alt="new"
+        />
+          <p className="p-text" >{item.country}</p>
+        </div>}
+    >
+      <img
+        className="flag"
+        src={item.flag}
+        alt="new"
+      /> {' '}
+      <p className="p-text">
+        {item.country}
+      </p>
+    </MenuItem>));
+
+  console.log('dasdasdas', flags);
 
   const loginAccount = () => {
     setLogin(true);
@@ -32,6 +58,11 @@ const Header = () => {
 
   const hidePopup = () => {
     setLogin(false);
+  };
+
+  const handleSelect = (e) => {
+    console.log(e);
+    setCountry(e);
   };
 
   return (
@@ -48,18 +79,18 @@ const Header = () => {
                 <NavItem >
                   <FontAwesomeIcon icon={faMapMarkerAlt} className="location" />
                   <p>
-                    Select Location
+                    {country}
                   </p>
                 </NavItem>
                 <NavItem >
-                  <img
-                    className="flag"
-                    src="images/trinidad-and-tobago-flag.png"
-                    alt="new"
-                  />
-                  <p>
-                    Trinidad & Tobago
-                  </p>
+                  <NavDropdown
+                    eventKey={3}
+                    title={country}
+                    alt="Dropdown"
+                    id="basic-nav-dropdown"
+                    onSelect={handleSelect}
+                  >{flags}
+                  </NavDropdown>
                 </NavItem>
               </Nav>
               <Nav pullRight>
@@ -92,7 +123,7 @@ const Header = () => {
                   name="search"
                   size="small"
                   variant="outlined"
-                  placeholder="Search Shops, Restaurants, Medicine, Essentials"
+                  placeholder="Search "
                   style={{ marginRight: '-4px' }}
                   InputProps={{
                     startAdornment: <InputAdornment position="start"><SearchIcon className="search-icon" /></InputAdornment>,
@@ -122,5 +153,4 @@ const Header = () => {
     </div>
   );
 };
-
 export default Header;

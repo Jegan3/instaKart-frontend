@@ -46,20 +46,20 @@
   left: 50%;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
-  color: white;
+  color: black;
   font-size: 12px;
   padding: 1em 1em;
   border: none;
   cursor: pointer;
   border-radius: 7px;
   box-shadow: 0 6px 6px rgba(0, 0, 0, 0.6);
-  color: white;
   background-color: transparent;
   border: 1px solid white;
 }
 
 .food button:hover {
-  background-color: whitesmoke;
+  background-color:dodgerblue;
+  color:white;
 }
 
 .health {
@@ -77,20 +77,20 @@
   left: 50%;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
-  color: white;
+  color:black;
   font-size: 12px;
   padding: 1em 1em;
   border: none;
   cursor: pointer;
   border-radius: 7px;
   box-shadow: 0 6px 6px rgba(0, 0, 0, 0.6);
-  color: white;
   background-color: transparent;
   border: 1px solid white;
 }
 
 .health button:hover {
-  background-color: whitesmoke;
+  background-color:dodgerblue;
+  color:white;
 }
 
 .services {
@@ -109,20 +109,20 @@
   left: 50%;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
-  color: white;
   font-size: 12px;
   padding: 1em 1em;
   border: none;
   cursor: pointer;
   border-radius: 7px;
   box-shadow: 0 6px 6px rgba(0, 0, 0, 0.6);
-  color: white;
+  color:black;
   background-color: transparent;
   border: 1px solid white;
 }
 
 .services button:hover {
-  background-color: whitesmoke;
+  background-color:dodgerblue;
+  color:white;
 }
 
 .desert {
@@ -141,20 +141,20 @@
   left: 50%;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
-  color: white;
   font-size: 12px;
   padding: 1em 1em;
   border: none;
   cursor: pointer;
   border-radius: 7px;
   box-shadow: 0 6px 6px rgba(0, 0, 0, 0.6);
-  color: white;
+  color:black;
   background-color: transparent;
   border: 1px solid white;
 }
 
 .desert button:hover {
-  background-color: whitesmoke;
+  background-color:dodgerblue;
+  color:white;
 }
 
 @media screen and (max-width: 720px) {
