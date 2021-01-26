@@ -71,13 +71,10 @@ const LoginModal = ({ showPopup, hidePopup }) => {
                     </Col>
                     <Col md={12} className="right-welcome" >
                       <p>
-                        WELCOME TO THE WORLD&apos;S
+                        Welcome To The Caribbean
                       </p>
                       <p>
-                        LARGEST VIRTUAL SHOPPING
-                      </p>
-                      <p>
-                        MALL
+                        Largest eCommerce Portal
                       </p>
                     </Col>
                   </Row >
