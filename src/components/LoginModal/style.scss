@@ -14,13 +14,7 @@
 
 .right-welcome {
   text-align: center;
-
-  p {
-    font-size: 16px;
-    font-weight: 500;
-    position: relative;
-    margin: 0px;
-  }
+  margin-top: -50px;
 }
 
 .form-recovery {
@@ -89,4 +83,11 @@
 .login-error-msg {
   color: red;
   white-space: nowrap;
+}
+
+h3 {
+  text-align: center;
+  margin-top: 4px;
+  font-weight: bold;
+  color: #33334b;
 }

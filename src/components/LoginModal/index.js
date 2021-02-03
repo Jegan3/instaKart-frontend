@@ -70,12 +70,12 @@ const LoginModal = ({ showPopup, hidePopup }) => {
                       <Image className="inst-logo" src="images/logo.png" fluid />
                     </Col>
                     <Col md={12} className="right-welcome" >
-                      <p>
-                        Welcome To The Caribbean
-                      </p>
-                      <p>
-                        Largest eCommerce Portal
-                      </p>
+                      <h3>
+                        Welcome To The Caribbean&#39;s
+                      </h3>
+                      <h3>
+                        Largest e-Commerce Portal
+                      </h3>
                     </Col>
                   </Row >
                   <Row className="login-details">
