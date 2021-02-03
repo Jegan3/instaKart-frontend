@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React from 'react';
-import ReactCarousel from '../../components/Carousel';
+// import ReactCarousel from '../../components/Carousel';
 import IntroBanner from '../../components/IntroBanner';
 // import SportsBanner from '../../components/SportsBanner';
 import Footer from '../../components/Footer';
@@ -15,8 +15,8 @@ const Welcome = () => (
     <div className="intro-banner">
       <Banners />
     </div>
-    <h2>Welcome To The Caribbean Largest</h2>
-    <h2>eCommerce Portal</h2>
+    <h2>Welcome To The Caribbean&#39;s Largest</h2>
+    <h2>e-Commerce Portal</h2>
     <div>
       <IntroBanner />
     </div>
@@ -25,17 +25,19 @@ const Welcome = () => (
         <h5>
           # E-LEARNING COURSES #
         </h5>
-        <ReactCarousel />
+        <a href="https://instakartelearning.com/chess-school/" target="_blank">
+          <img className="pic" alt="#" src="images/chess.png" />
+        </a>
       </div>
       <br />
     </div>
-    <div className="Arrivals">
+    {/* <div className="Arrivals">
       <h4>
         # OFFERS #
       </h4>
       <ReactCarousel />
-    </div>
-    <div className="bg1">
+    </div> */}
+    {/* <div className="bg1">
       <div className="Arrival">
         <h5>
           # RESTAURANTS NEAR YOU #
@@ -43,7 +45,7 @@ const Welcome = () => (
         <ReactCarousel />
       </div>
       <br />
-    </div>
+    </div> */}
     {/* <div className="Arrivals">
       <SportsBanner />
     </div>

@@ -5,12 +5,12 @@ const IntroBanner = () => (
     <div className="flex-group">
       <div className="food">
         <img className="photo" alt="#" src="images/L.png" />
-        <button >LEARN NOW</button>
+        <button >FOOD COURT</button>
       </div>
       <div className="flex-group-centre">
         <div className="health">
           <img className="photos" alt="#" src="images/6.png" ></img>
-          <button>HEALTH & FITNESS </button>
+          <button>HEALTH & WELLNESS </button>
         </div>
         <div className="services">
           <img className="photos" alt="#" src="images/7.png" />
@@ -19,7 +19,7 @@ const IntroBanner = () => (
       </div>
       <div className="desert">
         <img className="photo" alt="#" src="images/5.png" />
-        <button >BOOK NOW</button>
+        <button >FASHION DISTRICT</button>
       </div>
     </div>
     <div>

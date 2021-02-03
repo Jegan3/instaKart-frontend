@@ -55,13 +55,13 @@ const LoginModal = ({ showPopup, hidePopup }) => {
         <Modal.Body className="mdl-body">
           <Grid className="modal-popup" fluid>
             <Row className="in-body">
-              <Col md={6} sm={12} className="login-img">
+              {/* <Col md={6} sm={12} className="login-img">
                 <Col md={12} className="login-img" >
                   <Image className="left-login" src="images/images1.jpg" fluid />
                 </Col>
-              </Col>
+              </Col> */}
               <div className="right-side">
-                <Col className="right-pop" md={6} sm={12}>
+                <Col className="right-pop" md={12} sm={12}>
                   {/* <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button> */}

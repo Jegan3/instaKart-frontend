@@ -49,7 +49,6 @@ const Header = () => {
   };
 
   const handleSelect = (e) => {
-    console.log(e);
     setCountry(e);
   };
 
