@@ -6,7 +6,7 @@ export default {
   },
 
   apiBaseUrl: {
-    dev: 'http://18.206.174.119:8081',
+    dev: 'http://54.91.179.217:8081',
     prod: '',
   },
 };
