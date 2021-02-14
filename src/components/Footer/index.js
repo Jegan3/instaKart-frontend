@@ -21,7 +21,7 @@ const Footer = () => {
           <div className="row">
             <div className="col-md-4 col-sm-4">
               <h5 >
-                FREE DELIVERY
+                In Store Pick up, Curb Side Pick Up, Delivery Options
               </h5>
               <p>
                 When order from $500
@@ -29,7 +29,7 @@ const Footer = () => {
             </div>
             <div className="col-md-4 col-sm-4">
               <h5 >
-                100% REFUND OF MONEY
+                Free e-Store Registration / No Monthly e-Store Subscribtion Fees
               </h5>
               <p>
                 14-days of complaint
@@ -37,7 +37,7 @@ const Footer = () => {
             </div>
             <div className="col-md-4 col-sm-4">
               <h5 >
-                QUALITY INSPECTIONS
+                Secured Payment Gateway / IK Payouts
               </h5>
               <p>
                 Over 10,000 products

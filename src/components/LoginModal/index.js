@@ -74,7 +74,7 @@ const LoginModal = ({ showPopup, hidePopup }) => {
                         Welcome To The Caribbean&#39;s
                       </h3>
                       <h3>
-                        Largest e-Commerce Portal
+                        Unified e-Commerce Portal
                       </h3>
                     </Col>
                   </Row >

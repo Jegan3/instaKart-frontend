@@ -13,6 +13,7 @@ import Badge from '@material-ui/core/Badge';
 import { withStyles } from '@material-ui/core/styles';
 import PopUp from '../LoginModal';
 import { Country } from '../../constants/Country';
+import { history } from '../../routes';
 
 const StyledBadge = withStyles((theme) => ({
   badge: {
@@ -25,10 +26,10 @@ const StyledBadge = withStyles((theme) => ({
 
 const Header = () => {
   const [login, setLogin] = useState(false);
-  const [country, setCountry] = useState(<div><FontAwesomeIcon icon={faMapMarkerAlt} className="location" /><p>Location</p></div>);
+  const [country, setCountry] = useState(<div><FontAwesomeIcon icon={faMapMarkerAlt} className="location" /><p>Select your country</p></div>);
   const signup = useSelector((state) => state.signupState.signup);
   let name = signup && signup.data.name;
-  name = name || 'My Account';
+  name = name || 'Create My Account';
   const flags = Country.map((item) => (
     <MenuItem
       eventKey={
@@ -50,6 +51,15 @@ const Header = () => {
 
   const handleSelect = (e) => {
     setCountry(e);
+  };
+
+  const Signup = () => {
+    history.push({
+      pathname: '/signup',
+      state: 'vendor',
+    });
+    window.scrollTo(0, 0);
+    // window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
@@ -82,13 +92,14 @@ const Header = () => {
               </Nav>
               <Nav pullRight>
                 <NavItem eventKey={1} href="#">
-                  <p>Help</p>
+                  <p>List Your Ads</p>
                 </NavItem>
                 <NavItem eventKey={2} href="#">
-                  <p>How it Works</p>
+                  {/* <p>How it Works</p> */}
+                  <p><Button className="vendor-signup" onClick={Signup}>Vendor Sign Up</Button></p>
                 </NavItem>
                 <NavItem eventKey={3} href="#">
-                  <p>List Ur Purchase</p>
+                  <p>Register Your E-Store</p>
                 </NavItem>
               </Nav>
             </Navbar.Collapse>
