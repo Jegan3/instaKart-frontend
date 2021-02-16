@@ -9,18 +9,16 @@
 
 .dropdown-menu {
   background-color: #222;
-
 }
 
 .p-text {
-  font-size: 12px;
+  font-size: 15px;
 }
 
 .flag {
   width: 20px;
   height: 12px;
   position: relative;
-
 }
 
 .dropdown-menu>li>a {
@@ -72,7 +70,6 @@
 
   p {
     margin: 0 2%;
-
   }
 }
 
@@ -146,8 +143,9 @@
 }
 
 .user {
-  margin: 5% 2%;
-  display: flex;
+  margin: 5% 2% !important;
+  display: flex !important;
+  ;
   cursor: pointer;
 }
 
@@ -173,10 +171,53 @@
   }
 }
 
-
 // to remove the dropdown caret
-.dropdown-menu::before, 
+.dropdown-menu::before,
 .dropdown-menu::after {
-    border: none;
-    content: none;
+  border: none;
+  content: none;
+}
+
+//animation button
+@-webkit-keyframes c {
+  0% {
+    background-position: -5000px 0
+  }
+
+  to {
+    background-position: 5000px 0
+  }
+}
+
+@keyframes c {
+  0% {
+    background-position: -5000px 0
+  }
+
+  to {
+    background-position: 5000px 0
+  }
+}
+
+.vendor-signup {
+  display: block;
+  -webkit-animation: c 53s linear infinite;
+  animation: c 53s linear infinite;
+  background: linear-gradient(121.19deg, rgba(133, 239, 49, 0) 25.73%, hsla(0, 0%, 100%, .3) 45.27%, rgba(133, 239, 49, 0) 62.27%), #54acd5;
+  padding: 0.6250em 2.500em;
+  color: #fff !important;
+  float: right;
+  margin-left: 0.6250em;
+  border: 1px solid #54acd5;
+  background-color: #54acd5 !important;
+}
+
+.caret {
+  display: none;
+}
+
+.caretDown {
+  left: 0.25rem;
+  top: 1px;
+  position: relative;
 }

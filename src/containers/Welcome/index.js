@@ -13,8 +13,7 @@ const Welcome = () => (
     <div className="intro-banner">
       <Banners />
     </div>
-    <h2>Welcome To The Caribbean&#39;s Unified</h2>
-    <h2>e-Commerce Portal</h2>
+    <h2>Welcome To The Caribbean&#39;s Unified <br />e-Commerce Portal</h2>
     <div>
       <IntroBanner />
     </div>

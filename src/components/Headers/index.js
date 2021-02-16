@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMapMarkerAlt, faUserPlus } from '@fortawesome/free-solid-svg-icons';
+import { faMapMarkerAlt, faUserPlus, faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import TextField from '@material-ui/core/TextField';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import SearchIcon from '@material-ui/icons/Search';
@@ -26,7 +26,7 @@ const StyledBadge = withStyles((theme) => ({
 
 const Header = () => {
   const [login, setLogin] = useState(false);
-  const [country, setCountry] = useState(<div><FontAwesomeIcon icon={faMapMarkerAlt} className="location" /><p>Select your country</p></div>);
+  const [country, setCountry] = useState(<div><FontAwesomeIcon icon={faMapMarkerAlt} className="location" /><p>Select your country </p><FontAwesomeIcon icon={faCaretDown} className="caretDown" /></div>);
   const signup = useSelector((state) => state.signupState.signup);
   let name = signup && signup.data.name;
   name = name || 'Create My Account';
@@ -36,6 +36,7 @@ const Header = () => {
         <div>
           <img className="flag" src={item.flag} alt="new" />
           <p className="p-text" >{item.country}</p>
+          <span><FontAwesomeIcon icon={faCaretDown} className="caretDown" /></span>
         </div>}
     >
       <img className="flag" src={item.flag} alt="new" />  <p className="p-text">{item.country}  </p>
@@ -140,7 +141,7 @@ const Header = () => {
                 </div>
                 <IconButton aria-label="cart" >
                   <StyledBadge badgeContent={4} color="secondary">
-                    <ShoppingCartIcon fontSize="medium" />
+                    <ShoppingCartIcon fontSize="large" />
                   </StyledBadge>
                 </IconButton>
               </div>
