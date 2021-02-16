@@ -20,13 +20,8 @@ const Upload = ({ showPopup, hidePopup }) => {
     const formData = new FormData();
     formData.append('poster', upload[0]);
     formData.append('email', 'gopinath.chandar@gmail.com');
-    console.log(formData.get('poster'));
+    // console.log(formData.get('poster'));
     const email = 'gopinath.chandar@gmail.com';
-    // const banner =
-    // {
-    //   email: 'gopinath.chandar@gmail.com',
-    //   poster: formData,
-    // };
     dispatch({ type: 'BANNER_UPLOAD_REQUEST', formData, email });
   };
 
