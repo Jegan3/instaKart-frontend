@@ -1,12 +1,14 @@
 import { combineReducers } from 'redux';
 import signup from './Signup';
 import login from './Login';
-import banner from './Banner';
+import uploadBanner from './UploadBanner';
+import retreiveBanner from './RetrieveBanner';
 
 const rootReducer = combineReducers({
   signupState: signup,
   loginState: login,
-  bannerState: banner,
+  uploadBannerState: uploadBanner,
+  retreiveBannerState: retreiveBanner,
 });
 
 export default rootReducer;

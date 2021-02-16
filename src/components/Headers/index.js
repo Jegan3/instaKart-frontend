@@ -26,7 +26,7 @@ const StyledBadge = withStyles((theme) => ({
 
 const Header = () => {
   const [login, setLogin] = useState(false);
-  const [country, setCountry] = useState(<div><FontAwesomeIcon icon={faMapMarkerAlt} className="location" /><p>Select your country </p><FontAwesomeIcon icon={faCaretDown} className="caretDown" /></div>);
+  const [country, setCountry] = useState(<div><FontAwesomeIcon icon={faMapMarkerAlt} className="location" /><p>Select your country </p><FontAwesomeIcon icon={faCaretDown} className="caret-down" /></div>);
   const signup = useSelector((state) => state.signupState.signup);
   let name = signup && signup.data.name;
   name = name || 'Create My Account';
@@ -36,7 +36,7 @@ const Header = () => {
         <div>
           <img className="flag" src={item.flag} alt="new" />
           <p className="p-text" >{item.country}</p>
-          <span><FontAwesomeIcon icon={faCaretDown} className="caretDown" /></span>
+          <span><FontAwesomeIcon icon={faCaretDown} className="caret-down" /></span>
         </div>}
     >
       <img className="flag" src={item.flag} alt="new" />  <p className="p-text">{item.country}  </p>

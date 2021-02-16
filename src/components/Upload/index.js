@@ -7,20 +7,27 @@ const Upload = ({ showPopup, hidePopup }) => {
   const [show, setShow] = useState(showPopup);
   const [upload, setUpload] = useState(null);
   const dispatch = useDispatch();
+
   useEffect(() => {
     setShow(showPopup);
   }, [showPopup]);
 
-  const Submit = () => {
-    const bannerDetails =
-    {
-      email: 'gopinath.chandar@gmail.com',
-      poster: upload[0].name,
-    };
+  const SetUpload = (e) => {
+    setUpload(e.target.files);
+  };
 
-    dispatch({ type: 'BANNER_UPLOAD_REQUEST', banner: bannerDetails });
-    // console.log(upload[0].name);
-    // // console.log('hi');
+  const Submit = () => {
+    const formData = new FormData();
+    formData.append('poster', upload[0]);
+    formData.append('email', 'gopinath.chandar@gmail.com');
+    console.log(formData.get('poster'));
+    const email = 'gopinath.chandar@gmail.com';
+    // const banner =
+    // {
+    //   email: 'gopinath.chandar@gmail.com',
+    //   poster: formData,
+    // };
+    dispatch({ type: 'BANNER_UPLOAD_REQUEST', formData, email });
   };
 
   return (
@@ -38,7 +45,7 @@ const Upload = ({ showPopup, hidePopup }) => {
                 className="btn-uploadFile"
                 type="file"
                 name="uploadedfile"
-                onChange={(e) => setUpload(e.target.files)}
+                onChange={SetUpload}
                 accept="image/png, .jpeg, .jpg, image/gif"
               />
             </div>
@@ -52,7 +59,6 @@ const Upload = ({ showPopup, hidePopup }) => {
         </Modal>
       </Grid>
     </div>
-
   );
 };
 

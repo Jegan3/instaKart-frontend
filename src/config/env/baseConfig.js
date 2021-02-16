@@ -2,7 +2,8 @@ export default {
   apiEndPoints: {
     getSignup: '/api/user/signUp',
     getLogin: '/api/user/login',
-    getBanner: '/api/user/poster',
+    getUploadBanner: '/api/user/poster',
+    getRetrieveBanner: '/api/admin/retrivePoster?adminemail=',
   },
 
   apiBaseUrl: {

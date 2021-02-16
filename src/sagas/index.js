@@ -1,11 +1,13 @@
 import { signupWatchers } from './Signup';
 import { loginWatchers } from './Login';
-import { bannerWatchers } from './Banner';
+import { uploadBannerWatchers } from './UploadBanner';
+import { retreiveBannerWatchers } from './RetrieveBanner';
 
 export default function* rootWatchers() {
   yield [
     signupWatchers(),
     loginWatchers(),
-    bannerWatchers(),
+    uploadBannerWatchers(),
+    retreiveBannerWatchers(),
   ];
 }

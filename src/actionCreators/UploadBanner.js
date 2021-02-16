@@ -1,4 +1,4 @@
-import * as INSTAKART from '../actionTypes/Banner';
+import * as INSTAKART from '../actionTypes/UploadBanner';
 
 export function getBannerUpload(banner) {
   return {
