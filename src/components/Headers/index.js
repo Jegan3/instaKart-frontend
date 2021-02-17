@@ -96,11 +96,10 @@ const Header = () => {
                   <p>List Your Ads</p>
                 </NavItem>
                 <NavItem eventKey={2} href="#">
-                  {/* <p>How it Works</p> */}
-                  <p><Button className="vendor-signup" onClick={Signup}>Vendor Sign Up</Button></p>
+                  <p>Register Your E-Store</p>
                 </NavItem>
                 <NavItem eventKey={3} href="#">
-                  <p>Register Your E-Store</p>
+                  <p><Button className="vendor-signup" onClick={Signup}>Vendor Sign Up</Button></p>
                 </NavItem>
               </Nav>
             </Navbar.Collapse>
