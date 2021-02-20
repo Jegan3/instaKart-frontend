@@ -4,10 +4,11 @@ import * as INSTAKART from '../actionTypes/RetrieveBanner';
 import * as instakartActionCreators from '../actionCreators/RetrieveBanner';
 import { doGet } from '../utils/fetchWrapper';
 
-export function* getBannerRetrieve() {
+export function* getBannerRetrieve(data) {
   try {
-    const response = yield doGet(envConfig.apiEndPoints.getRetrieveBanner);
-    yield put(instakartActionCreators.getBannerRetreiveSucccess(response));
+    const { email } = data;
+    const response = yield doGet(`${envConfig.apiEndPoints.getRetrieveBanner}${email}`);
+    yield put(instakartActionCreators.getBannerRetrieveSuccess(response));
   } catch (error) {
     yield put(instakartActionCreators.getBannerRetrieveFailure(error));
   }
@@ -15,6 +16,6 @@ export function* getBannerRetrieve() {
 
 export function* retreiveBannerWatchers() {
   yield [
-    takeLatest(INSTAKART.BANNER_UPLOAD_REQUEST, getBannerRetrieve),
+    takeLatest(INSTAKART.BANNER_RETRIEVE_REQUEST, getBannerRetrieve),
   ];
 }

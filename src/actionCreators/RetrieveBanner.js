@@ -1,13 +1,13 @@
 import * as INSTAKART from '../actionTypes/RetrieveBanner';
 
-export function getBannerRetrieve(banner) {
+export function getBannerRetrieve(email) {
   return {
     type: INSTAKART.BANNER_RETRIEVE_REQUEST,
-    banner,
+    email,
   };
 }
 
-export function getBannerRetrieveSucccess(banner) {
+export function getBannerRetrieveSuccess(banner) {
   return {
     type: INSTAKART.BANNER_RETRIEVE_SUCCESS,
     banner,

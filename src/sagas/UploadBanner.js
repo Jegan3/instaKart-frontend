@@ -4,7 +4,6 @@ import * as INSTAKART from '../actionTypes/UploadBanner';
 import * as instakartActionCreators from '../actionCreators/UploadBanner';
 import { doPostFile } from '../utils/fetchWrapper';
 
-
 export function* getBannerUpload(data) {
   try {
     const { formData } = data;
