@@ -1,9 +1,10 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React from 'react';
-import IntroBanner from '../../components/IntroBanner';
+// import IntroBanner from '../../components/IntroBanner';
 import Footer from '../../components/Footer';
 import Header from '../../components/Headers';
 import Banners from '../../components/Banners';
+import { CarouselTop, CarouselMiddle, CarouselBottom } from '../../components/Carousel';
 
 const Welcome = () => (
   <div className="bodyContainer">
@@ -14,8 +15,11 @@ const Welcome = () => (
       <Banners />
     </div>
     <h2>Welcome To The Caribbean&#39;s Unified <br />e-Commerce Portal</h2>
-    <div>
-      <IntroBanner />
+    <div className="Arrival">
+      {/* <IntroBanner /> */}
+      <CarouselTop />
+      <CarouselMiddle />
+      <CarouselBottom />
     </div>
     <div className="bg1">
       <div className="Arrival">

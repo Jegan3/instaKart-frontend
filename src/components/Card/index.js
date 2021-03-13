@@ -3,17 +3,9 @@ import React from 'react';
 
 const Card = (props) => (
   <div className="card">
-    <img src={props.imgUrl} alt={props.alt || 'Image'} />
     <div className="card-content">
-      {/* <h2>{props.title}</h2>
-      <p>{props.content}</p> */}
-      <h3>
-        Shop Name Here
-      </h3>
-      <h6>
-        New brand dress at cheap
-      </h6>
-      <button className="rating" >✰ 4.4</button>
+      <img className="photos" src={props.imgUrl} alt={props.alt || 'Image'} />
+      <button>HEALTH & WELLNESS </button>
     </div>
   </div>
 );
