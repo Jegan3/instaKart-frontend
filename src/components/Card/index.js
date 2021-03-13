@@ -5,7 +5,7 @@ const Card = (props) => (
   <div className="card">
     <div className="card-content">
       <img className="photos" src={props.imgUrl} alt={props.alt || 'Image'} />
-      <button>HEALTH & WELLNESS </button>
+      <button>{props.content} </button>
     </div>
   </div>
 );

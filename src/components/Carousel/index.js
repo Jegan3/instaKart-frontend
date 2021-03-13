@@ -25,20 +25,20 @@ const cardsDataTop = [
   {
     id: 1,
     title: 'CARD 1',
-    content: 'Clark Kent',
-    imgUrl: 'https://unsplash.it/200/200',
+    content: 'Food Avenue',
+    imgUrl: 'images/1_Food.png',
   },
   {
     id: 2,
     title: 'CARD 2',
-    content: 'Bruce Wayne',
-    imgUrl: 'https://unsplash.it/201/200',
+    content: 'Fashion District',
+    imgUrl: 'images/2_Fashion.png',
   },
   {
     id: 3,
     title: 'CARD 3',
-    content: 'Peter Parker',
-    imgUrl: 'https://unsplash.it/200/201',
+    content: 'Health & Wellness',
+    imgUrl: 'images/3_Health.png',
   },
 ];
 
@@ -46,20 +46,20 @@ const cardsDataMiddle = [
   {
     id: 4,
     title: 'CARD 4',
-    content: 'Shaun Paul',
-    imgUrl: 'https://unsplash.it/200/202',
+    content: 'Speciality Services',
+    imgUrl: 'images/4_Speciality.png',
   },
   {
     id: 5,
     title: 'CARD 5',
-    content: 'Rock Anderson',
-    imgUrl: 'https://unsplash.it/200/203',
+    content: 'IK Thrift Store',
+    imgUrl: 'images/5_Thrift.png',
   },
   {
     id: 6,
     title: 'CARD 6',
-    content: 'John Storm',
-    imgUrl: 'https://unsplash.it/200/205',
+    content: 'Grocery & Fresh Produce',
+    imgUrl: 'images/6_Grocery.png',
   },
 ];
 
@@ -67,20 +67,20 @@ const cardsDataBottom = [
   {
     id: 7,
     title: 'CARD 7',
-    content: 'Keith Parker',
-    imgUrl: 'https://unsplash.it/203/207',
+    content: 'Appliances & Tech Gadgets',
+    imgUrl: 'images/7_applicance.png',
   },
   {
     id: 7,
     title: 'CARD 7',
-    content: 'Keith Parker',
-    imgUrl: 'https://unsplash.it/203/207',
+    content: 'Hardware & Industrial Supplies',
+    imgUrl: 'images/8_hardware.png',
   },
   {
     id: 7,
     title: 'CARD 7',
-    content: 'Keith Parker',
-    imgUrl: 'https://unsplash.it/203/207',
+    content: 'Home & Garden Supplies',
+    imgUrl: 'images/9_home.png',
   },
 ];
 
