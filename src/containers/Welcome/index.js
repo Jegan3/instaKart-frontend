@@ -21,6 +21,9 @@ const Welcome = () => (
       <CarouselMiddle />
       <CarouselBottom />
     </div>
+    <div className="Arrival">
+      <img className="pic" alt="#" src="images/8.png" />
+    </div>
     <div className="bg1">
       <div className="Arrival">
         <h5>
