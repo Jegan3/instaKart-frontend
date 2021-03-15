@@ -4,7 +4,7 @@ import React from 'react';
 import Footer from '../../components/Footer';
 import Header from '../../components/Headers';
 import Banners from '../../components/Banners';
-import { CarouselTop, CarouselMiddle, CarouselBottom } from '../../components/Carousel';
+import { CarouselTop, CarouselMiddle, CarouselBottom, CarouselMobile } from '../../components/Carousel';
 
 const Welcome = () => (
   <div className="bodyContainer">
@@ -15,12 +15,16 @@ const Welcome = () => (
       <Banners />
     </div>
     <h2>Welcome To The Caribbean&#39;s Unified <br />e-Commerce Portal</h2>
-    <div className="Arrival">
-      {/* <IntroBanner /> */}
-      <CarouselTop />
-      <CarouselMiddle />
-      <CarouselBottom />
-    </div>
+    {window.screen.width <= 464 ?
+      <div className="Arrival">
+        {/* <IntroBanner /> */}
+        <CarouselMobile />
+      </div> :
+      <div className="Arrival">
+        <CarouselTop />
+        <CarouselMiddle />
+        <CarouselBottom />
+      </div>}
     <div className="Arrival">
       <img className="pic" alt="#" src="images/8.png" />
     </div>
@@ -45,4 +49,5 @@ const Welcome = () => (
     </div>
   </div>
 );
+
 export default Welcome;
