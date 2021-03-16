@@ -8,7 +8,7 @@
     "build:prod": "cross-env NODE_ENV=production webpack --mode=production --profile -p",
     "start": "webpack-dev-server --mode=development --history-api-fallback --hot --inline --host 0.0.0.0 --port 9000 --content-base public/",
     "start:open": "webpack-dev-server --mode=development --history-api-fallback --hot --host 0.0.0.0 --inline --port 9000 --open --content-base public/",
-    "serve:prod": "cross-env NODE_ENV=production webpack-dev-server --port 9000 --history-api-fallback --content-base build/"
+    "serve:prod": "cross-env NODE_ENV=production webpack-dev-server --host 0.0.0.0 --port 9000 --history-api-fallback --content-base build/"
   },
   "author": "",
   "license": "ISC",
