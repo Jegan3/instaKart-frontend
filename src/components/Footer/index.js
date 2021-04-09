@@ -60,8 +60,8 @@ const Footer = () => (
             <div className="support">
               if u have any Question plz contact our support @gmail.com
             </div>
-            <div className="number">800 456 789</div>
-            <div className="zip">+048</div>
+            <div className="number">868 388 1164</div>
+            <div className="zip">+1</div>
             <div className="side-Button ">
               <button className="btn draw-border">
                 <FontAwesomeIcon className="appBtn" icon={faGooglePlay} />
