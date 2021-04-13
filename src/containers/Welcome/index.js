@@ -28,10 +28,11 @@ const Welcome = () => (
     <div className="Arrival">
       <img className="pic" alt="#" src="images/8.png" />
     </div>
+
     <div className="bg1">
       <div className="Arrival">
         <h5>
-          # E-LEARNING COURSES #
+          # New E-Store #
         </h5>
         <a href="https://instakartelearning.com/chess-school/" target="_blank">
           <img className="pic" alt="#" src="images/chess.png" />
@@ -39,6 +40,31 @@ const Welcome = () => (
       </div>
       <br />
     </div>
+
+    <div className="bg1">
+      <div className="Arrival">
+        <h5>
+          # Promotions #
+        </h5>
+        <a href="https://instakartelearning.com/chess-school/" target="_blank">
+          <img className="pic" alt="#" src="images/chess.png" />
+        </a>
+      </div>
+      <br />
+    </div>
+
+    <div className="bg1">
+      <div className="Arrival">
+        <h5>
+          # E-Store Near You #
+        </h5>
+        <a href="https://instakartelearning.com/chess-school/" target="_blank">
+          <img className="pic" alt="#" src="images/chess.png" />
+        </a>
+      </div>
+      <br />
+    </div>
+
     <div className="fitness-pic">
       <img className="addpic" src="images/icon-tcap.png" />
       <img className="addpic" src="images/instakart.png" />
