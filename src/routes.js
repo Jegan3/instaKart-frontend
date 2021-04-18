@@ -5,6 +5,7 @@ import Welcome from './containers/Welcome';
 import Dashboard from './containers/Dashboard';
 import SignUp from './containers/SignUp';
 import TermsConditions from './containers/TermsConditions/termsofconditions';
+import AboutUs from './containers/AboutUs/aboutus';
 
 export const history = createBrowserHistory();
 
@@ -16,6 +17,7 @@ const Routes = () => (
         <Route path="/dashboard" component={Dashboard} />
         <Route path="/signUp" component={SignUp} />
         <Route path="/termsofcondition" component={TermsConditions} />
+        <Route path="/aboutus" component={AboutUs} />
       </Switch>
     </React.Fragment>
   </Router >

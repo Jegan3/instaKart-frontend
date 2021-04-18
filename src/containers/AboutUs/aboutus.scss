@@ -1,0 +1,39 @@
+.header_sec {
+    width: 100%;
+    height: 70px;
+}
+.header_sec .signup-logo {
+    margin: 17px;
+}
+
+.content_cards {
+    height: 400px;
+    .banner_img {
+        background-color: #9bffa1;
+        padding: 120px;
+    }
+}
+
+.content_cards .signup-logo {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.div_img {
+    background-color: #9e9e9e6e;
+    height: 332px;
+}
+
+.para_sec {
+    width: 60%;
+    text-align: justify;
+    position: relative;
+    left: 20%;
+}
+
+.content_cards h5{
+    color: #141414;
+    font-size: 20px;
+    font-weight: 600;
+}
