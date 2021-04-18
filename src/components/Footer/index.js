@@ -2,8 +2,12 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faTwitter, faInstagram, faGooglePlay, faApple } from '@fortawesome/free-brands-svg-icons';
 
+const OpenTermsCondition = () => {
+  window.open(window.location.origin + '/termsofcondition', '', 'width=1400,height=1200');
+};
 
 const Footer = () => (
+
   <div>
     <footer className="mainfooter" role="contentinfo">
       <div className="footer-header">
@@ -41,7 +45,7 @@ const Footer = () => (
               <h4>Information</h4>
               <ul className="list-unstyled">
                 <li>About Us</li>
-                <li>Terms and Conditions</li>
+                <li onClick={OpenTermsCondition}>Terms and Conditions</li>
                 <li>FAQ</li>
               </ul>
             </div>
