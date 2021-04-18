@@ -45,7 +45,7 @@ const LoginModal = ({ showPopup, hidePopup }) => {
   };
 
   const OpenTermsCondition = () => {
-    window.open(window.location.origin + '/termsofcondition', '', 'width=1400,height=1200');
+    window.open(`${window.location.origin}/termsofcondition`, '', 'width=1400,height=1200');
   };
 
   return (
@@ -101,8 +101,8 @@ const LoginModal = ({ showPopup, hidePopup }) => {
                     <Col md={12} sm={12} >
                       <input className="form-check-input" type="checkbox" value="" id="invalidCheck2" required />
                       <label className="form-check-label">
-                      <small>&emsp;&ensp;By clicking Submit, you agree to our <span className="btn-link" onClick={OpenTermsCondition}>Terms & Conditions and Privacy Policy.</span></small>
-                </label>
+                        <small >&emsp;&ensp;By clicking Submit, you agree to our <span className="btn-link" onClick={OpenTermsCondition}>Terms & Conditions and Privacy Policy.</span></small>
+                      </label>
                     </Col>
                   </Row>
                   <Row className="bnts">

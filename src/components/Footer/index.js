@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faTwitter, faInstagram, faGooglePlay, faApple } from '@fortawesome/free-brands-svg-icons';
 
 const OpenTermsCondition = () => {
-  window.open(window.location.origin + '/termsofcondition', '', 'width=1400,height=1200');
+  window.open(`${window.location.origin}/termsofcondition`, '', 'width=1400,height=1200');
 };
 
 const Footer = () => (
@@ -13,7 +13,7 @@ const Footer = () => (
       <div className="footer-header">
         <div className="row">
           <div className="col-md-4 col-sm-4">
-            <h5 >
+            <h5>
               In Store Pick up, Curb Side Pick Up, Delivery Options
             </h5>
             <p>

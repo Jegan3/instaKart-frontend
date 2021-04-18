@@ -34,7 +34,7 @@ const SignUp = (props) => {
   };
 
   const OpenTermsCondition = () => {
-    window.open(window.location.origin + '/termsofcondition', '', 'width=1400,height=1200');
+    window.open(`${window.location.origin}/termsofcondition`, '', 'width=1400,height=1200');
   };
 
   return (
