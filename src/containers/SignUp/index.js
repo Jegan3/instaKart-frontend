@@ -4,7 +4,6 @@ import { useDispatch } from 'react-redux';
 import { Row, Col, Image, Form, Grid } from 'react-bootstrap';
 import { history } from '../../routes';
 import Footer from '../../components/Footer';
-
 const SignUp = (props) => {
   const [userName, setUserName] = useState('');
   const [email, setEmail] = useState('');
@@ -32,6 +31,10 @@ const SignUp = (props) => {
         pathname: '/',
       });
     }
+  };
+
+  const OpenTermsCondition = () => {
+    window.open(`${window.location.origin}/termsofcondition`, '', 'width=1400,height=1200');
   };
 
   return (
@@ -101,6 +104,14 @@ const SignUp = (props) => {
               <Col md={6} sm={12}>
                 <label >Password *</label>
                 <input type="text" className="form-control" placeholder="Enter name" onChange={(e) => setPassword(e.target.value)}></input>
+              </Col>
+            </Row>
+            <Row>
+              <Col md={12} sm={12} className="signup-submit" >
+                <input className="form-check-input" type="checkbox" value="" id="invalidCheck2" required />
+                <label className="form-check-label">
+                  <small>&emsp;&ensp;By clicking Submit, you agree to our <span className="btn-link" onClick={OpenTermsCondition}>Terms & Conditions and Privacy Policy.</span></small>
+                </label>
               </Col>
             </Row>
             <Row>
