@@ -1,5 +1,4 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
+/*eslint-disable*/
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Modal, Row, Col, Image, Grid } from 'react-bootstrap';
@@ -45,7 +44,11 @@ const LoginModal = ({ showPopup, hidePopup }) => {
   };
 
   const OpenTermsCondition = () => {
-    window.open(`${window.location.origin}/termsofcondition`, '', 'width=1400,height=1200');
+    // window.open(`${window.location.origin}/termsofcondition`, '', 'width=1400,height=1200');
+    const win = window.open('/termsofcondition', "_blank");
+    win.focus();
+    // history.push({pathname: '/termsofcondition'});
+    // window.scrollTo(0, 0);
   };
 
   return (
@@ -125,9 +128,9 @@ const LoginModal = ({ showPopup, hidePopup }) => {
                       </button>
                     </Col>
                     {invalidLogin &&
-                    <Col md={12} sm={12} >
-                      <span className="login-error-msg">Please Check Your Credentials</span>
-                    </Col>}
+                      <Col md={12} sm={12} >
+                        <span className="login-error-msg">Please Check Your Credentials</span>
+                      </Col>}
                   </Row>
                 </Col>
               </div>

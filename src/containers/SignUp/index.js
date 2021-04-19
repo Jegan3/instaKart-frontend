@@ -1,9 +1,10 @@
-/* eslint-disable react/prop-types */
+/*eslint-disable*/
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Row, Col, Image, Form, Grid } from 'react-bootstrap';
 import { history } from '../../routes';
 import Footer from '../../components/Footer';
+
 const SignUp = (props) => {
   const [userName, setUserName] = useState('');
   const [email, setEmail] = useState('');

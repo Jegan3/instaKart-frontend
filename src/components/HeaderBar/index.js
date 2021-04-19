@@ -1,5 +1,4 @@
-/* eslint-disable no-console */
-/* eslint-disable react/prop-types */
+/*eslint-disable*/
 import React from 'react';
 import { Navbar } from 'react-bootstrap';
 

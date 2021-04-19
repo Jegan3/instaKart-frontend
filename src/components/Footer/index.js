@@ -1,13 +1,18 @@
+/*eslint-disable*/
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faTwitter, faInstagram, faGooglePlay, faApple } from '@fortawesome/free-brands-svg-icons';
+import { history } from '../../routes';
 
 const OpenTermsCondition = () => {
-  window.open(`${window.location.origin}/termsofcondition`, '', 'width=1400,height=1200');
+  // window.open(`${window.location.origin}/termsofcondition`, '', 'width=1400,height=1200');
+  const win = window.open('/termsofcondition', "_blank");
+  win.focus();
+  // history.push({pathname: '/termsofcondition'});
+  // window.scrollTo(0, 0);
 };
 
 const Footer = () => (
-
   <div>
     <footer className="mainfooter" role="contentinfo">
       <div className="footer-header">

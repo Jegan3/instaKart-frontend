@@ -4,8 +4,8 @@ import { Router, Route, Switch } from 'react-router-dom';
 import Welcome from './containers/Welcome';
 import Dashboard from './containers/Dashboard';
 import SignUp from './containers/SignUp';
-import TermsConditions from './containers/TermsConditions/termsofconditions';
-import AboutUs from './containers/AboutUs/aboutus';
+import TermsConditions from './containers/TermsConditions';
+import AboutUs from './containers/AboutUs';
 
 export const history = createBrowserHistory();
 
