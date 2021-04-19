@@ -96,7 +96,7 @@ const Header = () => {
                   <p>List Your Ads</p>
                 </NavItem>
                 <NavItem eventKey={2} href="#">
-                  <p onClick={(e)=>{history.push('/aboutus')}}>About Us</p>
+                  <p onClick={() => { history.push('/aboutus'); }}>About Us</p>
                 </NavItem>
                 <NavItem eventKey={3} href="#">
                   <p><Button className="vendor-signup" onClick={Signup}>Register Your E-Store</Button></p>
