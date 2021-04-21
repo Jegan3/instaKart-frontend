@@ -28,7 +28,7 @@ const AboutUs = () => (
         <Col md={4} sm={4} className="banner_img">
           <h5 align="center">We are run by a team of experts who understands sellers and buyers challenges in the modern world today</h5>
         </Col>
-        <Col md={8} sm={8} className="div_img">
+        <Col md={8} sm={8} className="banner_img_right">
           <Image className="signup-logo" src="images/pic3.png" fluid />
         </Col>
       </div>
@@ -44,7 +44,7 @@ const AboutUs = () => (
         <Col md={4} sm={4} className="banner_img">
           <h5 align="center">Insta-Kart has become one of the most reliable and trustworthy eCommerce platforms</h5>
         </Col>
-        <Col md={8} sm={8} className="div_img">
+        <Col md={8} sm={8} className="banner_img_right">
           <Image className="signup-logo" src="images/pic3.png" fluid />
         </Col>
       </div>
@@ -60,7 +60,7 @@ const AboutUs = () => (
         <Col md={4} sm={4} className="banner_img">
           <h5 align="center">Insta-Kart has become one of the most reliable and trustworthy eCommerce platforms</h5>
         </Col>
-        <Col md={8} sm={8} className="div_img">
+        <Col md={8} sm={8} className="banner_img_right">
           <Image className="signup-logo" src="images/pic3.png" fluid />
         </Col>
       </div>
@@ -75,7 +75,7 @@ const AboutUs = () => (
         <Col md={4} sm={4} className="banner_img">
           <h5 align="center">Insta-Kart has become one of the most reliable and trustworthy eCommerce platforms</h5>
         </Col>
-        <Col md={8} sm={8} className="div_img">
+        <Col md={8} sm={8} className="banner_img_right">
           <Image className="signup-logo" src="images/pic3.png" fluid />
         </Col>
       </div>
@@ -89,7 +89,7 @@ const AboutUs = () => (
         <Col md={4} sm={4} className="banner_img">
           <h5 align="center">Insta-Kart has become one of the most reliable and trustworthy eCommerce platforms</h5>
         </Col>
-        <Col md={8} sm={8} className="div_img">
+        <Col md={8} sm={8} className="banner_img_right">
           <Image className="signup-logo" src="images/pic3.png" fluid />
         </Col>
       </div>
@@ -104,7 +104,7 @@ const AboutUs = () => (
         <Col md={4} sm={4} className="banner_img">
           <h5 align="center">Insta-Kart has become one of the most reliable and trustworthy eCommerce platforms</h5>
         </Col>
-        <Col md={8} sm={8} className="div_img">
+        <Col md={8} sm={8} className="banner_img_right">
           <Image className="signup-logo" src="images/pic3.png" fluid />
         </Col>
       </div>
@@ -132,7 +132,7 @@ const AboutUs = () => (
         <Col md={4} sm={4} className="banner_img">
           <h5 align="center">Insta-Kart has become one of the most reliable and trustworthy eCommerce platforms</h5>
         </Col>
-        <Col md={8} sm={8} className="div_img">
+        <Col md={8} sm={8} className="banner_img_right">
           <Image className="signup-logo" src="images/pic3.png" fluid />
         </Col>
       </div>
@@ -152,7 +152,7 @@ const AboutUs = () => (
         <Col md={4} sm={4} className="banner_img">
           <h5 align="center">Insta-Kart has become one of the most reliable and trustworthy eCommerce platforms</h5>
         </Col>
-        <Col md={8} sm={8} className="div_img">
+        <Col md={8} sm={8} className="banner_img_right">
           <Image className="signup-logo" src="images/pic3.png" fluid />
         </Col>
       </div>
@@ -166,7 +166,7 @@ const AboutUs = () => (
         <Col md={4} sm={4} className="banner_img">
           <h5 align="center">Insta-Kart has become one of the most reliable and trustworthy eCommerce platforms</h5>
         </Col>
-        <Col md={8} sm={8} className="div_img">
+        <Col md={8} sm={8} className="banner_img_right">
           <Image className="signup-logo" src="images/pic3.png" fluid />
         </Col>
       </div>

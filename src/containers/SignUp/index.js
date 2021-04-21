@@ -34,7 +34,11 @@ const SignUp = (props) => {
   };
 
   const OpenTermsCondition = () => {
-    window.open(`${window.location.origin}/termsofcondition`, '', 'width=1400,height=1200');
+    // window.open(`${window.location.origin}/termsofcondition`, '', 'width=1400,height=1200');
+    const win = window.open('/termsofcondition', "_blank");
+    win.focus();
+    // history.push({pathname: '/termsofcondition'});
+    // window.scrollTo(0, 0);
   };
 
   return (
@@ -42,11 +46,11 @@ const SignUp = (props) => {
       <Row
       // className="jumbotron"
       >
-        <Col className="left-div" md={6} sm={12}>
+        <Col className="left-side" md={6} sm={12}>
           {/* <Image className="sig" src="images/pic5.jpeg" /> */}
           <Image className="signup-logo" src="images/logo.png" fluid />
         </Col>
-        <Col md={6} sm={6} className="right-div" fluid>
+        <Col md={6} sm={6} className="right-side" fluid>
           <Row>
             <Col lg={12} className="heading">
               Partner With us
