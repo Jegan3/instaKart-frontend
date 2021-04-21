@@ -20,14 +20,15 @@
     padding-top: 5%;
 }
 
-.jumbotron {
-    background: url('../images/signUpImage.png')no-repeat center center /cover !important;
-    width: auto;
-    margin-bottom: 0%;
-
-}
-
 .container-fluid {
     overflow-x: hidden;
     overflow-y: hidden;
+}
+
+.left-div {
+    background: url('../images/pic5.jpeg');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    height: 400px;
+    display: block;
 }

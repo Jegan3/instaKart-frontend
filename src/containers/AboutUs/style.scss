@@ -9,9 +9,28 @@
 .content_cards {
     height: 400px;
     .banner_img {
-        background-color: #9bffa1;
-        padding: 120px;
+        background-color:rgb(64,170,219);
+       // padding: 109px;
+       height: 332px;
     }
+    .about{
+    font-size: 36px;
+    position: relative;
+    top: 30%;
+    pointer-events: all;
+    text-align: center;
+    font-weight: bold;
+    color: #33334b;
+    }
+    .connect{
+        font-size: 20px;
+        position: relative;
+        top: 27%;
+        text-align: center;
+        font-weight: bold;
+        color: #33334b;
+    }
+   
 }
 
 .content_cards .signup-logo {
@@ -30,10 +49,18 @@
     text-align: justify;
     position: relative;
     left: 20%;
+    .about-header{
+    color: #33334b;
+    font-size: 33px;
+    bottom: 18px;
+    position: relative;
+  
+    }
 }
 
 .content_cards h5{
     color: #141414;
     font-size: 20px;
     font-weight: 600;
+    padding: 100px 50px;
 }

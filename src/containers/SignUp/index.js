@@ -21,7 +21,6 @@ const SignUp = (props) => {
       type: 'admin',
     };
     dispatch({ type: 'SIGNUP_REQUEST', signup: signupDetails });
-
     // temp fix for vendor login
     if (vendor) {
       history.push({
@@ -40,8 +39,11 @@ const SignUp = (props) => {
 
   return (
     <Grid fluid>
-      <Row className="jumbotron">
-        <Col md={6} sm={6}>
+      <Row
+      // className="jumbotron"
+      >
+        <Col className="left-div" md={6} sm={12}>
+          {/* <Image className="sig" src="images/pic5.jpeg" /> */}
           <Image className="signup-logo" src="images/logo.png" fluid />
         </Col>
         <Col md={6} sm={6} className="right-div" fluid>
