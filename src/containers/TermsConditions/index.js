@@ -17,9 +17,8 @@ const TermsConditions = () => (
         instakartelearning.com) provide a wide collection of online
         resources which include eLearning, social media interfaces, blogs,
         paid and free classified advertisements, forums, thrift stores,
-        online payment gateway and certain chat and e-mail services
-        (collectively, the “Product & Service”) on the website
-        www.insta-kart.com (the “Website”) subject to these Terms of Use
+        online payment gateway, and certain chat and e-mail services
+        (collectively, the “Product & Service”) on the website <b>INSTA-KART.COM</b> (the “Website”) subject to these Terms of Use
         (these “Terms”). By using the Service, you agree to comply with
         these Terms. Additionally, when using a portion of the Service, you
         agree to conform to any applicable posted guidelines for such
@@ -27,12 +26,11 @@ const TermsConditions = () => (
         agree that you are solely responsible for reviewing these Terms from
         time to time. Should you object to any term or condition of these
         Terms, any guideline, or any subsequent changes thereto or become
-        unhappy with insta-kart.com and it affiliates in any way, your only
-        choice is to immediately discontinue use of www.insta-kart.com These
+        unhappy with <b>INSTA-KART.COM</b> and its affiliates in any way, your only
+        choice is to immediately discontinue use of <b>INSTA-KART.COM</b>. These
         Terms may be updated by <b>INSTA-KART.COM</b> at any time at its
         sole discretion. <b>INSTA-KART.COM</b> may send you notices of
-        changes to the Website or the Terms pursuant to Section 21(I)
-        herein. <b>INSTA-KART.COM</b> may provide a translation of the
+        changes to Website or Terms pursuant to Section 21(I) herein. <b>INSTA-KART.COM</b> may provide a translation of the
         English version of the Terms into other languages. You understand
         and agree that any translation of the Terms into other languages is
         for your convenience only and that the English version governs the
@@ -44,15 +42,14 @@ const TermsConditions = () => (
       <h4>1. DESCRIPTION OF SERVICE AND CONTENT POLICY</h4>
       <p>
         A. <b>INSTA-KART.COM</b> is the next generation of online
-        MULITI-VENDOR E-Commerce Portal within the Caribbean Region. We act
+        MULTI-VENDOR E-Commerce Portal within the Caribbean Region. We act
         as a venue to allow our users (BUYERS & SELLERS) who comply with
         these Terms to offer, sell, and buy products and services listed on
         the Website. Although you may be able to conduct payment and other
         transactions through the Website, using third-party vendors such as
-        PayPal, Wipay or Stripe, <b>INSTA-KART.COM</b> is not in any way in
+        PayPal, Wipay, or Stripe, <b>INSTA-KART.COM</b> is not in any way
         involved in such transactions. As a result, and as discussed in more
-        detail in these Terms, you hereby acknowledge and agree that
-        <b>INSTA-KART.COM</b> is not a party to such transactions, has no
+        detail in these Terms, you hereby acknowledge and agree that <b>INSTA-KART.COM</b> is not a party to such transactions, has no
         control over any element of such transactions, and shall have no
         liability to any party in connection with such transactions. You use
         the Service and the Website at your own risk.
@@ -72,13 +69,11 @@ const TermsConditions = () => (
         inaccurate, misleading, or otherwise objectionable. You acknowledge
         and agree that you are responsible for and must evaluate, and bear
         all risks associated with, the use of any Content, that you may not
-        rely on said Content, and that under no circumstances will
-        <b>INSTA-KART.COM</b> be liable in any way for the Content or for
+        rely on said Content, and that under no circumstances will <b>INSTA-KART.COM</b> be liable in any way for the Content or for
         any loss or damage of any kind incurred as a result of the use of
         any Content listed, e-mailed or otherwise made available via the
         Service. You acknowledge and agree that <b>INSTA-KART.COM</b> does
-        not pre-screen or approve any Content, but that
-        <b>INSTA-KART.COM</b> has the right, in its sole and absolute
+        not pre-screen or approve any Content, but that <b>INSTA-KART.COM</b> has the right, in its sole and absolute
         discretion, to refuse, delete or move any Content that is or may be
         available through the Service, for violating these Terms or for any
         other reason or no reason at all. Furthermore, the Website and
@@ -87,25 +82,22 @@ const TermsConditions = () => (
         unrelated to <b>INSTA-KART.COM</b>. If you link to Third Party
         Websites, you may be subject to those Third Party Websites’ terms
         and conditions and other policies. <b>INSTA-KART.COM</b> makes no
-        representation or guarantee as to the accuracy or authenticity of
-        the information contained in any such Third Party Website, and your
-        linking to any other websites is completely at your own risk and
-        <b>INSTA-KART.COM</b> disclaims all liability thereto.
+        representation or guarantee as to accuracy or authenticity of information contained in any such Third Party Website, and your
+        linking to any other websites is completely at your own risk and <b>INSTA-KART.COM</b> disclaims all liability thereto.
         <br />
         <br />
         C. You acknowledge and agree that you are solely responsible for
         your own Content posted on, transmitted through, or linked from the
-        Service and the consequences of posting, transmitting, linking or
+        Service and the consequences of posting, transmitting, linking, or
         publishing it. More specifically, you are solely responsible for all
-        Content that you post, upload, email or otherwise make available via
+        Content that you post, upload, email, or otherwise make available via
         the Service Portal. In connection with such Content posted on,
         transmitted through, or linked from the Service by you, you affirm,
         acknowledge, represent, and warrant that: (i) you own or have the
         necessary licenses, rights, consents, and permissions to use such
         Content on the Service and Website (including without limitation all
         patent, trademark, trade secret, copyright or other proprietary
-        rights in and to any and all such Content) and authorize
-        <b>INSTA-KART.COM</b> to use such Content to enable inclusion and
+        rights in and to any and all such Content) and authorize <b>INSTA-KART.COM</b> to use such Content to enable inclusion and
         use of the Content in the manner contemplated by the Service, the
         Website and these Terms; and (ii) you have the written consent,
         release, and/or permission of each and every identifiable individual
@@ -114,18 +106,15 @@ const TermsConditions = () => (
         enable inclusion and use of the Content in the manner contemplated
         by the Service, the Website and these Terms. For clarity, you retain
         all of your ownership rights in your Content; however, by submitting
-        the Content to <b>INSTA-KART.COM</b>, you hereby grant to
-        <b>INSTA-KART.COM</b> an irrevocable, non-cancellable, perpetual,
+        the Content to <b>INSTA-KART.COM</b>, you hereby grant to <b>INSTA-KART.COM</b> an irrevocable, non-cancellable, perpetual,
         worldwide, non-exclusive, royalty-free, sub-licensable, transferable
         license to use, reproduce, distribute, prepare derivative works of,
-        display, and perform the Content in connection with the Website and
-        <b>INSTA-KART.COM&apos;s</b> (and its successors’) business, including
-        without limitation for the purpose of promoting and redistributing
+        display, and perform the Content in connection with the Website and <b>INSTA-KART.COM&apos;s</b> (and its successors’)
+        business, including without limitation for the purpose of promoting and redistributing
         part or all of the Website and Content therein (and derivative works
         thereof) in any media formats and through any media channels now or
-        hereafter known. These rights are required by <b>INSTA-KART.COM</b>
-        in order to host and display your Content. Furthermore, by you
-        posting Content to any public area of the Service, you agree to and
+        hereafter known. These rights are required by <b>INSTA-KART.COM</b> in order to host and display your Content.
+        Furthermore, by you posting Content to any public area of the Service, you agree to and
         do hereby grant to <b>INSTA-KART.COM</b> all rights necessary to
         prohibit or allow any subsequent aggregation, display, copying,
         duplication, reproduction, or exploitation of the Content on the
@@ -137,15 +126,11 @@ const TermsConditions = () => (
         <br />
         <br />
         D. <b>INSTA-KART.COM</b> does not endorse any Content or any
-        opinion, statement, recommendation, or advice expressed therein, and
-        <b>INSTA-KART.COM</b> expressly disclaims any and all liability in
-        connection with user Content and Postings. <b>INSTA-KART.COM</b>
-        does not permit copyright infringing activities and infringement of
-        intellectual property rights on the Website, and
-        <b>INSTA-KART.COM</b> may, at its sole discretion, remove any
+        opinion, statement, recommendation, or advice expressed therein, and <b>INSTA-KART.COM</b> expressly disclaims any and all liability in
+        connection with user Content and Postings. <b>INSTA-KART.COM</b> does not permit copyright infringing activities and infringement of
+        intellectual property rights on the Website, and <b>INSTA-KART.COM</b> may, at its sole discretion, remove any
         infringing Product or Content if properly notified that such Product
-        or Content infringes on another’s intellectual property rights.
-        <b>INSTA-KART.COM</b> reserves the right to remove any Product or
+        or Content infringes on another’s intellectual property rights. <b>INSTA-KART.COM</b> reserves the right to remove any Product or
         Content without prior notice. <b>INSTA-KART.COM</b> may also
         terminate a user’s access to the Website, if they are determined to
         be a repeat infringer. A repeat infringer is a user who has been
@@ -158,7 +143,7 @@ const TermsConditions = () => (
         to, pornography, obscene, libelous, or defamatory material, or
         excessive length. <b>INSTA-KART.COM</b> may remove such Content
         and/or terminate a user’s access for uploading such material in
-        violation of these Terms at any time, without prior notice and at
+        violation of these Terms at any time, without prior notice, and at
         its sole discretion.
       </p>
       <h4>3. SELLING ON LISTITTT.COM</h4>
@@ -167,28 +152,27 @@ const TermsConditions = () => (
       </p>
       <p>
         Selling or Buying on <b>INSTA-KART.COM</b> requires a registration
-        process and we offer various types of membership / registration
+        process and we offer various types of membership/registration
         models.
         <br />
         <span style={{ fontWeight: 700 }}>
           Free: This option is for individuals wanting to post a limited
-          amount of products. Find out more by clicking on Register Your E
-          Store to view memberships
+          amount of products. Find out more by clicking on Register Your
+          E-Store to view memberships
         </span>
         <br />
-        When you register to sell on <b>INSTA-KART.COM</b>, you become a
-        <b>INSTA-KART.COM</b> “Vendor”. As a vendor you agree to the terms
+        When you register to sell on <b>INSTA-KART.COM</b>, you become a <b>INSTA-KART.COM</b> “Vendor”. As a vendor, you agree to the terms
         and conditions set forth by <b>INSTA-KART.COM</b> upon registration.
         <br />
         <br />
         Selling:
         <br />
-        Registered and Non registered company
+        Registered and Non-registered company
         <br />
-        Vendor agrees to sell via both DEBIT CARD and CREDIT CARD payment
+        The Vendor agrees to sell via both DEBIT CARD and CREDIT CARD payment
         methods, with the terms set forth.
         <br />
-        <b>INSTA-KART.COM</b> does not offers cash on delivery as a payment
+        <b>INSTA-KART.COM</b> does not offer cash on delivery as a payment
         method because we believe in paperless transactions via credit or
         debit cards.
       </p>
@@ -196,16 +180,15 @@ const TermsConditions = () => (
         <u>Credit Card:</u>
       </p>
       <p>
-        Credit Card and Debit Card payment method is processed by WiPay The
-        Vendor agrees to the terms and arrangements set forth by
-        <b>INSTA-KART.COM</b> in this document.
+        Credit Card and Debit Card payment method are processed by WiPay The
+        Vendor agrees to the terms and arrangements set forth by <b>INSTA-KART.COM</b> in this document.
       </p>
       <p className="Section">
         Terms & Arrangements:
         <br />
         Registered businesses: The Vendor must sign up for a WiPay Basic
         Business Account to receive funds. <b>INSTA-KART.COM</b> disburses
-        funds collected from debit & credit card payments to Vendor’s
+        funds collected from debit & credit card payments to the Vendor’s
         account either fourth nightly or on the 26th & 27th day of each
         month within the year. PROCESSING FEES if any would be borne by the
         Vendors. PROCESSING TIME would be instant for WiPay Account holders
@@ -214,11 +197,11 @@ const TermsConditions = () => (
         <br />
         Non Registered businesses: The vendor must have a bank account at
         any local bank to receive funds. <b>INSTA-KART.COM</b> disburses
-        funds collected from credit card payments to Vendor’s account either
+        funds collected from credit card payments to the Vendor’s account either
         fourth nightly or on the 26th & 27th day of each month within the
         year. PROCESSING FEE REQUIRED. $5.00TTD will charge automatically
         for funds disbursement to a local bank account. PROCESSING TIME 3-5
-        WORKING DAYS. In the case of international IK Pay-outs the
+        WORKING DAYS. In the case of international IK Pay-outs, the
         PROCESSING FEE would vary and is dependent on the receiving Bank
         within the specific country. PROCESSING TIME 3-7 WORKING DAYS.
       </p>
@@ -259,7 +242,7 @@ const TermsConditions = () => (
           or other rights, or harms or could harm minors in any way;
         </li>
         <li>
-          that harasses, degrades, intimidates or is hateful toward an
+          that harasses, degrades, intimidates, or is hateful toward an
           individual or group of individuals on the basis of religion,
           gender, sexual orientation, race, ethnicity, age, or disability;
         </li>
@@ -285,7 +268,7 @@ const TermsConditions = () => (
           Nationality Act, including without limitation requiring U.S.
           citizenship or lawful permanent residency (green card status) as a
           condition for employment, unless otherwise required in order to
-          comply with law, regulation, executive order, or federal, state,
+          comply with the law, regulation, executive order, or federal, state,
           or local government contract.
         </li>
         <li>
@@ -300,9 +283,8 @@ const TermsConditions = () => (
         <li>
           that constitutes or contains any form of advertising or
           solicitation if (1) posted in areas or categories of the Website
-          which are not designated for such purposes; or (2) e-mailed to
-          <b>INSTA-KART.COM</b> users who have requested not to be contacted
-          about other services, products or commercial interests;
+          which are not designated for such purposes; or (2) e-mailed to <b>INSTA-KART.COM</b> users who have requested not to be contacted
+          about other services, products, or commercial interests;
         </li>
         <li>
           that includes links to commercial services or Third Party
@@ -337,7 +319,7 @@ const TermsConditions = () => (
       <ul>
         <li>
           contact anyone who has asked not to be contacted, or make
-          unsolicited contact with anyone for any commercial purpose; or to
+          unsolicited contact with anyone for any commercial purpose, or to
           “stalk” or otherwise harass anyone;
         </li>
         <li>
@@ -374,8 +356,7 @@ const TermsConditions = () => (
         </li>
         <li>
           use any form of automated device or computer program (sometimes
-          referred to as “flagging tools”) that enables the use of
-          <b>INSTA-KART.COM&apos;s</b> “flagging system” or other community
+          referred to as “flagging tools”) that enables the use of <b>INSTA-KART.COM&apos;s</b> “flagging system” or other community
           control systems without each flag being manually entered by a
           human that initiates the flag (an “automated flagging device”), or
           use any such flagging tool to remove posts of competitors, other
@@ -419,7 +400,7 @@ const TermsConditions = () => (
         license to access and use the Service for personal use. This license
         granted herein does not include any of the following: (a) access to
         or use of the Service by Posting Agents; or (b) any collection,
-        aggregation, copying, duplication, display or derivative use of the
+        aggregation, copying, duplication, display, or derivative use of the
         Service nor any use of data mining, robots, spiders, or similar data
         gathering and extraction tools for any purpose unless expressly
         permitted by <b>INSTA-KART.COM</b> or as otherwise set forth in
@@ -430,7 +411,7 @@ const TermsConditions = () => (
         of IP addresses using an easily identifiable agent and comply with
         our robots.txt file, may engage in the activities set forth in (b).
         For purposes of this exception, a “general purpose internet search
-        engine” does not include a website or search engine or other service
+        engine” does not include a website or search engine or other services
         that specializes in classified listings including any subset of
         classifieds listings such as housing, for sale, jobs, services, or
         personals, or which otherwise provides classified ad listing
@@ -439,12 +420,11 @@ const TermsConditions = () => (
         postings on the Service so long as such use is for non-commercial
         and/or news reporting purposes only (e.g., for use in personal blogs
         or other personal online media). If the total number of such
-        postings displayed on or linked to your website exceeds ninety nine
+        postings displayed on or linked to your website exceeds ninety-nine
         (99) postings, your use will be considered to be in violation of
         these Terms, unless <b>INSTA-KART.COM</b> expressly grants you
         permission otherwise. You are also permitted to create a hyperlink
-        to the home page of the Website so long as the link does not portray
-        <b>INSTA-KART.COM</b>, its employees, affiliates or agents in a
+        to the home page of the Website so long as the link does not portray <b>INSTA-KART.COM</b>, its employees, affiliates or agents in a
         false, confusing, misleading, derogatory, or otherwise offensive
         matter. <b>INSTA-KART.COM</b> may offer parts of the Service in RSS
         format for the purpose of embedding individual RSS feeds into a
@@ -457,12 +437,10 @@ const TermsConditions = () => (
         post on the Service and redirects the user to the post when the user
         clicks on it, (c) you provide, in a conspicuous manner, proper
         attribution to ‘<b>INSTA-KART.COM</b>’ as the source of the RSS
-        feed, (d) your use or display of the RSS feed does not suggest that
-        <b>INSTA-KART.COM</b> promotes or endorses any third party causes,
+        feed, (d) your use or display of the RSS feed does not suggest that <b>INSTA-KART.COM</b> promotes or endorses any third party causes,
         opinions, ideas, web sites, products or services, (e) you do not
         redistribute the RSS feed, and (f) your use does not overburden or
-        otherwise slow the performance of <b>INSTA-KART.COM</b>’s systems.
-        <b>INSTA-KART.COM</b> reserves all rights in and to the content of
+        otherwise slow the performance of <b>INSTA-KART.COM</b>’s systems. <b>INSTA-KART.COM</b> reserves all rights in and to the content of
         any RSS feeds provided through the Service and may terminate any RSS
         feed at any time without notice. Use of the Service beyond the scope
         of authorized access as set forth in these Terms immediately
@@ -479,8 +457,7 @@ const TermsConditions = () => (
         Terms, including without limitation, the text, software, scripts,
         graphics, photos, sounds, music, videos, interactive features and
         the like (“Materials”) and the trademarks, service marks and logos
-        contained therein (“Marks”), are owned by or licensed to
-        <b>INSTA-KART.COM</b> and are subject to copyright and other
+        contained therein (“Marks”), are owned by or licensed to <b>INSTA-KART.COM</b> and are subject to copyright and other
         intellectual property rights under United States and foreign laws
         and international conventions. Materials on the Website are provided
         to you AS IS for your information and personal use only and may not
@@ -515,8 +492,7 @@ const TermsConditions = () => (
         disassemble, reverse engineer or otherwise attempt to discover any
         source code contained in the Service. Without limiting the
         foregoing, you agree not to reproduce, duplicate, copy, sell, resell
-        or exploit for any commercial purposes, any aspect of the Service.
-        <b>INSTA-KART.COM</b> is a service mark registered with the U.S.
+        or exploit for any commercial purposes, any aspect of the Service. <b>INSTA-KART.COM</b> is a service mark registered with the U.S.
         Patent and Trademark Office and in various other jurisdictions.
       </p>
       <h4>9. USER SUBMISSIONS</h4>
@@ -529,13 +505,11 @@ const TermsConditions = () => (
         and acknowledge that you may be exposed to Content that is
         inaccurate, offensive, indecent, or objectionable, defamatory or
         libelous and you agree to waive, and hereby do waive, any legal or
-        equitable rights or remedies you have or may have against
-        <b>INSTA-KART.COM</b> with respect thereto.
+        equitable rights or remedies you have or may have against <b>INSTA-KART.COM</b> with respect thereto.
       </p>
       <h4>10. INDEMNITY</h4>
       <p>
-        You agree to defend, indemnify and hold harmless
-        <b>INSTA-KART.COM</b> its officers, subsidiaries, affiliates,
+        You agree to defend, indemnify and hold harmless <b>INSTA-KART.COM</b> its officers, subsidiaries, affiliates,
         successors, assigns, directors, officers, agents, service providers,
         suppliers and employees, from and against any and all claims,
         damages, obligations, losses, liabilities, costs or debt, and
@@ -552,18 +526,14 @@ const TermsConditions = () => (
       <h4>11. NO SPAM POLICY</h4>
       <p>
         You understand and agree that sending unsolicited email
-        advertisements or other unsolicited communications to
-        <b>INSTA-KART.COM</b> email addresses or through
-        <b>INSTA-KART.COM</b> computer systems are expressly prohibited by
-        these Terms. You acknowledge and agree that from time to time
-        <b>INSTA-KART.COM</b> may monitor email usage using human monitors
+        advertisements or other unsolicited communications to <b>INSTA-KART.COM</b> email addresses or
+        through <b>INSTA-KART.COM</b> computer systems are expressly prohibited by
+        these Terms. You acknowledge and agree that from time to time <b>INSTA-KART.COM</b> may monitor email usage using human monitors
         or automated software to flag certain words associated with spam or
-        scams in emails that are sent between one user to another in the
-        <b>INSTA-KART.COM</b> e mail system. Any communication between
+        scams in emails that are sent between one user to another in the <b>INSTA-KART.COM</b> e mail system. Any communication between
         yourself and any other user utilizing the communication features
         available on the Service and the Website may be used only in
-        accordance with the Terms. Any unauthorized use of
-        <b>INSTA-KART.COM</b> computer systems is a violation of these Terms
+        accordance with the Terms. Any unauthorized use of <b>INSTA-KART.COM</b> computer systems is a violation of these Terms
         and certain federal and state laws. Such violations may subject the
         sender and his or her agents to civil and criminal penalties.
       </p>
@@ -583,8 +553,7 @@ const TermsConditions = () => (
         participants on the Website, or between users and any third party,
         you understand and agree that <b>INSTA-KART.COM</b> is under no
         obligation to become involved in such dispute. In the event that you
-        have a dispute with one or more other users, you hereby release
-        <b>INSTA-KART.COM</b>, its officers, employees, agents and
+        have a dispute with one or more other users, you hereby release <b>INSTA-KART.COM</b>, its officers, employees, agents and
         successors from any and all claims, demands and damages (actual and
         consequential) of every kind or nature, known or unknown, suspected
         and unsuspected, disclosed and undisclosed, arising out of or in any
@@ -606,8 +575,7 @@ const TermsConditions = () => (
         or discontinue the Service (or any part thereof) with or without
         notice, and that <b>INSTA-KART.COM</b> shall not be liable to you or
         to any third party for any such modification, suspension or
-        discontinuance of the Service. You acknowledge and agree that
-        <b>INSTA-KART.COM</b> in its sole and absolute discretion, has the
+        discontinuance of the Service. You acknowledge and agree that <b>INSTA-KART.COM</b> in its sole and absolute discretion, has the
         right (but not the obligation) to delete or deactivate your account,
         block your e-mail or IP address, or otherwise terminate your access
         to or use of the Service (or any part thereof), immediately and
@@ -628,8 +596,7 @@ const TermsConditions = () => (
         INCLUDING, WITHOUT LIMITATION, THE WARRANTIES OF MERCHANTABILITY,
         FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT OF
         PROPRIETARY RIGHTS ARE EXPRESSLY DISCLAIMED TO THE FULLEST EXTENT
-        PERMITTED BY LAW. TO THE FULLEST EXTENT PERMITTED BY LAW
-        <b>INSTA-KART.COM</b>, ITS OFFICERS, DIRECTORS, EMPLOYEES, AND
+        PERMITTED BY LAW. TO THE FULLEST EXTENT PERMITTED BY LAW <b>INSTA-KART.COM</b>, ITS OFFICERS, DIRECTORS, EMPLOYEES, AND
         AGENTS DISCLAIM ALL WARRANTIES, EXPRESS OR IMPLIED, IN CONNECTION
         WITH THE WEBSITE AND YOUR USE THEREOF. <b>INSTA-KART.COM</b> MAKES
         NO WARRANTIES OR REPRESENTATIONS ABOUT THE ACCURACY OR COMPLETENESS
@@ -661,8 +628,7 @@ const TermsConditions = () => (
       <p>
         IN NO EVENT SHALL <b>INSTA-KART.COM</b>, ITS OFFICERS, DIRECTORS,
         EMPLOYEES, OR AGENTS, BE LIABLE FOR DIRECT, INDIRECT, INCIDENTAL,
-        SPECIAL, CONSEQUENTIAL OR EXEMPLARY DAMAGES (EVEN IF
-        <b>INSTA-KART.COM</b> HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
+        SPECIAL, CONSEQUENTIAL OR EXEMPLARY DAMAGES (EVEN IF <b>INSTA-KART.COM</b> HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
         DAMAGES), RESULTING FROM ANY ASPECT OF YOUR USE OF THE WEBSITE OR
         THE SERVICE, INCLUDING WITHOUT LIMITATION WHETHER THE DAMAGES ARISE
         FROM USE OR MISUSE OF THE WEBSITE OR THE SERVICE, FROM INABILITY TO
@@ -690,8 +656,7 @@ const TermsConditions = () => (
       <h4>16. ASSIGNMENT</h4>
       <p>
         These Terms, and any rights and licenses granted hereunder, may not
-        be transferred or assigned by you, but may be assigned by
-        <b>INSTA-KART.COM</b> without restriction. Any assignment or
+        be transferred or assigned by you, but may be assigned by <b>INSTA-KART.COM</b> without restriction. Any assignment or
         transfer by you shall be null and void.
       </p>
       <h4>17. ABILITY TO ACCEPT TERMS OF SERVICE</h4>
@@ -727,10 +692,8 @@ const TermsConditions = () => (
         and <b>INSTA-KART.COM</b> and govern your use of the Service and the
         Website superseding all prior understandings, proposals, agreements,
         negotiations, and discussions between the parties, whether written
-        or oral. The Terms and the relationship between you and
-        <b>INSTA-KART.COM</b> shall be governed by the laws of the State of
-        New York without regard to its conflict of law principles. You and
-        <b>INSTA-KART.COM</b> agree to submit to the personal and exclusive
+        or oral. The Terms and the relationship between you and <b>INSTA-KART.COM</b> shall be governed by the laws of the State of
+        New York without regard to its conflict of law principles. You and <b>INSTA-KART.COM</b> agree to submit to the personal and exclusive
         jurisdiction of the courts located within the State of New York. The
         failure of <b>INSTA-KART.COM</b> to exercise or enforce any right or
         provision of the Terms shall not constitute a waiver of such right
@@ -745,8 +708,7 @@ const TermsConditions = () => (
         the Terms shall not in any way be affected or be impaired. YOU AGREE
         THAT ANY CAUSE OF ACTION BROUGHT BY YOU AND ARISING OUT OF OR
         RELATED TO YOUR USE OF THE SERVICE AND/OR THE WEBSITE MUST COMMENCE
-        WITHIN ONE (1) YEAR AFTER THE CAUSE OF ACTION ACCRUES, EXCEPT THAT
-        <b>INSTA-KART.COM</b> MAY COMMENCE ANY SUCH CAUSE OF ACTION IN
+        WITHIN ONE (1) YEAR AFTER THE CAUSE OF ACTION ACCRUES, EXCEPT THAT <b>INSTA-KART.COM</b> MAY COMMENCE ANY SUCH CAUSE OF ACTION IN
         ACCORDANCE WITH THE APPLICABLE STATUTE OF LIMITATIONS UNDER NEW YORK
         LAW. OTHERWISE, SUCH CAUSE OF ACTION IS PERMANENTLY BARRED. These
         Terms shall inure to the benefit of and be binding upon each party’s
@@ -755,8 +717,7 @@ const TermsConditions = () => (
       <h4>19. VIOLATION OF TERMS AND LIQUIDATED DAMAGES</h4>
       <p>
         Please report any violations of the Terms that you become aware of
-        by contacting us using the contact link at the bottom of the
-        <b>INSTA-KART.COM</b> homepage at www.<b>INSTA-KART.COM</b> Any
+        by contacting us using the contact link at the bottom of the <b>INSTA-KART.COM</b> homepage at <b>INSTA-KART.COM</b> Any
         failure to act by <b>INSTA-KART.COM</b> with respect to a breach by
         you or others does not waive our right to act with respect to
         subsequent or similar breaches by you or others. You understand and
@@ -770,8 +731,7 @@ const TermsConditions = () => (
         with which you may access the Service, or terminates your access to
         or use of the Service, you agree to pay <b>INSTA-KART.COM</b> ninety
         nine dollars ($99) for (i) each message posted in excess of such
-        limits or (ii) for each day on which you access
-        <b>INSTA-KART.COM</b> in excess of such limits, whichever is higher.
+        limits or (ii) for each day on which you access <b>INSTA-KART.COM</b> in excess of such limits, whichever is higher.
       </p>
       <p>
         b. If you post a message that (1) impersonates any person or entity;
@@ -798,16 +758,14 @@ const TermsConditions = () => (
       </p>
       <p>
         d. If you use <b>INSTA-KART.COM</b> e-mail addresses or computer
-        systems to send unsolicited e-mail advertisements to
-        <b>INSTA-KART.COM</b> e-mail addresses or any other party, you agree
+        systems to send unsolicited e-mail advertisements to <b>INSTA-KART.COM</b> e-mail addresses or any other party, you agree
         to pay <b>INSTA-KART.COM</b> thirty dollars ($35) for each such
         e-mail.
       </p>
       <p>
         e. If you post messages in violation of these Terms, other than as
         described above, you agree to pay <b>INSTA-KART.COM</b> ninety nine
-        dollars ($99) for each such message. Notwithstanding the foregoing,
-        <b>INSTA-KART.COM</b>, may, in its sole and absolute discretion,
+        dollars ($99) for each such message. Notwithstanding the foregoing, <b>INSTA-KART.COM</b>, may, in its sole and absolute discretion,
         issue a warning before assessing damages pursuant to this Section
         20(e).
       </p>
@@ -861,25 +819,19 @@ const TermsConditions = () => (
         provide such as your name, mailing address, email address, home
         country, and zip code (“Registration Information”). You have the
         option of also providing to us your phone and fax numbers, gender,
-        age, and/or company name if you choose to register with
-        <b>INSTA-KART.COM</b>. If you provide your phone number, it will be
+        age, and/or company name if you choose to register with <b>INSTA-KART.COM</b>. If you provide your phone number, it will be
         displayed in your posting. We may also collect additional
         information that our users provide, such as new or deleted postings,
         new or deleted comments, keyword searches, scam reports and new
         contact sellers. We use a third-party credit card processing company
         for purchases, and other third party companies to monitor site
         traffic, which may, in some instances, store your information (see
-        Section 21(D) below). When you visit the Website and/or use the
-        <b>INSTA-KART.COM</b> mobile application, <b>INSTA-KART.COM</b> may
+        Section 21(D) below). When you visit the Website and/or use the <b>INSTA-KART.COM</b> mobile application, <b>INSTA-KART.COM</b> may
         use GPS technology (or other similar technology) to determine your
         current location in order to determine the city you are located
-        within and display a location map with relevant advertisements.
-        <b>INSTA-KART.COM</b> will not share your current location with
-        other <b>INSTA-KART.COM</b> users or partners. If you do not want
-        <b>INSTA-KART.COM</b> to use your location for the purposes set
-        forth above, you should turn off the location services for the
-        <b>INSTA-KART.COM</b> application located in your
-        <b>INSTA-KART.COM</b> account settings or in your mobile phone
+        within and display a location map with relevant advertisements. <b>INSTA-KART.COM</b> will not share your current location with
+        other <b>INSTA-KART.COM</b> users or partners. If you do not want <b>INSTA-KART.COM</b> to use your location for the purposes set
+        forth above, you should turn off the location services for the <b>INSTA-KART.COM</b> application located in your <b>INSTA-KART.COM</b> account settings or in your mobile phone
         settings.
         <b>
           By using this Website or the Service, you consent to collection,
@@ -907,8 +859,7 @@ const TermsConditions = () => (
         configure your browser to not accept cookies. However, declining the
         use of cookies may limit your access to certain features of the
         Website. For example, you may have difficulty logging in or using
-        certain interactive features of the Website, such as the
-        <b>INSTA-KART.COM</b> Blogs or Comments feature.
+        certain interactive features of the Website, such as the <b>INSTA-KART.COM</b> Blogs or Comments feature.
       </p>
       <p>D. Third Parties</p>
       <p>
@@ -1076,8 +1027,7 @@ const TermsConditions = () => (
         accordance with this Privacy Policy.
       </p>
       <p>
-        In order to comply with the Safe Harbor framework,
-        <b>INSTA-KART.COM</b> commits to the resolution of complaints about
+        In order to comply with the Safe Harbor framework, <b>INSTA-KART.COM</b> commits to the resolution of complaints about
         your privacy and our collection or use of your personal information.
         We have also committed to resolve any complaints by European Union
         citizens relating to this Privacy Policy, which cannot be resolved
@@ -1095,8 +1045,7 @@ const TermsConditions = () => (
         forth below.
       </p>
       <p>
-        In compliance with the US-EU Safe Harbor Principles,
-        <b>INSTA-KART.COM</b> commits to resolve complaints about your
+        In compliance with the US-EU Safe Harbor Principles, <b>INSTA-KART.COM</b> commits to resolve complaints about your
         privacy and our collection or use of your personal information.
         European Union citizens with inquiries or complaints regarding this
         privacy policy should first contact <b>INSTA-KART.COM</b> as
@@ -1108,8 +1057,7 @@ const TermsConditions = () => (
         independent dispute resolution mechanism, the BBB EU SAFE HARBOR,
         operated by the Council of Better Business Bureaus. If you do not
         receive timely acknowledgment of your complaint, or if your
-        complaint is not satisfactorily addressed by <b>INSTA-KART.COM</b>
-        please visit the BBB EU SAFE HARBOR web site at
+        complaint is not satisfactorily addressed by <b>INSTA-KART.COM</b> please visit the BBB EU SAFE HARBOR web site at
         www.bbb.org/us/safe-harbor-complaints for more information and to
         file a complaint.
       </p>
