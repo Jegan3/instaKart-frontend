@@ -1,6 +1,7 @@
 import React from 'react';
 import { Row, Col, Image, Grid } from 'react-bootstrap';
 import Footer from '../../components/Footer';
+// import Header from '../../components/Headers';
 
 const AboutUs = () => (
   <Grid fluid>
@@ -8,6 +9,7 @@ const AboutUs = () => (
       <Col md={6} sm={6}>
         <Image className="signup-logo" src="images/logo.png" fluid />
       </Col>
+      {/* <Header /> */}
     </Row>
     <Row className="content_sec">
       <div className="content_cards">
@@ -26,7 +28,7 @@ const AboutUs = () => (
     <Row className="content_sec">
       <div className="content_cards">
         <Col md={4} sm={4} className="banner_img">
-          <h5 align="center">We are run by a team of experts who understands sellers and buyers challenges in the modern world today</h5>
+          {/* <h5 align="center">We are run by a team of experts who understands sellers and buyers challenges in the modern world today</h5> */}
         </Col>
         <Col md={8} sm={8} className="banner_img_right">
           <Image className="signup-logo" src="images/pic3.png" fluid />
