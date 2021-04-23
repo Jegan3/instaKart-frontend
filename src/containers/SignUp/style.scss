@@ -18,6 +18,10 @@
 
 .signup-submit {
     padding-top: 5%;
+
+    @media only screen and (max-width: 992px) {
+        padding-bottom: 5%;
+    }
 }
 
 .container-fluid {
@@ -26,9 +30,10 @@
 }
 
 .left-side {
-    background: url('../images/pic5.jpeg');
-    background-size: 107%;
-    background-repeat: no-repeat;
-    height: 500px;
-    display: block;
+    height: 550px;
+    width: 100%;
+
+    @media only screen and (max-width: 992px) {
+        height: auto !important;
+    }
 }

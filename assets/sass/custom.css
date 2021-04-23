@@ -7688,7 +7688,7 @@ fieldset[disabled] .btn.active {
 }
 
 .btn-primary {
-  border-color: #447df7;
+  border: 1px solid #447df7;
   color: #447df7;
 }
 
@@ -8166,7 +8166,7 @@ fieldset[disabled] .btn-neutral.active {
 
 .btn-lg {
   font-size: 18px;
-  border-radius: 6px;
+  border-radius: 7px;
   padding: 14px 30px;
   font-weight: 400;
 }

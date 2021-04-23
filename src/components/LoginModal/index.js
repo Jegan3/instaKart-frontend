@@ -56,22 +56,13 @@ const LoginModal = ({ showPopup, hidePopup }) => {
       <Modal
         show={show}
         onHide={hidePopup}
-        // container={this}
         aria-labelledby="contained-modal-title"
       >
         <Modal.Body className="mdl-body">
           <Grid className="modal-popup" fluid>
             <Row className="in-body">
-              {/* <Col md={6} sm={12} className="login-img">
-                <Col md={12} className="login-img" >
-                  <Image className="left-login" src="images/images1.jpg" fluid />
-                </Col>
-              </Col> */}
               <div className="right-side">
                 <Col className="right-pop" md={12} sm={12}>
-                  {/* <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button> */}
                   <Row>
                     <Col md={12} className="right-logo" >
                       <Image className="inst-logo" src="images/logo.png" fluid />
@@ -112,7 +103,7 @@ const LoginModal = ({ showPopup, hidePopup }) => {
                     <Col md={6} sm={12} className="modal-row" >
                       <button
                         type="button"
-                        className="btn btn-primary btn-block modal-button "
+                        className="btn btn-primary btn-block modal-button"
                         onClick={Login}
                       >
                         Login
@@ -121,7 +112,7 @@ const LoginModal = ({ showPopup, hidePopup }) => {
                     <Col md={6} sm={12} className="modal-row" >
                       <button
                         type="button"
-                        className="btn btn-primary btn-block modal-button "
+                        className="btn btn-primary btn-block modal-button"
                         onClick={Signup}
                       >
                         Sign Up

@@ -43,14 +43,11 @@ const SignUp = (props) => {
 
   return (
     <Grid fluid>
-      <Row
-      // className="jumbotron"
-      >
-        <Col className="left-side" md={6} sm={12}>
-          {/* <Image className="sig" src="images/pic5.jpeg" /> */}
-          <Image className="signup-logo" src="images/logo.png" fluid />
+      <Row>
+        <Col md={6} sm={12}>
+          <Image className="left-side" src="images/pic5.jpeg" />
         </Col>
-        <Col md={6} sm={6} className="right-side" fluid>
+        <Col md={6} sm={12} >
           <Row>
             <Col lg={12} className="heading">
               Partner With us
@@ -62,7 +59,6 @@ const SignUp = (props) => {
             </Col>
           </Row>
           <Form className="login-form ">
-            {/* <Row> */}
             {vendor &&
               <Row>
                 <Col md={6} sm={12}>
@@ -125,7 +121,7 @@ const SignUp = (props) => {
               <Col md={12} sm={12} className="signup-submit" >
                 <button
                   type="button"
-                  className="btn btn-primary btn-lg btn-block signup-button "
+                  className="btn btn-primary btn-lg btn-block modal-button"
                   onClick={Submit}
                 >
                   Proceed
