@@ -17,11 +17,11 @@
 }
 
 .signup-submit {
-    padding-top: 5%;
+    padding-top: 3%;
 
-    @media only screen and (max-width: 992px) {
-        padding-bottom: 5%;
-    }
+    // @media only screen and (max-width: 992px) {
+    //     padding-bottom: 5%;
+    // }
 }
 
 .container-fluid {
@@ -36,4 +36,8 @@
     @media only screen and (max-width: 992px) {
         height: auto !important;
     }
+}
+
+.login-error-signup {
+    margin: 3% 0;
 }

@@ -2,6 +2,7 @@ import { signupWatchers } from './Signup';
 import { loginWatchers } from './Login';
 import { uploadBannerWatchers } from './UploadBanner';
 import { retreiveBannerWatchers } from './RetrieveBanner';
+import { otpWatchers } from './Otp';
 
 export default function* rootWatchers() {
   yield [
@@ -9,5 +10,6 @@ export default function* rootWatchers() {
     loginWatchers(),
     uploadBannerWatchers(),
     retreiveBannerWatchers(),
+    otpWatchers(),
   ];
 }

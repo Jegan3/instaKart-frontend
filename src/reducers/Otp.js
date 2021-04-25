@@ -1,23 +1,23 @@
-import * as INSTAKART from '../actionTypes/Signup';
+// import * as INSTAKART from '../actionTypes/Otp';
 
 const initialState = {};
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case INSTAKART.SIGNUP_REQUEST:
+    case 'OTP_REQUEST':
       return {
         ...state,
         isLoading: true,
-        signup: false,
+        otp: false,
         error: false,
       };
-    case INSTAKART.SIGNUP_SUCCESS:
+    case 'OTP_SUCCESS':
       return {
         ...state,
         isLoading: false,
-        signup: action.signup,
+        otp: action.otp,
       };
-    case INSTAKART.SIGNUP_FAILURE:
+    case 'OTP_FAILURE':
       return {
         ...state,
         isLoading: false,

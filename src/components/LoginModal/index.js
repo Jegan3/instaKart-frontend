@@ -7,34 +7,71 @@ import { history } from '../../routes';
 const LoginModal = ({ showPopup, hidePopup }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [termscondition, setTermsCondition] = useState(false);
   const [login, setLogin] = useState(false);
-  const [show, setShow] = useState(showPopup);
+  const [showLogin, setShowLogin] = useState(showPopup);
+  const [errorMsg, setErrorMsg] = useState('');
   const dispatch = useDispatch();
   const validLogin = useSelector((state) => state.loginState.login);
   const invalidLogin = useSelector((state) => state.loginState.error);
 
   useEffect(() => {
-    setShow(showPopup);
+    setShowLogin(showPopup);
+    setErrorMsg('')
+    setLogin(false)
+    setTermsCondition(false)
   }, [showPopup]);
 
-  if (validLogin && login) {
-    history.push({
-      pathname: '/dashboard',
-    });
-  } else if (validLogin && login === false) {
-    sessionStorage.clear();
-    dispatch({ type: 'LOGOUT_SUCCESS' });
+  useEffect(() => {
+    if (login && validLogin) {
+      setShowLogin(hidePopup);
+      setLogin(false);
+      history.push({
+        pathname: '/dashboard',
+      });
+      // } else if (validLogin && !login && !showOtp) {
+      //   sessionStorage.clear();
+      //   dispatch({ type: 'LOGOUT_SUCCESS' });
+    } else if (login && invalidLogin) {
+      setErrorMsg('Please enter the valid credentials')
+    }
+  })
+
+  const onUserName = (e) => {
+    if (e.target.value.match('^[a-zA-Z0-9_@./#&+-]*$')) {
+      setEmail(e.target.value);
+    }
+  };
+
+  const onPassword = (e) => {
+    if (e.target.value.match('^[a-zA-Z0-9_@./#&+-]*$')) {
+      setPassword(e.target.value)
+    }
+  };
+
+  const onTermsCondition = (e) => {
+    setTermsCondition(!termscondition)
   }
 
   const Login = () => {
-    setLogin(true);
-    const loginDetails = {
-      // email: 'gopinath.chandar@gmail.com',
-      // password: 'Football7&',
-      email,
-      password,
-    };
-    dispatch({ type: 'LOGIN_REQUEST', login: loginDetails });
+    if (email === '' && password === '') {
+      setErrorMsg('Please enter the valid credentials');
+    } else if (email === '') {
+      setErrorMsg('Please enter the valid username');
+    } else if (password === '') {
+      setErrorMsg('Please enter the valid password');
+    } else if (termscondition === false) {
+      setErrorMsg('Please accept the Terms & Conditions and Privacy Policy');
+    } else {
+      setLogin(true);
+      const loginDetails = {
+        // email: 'gopinath.chandar@gmail.com',
+        // password: 'Football7&',
+        email,
+        password,
+      };
+      dispatch({ type: 'LOGIN_REQUEST', login: loginDetails });
+    }
   };
 
   const Signup = () => {
@@ -54,7 +91,7 @@ const LoginModal = ({ showPopup, hidePopup }) => {
   return (
     <div className="modal-container" >
       <Modal
-        show={show}
+        show={showLogin}
         onHide={hidePopup}
         aria-labelledby="contained-modal-title"
       >
@@ -79,11 +116,11 @@ const LoginModal = ({ showPopup, hidePopup }) => {
                   <Row className="login-details">
                     <Col md={12} sm={12}>
                       <label >User Name </label>
-                      <input type="email" className="form-control" placeholder="Enter name" onChange={(e) => setEmail(e.target.value)} />
+                      <input type="email" className="form-control" placeholder="Enter username" maxLength={30} value={email} onChange={onUserName} />
                     </Col>
                     <Col md={12} sm={12}>
                       <label >Password</label>
-                      <input type="password" className="form-control" placeholder="password" onChange={(e) => setPassword(e.target.value)} />
+                      <input type="password" className="form-control" placeholder="Enter password" maxLength={15} value={password} onChange={onPassword} />
                     </Col>
                   </Row>
                   <Row className="check-recovery">
@@ -93,7 +130,7 @@ const LoginModal = ({ showPopup, hidePopup }) => {
                   </Row>
                   <Row>
                     <Col md={12} sm={12} >
-                      <input className="form-check-input" type="checkbox" value="" id="invalidCheck2" required />
+                      <input type="checkbox" className="form-check-input" value={termscondition} onChange={onTermsCondition} />
                       <label className="form-check-label">
                         <small >&emsp;&ensp;By clicking Submit, you agree to our <span className="btn-link" onClick={OpenTermsCondition}>Terms & Conditions and Privacy Policy.</span></small>
                       </label>
@@ -118,10 +155,9 @@ const LoginModal = ({ showPopup, hidePopup }) => {
                         Sign Up
                       </button>
                     </Col>
-                    {invalidLogin &&
-                      <Col md={12} sm={12} >
-                        <span className="login-error-msg">Please Check Your Credentials</span>
-                      </Col>}
+                    <Col md={12} sm={12} className="login-error" >
+                      <span className="login-error-msg">{errorMsg}</span>
+                    </Col>
                   </Row>
                 </Col>
               </div>

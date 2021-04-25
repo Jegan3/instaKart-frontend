@@ -76,14 +76,23 @@ export const doPost = (url, body, urlPrefix = baseUrl) => timeoutPromise(fetch(
     body: JSON.stringify(body),
   }),
 ), TIMEOUT, 504)
+// Commented If required
+  // .then((res) => {
+  //   let response = null;
+  //   if (res.ok) {
+  //     response = res.json();
+  //   } else {
+  //     throw new Error(res.statusText);
+  //   }
+  //   return response;
+  // });
   .then((res) => {
     let response = null;
+    response = res.json();
     if (res.ok) {
-      response = res.json();
-    } else {
-      throw new Error(res.statusText);
+      return response;
     }
-    return response;
+    return response.then((error) => { throw error; });
   });
 
 /** @description Sending a PUT request.

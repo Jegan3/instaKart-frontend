@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { put, takeLatest } from 'redux-saga/effects';
 import envConfig from 'envConfig'; //eslint-disable-line
 import * as INSTAKART from '../actionTypes/Login';
@@ -8,7 +7,6 @@ import { doPost } from '../utils/fetchWrapper';
 
 export function* getLogin(data) {
   try {
-    console.log('login', data);
     const response = yield doPost(envConfig.apiEndPoints.getLogin, data.login);
     yield put(instakartActionCreators.getLoginSucccess(response));
   } catch (error) {

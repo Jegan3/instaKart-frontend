@@ -1,0 +1,55 @@
+.enter-otp-text {
+    color: #3aaa9b;
+}
+
+.otp-input {
+    margin: 2%;
+    color: #28a4d9;
+}
+
+.otp-resend {
+    vertical-align: 0% !important;
+    font-weight: 600 !important;
+    margin-left: 3% !important;
+    color: #28a4d9;
+}
+
+.otp-input-container {
+    justify-content: center !important;
+}
+
+.otp-input-style {
+    width: 2.2em !important;
+    height: 2.2em !important;
+    font-weight: bold;
+    font-size: 1.2em;
+    border: none;
+    border-bottom: 2px solid #d0d6d6;
+    outline: 0;
+}
+
+.otp-focus {
+    border-color: #28a4d9;
+}
+
+.otp-close {
+    border-bottom: none !important;
+}
+
+.btn-otp {
+    width: 30%;
+}
+
+.otp-msg-success {
+    display: block;
+    margin-top: 3%;
+    white-space: nowrap;
+    color: green;
+}
+
+.otp-msg-error {
+    display: block;
+    margin-top: 3%;
+    white-space: nowrap;
+    color: red;
+}

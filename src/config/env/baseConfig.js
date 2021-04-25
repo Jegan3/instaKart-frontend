@@ -4,6 +4,7 @@ export default {
     getLogin: '/api/user/login',
     getUploadBanner: '/api/user/poster',
     getRetrieveBanner: '/api/admin/retrivePoster?adminemail=',
+    getOtp: '/api/user/verifyUser',
   },
 
   apiBaseUrl: {

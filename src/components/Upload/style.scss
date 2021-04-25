@@ -4,8 +4,8 @@
   top: 20px;
 }
 
-.up-load{
-  top:10px;
+.up-load {
+  top: 10px;
   position: relative;
 }
 
@@ -22,7 +22,7 @@
 }
 
 .choose-bttn {
-  background-image: linear-gradient(to right, green 0%, #93F9B9  51%, green  100%);
+  background-image: linear-gradient(to right, green 0%, #93F9B9 51%, green 100%);
   padding: 4px 20px;
   background-size: 200% auto;
   border-color: #353535;
@@ -30,16 +30,17 @@
   font-weight: 600;
   box-shadow: 0 0 20px #eee;
   transition: 0.5s;
+
   .choose-bttn:hover {
     color: white;
     border-color: #353535;
-    background-position: right center; 
+    background-position: right center;
     text-decoration: none;
-}
+  }
 }
 
 .bttn-cancel {
-  background-image: linear-gradient(to right, red 0%, #F8B8A8 51%, red  100%);
+  background-image: linear-gradient(to right, red 0%, #F8B8A8 51%, red 100%);
   padding: 4px 20px;
   background-size: 200% auto;
   border-color: #353535;
@@ -47,18 +48,15 @@
   font-weight: 600;
   box-shadow: 0 0 20px #eee;
   transition: 0.5s;
+
   .bttn-cancel:hover {
     color: white;
     border-color: #353535;
-    background-position: right center; 
+    background-position: right center;
     text-decoration: none;
   }
 }
+
 .modal-title {
   text-align: center;
 }
-
-
-
-
- 

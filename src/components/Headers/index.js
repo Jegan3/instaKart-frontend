@@ -12,7 +12,7 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import IconButton from '@material-ui/core/IconButton';
 import Badge from '@material-ui/core/Badge';
 import { withStyles } from '@material-ui/core/styles';
-import PopUp from '../LoginModal';
+import LoginModal from '../LoginModal';
 import { Country } from '../../constants/Country';
 import { history } from '../../routes';
 
@@ -31,6 +31,7 @@ const Header = () => {
   const signup = useSelector((state) => state.signupState.signup);
   let name = signup && signup.data.name;
   name = name || 'Create My Account';
+
   const flags = Country.map((item) => (
     <MenuItem
       eventKey={
@@ -66,7 +67,7 @@ const Header = () => {
 
   return (
     <div>
-      <PopUp showPopup={login} hidePopup={hidePopup} />
+      <LoginModal showPopup={login} hidePopup={hidePopup} />
       <div className="head">
         <div>
           <Navbar inverse collapseOnSelect>
@@ -132,7 +133,7 @@ const Header = () => {
                 />
               </div>
               <div className="col-md-2 col-sm-3 login-header-top-right">
-                <div className="user" onClick={loginAccount} onKeyDown={loginAccount} aria-hidden="true">
+                <div className="user" onClick={loginAccount} aria-hidden="true">
                   <FontAwesomeIcon icon={faUserPlus} className="userPlus" />
                   <div className="text">
                     <div className="small-text">Login</div>
