@@ -4,7 +4,7 @@ import React from 'react';
 import Footer from '../../components/Footer';
 import Header from '../../components/Headers';
 import Banners from '../../components/Banners';
-import { CarouselTop, CarouselMiddle, CarouselBottom, CarouselMobile } from '../../components/Carousel';
+import { CarouselTop, CarouselMiddle, CarouselBottom, CarouselBottom1, CarouselMobile } from '../../components/Carousel';
 
 const Welcome = () => (
   <div className="bodyContainer">
@@ -24,10 +24,11 @@ const Welcome = () => (
         <CarouselTop />
         <CarouselMiddle />
         <CarouselBottom />
+        <CarouselBottom1 />
       </div>}
-    <div className="Arrival">
+    {/* <div className="Arrival">
       <img className="pic" alt="#" src="images/8.png" />
-    </div>
+    </div> */}
 
     <div className="bg1">
       <div className="Arrival">

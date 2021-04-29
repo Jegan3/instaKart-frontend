@@ -68,19 +68,40 @@ const cardsDataBottom = [
     id: 7,
     title: 'CARD 7',
     content: 'Appliances & Tech Gadgets',
-    imgUrl: 'images/7_applicance.png',
+    imgUrl: 'images/7_applicance.jpg',
   },
   {
-    id: 7,
-    title: 'CARD 7',
+    id: 8,
+    title: 'CARD 8',
     content: 'Hardware & Industrial Supplies',
     imgUrl: 'images/8_hardware.png',
   },
   {
-    id: 7,
-    title: 'CARD 7',
+    id: 9,
+    title: 'CARD 9',
     content: 'Home & Garden Supplies',
     imgUrl: 'images/9_home.png',
+  },
+];
+
+const cardsDataBottom1 = [
+  {
+    id: 10,
+    title: 'CARD 10',
+    content: 'Instakart Elearning',
+    imgUrl: 'images/10_TechGadgets.jpg',
+  },
+  {
+    id: 11,
+    title: 'CARD 11',
+    content: 'Social Media',
+    imgUrl: 'images/11_TimeCap.png',
+  },
+  {
+    id: 12,
+    title: 'CARD 12',
+    content: 'Wholesale Drop Shipping',
+    imgUrl: 'images/12_WholesaleDS.jpg',
   },
 ];
 
@@ -125,7 +146,7 @@ const cardsDataMobile = [
     id: 7,
     title: 'CARD 7',
     content: 'Appliances & Tech Gadgets',
-    imgUrl: 'images/7_applicance.png',
+    imgUrl: 'images/7_applicance.jpg',
   },
   {
     id: 7,
@@ -180,6 +201,20 @@ export const CarouselBottom = () => (
     responsive={responsive}
   >
     {cardsDataBottom.map((card) => (
+      <Card title={card.title} content={card.content} imgUrl={card.imgUrl} />
+    ))}
+  </Carousel>
+);
+
+export const CarouselBottom1 = () => (
+  <Carousel
+    // ssr
+    // infinite
+    // autoPlay
+    // autoPlaySpeed={3000}
+    responsive={responsive}
+  >
+    {cardsDataBottom1.map((card) => (
       <Card title={card.title} content={card.content} imgUrl={card.imgUrl} />
     ))}
   </Carousel>
