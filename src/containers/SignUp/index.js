@@ -127,9 +127,9 @@ const SignUp = (props) => {
         </Col>
         <Col md={6} sm={12} >
           <Row>
-            <Col lg={12} className="heading">
+            {/* <Col lg={12} className="heading">
               Partner With us
-            </Col>
+            </Col> */}
           </Row>
           <Row>
             <Col lg={12} className="sub-heading">
