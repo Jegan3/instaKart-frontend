@@ -88,7 +88,7 @@ const cardsDataBottom1 = [
   {
     id: 10,
     title: 'CARD 10',
-    content: 'Instakart Elearning',
+    content: 'Insta-Kart Elearning',
     imgUrl: 'images/10_TechGadgets.jpg',
   },
   {
