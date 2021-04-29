@@ -5,6 +5,7 @@ import { Row, Col, Image, Form, Grid } from 'react-bootstrap';
 import { history } from '../../routes';
 import OtpScreen from '../../components/OtpScreen';
 import Footer from '../../components/Footer';
+import CreatableSelect from "react-select/creatable";
 
 const SignUp = (props) => {
   const [userName, setUserName] = useState('');
@@ -140,27 +141,57 @@ const SignUp = (props) => {
               <Row>
                 <Col md={6} sm={12}>
                   <label >Plan *</label>
-                  <select className="form-control">
+                  {/* <select className="form-control">
                     <option>Default select</option>
-                  </select>
+                  </select> */}
+                    <CreatableSelect
+                        name="Profession"
+                        placeholder={"Default select"}
+                        // value={values.profession}
+                        // onChange={}
+                        // options={}
+                        // isSearchable={true}
+                        isSearchable={false}
+                        maxLength={30}
+                      />
                 </Col>
                 <Col md={6} sm={12}>
                   <label >Select Industry Type *</label>
-                  <select className="form-control">
-                    <option>Default select</option>
-                  </select>
+                  <CreatableSelect
+                        name="Profession"
+                        placeholder={"Default select"}
+                        // value={values.profession}
+                        // onChange={}
+                        // options={p}
+                        // isSearchable={true}
+                        isSearchable={false}
+                        maxLength={30}
+                      />
                 </Col>
                 <Col md={6} sm={12}>
                   <label >Select Country *</label>
-                  <select className="form-control">
-                    <option>Default select</option>
-                  </select>
+                  <CreatableSelect
+                        name="Profession"
+                        placeholder={"Default select"}
+                        // value={values.profession}
+                        // onChange={}
+                        // options={}
+                        isSearchable={false}
+                        maxLength={30}
+                      />
                 </Col>
                 <Col md={6} sm={12} >
                   <label >Select City *</label>
-                  <select className="form-control">
-                    <option>Default select</option>
-                  </select>
+                  <CreatableSelect
+                        name="Profession"
+                        placeholder={"Default select"}
+                        // value={values.profession}
+                        // onChange={}
+                        // options={}
+                        // isSearchable={true}
+                        isSearchable={false}
+                        maxLength={30}
+                      />
                 </Col>
               </Row>}
             <Row>
@@ -185,8 +216,8 @@ const SignUp = (props) => {
             </Row>
             <Row>
               <Col md={12} sm={12} className="signup-submit" >
-                <input type="checkbox" className="form-check-input" value={termscondition} onChange={onTermsCondition} />
                 <label className="form-check-label">
+                <input type="checkbox" className="form-radio" value={termscondition} onChange={onTermsCondition} />
                   <small>&emsp;&ensp;By clicking Submit, you agree to our <span className="btn-link" onClick={OpenTermsCondition}>Terms & Conditions and Privacy Policy.</span></small>
                 </label>
               </Col>
