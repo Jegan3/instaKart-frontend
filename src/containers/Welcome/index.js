@@ -4,7 +4,7 @@ import React from 'react';
 import Footer from '../../components/Footer';
 import Header from '../../components/Headers';
 import Banners from '../../components/Banners';
-import { CarouselTop, CarouselMiddle, CarouselBottom, CarouselBottom1, CarouselMobile } from '../../components/Carousel';
+import { CarouselTop, CarouselMiddle, CarouselBottom, CarouselBottom1, CarouselMobile, CaroNew } from '../../components/Carousel';
 
 const Welcome = () => (
   <div className="bodyContainer">
@@ -35,33 +35,36 @@ const Welcome = () => (
         <h5>
           # New E-Store #
         </h5>
-        <a href="https://instakartelearning.com/chess-school/" target="_blank">
+        {/* <a href="https://instakartelearning.com/chess-school/" target="_blank">
           <img className="pic" alt="#" src="images/chess.png" />
-        </a>
+        </a> */}
+        <CaroNew />
       </div>
       <br />
     </div>
 
-    <div className="bg1">
-      <div className="Arrival">
-        <h5>
-          # Promotions #
-        </h5>
-        <a href="https://instakartelearning.com/chess-school/" target="_blank">
-          <img className="pic" alt="#" src="images/chess.png" />
-        </a>
-      </div>
-      <br />
+    {/* <div className="bg1"> */}
+    <div className="Arrival">
+      <h5>
+        # Promotions #
+      </h5>
+      {/* <a href="https://instakartelearning.com/chess-school/" target="_blank">
+        <img className="pic" alt="#" src="images/chess.png" />
+      </a> */}
+      <CaroNew />
     </div>
+    <br />
+    {/* </div> */}
 
     <div className="bg1">
       <div className="Arrival">
         <h5>
           # E-Store Near You #
         </h5>
-        <a href="https://instakartelearning.com/chess-school/" target="_blank">
+        {/* <a href="https://instakartelearning.com/chess-school/" target="_blank">
           <img className="pic" alt="#" src="images/chess.png" />
-        </a>
+        </a> */}
+        <CaroNew />
       </div>
       <br />
     </div>

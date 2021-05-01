@@ -105,6 +105,54 @@ const cardsDataBottom1 = [
   },
 ];
 
+// try out
+const caroDataNew = [
+  {
+    id: 1,
+    title: 'CARD 1',
+    content: 'Insta-Kart Elearning',
+    imgUrl: 'images/pizza.jpg',
+  },
+  {
+    id: 2,
+    title: 'CARD 2',
+    content: 'Social Media',
+    imgUrl: 'images/italian.png',
+  },
+  {
+    id: 3,
+    title: 'CARD 3',
+    content: 'Wholesale Drop Shipping',
+    imgUrl: 'images/new.jpg',
+  },
+  {
+    id: 4,
+    title: 'CARD 4',
+    content: 'Wholesale Drop Shipping',
+    imgUrl: 'images/sales.jpg',
+  },
+];
+
+
+export const CaroNew = () => (
+  <Carousel
+    // ssr
+    infinite
+    autoPlay
+    autoPlaySpeed={3000}
+    responsive={responsive}
+  >
+    {caroDataNew.map((card) => (
+      <Card
+        title={card.title}
+        // content={card.content}
+        imgUrl={card.imgUrl}
+      />
+    ))}
+  </Carousel>
+);
+// try out
+
 const cardsDataMobile = [
   {
     id: 1,
