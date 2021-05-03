@@ -7,7 +7,7 @@ export function getSignup(signupDetails) {
   };
 }
 
-export function getSignupSucccess(signup) {
+export function getSignupSuccess(signup) {
   return {
     type: INSTAKART.SIGNUP_SUCCESS,
     signup,

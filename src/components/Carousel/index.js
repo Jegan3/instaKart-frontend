@@ -21,7 +21,7 @@ const responsive = {
   },
 };
 
-const cardsDataTop = [
+const businessRowFirst = [
   {
     id: 1,
     title: 'CARD 1',
@@ -42,7 +42,7 @@ const cardsDataTop = [
   },
 ];
 
-const cardsDataMiddle = [
+const businessRowSecond = [
   {
     id: 4,
     title: 'CARD 4',
@@ -63,7 +63,7 @@ const cardsDataMiddle = [
   },
 ];
 
-const cardsDataBottom = [
+const businessRowThird = [
   {
     id: 7,
     title: 'CARD 7',
@@ -84,7 +84,7 @@ const cardsDataBottom = [
   },
 ];
 
-const cardsDataBottom1 = [
+const businessRowFourth = [
   {
     id: 10,
     title: 'CARD 10',
@@ -105,53 +105,28 @@ const cardsDataBottom1 = [
   },
 ];
 
-// try out
-const caroDataNew = [
+const caroDataNewEStore = [
   {
     id: 1,
     title: 'CARD 1',
-    content: 'Insta-Kart Elearning',
     imgUrl: 'images/pizza.jpg',
   },
   {
     id: 2,
     title: 'CARD 2',
-    content: 'Social Media',
-    imgUrl: 'images/italian.png',
+    imgUrl: 'images/italian.jpg',
   },
   {
     id: 3,
     title: 'CARD 3',
-    content: 'Wholesale Drop Shipping',
     imgUrl: 'images/new.jpg',
   },
   {
     id: 4,
     title: 'CARD 4',
-    content: 'Wholesale Drop Shipping',
     imgUrl: 'images/sales.jpg',
   },
 ];
-
-
-export const CaroNew = () => (
-  <Carousel
-    // ssr
-    infinite
-    autoPlay
-    autoPlaySpeed={3000}
-    responsive={responsive}
-  >
-    {caroDataNew.map((card) => (
-      <Card
-        title={card.title}
-        // content={card.content}
-        imgUrl={card.imgUrl}
-      />
-    ))}
-  </Carousel>
-);
-// try out
 
 const cardsDataMobile = [
   {
@@ -197,14 +172,14 @@ const cardsDataMobile = [
     imgUrl: 'images/7_applicance.jpg',
   },
   {
-    id: 7,
-    title: 'CARD 7',
+    id: 8,
+    title: 'CARD 8',
     content: 'Hardware & Industrial Supplies',
     imgUrl: 'images/8_hardware.png',
   },
   {
-    id: 7,
-    title: 'CARD 7',
+    id: 9,
+    title: 'CARD 9',
     content: 'Home & Garden Supplies',
     imgUrl: 'images/9_home.png',
   },
@@ -212,57 +187,45 @@ const cardsDataMobile = [
 
 // Because this is an inframe, so the SSR mode doesn't not do well here.
 // It will work on real devices.
-export const CarouselTop = () => (
+export const CarouselFirst = () => (
   <Carousel
     // ssr
-    // infinite
-    // autoPlay
-    // autoPlaySpeed={3000}
     responsive={responsive}
   >
-    {cardsDataTop.map((card) => (
+    {businessRowFirst.map((card) => (
       <Card title={card.title} content={card.content} imgUrl={card.imgUrl} />
     ))}
   </Carousel>
 );
 
-export const CarouselMiddle = () => (
+export const CarouselSecond = () => (
   <Carousel
     // ssr
-    // infinite
-    // autoPlay
-    // autoPlaySpeed={3000}
     responsive={responsive}
   >
-    {cardsDataMiddle.map((card) => (
+    {businessRowSecond.map((card) => (
       <Card title={card.title} content={card.content} imgUrl={card.imgUrl} />
     ))}
   </Carousel>
 );
 
-export const CarouselBottom = () => (
+export const CarouselThird = () => (
   <Carousel
     // ssr
-    // infinite
-    // autoPlay
-    // autoPlaySpeed={3000}
     responsive={responsive}
   >
-    {cardsDataBottom.map((card) => (
+    {businessRowThird.map((card) => (
       <Card title={card.title} content={card.content} imgUrl={card.imgUrl} />
     ))}
   </Carousel>
 );
 
-export const CarouselBottom1 = () => (
+export const CarouselFourth = () => (
   <Carousel
     // ssr
-    // infinite
-    // autoPlay
-    // autoPlaySpeed={3000}
     responsive={responsive}
   >
-    {cardsDataBottom1.map((card) => (
+    {businessRowFourth.map((card) => (
       <Card title={card.title} content={card.content} imgUrl={card.imgUrl} />
     ))}
   </Carousel>
@@ -270,6 +233,7 @@ export const CarouselBottom1 = () => (
 
 export const CarouselMobile = () => (
   <Carousel
+    // ssr
     infinite
     autoPlay
     autoPlaySpeed={3000}
@@ -277,6 +241,20 @@ export const CarouselMobile = () => (
   >
     {cardsDataMobile.map((card) => (
       <Card title={card.title} content={card.content} imgUrl={card.imgUrl} />
+    ))}
+  </Carousel>
+);
+
+export const CarouselNewEStore = () => (
+  <Carousel
+    // ssr
+    infinite
+    autoPlay
+    autoPlaySpeed={3000}
+    responsive={responsive}
+  >
+    {caroDataNewEStore.map((card) => (
+      <Card title={card.title} imgUrl={card.imgUrl} />
     ))}
   </Carousel>
 );

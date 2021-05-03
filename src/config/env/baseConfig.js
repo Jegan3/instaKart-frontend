@@ -5,6 +5,7 @@ export default {
     getUploadBanner: '/api/user/poster',
     getRetrieveBanner: '/api/admin/retrivePoster?adminemail=',
     getOtp: '/api/user/verifyUser',
+    getSignupContent: '/api/staticContentRouter/registerStaticContents',
   },
 
   apiBaseUrl: {

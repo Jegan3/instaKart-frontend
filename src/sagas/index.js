@@ -3,6 +3,7 @@ import { loginWatchers } from './Login';
 import { uploadBannerWatchers } from './UploadBanner';
 import { retreiveBannerWatchers } from './RetrieveBanner';
 import { otpWatchers } from './Otp';
+import { signupContentWatchers } from './SignupContent';
 
 export default function* rootWatchers() {
   yield [
@@ -11,5 +12,6 @@ export default function* rootWatchers() {
     uploadBannerWatchers(),
     retreiveBannerWatchers(),
     otpWatchers(),
+    signupContentWatchers(),
   ];
 }

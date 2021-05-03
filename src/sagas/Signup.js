@@ -8,7 +8,7 @@ import { doPost } from '../utils/fetchWrapper';
 export function* getSignup(data) {
   try {
     const response = yield doPost(envConfig.apiEndPoints.getSignup, data.signup);
-    yield put(instakartActionCreators.getSignupSucccess(response));
+    yield put(instakartActionCreators.getSignupSuccess(response));
   } catch (error) {
     yield put(instakartActionCreators.getSignupFailure(error));
   }

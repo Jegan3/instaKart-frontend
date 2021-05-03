@@ -5,7 +5,8 @@ import { Row, Col, Image, Form, Grid } from 'react-bootstrap';
 import { history } from '../../routes';
 import OtpScreen from '../../components/OtpScreen';
 import Footer from '../../components/Footer';
-import CreatableSelect from "react-select/creatable";
+import Select from "react-select";
+import { Country } from '../../constants/Country';
 
 const SignUp = (props) => {
   const [userName, setUserName] = useState('');
@@ -16,10 +17,16 @@ const SignUp = (props) => {
   const [showOtp, setShowOtp] = useState(false);
   const [closeOtp, setCloseOtp] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
+  const [industryType, setindustryType] = useState('');
+  const [country, setCountry] = useState('');
 
   const dispatch = useDispatch();
   const validSignup = useSelector((state) => state.signupState.signup);
   const invalidSignup = useSelector((state) => state.signupState.error);
+  const signUpContent = useSelector((state) => state.signupContentState.signupContent);
+
+  const industry = signUpContent && signUpContent.industryTypes
+  const countries = signUpContent && signUpContent.countries
 
   const { state } = props.location;
   const vendor = state === 'vendor';
@@ -32,6 +39,17 @@ const SignUp = (props) => {
       setErrorMsg(`An account with email ${email} already exists`);
     }
   });
+
+  useEffect(() => {
+    vendor && dispatch({ type: 'SIGNUP_CONTENT_REQUEST' });
+  }, [])
+
+  // useEffect(() => {
+  //   setindustryType({
+  //     value: industry && industry._id,
+  //     label: industry && industry.fieldName
+  //   });
+  // }, [industry]);
 
   const onUserName = (e) => {
     if (e.target.value.match('^[a-zA-Z0-9]*$')) {
@@ -68,6 +86,29 @@ const SignUp = (props) => {
     // history.push({pathname: '/termsofcondition'});
     // window.scrollTo(0, 0);
   };
+
+  const onIndustryType = (industryType) => {
+    setindustryType(industryType)
+    console.log('industryType', industryType)
+  }
+
+  // IndustryType Options
+  const industryTypeOptions = industry && industry.map((item) => ({
+    value: item._id,
+    label: item.fieldName,
+  }))
+
+  const onCountry = (country) => {
+    setCountry(country)
+    console.log("country",country)
+  }
+
+  // Country Options
+const countryOptions = countries && countries.map((item) => ({
+  value: item._id,
+  //  label: `{${item.flag} ${item.fieldName}}`,
+  label: <div><img className="flag" src={item.flag} alt="new" /><span className="signup-flag">{item.fieldName}</span></div>
+}))
 
   const Submit = () => {
     if (userName === '' && email === '' && password === '') {
@@ -144,54 +185,54 @@ const SignUp = (props) => {
                   {/* <select className="form-control">
                     <option>Default select</option>
                   </select> */}
-                    <CreatableSelect
-                        name="Profession"
-                        placeholder={"Default select"}
-                        // value={values.profession}
-                        // onChange={}
-                        // options={}
-                        // isSearchable={true}
-                        isSearchable={false}
-                        maxLength={30}
-                      />
+                  <Select
+                    name="Plan"
+                    placeholder="Choose you're plan"
+                    // value={values.profession}
+                    // onChange={}
+                    // options={}
+                    // isSearchable={true}
+                    isSearchable={false}
+                    maxLength={30}
+                  />
                 </Col>
                 <Col md={6} sm={12}>
                   <label >Select Industry Type *</label>
-                  <CreatableSelect
-                        name="Profession"
-                        placeholder={"Default select"}
-                        // value={values.profession}
-                        // onChange={}
-                        // options={p}
-                        // isSearchable={true}
-                        isSearchable={false}
-                        maxLength={30}
-                      />
+                  <Select
+                    name="Industry Type"
+                    placeholder="Choose you're industry type"
+                    value={industryType}
+                    onChange={onIndustryType}
+                    options={industryTypeOptions}
+                    // isSearchable={true}
+                    isSearchable={false}
+                    // maxLength={30}
+                  />
                 </Col>
                 <Col md={6} sm={12}>
                   <label >Select Country *</label>
-                  <CreatableSelect
-                        name="Profession"
-                        placeholder={"Default select"}
-                        // value={values.profession}
-                        // onChange={}
-                        // options={}
-                        isSearchable={false}
-                        maxLength={30}
-                      />
+                  <Select
+                    name="Country"
+                    placeholder="Choose you're country"
+                    value={country}
+                    onChange={onCountry}
+                    options={countryOptions}
+                    isSearchable={false}
+                    // maxLength={30}
+                  />
                 </Col>
                 <Col md={6} sm={12} >
                   <label >Select City *</label>
-                  <CreatableSelect
-                        name="Profession"
-                        placeholder={"Default select"}
-                        // value={values.profession}
-                        // onChange={}
-                        // options={}
-                        // isSearchable={true}
-                        isSearchable={false}
-                        maxLength={30}
-                      />
+                  <Select
+                    name="City"
+                    placeholder="Choose you're city"
+                    // value={values.profession}
+                    // onChange={}
+                    // options={}
+                    // isSearchable={true}
+                    isSearchable={false}
+                    maxLength={30}
+                  />
                 </Col>
               </Row>}
             <Row>
@@ -217,7 +258,7 @@ const SignUp = (props) => {
             <Row>
               <Col md={12} sm={12} className="signup-submit" >
                 <label className="form-check-label">
-                <input type="checkbox" className="form-radio" value={termscondition} onChange={onTermsCondition} />
+                  <input type="checkbox" className="form-radio" value={termscondition} onChange={onTermsCondition} />
                   <small>&emsp;&ensp;By clicking Submit, you agree to our <span className="btn-link" onClick={OpenTermsCondition}>Terms & Conditions and Privacy Policy.</span></small>
                 </label>
               </Col>

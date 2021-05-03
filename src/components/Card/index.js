@@ -1,11 +1,11 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 
-const Card = (props) => (
+const Card = ({ imgUrl, alt, content }) => (
   <div className="card">
     <div className="card-content">
-      <img className="photos" src={props.imgUrl} alt={props.alt || 'Image'} />
-      <button>{props.content} </button>
+      <img className="photos" src={imgUrl} alt={alt || 'Image'} />
+      {content && <button>{content} </button>}
     </div>
   </div>
 );

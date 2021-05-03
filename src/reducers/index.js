@@ -4,6 +4,7 @@ import login from './Login';
 import uploadBanner from './UploadBanner';
 import retreiveBanner from './RetrieveBanner';
 import otp from './Otp';
+import signupContent from './SignupContent';
 
 const rootReducer = combineReducers({
   signupState: signup,
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
   uploadBannerState: uploadBanner,
   retreiveBannerState: retreiveBanner,
   otpState: otp,
+  signupContentState: signupContent,
 });
 
 export default rootReducer;
