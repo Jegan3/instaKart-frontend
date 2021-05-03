@@ -6,7 +6,6 @@ import { history } from '../../routes';
 import OtpScreen from '../../components/OtpScreen';
 import Footer from '../../components/Footer';
 import Select from "react-select";
-import { Country } from '../../constants/Country';
 
 const SignUp = (props) => {
   const [userName, setUserName] = useState('');
@@ -89,7 +88,6 @@ const SignUp = (props) => {
 
   const onIndustryType = (industryType) => {
     setindustryType(industryType)
-    console.log('industryType', industryType)
   }
 
   // IndustryType Options
@@ -100,15 +98,13 @@ const SignUp = (props) => {
 
   const onCountry = (country) => {
     setCountry(country)
-    console.log("country",country)
   }
 
   // Country Options
-const countryOptions = countries && countries.map((item) => ({
-  value: item._id,
-  //  label: `{${item.flag} ${item.fieldName}}`,
-  label: <div><img className="flag" src={item.flag} alt="new" /><span className="signup-flag">{item.fieldName}</span></div>
-}))
+  const countryOptions = countries && countries.map((item) => ({
+    value: item._id,
+    label: <div><img className="flag" src={item.flag} alt="new" /><span className="signup-flag">{item.fieldName}</span></div>
+  }))
 
   const Submit = () => {
     if (userName === '' && email === '' && password === '') {
@@ -168,9 +164,6 @@ const countryOptions = countries && countries.map((item) => ({
         </Col>
         <Col md={6} sm={12} >
           <Row>
-            {/* <Col lg={12} className="heading">
-              Partner With us
-            </Col> */}
           </Row>
           <Row>
             <Col lg={12} className="sub-heading">
@@ -182,9 +175,6 @@ const countryOptions = countries && countries.map((item) => ({
               <Row>
                 <Col md={6} sm={12}>
                   <label >Plan *</label>
-                  {/* <select className="form-control">
-                    <option>Default select</option>
-                  </select> */}
                   <Select
                     name="Plan"
                     placeholder="Choose you're plan"
@@ -206,7 +196,6 @@ const countryOptions = countries && countries.map((item) => ({
                     options={industryTypeOptions}
                     // isSearchable={true}
                     isSearchable={false}
-                    // maxLength={30}
                   />
                 </Col>
                 <Col md={6} sm={12}>
@@ -218,7 +207,6 @@ const countryOptions = countries && countries.map((item) => ({
                     onChange={onCountry}
                     options={countryOptions}
                     isSearchable={false}
-                    // maxLength={30}
                   />
                 </Col>
                 <Col md={6} sm={12} >
