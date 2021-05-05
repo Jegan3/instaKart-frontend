@@ -147,7 +147,7 @@
 .user {
   margin: 5% 2% !important;
   display: flex !important;
-  padding-left:  30px;
+  padding-left: 30px;
   cursor: pointer;
 }
 
@@ -222,4 +222,17 @@
   left: 1rem;
   top: 1px;
   position: relative;
+}
+
+.header_sec {
+  position: relative;
+  min-height: 50px;
+  margin-bottom: 20px;
+  background-color: #222;
+}
+
+.header_sec {
+  .signup-logo {
+    margin: 1.3em;
+  }
 }

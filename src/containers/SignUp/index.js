@@ -2,10 +2,11 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Row, Col, Image, Form, Grid } from 'react-bootstrap';
+import Select from "react-select";
 import { history } from '../../routes';
 import OtpScreen from '../../components/OtpScreen';
 import Footer from '../../components/Footer';
-import Select from "react-select";
+import Header from '../../components/Headers';
 
 const SignUp = (props) => {
   const [userName, setUserName] = useState('');
@@ -182,6 +183,7 @@ const SignUp = (props) => {
 
   return (
     <Grid fluid>
+      <Header header />
       <OtpScreen show={showOtp} handleClose={handleClose} onSubmitOtp={onSubmitOtp} resendOtp={resendOtp} email={email} />
       <Row>
         <Col md={6} sm={12}>
