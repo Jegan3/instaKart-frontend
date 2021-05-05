@@ -32,7 +32,7 @@ const businessRowFirst = [
     id: 2,
     title: 'CARD 2',
     content: 'Fashion District',
-    imgUrl: 'images/2_Fashion.png',
+    imgUrl: 'images/2_Fashion.jpg',
   },
   {
     id: 3,
@@ -100,7 +100,7 @@ const businessRowFourth = [
   {
     id: 12,
     title: 'CARD 12',
-    content: 'Wholesale Drop Shipping',
+    content: 'Wholesale Suppliers & Drop Shipping',
     imgUrl: 'images/12_WholesaleDS.jpg',
   },
 ];
@@ -139,7 +139,7 @@ const cardsDataMobile = [
     id: 2,
     title: 'CARD 2',
     content: 'Fashion District',
-    imgUrl: 'images/2_Fashion.png',
+    imgUrl: 'images/2_Fashion.jpg',
   },
   {
     id: 3,
