@@ -29,6 +29,7 @@ const SignUp = (props) => {
   const industry = signUpContent && signUpContent.industries
   const countries = signUpContent && signUpContent.countriesList
 
+  // For Vendor SignUp 
   const { state } = props.location;
   const vendor = state === 'vendor';
 
@@ -44,13 +45,6 @@ const SignUp = (props) => {
   useEffect(() => {
     vendor && dispatch({ type: 'SIGNUP_CONTENT_REQUEST' });
   }, [])
-
-  // useEffect(() => {
-  //   setindustryType({
-  //     value: industry && industry._id,
-  //     label: industry && industry.fieldName
-  //   });
-  // }, [industry]);
 
   const onUserName = (e) => {
     if (e.target.value.match('^[a-zA-Z0-9]*$')) {
@@ -138,13 +132,24 @@ const SignUp = (props) => {
     } else if (termscondition === false) {
       setErrorMsg('Please accept the Terms & Conditions and Privacy Policy');
     } else {
-      const signupDetails = {
+
+      const signupDetailsUsers = {
         name: userName,
         email,
         password,
-        type: 'admin',
       };
-      dispatch({ type: 'SIGNUP_REQUEST', signup: signupDetails });
+
+      const signupDetailsVendors = {
+        name: userName,
+        email,
+        password,
+        // plan: plan.value,
+        industryType: industryType,
+        country: country && country.value,
+        city: city && city.value
+      };
+
+      dispatch({ type: 'SIGNUP_REQUEST', signup: vendor ? signupDetailsVendors : signupDetailsUsers });
       setErrorMsg('');
       // setShowOtp(true);
       // temp fix for vendor login
@@ -201,9 +206,7 @@ const SignUp = (props) => {
                     // value={values.profession}
                     // onChange={}
                     // options={}
-                    // isSearchable={true}
                     isSearchable={false}
-                    maxLength={30}
                   />
                 </Col>
                 <Col md={6} sm={12}>
@@ -215,6 +218,7 @@ const SignUp = (props) => {
                     onChange={onIndustryType}
                     options={industryTypeOptions}
                     isSearchable={false}
+                    isMulti
                   />
                 </Col>
                 <Col md={6} sm={12}>
