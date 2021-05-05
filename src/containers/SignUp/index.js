@@ -16,16 +16,18 @@ const SignUp = (props) => {
   const [showOtp, setShowOtp] = useState(false);
   const [closeOtp, setCloseOtp] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
-  const [industryType, setindustryType] = useState('');
-  const [country, setCountry] = useState('');
+  const [industryType, setindustryType] = useState();
+  const [country, setCountry] = useState();
+  const [city, setCity] = useState();
+  const [updatedCityOptions, setUpdatedCityOptions] = useState();
 
   const dispatch = useDispatch();
   const validSignup = useSelector((state) => state.signupState.signup);
   const invalidSignup = useSelector((state) => state.signupState.error);
   const signUpContent = useSelector((state) => state.signupContentState.signupContent);
 
-  const industry = signUpContent && signUpContent.industryTypes
-  const countries = signUpContent && signUpContent.countries
+  const industry = signUpContent && signUpContent.industries
+  const countries = signUpContent && signUpContent.countriesList
 
   const { state } = props.location;
   const vendor = state === 'vendor';
@@ -93,7 +95,7 @@ const SignUp = (props) => {
   // IndustryType Options
   const industryTypeOptions = industry && industry.map((item) => ({
     value: item._id,
-    label: item.fieldName,
+    label: item.industryType,
   }))
 
   const onCountry = (country) => {
@@ -101,10 +103,28 @@ const SignUp = (props) => {
   }
 
   // Country Options
-  const countryOptions = countries && countries.map((item) => ({
+  const countryOptions = countries && countries.map(item => ({
     value: item._id,
-    label: <div><img className="flag" src={item.flag} alt="new" /><span className="signup-flag">{item.fieldName}</span></div>
+    label: <div><img className="flag" src={item.flag} alt="new" /><span className="signup-flag">{item.countryName}</span></div>
   }))
+
+  const onCity = (city) => {
+    setCity(city)
+  }
+
+  // City Options
+  useEffect(() => {
+    countries && countries.filter((item) => {
+      if (item._id == country.value) {
+        console.log('item', item.cities)
+        const abcd = item.cities.map(data => ({
+          value: data._id,
+          label: data.cityName,
+        }))
+        setUpdatedCityOptions(abcd)
+      };
+    });
+  }, [country])
 
   const Submit = () => {
     if (userName === '' && email === '' && password === '') {
@@ -194,7 +214,6 @@ const SignUp = (props) => {
                     value={industryType}
                     onChange={onIndustryType}
                     options={industryTypeOptions}
-                    // isSearchable={true}
                     isSearchable={false}
                   />
                 </Col>
@@ -214,12 +233,11 @@ const SignUp = (props) => {
                   <Select
                     name="City"
                     placeholder="Choose you're city"
-                    // value={values.profession}
-                    // onChange={}
-                    // options={}
-                    // isSearchable={true}
+                    value={city}
+                    onChange={onCity}
+                    options={updatedCityOptions}
                     isSearchable={false}
-                    maxLength={30}
+                    isDisabled={!country}
                   />
                 </Col>
               </Row>}
