@@ -208,6 +208,8 @@ const SignUp = (props) => {
                     // value={values.profession}
                     // onChange={}
                     // options={}
+                    // isSearchable={true}
+                    className="prof-select "
                     isSearchable={false}
                   />
                 </Col>
@@ -217,6 +219,7 @@ const SignUp = (props) => {
                     name="Industry Type"
                     placeholder="Choose you're industry type"
                     value={industryType}
+                    className="prof-select "
                     onChange={onIndustryType}
                     options={industryTypeOptions}
                     isSearchable={false}
@@ -229,6 +232,7 @@ const SignUp = (props) => {
                     name="Country"
                     placeholder="Choose you're country"
                     value={country}
+                    className="prof-select "
                     onChange={onCountry}
                     options={countryOptions}
                     isSearchable={false}
@@ -240,6 +244,7 @@ const SignUp = (props) => {
                     name="City"
                     placeholder="Choose you're city"
                     value={city}
+                    className="prof-select "
                     onChange={onCity}
                     options={updatedCityOptions}
                     isSearchable={false}

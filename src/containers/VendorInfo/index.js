@@ -115,6 +115,7 @@ const VendorInfo = () => {
                 <label >Select upto three products. *</label>
                 <Select
                   type="text"
+                  className="prof-select "
                   isMulti
                   placeholder="Choose Products"
                   maxLength={15}
@@ -127,6 +128,7 @@ const VendorInfo = () => {
                 <label >Choose your bank. *</label>
                 <Select
                   type="text"
+                  className="prof-select "
                   placeholder="Choose Bank."
                   maxLength={15}
                   options={banks}

@@ -18,7 +18,6 @@
 
 .signup-submit {
     padding-top: 3%;
-
     // @media only screen and (max-width: 992px) {
     //     padding-bottom: 5%;
     // }
@@ -43,10 +42,9 @@
     margin: 3% 0;
 }
 
-a .form-radio {
+.form-radio {
     position: relative;
     top: 2px;
-
 }
 
 .signup-flag {
@@ -58,4 +56,22 @@ a .form-radio {
 .css-1uccc91-singleValue {
     overflow: none !important;
     width: 100%;
+}
+
+.form-control:focus {
+    box-shadow: 0 0 0 1px #28a4d9 !important;
+    border-color: #28a4d9;
+    outline: 0;
+}
+
+.prof-select {
+    .css-1pahdxg-control {
+        box-shadow: 0 0 0 1px #28a4d9 !important;
+        border-color: #28a4d9 !important;
+    }
+}
+
+.btn-primary {
+    border-color: #28a4d9 !important;
+    color: #28a4d9 !important;
 }
