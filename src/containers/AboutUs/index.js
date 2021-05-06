@@ -1,16 +1,11 @@
 import React from 'react';
 import { Row, Col, Image, Grid } from 'react-bootstrap';
 import Footer from '../../components/Footer';
-// import Header from '../../components/Headers';
+import Header from '../../components/Headers';
 
 const AboutUs = () => (
   <Grid fluid>
-    <Row className="header_sec">
-      <Col md={6} sm={6}>
-        <Image className="signup-logo" src="images/logo.png" fluid />
-      </Col>
-      {/* <Header /> */}
-    </Row>
+    <Header header />
     <Row className="content_sec">
       <div className="content_cards">
         <Col md={12} sm={12} className="banner_img">

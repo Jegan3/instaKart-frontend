@@ -1,7 +1,7 @@
 /*eslint-disable*/
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
+import { Navbar, Nav, NavItem, NavDropdown, MenuItem, Row, Col, Image } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkerAlt, faUserPlus, faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import TextField from '@material-ui/core/TextField';
@@ -12,6 +12,7 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import IconButton from '@material-ui/core/IconButton';
 import Badge from '@material-ui/core/Badge';
 import { withStyles } from '@material-ui/core/styles';
+
 import LoginModal from '../LoginModal';
 import { Country } from '../../constants/Country';
 import { history } from '../../routes';
@@ -25,7 +26,7 @@ const StyledBadge = withStyles((theme) => ({
   },
 }))(Badge);
 
-const Header = () => {
+const Header = ({ header }) => {
   const [login, setLogin] = useState(false);
   const [country, setCountry] = useState(<div><FontAwesomeIcon icon={faMapMarkerAlt} className="location" /><p>Select your country </p><FontAwesomeIcon icon={faCaretDown} className="caret-down" /></div>);
   const signup = useSelector((state) => state.signupState.signup);
@@ -67,89 +68,97 @@ const Header = () => {
 
   return (
     <div>
-      <LoginModal showPopup={login} hidePopup={hidePopup} />
-      <div className="head">
+      {header ?
+        <Row className="header_sec">
+          <Col md={6} sm={6}>
+            <Image className="signup-logo" src="images/logo.png" fluid />
+          </Col>
+        </Row> :
         <div>
-          <Navbar inverse collapseOnSelect>
-            <Navbar.Header>
-              <Navbar.Toggle />
-            </Navbar.Header>
-            <Navbar.Collapse>
-              <Nav>
-                {/* <NavItem >
+          <LoginModal showPopup={login} hidePopup={hidePopup} />
+          <div className="head">
+            <div>
+              <Navbar inverse collapseOnSelect>
+                <Navbar.Header>
+                  <Navbar.Toggle />
+                </Navbar.Header>
+                <Navbar.Collapse>
+                  <Nav>
+                    {/* <NavItem >
                   <FontAwesomeIcon icon={faMapMarkerAlt} className="location" />
                   <p>
                     {country}
                   </p>
                 </NavItem> */}
-                <NavItem >
-                  <NavDropdown
-                    eventKey={country}
-                    title={country}
-                    // alt="Dropdown"
-                    id="basic-nav-dropdown"
-                    onSelect={handleSelect}
-                  >{flags}
-                  </NavDropdown>
-                </NavItem>
-              </Nav>
-              <Nav pullRight>
-                <NavItem eventKey={1} href="#">
-                  <p>List Your Ads</p>
-                </NavItem>
-                <NavItem eventKey={2} href="#">
-                  <p onClick={() => { history.push('/aboutus'); }}>About Us</p>
-                </NavItem>
-                <NavItem eventKey={3} href="#">
-                  <p><Button className="vendor-signup" onClick={Signup}>Register Your E-Store</Button></p>
-                </NavItem>
-              </Nav>
-            </Navbar.Collapse>
-          </Navbar>
-        </div>
-        <div>
-          <div className="header-container-bottom">
-            <div className="Body">
-              <div className="col-md-3 col-sm-3 logo-header-top-left">
-                <img
-                  className="instakart"
-                  src="images/logo.png"
-                  alt="new"
-                />
-              </div>
-              <div className="col-md-7 col-sm-6 search box justify-content-md-center">
-                <TextField
-                  id="search-input"
-                  name="search"
-                  size="small"
-                  variant="outlined"
-                  placeholder="Search "
-                  style={{ marginRight: '-4px' }}
-                  InputProps={{
-                    startAdornment: <InputAdornment position="start"><SearchIcon className="search-icon" /></InputAdornment>,
-                    endAdornment: <Button variant="contained" size="medium" className="search-btn" style={{ marginRight: '0px' }}>Search</Button>,
-                  }}
-                  fullWidth
-                />
-              </div>
-              <div className="col-md-2 col-sm-3 login-header-top-right">
-                <div className="user" onClick={loginAccount} aria-hidden="true">
-                  <FontAwesomeIcon icon={faUserPlus} className="userPlus" />
-                  <div className="text">
-                    <div className="small-text">Login</div>
-                    <div className="bold-text">{name}</div>
+                    <NavItem >
+                      <NavDropdown
+                        eventKey={country}
+                        title={country}
+                        // alt="Dropdown"
+                        id="basic-nav-dropdown"
+                        onSelect={handleSelect}
+                      >{flags}
+                      </NavDropdown>
+                    </NavItem>
+                  </Nav>
+                  <Nav pullRight>
+                    <NavItem eventKey={1} href="#">
+                      <p>List Your Ads</p>
+                    </NavItem>
+                    <NavItem eventKey={2} href="#">
+                      <p onClick={() => { history.push('/aboutus'); }}>About Us</p>
+                    </NavItem>
+                    <NavItem eventKey={3} href="#">
+                      <p><Button className="vendor-signup" onClick={Signup}>Register Your E-Store</Button></p>
+                    </NavItem>
+                  </Nav>
+                </Navbar.Collapse>
+              </Navbar>
+            </div>
+            <div>
+              <div className="header-container-bottom">
+                <div className="Body">
+                  <div className="col-md-3 col-sm-3 logo-header-top-left">
+                    <img
+                      className="instakart"
+                      src="images/logo.png"
+                      alt="new"
+                    />
+                  </div>
+                  <div className="col-md-7 col-sm-6 search box justify-content-md-center">
+                    <TextField
+                      id="search-input"
+                      name="search"
+                      size="small"
+                      variant="outlined"
+                      placeholder="Search "
+                      style={{ marginRight: '-4px' }}
+                      InputProps={{
+                        startAdornment: <InputAdornment position="start"><SearchIcon className="search-icon" /></InputAdornment>,
+                        endAdornment: <Button variant="contained" size="medium" className="search-btn" style={{ marginRight: '0px' }}>Search</Button>,
+                      }}
+                      fullWidth
+                    />
+                  </div>
+                  <div className="col-md-2 col-sm-3 login-header-top-right">
+                    <div className="user" onClick={loginAccount} aria-hidden="true">
+                      <FontAwesomeIcon icon={faUserPlus} className="userPlus" />
+                      <div className="text">
+                        <div className="small-text">Login</div>
+                        <div className="bold-text">{name}</div>
+                      </div>
+                    </div>
+                    <IconButton aria-label="cart" >
+                      <StyledBadge badgeContent={4} color="secondary">
+                        <ShoppingCartIcon fontSize="large" />
+                      </StyledBadge>
+                    </IconButton>
                   </div>
                 </div>
-                <IconButton aria-label="cart" >
-                  <StyledBadge badgeContent={4} color="secondary">
-                    <ShoppingCartIcon fontSize="large" />
-                  </StyledBadge>
-                </IconButton>
               </div>
             </div>
           </div>
-        </div>
-      </div>
+        </div>}
     </div>
   );
 };

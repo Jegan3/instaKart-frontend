@@ -1,8 +1,9 @@
 /*eslint-disable*/
 import React, { useState, useEffect } from 'react';
 import { Row, Col, Form, Grid } from 'react-bootstrap';
+import Select from 'react-select';
 import Footer from '../../components/Footer';
-import Select from "react-select";
+import Header from '../../components/Headers';
 
 const VendorInfo = () => {
   // const [name, setName] = useState('');
@@ -20,7 +21,7 @@ const VendorInfo = () => {
     { value: 'Clothing and Accessories', label: 'Clothing and Accessories' },
     { value: 'Books and Paper Goods', label: 'Books and Paper Goods' },
     { value: 'Party and Event Supplies', label: 'Party and Event Supplies' },
-  ]
+  ];
 
   const banks = [
     { value: 'First Citizens', label: 'First Citizens' },
@@ -34,22 +35,20 @@ const VendorInfo = () => {
     { value: 'Agricultural Development Bank', label: 'Agricultural Development Bank ' },
     { value: 'Ansa Merchant Bank', label: 'Ansa Merchant Bank' },
     { value: 'CAF Trinidad & Tobago', label: 'CAF Trinidad & Tobago' },
+  ];
 
-  ]
-
-
-
-  // const Option = props => { 
-  //   return ( <div> <components.Option {...props}> 
-  //   <input type="checkbox" checked={props.isSelected} 
-  //   onChange={() => null} /> <label>{props.value}</label> 
-  //   </components.Option> </div> ); 
+  // const Option = props => {
+  //   return ( <div> <components.Option {...props}>
+  //   <input type="checkbox" checked={props.isSelected}
+  //   onChange={() => null} /> <label>{props.value}</label>
+  //   </components.Option> </div> );
   //   };
 
   return (
     <Grid fluid>
+      <Header header />
       <Row>
-        <Col className='vendoInfo mx-auto' md={6} sm={12} >
+        <Col className="vendorinfo" >
           <Row>
             <Col lg={12} className="sub-heading">
               Basic Information
@@ -63,19 +62,21 @@ const VendorInfo = () => {
                   type="text"
                   className="form-control"
                   placeholder="Firstname"
-                  // value={userName} 
-                  // onChange={onUserName} 
-                  maxLength={30} />
+                  // value={userName}
+                  // onChange={onUserName}
+                  maxLength={30}
+                />
               </Col>
               <Col md={6} sm={12}>
-                <label >what is your surname? *</label>
+                <label >What is your surname? *</label>
                 <input
                   type="text"
                   className="form-control"
                   placeholder="Surname"
-                  // value={userName} 
-                  //onChange={onUserName} 
-                  maxLength={30} />
+                  // value={userName}
+                  // onChange={onUserName}
+                  maxLength={30}
+                />
               </Col>
               <Col md={6} sm={12}>
                 <label >Email *</label>
@@ -83,9 +84,10 @@ const VendorInfo = () => {
                   type="Email"
                   className="form-control"
                   placeholder="Email"
-                  // value={userName} 
-                  //onChange={onUserName} 
-                  maxLength={30} />
+                  // value={userName}
+                  // onChange={onUserName}
+                  maxLength={30}
+                />
               </Col>
               <Col md={6} sm={12} >
                 <label >What is your company's name? *</label>
@@ -93,9 +95,10 @@ const VendorInfo = () => {
                   type="text"
                   className="form-control"
                   placeholder="Company Name"
-                  // value={userName} 
-                  //onChange={onUserName} 
-                  maxLength={30} />
+                  // value={userName}
+                  // onChange={onUserName}
+                  maxLength={30}
+                />
               </Col>
             </Row>
             <Row>
@@ -105,7 +108,8 @@ const VendorInfo = () => {
                   type="text"
                   className="form-control"
                   placeholder="Business Located"
-                  maxLength={30} />
+                  maxLength={30}
+                />
               </Col>
               <Col md={6} sm={12}>
                 <label >Select upto three products. *</label>
@@ -114,7 +118,8 @@ const VendorInfo = () => {
                   isMulti
                   placeholder="Choose Products"
                   maxLength={15}
-                  options={products} />
+                  options={products}
+                />
               </Col>
             </Row>
             <Row>
@@ -124,7 +129,8 @@ const VendorInfo = () => {
                   type="text"
                   placeholder="Choose Bank."
                   maxLength={15}
-                  options={banks} />
+                  options={banks}
+                />
               </Col>
             </Row>
             <Row>
@@ -157,7 +163,7 @@ const VendorInfo = () => {
         <Footer />
       </Row>
     </Grid>
-  )
+  );
 };
 
 export default VendorInfo;
