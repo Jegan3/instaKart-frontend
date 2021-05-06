@@ -27,21 +27,21 @@ const businessRowFirst = [
     title: 'CARD 1',
     content: 'Food Avenue',
     imgUrl: 'images/1_Food.png',
-    url: 'http://w3schools.com',
+    url: '',
   },
   {
     id: 2,
     title: 'CARD 2',
     content: 'Fashion District',
     imgUrl: 'images/2_Fashion.jpg',
-    url: 'http://w3schools.com',
+    url: '',
   },
   {
     id: 3,
     title: 'CARD 3',
     content: 'Health & Wellness',
     imgUrl: 'images/3_Health.png',
-    url: 'http://w3schools.com',
+    url: '',
   },
 ];
 
@@ -51,21 +51,21 @@ const businessRowSecond = [
     title: 'CARD 4',
     content: 'Speciality Services',
     imgUrl: 'images/4_Speciality.png',
-    url: 'http://w3schools.com',
+    url: '',
   },
   {
     id: 5,
     title: 'CARD 5',
     content: 'IK Thrift Store',
     imgUrl: 'images/5_Thrift.png',
-    url: 'http://w3schools.com',
+    url: 'http://vaibhavk13.sg-host.com/',
   },
   {
     id: 6,
     title: 'CARD 6',
     content: 'Grocery & Fresh Produce',
     imgUrl: 'images/6_Grocery.png',
-    url: 'http://w3schools.com',
+    url: '',
   },
 ];
 
@@ -75,21 +75,21 @@ const businessRowThird = [
     title: 'CARD 7',
     content: 'Appliances & Tech Gadgets',
     imgUrl: 'images/7_applicance.jpg',
-    url: 'http://w3schools.com',
+    url: '',
   },
   {
     id: 8,
     title: 'CARD 8',
     content: 'Hardware & Industrial Supplies',
     imgUrl: 'images/8_hardware.png',
-    url: 'http://w3schools.com',
+    url: '',
   },
   {
     id: 9,
     title: 'CARD 9',
     content: 'Home & Garden Supplies',
     imgUrl: 'images/9_home.png',
-    url: 'http://w3schools.com',
+    url: '',
   },
 ];
 
@@ -99,21 +99,21 @@ const businessRowFourth = [
     title: 'CARD 10',
     content: 'Insta-Kart Elearning',
     imgUrl: 'images/10_TechGadgets.jpg',
-    url: 'http://w3schools.com',
+    url: 'https://instakartelearning.com/chess-school/',
   },
   {
     id: 11,
     title: 'CARD 11',
     content: 'Social Media',
     imgUrl: 'images/11_TimeCap.png',
-    url: 'http://w3schools.com',
+    url: '',
   },
   {
     id: 12,
     title: 'CARD 12',
     content: 'Wholesale Suppliers & Drop Shipping',
     imgUrl: 'images/12_WholesaleDS.jpg',
-    url: 'http://w3schools.com',
+    url: '',
   },
 ];
 
