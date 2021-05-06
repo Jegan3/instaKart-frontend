@@ -32,10 +32,10 @@ const SignUp = (props) => {
 
   // For Vendor SignUp 
   const { state } = props.location;
-  const vendor = state === 'vendor';
+  const type = state ? 'vendor' : 'user';
 
   useEffect(() => {
-    if (validSignup && !closeOtp && !vendor) {
+    if (validSignup && !closeOtp && type === 'user') {
       // setAlert(validOtp.message);
       setShowOtp(true);
     } else if (invalidSignup) {
@@ -44,7 +44,7 @@ const SignUp = (props) => {
   });
 
   useEffect(() => {
-    vendor && dispatch({ type: 'SIGNUP_CONTENT_REQUEST' });
+    type === 'vendor' && dispatch({ type: 'SIGNUP_CONTENT_REQUEST' });
   }, [])
 
   const onUserName = (e) => {
@@ -111,7 +111,6 @@ const SignUp = (props) => {
   useEffect(() => {
     countries && countries.filter((item) => {
       if (item._id == country.value) {
-        console.log('item', item.cities)
         const abcd = item.cities.map(data => ({
           value: data._id,
           label: data.cityName,
@@ -138,19 +137,22 @@ const SignUp = (props) => {
         name: userName,
         email,
         password,
+        type
       };
 
       const signupDetailsVendors = {
         name: userName,
         email,
         password,
-        // plan: plan.value,
+        type,
+        plan: 'a',
         industryType: industryType,
-        country: country && country.value,
-        city: city && city.value
+        countryId: country && country.value,
+        cityId: city && city.value,
+        contactNumber: mobile,
       };
 
-      dispatch({ type: 'SIGNUP_REQUEST', signup: vendor ? signupDetailsVendors : signupDetailsUsers });
+      dispatch({ type: 'SIGNUP_REQUEST', signup: type === 'vendor' ? signupDetailsVendors : signupDetailsUsers });
       setErrorMsg('');
       // setShowOtp(true);
       // temp fix for vendor login
@@ -198,7 +200,7 @@ const SignUp = (props) => {
             </Col>
           </Row>
           <Form className="login-form ">
-            {vendor &&
+            {type === 'vendor' &&
               <Row>
                 <Col md={6} sm={12}>
                   <label >Plan *</label>
