@@ -27,21 +27,18 @@ const businessRowFirst = [
     title: 'CARD 1',
     content: 'Food Avenue',
     imgUrl: 'images/1_Food.png',
-    url: '',
   },
   {
     id: 2,
     title: 'CARD 2',
     content: 'Fashion District',
     imgUrl: 'images/2_Fashion.jpg',
-    url: '',
   },
   {
     id: 3,
     title: 'CARD 3',
     content: 'Health & Wellness',
     imgUrl: 'images/3_Health.png',
-    url: '',
   },
 ];
 
@@ -51,7 +48,6 @@ const businessRowSecond = [
     title: 'CARD 4',
     content: 'Speciality Services',
     imgUrl: 'images/4_Speciality.png',
-    url: '',
   },
   {
     id: 5,
@@ -65,7 +61,6 @@ const businessRowSecond = [
     title: 'CARD 6',
     content: 'Grocery & Fresh Produce',
     imgUrl: 'images/6_Grocery.png',
-    url: '',
   },
 ];
 
@@ -75,21 +70,18 @@ const businessRowThird = [
     title: 'CARD 7',
     content: 'Appliances & Tech Gadgets',
     imgUrl: 'images/7_applicance.jpg',
-    url: '',
   },
   {
     id: 8,
     title: 'CARD 8',
     content: 'Hardware & Industrial Supplies',
     imgUrl: 'images/8_hardware.png',
-    url: '',
   },
   {
     id: 9,
     title: 'CARD 9',
     content: 'Home & Garden Supplies',
     imgUrl: 'images/9_home.png',
-    url: '',
   },
 ];
 
@@ -106,14 +98,12 @@ const businessRowFourth = [
     title: 'CARD 11',
     content: 'Social Media',
     imgUrl: 'images/11_TimeCap.png',
-    url: '',
   },
   {
     id: 12,
     title: 'CARD 12',
     content: 'Wholesale Suppliers & Drop Shipping',
     imgUrl: 'images/12_WholesaleDS.jpg',
-    url: '',
   },
 ];
 
