@@ -135,6 +135,7 @@ const SignUp = (props) => {
 
       const signupDetailsUsers = {
         name: userName,
+        contactNumber: mobile,
         email,
         password,
         type
@@ -142,14 +143,14 @@ const SignUp = (props) => {
 
       const signupDetailsVendors = {
         name: userName,
+        contactNumber: mobile,
         email,
         password,
-        type,
-        plan: 'a',
+        estore: 'a',
         industryType: industryType,
         countryId: country && country.value,
         cityId: city && city.value,
-        contactNumber: mobile,
+        type
       };
 
       dispatch({ type: 'SIGNUP_REQUEST', signup: type === 'vendor' ? signupDetailsVendors : signupDetailsUsers });
