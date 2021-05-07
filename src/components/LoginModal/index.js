@@ -131,7 +131,7 @@ const LoginModal = ({ showPopup, hidePopup }) => {
                   <Row>
                     <Col md={12} sm={12} >
                       <label className="form-check-label">
-                      <input type="checkbox" className="form-radio" value={termscondition} onChange={onTermsCondition} />
+                        <input type="checkbox" className="form-radio" value={termscondition} onChange={onTermsCondition} />
                         <small >&emsp;&ensp;By clicking Submit, you agree to our <span className="btn-link" onClick={OpenTermsCondition}>Terms & Conditions and Privacy Policy.</span></small>
                       </label>
                     </Col>

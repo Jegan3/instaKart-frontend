@@ -204,20 +204,19 @@ const SignUp = (props) => {
             {type === 'vendor' &&
               <Row>
                 <Col md={6} sm={12}>
-                  <label >Plan *</label>
-                  <Select
-                    name="Plan"
-                    placeholder="Choose you're plan"
-                    // value={values.profession}
-                    // onChange={}
-                    // options={}
-                    // isSearchable={true}
-                    className="prof-select "
-                    isSearchable={false}
+                  <label>E-Store Name <span className='red-star'>*</span></label>
+                  <input
+                    type='text'
+                    className="form-control"
+                    placeholder="Enter E-Store Name"
+                  // value={}
+                  // onChange={}
+                  // options={}
+                  // isSearchable={true}
                   />
                 </Col>
                 <Col md={6} sm={12}>
-                  <label >Select Industry Type *</label>
+                  <label >Select Industry Type <span className='red-star'>*</span></label>
                   <Select
                     name="Industry Type"
                     placeholder="Choose you're industry type"
@@ -229,8 +228,8 @@ const SignUp = (props) => {
                     isMulti
                   />
                 </Col>
-                <Col md={6} sm={12}>
-                  <label >Select Country *</label>
+                <Col className="clearCountry" md={6} sm={12}>
+                  <label >Select Country <span className='red-star'>*</span></label>
                   <Select
                     name="Country"
                     placeholder="Choose you're country"
@@ -242,7 +241,7 @@ const SignUp = (props) => {
                   />
                 </Col>
                 <Col md={6} sm={12} >
-                  <label >Select City *</label>
+                  <label >Select City <span className='red-star'>*</span></label>
                   <Select
                     name="City"
                     placeholder="Choose you're city"
@@ -257,25 +256,30 @@ const SignUp = (props) => {
               </Row>}
             <Row>
               <Col md={6} sm={12}>
-                <label >User Name *</label>
+                <label >User Name <span className='red-star'>*</span></label>
                 <input type="text" className="form-control" placeholder="Enter user name" value={userName} onChange={onUserName} maxLength={30}></input>
               </Col>
               <Col md={6} sm={12}>
-                <label >Contact Number</label>
+                <label >Contact Number </label>
                 <input type="text" className="form-control" placeholder="Enter contact number" value={mobile} onChange={onMobile} maxLength={15} ></input>
               </Col>
             </Row>
             <Row>
               <Col md={6} sm={12}>
-                <label >Email *</label>
+                <label >Email <span className='red-star'>*</span></label>
                 <input type="email" className="form-control" placeholder="Enter email" value={email} onChange={onEmail} maxLength={30}></input>
               </Col>
               <Col md={6} sm={12}>
-                <label >Password *</label>
+                <label >Password <span className='red-star'>*</span></label>
                 <input type="text" className="form-control" placeholder="Enter password" value={password} onChange={onPassword} maxLength={15} ></input>
               </Col>
             </Row>
             <Row>
+              <Col md={12} sm={12} className="required" >
+                <label className="required-feild">
+                  <small><span className='red-star'>*</span> Required Fields</small>
+                </label>
+              </Col>
               <Col md={12} sm={12} className="signup-submit" >
                 <label className="form-check-label">
                   <input type="checkbox" className="form-radio" value={termscondition} onChange={onTermsCondition} />
