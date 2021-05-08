@@ -57,7 +57,7 @@ const VendorInfo = () => {
           <Form className="login-form">
             <Row>
               <Col md={6} sm={12}>
-                <label >What is your first name? <span className='red-star'>*</span></label>
+                <label >What is your first name ? <span className="red-star">*</span></label>
                 <input
                   type="text"
                   className="form-control"
@@ -68,7 +68,7 @@ const VendorInfo = () => {
                 />
               </Col>
               <Col md={6} sm={12}>
-                <label >What is your surname? <span className='red-star'>*</span></label>
+                <label >What is your surname ? <span className="red-star">*</span></label>
                 <input
                   type="text"
                   className="form-control"
@@ -79,7 +79,7 @@ const VendorInfo = () => {
                 />
               </Col>
               <Col md={6} sm={12}>
-                <label >Email <span className='red-star'>*</span></label>
+                <label >Email <span className="red-star">*</span></label>
                 <input
                   type="Email"
                   className="form-control"
@@ -90,7 +90,7 @@ const VendorInfo = () => {
                 />
               </Col>
               <Col md={6} sm={12} >
-                <label >What is your company's name? <span className='red-star'>*</span></label>
+                <label >What is your company's name ? <span className="red-star">*</span></label>
                 <input
                   type="text"
                   className="form-control"
@@ -103,7 +103,7 @@ const VendorInfo = () => {
             </Row>
             <Row>
               <Col md={6} sm={12}>
-                <label >Where is your business located? <span className='red-star'>*</span></label>
+                <label >Where is your business located ? <span className="red-star">*</span></label>
                 <input
                   type="text"
                   className="form-control"
@@ -112,7 +112,7 @@ const VendorInfo = () => {
                 />
               </Col>
               <Col md={6} sm={12}>
-                <label >Select upto three products <span className='red-star'>*</span></label>
+                <label >Select upto three products <span className="red-star">*</span></label>
                 <Select
                   type="text"
                   className="prof-select "
@@ -125,7 +125,7 @@ const VendorInfo = () => {
             </Row>
             <Row>
               <Col md={6} sm={12}>
-                <label >Choose your bank <span className='red-star'>*</span></label>
+                <label >Choose your bank <span className="red-star">*</span></label>
                 <Select
                   type="text"
                   className="prof-select "
@@ -138,7 +138,7 @@ const VendorInfo = () => {
             <Row>
               <Col md={12} sm={12} className="required" >
                 <label className="required-feild">
-                  <small><span className='red-star'>*</span> Required Fields</small>
+                  <small><span className="red-star">*</span> Required Fields</small>
                 </label>
               </Col>
               <Col md={12} sm={12} className="signup-submit" >
