@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Row, Col, Form, Grid } from 'react-bootstrap';
 import Select from 'react-select';
+import { history } from '../../routes';
 import Footer from '../../components/Footer';
 import Header from '../../components/Headers';
 
@@ -48,6 +49,17 @@ const VendorInfo = () => {
   const [alertMsg, setAlertMsg] = useState('');
 
   const dispatch = useDispatch();
+  const vendor = useSelector((state) => state.vendorInfo.vendorInfo);
+
+  useEffect(() => {
+    if (vendor && vendor.status) {
+      setAlertMsg('Thanks!, Basic info form is successfully updated with us');
+      setTimeout(() => {
+        history.push({ pathname: '/' })
+      }, 3000);
+    }
+
+  })
 
   // const Option = props => {
   //   return ( <div> <components.Option {...props}>
@@ -92,7 +104,7 @@ const VendorInfo = () => {
   }))
 
   const onProducts = (products) => {
-      setProducts(products)
+    setProducts(products)
   }
 
   const bankSelect = bankList.map(item => ({
@@ -101,7 +113,7 @@ const VendorInfo = () => {
   }))
 
   const onBank = (bank) => {
-      setBank(bank)
+    setBank(bank)
   }
 
   const onTermsCondition = (e) => {
@@ -156,6 +168,11 @@ const VendorInfo = () => {
       <Header header />
       <Row>
         <Col className="vendorinfo" >
+          <Row>
+            <Col lg={12}>
+              {alertMsg && <div class="alert alert-info" role="alert">{alertMsg}</div>}
+            </Col>
+          </Row>
           <Row>
             <Col lg={12} className="sub-heading">
               Basic Information
@@ -254,7 +271,7 @@ const VendorInfo = () => {
               </Col>
               <Col md={12} sm={12} className="signup-submit" >
                 <label className="form-check-label">
-                <input type="checkbox" className="form-radio" value={termscondition} onChange={onTermsCondition} />
+                  <input type="checkbox" className="form-radio" value={termscondition} onChange={onTermsCondition} />
                   <small>&emsp;&ensp;By clicking Submit, you agree to our <span className="btn-link" onClick={OpenTermsCondition}>Terms & Conditions and Privacy Policy.</span></small>
                 </label>
               </Col>
@@ -271,7 +288,7 @@ const VendorInfo = () => {
               </Col>
               <Col md={12} sm={12} className="login-error-signup" >
                 <span className="login-error-msg">
-                  {alertMsg}
+                  {/* {alertMsg} */}
                 </span>
               </Col>
             </Row>

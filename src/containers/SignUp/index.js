@@ -48,7 +48,7 @@ const SignUp = (props) => {
       setMobile('');
       setEmail('');
       setPassword('');
-      setAlertMsg('You have successfully registered with us , You will receive an email from us shortly');
+      setAlertMsg('Thanks!, Signup form is successfully registered with us , You will receive an email from us shortly');
     } else if (invalidSignup) {
       setAlertMsg(`An account with email ${email} already exists`);
     }
