@@ -9,6 +9,7 @@ import Footer from '../../components/Footer';
 import Header from '../../components/Headers';
 
 const SignUp = (props) => {
+  const [estore, setEstore] = useState('')
   const [userName, setUserName] = useState('');
   const [mobile, setMobile] = useState('');
   const [email, setEmail] = useState('');
@@ -16,8 +17,8 @@ const SignUp = (props) => {
   const [termscondition, setTermsCondition] = useState(false);
   const [showOtp, setShowOtp] = useState(false);
   const [closeOtp, setCloseOtp] = useState(false);
-  const [errorMsg, setErrorMsg] = useState('');
-  const [industryType, setindustryType] = useState();
+  const [alertMsg, setAlertMsg] = useState('');
+  const [industryType, setIndustryType] = useState();
   const [country, setCountry] = useState();
   const [city, setCity] = useState();
   const [updatedCityOptions, setUpdatedCityOptions] = useState();
@@ -27,6 +28,7 @@ const SignUp = (props) => {
   const invalidSignup = useSelector((state) => state.signupState.error);
   const signUpContent = useSelector((state) => state.signupContentState.signupContent);
 
+  const status = validSignup && validSignup.status
   const industry = signUpContent && signUpContent.industries
   const countries = signUpContent && signUpContent.countriesList
 
@@ -38,14 +40,29 @@ const SignUp = (props) => {
     if (validSignup && !closeOtp && type === 'user') {
       // setAlert(validOtp.message);
       setShowOtp(true);
+    } else if (status) {
+      setEstore('');
+      setIndustryType('');
+      setCountry('');
+      setUserName('');
+      setMobile('');
+      setEmail('');
+      setPassword('');
+      setAlertMsg(`success`);
     } else if (invalidSignup) {
-      setErrorMsg(`An account with email ${email} already exists`);
+      setAlertMsg(`An account with email ${email} already exists`);
     }
   });
 
   useEffect(() => {
     type === 'vendor' && dispatch({ type: 'SIGNUP_CONTENT_REQUEST' });
   }, [])
+
+  const onEstore = (e) => {
+    if (e.target.value.match('^[a-zA-Z0-9_@./#&+-]*$')) {
+      setEstore(e.target.value)
+    }
+  }
 
   const onUserName = (e) => {
     if (e.target.value.match('^[a-zA-Z0-9]*$')) {
@@ -84,7 +101,7 @@ const SignUp = (props) => {
   };
 
   const onIndustryType = (industryType) => {
-    setindustryType(industryType)
+    setIndustryType(industryType)
   }
 
   // IndustryType Options
@@ -122,15 +139,15 @@ const SignUp = (props) => {
 
   const Submit = () => {
     if (userName === '' && email === '' && password === '') {
-      setErrorMsg('Please enter the valid credentials');
+      setAlertMsg('Please enter the valid credentials');
     } else if (userName === '') {
-      setErrorMsg('Please enter the valid user name');
+      setAlertMsg('Please enter the valid user name');
     } else if (email === '') {
-      setErrorMsg('Please enter the valid email');
+      setAlertMsg('Please enter the valid email');
     } else if (password === '') {
-      setErrorMsg('Please enter the valid password');
+      setAlertMsg('Please enter the valid password');
     } else if (termscondition === false) {
-      setErrorMsg('Please accept the Terms & Conditions and Privacy Policy');
+      setAlertMsg('Please accept the Terms & Conditions and Privacy Policy');
     } else {
 
       const signupDetailsUsers = {
@@ -146,7 +163,7 @@ const SignUp = (props) => {
         contactNumber: mobile,
         email,
         password,
-        estore: 'a',
+        estore,
         industryType: industryType,
         countryId: country && country.value,
         cityId: city && city.value,
@@ -154,13 +171,13 @@ const SignUp = (props) => {
       };
 
       dispatch({ type: 'SIGNUP_REQUEST', signup: type === 'vendor' ? signupDetailsVendors : signupDetailsUsers });
-      setErrorMsg('');
+      setAlertMsg('');
       // setShowOtp(true);
       // temp fix for vendor login
       // if (vendor) {
       //   history.push({
       //     pathname: '/dashboard',
-      //   });
+      //   });ƒ
       // } else {
       //   history.push({
       //     pathname: '/',
@@ -200,23 +217,21 @@ const SignUp = (props) => {
               Basic Information
             </Col>
           </Row>
-          <Form className="login-form ">
+          <Form className="login-form">
             {type === 'vendor' &&
               <Row>
                 <Col md={6} sm={12}>
-                  <label>E-Store Name <span className='red-star'>*</span></label>
+                  <label>E-Store Name <span className="red-star">*</span></label>
                   <input
                     type='text'
                     className="form-control"
                     placeholder="Enter E-Store Name"
-                  // value={}
-                  // onChange={}
-                  // options={}
-                  // isSearchable={true}
+                    value={estore}
+                    onChange={onEstore}
                   />
                 </Col>
                 <Col md={6} sm={12}>
-                  <label >Select Industry Type <span className='red-star'>*</span></label>
+                  <label >Select Industry Type <span className="red-star">*</span></label>
                   <Select
                     name="Industry Type"
                     placeholder="Choose you're industry type"
@@ -229,7 +244,7 @@ const SignUp = (props) => {
                   />
                 </Col>
                 <Col className="clearCountry" md={6} sm={12}>
-                  <label >Select Country <span className='red-star'>*</span></label>
+                  <label >Select Country <span className="red-star">*</span></label>
                   <Select
                     name="Country"
                     placeholder="Choose you're country"
@@ -241,7 +256,7 @@ const SignUp = (props) => {
                   />
                 </Col>
                 <Col md={6} sm={12} >
-                  <label >Select City <span className='red-star'>*</span></label>
+                  <label >Select City <span className="red-star">*</span></label>
                   <Select
                     name="City"
                     placeholder="Choose you're city"
@@ -256,7 +271,7 @@ const SignUp = (props) => {
               </Row>}
             <Row>
               <Col md={6} sm={12}>
-                <label >User Name <span className='red-star'>*</span></label>
+                <label >User Name <span className="red-star">*</span></label>
                 <input type="text" className="form-control" placeholder="Enter user name" value={userName} onChange={onUserName} maxLength={30}></input>
               </Col>
               <Col md={6} sm={12}>
@@ -266,18 +281,18 @@ const SignUp = (props) => {
             </Row>
             <Row>
               <Col md={6} sm={12}>
-                <label >Email <span className='red-star'>*</span></label>
+                <label >Email <span className="red-star">*</span></label>
                 <input type="email" className="form-control" placeholder="Enter email" value={email} onChange={onEmail} maxLength={30}></input>
               </Col>
               <Col md={6} sm={12}>
-                <label >Password <span className='red-star'>*</span></label>
+                <label >Password <span className="red-star">*</span></label>
                 <input type="text" className="form-control" placeholder="Enter password" value={password} onChange={onPassword} maxLength={15} ></input>
               </Col>
             </Row>
             <Row>
               <Col md={12} sm={12} className="required" >
                 <label className="required-feild">
-                  <small><span className='red-star'>*</span> Required Fields</small>
+                  <small><span className="red-star">*</span> Required Fields</small>
                 </label>
               </Col>
               <Col md={12} sm={12} className="signup-submit" >
@@ -298,7 +313,7 @@ const SignUp = (props) => {
                 </button>
               </Col>
               <Col md={12} sm={12} className="login-error-signup" >
-                <span className="login-error-msg">{errorMsg}</span>
+                <span className="login-error-msg">{alertMsg}</span>
               </Col>
             </Row>
           </Form>
