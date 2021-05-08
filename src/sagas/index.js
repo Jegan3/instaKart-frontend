@@ -4,6 +4,7 @@ import { uploadBannerWatchers } from './UploadBanner';
 import { retreiveBannerWatchers } from './RetrieveBanner';
 import { otpWatchers } from './Otp';
 import { signupContentWatchers } from './SignupContent';
+import { vendorInfoWatchers } from './VendorInfo';
 
 export default function* rootWatchers() {
   yield [
@@ -13,5 +14,6 @@ export default function* rootWatchers() {
     retreiveBannerWatchers(),
     otpWatchers(),
     signupContentWatchers(),
+    vendorInfoWatchers(),
   ];
 }
