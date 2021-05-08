@@ -48,7 +48,7 @@ const SignUp = (props) => {
       setMobile('');
       setEmail('');
       setPassword('');
-      setAlertMsg(`success`);
+      setAlertMsg('You have successfully registered with us , You will receive an email from us shortly');
     } else if (invalidSignup) {
       setAlertMsg(`An account with email ${email} already exists`);
     }
@@ -313,7 +313,7 @@ const SignUp = (props) => {
                 </button>
               </Col>
               <Col md={12} sm={12} className="login-error-signup" >
-                <span className="login-error-msg">{alertMsg}</span>
+                <span className={status ? "success-msg" : "login-error-msg"}>{alertMsg}</span>
               </Col>
             </Row>
           </Form>
