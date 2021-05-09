@@ -74,7 +74,7 @@ const businessRowThird = [
   {
     id: 8,
     title: 'CARD 8',
-    content: 'Hardware & Industrial Supplies',
+    content: 'Automotive, Hardware & Industrial Supplies',
     imgUrl: 'images/8_hardware.png',
   },
   {
@@ -176,7 +176,7 @@ const cardsDataMobile = [
   {
     id: 8,
     title: 'CARD 8',
-    content: 'Hardware & Industrial Supplies',
+    content: 'Automotive, Hardware & Industrial Supplies',
     imgUrl: 'images/8_hardware.png',
   },
   {
