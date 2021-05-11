@@ -47,6 +47,7 @@ const VendorInfo = () => {
   const [bank, setBank] = useState();
   const [termscondition, setTermsCondition] = useState(false);
   const [alertMsg, setAlertMsg] = useState('');
+  const [alertError, setAlertError] = useState(false);
 
   const dispatch = useDispatch();
   const vendor = useSelector((state) => state.vendorInfo.vendorInfo);
@@ -129,22 +130,9 @@ const VendorInfo = () => {
   };
 
   const Submit = () => {
-    if (firstName === '' && surName === '' && email === '' && companyName === '' && businessLocation === '' && products === '' && bank === '') {
-      setAlertMsg('Please enter the valid credentials');
-    } else if (firstName === '') {
-      setAlertMsg('Please enter the valid first name');
-    } else if (surName === '') {
-      setAlertMsg('Please enter the valid sur name');
-    } else if (email === '') {
-      setAlertMsg('Please enter the valid email');
-    } else if (companyName === '') {
-      setAlertMsg('Please enter the valid company name');
-    } else if (businessLocation === '') {
-      setAlertMsg('Please enter the valid business name');
-    } else if (products === '') {
-      setAlertMsg('Please select the products');
-    } else if (bank === '') {
-      setAlertMsg('Please select the bank');
+    if (firstName === '' || surName === '' || email === '' || companyName === '' || businessLocation === '' || products === '' || bank === '') {
+      setAlertError(true)
+      setAlertMsg('Please fill all the fields');
     } else if (termscondition === false) {
       setAlertMsg('Please accept the Terms & Conditions and Privacy Policy');
     } else {
@@ -184,7 +172,7 @@ const VendorInfo = () => {
                 <label >What is your first name ? <span className="red-star">*</span></label>
                 <input
                   type="text"
-                  className="form-control"
+                  className={alertError && firstName === '' ? ` form-control my-input` : `form-control formy`}
                   placeholder="Firstname"
                   value={firstName}
                   onChange={onFirstName}
@@ -195,7 +183,7 @@ const VendorInfo = () => {
                 <label >What is your surname ? <span className="red-star">*</span></label>
                 <input
                   type="text"
-                  className="form-control"
+                  className={alertError && surName === '' ? ` form-control my-input` : `form-control formy`}
                   placeholder="Surname"
                   value={surName}
                   onChange={onSurName}
@@ -206,7 +194,7 @@ const VendorInfo = () => {
                 <label >Email <span className="red-star">*</span></label>
                 <input
                   type="Email"
-                  className="form-control"
+                  className={alertError && email === '' ? ` form-control my-input` : `form-control formy`}
                   placeholder="Email"
                   value={email}
                   onChange={onEmail}
@@ -217,7 +205,7 @@ const VendorInfo = () => {
                 <label >What is your company's name ? <span className="red-star">*</span></label>
                 <input
                   type="text"
-                  className="form-control"
+                  className={alertError && companyName === '' ? ` form-control my-input` : `form-control formy`}
                   placeholder="Company Name"
                   value={companyName}
                   onChange={onCompany}
@@ -230,14 +218,14 @@ const VendorInfo = () => {
                 <label >Where is your business located ? <span className="red-star">*</span></label>
                 <input
                   type="text"
-                  className="form-control"
+                  className={alertError && businessLocation === '' ? ` form-control my-input` : `form-control formy`}
                   placeholder="Business Located"
                   value={businessLocation}
                   onChange={onBusiness}
                   maxLength={30}
                 />
               </Col>
-              <Col md={6} sm={12}>
+              <Col md={6} sm={12} className={`clearCity ${alertError && !products && `dropdown-alert`}`}>
                 <label >Select upto three products <span className="red-star">*</span></label>
                 <Select
                   type="text"
@@ -247,11 +235,12 @@ const VendorInfo = () => {
                   value={products}
                   onChange={onProducts}
                   options={productSelect}
+                  isSearchable={false}
                 />
               </Col>
             </Row>
             <Row>
-              <Col md={6} sm={12}>
+              <Col md={6} sm={12} className={`clearCity ${alertError && !bank && `dropdown-alert`}`}>
                 <label >Choose your bank <span className="red-star">*</span></label>
                 <Select
                   type="text"
@@ -260,6 +249,7 @@ const VendorInfo = () => {
                   value={bank}
                   onChange={onBank}
                   options={bankSelect}
+                  isSearchable={false}
                 />
               </Col>
             </Row>
