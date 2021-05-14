@@ -11,6 +11,7 @@ const LoginModal = ({ showPopup, hidePopup }) => {
   const [login, setLogin] = useState(false);
   const [showLogin, setShowLogin] = useState(showPopup);
   const [errorMsg, setErrorMsg] = useState('');
+  const [alertError, setAlertError] = useState(false);
   const dispatch = useDispatch();
   const validLogin = useSelector((state) => state.loginState.login);
   const invalidLogin = useSelector((state) => state.loginState.error);
@@ -54,12 +55,13 @@ const LoginModal = ({ showPopup, hidePopup }) => {
   }
 
   const Login = () => {
-    if (email === '' && password === '') {
-      setErrorMsg('Please enter the valid credentials');
+    if (email === '' || password === '') {
+      setAlertError(true);
+      setErrorMsg('Please fill all the fields');
     } else if (email === '') {
-      setErrorMsg('Please enter the valid username');
+      setAlertError(true);
     } else if (password === '') {
-      setErrorMsg('Please enter the valid password');
+      setAlertError(true);
     } else if (termscondition === false) {
       setErrorMsg('Please accept the Terms & Conditions and Privacy Policy');
     } else {
@@ -116,11 +118,23 @@ const LoginModal = ({ showPopup, hidePopup }) => {
                   <Row className="login-details">
                     <Col md={12} sm={12}>
                       <label >User Name </label>
-                      <input type="email" className="form-control" placeholder="Enter username" maxLength={30} value={email} onChange={onUserName} />
+                      <input type="email"
+                        className={alertError && email === '' ? ` form-control my-input` : `form-control formy`}
+                        placeholder="Enter username"
+                        maxLength={30}
+                        value={email}
+                        onChange={onUserName}
+                      />
                     </Col>
                     <Col md={12} sm={12}>
                       <label >Password</label>
-                      <input type="password" className="form-control" placeholder="Enter password" maxLength={15} value={password} onChange={onPassword} />
+                      <input type="password"
+                        className={alertError && password === '' ? ` form-control my-input` : `form-control formy`}
+                        placeholder="Enter password"
+                        maxLength={15}
+                        value={password}
+                        onChange={onPassword}
+                      />
                     </Col>
                   </Row>
                   <Row className="check-recovery">

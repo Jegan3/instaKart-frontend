@@ -18,6 +18,7 @@ const SignUp = (props) => {
   const [showOtp, setShowOtp] = useState(false);
   const [closeOtp, setCloseOtp] = useState(false);
   const [alertMsg, setAlertMsg] = useState('');
+  const [alertError, setAlertError] = useState(false);
   const [industryType, setIndustryType] = useState();
   const [country, setCountry] = useState();
   const [city, setCity] = useState();
@@ -31,7 +32,6 @@ const SignUp = (props) => {
   const status = validSignup && validSignup.status
   const industry = signUpContent && signUpContent.industries
   const countries = signUpContent && signUpContent.countriesList
-
   // For Vendor SignUp 
   const { state } = props.location;
   const type = state ? 'vendor' : 'user';
@@ -44,10 +44,12 @@ const SignUp = (props) => {
       setEstore('');
       setIndustryType('');
       setCountry('');
+      setCity('');
       setUserName('');
       setMobile('');
       setEmail('');
       setPassword('');
+      setTermsCondition(false);
       setAlertMsg('Thanks!, Signup form is successfully registered with us , You will receive an email from us shortly');
     } else if (invalidSignup) {
       setAlertMsg(`An account with email ${email} already exists`);
@@ -138,14 +140,15 @@ const SignUp = (props) => {
   }, [country])
 
   const Submit = () => {
-    if (userName === '' && email === '' && password === '') {
-      setAlertMsg('Please enter the valid credentials');
+    if (estore === '' || userName === '' || email === '' || password === '' || !industryType || !country || !city) {
+      setAlertError(true)
+      setAlertMsg('Please fill all the fields');
     } else if (userName === '') {
-      setAlertMsg('Please enter the valid user name');
+      setAlertError(true)
     } else if (email === '') {
-      setAlertMsg('Please enter the valid email');
+      setAlertError(true)
     } else if (password === '') {
-      setAlertMsg('Please enter the valid password');
+      setAlertError(true)
     } else if (termscondition === false) {
       setAlertMsg('Please accept the Terms & Conditions and Privacy Policy');
     } else {
@@ -184,7 +187,6 @@ const SignUp = (props) => {
       //   });
     }
   };
-
   const handleClose = () => {
     setShowOtp(false);
     setCloseOtp(true);
@@ -214,54 +216,51 @@ const SignUp = (props) => {
           </Row>
           <Row>
             <Col lg={12} className="sub-heading">
-              Basic Information
+              Basic Informations
             </Col>
           </Row>
           <Form className="login-form">
             {type === 'vendor' &&
               <Row>
-                <Col md={6} sm={12}>
+                <Col md={6} sm={12} >
                   <label>E-Store Name <span className="red-star">*</span></label>
                   <input
                     type='text'
-                    className="form-control"
+                    className={alertError && estore === '' ? ` form-control my-input` : `form-control formy`}
                     placeholder="Enter E-Store Name"
                     value={estore}
                     onChange={onEstore}
                   />
                 </Col>
-                <Col md={6} sm={12}>
+                <Col md={6} sm={12} className={`clearIndustry  ${alertError && !industryType && `dropdown-alert`}`} >
                   <label >Select Industry Type <span className="red-star">*</span></label>
                   <Select
                     name="Industry Type"
                     placeholder="Choose you're industry type"
                     value={industryType}
-                    className="prof-select "
                     onChange={onIndustryType}
                     options={industryTypeOptions}
                     isSearchable={false}
                     isMulti
                   />
                 </Col>
-                <Col className="clearCountry" md={6} sm={12}>
+                <Col md={6} sm={12} className={`clearCountry ${alertError && !country && `dropdown-alert`}`}>
                   <label >Select Country <span className="red-star">*</span></label>
                   <Select
                     name="Country"
                     placeholder="Choose you're country"
                     value={country}
-                    className="prof-select "
                     onChange={onCountry}
                     options={countryOptions}
                     isSearchable={false}
                   />
                 </Col>
-                <Col md={6} sm={12} >
+                <Col md={6} sm={12} className={`clearCity ${alertError && !city && `dropdown-alert`}`} >
                   <label >Select City <span className="red-star">*</span></label>
                   <Select
                     name="City"
                     placeholder="Choose you're city"
                     value={city}
-                    className="prof-select "
                     onChange={onCity}
                     options={updatedCityOptions}
                     isSearchable={false}
@@ -272,7 +271,14 @@ const SignUp = (props) => {
             <Row>
               <Col md={6} sm={12}>
                 <label >User Name <span className="red-star">*</span></label>
-                <input type="text" className="form-control" placeholder="Enter user name" value={userName} onChange={onUserName} maxLength={30}></input>
+                <input
+                  type="text"
+                  className={alertError && userName === '' ? ` form-control my-input` : `form-control formy`}
+                  placeholder="Enter user name"
+                  value={userName}
+                  onChange={onUserName}
+                  maxLength={30}
+                />
               </Col>
               <Col md={6} sm={12}>
                 <label >Contact Number </label>
@@ -282,11 +288,22 @@ const SignUp = (props) => {
             <Row>
               <Col md={6} sm={12}>
                 <label >Email <span className="red-star">*</span></label>
-                <input type="email" className="form-control" placeholder="Enter email" value={email} onChange={onEmail} maxLength={30}></input>
+                <input type="email" className={
+                  alertError && email === ''
+                    ? ` form-control my-input`
+                    : `form-control formy`
+                } placeholder="Enter email" value={email} onChange={onEmail} maxLength={30}></input>
               </Col>
               <Col md={6} sm={12}>
                 <label >Password <span className="red-star">*</span></label>
-                <input type="text" className="form-control" placeholder="Enter password" value={password} onChange={onPassword} maxLength={15} ></input>
+                <input
+                  type="text"
+                  className={alertError && password === '' ? ` form-control my-input` : `form-control formy`}
+                  placeholder="Enter password"
+                  value={password}
+                  onChange={onPassword}
+                  maxLength={15}
+                />
               </Col>
             </Row>
             <Row>
@@ -297,7 +314,12 @@ const SignUp = (props) => {
               </Col>
               <Col md={12} sm={12} className="signup-submit" >
                 <label className="form-check-label">
-                  <input type="checkbox" className="form-radio" value={termscondition} onChange={onTermsCondition} />
+                  <input
+                    type="checkbox"
+                    className="form-radio"
+                    checked={termscondition}
+                    onChange={onTermsCondition}
+                  />
                   <small>&emsp;&ensp;By clicking Submit, you agree to our <span className="btn-link" onClick={OpenTermsCondition}>Terms & Conditions and Privacy Policy.</span></small>
                 </label>
               </Col>
