@@ -1,38 +1,35 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable react/prefer-stateless-function */
-
-import React, { Component } from 'react';
+/*eslint-disable*/
+import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
+import { faInfoCircle, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 
-export class StatsCard extends Component {
-  render() {
-    return (
-      <div className="card card-stats">
-        <div className="content">
-          <div className="row">
-            <div className="col-xs-5">
-              <div className="icon-big icon-center icon-warning">
-                {this.props.bigIcon}
-              </div>
-            </div>
-            <div className="col-xs-7">
-              <div className="numbers">
-                <p>{this.props.statsText}<span className="info-icon" ><FontAwesomeIcon icon={faInfoCircle} /></span></p>
-                {this.props.statsValue}
-              </div>
-            </div>
+const StatsCard = ({ bigIcon, statsText, statsValue, className, priText, secText }) => (
+  <div className="card card-stats">
+    <div className="content">
+      <div className={`row ${className}`}>
+        <div className="col-xs-5 thrift-card">
+          <div className="icon-big icon-center icon-warning">
+            {bigIcon}
           </div>
         </div>
-        {/* <div className="footer">
+        <div className="col-xs-7 thrift-card">
+          <div className="numbers">
+            <p>{priText}</p>
+            {/* <p>{secText}</p> */}
+            {secText && <p>{secText}<span className="categories-count" ><FontAwesomeIcon icon={faPlusCircle} /></span></p>}
+            {statsText && <p>{statsText}<span className="info-icon" ><FontAwesomeIcon icon={faInfoCircle} /></span></p>}
+            {statsValue}
+          </div>
+        </div>
+      </div>
+    </div>
+    {/* <div className="footer">
           <hr />
           <div className="stats">
             {this.props.statsIcon} {this.props.statsIconText}
           </div>
         </div> */}
-      </div>
-    );
-  }
-}
+  </div>
+);
 
 export default StatsCard;

@@ -3,6 +3,7 @@ import { Row, Col, Grid } from 'react-bootstrap';
 import Banners from '../../components/Banners';
 import Footer from '../../components/Footer';
 import Header from '../../components/Headers';
+import StatsCard from '../../components/StatsCard';
 
 const ThriftStore = () => (
   <Grid fluid>
@@ -17,6 +18,72 @@ const ThriftStore = () => (
     <div className="bg2">
       <div className="cards-page">
         <Row md={12} className="cards-row clearfix">
+          <Col xs={6} md={2} sm={4} lg={2} className="category-item">
+            <StatsCard
+              bigIcon={<i className="fas fa-archive fa-sm circle-icon-1" />}
+              className="thift-store"
+              priText="Order Received"
+              secText="1 Ads"
+              // statsValue="634"
+              //   statsIcon={<i className="fa fa-refresh" />}
+              // statsIconText="Updated now"
+            />
+          </Col>
+          <Col xs={6} md={2} sm={4} lg={2} className="category-item">
+            <StatsCard
+              bigIcon={<i className="fas fa-archive fa-sm circle-icon-1" />}
+              className="thift-store"
+              priText="Order Received"
+              secText="1 Ads"
+              // statsValue="634"
+              //   statsIcon={<i className="fa fa-refresh" />}
+              // statsIconText="Updated now"
+            />
+          </Col>
+          <Col xs={6} md={2} sm={4} lg={2} className="category-item">
+            <StatsCard
+              bigIcon={<i className="fas fa-archive fa-sm circle-icon-1" />}
+              className="thift-store"
+              priText="Order Received"
+              secText="1 Ads"
+              // statsValue="634"
+              //   statsIcon={<i className="fa fa-refresh" />}
+              // statsIconText="Updated now"
+            />
+          </Col>
+          <Col xs={6} md={2} sm={4} lg={2} className="category-item">
+            <StatsCard
+              bigIcon={<i className="fas fa-archive fa-sm circle-icon-1" />}
+              className="thift-store"
+              priText="Order Received"
+              secText="1 Ads"
+              // statsValue="634"
+              //   statsIcon={<i className="fa fa-refresh" />}
+              // statsIconText="Updated now"
+            />
+          </Col>
+          <Col xs={6} md={2} sm={4} lg={2} className="category-item">
+            <StatsCard
+              bigIcon={<i className="fas fa-archive fa-sm circle-icon-1" />}
+              className="thift-store"
+              priText="Order Received"
+              secText="1 Ads"
+              // statsValue="634"
+              //   statsIcon={<i className="fa fa-refresh" />}
+              // statsIconText="Updated now"
+            />
+          </Col>
+          <Col xs={6} md={2} sm={4} lg={2} className="category-item">
+            <StatsCard
+              bigIcon={<i className="fas fa-archive fa-sm circle-icon-1" />}
+              className="thift-store"
+              priText="Order Received"
+              secText="1 Ads"
+              // statsValue="634"
+              //   statsIcon={<i className="fa fa-refresh" />}
+              // statsIconText="Updated now"
+            />
+          </Col>
           <Col xs={6} md={2} sm={4} lg={2} className="category-item">
             <div className="category-holder clearfix">
               <div className="card-body">

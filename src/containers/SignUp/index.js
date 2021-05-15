@@ -140,7 +140,11 @@ const SignUp = (props) => {
   }, [country])
 
   const Submit = () => {
-    if (estore === '' || userName === '' || email === '' || password === '' || industryType && !industryType || country && !country || city && !city) {
+    if (type === 'user' && (!userName || !email || !password)) {
+      setAlertError(true)
+      setAlertMsg('Please fill all the fields');
+    }
+    else if (type === 'vendor' && (!estore || !userName || !email || !password || !industryType || !country || !city)) {
       setAlertError(true)
       setAlertMsg('Please fill all the fields');
     } else if (termscondition === false) {

@@ -8,7 +8,6 @@
 //     position: relative;
 // }
 
-
 // .card-box{
 // min-height: 185px;
 // border-radius: 10px;
@@ -46,65 +45,64 @@
 // 	width:90%;
 // }
 
-
 /////////////
 .category-holder {
-    background: #fff;
-    padding: 30px;
-    border-radius: 15px;
+  background: #fff;
+  padding: 30px;
+  border-radius: 15px;
 }
 
 .clearfix {
-    display: block;
+  display: block;
 }
 
 s .card-body {
-    font-weight: 700;
+  font-weight: 700;
 }
 
 .card-body a {
-    font-size: 14px;
-    /* font-weight: 400; */
-    text-transform: capitalize;
-    display: block;
-    text-align: center;
+  font-size: 14px;
+  /* font-weight: 400; */
+  text-transform: capitalize;
+  display: block;
+  text-align: center;
 }
 
 .category-holder .card-body a .cat-icon {
-    display: block;
-    text-align: center;
-    position: relative;
+  display: block;
+  text-align: center;
+  position: relative;
 }
 
 .card-body img.field-icon {
-    /* float: right; */
-    margin: 0;
+  /* float: right; */
+  margin: 0;
 }
 
 .category-holder .card-body a .categories-count {
-    display: block;
-    text-align: center;
-    color: #f7425b;
+  display: block;
+  text-align: center;
+  color: #f7425b;
 }
 
 .cards-row {
-    //	margin: 0 -6px!important;
-    width: 90% !important;
-    margin: auto;
+  //	margin: 0 -6px!important;
+  width: 80% !important;
+  margin: auto;
 }
 
 .category-item {
-    //padding: 0 6px;//
-    float: left;
-    margin-bottom: 12px;
-    transform: translateY(0);
-    transition: all 1s ease;
+  //padding: 0 6px;//
+  float: left;
+  margin-bottom: 12px;
+  transform: translateY(0);
+  transition: all 1s ease;
 }
 
 .category-holder:hover {
-    transform: translateY(-7px);
-    transition: all 1s ease;
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  transform: translateY(-7px);
+  transition: all 1s ease;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
 // .cards-page{
@@ -113,16 +111,23 @@ s .card-body {
 //    // padding-bottom: 70px;
 //    // position: relative;
 // 	//width:90%;
-
-
 // }
-.bg2 {
-    background-color: #28a4d9;
-    // width: 100vw;
-    // right: 15px;
-    // bottom: 64px;
-    // height: 500px;
-    // position: relative;
-    width: 100%;
 
+.bg2 {
+  background-color: #28a4d9;
+  // width: 100vw;
+  // right: 15px;
+  // bottom: 64px;
+  // height: 500px;
+  // position: relative;
+  width: 100%;
+}
+
+.thift-store {
+    display: grid;
+}
+
+.thift-store .thrift-card {
+    margin: auto;
+    white-space: nowrap;
 }
