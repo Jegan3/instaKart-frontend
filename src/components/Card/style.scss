@@ -13,9 +13,7 @@
 
   img {
     width: 100%;
-    //height: 200px;
     object-fit: center;
-    //padding: 10px;
   }
 
   &:hover {
@@ -24,8 +22,6 @@
 }
 
 .card-content {
-  //padding: 1rem;
-
   button {
     position: absolute;
     top: 65%;
@@ -45,7 +41,7 @@
   }
 
   button:hover {
-    background-color: dodgerblue;
+    background-color: #28a4d9;
     color: white;
   }
 }
@@ -56,4 +52,71 @@
   background-color: green;
   width: 30%;
   margin-top: -6px;
+}
+
+.listing-header {
+  padding: 3%;
+  margin: 0 auto;
+  span {
+    vertical-align: middle;
+    padding: 0 2%;
+  }
+  a {
+    font-size: 10px;
+  }
+}
+
+.listing-job {
+  clear: both;
+  display: block;
+  padding: 3%;
+  a {
+    font-size: 12px;
+  }
+}
+
+.listing-country {
+  margin-bottom: 0 !important;
+  font-size: 9px;
+  span {
+    padding-left: 3%;
+  }
+}
+
+.listing-rating {
+  padding: 3%;
+}
+
+.stars {
+  background-color: #fff;
+  display: inline;
+}
+
+.ratings {
+  display: inline;
+}
+
+.product-rating {
+  font-size: 12px;
+}
+
+.stars i {
+  font-size: 12px;
+  color: #28a4d9;
+}
+
+.currency {
+  font-weight: 700;
+  float: right;
+  font-size: 21px;
+}
+
+.tooltip-fields {
+  float: right;
+}
+
+.card-avatar {
+  position: absolute;
+  right: 7%;
+  bottom: 33%;
 }

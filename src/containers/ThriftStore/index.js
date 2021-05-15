@@ -4,8 +4,7 @@ import Banners from '../../components/Banners';
 import Footer from '../../components/Footer';
 import Header from '../../components/Headers';
 import StatsCard from '../../components/StatsCard';
-import { CarouselNewEStore } from '../../components/Carousel';
-
+import { CarouselThriftStore } from '../../components/Carousel';
 
 const ThriftStore = () => (
   <Grid fluid>
@@ -121,7 +120,7 @@ const ThriftStore = () => (
           <h5>
             # E-Store Near You #
           </h5>
-          <CarouselNewEStore />
+          <CarouselThriftStore />
         </div>
         <br />
       </div>

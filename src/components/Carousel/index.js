@@ -21,6 +21,24 @@ const responsive = {
   },
 };
 
+const responsiveThrift = {
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 5,
+    // slidesToSlide: 4,
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 464 },
+    items: 3,
+    // slidesToSlide: 3,
+  },
+  mobile: {
+    breakpoint: { max: 464, min: 0 },
+    items: 2,
+    // slidesToSlide: 2,
+  },
+};
+
 const businessRowFirst = [
   {
     id: 1,
@@ -107,7 +125,7 @@ const businessRowFourth = [
   },
 ];
 
-const caroDataNewEStore = [
+const cardsDataNewEStore = [
   {
     id: 1,
     title: 'CARD 1',
@@ -255,8 +273,22 @@ export const CarouselNewEStore = () => (
     autoPlaySpeed={3000}
     responsive={responsive}
   >
-    {caroDataNewEStore.map((card) => (
+    {cardsDataNewEStore.map((card) => (
       <Card title={card.title} imgUrl={card.imgUrl} />
+    ))}
+  </Carousel>
+);
+
+export const CarouselThriftStore = () => (
+  <Carousel
+    // ssr
+    infinite
+    // autoPlay
+    autoPlaySpeed={3000}
+    responsive={responsiveThrift}
+  >
+    {cardsDataMobile.map((card) => (
+      <Card title={card.title} imgUrl={card.imgUrl} body />
     ))}
   </Carousel>
 );
