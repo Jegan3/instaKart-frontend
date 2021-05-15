@@ -86,13 +86,11 @@ s .card-body {
 }
 
 .cards-row {
-  //	margin: 0 -6px!important;
-  width: 80% !important;
+  width: 75% !important;
   margin: auto;
 }
 
 .category-item {
-  //padding: 0 6px;//
   float: left;
   margin-bottom: 12px;
   transform: translateY(0);
@@ -113,14 +111,15 @@ s .card-body {
 // 	//width:90%;
 // }
 
-.bg2 {
+.bg-thift {
   background-color: #28a4d9;
-  // width: 100vw;
-  // right: 15px;
-  // bottom: 64px;
-  // height: 500px;
-  // position: relative;
   width: 100%;
+}
+
+.thift-ads {
+  margin-top: 2%;
+  width: 75% !important;
+  margin: auto;
 }
 
 .thift-store {
@@ -131,3 +130,4 @@ s .card-body {
     margin: auto;
     white-space: nowrap;
 }
+
