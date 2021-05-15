@@ -31,7 +31,7 @@ const Welcome = () => (
         <CarouselThird />
         <CarouselFourth />
       </div>
-    <div className="bg1">
+    <div className="bg-welcome">
       <div className="Arrival">
         <h5>
           # New E-Store #
@@ -47,7 +47,7 @@ const Welcome = () => (
       <CarouselNewEStore />
     </div>
     <br />
-    <div className="bg1">
+    <div className="bg-welcome">
       <div className="Arrival">
         <h5>
           # E-Store Near You #

@@ -20,300 +20,99 @@ const ThriftStore = () => (
     <Row md={12} className="cards-row clearfix">
       <Col xs={6} md={2} sm={4} lg={2} className="category-item">
         <StatsCard
-          bigIcon={<i className="fas fa-archive fa-sm circle-icon-1" />}
+          bigIcon={<i className=" item-icon fas fa-home fa-sm circle-icon-home" />}
           className="thift-store"
-          priText="Order Received"
+          priText="Real Estate"
           secText="1 Ads"
-        // statsValue="634"
-        //   statsIcon={<i className="fa fa-refresh" />}
-        // statsIconText="Updated now"
         />
       </Col>
       <Col xs={6} md={2} sm={4} lg={2} className="category-item">
         <StatsCard
-          bigIcon={<i className="fas fa-archive fa-sm circle-icon-1" />}
+          bigIcon={<i className="fas fa-car fa-sm circle-icon-car" />}
           className="thift-store"
-          priText="Order Received"
-          secText="1 Ads"
-        // statsValue="634"
-        //   statsIcon={<i className="fa fa-refresh" />}
-        // statsIconText="Updated now"
+          priText="Vehicles"
+          secText="6 Ads"
         />
       </Col>
       <Col xs={6} md={2} sm={4} lg={2} className="category-item">
         <StatsCard
-          bigIcon={<i className="fas fa-archive fa-sm circle-icon-1" />}
+          bigIcon={<i className="fas fa-mobile-alt fa-sm circle-icon-mobile" />}
           className="thift-store"
-          priText="Order Received"
-          secText="1 Ads"
-        // statsValue="634"
-        //   statsIcon={<i className="fa fa-refresh" />}
-        // statsIconText="Updated now"
+          priText="Mobile Phones"
+          secText="2 Ads"
         />
       </Col>
       <Col xs={6} md={2} sm={4} lg={2} className="category-item">
         <StatsCard
-          bigIcon={<i className="fas fa-archive fa-sm circle-icon-1" />}
+          bigIcon={<i className="fas fa-chair fa-sm circle-icon-chair" />}
           className="thift-store"
-          priText="Order Received"
-          secText="1 Ads"
-        // statsValue="634"
-        //   statsIcon={<i className="fa fa-refresh" />}
-        // statsIconText="Updated now"
+          priText="Furniture"
+          secText="0 Ads"
         />
       </Col>
       <Col xs={6} md={2} sm={4} lg={2} className="category-item">
         <StatsCard
-          bigIcon={<i className="fas fa-archive fa-sm circle-icon-1" />}
+          bigIcon={<i className="fas fa-truck-monster fa-sm circle-icon-service" />}
           className="thift-store"
-          priText="Order Received"
+          priText="Services"
           secText="1 Ads"
-        // statsValue="634"
-        //   statsIcon={<i className="fa fa-refresh" />}
-        // statsIconText="Updated now"
         />
       </Col>
       <Col xs={6} md={2} sm={4} lg={2} className="category-item">
         <StatsCard
-          bigIcon={<i className="fas fa-archive fa-sm circle-icon-1" />}
+          bigIcon={<i className="fas fa-desktop fa-sm circle-icon-tv" />}
           className="thift-store"
-          priText="Order Received"
-          secText="1 Ads"
-        // statsValue="634"
-        //   statsIcon={<i className="fa fa-refresh" />}
-        // statsIconText="Updated now"
+          priText="Electronics"
+          secText="2 Ads"
         />
       </Col>
       <Col xs={6} md={2} sm={4} lg={2} className="category-item">
-        <div className="category-holder clearfix">
-          <div className="card-body">
-            <a href="http://vaibhavk13.sg-host.com/listings/business-category/real-estate/" title="Real Estate">
-              <span className="cat-icon">
-                <img
-                  className="field-icon"
-                  src="https://classiads.designinvento.net/classiads-ultra/wp-content/uploads/2020/02/house.png"
-                  alt="Real Estate"
-                />
-              </span>Real Estate
-              <span className="categories-count">1 ads
-                <i className="fas fa-plus-circle" data-popup-open="84">
-                </i>
-              </span>
-            </a>
-          </div>
-        </div>
+        <StatsCard
+          bigIcon={<i className=" item-icon fas fa-briefcase fa-sm circle-icon-jobs" />}
+          className="thift-store"
+          priText="Jobs"
+          secText="3 Ads"
+        />
       </Col>
-      <Col xs={6} md={2} sm={4} className="category-item">
-        <div className="category-holder clearfix">
-          <div className="card-body">
-            <a href="http://vaibhavk13.sg-host.com/listings/business-category/real-estate/" title="Real Estate">
-              <span className="cat-icon">
-                <img
-                  className="field-icon"
-                  src="https://classiads.designinvento.net/classiads-ultra/wp-content/uploads/2020/02/house.png"
-                  alt="Real Estate"
-                />
-              </span>Real Estate
-              <span className="categories-count">1 ads
-                <i className="fas fa-plus-circle" data-popup-open="84">
-                </i>
-              </span>
-            </a>
-          </div>
-        </div>
+      <Col xs={6} md={2} sm={4} lg={2} className="category-item">
+        <StatsCard
+          bigIcon={<i className=" item-icon fas fa-tshirt fa-sm circle-icon-fashion" />}
+          className="thift-store"
+          priText="Fashion"
+          secText="1 Ads"
+        />
       </Col>
-      <Col xs={6} md={2} sm={4} className="category-item">
-        <div className="category-holder clearfix">
-          <div className="card-body">
-            <a href="http://vaibhavk13.sg-host.com/listings/business-category/real-estate/" title="Real Estate">
-              <span className="cat-icon">
-                <img
-                  className="field-icon"
-                  src="https://classiads.designinvento.net/classiads-ultra/wp-content/uploads/2020/02/house.png"
-                  alt="Real Estate"
-                />
-              </span>Real Estate
-              <span className="categories-count">1 ads
-                <i className="fas fa-plus-circle" data-popup-open="84">
-                </i>
-              </span>
-            </a>
-          </div>
-        </div>
+      <Col xs={6} md={2} sm={4} lg={2} className="category-item">
+        <StatsCard
+          bigIcon={<i className=" item-icon fas fa-cog fa-sm circle-icon-animal" />}
+          className="thift-store"
+          priText="Animal"
+          secText="2 Ads"
+        />
       </Col>
-      <Col xs={6} md={2} sm={4} className="category-item">
-        <div className="category-holder clearfix">
-          <div className="card-body">
-            <a href="http://vaibhavk13.sg-host.com/listings/business-category/real-estate/" title="Real Estate">
-              <span className="cat-icon">
-                <img
-                  className="field-icon"
-                  src="https://classiads.designinvento.net/classiads-ultra/wp-content/uploads/2020/02/house.png"
-                  alt="Real Estate"
-                />
-              </span>Real Estate
-              <span className="categories-count">1 ads
-                <i className="fas fa-plus-circle" data-popup-open="84">
-                </i>
-              </span>
-            </a>
-          </div>
-        </div>
+      <Col xs={6} md={2} sm={4} lg={2} className="category-item">
+        <StatsCard
+          bigIcon={<i className=" item-icon fas fa-book-open  fa-sm circle-icon-book" />}
+          className="thift-store"
+          priText="Education"
+          secText="0 Ads"
+        />
       </Col>
-      <Col xs={6} md={2} sm={4} className="category-item">
-        <div className="category-holder clearfix">
-          <div className="card-body">
-            <a href="http://vaibhavk13.sg-host.com/listings/business-category/real-estate/" title="Real Estate">
-              <span className="cat-icon">
-                <img
-                  className="field-icon"
-                  src="https://classiads.designinvento.net/classiads-ultra/wp-content/uploads/2020/02/house.png"
-                  alt="Real Estate"
-                />
-              </span>Real Estate
-              <span className="categories-count">1 ads
-                <i className="fas fa-plus-circle" data-popup-open="84">
-                </i>
-              </span>
-            </a>
-          </div>
-        </div>
+      <Col xs={6} md={2} sm={4} lg={2} className="category-item">
+        <StatsCard
+          bigIcon={<i className=" item-icon fas fa-truck-monster fa-sm circle-icon-toys" />}
+          className="thift-store"
+          priText="Baby Toys"
+          secText="0 Ads"
+        />
       </Col>
-      <Col xs={6} md={2} sm={4} className="category-item">
-        <div className="category-holder clearfix">
-          <div className="card-body">
-            <a href="http://vaibhavk13.sg-host.com/listings/business-category/real-estate/" title="Real Estate">
-              <span className="cat-icon">
-                <img
-                  className="field-icon"
-                  src="https://classiads.designinvento.net/classiads-ultra/wp-content/uploads/2020/02/house.png"
-                  alt="Real Estate"
-                />
-              </span>Real Estate
-              <span className="categories-count">1 ads
-                <i className="fas fa-plus-circle" data-popup-open="84">
-                </i>
-              </span>
-            </a>
-          </div>
-        </div>
-      </Col>
-    </Row>
-    <Row md={12} className="cards-row clearfix">
-      <Col xs={6} md={2} sm={4} className="category-item">
-        <div className="category-holder clearfix">
-          <div className="card-body">
-            <a href="http://vaibhavk13.sg-host.com/listings/business-category/real-estate/" title="Real Estate">
-              <span className="cat-icon">
-                <img
-                  className="field-icon"
-                  src="https://classiads.designinvento.net/classiads-ultra/wp-content/uploads/2020/02/house.png"
-                  alt="Real Estate"
-                />
-              </span>Real Estate
-              <span className="categories-count">1 ads
-                <i className="fas fa-plus-circle" data-popup-open="84">
-                </i>
-              </span>
-            </a>
-          </div>
-        </div>
-
-      </Col>
-      <Col xs={6} md={2} sm={4} className="category-item">
-        <div className="category-holder clearfix">
-          <div className="card-body">
-            <a href="http://vaibhavk13.sg-host.com/listings/business-category/real-estate/" title="Real Estate">
-              <span className="cat-icon">
-                <img
-                  className="field-icon"
-                  src="https://classiads.designinvento.net/classiads-ultra/wp-content/uploads/2020/02/house.png"
-                  alt="Real Estate"
-                />
-              </span>Real Estate
-              <span className="categories-count">1 ads
-                <i className="fas fa-plus-circle" data-popup-open="84">
-                </i>
-              </span>
-            </a>
-          </div>
-        </div>
-      </Col>
-      <Col xs={6} md={2} sm={4} className="category-item">
-        <div className="category-holder clearfix">
-          <div className="card-body">
-            <a href="http://vaibhavk13.sg-host.com/listings/business-category/real-estate/" title="Real Estate">
-              <span className="cat-icon">
-                <img
-                  className="field-icon"
-                  src="https://classiads.designinvento.net/classiads-ultra/wp-content/uploads/2020/02/house.png"
-                  alt="Real Estate"
-                />
-              </span>Real Estate
-              <span className="categories-count">1 ads
-                <i className="fas fa-plus-circle" data-popup-open="84">
-                </i>
-              </span>
-            </a>
-          </div>
-        </div>
-      </Col>
-      <Col xs={6} md={2} sm={4} className="category-item">
-        <div className="category-holder clearfix">
-          <div className="card-body">
-            <a href="http://vaibhavk13.sg-host.com/listings/business-category/real-estate/" title="Real Estate">
-              <span className="cat-icon">
-                <img
-                  className="field-icon"
-                  src="https://classiads.designinvento.net/classiads-ultra/wp-content/uploads/2020/02/house.png"
-                  alt="Real Estate"
-                />
-              </span>Real Estate
-              <span className="categories-count">1 ads
-                <i className="fas fa-plus-circle" data-popup-open="84">
-                </i>
-              </span>
-            </a>
-          </div>
-        </div>
-      </Col>
-      <Col xs={6} md={2} sm={4} className="category-item">
-        <div className="category-holder clearfix">
-          <div className="card-body">
-            <a href="http://vaibhavk13.sg-host.com/listings/business-category/real-estate/" title="Real Estate">
-              <span className="cat-icon">
-                <img
-                  className="field-icon"
-                  src="https://classiads.designinvento.net/classiads-ultra/wp-content/uploads/2020/02/house.png"
-                  alt="Real Estate"
-                />
-              </span>Real Estate
-              <span className="categories-count">1 ads
-                <i className="fas fa-plus-circle" data-popup-open="84">
-                </i>
-              </span>
-            </a>
-          </div>
-        </div>
-      </Col>
-      <Col xs={6} md={2} sm={4} className="category-item">
-        <div className="category-holder clearfix">
-          <div className="card-body">
-            <a href="http://vaibhavk13.sg-host.com/listings/business-category/real-estate/" title="Real Estate">
-              <span className="cat-icon">
-                <img
-                  className="field-icon"
-                  src="https://classiads.designinvento.net/classiads-ultra/wp-content/uploads/2020/02/house.png"
-                  alt="Real Estate"
-                />
-              </span>Real Estate
-              <span className="categories-count">1 ads
-                <i className="fas fa-plus-circle" data-popup-open="84">
-                </i>
-              </span>
-            </a>
-          </div>
-        </div>
+      <Col xs={6} md={2} sm={4} lg={2} className="category-item">
+        <StatsCard
+          bigIcon={<i className=" item-icon fas fa-heart fa-sm circle-icon-heart" />}
+          className="thift-store"
+          priText="Matrimonial"
+          secText="0 Ads"
+        />
       </Col>
     </Row>
     <Row>
