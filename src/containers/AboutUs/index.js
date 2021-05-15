@@ -6,9 +6,9 @@ import Header from '../../components/Headers';
 const AboutUs = () => (
   <Grid fluid>
     <Header header />
-    <Row className="content_sec">
-      <div className="content_cards">
-        <Col md={12} sm={12} className="banner_img">
+    <Row className="content-sec">
+      <div className="content-cards">
+        <Col md={12} sm={12} className="banner-img">
           <h2 className="about">About us</h2>
           <p className="connect">Connecting businesses worldwide</p>
         </Col>
@@ -20,12 +20,12 @@ const AboutUs = () => (
         <p>Insta-Kart is here to help you thrive against all the odds. The essence of our brand is to give everyone a platform to connect. We will aid your transition into the online space and provide you with everything you need to move to the next business level. Learn more. </p><br /><br />
       </div>
     </Row>
-    <Row className="content_sec">
-      <div className="content_cards">
-        <Col md={4} sm={4} className="banner_img">
+    <Row className="content-sec">
+      <div className="content-cards">
+        <Col md={4} sm={4} className="banner-img">
           {/* <h5 align="center">We are run by a team of experts who understands sellers and buyers challenges in the modern world today</h5> */}
         </Col>
-        <Col md={8} sm={8} className="banner_img_right">
+        <Col md={8} sm={8} className="banner-img-right">
           <Image className="signup-logo" src="images/pic3.png" fluid />
         </Col>
       </div>
@@ -36,12 +36,12 @@ const AboutUs = () => (
         <p>We were also established to provide a hassle-free way of shopping. This would not have been possible without our team’s efforts. Meet our team.</p><br /><br />
       </div>
     </Row>
-    <Row className="content_sec">
-      <div className="content_cards">
-        <Col md={4} sm={4} className="banner_img">
+    <Row className="content-sec">
+      <div className="content-cards">
+        <Col md={4} sm={4} className="banner-img">
           <h5 align="center">Insta-Kart has become one of the most reliable and trustworthy eCommerce platforms</h5>
         </Col>
-        <Col md={8} sm={8} className="banner_img_right">
+        <Col md={8} sm={8} className="banner-img-right">
           <Image className="signup-logo" src="images/pic3.png" fluid />
         </Col>
       </div>
@@ -52,12 +52,12 @@ const AboutUs = () => (
         <p>Since being founded, Insta-Kart has become one of the most reliable and trustworthy eCommerce platforms. Over the months, we have evolved and have connected thousands of buyers with sellers within and across Caribbean countries. Be a part of our success story.</p><br /><br />
       </div>
     </Row>
-    <Row className="content_sec">
-      <div className="content_cards">
-        <Col md={4} sm={4} className="banner_img">
+    <Row className="content-sec">
+      <div className="content-cards">
+        <Col md={4} sm={4} className="banner-img">
           <h5 align="center">Insta-Kart has become one of the most reliable and trustworthy eCommerce platforms</h5>
         </Col>
-        <Col md={8} sm={8} className="banner_img_right">
+        <Col md={8} sm={8} className="banner-img-right">
           <Image className="signup-logo" src="images/pic3.png" fluid />
         </Col>
       </div>
@@ -67,12 +67,12 @@ const AboutUs = () => (
         <p>Our platform supports brands at every step of the way. We will help you build your online store, sell fast, and get back on your feet without startup costs. Insta-Kart provides the perfect environment for vendors and service providers to sell online from anywhere.</p><br />
       </div>
     </Row>
-    <Row className="content_sec">
-      <div className="content_cards">
-        <Col md={4} sm={4} className="banner_img">
+    <Row className="content-sec">
+      <div className="content-cards">
+        <Col md={4} sm={4} className="banner-img">
           <h5 align="center">Insta-Kart has become one of the most reliable and trustworthy eCommerce platforms</h5>
         </Col>
-        <Col md={8} sm={8} className="banner_img_right">
+        <Col md={8} sm={8} className="banner-img-right">
           <Image className="signup-logo" src="images/pic3.png" fluid />
         </Col>
       </div>
@@ -81,12 +81,12 @@ const AboutUs = () => (
         <p>To connect thousands of buyers and sellers within the Caribbean countries online. Insta-Kart provides a platform that aims to transform brick-and-mortar shops to online shops in a safe manner. Making shopping easier, convienient and safe.</p><br />
       </div>
     </Row>
-    <Row className="content_sec">
-      <div className="content_cards">
-        <Col md={4} sm={4} className="banner_img">
+    <Row className="content-sec">
+      <div className="content-cards">
+        <Col md={4} sm={4} className="banner-img">
           <h5 align="center">Insta-Kart has become one of the most reliable and trustworthy eCommerce platforms</h5>
         </Col>
-        <Col md={8} sm={8} className="banner_img_right">
+        <Col md={8} sm={8} className="banner-img-right">
           <Image className="signup-logo" src="images/pic3.png" fluid />
         </Col>
       </div>
@@ -96,12 +96,12 @@ const AboutUs = () => (
         <p>Insta-Kart’s eCommerce platform provides you with the tools and support to take advantage of your situation. In essence, brands can now sell globally while growing locally.</p><br />
       </div>
     </Row>
-    <Row className="content_sec">
-      <div className="content_cards">
-        <Col md={4} sm={4} className="banner_img">
+    <Row className="content-sec">
+      <div className="content-cards">
+        <Col md={4} sm={4} className="banner-img">
           <h5 align="center">Insta-Kart has become one of the most reliable and trustworthy eCommerce platforms</h5>
         </Col>
-        <Col md={8} sm={8} className="banner_img_right">
+        <Col md={8} sm={8} className="banner-img-right">
           <Image className="signup-logo" src="images/pic3.png" fluid />
         </Col>
       </div>
@@ -124,12 +124,12 @@ const AboutUs = () => (
         <br />
       </div>
     </Row>
-    <Row className="content_sec">
-      <div className="content_cards">
-        <Col md={4} sm={4} className="banner_img">
+    <Row className="content-sec">
+      <div className="content-cards">
+        <Col md={4} sm={4} className="banner-img">
           <h5 align="center">Insta-Kart has become one of the most reliable and trustworthy eCommerce platforms</h5>
         </Col>
-        <Col md={8} sm={8} className="banner_img_right">
+        <Col md={8} sm={8} className="banner-img-right">
           <Image className="signup-logo" src="images/pic3.png" fluid />
         </Col>
       </div>
@@ -144,12 +144,12 @@ const AboutUs = () => (
         <br />
       </div>
     </Row>
-    <Row className="content_sec">
-      <div className="content_cards">
-        <Col md={4} sm={4} className="banner_img">
+    <Row className="content-sec">
+      <div className="content-cards">
+        <Col md={4} sm={4} className="banner-img">
           <h5 align="center">Insta-Kart has become one of the most reliable and trustworthy eCommerce platforms</h5>
         </Col>
-        <Col md={8} sm={8} className="banner_img_right">
+        <Col md={8} sm={8} className="banner-img-right">
           <Image className="signup-logo" src="images/pic3.png" fluid />
         </Col>
       </div>
@@ -158,12 +158,12 @@ const AboutUs = () => (
         <p>We are honest, transparent and committed to doing what’s best for our customers and our company. We openly collaborate in pursuit of the truth. We have no tolerance for politics, hidden agenda or passive aggressive behaviour.</p><br />
       </div>
     </Row>
-    <Row className="content_sec">
-      <div className="content_cards">
-        <Col md={4} sm={4} className="banner_img">
+    <Row className="content-sec">
+      <div className="content-cards">
+        <Col md={4} sm={4} className="banner-img">
           <h5 align="center">Insta-Kart has become one of the most reliable and trustworthy eCommerce platforms</h5>
         </Col>
-        <Col md={8} sm={8} className="banner_img_right">
+        <Col md={8} sm={8} className="banner-img-right">
           <Image className="signup-logo" src="images/pic3.png" fluid />
         </Col>
       </div>
