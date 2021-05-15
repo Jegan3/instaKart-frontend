@@ -7,6 +7,7 @@ import SignUp from './containers/SignUp';
 import TermsConditions from './containers/TermsConditions';
 import AboutUs from './containers/AboutUs';
 import VendorInfo from './containers/VendorInfo';
+import ThriftStore from './containers/ThriftStore';
 
 export const history = createBrowserHistory();
 
@@ -20,9 +21,10 @@ const Routes = () => (
         <Route path="/termsofcondition" component={TermsConditions} />
         <Route path="/aboutus" component={AboutUs} />
         <Route path="/vendorinfo" component={VendorInfo} />
+        <Route path="/thriftstore" component={ThriftStore} />
       </Switch>
     </React.Fragment>
-  </Router >
+  </Router>
 );
 
 export default Routes;
