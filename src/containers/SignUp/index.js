@@ -140,15 +140,9 @@ const SignUp = (props) => {
   }, [country])
 
   const Submit = () => {
-    if (estore === '' || userName === '' || email === '' || password === '' || !industryType || !country || !city) {
+    if (estore === '' || userName === '' || email === '' || password === '' || industryType && !industryType || country && !country || city && !city) {
       setAlertError(true)
       setAlertMsg('Please fill all the fields');
-    } else if (userName === '') {
-      setAlertError(true)
-    } else if (email === '') {
-      setAlertError(true)
-    } else if (password === '') {
-      setAlertError(true)
     } else if (termscondition === false) {
       setAlertMsg('Please accept the Terms & Conditions and Privacy Policy');
     } else {

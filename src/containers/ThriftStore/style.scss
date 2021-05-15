@@ -1,0 +1,128 @@
+// .field-icon{
+//     width: 64px;
+//     height: 64px;
+//     margin: 0 auto 20px;
+//     line-height: 64px;
+//     font-size: 64px;
+//     top: 35px;
+//     position: relative;
+// }
+
+
+// .card-box{
+// min-height: 185px;
+// border-radius: 10px;
+// transform: translateY(0);
+// transition: all 1s ease;
+// text-align: center;
+// background: #fff;
+// }
+
+// .box-view{
+// 	padding: 0 6px;
+//     float: left;
+//     margin-bottom: 12px;
+// }
+// .categories-count {
+//     display: block;
+//     text-align: center;
+//     color: #f7425b;
+// }
+// .cat-icon{
+// 	width: 64px;
+// 	height: 64px;
+// 	margin: 0 auto 20px;
+// 	line-height: 64px;
+// 	font-size: 64px;
+// }
+
+// // .card{
+// // 	background: #fff;
+// //     padding: 30px;
+// //    // box-shadow: 0 5px 10px 0 rgb(0 0 0 / 3%);
+// // }
+
+// .cards-row{
+// 	width:90%;
+// }
+
+
+/////////////
+.category-holder {
+    background: #fff;
+    padding: 30px;
+    border-radius: 15px;
+}
+
+.clearfix {
+    display: block;
+}
+
+s .card-body {
+    font-weight: 700;
+}
+
+.card-body a {
+    font-size: 14px;
+    /* font-weight: 400; */
+    text-transform: capitalize;
+    display: block;
+    text-align: center;
+}
+
+.category-holder .card-body a .cat-icon {
+    display: block;
+    text-align: center;
+    position: relative;
+}
+
+.card-body img.field-icon {
+    /* float: right; */
+    margin: 0;
+}
+
+.category-holder .card-body a .categories-count {
+    display: block;
+    text-align: center;
+    color: #f7425b;
+}
+
+.cards-row {
+    //	margin: 0 -6px!important;
+    width: 90% !important;
+    margin: auto;
+}
+
+.category-item {
+    //padding: 0 6px;//
+    float: left;
+    margin-bottom: 12px;
+    transform: translateY(0);
+    transition: all 1s ease;
+}
+
+.category-holder:hover {
+    transform: translateY(-7px);
+    transition: all 1s ease;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+// .cards-page{
+// 	//text-align: center;
+// 	//padding-top: 50px;
+//    // padding-bottom: 70px;
+//    // position: relative;
+// 	//width:90%;
+
+
+// }
+.bg2 {
+    background-color: #28a4d9;
+    // width: 100vw;
+    // right: 15px;
+    // bottom: 64px;
+    // height: 500px;
+    // position: relative;
+    width: 100%;
+
+}
