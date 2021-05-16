@@ -66,6 +66,11 @@ const Header = ({ header }) => {
     // window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const AboutUs = () => {
+    history.push('/aboutus');
+    window.scrollTo(0, 0);
+  }
+
   return (
     <div>
       {header ?
@@ -106,7 +111,7 @@ const Header = ({ header }) => {
                       <p>List Your Ads</p>
                     </NavItem>
                     <NavItem eventKey={2} href="#">
-                      <p onClick={() => { history.push('/aboutus'); }}>About Us</p>
+                      <p onClick={AboutUs}>About Us</p>
                     </NavItem>
                     <NavItem eventKey={3} href="#">
                       <p><Button className="vendor-signup" onClick={Signup}>Register Your E-Store</Button></p>

@@ -84,10 +84,10 @@ const LoginModal = ({ showPopup, hidePopup }) => {
 
   const OpenTermsCondition = () => {
     // window.open(`${window.location.origin}/termsofcondition`, '', 'width=1400,height=1200');
-    const win = window.open('/termsofcondition', "_blank");
-    win.focus();
-    // history.push({pathname: '/termsofcondition'});
-    // window.scrollTo(0, 0);
+    // const win = window.open('/termsofcondition', "_blank");
+    // win.focus();
+    history.push({pathname: '/termsofcondition'});
+    window.scrollTo(0, 0);
   };
 
   return (

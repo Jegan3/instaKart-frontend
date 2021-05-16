@@ -4,12 +4,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faTwitter, faInstagram, faGooglePlay, faApple } from '@fortawesome/free-brands-svg-icons';
 import { history } from '../../routes';
 
+const AboutUs = () => {
+  history.push({ pathname: '/aboutus' });
+  window.scrollTo(0, 0);
+}
+
 const OpenTermsCondition = () => {
   // window.open(`${window.location.origin}/termsofcondition`, '', 'width=1400,height=1200');
-  const win = window.open('/termsofcondition', "_blank");
-  win.focus();
-  // history.push({pathname: '/termsofcondition'});
-  // window.scrollTo(0, 0);
+  // const win = window.open('/termsofcondition', "_blank");
+  // win.focus();
+  history.push({ pathname: '/termsofcondition' });
+  window.scrollTo(0, 0);
 };
 
 const Footer = () => (
@@ -49,8 +54,8 @@ const Footer = () => (
             <div className="footer-pad">
               <h4>Information</h4>
               <ul className="list-unstyled">
-                <li>About Us</li>
-                <li onClick={OpenTermsCondition}>Terms and Conditions</li>
+                <li className="footer-info" onClick={AboutUs}>About Us</li>
+                <li className="footer-info" onClick={OpenTermsCondition}>Terms and Conditions</li>
                 <li>FAQ</li>
               </ul>
             </div>
@@ -59,8 +64,8 @@ const Footer = () => (
             <div className="footer-pad">
               <h4>Help</h4>
               <ul className="list-unstyled">
-                <li>Login</li>
-                <li>Register</li>
+                <li className="footer-info" >Login</li>
+                <li className="footer-info" >Register</li>
               </ul>
             </div>
           </div>
