@@ -26,7 +26,7 @@ const AboutUs = () => (
           {/* <h5 align="center">We are run by a team of experts who understands sellers and buyers challenges in the modern world today</h5> */}
         </Col>
         <Col md={8} sm={8} className="banner-img-right">
-          <Image className="signup-logo" src="images/pic3.png" fluid />
+          {/* <Image className="signup-logo" src="images/pic3.png" fluid /> */}
         </Col>
       </div>
       <div className="para-sec">

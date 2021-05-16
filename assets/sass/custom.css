@@ -41,12 +41,6 @@
   }
 }
 
-/*!
-Animate.css - http://daneden.me/animate
-Licensed under the MIT license - http://opensource.org/licenses/MIT
-
-Copyright (c) 2015 Daniel Eden
-*/
 .animated {
   -webkit-animation-duration: 1s;
   animation-duration: 1s;
@@ -249,12 +243,6 @@ Copyright (c) 2015 Daniel Eden
   animation-name: fadeOutUp;
 }
 
-/*!
- * Bootstrap-select v1.8.1 (http://silviomoreto.github.io/bootstrap-select)
- *
- * Copyright 2013-2015 bootstrap-select
- * Licensed under MIT (https://github.com/silviomoreto/bootstrap-select/blob/master/LICENSE)
- */
 .bootstrap-select {
   width: 220px \0;
   /*IE9 and below*/
@@ -8638,16 +8626,6 @@ fieldset[disabled] .form-control {
   background-color: #fb404b;
 }
 
-/*!
- * jQuery UI Slider 1.10.4
- * http://jqueryui.com
- *
- * Copyright 2014 jQuery Foundation and other contributors
- * Released under the MIT license.
- * http://jquery.org/license
- *
- * http://api.jqueryui.com/slider/#theming
- */
 .ui-slider {
   position: relative;
   text-align: left;

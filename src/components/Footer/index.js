@@ -12,6 +12,13 @@ const OpenTermsCondition = () => {
   // window.scrollTo(0, 0);
 };
 
+
+const OpenAboutUs = () => {
+  const win =  history.push('/aboutus')
+  //history.push('/aboutus')
+  win.focus();
+};
+
 const Footer = () => (
   <div>
     <footer className="mainfooter" role="contentinfo">
@@ -21,25 +28,16 @@ const Footer = () => (
             <h5>
               In Store Pick up, Curb Side Pick Up, Delivery Options
             </h5>
-            <p>
-              When order from $500
-            </p>
           </div>
           <div className="col-md-4 col-sm-4">
             <h5 >
               Free e-Store Registration / No Monthly e-Store Subscribtion Fees
             </h5>
-            <p>
-              14-days of complaint
-            </p>
           </div>
           <div className="col-md-4 col-sm-4">
             <h5 >
               Secured Payment Gateway / IK Payouts
             </h5>
-            <p>
-              Over 10,000 products
-            </p>
           </div>
         </div>
       </div>
@@ -49,7 +47,7 @@ const Footer = () => (
             <div className="footer-pad">
               <h4>Information</h4>
               <ul className="list-unstyled">
-                <li>About Us</li>
+                <li onClick={OpenAboutUs}>About Us</li>
                 <li onClick={OpenTermsCondition}>Terms and Conditions</li>
                 <li>FAQ</li>
               </ul>
@@ -98,7 +96,7 @@ const Footer = () => (
             <div className="row">
               <div className="col-sm-4">
                 <p className="text-left">
-                  &copy; Copyright 2018 - Company Name. All rights reserved.
+                  &copy; Copyright 2021 - Insta-Kart. All rights reserved.
                 </p>
               </div>
               <div className="col-sm-4">

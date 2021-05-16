@@ -146,9 +146,9 @@ const TermsConditions = () => (
         violation of these Terms at any time, without prior notice, and at
         its sole discretion.
       </p>
-      <h4>3. SELLING ON LISTITTT.COM</h4>
+      <h4>3. SELLING ON INSTA-KART.COM</h4>
       <p className="Section">
-        <u>Selling on Listittt.com</u>
+        <u>Selling on INSTA-KART.COM</u>
       </p>
       <p>
         Selling or Buying on <b>INSTA-KART.COM</b> requires a registration
@@ -990,7 +990,7 @@ const TermsConditions = () => (
         such disclosure is reasonably necessary to enforce these Terms
         and/or Privacy Policy; respond to claims that any Content violates
         the rights of third-parties; or protect the rights, property, or
-        personal safety of LISTITTT.COM, our users or the general public. If
+        personal safety of INSTA-KART.COM, our users or the general public. If
         substantially all of our assets are sold or merged into another
         company, we will notify you of the transaction. The acquiring
         company shall be given access to your personal information without
