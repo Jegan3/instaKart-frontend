@@ -173,18 +173,9 @@ const SignUp = (props) => {
 
       dispatch({ type: 'SIGNUP_REQUEST', signup: type === 'vendor' ? signupDetailsVendors : signupDetailsUsers });
       setAlertMsg('');
-      // setShowOtp(true);
-      // temp fix for vendor login
-      // if (vendor) {
-      //   history.push({
-      //     pathname: '/dashboard',
-      //   });ƒ
-      // } else {
-      //   history.push({
-      //     pathname: '/',
-      //   });
     }
   };
+
   const handleClose = () => {
     setShowOtp(false);
     setCloseOtp(true);
@@ -206,10 +197,10 @@ const SignUp = (props) => {
       <Header header />
       <OtpScreen show={showOtp} handleClose={handleClose} onSubmitOtp={onSubmitOtp} resendOtp={resendOtp} email={email} />
       <Row>
-        <Col md={6} sm={12}>
+        <Col md={6} sm={12} className="signup-margin" >
           <Image className="left-side" src="images/pic5.jpeg" />
         </Col>
-        <Col md={6} sm={12} >
+        <Col md={6} sm={12} className="signup-margin" >
           <Row>
           </Row>
           <Row>

@@ -72,7 +72,8 @@ const businessRowSecond = [
     title: 'CARD 5',
     content: 'IK Thrift Store',
     imgUrl: 'images/5_Thrift.png',
-    url: 'http://vaibhavk13.sg-host.com/',
+    // url: 'http://vaibhavk13.sg-host.com/',
+    url: '/thriftstore',
   },
   {
     id: 6,

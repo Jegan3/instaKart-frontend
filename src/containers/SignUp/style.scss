@@ -1,95 +1,98 @@
 .signup-logo {
-    width: 15em;
+  width: 15em;
 }
 
 .sub-heading {
-    font-size: 1.5em;
-    padding-top: 0.5%;
+  font-size: 1.5em;
+  padding-top: 0.5%;
 }
 
 .heading {
-    font-size: 2em;
-    font-weight: 600;
+  font-size: 2em;
+  font-weight: 600;
 }
 
 .login-form {
-    padding-top: 2%;
+  padding-top: 2%;
 }
 
 .signup-submit {
-    padding-top: 3%;
-    // @media only screen and (max-width: 992px) {
-    //     padding-bottom: 5%;
-    // }
+  padding-top: 3%;
+  // @media only screen and (max-width: 992px) {
+  //     padding-bottom: 5%;
+  // }
 }
 
 .container-fluid {
-    overflow-x: hidden;
-    overflow-y: hidden;
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 .left-side {
-    height: 550px;
-    width: 100%;
-    margin-bottom: 20px;
-
-    @media only screen and (max-width: 992px) {
-        height: auto !important;
-    }
+  height: 550px;
+  width: 100%;
+  margin-bottom: 15px;
+  @media only screen and (max-width: 992px) {
+    height: auto !important;
+  }
 }
 
 .login-error-signup {
-    margin: 3% 0;
+  margin: 3% 0;
 }
 
 .form-radio {
-    position: relative;
-    top: 2px;
+  position: relative;
+  top: 2px;
 }
 
 .signup-flag {
-    position: relative;
-    margin-left: 3%;
-    top: 1px;
+  position: relative;
+  margin-left: 3%;
+  top: 1px;
 }
 
 .css-1uccc91-singleValue {
-    overflow: none !important;
-    width: 100%;
+  overflow: none !important;
+  width: 100%;
 }
 
 .form-control:focus {
-    box-shadow: 0 0 0 1px #28a4d9 !important;
-    border-color: #28a4d9;
-    outline: 0;
+  box-shadow: 0 0 0 1px #28a4d9 !important;
+  border-color: #28a4d9;
+  outline: 0;
 }
 
 .prof-select {
-    .css-1pahdxg-control {
-        box-shadow: 0 0 0 1px #28a4d9 !important;
-        border-color: #28a4d9 !important;
-    }
+  .css-1pahdxg-control {
+    box-shadow: 0 0 0 1px #28a4d9 !important;
+    border-color: #28a4d9 !important;
+  }
 }
 
 .btn-primary {
-    border-color: #28a4d9 !important;
-    color: #28a4d9 !important;
+  border-color: #28a4d9 !important;
+  color: #28a4d9 !important;
 }
 
 .red-star {
-    color: red;
+  color: red;
 }
 
 .clearCountry {
-    clear: both;
+  clear: both;
 }
 
 .required-feild {
-    position: relative;
-    top: 10px;
+  position: relative;
+  top: 10px;
 }
 
 .success-msg {
-    color: green;
-    white-space: nowrap;
+  color: green;
+  white-space: nowrap;
+}
+
+.signup-margin {
+  margin-top: 15px;
 }

@@ -69,7 +69,7 @@ const Header = ({ header }) => {
   return (
     <div>
       {header ?
-        <Row className="header_sec">
+        <Row className="header-sec">
           <Col md={6} sm={6}>
             <Image className="signup-logo" src="images/logo.png" fluid />
           </Col>
@@ -117,7 +117,7 @@ const Header = ({ header }) => {
             </div>
             <div>
               <div className="header-container-bottom">
-                <div className="Body">
+                <div className="body">
                   <div className="col-md-3 col-sm-3 logo-header-top-left">
                     <img
                       className="instakart"

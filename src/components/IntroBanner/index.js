@@ -1,7 +1,7 @@
 import React from 'react';
 
 const IntroBanner = () => (
-  <div className="Body">
+  <div className="body">
     <div className="flex-group">
       <div className="food">
         <img className="photo" alt="#" src="images/L.png" />

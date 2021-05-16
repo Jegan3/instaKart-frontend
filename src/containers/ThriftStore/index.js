@@ -117,9 +117,8 @@ const ThriftStore = () => (
     <Row>
       <div className="bg-thift">
         <div className="thift-ads">
-          <h5>
-            # E-Store Near You #
-          </h5>
+          <h3>FEATURED ADS</h3>
+          <h6>Buy & Sell Any Thing</h6>
           <CarouselThriftStore />
         </div>
         <br />

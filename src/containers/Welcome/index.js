@@ -7,7 +7,7 @@ import Banners from '../../components/Banners';
 import { CarouselFirst, CarouselSecond, CarouselThird, CarouselFourth, CarouselMobile, CarouselNewEStore } from '../../components/Carousel';
 
 const Welcome = () => (
-  <div className="bodyContainer">
+  <div className="bodyContainer welcome">
     <div>
       <Header />
     </div>
@@ -16,23 +16,23 @@ const Welcome = () => (
     </div>
     <h2>Welcome To The Caribbean&#39;s Unified <br />e-Commerce Portal</h2>
     {/* {window.screen.width <= 464 ?
-      <div className="Arrival">
+      <div className="arrival">
         <CarouselMobile />
       </div> :
-      <div className="Arrival">
+      <div className="arrival">
         <CarouselFirst />
         <CarouselSecond />
         <CarouselThird />
         <CarouselFourth />
       </div>} */}
-      <div className="Arrival">
+      <div className="arrival">
         <CarouselFirst />
         <CarouselSecond />
         <CarouselThird />
         <CarouselFourth />
       </div>
     <div className="bg-welcome">
-      <div className="Arrival">
+      <div className="arrival">
         <h5>
           # New E-Store #
         </h5>
@@ -48,7 +48,7 @@ const Welcome = () => (
     </div>
     <br />
     <div className="bg-welcome">
-      <div className="Arrival">
+      <div className="arrival">
         <h5>
           # E-Store Near You #
         </h5>

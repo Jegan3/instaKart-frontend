@@ -1,4 +1,4 @@
-.Body {
+.body {
   width: 50% !important;
   margin: auto;
 }
@@ -8,38 +8,40 @@
   overflow-y: hidden;
 }
 
-.IntroDiv {
+.intro-div {
   margin-top: 5%;
   width: 50% !important;
   margin-left: 332px;
 }
 
-.Arrivals {
+.arrivals {
   margin-top: 2%;
   width: 50% !important;
   margin: auto;
 }
 
-.Arrival {
+.arrival {
   margin-top: 2%;
   width: 50% !important;
   margin: auto;
 }
 
-h2 {
-  text-align: center;
-  margin-top: 4px;
-  font-weight: bold;
-  color: #33334b;
-}
+.welcome {
+  h2 {
+    text-align: center;
+    margin-top: 0px;
+    font-weight: bold;
+    color: #33334b;
+  }
 
-h5 {
-  color: white;
-  font-size: 20px;
-}
+  h5 {
+    color: white;
+    font-size: 20px;
+  }
 
-h4 {
-  font-size: 20px;
+  h4 {
+    font-size: 20px;
+  }
 }
 
 .bg-welcome {
