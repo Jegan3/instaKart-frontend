@@ -27,9 +27,9 @@ const LoginModal = ({ showPopup, hidePopup }) => {
     if (login && validLogin) {
       setShowLogin(hidePopup);
       setLogin(false);
-      history.push({
-        pathname: '/dashboard',
-      });
+      // history.push({
+      //   pathname: '/dashboard',
+      // });
       // } else if (validLogin && !login && !showOtp) {
       //   sessionStorage.clear();
       //   dispatch({ type: 'LOGOUT_SUCCESS' });

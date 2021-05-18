@@ -7,9 +7,9 @@ import Banners from '../../components/Banners';
 import { CarouselFirst, CarouselSecond, CarouselThird, CarouselFourth, CarouselMobile, CarouselNewEStore } from '../../components/Carousel';
 
 const Welcome = () => (
-  <div className="bodyContainer welcome">
+  <div className="body-container welcome">
     <div>
-      <Header />
+      <Header welcome />
     </div>
     <div className="intro-banner">
       <Banners />
@@ -25,19 +25,19 @@ const Welcome = () => (
         <CarouselThird />
         <CarouselFourth />
       </div>} */}
-      <div className="arrival">
-        <CarouselFirst />
-        <CarouselSecond />
-        <CarouselThird />
-        <CarouselFourth />
-      </div>
+    <div className="arrival">
+      <CarouselFirst />
+      <CarouselSecond />
+      <CarouselThird />
+      <CarouselFourth />
+    </div>
     <div className="bg-welcome">
       <div className="arrival">
         <CarouselNewEStore />
       </div>
       <br />
     </div>
-    <div className="Promotions">
+    <div className="promotions">
       <h5>
         Promotions
       </h5>

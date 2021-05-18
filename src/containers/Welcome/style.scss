@@ -3,7 +3,7 @@
   margin: auto;
 }
 
-.bodyContainer {
+.body-container {
   overflow-x: hidden;
   overflow-y: hidden;
 }
@@ -66,7 +66,7 @@
   text-align: center;
 }
 
-.Promotions {
+.promotions {
   margin-top: 2%;
   width: 50% !important;
   margin: auto;
@@ -75,3 +75,8 @@
     color: black;
   }
 }
+
+.padding-control {
+  padding: 0px;
+}
+

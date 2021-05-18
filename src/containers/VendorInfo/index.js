@@ -153,7 +153,7 @@ const VendorInfo = () => {
 
   return (
     <Grid fluid>
-      <Header header />
+      <Header basic />
       <Row>
         <Col className="vendorinfo" >
           <Row>

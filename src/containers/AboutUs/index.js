@@ -5,7 +5,7 @@ import Header from '../../components/Headers';
 
 const AboutUs = () => (
   <Grid fluid>
-    <Header header />
+    <Header basic />
     <Row className="content-sec">
       <div className="content-cards">
         <Col md={12} sm={12} className="banner-img">

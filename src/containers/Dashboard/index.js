@@ -19,7 +19,10 @@ const Dashboard = () => {
   const userData = useSelector((state) => state.retreiveBannerState.retreiveBanner);
   const dispatch = useDispatch();
 
-  const button = login.user.type === 'admin' ? 'APPROVE' : 'UPLOAD';
+  // temproraily for demo
+  // const button = login.user.type === 'admin' ? 'APPROVE' : 'UPLOAD';
+
+  const button = login.user ? 'APPROVE' : 'UPLOAD';
 
   useEffect(() => {
     const { email } = login.user;

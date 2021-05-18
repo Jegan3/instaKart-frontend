@@ -61,7 +61,7 @@ const SignUp = (props) => {
   }, [])
 
   const onEstore = (e) => {
-    if (e.target.value.match('^[a-zA-Z0-9_@./#&+-]*$')) {
+    if (/^(?![\s-])[\A-Za-z\s-]*$/.test(e.target.value)) {
       setEstore(e.target.value)
     }
   }
@@ -98,7 +98,7 @@ const SignUp = (props) => {
     // window.open(`${window.location.origin}/termsofcondition`, '', 'width=1400,height=1200');
     // const win = window.open('/termsofcondition', "_blank");
     // win.focus();
-    history.push({pathname: '/termsofcondition'});
+    history.push({ pathname: '/termsofcondition' });
     window.scrollTo(0, 0);
   };
 
@@ -107,7 +107,9 @@ const SignUp = (props) => {
   }
 
   // IndustryType Options
-  const industryTypeOptions = industry && industry.map((item) => ({
+  // const sortIndustry = industry && industry.sort()
+  // const sortIndustry = industry && industry.sort((a, b) => a.industryType.localeCompare(b.industryType))
+  const industryTypeOptions = industry && industry.sort((a, b) => a.industryType.localeCompare(b.industryType)).map((item) => ({
     value: item._id,
     label: item.industryType,
   }))
@@ -130,11 +132,11 @@ const SignUp = (props) => {
   useEffect(() => {
     countries && countries.filter((item) => {
       if (item._id == country.value) {
-        const abcd = item.cities.map(data => ({
+        const city = item.cities.sort((a, b) => a.cityName.localeCompare(b.cityName)).map(data => ({
           value: data._id,
           label: data.cityName,
         }))
-        setUpdatedCityOptions(abcd)
+        setUpdatedCityOptions(city)
       };
     });
   }, [country])
@@ -194,7 +196,7 @@ const SignUp = (props) => {
 
   return (
     <Grid fluid>
-      <Header header />
+      <Header basic />
       <OtpScreen show={showOtp} handleClose={handleClose} onSubmitOtp={onSubmitOtp} resendOtp={resendOtp} email={email} />
       <Row>
         <Col md={6} sm={12} className="signup-margin" >
@@ -219,6 +221,7 @@ const SignUp = (props) => {
                     placeholder="Enter E-Store Name"
                     value={estore}
                     onChange={onEstore}
+                    maxLength={30}
                   />
                 </Col>
                 <Col md={6} sm={12} className={`clearIndustry  ${alertError && !industryType && `dropdown-alert`}`} >
@@ -271,17 +274,25 @@ const SignUp = (props) => {
               </Col>
               <Col md={6} sm={12}>
                 <label >Contact Number </label>
-                <input type="text" className="form-control" placeholder="Enter contact number" value={mobile} onChange={onMobile} maxLength={15} ></input>
+                <input type="text"
+                  className="form-control"
+                  placeholder="Enter contact number"
+                  value={mobile} onChange={onMobile}
+                  maxLength={15}
+                >
+                </input>
               </Col>
             </Row>
             <Row>
               <Col md={6} sm={12}>
                 <label >Email <span className="red-star">*</span></label>
-                <input type="email" className={
-                  alertError && email === ''
-                    ? ` form-control my-input`
-                    : `form-control formy`
-                } placeholder="Enter email" value={email} onChange={onEmail} maxLength={30}></input>
+                <input type="email"
+                  className={alertError && email === '' ? ` form-control my-input` : `form-control formy`}
+                  placeholder="Enter email"
+                  value={email}
+                  onChange={onEmail}
+                  maxLength={30}
+                />
               </Col>
               <Col md={6} sm={12}>
                 <label >Password <span className="red-star">*</span></label>

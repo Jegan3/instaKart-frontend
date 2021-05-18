@@ -12,7 +12,6 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import IconButton from '@material-ui/core/IconButton';
 import Badge from '@material-ui/core/Badge';
 import { withStyles } from '@material-ui/core/styles';
-
 import LoginModal from '../LoginModal';
 import { Country } from '../../constants/Country';
 import { history } from '../../routes';
@@ -26,12 +25,17 @@ const StyledBadge = withStyles((theme) => ({
   },
 }))(Badge);
 
-const Header = ({ header }) => {
+const Header = ({ basic }) => {
   const [login, setLogin] = useState(false);
   const [country, setCountry] = useState(<div><FontAwesomeIcon icon={faMapMarkerAlt} className="location" /><p>Select your country </p><FontAwesomeIcon icon={faCaretDown} className="caret-down" /></div>);
+
+  const validLogin = useSelector((state) => state.loginState.login);
   const signup = useSelector((state) => state.signupState.signup);
+  
   let name = signup && signup.data.name;
   name = name || 'Create My Account';
+
+  const vendor = validLogin && validLogin.user.type === 'vendor'
 
   const flags = Country.map((item) => (
     <MenuItem
@@ -71,9 +75,14 @@ const Header = ({ header }) => {
     window.scrollTo(0, 0);
   }
 
+  const Dashboard = () => {
+    history.push('/dashboard');
+    window.scrollTo(0, 0);
+  }
+
   return (
     <div>
-      {header ?
+      {basic ?
         <Row className="header-sec">
           <Col md={6} sm={6}>
             <Image className="signup-logo" src="images/logo.png" fluid />
@@ -114,7 +123,7 @@ const Header = ({ header }) => {
                       <p onClick={AboutUs}>About Us</p>
                     </NavItem>
                     <NavItem eventKey={3} href="#">
-                      <p><Button className="vendor-signup" onClick={Signup}>Register Your E-Store</Button></p>
+                      {vendor ? <p onClick={Dashboard}>Dashboard</p> : <p><Button className="vendor-signup" onClick={Signup}>Register Your E-Store</Button></p>}
                     </NavItem>
                   </Nav>
                 </Navbar.Collapse>

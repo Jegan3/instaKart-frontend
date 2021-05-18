@@ -7,8 +7,8 @@ import StatsCard from '../../components/StatsCard';
 import { CarouselThriftStore } from '../../components/Carousel';
 
 const ThriftStore = () => (
-  <Grid fluid>
-    <Header header />
+  <Grid fluid className="padding-control">
+    <Header />
     <Row >
       <Col>
         <div className="intro-banner">
@@ -19,7 +19,7 @@ const ThriftStore = () => (
     <Row md={12} className="cards-row clearfix">
       <Col xs={6} md={2} sm={4} lg={2} className="category-item">
         <StatsCard
-          bigIcon={<i className=" item-icon fas fa-home fa-sm circle-icon-home" />}
+          bigIcon={<i className="item-icon fas fa-home fa-sm circle-icon-home" />}
           className="thift-store"
           priText="Real Estate"
           secText="1 Ads"
