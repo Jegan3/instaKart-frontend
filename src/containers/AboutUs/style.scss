@@ -1,5 +1,5 @@
 .content-cards {
-    height: 400px;
+    height: 200px;
 
     .banner-img {
         background-color: #28a4d9;
@@ -9,7 +9,7 @@
     .about {
         font-size: 36px;
         position: relative;
-        top: 30%;
+        top: 20%;
         pointer-events: all;
         text-align: center;
         font-weight: bold;
@@ -33,11 +33,6 @@
     height: 100%;
 }
 
-.banner-img-right {
-    background-color: #9e9e9e6e;
-    height: 80%;
-}
-
 .para-sec {
     width: 50%;
     text-align: justify;
@@ -45,7 +40,7 @@
 
     .about-header {
         color: #33334b;
-        font-size: 33px;
+        font-size: 32px;
         bottom: 18px;
         position: relative;
     }

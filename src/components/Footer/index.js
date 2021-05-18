@@ -63,7 +63,7 @@ const Footer = () => (
           <div className="contact col-md-3 col-sm-4">
             <h4>Contact us</h4>
             <div className="support">
-              if u have any Question plz contact our support @gmail.com
+              Futher queries at support@insta-kart.com
             </div>
             <div className="number">868 388 1164</div>
             <div className="zip">+1</div>
