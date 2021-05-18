@@ -33,16 +33,13 @@ const Welcome = () => (
       </div>
     <div className="bg-welcome">
       <div className="arrival">
-        <h5>
-          # New E-Store #
-        </h5>
         <CarouselNewEStore />
       </div>
       <br />
     </div>
     <div className="Promotions">
       <h5>
-        # Promotions #
+        Promotions
       </h5>
       <CarouselNewEStore />
     </div>
@@ -50,7 +47,7 @@ const Welcome = () => (
     <div className="bg-welcome">
       <div className="arrival">
         <h5>
-          # E-Store Near You #
+          E-Store Near You
         </h5>
         <CarouselNewEStore />
       </div>

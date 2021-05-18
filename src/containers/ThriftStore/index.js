@@ -53,7 +53,7 @@ const ThriftStore = () => (
         <StatsCard
           bigIcon={<i className="fas fa-truck-monster fa-sm circle-icon-service" />}
           className="thift-store"
-          priText="Services"
+          priText="Footwear"
           secText="1 Ads"
         />
       </Col>
@@ -61,7 +61,7 @@ const ThriftStore = () => (
         <StatsCard
           bigIcon={<i className="fas fa-desktop fa-sm circle-icon-tv" />}
           className="thift-store"
-          priText="Electronics"
+          priText="Appliances"
           secText="2 Ads"
         />
       </Col>
@@ -69,7 +69,7 @@ const ThriftStore = () => (
         <StatsCard
           bigIcon={<i className=" item-icon fas fa-briefcase fa-sm circle-icon-jobs" />}
           className="thift-store"
-          priText="Jobs"
+          priText="Tools"
           secText="3 Ads"
         />
       </Col>
@@ -77,7 +77,7 @@ const ThriftStore = () => (
         <StatsCard
           bigIcon={<i className=" item-icon fas fa-tshirt fa-sm circle-icon-fashion" />}
           className="thift-store"
-          priText="Fashion"
+          priText="Clothing"
           secText="1 Ads"
         />
       </Col>
@@ -85,7 +85,7 @@ const ThriftStore = () => (
         <StatsCard
           bigIcon={<i className=" item-icon fas fa-cog fa-sm circle-icon-animal" />}
           className="thift-store"
-          priText="Animal"
+          priText="Miscellaneous"
           secText="2 Ads"
         />
       </Col>
@@ -101,7 +101,7 @@ const ThriftStore = () => (
         <StatsCard
           bigIcon={<i className=" item-icon fas fa-truck-monster fa-sm circle-icon-toys" />}
           className="thift-store"
-          priText="Baby Toys"
+          priText="Baby Products"
           secText="0 Ads"
         />
       </Col>
@@ -109,7 +109,7 @@ const ThriftStore = () => (
         <StatsCard
           bigIcon={<i className=" item-icon fas fa-heart fa-sm circle-icon-heart" />}
           className="thift-store"
-          priText="Matrimonial"
+          priText="Donate"
           secText="0 Ads"
         />
       </Col>
