@@ -126,6 +126,8 @@
   font-size: 12px;
   font-weight: bold;
   white-space: nowrap;
+  margin: 0 10%;
+    text-transform:capitalize;
 }
 
 .self-center {
@@ -137,9 +139,10 @@
 }
 
 .user {
-  margin: 5% 2% !important;
+  // margin: 5% 2% !important;
+  margin: 7% !important;
   display: flex !important;
-  padding-left: 30px;
+  // padding-left: 30px;
   cursor: pointer;
 }
 
@@ -230,4 +233,9 @@
 
 .header-sec .signup-logo {
   margin: 1.3em;
+}
+
+.cart-icon {
+  padding: 0px !important;
+  margin: 0 15% !important;
 }

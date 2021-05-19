@@ -31,9 +31,9 @@ const Header = ({ basic }) => {
 
   const validLogin = useSelector((state) => state.loginState.login);
   const signup = useSelector((state) => state.signupState.signup);
-  
-  let name = signup && signup.data.name;
-  name = name || 'Create My Account';
+
+  const name = validLogin && validLogin.user.name;
+  // name = name || 'Create My Account';
 
   const vendor = validLogin && validLogin.user.type === 'vendor'
 
@@ -154,19 +154,30 @@ const Header = ({ basic }) => {
                       fullWidth
                     />
                   </div>
-                  <div className="col-md-2 col-sm-3 login-header-top-right">
+                  {/* <div className="col-md-2 col-sm-3 login-header-top-right">
                     <div className="user" onClick={loginAccount} aria-hidden="true">
                       <FontAwesomeIcon icon={faUserPlus} className="userPlus" />
                       <div className="text">
                         <div className="small-text">Login</div>
-                        <div className="bold-text">{name}</div>
+                        <div className="bold-text">Create My Account</div>
                       </div>
                     </div>
                     <IconButton aria-label="cart" >
-                      <StyledBadge badgeContent={4} color="secondary">
+                      <StyledBadge badgeContent={7} color="secondary">
                         <ShoppingCartIcon fontSize="large" />
                       </StyledBadge>
                     </IconButton>
+                  </div> */}
+                  <div className="col-md-2 col-sm-3 login-header-top-right">
+                    <div className="user" onClick={loginAccount} aria-hidden="true">
+                      <FontAwesomeIcon icon={faUserPlus} className="userPlus" />
+                      {name ? <div className="text bold-text">{`Hi, ${name}`}</div> : <div className="bold-text">Sign In</div>}
+                    </div>
+                    {!name && <IconButton className="cart-icon" aria-label="cart" >
+                      <StyledBadge badgeContent={7} color="secondary">
+                        <ShoppingCartIcon fontSize="large" />
+                      </StyledBadge>
+                    </IconButton>}
                   </div>
                 </div>
               </div>
