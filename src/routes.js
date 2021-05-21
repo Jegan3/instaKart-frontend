@@ -8,6 +8,7 @@ import TermsConditions from './containers/TermsConditions';
 import AboutUs from './containers/AboutUs';
 import VendorInfo from './containers/VendorInfo';
 import ThriftStore from './containers/ThriftStore';
+import AdsDetails from './containers/AdsDetails';
 
 export const history = createBrowserHistory();
 
@@ -22,6 +23,7 @@ const Routes = () => (
         <Route path="/aboutus" component={AboutUs} />
         <Route path="/vendorinfo" component={VendorInfo} />
         <Route path="/thriftstore" component={ThriftStore} />
+        <Route path="/adsdetails" component={AdsDetails} />
       </Switch>
     </React.Fragment>
   </Router>
