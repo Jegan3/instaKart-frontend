@@ -11,7 +11,7 @@
 
 .logout{
     float:right;
-    border:none
+    border:none;
 }
 
 .nav {
@@ -23,8 +23,8 @@
     }
   }
   .navbar {
-    border: $none;
-    font-size: $font-size-navbar;
+    border: 0;
+    font-size: 16px;
     border-radius: 0;
   
     .navbar-minimize {
@@ -33,27 +33,26 @@
     }
   
     .navbar-brand {
-      font-weight: $font-weight-normal;
-      margin: $navbar-margin-brand;
-      padding: $navbar-padding-brand;
-      font-size: $font-size-large-navbar;
+      margin: 7px 0px;
+      padding: 15px;
+      font-size: 20px;
       text-transform: capitalize;
     }
     .navbar-nav {
       > li > a {
-        padding: $navbar-padding-a;
-        margin: $navbar-margin-a;
+        padding: 10px 15px;
+        margin: 10px 3px;
         position: relative;
       }
       > li > a.btn {
-        margin: $navbar-margin-a-btn;
-        padding: $padding-base-vertical $padding-base-horizontal;
+        margin: 15px 3px;
+        padding: 8px 16px;
       }
       > li > a.btn-round {
-        margin: $navbar-margin-a-btn-round;
+        margin: 16px 3px;
       }
       > li > a [class^="fa"] {
-        font-size: $font-size-medium;
+        font-size: 16px;
         position: relative;
         line-height: 16px;
       }
@@ -79,20 +78,20 @@
         top: 2px;
         left: 7px;
       }
-    }
+  
     .btn {
-      margin: $navbar-margin-btn;
-      font-size: $font-size-base;
+      margin: 10px 3px;
+      font-size: 14px;
     }
     .btn-simple {
-      font-size: $font-size-medium;
+      font-size: 16px;
     }
     .caret {
       // @include center-item();
     }
   
     &.fixed {
-      width: calc(100% - #{$sidebar-width});
+      width: calc(100% - #{calc(100% - 260px) });
       right: 0;
       left: auto;
       border-radius: 0;
@@ -113,7 +112,7 @@
   }
   
   .navbar-nav > li > .dropdown-menu {
-    border-radius: $border-radius-extreme;
+    border-radius: 10px;
     margin-top: -5px;
   }
   
@@ -196,7 +195,7 @@
   }
   
   .navbar-default {
-    background-color: $white-navbar;
+    background-color: rgba(#ffffff, 0.96);
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   
     .navbar-nav {
@@ -211,21 +210,21 @@
       > li > a:not(.btn):focus {
         background-color: transparent;
         border-radius: 3px;
-        color: $info-color;
+        color: $color-azure;
         @include opacity(1);
       }
   
       > .dropdown > a:hover .caret,
       > .dropdown > a:focus .caret {
-        border-bottom-color: $info-color;
-        border-top-color: $info-color;
+        border-bottom-color: $color-azure;
+        border-top-color: $color-azure;
       }
   
       > .open > a,
       > .open > a:hover,
       > .open > a:focus {
         background-color: transparent;
-        color: $info-color;
+        color: $color-azure;
       }
   
       .navbar-toggle:hover,
@@ -251,8 +250,8 @@
     .navbar-nav {
       > li > a {
         text-align: center;
-        padding: $navbar-padding-a-icons;
-        margin: $navbar-margin-a-icons;
+        padding: 6px 15px;
+        margin: 6px 3px;
       }
   
       [class^="pe"] {
@@ -321,21 +320,21 @@
 //     }
 //   }
   
-  .navbar-ct-blue {
-    @include navbar-color($blue-navbar);
-  }
-  .navbar-ct-azure {
-    @include navbar-color($azure-navbar);
-  }
-  .navbar-ct-green {
-    @include navbar-color($green-navbar);
-  }
-  .navbar-ct-orange {
-    @include navbar-color($orange-navbar);
-  }
-  .navbar-ct-red {
-    @include navbar-color($red-navbar);
-  }
+  // .navbar-ct-blue {
+  //   @include navbar-color($blue-navbar);
+  // }
+  // .navbar-ct-azure {
+  //   @include navbar-color($azure-navbar);
+  // }
+  // .navbar-ct-green {
+  //   @include navbar-color($green-navbar);
+  // }
+  // .navbar-ct-orange {
+  //   @include navbar-color($orange-navbar);
+  // }
+  // .navbar-ct-red {
+  //   @include navbar-color($red-navbar);
+  // }
   
   .navbar-transparent {
     padding-top: 15px;
@@ -346,7 +345,7 @@
   .navbar-toggle {
     margin-top: 19px;
     margin-bottom: 19px;
-    border: $none;
+    border: none;
   
     .icon-bar {
       background-color: $white-color;
@@ -361,4 +360,4 @@
       background-color: transparent;
     }
   }
-  
+}

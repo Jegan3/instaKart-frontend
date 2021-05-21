@@ -15,9 +15,10 @@
   width: 20px;
   height: 12px;
   position: relative;
+  bottom: 1px;
 }
 
-.dropdown-menu > li > a {
+.dropdown-menu>li>a {
   padding: 8px 16px;
   color: white;
 }
@@ -127,7 +128,7 @@
   font-weight: bold;
   white-space: nowrap;
   margin: 0 10%;
-    text-transform:capitalize;
+  text-transform: capitalize;
 }
 
 .self-center {
@@ -200,13 +201,11 @@
   display: block;
   -webkit-animation: c 53s linear infinite;
   animation: c 53s linear infinite;
-  background: linear-gradient(
-      121.19deg,
+  background: linear-gradient(121.19deg,
       rgba(133, 239, 49, 0) 25.73%,
       hsla(0, 0%, 100%, 0.3) 45.27%,
-      rgba(133, 239, 49, 0) 62.27%
-    ),;
-    // #28a4d9;
+      rgba(133, 239, 49, 0) 62.27%), ;
+  // #28a4d9;
   padding: 0.625em 2.5em;
   color: #fff !important;
   float: right;
@@ -238,4 +237,19 @@
 .cart-icon {
   padding: 0px !important;
   margin: 0 15% !important;
+}
+
+.head {
+  p {
+    line-height: 1.5;
+  }
+
+  a {
+    color: #9d9d9d;
+  }
+
+  a:focus,
+  a:hover {
+    color: #28a4d9;
+  }
 }

@@ -96,12 +96,13 @@ const LoginModal = ({ showPopup, hidePopup }) => {
         show={showLogin}
         onHide={hidePopup}
         aria-labelledby="contained-modal-title"
+        bsSize="medium"
       >
         <Modal.Body className="mdl-body">
           <Grid className="modal-popup" fluid>
             <Row className="in-body">
               <div className="right-side">
-                <Col className="right-pop" md={12} sm={12}>
+                <Col md={12} sm={12}>
                   <Row>
                     <Col md={12} className="right-logo" >
                       <Image className="inst-logo" src="images/logo.png" fluid />
@@ -126,7 +127,7 @@ const LoginModal = ({ showPopup, hidePopup }) => {
                         onChange={onUserName}
                       />
                     </Col>
-                    <Col md={12} sm={12}>
+                    <Col md={12} sm={12} className="password">
                       <label >Password</label>
                       <input type="password"
                         className={alertError && password === '' ? ` form-control my-input` : `form-control formy`}
@@ -142,7 +143,7 @@ const LoginModal = ({ showPopup, hidePopup }) => {
                       <a className="form-recovery" href="www.google.com">Forgot Password</a>
                     </Col>
                   </Row>
-                  <Row>
+                  <Row className="terms">
                     <Col md={12} sm={12} >
                       <label className="form-check-label">
                         <input type="checkbox" className="form-radio" value={termscondition} onChange={onTermsCondition} />

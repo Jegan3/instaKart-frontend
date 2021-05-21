@@ -1,10 +1,19 @@
+@mixin dropdown-height {
+
+  .css-yk16xz-control,
+  .css-1fhf3k1-control {
+    height: 35px !important;
+    min-height: auto;
+  }
+}
+
 .signup-logo {
   width: 15em;
 }
 
 .sub-heading {
   font-size: 1.5em;
-  padding-top: 0.5%;
+  // padding-top: 0.5%;
 }
 
 .heading {
@@ -12,15 +21,28 @@
   font-weight: 600;
 }
 
-.login-form {
+.signup-form {
   padding-top: 2%;
+}
+
+.signup-label {
+  margin-top: 3%;
 }
 
 .signup-submit {
   padding-top: 3%;
+
   // @media only screen and (max-width: 992px) {
   //     padding-bottom: 5%;
   // }
+  .btn-primary {
+    padding: 2%;
+  }
+
+  .btn-primary:focus,
+  & :hover {
+    background-color: transparent;
+  }
 }
 
 .container-fluid {
@@ -32,6 +54,7 @@
   height: 550px;
   width: 100%;
   margin-bottom: 15px;
+
   @media only screen and (max-width: 992px) {
     height: auto !important;
   }
@@ -57,6 +80,14 @@
   width: 100%;
 }
 
+.form-control {
+  border: 1px solid #e3e3e3;
+  border-radius: 7px;
+  color: #565656;
+  padding: 8px 12px;
+  height: 35px;
+}
+
 .form-control:focus {
   box-shadow: 0 0 0 1px #28a4d9 !important;
   border-color: #28a4d9;
@@ -79,13 +110,23 @@
   color: red;
 }
 
-.clearCountry {
+.clear-country {
   clear: both;
+  @include dropdown-height;
 }
 
-.required-feild {
+.clear-city {
+  @include dropdown-height;
+}
+
+.clear-industry {
+  @include dropdown-height;
+}
+
+.required-field {
   position: relative;
   top: 10px;
+  color: #9d9d9d;
 }
 
 .success-msg {
@@ -96,3 +137,8 @@
 .signup-margin {
   margin-top: 15px;
 }
+
+// .css-yk16xz-control {
+//   border-color: red !important;
+//   font-size: 1.5rem;
+// }

@@ -204,17 +204,15 @@ const SignUp = (props) => {
         </Col>
         <Col md={6} sm={12} className="signup-margin" >
           <Row>
-          </Row>
-          <Row>
             <Col lg={12} className="sub-heading">
               Basic Informations
             </Col>
           </Row>
-          <Form className="login-form">
+          <Form className="signup-form">
             {type === 'vendor' &&
               <Row>
                 <Col md={6} sm={12} >
-                  <label>E-Store Name <span className="red-star">*</span></label>
+                  <label className="signup-label">E-Store Name <span className="red-star">*</span></label>
                   <input
                     type='text'
                     className={alertError && estore === '' ? ` form-control my-input` : `form-control formy`}
@@ -224,8 +222,8 @@ const SignUp = (props) => {
                     maxLength={30}
                   />
                 </Col>
-                <Col md={6} sm={12} className={`clearIndustry  ${alertError && !industryType && `dropdown-alert`}`} >
-                  <label >Select Industry Type <span className="red-star">*</span></label>
+                <Col md={6} sm={12} className={`clear-industry ${alertError && !industryType && `dropdown-alert`}`} >
+                  <label className="signup-label">Select Industry Type <span className="red-star">*</span></label>
                   <Select
                     name="Industry Type"
                     placeholder="Choose you're industry type"
@@ -236,8 +234,8 @@ const SignUp = (props) => {
                     isMulti
                   />
                 </Col>
-                <Col md={6} sm={12} className={`clearCountry ${alertError && !country && `dropdown-alert`}`}>
-                  <label >Select Country <span className="red-star">*</span></label>
+                <Col md={6} sm={12} className={`clear-country ${alertError && !country && `dropdown-alert`}`}>
+                  <label className="signup-label">Select Country <span className="red-star">*</span></label>
                   <Select
                     name="Country"
                     placeholder="Choose you're country"
@@ -247,8 +245,8 @@ const SignUp = (props) => {
                     isSearchable={false}
                   />
                 </Col>
-                <Col md={6} sm={12} className={`clearCity ${alertError && !city && `dropdown-alert`}`} >
-                  <label >Select City <span className="red-star">*</span></label>
+                <Col md={6} sm={12} className={`clear-city ${alertError && !city && `dropdown-alert`}`} >
+                  <label className="signup-label">Select City <span className="red-star">*</span></label>
                   <Select
                     name="City"
                     placeholder="Choose you're city"
@@ -262,7 +260,7 @@ const SignUp = (props) => {
               </Row>}
             <Row>
               <Col md={6} sm={12}>
-                <label >User Name <span className="red-star">*</span></label>
+                <label className="signup-label">User Name <span className="red-star">*</span></label>
                 <input
                   type="text"
                   className={alertError && userName === '' ? ` form-control my-input` : `form-control formy`}
@@ -273,7 +271,7 @@ const SignUp = (props) => {
                 />
               </Col>
               <Col md={6} sm={12}>
-                <label >Contact Number </label>
+                <label className="signup-label">Contact Number </label>
                 <input type="text"
                   className="form-control"
                   placeholder="Enter contact number"
@@ -285,7 +283,7 @@ const SignUp = (props) => {
             </Row>
             <Row>
               <Col md={6} sm={12}>
-                <label >Email <span className="red-star">*</span></label>
+                <label className="signup-label">Email <span className="red-star">*</span></label>
                 <input type="email"
                   className={alertError && email === '' ? ` form-control my-input` : `form-control formy`}
                   placeholder="Enter email"
@@ -295,7 +293,7 @@ const SignUp = (props) => {
                 />
               </Col>
               <Col md={6} sm={12}>
-                <label >Password <span className="red-star">*</span></label>
+                <label className="signup-label">Password <span className="red-star">*</span></label>
                 <input
                   type="text"
                   className={alertError && password === '' ? ` form-control my-input` : `form-control formy`}
@@ -308,7 +306,7 @@ const SignUp = (props) => {
             </Row>
             <Row>
               <Col md={12} sm={12} className="required" >
-                <label className="required-feild">
+                <label className="required-field">
                   <small><span className="red-star">*</span> Required Fields</small>
                 </label>
               </Col>

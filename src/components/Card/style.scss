@@ -57,10 +57,12 @@
 .listing-header {
   padding: 3%;
   margin: 0 auto;
+
   span {
     vertical-align: middle;
     padding: 0 2%;
   }
+
   a {
     font-size: 10px;
   }
@@ -70,6 +72,7 @@
   clear: both;
   display: block;
   padding: 3%;
+
   a {
     font-size: 12px;
   }
@@ -78,6 +81,7 @@
 .listing-country {
   margin-bottom: 0 !important;
   font-size: 9px;
+
   span {
     padding-left: 3%;
   }
@@ -113,6 +117,11 @@
 
 .tooltip-fields {
   float: right;
+
+  i {
+    width: 18px;
+    text-align: center;
+  }
 }
 
 .card-avatar {

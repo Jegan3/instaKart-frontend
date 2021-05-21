@@ -125,7 +125,7 @@ const VendorInfo = () => {
     // window.open(`${window.location.origin}/termsofcondition`, '', 'width=1400,height=1200');
     // const win = window.open('/termsofcondition', "_blank");
     // win.focus();
-    history.push({pathname: '/termsofcondition'});
+    history.push({ pathname: '/termsofcondition' });
     window.scrollTo(0, 0);
   };
 
@@ -166,10 +166,10 @@ const VendorInfo = () => {
               Basic Information
             </Col>
           </Row>
-          <Form className="login-form">
+          <Form className="signup-form">
             <Row>
               <Col md={6} sm={12}>
-                <label >What is your first name ? <span className="red-star">*</span></label>
+                <label className="signup-label" >What is your first name ? <span className="red-star">*</span></label>
                 <input
                   type="text"
                   className={alertError && firstName === '' ? ` form-control my-input` : `form-control formy`}
@@ -180,7 +180,7 @@ const VendorInfo = () => {
                 />
               </Col>
               <Col md={6} sm={12}>
-                <label >What is your surname ? <span className="red-star">*</span></label>
+                <label className="signup-label">What is your surname ? <span className="red-star">*</span></label>
                 <input
                   type="text"
                   className={alertError && surName === '' ? ` form-control my-input` : `form-control formy`}
@@ -191,7 +191,7 @@ const VendorInfo = () => {
                 />
               </Col>
               <Col md={6} sm={12}>
-                <label >Email <span className="red-star">*</span></label>
+                <label className="signup-label">Email <span className="red-star">*</span></label>
                 <input
                   type="Email"
                   className={alertError && email === '' ? ` form-control my-input` : `form-control formy`}
@@ -202,7 +202,7 @@ const VendorInfo = () => {
                 />
               </Col>
               <Col md={6} sm={12} >
-                <label >What is your company's name ? <span className="red-star">*</span></label>
+                <label className="signup-label">What is your company's name ? <span className="red-star">*</span></label>
                 <input
                   type="text"
                   className={alertError && companyName === '' ? ` form-control my-input` : `form-control formy`}
@@ -215,7 +215,7 @@ const VendorInfo = () => {
             </Row>
             <Row>
               <Col md={6} sm={12}>
-                <label >Where is your business located ? <span className="red-star">*</span></label>
+                <label className="signup-label">Where is your business located ? <span className="red-star">*</span></label>
                 <input
                   type="text"
                   className={alertError && businessLocation === '' ? ` form-control my-input` : `form-control formy`}
@@ -225,8 +225,8 @@ const VendorInfo = () => {
                   maxLength={30}
                 />
               </Col>
-              <Col md={6} sm={12} className={`clearCity ${alertError && !products && `dropdown-alert`}`}>
-                <label >Select upto three products <span className="red-star">*</span></label>
+              <Col md={6} sm={12} className={`clear-city ${alertError && !products && `dropdown-alert`}`}>
+                <label className="signup-label">Select upto three products <span className="red-star">*</span></label>
                 <Select
                   type="text"
                   className="prof-select "
@@ -240,8 +240,8 @@ const VendorInfo = () => {
               </Col>
             </Row>
             <Row>
-              <Col md={6} sm={12} className={`clearCity ${alertError && !bank && `dropdown-alert`}`}>
-                <label >Choose your bank <span className="red-star">*</span></label>
+              <Col md={6} sm={12} className={`clear-city ${alertError && !bank && `dropdown-alert`}`}>
+                <label className="signup-label">Choose your bank <span className="red-star">*</span></label>
                 <Select
                   type="text"
                   className="prof-select "
@@ -255,7 +255,7 @@ const VendorInfo = () => {
             </Row>
             <Row>
               <Col md={12} sm={12} className="required" >
-                <label className="required-feild">
+                <label className="required-field">
                   <small><span className="red-star">*</span> Required Fields</small>
                 </label>
               </Col>

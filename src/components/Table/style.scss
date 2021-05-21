@@ -51,7 +51,7 @@
     &.active:focus,
     &.active:hover,
     .open > &.dropdown-toggle {
-      background-color: $transparent-bg;
+      background-color: transparent;
       color: $btn-states-color;
       border-color: $btn-states-color;
     }
@@ -66,7 +66,7 @@
       &.focus,
       &:active,
       &.active {
-        background-color: $transparent-bg;
+        background-color: transparent;
         border-color: $btn-color;
       }
     }
@@ -111,7 +111,7 @@
   
   .card {
       margin: 10px;
-      border-radius: $border-radius-base;
+      border-radius: 4px;
       box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(63, 63, 68, 0.1);
       background-color: #ffffff;
       //margin-bottom: 30px;
@@ -140,7 +140,7 @@
         width: 100%;
         overflow: hidden;
         height: 260px;
-        border-radius: $border-radius-base $border-radius-base 0 0;
+        border-radius: 4px 4px 0 0;
         position: relative;
         -webkit-transform-style: preserve-3d;
         -moz-transform-style: preserve-3d;
@@ -177,62 +177,62 @@
       }
       .map {
         height: 280px;
-        border-radius: $border-radius-base;
+        border-radius: 4px;
     
         &.map-big {
           height: 420px;
         }
       }
       .content {
-        padding: $padding-default-horizontal;
+        padding: 15px;
         .table-responsive {
-          padding: $padding-default-horizontal;
+          padding: 15px;
         }
       }
       .content-no-padding {
         padding: 0;
     
         .map {
-          margin-top: $padding-default-horizontal;
+          margin-top: 15px;
           border-radius: 0;
         }
       }
       .content-full-width {
-        padding: $padding-default-horizontal 0;
+        padding: 15px 0;
       }
     
       .header {
-        padding: $padding-default-horizontal $padding-default-horizontal 0px;
-        color: $black-color;
-        font-weight: $font-weight-light;
-        font-size: $font-size-h4;
+        padding: 15px 15px 0px;
+        color: #000000;
+        //font-weight: $//font-weight-light;
+        font-size: 22px;
       }
       .category,
       .form-group > label {
-        font-size: $font-size-base;
-        font-weight: $font-weight-normal;
-        color: $default-color;
+        font-size: 14px;
+        //font-weight: $//font-weight-normal;
+        color: #444;
         margin-bottom: 0px;
     
         &.error {
           text-transform: none;
-          color: $danger-color;
+          color: $color-red;
         }
         i {
-          font-size: $font-paragraph;
+          font-size: 16px;
         }
       }
     
       .form-group > label {
-        font-size: $font-size-small;
+        font-size: 12px;
         margin-bottom: 5px;
         text-transform: uppercase;
       }
     
       .title {
-        margin: $none;
-        color: $black-color;
-        font-weight: $font-weight-light;
+        margin: none;
+        color: #000000;
+        //font-weight: $//font-weight-light;
       }
       .avatar {
         width: 30px;
@@ -242,12 +242,12 @@
         margin-right: 5px;
       }
       .description {
-        font-size: $font-size-base;
+        font-size: 14px;
         color: #333;
       }
       .footer {
-        padding: 0 $padding-default-horizontal $padding-default-vertical;
-        background-color: $transparent-bg;
+        padding: 0 15px 10px;
+        background-color: transparent ;
         line-height: 30px;
     
         .form-group label {
@@ -273,15 +273,15 @@
     */
     
       .author {
-        font-size: $font-size-small;
-        font-weight: $font-weight-bold;
+        font-size: 12px;
+        //font-weight: $//font-weight-bold;
         text-transform: uppercase;
       }
       .author i {
-        font-size: $font-size-base;
+        font-size: 14px;
       }
       h6 {
-        font-size: $font-size-small;
+        font-size: 12px;
         margin: 0;
       }
       &.card-separator:after {
@@ -289,7 +289,7 @@
         right: -15px;
         top: 0;
         width: 1px;
-        background-color: $medium-gray;
+        background-color: #dddddd ;
         content: "";
         position: absolute;
       }
@@ -319,7 +319,7 @@
       }
     
       .alert {
-        border-radius: $border-radius-base;
+        border-radius: 4px;
         position: relative;
     
         &.alert-with-icon {
@@ -380,11 +380,11 @@
     }
     
     .card-wizard {
-      border-radius: $border-radius-extreme;
+      border-radius: 10px;
     
       .nav-pills {
-        margin-left: -$padding-default-horizontal;
-        margin-right: -$padding-default-horizontal;
+        margin-left: -15px;
+        margin-right: -15px;
         margin-top: 10px;
         margin-bottom: 10px;
     
@@ -415,12 +415,12 @@
       }
     
       .header {
-        padding-top: ($padding-default-vertical + 15);
-        padding-bottom: ($padding-default-vertical);
+        padding-top: (10px + 15);
+        padding-bottom: (10px);
       }
     
       .footer {
-        padding-bottom: ($padding-default-vertical + 5);
+        padding-bottom: (10px + 5);
       }
     }
     
@@ -436,7 +436,7 @@
         font-size: 3em;
         min-height: 64px;
         i {
-          font-weight: bold;
+          //font-weight: bold;
           line-height: 59px;
         }
       }
@@ -454,14 +454,14 @@
   // Custom Button
   
   .btn {
-      border-width: $border-thin;
-      background-color: $transparent-bg;
-      font-weight: $font-weight-normal;
+      border-width: 1px;
+      background-color: transparent;
+      //font-weight: $//font-weight-normal;
     
       @include opacity(0.8);
-      padding: $padding-base-vertical $padding-base-horizontal;
+      padding: 8px 16px;
     
-      @include btn-styles($default-color, $default-states-color);
+      // @include btn-styles(#444, $default-states-color);
     
       &:hover,
       &:focus {
@@ -476,7 +476,7 @@
       }
     
       &.btn-icon {
-        padding: $padding-base-vertical;
+        padding: 8px;
       }
     
       .btn-label {
@@ -491,49 +491,49 @@
     }
     
     // Apply the mixin to the buttons
-    //.btn-default { @include btn-styles($default-color, $default-states-color); }
-    .btn-primary {
-      @include btn-styles($primary-color, $primary-states-color);
-    }
-    .btn-success {
-      @include btn-styles($success-color, $success-states-color);
-    }
-    .btn-info {
-      @include btn-styles($info-color, $info-states-color);
-    }
-    .btn-warning {
-      @include btn-styles($warning-color, $warning-states-color);
-    }
-    .btn-danger {
-      @include btn-styles($danger-color, $danger-states-color);
-    }
+    //.btn-default { @include btn-styles(#444, $default-states-color); }
+    // .btn-primary {
+    //   @include btn-styles($primary-color, $primary-states-color);
+    // }
+    // .btn-success {
+    //   @include btn-styles($success-color, $success-states-color);
+    // }
+    // .btn-info {
+    //   @include btn-styles($info-color, $info-states-color);
+    // }
+    // .btn-warning {
+    //   @include btn-styles($warning-color, $warning-states-color);
+    // }
+    // .btn-danger {
+    //   @include btn-styles($color-red, $danger-states-color);
+    // }
     
-    .btn-neutral {
-      @include btn-styles($white-color, $white-color);
+    // .btn-neutral {
+    //   @include btn-styles($white-color, $white-color);
     
-      &:active,
-      &.active,
-      .open > &.dropdown-toggle {
-        background-color: $white-color;
-        color: $default-color;
-      }
+    //   &:active,
+    //   &.active,
+    //   .open > &.dropdown-toggle {
+    //     background-color: $white-color;
+    //     color: #444;
+    //   }
     
-      &.btn-fill,
-      &.btn-fill:hover,
-      &.btn-fill:focus {
-        color: $default-color;
-      }
+    //   &.btn-fill,
+    //   &.btn-fill:hover,
+    //   &.btn-fill:focus {
+    //     color: #444;
+    //   }
     
-      &.btn-fill:hover,
-      &.btn-fill:focus {
-        @include opacity(0.86);
-      }
+    //   &.btn-fill:hover,
+    //   &.btn-fill:focus {
+    //     @include opacity(0.86);
+    //   }
     
-      &.btn-simple:active,
-      &.btn-simple.active {
-        background-color: transparent;
-      }
-    }
+    //   &.btn-simple:active,
+    //   &.btn-simple.active {
+    //     background-color: transparent;
+    //   }
+    // }
     
     .btn {
       &:disabled,
@@ -543,48 +543,48 @@
       }
     }
     .btn-round {
-      border-width: $border-thin;
-      border-radius: $btn-round-radius !important;
-      padding: $padding-round-vertical $padding-round-horizontal;
+      border-width: 1px;
+      border-radius: 30px !important;
+      padding: 8px 16px;
     
       &.btn-icon {
-        padding: $padding-round-vertical;
+        padding: 8px;
       }
     }
     .btn-simple {
-      border: $none;
-      font-size: $font-size-medium;
-      padding: $padding-base-vertical $padding-base-horizontal;
+      border: none;
+      font-size: 16px;
+      padding: 8px 16px;
     
       &.btn-icon {
-        padding: $padding-base-vertical;
+        padding: 8px;
       }
     }
-    .btn-lg {
-      @include btn-size(
-        $padding-large-vertical,
-        $padding-large-horizontal,
-        $font-size-large,
-        $border-radius-large
-      );
-      font-weight: $font-weight-normal;
-    }
-    .btn-sm {
-      @include btn-size(
-        $padding-small-vertical,
-        $padding-small-horizontal,
-        $font-size-small,
-        $border-radius-small
-      );
-    }
-    .btn-xs {
-      @include btn-size(
-        $padding-xs-vertical,
-        $padding-xs-horizontal,
-        $font-size-small,
-        $border-radius-small
-      );
-    }
+    // .btn-lg {
+    //   @include btn-size(
+    //     $padding-large-vertical,
+    //     $padding-large-horizontal,
+    //     $font-size-large,
+    //     $border-radius-large
+    //   );
+    //   //font-weight: $//font-weight-normal;
+    // }
+    // .btn-sm {
+    //   @include btn-size(
+    //     $padding-small-vertical,
+    //     $padding-small-horizontal,
+    //     12px,
+    //     $border-radius-small
+    //   );
+    // }
+    // .btn-xs {
+    //   @include btn-size(
+    //     $padding-xs-vertical,
+    //     $padding-xs-horizontal,
+    //     12px,
+    //     $border-radius-small
+    //   );
+    // }
     .btn-wd {
       min-width: 140px;
     }
