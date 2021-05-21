@@ -51,7 +51,7 @@ const ThriftStore = () => (
       </Col>
       <Col xs={6} md={2} sm={4} lg={2} className="category-item">
         <StatsCard
-          bigIcon={<i className="fas fa-truck-monster fa-sm circle-icon-service" />}
+          bigIcon={<i className="fas fa-cog fa-sm circle-icon-service" />}
           className="thift-store"
           priText="Footwear"
           secText="1 Ads"
@@ -83,7 +83,7 @@ const ThriftStore = () => (
       </Col>
       <Col xs={6} md={2} sm={4} lg={2} className="category-item">
         <StatsCard
-          bigIcon={<i className=" item-icon fas fa-cog fa-sm circle-icon-animal" />}
+          bigIcon={<i className=" item-icon fas fa-paw fa-sm circle-icon-animal" />}
           className="thift-store"
           priText="Miscellaneous"
           secText="2 Ads"
