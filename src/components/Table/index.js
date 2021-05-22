@@ -1,5 +1,4 @@
-/* eslint-disable react/prefer-stateless-function */
-/* eslint-disable react/prop-types */
+/*eslint-disable*/
 import React from 'react';
 
 class Table extends React.Component {

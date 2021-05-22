@@ -23,7 +23,7 @@ const Routes = () => (
         <Route path="/aboutus" component={AboutUs} />
         <Route path="/vendorinfo" component={VendorInfo} />
         <Route path="/thriftstore" component={ThriftStore} />
-        <Route path="/adsdetails" component={AdsDetails} />
+        <Route path="/advertisement" component={AdsDetails} />
       </Switch>
     </React.Fragment>
   </Router>

@@ -1,13 +1,9 @@
-/* eslint-disable jsx-a11y/alt-text */
-/* eslint-disable jsx-a11y/accessible-emoji */
-/* eslint-disable jsx-a11y/iframe-has-title */
-/* eslint-disable jsx-a11y/anchor-is-valid */
+/*eslint-disable*/
 import React from 'react';
 import { Row, Col, Grid } from 'react-bootstrap';
 import Banners from '../../components/Banners';
 import Footer from '../../components/Footer';
 import Header from '../../components/Headers';
-
 
 const cardHolder = [
   {
@@ -22,13 +18,13 @@ const cardHolder = [
   },
 ];
 
-
 const AdsDetails = () => (
-  <Grid fluid>
+  <Grid fluid className="padding-control">
     <Header header />
-    <div className="theme-page">
-      <div className="inner-wrapper">
-        <Row >
+    <Row >
+      <div className="theme-page">
+        <div className="inner-wrapper">
+          {/* <Row > */}
           <Col md={8} className="right-content">
             <Col md={12} sm={12}>
               <div className="breadcrumbs">
@@ -505,12 +501,12 @@ const AdsDetails = () => (
               </div>
             </Col>
           </Col>
-        </Row>
+        </div>
       </div>
-      <Row>
-        <Footer />
-      </Row>
-    </div>
+    </Row>
+    <Row>
+      <Footer />
+    </Row>
   </Grid>
 
 

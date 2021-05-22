@@ -13,7 +13,6 @@
 
 .sub-heading {
   font-size: 1.5em;
-  // padding-top: 0.5%;
 }
 
 .heading {
@@ -32,9 +31,6 @@
 .signup-submit {
   padding-top: 3%;
 
-  // @media only screen and (max-width: 992px) {
-  //     padding-bottom: 5%;
-  // }
   .btn-primary {
     padding: 2%;
   }
@@ -48,6 +44,7 @@
 .container-fluid {
   overflow-x: hidden;
   overflow-y: hidden;
+  margin: unset;
 }
 
 .left-side {

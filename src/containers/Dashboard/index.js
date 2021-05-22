@@ -1,23 +1,20 @@
-import React, { useState, useEffect } from 'react';
+/*eslint-disable*/
+import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Col, Row, Grid, Button } from 'react-bootstrap';
 import ReactTable from 'react-table';
 import Headerbar from '../../components/HeaderBar';
-import Sidebar from '../../components/SideBar';
-import { history } from '../../routes';
-// react component used to create charts
-// react components used to create a SVG / Vector map
-// import { VectorMap } from 'react-jvectormap';
 import Table from '../../components/Table';
 import StatsCard from '../../components/StatsCard';
-// import Card from '../../components/Card';
 import Upload from '../../components/Upload';
+import SideBar from '../../components/SideBar';
 
 const Dashboard = () => {
-  const [show, setShow] = useState(false);
   const login = useSelector((state) => state.loginState.login);
   const userData = useSelector((state) => state.retreiveBannerState.retreiveBanner);
   const dispatch = useDispatch();
+
+  const sideBarRef = useRef();
 
   // temproraily for demo
   // const button = login.user.type === 'admin' ? 'APPROVE' : 'UPLOAD';
@@ -39,9 +36,9 @@ const Dashboard = () => {
 
   return (
     <div className="wrapper">
-      <Upload showPopup={show} hidePopup={hidePopup} />
-      <Sidebar history={history} />
-      <div className="main-panel">
+      {/* <Upload showPopup={show} hidePopup={hidePopup} /> */}
+      <SideBar ref={sideBarRef} />
+      <div className="rightside-panel">
         <Headerbar headerName="Lunch Box" />
         <div className="main-content">
           <Grid fluid>
