@@ -14,10 +14,11 @@ const StatsCard = ({ bigIcon, statsText, statsValue, className, priText, secText
         </div>
         <div className="col-xs-7 thrift-card">
           <div className="numbers">
-            <p className="categories-title">{priText}</p>
+          {priText && <p className="categories-title">{priText}</p>}
             {/* <p>{secText}</p> */}
             {secText && <p className="categories-count">{secText}<span className="categories-icons" ><FontAwesomeIcon icon={faPlusCircle} /></span></p>}
-            {statsText && <p>{statsText}<span className="info-icon" ><FontAwesomeIcon icon={faInfoCircle} /></span></p>}
+            <p>{statsText}</p>
+            {/* <span className="info-icon" ><FontAwesomeIcon icon={faInfoCircle} /></span> */}
             {statsValue}
           </div>
         </div>

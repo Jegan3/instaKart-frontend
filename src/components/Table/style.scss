@@ -191,14 +191,12 @@
   .header {
     padding: 15px 15px 0px;
     color: #000000;
-    //font-weight: $//font-weight-light;
     font-size: 22px;
   }
 
   .category,
   .form-group>label {
     font-size: 14px;
-    //font-weight: $//font-weight-normal;
     color: #444;
     margin-bottom: 0px;
 
@@ -260,15 +258,8 @@
     color: #a9a9a9;
   }
 
-  /*
-        .footer div{
-            display: inline-block;
-        }
-    */
-
   .author {
     font-size: 12px;
-    //font-weight: $//font-weight-bold;
     text-transform: uppercase;
   }
 
@@ -435,40 +426,15 @@
   }
 }
 
-.card-stats {
-  .icon-big {
-    font-size: 3em;
-    min-height: 64px;
-
-    i {
-      //font-weight: bold;
-      line-height: 59px;
-    }
-  }
-
-  .numbers {
-    font-size: 2em;
-    text-align: right;
-
-    p {
-      margin: 0;
-      font-size: 16px;
-    }
-  }
-}
-
-
 // Custom Button
 
 .btn {
   border-width: 1px;
   background-color: transparent;
-  //font-weight: $//font-weight-normal;
 
   @include opacity(0.8);
   padding: 8px 16px;
 
-  // @include btn-styles(#444, $default-states-color);
 
   &:hover,
   &:focus {

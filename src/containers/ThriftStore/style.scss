@@ -82,17 +82,13 @@ s .card-body {
   display: grid;
 
   .icon-big {
-    font-size: 3em;
-    min-height: 64px;
-    top: 12px;
-    position: relative;
+    font-size: 3.5rem;
   }
 }
 
 .thift-store .thrift-card {
   margin: auto;
   white-space: nowrap;
-  padding-bottom: 20px;
   width: 100%;
   margin: auto;
   display: block;
@@ -100,63 +96,63 @@ s .card-body {
   position: relative;
 
   .circle-icon-home {
-    background: rgb(123, 171, 71);
-    @extend circle-icon;
+    color: rgb(123, 171, 71);
+    // @extend circle-icon;
   }
 
   .circle-icon-car {
-    background: rgb(74, 174, 175);
-    @extend circle-icon;
+    color: rgb(74, 174, 175);
+    // @extend circle-icon;
   }
 
   .circle-icon-mobile {
-    background: rgb(213, 101, 141);
-    @extend circle-icon;
+    color: rgb(213, 101, 141);
+    // @extend circle-icon;
   }
 
   .circle-icon-jobs {
-    background: rgb(83, 185, 197);
-    @extend circle-icon;
+    color: rgb(83, 185, 197);
+    // @extend circle-icon;
   }
 
   .circle-icon-fashion {
-    background: rgb(123, 171, 71);
-    @extend circle-icon;
+    color: rgb(123, 171, 71);
+    // @extend circle-icon;
   }
 
   .circle-icon-animal {
-    background: rgb(159, 188, 47);
-    @extend circle-icon;
+    color: rgb(159, 188, 47);
+    // @extend circle-icon;
   }
 
   .circle-icon-book {
-    background: rgb(103, 58, 182);
-    @extend circle-icon;
+    color: rgb(103, 58, 182);
+    // @extend circle-icon;
   }
 
   .circle-icon-toys {
-    background: rgb(112, 112, 112);
-    @extend circle-icon;
+    color: rgb(112, 112, 112);
+    // @extend circle-icon;
   }
 
   .circle-icon-heart {
-    background: rgb(235, 84, 122);
-    @extend circle-icon;
+    color: rgb(235, 84, 122);
+    // @extend circle-icon;
   }
 
   .circle-icon-service {
-    background: rgb(238, 114, 48);
-    @extend circle-icon;
+    color: rgb(238, 114, 48);
+    // @extend circle-icon;
   }
 
   .circle-icon-tv {
-    background: rgb(91, 156, 214);
-    @extend circle-icon;
+    color: rgb(91, 156, 214);
+    // @extend circle-icon;
   }
 
   .circle-icon-chair {
-    background: rgb(184, 149, 121);
-    @extend circle-icon;
+    color: rgb(184, 149, 121);
+    // @extend circle-icon;
   }
 }
 

@@ -9,44 +9,36 @@ circle-icon {
     overflow: hidden;
 }
 
-.circle-icon-1 {
-    background: #f88e84;
-    @extend circle-icon;
+.icon-1 {
+    color: #f88e84;
 }
 
-.circle-icon-2 {
-    background: #f88e84;
-    @extend circle-icon;
+.icon-2 {
+    color: #f88e84;
 }
 
-.circle-icon-3 {
-    background: #92579e;
-    @extend circle-icon;
+.icon-3 {
+    color: #92579e;
 }
 
-.circle-icon-4 {
-    background: #7164f1;
-    @extend circle-icon;
+.icon-4 {
+    color: #7164f1;
 }
 
-.circle-icon-5 {
-    background: #ebae33;
-    @extend circle-icon;
+.icon-5 {
+    color: $color-green;
 }
 
-.circle-icon-6 {
-    background: #f14f43;
-    @extend circle-icon;
+.icon-6 {
+    color: $color-orange;
 }
 
-.circle-icon-7 {
-    background: #8ceceb;
-    @extend circle-icon;
+.icon-7 {
+    color: $color-blue;
 }
 
-.circle-icon-8 {
-    background: #ba60da;
-    @extend circle-icon;
+.icon-8 {
+    color: $color-black;
 }
 
 .main-content {

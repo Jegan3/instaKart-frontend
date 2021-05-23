@@ -43,36 +43,36 @@ const Dashboard = () => {
         <div className="main-content">
           <Grid fluid>
             <Row>
-              <Col lg={3} md={12}>
+              <Col lg={3} md={6} sm={6}>
                 <StatsCard
-                  bigIcon={<i className="fas fa-archive fa-sm circle-icon-1" />}
+                  bigIcon={<i className="fas fa-archive fa-xs icon-1" />}
                   statsText="Order Received"
                   statsValue="634"
                 //   statsIcon={<i className="fa fa-refresh" />}
                 // statsIconText="Updated now"
                 />
               </Col>
-              <Col lg={3} md={6}>
+              <Col lg={3} md={6} sm={6}>
                 <StatsCard
-                  bigIcon={<i className="fas fa-truck fa-sm circle-icon-2" />}
+                  bigIcon={<i className="fas fa-truck fa-xs icon-2" />}
                   statsText="Total Delivery"
                   statsValue="1054"
                 //   statsIcon={<i className="fa fa-calendar-o" />}
                 // statsIconText="Last day"
                 />
               </Col>
-              <Col lg={3} md={12}>
+              <Col lg={3} md={6} sm={6}>
                 <StatsCard
-                  bigIcon={<i className="fa fa-cart-plus fa-sm circle-icon-3" />}
+                  bigIcon={<i className="fa fa-cart-plus fa-xs icon-3" />}
                   statsText="Cancel Orders"
                   statsValue="6"
                 //   statsIcon={<i className="fa fa-clock-o" />}
                 // statsIconText="In the last hour"
                 />
               </Col>
-              <Col lg={3} md={12}>
+              <Col lg={3} md={6} sm={6}>
                 <StatsCard
-                  bigIcon={<i className="fas fa-rupee-sign fa-sm circle-icon-4" />}
+                  bigIcon={<i className="fas fa-rupee-sign fa-xs icon-4" />}
                   statsText="Net Earning"
                   statsValue="15000"
                 //   statsIcon={<i className="fa fa-refresh" />}
@@ -81,36 +81,36 @@ const Dashboard = () => {
               </Col>
             </Row>
             <Row>
-              <Col lg={3} md={12}>
+              <Col lg={3} md={6} sm={6}>
                 <StatsCard
-                  bigIcon={<i className="fa fa-cart-plus fa-sm circle-icon-5" />}
+                  bigIcon={<i className="fa fa-cart-plus fa-xs icon-5" />}
                   statsText="Today Ordered"
                   statsValue="0"
                 //   statsIcon={<i className="fa fa-refresh" />}
                 // statsIconText="Updated now"
                 />
               </Col>
-              <Col lg={3} md={12}>
+              <Col lg={3} md={6} sm={6}>
                 <StatsCard
-                  bigIcon={<i className="fas fa-shipping-fast fa-sm circle-icon-6" />}
-                  statsText="Today Delivered  "
+                  bigIcon={<i className="fas fa-shipping-fast fa-xs icon-6" />}
+                  statsText="Today Delivered"
                   statsValue="0"
                 //   statsIcon={<i className="fa fa-calendar-o" />}
                 // statsIconText="Last day"
                 />
               </Col>
-              <Col lg={3} md={12}>
+              <Col lg={3} md={6} sm={6}>
                 <StatsCard
-                  bigIcon={<i className="fas fa-rupee-sign fa-sm circle-icon-7" />}
+                  bigIcon={<i className="fas fa-rupee-sign fa-xs icon-7" />}
                   statsText="Today Sales"
                   statsValue="6"
                 //   statsIcon={<i className="fa fa-clock-o" />}
                 // statsIconText="In the last hour"
                 />
               </Col>
-              <Col lg={3} md={12}>
+              <Col lg={3} md={6} sm={6}>
                 <StatsCard
-                  bigIcon={<i className="fas fa-users fa-sm circle-icon-8" />}
+                  bigIcon={<i className="fas fa-users fa-xs icon-8" />}
                   statsText="Total Customers"
                   statsValue="1100"
                 //   statsIcon={<i className="fa fa-refresh" />}
