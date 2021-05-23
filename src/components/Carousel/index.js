@@ -173,54 +173,63 @@ const cardsDataMobile = [
     title: 'CARD 1',
     content: 'Food Avenue',
     imgUrl: 'images/1_Food.png',
+    url: '/advertisement',
   },
   {
     id: 2,
     title: 'CARD 2',
     content: 'Fashion District',
     imgUrl: 'images/2_Fashion.jpg',
+    url: '/advertisement',
   },
   {
     id: 3,
     title: 'CARD 3',
     content: 'Health & Wellness',
     imgUrl: 'images/3_Health.png',
+    url: '/advertisement',
   },
   {
     id: 4,
     title: 'CARD 4',
     content: 'Speciality Services',
     imgUrl: 'images/4_Speciality.png',
+    url: '/advertisement',
   },
   {
     id: 5,
     title: 'CARD 5',
     content: 'IK Thrift Store',
     imgUrl: 'images/5_Thrift.png',
+    url: '/advertisement',
   },
   {
     id: 6,
     title: 'CARD 6',
     content: 'Grocery & Fresh Produce',
     imgUrl: 'images/6_Grocery.png',
+    url: '/advertisement',
   },
   {
     id: 7,
     title: 'CARD 7',
     content: 'Appliances & Tech Gadgets',
     imgUrl: 'images/7_applicance.jpg',
+    url: '/advertisement',
   },
   {
     id: 8,
     title: 'CARD 8',
     content: 'Automotive, Hardware & Industrial Supplies',
     imgUrl: 'images/8_hardware.png',
+    url: '/advertisement',
   },
   {
     id: 9,
     title: 'CARD 9',
     content: 'Home & Garden Supplies',
     imgUrl: 'images/9_home.png',
+    url: '/advertisement',
   },
 ];
 
@@ -364,10 +373,11 @@ export const CarouselThriftStore = () => (
     responsive={responsiveThrift}
   >
     {cardsDataMobile.map((card) => (
-      <Card title={card.title} imgUrl={card.imgUrl} body />
+      <Card title={card.title} imgUrl={card.imgUrl} url={card.url} body />
     ))}
   </Carousel>
 );
+
 export const CarouselAdsDetails = () => (
   <Carousel
     // ssr

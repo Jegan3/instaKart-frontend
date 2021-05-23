@@ -26,7 +26,9 @@ const Card = ({ imgUrl, alt, content, url, body }) => {
           <a className="" href="http://vaibhavk13.sg-host.com/listings/business-category/events-notices/business-events/" >Business</a>
         </div>
         <div className="listing-job">
-          <a href="http://vaibhavk13.sg-host.com/listings/assistant-accountant/" title="Assistant Accountant">Assistant Accountant</a>
+          {/* For reference */}
+          {/* <a href="http://vaibhavk13.sg-host.com/listings/assistant-accountant/" title="Assistant Accountant">Assistant Accountant</a> */}
+          <a href={url} title="Assistant Accountant">Assistant Accountant</a>
           <span class="currency">$ 730</span>
           <div className="listing-country">
             <i className="fas fa-map-marker-alt"></i>
