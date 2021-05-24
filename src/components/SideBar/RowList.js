@@ -9,10 +9,10 @@ const rowlist = [
     id: 1, label: 'Thrift Store', icon: faNetworkWired, address: 'thriftstore',
   },
   {
-    id: 2, label: 'Product', icon: faUser, address: 'Product',
+    id: 2, label: 'Add Product', icon: faUser, address: 'addproduct',
   },
   {
-    id: 3, label: 'Order List', icon: faBuilding, address: 'orderlist',
+    id: 3, label: 'Product List', icon: faBuilding, address: 'productlist',
   },
   {
     id: 4, label: 'Customer Review', icon: faUsers, address: 'customerreview',
