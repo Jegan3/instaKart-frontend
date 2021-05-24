@@ -9,6 +9,8 @@ import AboutUs from './containers/AboutUs';
 import VendorInfo from './containers/VendorInfo';
 import ThriftStore from './containers/ThriftStore';
 import AdsDetails from './containers/AdsDetails';
+import ProductList from './containers/ProductList';
+
 
 export const history = createBrowserHistory();
 
@@ -24,6 +26,7 @@ const Routes = () => (
         <Route path="/vendorinfo" component={VendorInfo} />
         <Route path="/thriftstore" component={ThriftStore} />
         <Route path="/advertisement" component={AdsDetails} />
+        <Route path="/productlist" component={ProductList} />
       </Switch>
     </React.Fragment>
   </Router>
