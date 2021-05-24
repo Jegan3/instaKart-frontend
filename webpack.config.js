@@ -101,6 +101,9 @@ const config = {
       },
     ]
   },
+  devServer: {
+    disableHostCheck: true,
+  },
   plugins: [
     // The DefinePlugin allows you to create global constants which can be configured at compile time.
     // This can be useful for allowing different behavior between development builds and production builds. 
