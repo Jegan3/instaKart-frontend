@@ -1,53 +1,47 @@
 /*eslint-disable*/
 import React from 'react';
 
-class Table extends React.Component {
-  render() {
-    return (
+const Table = (props) => (console.log('props',props),
+  <div
+    className={
+      `card${props.hidden ? ' card-hidden' : ''
+      }${props.calendar ? ' card-calendar' : ''
+      }${props.plain ? ' card-plain' : ''
+      }${props.wizard ? ' card-wizard' : ''}`
+    }
+  >
+    {props.title || props.category ? (
+      <div
+        className={`table-header${props.textCenter ? ' text-center' : ''}`}
+      >
+        <h5 className="title">{props.title}</h5>
+        <p className="category">{props.category}</p>
+      </div>
+    ) : (
+      ''
+    )}
+    <div
+      className={
+        `content${props.ctAllIcons ? ' all-icons' : ''
+        }${props.ctFullWidth ? ' content-full-width' : ''
+        }${props.ctTextCenter ? ' text-center' : ''
+        }${props.tableFullWidth ? ' table-full-width' : ''}`
+      }
+    >
+      {props.content}
+    </div>
+    {props.stats || props.legend ? (
       <div
         className={
-          `card${
-            this.props.hidden ? ' card-hidden' : ''
-          }${this.props.calendar ? ' card-calendar' : ''
-          }${this.props.plain ? ' card-plain' : ''
-          }${this.props.wizard ? ' card-wizard' : ''}`
+          `footer${props.ftTextCenter ? ' text-center' : ''}`
         }
       >
-        {this.props.title !== undefined || this.props.category !== undefined ? (
-          <div
-            className={`header${this.props.textCenter ? ' text-center' : ''}`}
-          >
-            <h4 className="title">{this.props.title}</h4>
-            <p className="category">{this.props.category}</p>
-          </div>
-        ) : (
-          ''
-        )}
-        <div
-          className={
-            `content${
-              this.props.ctAllIcons ? ' all-icons' : ''
-            }${this.props.ctFullWidth ? ' content-full-width' : ''
-            }${this.props.ctTextCenter ? ' text-center' : ''
-            }${this.props.tableFullWidth ? ' table-full-width' : ''}`
-          }
-        >
-          {this.props.content}
-        </div>
-        {this.props.stats !== undefined || this.props.legend !== undefined ? (
-          <div
-            className={
-              `footer${this.props.ftTextCenter ? ' text-center' : ''}`
-            }
-          >
-            {this.props.legend !== undefined ? (
-              <div className="legend">{this.props.legend}</div>
-            ) : null}
-          </div>
+        {props.legend ? (
+          <div className="legend">{props.legend}</div>
         ) : null}
       </div>
-    );
-  }
-}
+    ) : null}
+  </div>
+);
 
 export default Table;

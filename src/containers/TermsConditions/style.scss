@@ -8,23 +8,23 @@
     margin: 35px;
 }
 
-.content_body {
+.content-body {
     margin: 35px;
     text-align: justify;
+
+    p {
+        margin: 20px !important;
+        font-size: 14px !important;
+        line-height: 1.6 !important;
+        color: #333 !important;
+    }
 }
 
-.Section {
-    margin: 20px!important;
+.section {
+    margin: 20px !important;
     font-weight: 700;
 }
 
-.content_body p {
+.unlist {
     margin: 20px !important;
-    font-size: 14px!important;
-    line-height: 1.6!important;
-    color: #333!important;
-}
-
-.un_list{
-    margin: 20px!important;
 }

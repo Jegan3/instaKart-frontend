@@ -5,7 +5,7 @@ const TermsConditions = () => (
     <div className="header">
       <h3 className="terms">Insta-Kart Ltd Terms & Conditions </h3>
     </div>
-    <div className="content_body">
+    <div className="content-body">
       <p style={{ fontWeight: 700 }}>
         PLEASE CAREFULLY READ THESE TERMS OF USE. BY USING THIS WEBSITE YOU
         INDICATE YOUR UNDERSTANDING AND ACCEPTANCE OF THESE TERMS. <br />
@@ -147,7 +147,7 @@ const TermsConditions = () => (
         its sole discretion.
       </p>
       <h4>3. SELLING ON INSTA-KART.COM</h4>
-      <p className="Section">
+      <p className="section">
         <u>Selling on INSTA-KART.COM</u>
       </p>
       <p>
@@ -176,14 +176,14 @@ const TermsConditions = () => (
         method because we believe in paperless transactions via credit or
         debit cards.
       </p>
-      <p className="Section">
+      <p className="section">
         <u>Credit Card:</u>
       </p>
       <p>
         Credit Card and Debit Card payment method are processed by WiPay The
         Vendor agrees to the terms and arrangements set forth by <b>INSTA-KART.COM</b> in this document.
       </p>
-      <p className="Section">
+      <p className="section">
         Terms & Arrangements:
         <br />
         Registered businesses: The Vendor must sign up for a WiPay Basic
@@ -209,7 +209,7 @@ const TermsConditions = () => (
       <p>
         You agree not to post, email, or otherwise make available Content:
       </p>
-      <ul className="un_list">
+      <ul className="unlist">
         <li>that violates any law;</li>
         <li>
           that is copyrighted or patented, protected by trade secret or
