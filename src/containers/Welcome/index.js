@@ -31,19 +31,24 @@ const Welcome = () => (
       <CarouselThird />
       <CarouselFourth />
     </div>
-    <div className="bg-welcome">
+    <div className="bg-welcome-top">
       <div className="arrival">
+        <h5>
+          Abcd
+        </h5>
         <CarouselNewEStore />
       </div>
       <br />
     </div>
-    <div className="promotions">
-      <h5>
-        Promotions
-      </h5>
-      <CarouselNewEStore />
+    <div className="bg-welcome-pro">
+      <div className="arrival">
+        <h5>
+          Promotions
+       </h5>
+        <CarouselNewEStore />
+      </div>
+      <br />
     </div>
-    <br />
     <div className="bg-welcome">
       <div className="arrival">
         <h5>
