@@ -23,12 +23,12 @@ const rowlist = [
   {
     id: 6, label: 'Support', icon: faTasks, address: 'support',
   },
-  // {
-  //   id: 7, label: 'Batch', icon: faFolderPlus, address: 'createbatch',
-  // },
-  // {
-  //   id: 8, label: 'Role Assignment', icon: faUserTag, address: '',
-  // },
+  {
+    id: 7, label: 'About Restaurant', icon: faFolderPlus, address: 'aboutrestaurant',
+  },
+  {
+    id: 8, label: 'General Info', icon: faUserTag, address: 'generalinfo',
+  },
   // {
   //   id: 9, label: 'Task', icon: faUserTag, address: 'createtask',
   // },

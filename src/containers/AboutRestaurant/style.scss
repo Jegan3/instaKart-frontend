@@ -1,0 +1,49 @@
+.check-title {
+  margin: 10px 0px 10px 0px;
+
+  .title-label {
+    font-size: 15px;
+  }
+}
+
+.restaturant-from {
+
+  .form-contentCheck {
+    top: 10px;
+    position: relative;
+
+    .form-check {
+      .form-check-input {
+        margin: 5px;
+      }
+
+    }
+  }
+
+  .btns {
+
+    .btn-primary:focus,
+    & :hover {
+      background-color: transparent;
+    }
+  }
+}
+
+.curr {
+  padding: 5px 15px;
+
+  .tax-label {
+    margin-top: 4%;
+    white-space: nowrap;
+  }
+
+  .file-label {
+    margin-top: 2%;
+    white-space: nowrap;
+  }
+
+  .check-name {
+    color: #777;
+    font-size: 12px;
+  }
+}
