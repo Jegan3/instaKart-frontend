@@ -38,6 +38,9 @@
   h5 {
     color: white;
     font-size: 20px;
+    margin: 0;
+    margin-left: 15px;
+    padding-top: 2.5% !important;
   }
 
   h4 {
@@ -45,8 +48,21 @@
   }
 }
 
+.bg-welcome-top {
+  background-color: #28a4d9;
+
+  .arrival {
+    margin-bottom: 1.5% !important;
+  }
+}
+
 .bg-welcome {
   background-color: #28a4d9;
+
+  .arrival {
+    margin-bottom: 1.5% !important;
+    margin-top: 0% !important;
+  }
 }
 
 .addpic {
@@ -67,17 +83,18 @@
   text-align: center;
 }
 
-.promotions {
-  margin-top: 2%;
-  width: 50% !important;
-  margin: auto;
+.bg-welcome-pro {
 
-  h5 {
-    color: black;
+  .arrival {
+    margin-bottom: 1.5% !important;
+    margin-top: 0% !important;
+
+    h5 {
+      color: black;
+    }
   }
 }
 
 .padding-control {
   padding: 0px;
 }
-

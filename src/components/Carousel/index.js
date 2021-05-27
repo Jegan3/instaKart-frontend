@@ -10,12 +10,12 @@ const responsive = {
     // slidesToSlide: 4,
   },
   tablet: {
-    breakpoint: { max: 1024, min: 464 },
+    breakpoint: { max: 1024, min: 680 },
     items: 2,
     // slidesToSlide: 3,
   },
   mobile: {
-    breakpoint: { max: 464, min: 0 },
+    breakpoint: { max: 680, min: 0 },
     items: 1,
     // slidesToSlide: 2,
   },
@@ -28,12 +28,12 @@ const responsiveThrift = {
     // slidesToSlide: 4,
   },
   tablet: {
-    breakpoint: { max: 1024, min: 464 },
+    breakpoint: { max: 1024, min: 680 },
     items: 3,
     // slidesToSlide: 3,
   },
   mobile: {
-    breakpoint: { max: 464, min: 0 },
+    breakpoint: { max: 680, min: 0 },
     items: 2,
     // slidesToSlide: 2,
   },
@@ -46,12 +46,12 @@ const responsiveAdsDetails = {
     // slidesToSlide: 4,
   },
   tablet: {
-    breakpoint: { max: 1024, min: 464 },
+    breakpoint: { max: 1024, min: 680 },
     items: 1,
     // slidesToSlide: 3,
   },
   mobile: {
-    breakpoint: { max: 464, min: 0 },
+    breakpoint: { max: 680, min: 0 },
     items: 1,
     // slidesToSlide: 2,
   },
