@@ -10,6 +10,9 @@ import VendorInfo from './containers/VendorInfo';
 import ThriftStore from './containers/ThriftStore';
 import AdsDetails from './containers/AdsDetails';
 import ProductList from './containers/ProductList';
+import AddProduct from './containers/AddProduct';
+import AboutRestaurant from './containers/AboutRestaurant';
+import GeneralInfo from './containers/GeneralInfo';
 
 
 export const history = createBrowserHistory();
@@ -27,6 +30,9 @@ const Routes = () => (
         <Route path="/thriftstore" component={ThriftStore} />
         <Route path="/advertisement" component={AdsDetails} />
         <Route path="/productlist" component={ProductList} />
+        <Route path="/addproduct" component={AddProduct} />
+        <Route path="/aboutrestaurant" component={AboutRestaurant} />
+        <Route path="/generalinfo" component={GeneralInfo} />
       </Switch>
     </React.Fragment>
   </Router>
