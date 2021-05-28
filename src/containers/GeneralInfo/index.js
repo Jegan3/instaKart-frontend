@@ -42,6 +42,7 @@ const GeneralInfo = () => {
       <SideBar ref={sideBarRef} />
       <div className="rightside-panel">
         <Headerbar headerName="General Information" />
+        <div className="general-info">
         <Grid fluid>
           <Row>
             <Row className="form-content card">
@@ -77,6 +78,10 @@ const GeneralInfo = () => {
                     />
                   </Col>
                   <Col md={12}>
+                    <Row>
+
+                    
+                  <Col md={6}>
                     <label className="signup-label">Country <span className="red-star">*</span></label>
                     <Select
                       type="text"
@@ -85,7 +90,7 @@ const GeneralInfo = () => {
                       isSearchable={false}
                     />
                   </Col>
-                  <Col md={12}>
+                  <Col md={6}>
                     <label className="signup-label">State <span className="red-star">*</span></label>
                     <Select
                       type="text"
@@ -93,6 +98,8 @@ const GeneralInfo = () => {
                       placeholder="Select State"
                       isSearchable={false}
                     />
+                    </Col>
+                    </Row>
                   </Col>
                   <Col md={12} className='zipcode'>
                     <label className="signup-label">Zipcode <span className="red-star">*</span></label>
@@ -113,7 +120,7 @@ const GeneralInfo = () => {
                 </Row>
               </Col>
               </Row>
-              <Row className="form-content  card">
+              <Row className="form-content card resta">
                 <Col md={12}>
                 <Col md={3}>
                 <label className="signup-label">Restaurant Name <span className="red-star">*</span></label>
@@ -153,7 +160,7 @@ const GeneralInfo = () => {
                 </Col>
                 </Col>
             </Row>
-            <Row className="curr">
+            <Row className="general-table">
             <Table
                 title=""
                // data={WeekData}
@@ -218,8 +225,34 @@ const GeneralInfo = () => {
                 }
               />
             </Row>
+            <Row >
+            <Col md={12} className="btn-general">
+              <Col md={6} lg={6} sm={6} xs={6} className="modal-row " >
+                <button
+                  type="button"
+                  className="btn btn-primary  btn-block modal-button "
+                // onClick={Login}
+                >
+                  Submit
+                      </button>
+              </Col>
+              <Col md={6} lg={6} sm={6} xs={6} className="modal-row" >
+                <button
+                  type="button"
+                  className="btn btn-primary btn-block modal-button "
+                //onClick={Signup}
+                >
+                  Cancel
+                      </button>
+              </Col>
+              {/* <Col md={12} sm={12} className="login-error" >
+                      <span className="login-error-msg">{errorMsg}</span>
+                    </Col> */}
+            </Col>
+          </Row>
           </Row>
         </Grid>
+        </div>
       </div>
     </div>
 
