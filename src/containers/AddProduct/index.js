@@ -13,9 +13,9 @@ const AddProduct = () => {
       <SideBar ref={sideBarRef} />
       <div className="rightside-panel">
         <Headerbar headerName="Add Product" />
-        <div className="form-content card">
+        <div className="add-product">
           <Grid fluid>
-            <Row>
+            <Row className="form-content card">
               <Col md={6}>
                 <Row>
                   <Col sm={12}>
@@ -97,31 +97,33 @@ const AddProduct = () => {
                     </div>
                   </Col>
                 </Row>
-                <Row className="bnts">
-                  <Col md={6} lg={6} sm={6} xs={6} className="modal-row" >
-                    <button
-                      type="button"
-                      className="btn btn-primary  btn-block modal-button btnstyle"
-                    // onClick={Login}
-                    >
-                      Submit
-                      </button>
-                  </Col>
-                  <Col md={6} lg={6} sm={6} xs={6} className="modal-row" >
-                    <button
-                      type="button"
-                      className="btn btn-primary btn-block modal-button "
-                    //onClick={Signup}
-                    >
-                      Cancel
-                      </button>
-                  </Col>
-                  {/* <Col md={12} sm={12} className="login-error" >
-                      <span className="login-error-msg">{errorMsg}</span>
-                    </Col> */}
-                </Row>
               </Col>
             </Row>
+            <Row >
+            <Col md={12} className="btns-style">
+              <Col md={6} lg={6} sm={6} xs={6} className="modal-row " >
+                <button
+                  type="button"
+                  className="btn btn-primary  btn-block modal-button "
+                // onClick={Login}
+                >
+                  Submit
+                      </button>
+              </Col>
+              <Col md={6} lg={6} sm={6} xs={6} className="modal-row" >
+                <button
+                  type="button"
+                  className="btn btn-primary btn-block modal-button "
+                //onClick={Signup}
+                >
+                  Cancel
+                      </button>
+              </Col>
+              {/* <Col md={12} sm={12} className="login-error" >
+                      <span className="login-error-msg">{errorMsg}</span>
+                    </Col> */}
+            </Col>
+          </Row> 
           </Grid>
         </div>
       </div>
