@@ -7,8 +7,10 @@ import StatsCard from '../../components/StatsCard';
 import { CarouselThriftStore } from '../../components/Carousel';
 
 const ThriftStore = () => (
-  <Grid fluid className="padding-control">
-    <Header />
+  <Grid fluid className="padding-control thrift">
+    <div>
+      <Header />
+    </div>
     <h2>
       Welcome To The Caribbean&#39;s <br />
       Largest Thrift Shop

@@ -38,7 +38,7 @@ s .card-body {
 .cards-row {
   width: 75% !important;
   margin: auto;
-  padding-top: 10px;
+  padding-top: 50px;
   padding-bottom: 70px;
   position: relative;
 }
@@ -184,7 +184,8 @@ s .card-body {
   position: relative;
   left: 10px;
 }
-h2 {
+
+.thrift h2 {
   text-align: center;
   margin-top: 0px;
   font-weight: 700;
