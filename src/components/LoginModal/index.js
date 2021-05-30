@@ -118,10 +118,10 @@ const LoginModal = ({ showPopup, hidePopup }) => {
                   </Row >
                   <Row className="login-details">
                     <Col md={12} sm={12}>
-                      <label >User Name </label>
+                      <label >Email </label>
                       <input type="email"
                         className={alertError && email === '' ? ` form-control my-input` : `form-control formy`}
-                        placeholder="Enter username"
+                        placeholder="Enter Email"
                         maxLength={30}
                         value={email}
                         onChange={onUserName}
@@ -132,7 +132,7 @@ const LoginModal = ({ showPopup, hidePopup }) => {
                       <input type="password"
                         className={alertError && password === '' ? ` form-control my-input` : `form-control formy`}
                         placeholder="Enter password"
-                        maxLength={15}
+                        maxLength={8}
                         value={password}
                         onChange={onPassword}
                       />

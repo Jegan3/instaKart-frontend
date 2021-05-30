@@ -24,7 +24,7 @@ const AboutUs = () => (
     </Row>
     <Row className="content-sec">
       <div className="para-sec">
-        <h2 className="about-header">Who Are We?</h2>
+        <h2 className="about-header">Meet Our Team</h2>
         <p>Insta-Kart Ltd. is a newly established eCommerce company born in the Caribbean. Being founded in 2020, we are a relatively new platform. However, we have already broken new grounds by being the first company of its kind in the Caribbean. We are run by a team of experts who understands sellers and buyers challenges in the modern world today.</p>
         <p>Emerging entrepreneurs, small and medium-sized brands, professionals, and skilled personnel all have one thing in common; the need to establish their community/audience. Our digital marketing experts help you advertise your brand and reach out to more people worldwide, irrespective of your industry. Thus, you can now showcase your restaurant or chef services, cake designs, pastry, and much more.</p>
         <p>We were also established to provide a hassle-free way of shopping. This would not have been possible without our team’s efforts. Meet our team.</p><br /><br />
@@ -42,51 +42,41 @@ const AboutUs = () => (
       <div className="para-sec">
         <h2 className="about-header">What Do We Do?</h2>
         <p>We provide people with a platform to take their business online. As an eCommerce platform, Insta-Kart allows independent vendors through a single storefront to sell their products and services. Thus, you can sell your merchandise on your personal mini-store. We enable businesses of all sizes, across all industries, to carry out routine transactions. This includes easy and safe delivery, in-store, as well as curbside orders pick up.</p>
-        <p>Our platform supports brands at every step of the way. We will help you build your online store, sell fast, and get back on your feet without startup costs. Insta-Kart provides the perfect environment for vendors and service providers to sell online from anywhere.</p><br />
+        <p>Our platform supports brands at every step of the way. We will help you build your online store, sell fast, and get back on your feet without startup costs. Insta-Kart provides the perfect environment for vendors and service providers to sell online from anywhere.</p><br /><br />
       </div>
     </Row>
     <Row className="content-sec">
       <div className="para-sec">
         <h2 className="about-header">Mission Statement</h2>
-        <p>To connect thousands of buyers and sellers within the Caribbean countries online. Insta-Kart provides a platform that aims to transform brick-and-mortar shops to online shops in a safe manner. Making shopping easier, convienient and safe.</p><br />
+        <p>To connect thousands of buyers and sellers within the Caribbean countries online. Insta-Kart provides a platform that aims to transform brick-and-mortar shops to online shops in a safe manner. Making shopping easier, convienient and safe.</p><br /><br />
       </div>
     </Row>
     <Row className="content-sec">
       <div className="para-sec">
         <h2 className="about-header">Our Vision</h2>
         <p>To create better economic opportunities for individuals and businesses and ultimately improve lives and communities. We aim to empower brands to become successful, and by levelling the marketplace for entrepreneurs, we would give everyone a chance they deserve to excel in the global market.</p>
-        <p>Insta-Kart’s eCommerce platform provides you with the tools and support to take advantage of your situation. In essence, brands can now sell globally while growing locally.</p><br />
+        <p>Insta-Kart’s eCommerce platform provides you with the tools and support to take advantage of your situation. In essence, brands can now sell globally while growing locally.</p><br /><br />
       </div>
     </Row>
     <Row className="content-sec">
       <div className="para-sec">
         <h2 className="about-header">Core Values</h2>
-        <ul>
-          <li>
-            <b>Integrity:</b> We are transparent and committed to doing what is best for our users. We hold the truth in high esteem and have no tolerance for propaganda, politics, or aggression.
-          </li>
-          <li>
-            <b>Commitment:</b> We constantly push ourselves to become a better eCommerce site. In less than a year of being founded, we have reached remarkable milestones. Our team remains inspired to make an impact in our world.
-          </li>
-          <li>
-            <b>Customers first:</b> We exist to help buyers and sellers. For every decision we make, our Insta-Kart experts examine the best outcome for customers. We are strongly customer-centric.
-          </li>
-          <li>
-            <b>Innovation:</b> Insta-Kart is the first of its kind in the Caribbean. However, it does not just end here. We want to be recognized as the world’s leading eCommerce hub. Therefore, we constantly challenge our ideas.
-          </li>
-        </ul>
+        <p>Integrity: We are transparent and committed to doing what is best for our users. We hold the truth in high esteem and have no tolerance for propaganda, politics, or aggression.</p>
+        <p>Commitment: We constantly push ourselves to become a better eCommerce site. In less than a year of being founded, we have reached remarkable milestones. Our team remains inspired to make an impact in our world.</p>
+        <p>Customers first: We exist to help buyers and sellers. For every decision we make, our Insta-Kart experts examine the best outcome for customers. We are strongly customer-centric.</p>
+        <p>Innovation: Insta-Kart is the first of its kind in the Caribbean. However, it does not just end here. We want to be recognized as the world’s leading eCommerce hub. Therefore, we constantly challenge our ideas.</p>
+        <br />
         <br />
       </div>
     </Row>
     <Row className="content-sec">
       <div className="para-sec">
         <h2 className="about-header">What Makes Us Stand Out Among Competitors?</h2>
-        <ul>
-          <li><b>Unique features:</b> Insta-Kart users enjoy access to TimeCap. TimeCap is our unique social media interface to help our community network via chats, posts, and pictures. This integrated interface makes communication in real-time much easier for buyers with friends/relatives. Moreover, they get to share their purchases, give feedback or reviews on products/services, and enjoy a comprehensive shopping experience in a virtual mall. This makes shopping fun, and exciting.</li>
-          <li><b>Quality services:</b> We have an excellent platform loaded with e-commerce features to support buyers and sellers equally. In addition, we have ever-present customer support to attend to all your needs.</li>
-          <li><b>Affordable:</b> Despite the high quality seen at Insta-Kart, we serve you at competitive prices. Vendors can sell fast, zero start-up costs, and more exciting incentives for your satisfaction. You do not have to break the bank on our platform. Also, there is an opening for influencer marketing opportunities for products and services.</li>
-          <li><b>Reputable:</b> Insta-Kart has quickly risen through the ranks, and we have established our platform as your one-stop-shop for all eCommerce solutions. We represent the ideal environment for online shopping, and we are proud to be pioneers in the Caribbean.</li>
-        </ul>
+        <p>Unique features: Insta-Kart users enjoy access to TimeCap. TimeCap is our unique social media interface to help our community network via chats, posts, and pictures. This integrated interface makes communication in real-time much easier for buyers with friends/relatives. Moreover, they get to share their purchases, give feedback or reviews on products/services, and enjoy a comprehensive shopping experience in a virtual mall. This makes shopping fun, and exciting.</p>
+        <p>Quality services: We have an excellent platform loaded with e-commerce features to support buyers and sellers equally. In addition, we have ever-present customer support to attend to all your needs.</p>
+        <p>Affordable: Despite the high quality seen at Insta-Kart, we serve you at competitive prices. Vendors can sell fast, zero start-up costs, and more exciting incentives for your satisfaction. You do not have to break the bank on our platform. Also, there is an opening for influencer marketing opportunities for products and services.</p>
+        <p>Reputable: Insta-Kart has quickly risen through the ranks, and we have established our platform as your one-stop-shop for all eCommerce solutions. We represent the ideal environment for online shopping, and we are proud to be pioneers in the Caribbean.</p>
+        <br />
         <br />
       </div>
     </Row>

@@ -17,13 +17,13 @@ const Home = () => {
       <div>
         <Header welcome />
       </div>
-      <div className="intro-banner">
-        <Banners />
-      </div>
       <h2>
         Welcome To The Caribbean&#39;s Unified <br />
         e-Commerce Portal
       </h2>
+      <div className="intro-banner">
+        <Banners />
+      </div>
       {/* {window.screen.width <= 464 ?
       <div className="arrival">
         <CarouselMobile />
@@ -42,21 +42,35 @@ const Home = () => {
       </div>
       <div className="bg-welcome-top">
         <div className="arrival">
-          <h5>Abcd</h5>
+          <h5>Second Banner</h5>
           <CarouselNewEStore />
         </div>
         <br />
       </div>
       <div className="bg-welcome-pro">
         <div className="arrival">
-          <h5>Promotions</h5>
+          <h5>New Promotions</h5>
           <CarouselNewEStore />
         </div>
         <br />
       </div>
       <div className="bg-welcome">
         <div className="arrival">
-          <h5>E-Store Near You</h5>
+          <h5>Advertising</h5>
+          <CarouselNewEStore />
+        </div>
+        <br />
+      </div>
+      <div className="bg-welcome-pro">
+        <div className="arrival">
+          <h5>E-Stores Near You</h5>
+          <CarouselNewEStore />
+        </div>
+        <br />
+      </div>
+      <div className="bg-welcome">
+        <div className="arrival">
+          <h5>TimeCap Vids</h5>
           <CarouselNewEStore />
         </div>
         <br />

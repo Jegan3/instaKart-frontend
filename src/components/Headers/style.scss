@@ -99,6 +99,7 @@
   max-width: 100%;
   height: 30px;
   margin-bottom: 5%;
+  cursor: pointer;
 }
 
 .search-icon {
@@ -199,19 +200,14 @@
 
 .vendor-signup {
   display: block;
-  -webkit-animation: c 53s linear infinite;
-  animation: c 53s linear infinite;
-  background: linear-gradient(121.19deg,
-      rgba(133, 239, 49, 0) 25.73%,
-      hsla(0, 0%, 100%, 0.3) 45.27%,
-      rgba(133, 239, 49, 0) 62.27%), ;
-  // #28a4d9;
   padding: 0.625em 2.5em;
-  color: #fff !important;
+  color: $color-background !important;
   float: right;
   margin-left: 0.625em;
+  -webkit-animation: c 70s linear infinite;
+  animation: c 70s linear infinite;
+  background: linear-gradient(120deg, rgba(40, 164, 217, 1) 40%, rgba(245, 245, 245, 1) 50%, rgba(40, 164, 217, 1) 60%);
   border: 1px solid #28a4d9;
-  background-color: #28a4d9 !important;
 }
 
 .caret {
@@ -227,12 +223,15 @@
 .header-sec {
   position: relative;
   min-height: 50px;
-  background-color: #16222a;
+  background-color: $color-primary;
 }
 
 .header-sec .signup-logo {
   margin: 1.3em;
   cursor: pointer;
+  -webkit-animation: c 70s linear infinite;
+  animation: c 70s linear infinite;
+  background: linear-gradient(120deg, rgba(22, 34, 42, 1) 30%, rgba(245, 245, 245, 1) 50%, rgba(22, 34, 42, 1) 70%);
 }
 
 .cart-icon {
