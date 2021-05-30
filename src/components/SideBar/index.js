@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { ProSidebar, SidebarHeader, SidebarFooter, SidebarContent, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faCog, faHome, faUser, faBath, faBuilding, faTag, faFolderPlus, faUserTag, faNetworkWired } from '@fortawesome/free-solid-svg-icons';
+import { history } from '../../routes';
 
 const Sidebar = () => {
   const dispatch = useDispatch();
@@ -25,6 +26,10 @@ const Sidebar = () => {
     dispatch({ type: "HIDE_SIDEBAR" });
   };
 
+  const toHome = () => {
+    history.push({pathname: '/',});
+  }
+
   return (
     <div className="sidemenu-main">
       {/* <div className="sidemenu-background"> */}
@@ -44,6 +49,7 @@ const Sidebar = () => {
                 className="sidebar-instalogo"
                 src="images/logo.png"
                 alt="INSTAKART"
+                onClick={toHome}
               />
             ) : null}
             <div className="hamburger-bars-icon hidden-xs" onClick={onToggle}>

@@ -50,7 +50,7 @@ const Header = ({ basic }) => {
     </MenuItem>));
 
   const loginAccount = () => {
-    setLogin(true);
+    !name && setLogin(true);
   };
 
   const hidePopup = () => {
@@ -70,14 +70,18 @@ const Header = ({ basic }) => {
     // window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const AboutUs = () => {
+  const aboutUs = () => {
     history.push('/aboutus');
     window.scrollTo(0, 0);
   }
 
-  const Dashboard = () => {
+  const dashboard = () => {
     history.push('/dashboard');
     window.scrollTo(0, 0);
+  }
+
+  const toHome = () => {
+    history.push({ pathname: '/', });
   }
 
   return (
@@ -85,7 +89,7 @@ const Header = ({ basic }) => {
       {basic ?
         <Row className="header-sec">
           <Col md={6} sm={6}>
-            <Image className="signup-logo" src="images/logo.png" fluid />
+            <Image className="signup-logo" src="images/logo.png" fluid onClick={toHome} />
           </Col>
         </Row> :
         <div>
@@ -120,10 +124,10 @@ const Header = ({ basic }) => {
                       <p>List Your Ads</p>
                     </NavItem>
                     <NavItem eventKey={2} href="#">
-                      <p onClick={AboutUs}>About Us</p>
+                      <p onClick={aboutUs}>About Us</p>
                     </NavItem>
                     <NavItem eventKey={3} href="#">
-                      {vendor ? <p onClick={Dashboard}>Dashboard</p> : <p><Button className="vendor-signup" onClick={Signup}>Register Your E-Store</Button></p>}
+                      {vendor ? <p onClick={dashboard}>Dashboard</p> : <p><Button className="vendor-signup" onClick={Signup}>Register Your E-Store</Button></p>}
                     </NavItem>
                   </Nav>
                 </Navbar.Collapse>

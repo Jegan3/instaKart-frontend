@@ -1,7 +1,7 @@
 import React from 'react';
 import { createBrowserHistory } from 'history';
 import { Router, Route, Switch } from 'react-router-dom';
-import Welcome from './containers/Welcome';
+import Home from './containers/Home';
 import Dashboard from './containers/Dashboard';
 import SignUp from './containers/SignUp';
 import TermsConditions from './containers/TermsConditions';
@@ -21,7 +21,7 @@ const Routes = () => (
   <Router history={history}>
     <React.Fragment>
       <Switch>
-        <Route exact path="/" component={Welcome} />
+        <Route exact path="/" component={Home} />
         <Route path="/dashboard" component={Dashboard} />
         <Route path="/signup" component={SignUp} />
         <Route path="/termsofcondition" component={TermsConditions} />
