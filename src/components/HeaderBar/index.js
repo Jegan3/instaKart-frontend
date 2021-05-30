@@ -1,12 +1,22 @@
 /*eslint-disable*/
-import React from 'react';
+import React, {useState} from 'react';
 import { Navbar } from 'react-bootstrap';
+import { useDispatch } from 'react-redux';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars,faMapSigns } from '@fortawesome/free-solid-svg-icons';
 
-const Headerbar = ({ navbar, handleMiniClick, headerName }) => {
-  // function for responsive that hides/shows the sidebar
-  // const mobileSidebarToggle = () => {
-  //   document.documentElement.classList.toggle('nav-open');
-  // };
+const Headerbar = ({ navbar, setRtlCallback, headerName }) => {
+  const dispatch = useDispatch();
+  const [rtl, setRtl] = useState(false);
+
+  const onBars = () => {
+    dispatch({ type: 'SHOW_SIDEBAR' });
+  }
+
+  const onRtl = () => {
+    setRtl(!rtl);
+    setRtlCallback(!rtl);
+  };
 
   return (
     <Navbar fluid className={navbar ? 'navbar-fixed' : ''}>
@@ -27,7 +37,13 @@ const Headerbar = ({ navbar, handleMiniClick, headerName }) => {
           {/* Here we create navbar brand, based on route name */}
           {headerName}
         </Navbar.Brand>
-        {/* <Navbar.Toggle onClick={mobileSidebarToggle} /> */}
+        {/* <Navbar.Toggle /> */}
+        <div className="hamburger-bars-icon hamburger-mobile visible-xs-block" onClick={onBars}>
+          <FontAwesomeIcon icon={faBars} />
+        </div>
+        <div className="hamburger-bars-icon hamburger-mobile hidden-xs" onClick={onRtl}>
+          <FontAwesomeIcon icon={faMapSigns} />
+        </div>
       </Navbar.Header>
     </Navbar>
   );

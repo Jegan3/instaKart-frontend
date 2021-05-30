@@ -1,9 +1,7 @@
 @import "~bootstrap/dist/css/bootstrap.css";
 @import '~react-multi-carousel/lib/styles.css';
-// @import '../pe-icon-7-stroke/css/pe-icon-7-stroke.css';
-// @import './variable.scss';
-// @import './custom.css';
-// @import 'bootstrap/dist/css/bootstrap.min.css';
+@import '~react-pro-sidebar/dist/scss/styles.scss';
+@import './custom.scss';
 @import "../../src/containers/Welcome/style.scss";
 @import '../../src/components/Carousel/style.scss';
 @import '../../src/components/Card/style.scss';
@@ -12,11 +10,11 @@
 @import '../../src/components/Footer/style.scss';
 @import '../../src/components/Headers/style.scss';
 @import '../../src/components/Banners/style.scss';
-@import '../../src/components/SideBar/style.scss';
 @import '../../src/components/HeaderBar/style.scss';
 @import '../../src/components/StatsCard/style.scss';
 @import '../../src/containers/Dashboard/style.scss';
 @import '../../src/containers/SignUp/style.scss';
+@import '../../src/components/Sidebar/style.scss';
 @import '../../src/components/LoginModal/style.scss';
 @import '../../src/components/Table/style.scss';
 @import '../../src/components/Upload/style.scss';
@@ -25,8 +23,8 @@
 @import '../../src/components/OtpScreen/style.scss';
 @import '../../src/containers/VendorInfo/style.scss';
 @import '../../src/containers/ThriftStore/style.scss';
- @import '../../src/containers/AdsDetails/style.scss';
- @import '../../src/containers/ProductList/styles.scss';
- @import '../../src/containers/AddProduct/style.scss';
- @import '../../src/containers/AboutRestaurant/style.scss';
- @import '../../src/containers/GeneralInfo/style.scss';
+@import '../../src/containers/AdsDetails/style.scss';
+@import '../../src/containers/ProductList/styles.scss';
+@import '../../src/containers/AddProduct/style.scss';
+@import '../../src/containers/AboutRestaurant/style.scss';
+@import '../../src/containers/GeneralInfo/style.scss';

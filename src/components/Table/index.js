@@ -1,7 +1,7 @@
 /*eslint-disable*/
 import React from 'react';
 
-const Table = (props) => (console.log('props',props),
+const Table = (props) => (
   <div
     className={
       `card${props.hidden ? ' card-hidden' : ''

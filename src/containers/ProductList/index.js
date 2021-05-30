@@ -4,7 +4,7 @@ import { Grid, Row } from 'react-bootstrap';
 import ReactTable from 'react-table';
 import Headerbar from '../../components/HeaderBar';
 import Table from '../../components/Table';
-import SideBar from '../../components/SideBar';
+import SideBar from '../../components/Sidebar';
 import Select from 'react-select';
 
 const productData = [
@@ -65,14 +65,13 @@ const status = [
 ];
 
 const ProductList = () => {
-  const sideBarRef = useRef();
   return (
     <div className="wrapper">
       {/* <Upload showPopup={show} hidePopup={hidePopup} />  */}
-      <SideBar ref={sideBarRef} />
+      <SideBar />
       <div className="rightside-panel">
         <Headerbar headerName="Product List" />
-        <div className="table-content">
+        <div className="main-content">
           <Grid fluid>
             <Row>
               <Table

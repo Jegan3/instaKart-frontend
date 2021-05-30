@@ -6,6 +6,7 @@ import retreiveBanner from './RetrieveBanner';
 import otp from './Otp';
 import signupContent from './SignupContent';
 import vendorInfo from './VendorInfo';
+import sidebar from './Sidebar';
 
 const rootReducer = combineReducers({
   signupState: signup,
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
   otpState: otp,
   signupContentState: signupContent,
   vendorInfo,
+  sidebar,
 });
 
 export default rootReducer;

@@ -3,60 +3,55 @@ import React, { useRef } from 'react';
 import { Grid, Row, Col } from 'react-bootstrap';
 import Select from 'react-select';
 import Headerbar from '../../components/HeaderBar';
-import SideBar from '../../components/SideBar';
+import SideBar from '../../components/Sidebar';
 
 const AboutRestaurant = () => {
-  const sideBarRef = useRef();
   return (
     <div className="wrapper">
-      <SideBar ref={sideBarRef} />
+      <SideBar />
       <div className="rightside-panel">
         <Headerbar headerName="About Restaurant" />
-        <div className="about-restaurant">
+        <div className="main-content about-restaurant">
           <Grid fluid>
             <Row>
               <Row className='form-content card' >
                 <Col md={6} >
-                  <Row>
-                    <Col sm={7}>
-                      <label className="signup-label">Select Currency <span className="red-star">*</span></label>
-                      <Select
-                        type="text"
-                        className="prof-select "
-                        placeholder="Select Category."
-                        isSearchable={false}
-                      />
-                    </Col>
-                    <Col sm={5}>
-                      <label className="tax-label">Select Tax <span className="red-star">*</span></label>
-                      <Select
-                        type="text"
-                        className="prof-select "
-                        placeholder="Select Tax."
-                        isSearchable={false}
-                      />
-                    </Col>
-                  </Row>
+                  <Col sm={7}>
+                    <label className="signup-label">Select Currency <span className="red-star">*</span></label>
+                    <Select
+                      type="text"
+                      className="prof-select "
+                      placeholder="Select Category."
+                      isSearchable={false}
+                    />
+                  </Col>
+                  <Col sm={5}>
+                    <label className="tax-label">Select Tax <span className="red-star">*</span></label>
+                    <Select
+                      type="text"
+                      className="prof-select "
+                      placeholder="Select Tax."
+                      isSearchable={false}
+                    />
+                  </Col>
                 </Col>
                 <Col md={6}>
-                  <Row>
-                    <Col sm={12}>
-                      <div className='select-file'>
-                        <label className="file-label">Upload Photo<span className="red-star">*</span></label>
-                        <div className='file-input'>
-                          <input type='file' />
-                          <span className='button'>Choose</span>
-                          <span className='label' >No file selected </span>
-                        </div>
+                  <Col sm={12}>
+                    <div className='select-file'>
+                      <label className="file-label">Upload Photo<span className="red-star">*</span></label>
+                      <div className='file-input'>
+                        <input type='file' />
+                        <span className='button'>Choose</span>
+                        <span className='label' >No file selected </span>
                       </div>
-                    </Col>
-                    <Col sm={12}>
-                      <div className="form-text">
-                        <label className="signup-label">Description <span className="red-star">*</span></label>
-                        <textarea className="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
-                      </div>
-                    </Col>
-                  </Row>
+                    </div>
+                  </Col>
+                  <Col sm={12}>
+                    <div className="form-text">
+                      <label className="signup-label">Description <span className="red-star">*</span></label>
+                      <textarea className="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
+                    </div>
+                  </Col>
                 </Col>
               </Row>
               <Row className='form-content card resta'>

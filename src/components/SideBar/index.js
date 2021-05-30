@@ -1,119 +1,94 @@
-/* eslint-disable */
-import React, { useEffect, useRef, useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import rowlist from './RowList';
-import { history } from '../../routes';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
+/*eslint-disable*/
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from "react-router-dom";
+import { ProSidebar, SidebarHeader, SidebarFooter, SidebarContent, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars, faCog, faHome, faUser, faBath, faBuilding, faTag, faFolderPlus, faUserTag, faNetworkWired } from '@fortawesome/free-solid-svg-icons';
 
-const SideMenuBar = React.forwardRef((props, ref) => {
-  const sideMenuBtnRefs = useRef(rowlist.map(() => React.createRef()));
-  const [handler, setHandler] = useState(true);
-  const [show, setShow] = useState(false);
-
-  useEffect(() => {
-    onRenderButtonHighter();
-  });
-
-  // Buttonlist mapping
-  const sideMenuRows = rowlist.map(({
-    id, label, icon, address,
-  }, index) => (
-    <div ref={sideMenuBtnRefs.current[index]} key={id} onClick={(event) => buttonClickHandler(event, address)}
-      className={handler ? 'sidemenu-btn' : 'sidemenu-mini-btn'}>
-      <FontAwesomeIcon className={handler ? 'sidemenu-btn-icon' : 'sidemenu-mini-btn-icon'} icon={icon} />
-      {handler && <div className="sidemenu-btn-label">{label}</div>}
-    </div>
-  ));
-
-  const buttonClickHandler = (event, address) => {
-    if (address !== '') {
-      history.push(`/${address}`);
-      setShow(false);
-    } else {
-      setShow(true);
-    }
-    buttonHighlighter(event);
-  };
-
-  // Highlights the button based on url
-  const onRenderButtonHighter = () => {
-    sideMenuBtnRefs.current.forEach((element) => {
-      const btn = element.current;
-      btn.classList.remove('sidemenu-btn-highlight');
-    });
-    rowlist.forEach((Button, index) => {
-      if (show && Button.label === 'Role Assignment') {
-        sideMenuBtnRefs.current[index].current.classList.add('sidemenu-btn-highlight');
-      } else if (!show && (history.location.pathname).includes(`/${Button.address}`) && Button.address.length !== 0) {
-        sideMenuBtnRefs.current[index].current.classList.add('sidemenu-btn-highlight');
-      }
-    });
-  };
-
-  // Highlights the button based on clicks
-  const buttonHighlighter = (event) => {
-    sideMenuBtnRefs.current.forEach((element) => {
-      const btn = element.current;
-      btn.classList.remove('sidemenu-btn-highlight');
-    });
-    const { currentTarget } = event;
-    currentTarget.classList.add('sidemenu-btn-highlight');
-  };
+const Sidebar = () => {
+  const dispatch = useDispatch();
+  const [open, setOpen] = useState(false);
+  const [toggled, setToggled] = useState(false);
+  const sidebar = useSelector((state) => state.sidebar);
 
   useEffect(() => {
-    window.addEventListener('resize', sideMenuResponsive);
-    const target = ref.current;
-    target.classList.remove('sidemenu-mini-main-responsive');
-    target.classList.add('sidemenu-main-responsive');
-  }, []);
+    setToggled(sidebar.show);
+  }, [sidebar.show]);
 
-
-  // replace class if width <= 768px
-  const sideMenuResponsive = () => {
-    const target = ref.current;
-    if (window.innerWidth <= 768) {
-      target.classList.remove('sidemenu-main-responsive');
-      target.classList.add('sidemenu-mini-main-responsive');
-      setHandler(false);
-    }
-    else {
-      target.classList.remove('sidemenu-mini-main-responsive');
-      target.classList.add('sidemenu-main-responsive');
-      setHandler(true);
-    }
+  const onToggle = () => {
+    setOpen(!open);
   };
 
-  const sideBarMenuHandler = () => {
-    const target = ref.current;
-    handler && target.classList.add('sidemenu-main-responsive');
-    if (target.classList.contains('sidemenu-main-responsive')) {
-      target.classList.remove('sidemenu-main-responsive');
-      target.classList.add('sidemenu-mini-main-responsive');
-      setHandler(false)
-    } else {
-      target.classList.remove('sidemenu-mini-main-responsive');
-      target.classList.add('sidemenu-main-responsive');
-      setHandler(true)
-    }
+  const toggleSidebar = () => {
+    setToggled(false);
+    dispatch({ type: "HIDE_SIDEBAR" });
   };
 
   return (
-    <div ref={ref} className="sidemenu-main">
-      <div className="sidemenu-background">
-        <div className="sidemenu-header">
-          <div className="sidemenu-logo">
-            {handler ? <img className="sidebar-instalogo" src="images/logo.png" alt="INSTAKART"></img> : null}
-            <div className="hamburger-bars-icon" onClick={sideBarMenuHandler} >
+    <div className="sidemenu-main">
+      {/* <div className="sidemenu-background"> */}
+      <ProSidebar
+        collapsed={open}
+        image="../images/caribbean1.png"
+        toggled={toggled}
+        breakPoint="md"
+        width={275}
+        collapsedWidth={50}
+        onToggle={toggleSidebar}
+      >
+        <SidebarHeader>
+          <div className="sidemenu-header">
+            {!open ? (
+              <img
+                className="sidebar-instalogo"
+                src="images/logo.png"
+                alt="INSTAKART"
+              />
+            ) : null}
+            <div className="hamburger-bars-icon hidden-xs" onClick={onToggle}>
               <FontAwesomeIcon icon={faBars} />
             </div>
           </div>
-        </div>
-        <div>
-          {sideMenuRows}
-        </div>
-      </div>
+        </SidebarHeader>
+        <SidebarContent>
+          <Menu iconShape>
+            <MenuItem icon={<FontAwesomeIcon icon={faHome} active={true} />}>
+              Dashboard <Link to="/dashboard" />
+            </MenuItem>
+            <SubMenu
+              title="Thrift Store"
+              icon={<FontAwesomeIcon icon={faNetworkWired} />}
+            >
+              <MenuItem icon={<FontAwesomeIcon icon={faUserTag} />}>
+                General Info <Link to="/generalinfo" />
+              </MenuItem>
+              <MenuItem icon={<FontAwesomeIcon icon={faFolderPlus} />}>
+                About Restaurant <Link to="/aboutrestaurant" />
+              </MenuItem>
+            </SubMenu>
+            <SubMenu title="Product" icon={<FontAwesomeIcon icon={faBath} />}>
+              <MenuItem icon={<FontAwesomeIcon icon={faUser} />}>
+                Add Product <Link to="/addproduct" />
+              </MenuItem>
+              <MenuItem icon={<FontAwesomeIcon icon={faBuilding} />}>
+                Product List <Link to="/productlist" />
+              </MenuItem>
+            </SubMenu>
+            <MenuItem icon={<FontAwesomeIcon icon={faUser} />}>
+              Customer Review
+            </MenuItem>
+            <MenuItem icon={<FontAwesomeIcon icon={faCog} />}>Report</MenuItem>
+            <MenuItem icon={<FontAwesomeIcon icon={faTag} />}>Support</MenuItem>
+          </Menu>
+        </SidebarContent>
+        <SidebarFooter className="sidebar-footer">
+          &copy; Copyright 2021 - Insta-Kart. All rights reserved.
+        </SidebarFooter>
+      </ProSidebar>
+      {/* </div> */}
     </div>
   );
-});
+};
 
-export default SideMenuBar;
+export default Sidebar;

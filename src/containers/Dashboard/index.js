@@ -7,14 +7,14 @@ import Headerbar from '../../components/HeaderBar';
 import Table from '../../components/Table';
 import StatsCard from '../../components/StatsCard';
 import Upload from '../../components/Upload';
-import SideBar from '../../components/SideBar';
+import SideBar from '../../components/Sidebar';
 
 const Dashboard = () => {
+  const dispatch = useDispatch();
+  const [rtl, setRtl] = useState();
+
   const login = useSelector((state) => state.loginState.login);
   const userData = useSelector((state) => state.retreiveBannerState.retreiveBanner);
-  const dispatch = useDispatch();
-
-  const sideBarRef = useRef();
 
   // temproraily for demo
   // const button = login.user.type === 'admin' ? 'APPROVE' : 'UPLOAD';
@@ -34,12 +34,17 @@ const Dashboard = () => {
     setShow(false);
   };
 
+  // RTL 
+  const onRtl = (rtl) => {
+    setRtl(rtl)
+  }
+ 
   return (
-    <div className="wrapper">
+    <div className={`wrapper ${rtl ? 'rtl' : ''}`}>
       {/* <Upload showPopup={show} hidePopup={hidePopup} /> */}
-      <SideBar ref={sideBarRef} />
+      <SideBar />
       <div className="rightside-panel">
-        <Headerbar headerName="Lunch Box" />
+        <Headerbar headerName="Dashboard" setRtlCallback={onRtl} />
         <div className="main-content">
           <Grid fluid>
             <Row>
@@ -118,43 +123,45 @@ const Dashboard = () => {
                 />
               </Col>
             </Row>
-            <Table
-              title=""
-              content={
-                <ReactTable
-                  data={userData && userData.userData}
-                  filterable
-                  columns={[
-                    {
-                      Header: '#',
-                      accessor: '_id',
-                    },
-                    {
-                      Header: 'E-Mail',
-                      accessor: 'email',
-                    },
-                    {
-                      Header: 'Poster',
-                      accessor: 'poster',
-                    },
-                    {
-                      Header: 'Status',
-                      accessor: 'name',
-                      filterable: false,
-                      sortable: false,
-                      Cell: (original) => (
-                        <div className="actions-right">
-                          <Button className="btn btn-danger" simple onClick={() => onClick(original)}>{button}</Button>
-                        </div>),
-                    },
-                  ]}
-                  defaultPageSize={10}
-                  // showPaginationTop
-                  showPaginationBottom
-                  className="-striped -highlight"
-                />
-              }
-            />
+            <Row>
+              <Table
+                title="RECENT ORDER REQUESTED"
+                content={
+                  <ReactTable
+                    data={userData && userData.userData}
+                    filterable
+                    columns={[
+                      {
+                        Header: '#',
+                        accessor: '_id',
+                      },
+                      {
+                        Header: 'E-Mail',
+                        accessor: 'email',
+                      },
+                      {
+                        Header: 'Poster',
+                        accessor: 'poster',
+                      },
+                      {
+                        Header: 'Status',
+                        accessor: 'name',
+                        filterable: false,
+                        sortable: false,
+                        Cell: (original) => (
+                          <div className="actions-right">
+                            <Button className="btn btn-danger" simple onClick={() => onClick(original)}>{button}</Button>
+                          </div>),
+                      },
+                    ]}
+                    defaultPageSize={10}
+                    // showPaginationTop
+                    showPaginationBottom
+                    className="-striped -highlight"
+                  />
+                }
+              />
+            </Row>
           </Grid>
         </div>
       </div>

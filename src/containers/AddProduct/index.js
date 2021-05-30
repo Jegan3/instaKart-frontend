@@ -3,17 +3,16 @@ import React, { useRef } from 'react';
 import { Grid, Row, Col, Form } from 'react-bootstrap';
 import Select from 'react-select';
 import Headerbar from '../../components/HeaderBar';
-import SideBar from '../../components/SideBar';
+import SideBar from '../../components/Sidebar';
 
 const AddProduct = () => {
-  const sideBarRef = useRef();
   return (
     <div className="wrapper">
       {/* <Upload showPopup={show} hidePopup={hidePopup} /> */}
-      <SideBar ref={sideBarRef} />
+      <SideBar/>
       <div className="rightside-panel">
         <Headerbar headerName="Add Product" />
-        <div className="add-product">
+        <div className="main-content add-product">
           <Grid fluid>
             <Row className="form-content card">
               <Col md={6}>

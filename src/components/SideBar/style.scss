@@ -1,101 +1,52 @@
-body {
-    background-color: #f5f5f5;
+.rtl {
+  direction: rtl;
 }
 
-// General Colors
-$white-color: #ffffff;
-$dark-gray: #9a9a9a !default;
-$color-azure: #23ccef;
-$color-purple: #9368e9;
-$color-red: #fb404b;
-$color-green: #87cb16;
-$color-orange: #ffa534;
-$color-blue: #447df7;
-$color-black: #5e5e5e;
-$color-theme: #28a4d9;
-$color-primary: #16222a;
-
-//Font Smoothing 
-body,
-h1,
-.h1,
-h2,
-.h2,
-h3,
-.h3,
-h4,
-.h4,
-h5,
-.h5,
-h6,
-.h6,
-p,
-.navbar,
-.brand,
-.btn-simple,
-.alert,
-a,
-.td-name,
-td,
-button.close {
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
-    font-family: Roboto, Helvetica Neue, Arial, sans-serif;
-    font-weight: 400;
+.sidebar-instalogo {
+  max-width: 100%;
+  height: 25px;
+  padding: 0 50px 0 9px;
 }
 
-@mixin transform-translate-x($value) {
-    -webkit-transform: translate3d($value, 0, 0);
-    -moz-transform: translate3d($value, 0, 0);
-    -o-transform: translate3d($value, 0, 0);
-    -ms-transform: translate3d($value, 0, 0);
-    transform: translate3d($value, 0, 0);
-}
+.sidemenu-background {
+  // background: #16222a;
+  height: 100%;
+  opacity: .97;
+  // overflow-y: auto;
+  // background: none !important;
 
-@mixin line-gradient($top-color, $bottom-color) {
-    background: $top-color;
-    background: -moz-linear-gradient(top, $top-color 0%, $bottom-color 100%);
-    background: -webkit-gradient(linear,
-            left top,
-            left bottom,
-            color-stop(0%, $top-color),
-            color-stop(100%, $bottom-color));
-    background: -webkit-linear-gradient(top, $top-color 0%, $bottom-color 100%);
-    background: -o-linear-gradient(top, $top-color 0%, $bottom-color 100%);
-    background: -ms-linear-gradient(top, $top-color 0%, $bottom-color 100%);
-    background: linear-gradient(to bottom, $top-color 0%, $bottom-color 100%);
-    background-size: 150% 150%;
 }
-
-.insta {
-    padding: 12px 0px;
-    margin: 0;
-    box-shadow: inset -1px 0px 0px 0px #cfcfca;
-    position: relative;
-    z-index: 4;
-    display: block;
-    text-align: center;
-    font-size: x-large;
-}
-
-// new sidebar properties
+// .pro-sidebar {
+//   height: 100vh !important;
+//   width: 300px !important;
+// } 
 
 .sidemenu-main {
-    width: 250px;
-    min-height: 100vh;
-    // background-color: #28a4d9;
-    // display: flex;
-    flex-direction: column;
-    align-items: center;
-    overflow-y: auto;
-    flex-shrink: 0;
-    transition: 0.3s;
-    overflow-x: hidden;
-    background: url('../images/caribbean1.png'), no-repeat;
-    background-position: 60% -15%;
+  width: none !important;
+  min-height: 100vh;
+  // background-color: #28a4d9;
+  // display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;
+  flex-shrink: 0;
+  transition: 0.3s;
+  overflow-x: hidden;
+  // background: url('../images/caribbean1.png'), no-repeat;
+  background-position: 60% -15%;
 }
 
-.sidemenu-logo {
+.hamburger-bars-icon {
+    // font-size: 2rem;
+    outline: none;
+    cursor: pointer;
+    // position: relative;
+    // top: 3px;
+    color: #777;
+    // left: 12%;
+}
+
+.sidemenu-header {
     // min-width: 220px;
     font-size: large;
     font-weight: 600;
@@ -106,130 +57,73 @@ button.close {
     padding: 14px 16px;
 }
 
-.sidemenu-mini-logo {
-    display: none;
+
+.pro-sidebar {
+.pro-sidebar-layout {
+  background: #16222a;
+    opacity: .9;
 }
 
-.sidemenu-btn {
-    min-width: 220px;
-    min-height: 45px;
-    // border-radius: 5px;
-    display: flex;
-    align-items: center;
-    margin: 10px 0 10px 0;
-    outline: none;
-    text-decoration: none !important;
+// img.sidebar-bg {
+// height: 70% !important;
+// }
+.pro-icon-wrapper {
+margin-right: 20px !important;
+    font-size: 18px !important;
+}
 }
 
-.sidemenu-btn-label {
-    font-size: 15px;
-    font-weight: normal;
-    font-family: 'Roboto', sans-serif;
-    color: #777;
-    margin: 0 0 0 30px;
-}
-
-.sidemenu-btn-icon {
-    width: 24px !important;
-    height: 24px !important;
-    font-size: 24px;
-    font-weight: normal;
-    font-family: 'Roboto', sans-serif;
-    color: #777;
-    margin: 0 0 0 20px;
-}
-
-.sidemenu-btn:hover {
-    cursor: pointer;
-    background-color: rgba(0, 0, 0, 0.055);
-}
-
-.sidemenu-btn-highlight {
-    background-color: $color-theme;
-}
-
-.sidemenu-btn-highlight .sidemenu-btn-label {
-    color: whitesmoke;
-}
-
-.sidemenu-btn-highlight .sidemenu-btn-icon {
-    color: whitesmoke;
-}
-
-.sidemenu-btn-highlight:hover {
-    cursor: pointer;
-    background-color: $color-theme;
-}
-
-@media only screen and (max-width: 768px) {
-
-    .sidemenu-main-responsive {
-        width: 245px;
+.pro-sidebar.collapsed {
+  .pro-inner-item {
+    padding: 8px 35px 8px 8px !important;
+  }
+  // .pro-icon-wrapper {
+  //   margin-right: none !important;
+  //       font-size: 18px !important;
+  //   }
+  .sidebar-footer {
+    display: none ;
     }
 }
 
-.hamburger-bars-icon {
-    font-size: 2rem;
-    outline: none;
-    cursor: pointer;
-    position: relative;
-    top: 3px;
-    color: #777;
-    // left: 12%;
+.sidebar-footer {
+font-size: 10px;
+    padding: 15px;
 }
 
-.sidemenu-mini-main-responsive {
-    width: 50px;
+.pro-sidebar .pro-menu .pro-menu-item.pro-sub-menu .pro-inner-list-item .pro-inner-item > .pro-icon-wrapper {
+  display: block;
 }
 
-.sidemenu-mini-btn {
-    min-width: 50px;
-    min-height: 45px;
-    // border-radius: 5px;
-    display: flex;
-    align-items: center;
-    margin: 10px 0 10px 0;
-    outline: none;
-    justify-content: center;
-    background-color: none !important;
+// .pro-inner-item > .pro-icon-wrapper {
+//   display: block;
+// }
+
+// .pro-sidebar .pro-menu .pro-menu-item.pro-sub-menu .pro-inner-list-item .pro-inner-item:before {
+//   display: none !important;
+// }
+
+.pro-inner-item:before {
+  display: none !important;
 }
 
-.sidemenu-mini-btn:hover {
-    cursor: pointer;
-    background-color: rgba(0, 0, 0, 0.055);
+.pro-sidebar .pro-menu .pro-menu-item.pro-sub-menu > .pro-inner-item > .pro-arrow-wrapper .pro-arrow {
+  transform: rotate(45deg) !important;
 }
 
-.sidemenu-mini-btn-highlight .sidemenu-mini-btn:hover {
-    cursor: pointer;
-    background-color: #16222a;
+.pro-sidebar .pro-menu .pro-menu-item.pro-sub-menu.open > .pro-inner-item > .pro-arrow-wrapper .pro-arrow {
+  transform: rotate(225deg) !important;
 }
 
-.sidemenu-mini-btn-icon {
-    width: 24px !important;
-    height: 24px !important;
-    font-size: 24px;
-    font-weight: normal;
-    font-family: 'Roboto', sans-serif;
-    color: #777;
+.pro-sidebar .pro-menu > ul > .pro-sub-menu > .pro-inner-list-item {
+  background-color: #16222a !important;      
+  // opacity: .5;
 }
 
-.sidemenu-mini-btn-highlight .sidemenu-mini-btn-icon {
-    color: $color-theme;
-}
+// .pro-sidebar .pro-menu .pro-menu-item > .pro-inner-item > .pro-icon-wrapper .pro-icon {
+//   font-size: 12px;
+// }
 
-.sidemenu-header {
-    border-bottom: 1px solid #777;
-}
-
-.sidebar-instalogo {
-    max-width: 100%;
-    height: 30px;
-    padding-right: 11%;
-}
-
-.sidemenu-background {
-    background: $color-primary;
-    height: 100%;
-    opacity: .97;
-    overflow-y: auto;
-}
+// .pro-sidebar .pro-menu .pro-menu-item > .pro-inner-item > .pro-item-content {
+//   font-size: 12px;
+// }
