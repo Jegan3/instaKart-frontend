@@ -141,6 +141,7 @@ const Header = ({ basic }) => {
                       className="instakart"
                       src="images/logo.png"
                       alt="new"
+                      onClick={toHome}
                     />
                   </div>
                   <div className="col-md-7 col-sm-6 search box justify-content-md-center">

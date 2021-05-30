@@ -38,7 +38,7 @@ s .card-body {
 .cards-row {
   width: 75% !important;
   margin: auto;
-  padding-top: 50px;
+  padding-top: 10px;
   padding-bottom: 70px;
   position: relative;
 }
@@ -183,4 +183,11 @@ s .card-body {
   width: 1em;
   position: relative;
   left: 10px;
+}
+h2 {
+  text-align: center;
+  margin-top: 0px;
+  font-weight: 700;
+  color: #33334b;
+  font-size: 36px;
 }

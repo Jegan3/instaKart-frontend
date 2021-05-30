@@ -9,6 +9,10 @@ import { CarouselThriftStore } from '../../components/Carousel';
 const ThriftStore = () => (
   <Grid fluid className="padding-control">
     <Header />
+    <h2>
+      Welcome To The Caribbean&#39;s <br />
+      Largest Thrift Shop
+    </h2>
     <Row >
       <Col>
         <div className="intro-banner">
@@ -16,6 +20,7 @@ const ThriftStore = () => (
         </div>
       </Col>
     </Row>
+    <h2>Shop By Categories</h2>
     <Row md={12} className="cards-row clearfix">
       <Col xs={6} md={2} sm={4} lg={2} className="category-item">
         <StatsCard
@@ -113,6 +118,26 @@ const ThriftStore = () => (
           secText="0 Ads"
         />
       </Col>
+    </Row>
+    <Row>
+      <div className="bg-thift">
+        <div className="thift-ads">
+          <h3>FEATURED ADS</h3>
+          <h6>Buy & Sell Any Thing</h6>
+          <CarouselThriftStore />
+        </div>
+        <br />
+      </div>
+    </Row>
+    <Row>
+      <div className="bg-thift">
+        <div className="thift-ads">
+          <h3>FEATURED ADS</h3>
+          <h6>Buy & Sell Any Thing</h6>
+          <CarouselThriftStore />
+        </div>
+        <br />
+      </div>
     </Row>
     <Row>
       <div className="bg-thift">
