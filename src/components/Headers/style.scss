@@ -234,6 +234,10 @@
   background: linear-gradient(120deg, rgba(22, 34, 42, 1) 30%, rgba(245, 245, 245, 1) 50%, rgba(22, 34, 42, 1) 70%);
 }
 
+.signup-logo:hover {
+  box-shadow: 0 3px 3px $color-background;
+}
+
 .cart-icon {
   padding: 0px !important;
   margin: 0 15% !important;

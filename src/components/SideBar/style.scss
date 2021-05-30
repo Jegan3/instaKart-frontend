@@ -12,6 +12,10 @@
   background: linear-gradient(120deg, rgba(22, 34, 42, 1) 30%, rgba(245, 245, 245, 1) 50%, rgba(22, 34, 42, 1) 70%);
 }
 
+.sidebar-instalogo:hover {
+  box-shadow: 0 3px 3px $color-background;
+  }
+
 .sidemenu-background {
   // background: #16222a;
   height: 100%;
