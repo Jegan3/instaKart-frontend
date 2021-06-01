@@ -1,9 +1,9 @@
 /*eslint-disable*/
 import React from 'react';
 import { Row, Col, Grid } from 'react-bootstrap';
-import Banners from '../../components/Banners';
+import { Banners } from '../../components/Banners';
 import Footer from '../../components/Footer';
-import Header from '../../components/Headers';
+import Header from '../../components/Header';
 
 const cardHolder = [
   {
@@ -76,22 +76,22 @@ const AdsDetails = () => (
                     </span>
                     <div className="field-description" itemProp="description">
                       <p>The German Shepherds are medium to large-sized dogs, well-balanced, muscular dog,
-                        slightly longer than tall, with a medium length coat, erect ears,
-                        and a low-set natural tail that normally reaches to the hock and is
-                        carried in a slight curve like a saber. The outline of the German
-                        Shepherd Dog is made up of smooth curves rather than angles.
-                        The head is in proportion to the size of the body, strong
-                        without appearing coarse or fine. Gender differences are
-                        readily apparent. The German Shepherd Dog should be evaluated as an
-                        all-around working dog, and exaggerations or faults should be
-                        penalized in proportion to how much they interfere with the dog’s ability to work.
+                      slightly longer than tall, with a medium length coat, erect ears,
+                      and a low-set natural tail that normally reaches to the hock and is
+                      carried in a slight curve like a saber. The outline of the German
+                      Shepherd Dog is made up of smooth curves rather than angles.
+                      The head is in proportion to the size of the body, strong
+                      without appearing coarse or fine. Gender differences are
+                      readily apparent. The German Shepherd Dog should be evaluated as an
+                      all-around working dog, and exaggerations or faults should be
+                      penalized in proportion to how much they interfere with the dog’s ability to work.
                       </p>
                       <p>The German Shepherd Dog is confident and fearless, willing to be approached,
-                        yet a certain level of aloofness towards strangers is acceptable.
-                        When working, the German Shepherd is alert and eager, adapting well to new tasks.
-                        Lack of confidence is a serious defect in the character of a German Shepherd.
-                        The structure of this breed was designed for efficient locomotion, particularly at the trot,
-                        so poor movement is another serious fault.
+                      yet a certain level of aloofness towards strangers is acceptable.
+                      When working, the German Shepherd is alert and eager, adapting well to new tasks.
+                      Lack of confidence is a serious defect in the character of a German Shepherd.
+                      The structure of this breed was designed for efficient locomotion, particularly at the trot,
+                      so poor movement is another serious fault.
                       </p>
                     </div>
                   </div>
@@ -508,9 +508,6 @@ const AdsDetails = () => (
       <Footer />
     </Row>
   </Grid>
-
-
 );
-
 
 export default AdsDetails;

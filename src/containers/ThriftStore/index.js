@@ -2,7 +2,7 @@
 import React from 'react';
 import { Row, Col, Grid } from 'react-bootstrap';
 import Footer from '../../components/Footer';
-import Header from '../../components/Headers';
+import Header from '../../components/Header';
 // import StatsCard from '../../components/StatsCard';
 // import Card from '../../components/Card'
 import { CarouselThriftStore, CarouselThriftStoreCategoryUp, CarouselThriftStoreCategoryBottom } from '../../components/Carousel';

@@ -2,7 +2,7 @@
 import React, { useEffect } from "react";
 // import IntroBanner from '../../components/IntroBanner';
 import Footer from "../../components/Footer";
-import Header from "../../components/Headers";
+import Header from "../../components/Header";
 import { CarouselFirst, CarouselSecond, CarouselThird, CarouselFourth, CarouselMobile, CarouselNewEStore, } from "../../components/Carousel";
 import { Banners } from "../../components/Banners";
 

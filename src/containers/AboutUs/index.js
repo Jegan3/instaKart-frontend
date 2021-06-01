@@ -1,7 +1,7 @@
 import React from 'react';
 import { Row, Col, Grid } from 'react-bootstrap';
 import Footer from '../../components/Footer';
-import Header from '../../components/Headers';
+import Header from '../../components/Header';
 
 const AboutUs = () => (
   <Grid fluid>

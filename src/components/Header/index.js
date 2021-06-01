@@ -36,8 +36,8 @@ const Header = ({ basic }) => {
   const name = validLogin && validLogin.user.name || sessionStorage.username ? sessionStorage.username : false;
   // name = name || 'Create My Account';
 
-  const vendor = validLogin && validLogin.user.type === 'vendor'
-  const user = validLogin && validLogin.user.type === 'user'
+  const vendor = validLogin && validLogin.user.type === 'vendor' || sessionStorage.type === 'vendor'
+  const user = validLogin && validLogin.user.type === 'user' || sessionStorage.type === 'user'
 
   const flags = Country.map((item) => (
     <MenuItem key={item.id}

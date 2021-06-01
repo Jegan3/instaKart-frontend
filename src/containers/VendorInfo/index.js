@@ -5,7 +5,7 @@ import { Row, Col, Form, Grid } from 'react-bootstrap';
 import Select from 'react-select';
 import { history } from '../../routes';
 import Footer from '../../components/Footer';
-import Header from '../../components/Headers';
+import Header from '../../components/Header';
 
 const productList = [
   { value: 'Bakery and Coffee', label: 'Bakery and Coffee' },
