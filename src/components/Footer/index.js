@@ -21,6 +21,11 @@ const Footer = () => (
   <div>
     <footer className="mainfooter" role="contentinfo">
       <div className="footer-header">
+      <div className="row fitness-pic">
+        <img className="addpic" src="images/icon-tcap.png" />
+        <img className="addpic" src="images/instakart.png" />
+        <img className="addpic" src="images/glorii_Logo4.png" />
+      </div>
         <div className="row">
           <div className="col-md-4 col-sm-4">
             <h5>

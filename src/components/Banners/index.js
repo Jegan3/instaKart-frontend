@@ -1,7 +1,27 @@
 /*eslint-disable*/
 import React from 'react';
 import { Carousel } from 'react-bootstrap';
-import 'bootstrap/dist/css/bootstrap.css';
+
+export const Banners = () => (
+  <div className="banners">
+    <Carousel>
+      <Carousel.Item>
+        <img
+          className="d-block w-100"
+          src="images/pic3.png"
+          alt="Third slide"
+        />
+      </Carousel.Item>
+      <Carousel.Item>
+        <img
+          className="d-block w-100"
+          src="images/pic4.png"
+          alt="fourth slide"
+        />
+      </Carousel.Item>
+    </Carousel>
+  </div>
+);
 
 export const ThriftBanners = () => (
   <div className="banners">
@@ -24,8 +44,8 @@ export const ThriftBanners = () => (
   </div>
 );
 
-export const Banners = () => (
-  <div className="banners">
+export const SecondaryBanners = () => (
+  <div className="bottom-banners">
     <Carousel>
       <Carousel.Item>
         <img
