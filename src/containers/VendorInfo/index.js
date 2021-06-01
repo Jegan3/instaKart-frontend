@@ -50,7 +50,7 @@ const VendorInfo = () => {
   const [alertError, setAlertError] = useState(false);
 
   const dispatch = useDispatch();
-  const vendor = useSelector((state) => state.vendorInfo.vendorInfo);
+  const vendor = useSelector((state) => state.vendorInfoState.vendorInfo);
 
   useEffect(() => {
     if (vendor && vendor.status) {

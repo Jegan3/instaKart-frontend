@@ -1,6 +1,5 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import envConfig from 'envConfig'; //eslint-disable-line
-import * as INSTAKART from '../actionTypes/RetrieveBanner';
 import * as instakartActionCreators from '../actionCreators/RetrieveBanner';
 import { doGet } from '../utils/fetchWrapper';
 
@@ -16,6 +15,6 @@ export function* getBannerRetrieve(data) {
 
 export function* retreiveBannerWatchers() {
   yield [
-    takeLatest(INSTAKART.BANNER_RETRIEVE_REQUEST, getBannerRetrieve),
+    takeLatest('BANNER_RETRIEVE_REQUEST', getBannerRetrieve),
   ];
 }

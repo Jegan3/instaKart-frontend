@@ -1,22 +1,14 @@
-import * as INSTAKART from '../actionTypes/UploadBanner';
+export const getBannerUpload = (banner) => ({
+  type: 'BANNER_UPLOAD_REQUEST',
+  banner,
+});
 
-export function getBannerUpload(banner) {
-  return {
-    type: INSTAKART.BANNER_UPLOAD_REQUEST,
-    banner,
-  };
-}
+export const getBannerUploadSucccess = (banner) => ({
+  type: 'BANNER_UPLOAD_SUCCESS',
+  banner,
+});
 
-export function getBannerUploadSucccess(banner) {
-  return {
-    type: INSTAKART.BANNER_UPLOAD_SUCCESS,
-    banner,
-  };
-}
-
-export function getBannerUploadFailure(error) {
-  return {
-    type: INSTAKART.BANNER_UPLOAD_FAILURE,
-    error,
-  };
-}
+export const getBannerUploadFailure = (error) => ({
+  type: 'BANNER_UPLOAD_FAILURE',
+  error,
+});

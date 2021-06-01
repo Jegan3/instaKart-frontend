@@ -1,22 +1,14 @@
-import * as INSTAKART from '../actionTypes/Signup';
+export const getSignup = (signupDetails) => ({
+  type: 'SIGNUP_REQUEST',
+  signupDetails,
+});
 
-export function getSignup(signupDetails) {
-  return {
-    type: INSTAKART.SIGNUP_REQUEST,
-    signupDetails,
-  };
-}
+export const getSignupSuccess = (signup) => ({
+  type: 'SIGNUP_SUCCESS',
+  signup,
+});
 
-export function getSignupSuccess(signup) {
-  return {
-    type: INSTAKART.SIGNUP_SUCCESS,
-    signup,
-  };
-}
-
-export function getSignupFailure(error) {
-  return {
-    type: INSTAKART.SIGNUP_FAILURE,
-    error,
-  };
-}
+export const getSignupFailure = (error) => ({
+  type: 'SIGNUP_FAILURE',
+  error,
+});

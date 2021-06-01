@@ -1,5 +1,3 @@
-// import * as INSTAKART from '../actionTypes/Otp';
-
 const initialState = {};
 
 export default (state = initialState, action) => {

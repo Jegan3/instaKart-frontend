@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Row, Col, Image, Form, Grid } from 'react-bootstrap';
 import Select from "react-select";
+import Cleave from "cleave.js/react";
+// import "cleave.js/dist/addons/cleave-phone.us";
 import { history } from '../../routes';
 import OtpScreen from '../../components/OtpScreen';
 import Footer from '../../components/Footer';
@@ -38,7 +40,6 @@ const SignUp = (props) => {
 
   useEffect(() => {
     if (validSignup && !closeOtp && type === 'user') {
-      // setAlert(validOtp.message);
       setShowOtp(true);
     } else if (status) {
       setEstore('');
@@ -72,11 +73,9 @@ const SignUp = (props) => {
     }
   }
 
-  const onMobile = (e) => {
-    if (e.target.value.match('^[0-9]*$') != null) {
-      setMobile(e.target.value);
-    }
-  };
+  const onMobile = (e) => (
+    setMobile(e.target.rawValue)
+  )
 
   const onEmail = (e) => {
     if (e.target.value.match('^[a-zA-Z0-9_@./#&+-]*$')) {
@@ -131,7 +130,7 @@ const SignUp = (props) => {
   // City Options
   useEffect(() => {
     countries && countries.filter((item) => {
-      if (item._id == country.value) {
+      if (country && item._id === country.value) {
         const city = item.cities.sort((a, b) => a.cityName.localeCompare(b.cityName)).map(data => ({
           value: data._id,
           label: data.cityName,
@@ -272,13 +271,17 @@ const SignUp = (props) => {
               </Col>
               <Col md={6} sm={12}>
                 <label className="signup-label">Contact Number </label>
-                <input type="text"
+                <Cleave
                   className="form-control"
                   placeholder="Enter contact number"
-                  value={mobile} onChange={onMobile}
-                  maxLength={15}
-                >
-                </input>
+                  value={mobile}
+                  onChange={onMobile}
+                  options={{
+                    blocks: [3, 3, 4],
+                    numericOnly: true
+                  }}
+                // options={{ phone: true, phoneRegionCode: "US" }}
+                />
               </Col>
             </Row>
             <Row>

@@ -298,7 +298,7 @@ export const CarouselFirst = () => (
     responsive={responsive}
   >
     {businessRowFirst.map((card) => (
-      <Card title={card.title} content={card.content} imgUrl={card.imgUrl} url={card.url} />
+      <Card key={card.id} title={card.title} content={card.content} imgUrl={card.imgUrl} url={card.url} />
     ))}
   </Carousel>
 );
@@ -309,7 +309,7 @@ export const CarouselSecond = () => (
     responsive={responsive}
   >
     {businessRowSecond.map((card) => (
-      <Card title={card.title} content={card.content} imgUrl={card.imgUrl} url={card.url} />
+      <Card key={card.id} title={card.title} content={card.content} imgUrl={card.imgUrl} url={card.url} />
     ))}
   </Carousel>
 );
@@ -320,7 +320,7 @@ export const CarouselThird = () => (
     responsive={responsive}
   >
     {businessRowThird.map((card) => (
-      <Card title={card.title} content={card.content} imgUrl={card.imgUrl} url={card.url} />
+      <Card key={card.id} title={card.title} content={card.content} imgUrl={card.imgUrl} url={card.url} />
     ))}
   </Carousel>
 );
@@ -331,7 +331,7 @@ export const CarouselFourth = () => (
     responsive={responsive}
   >
     {businessRowFourth.map((card) => (
-      <Card title={card.title} content={card.content} imgUrl={card.imgUrl} url={card.url} />
+      <Card key={card.id} title={card.title} content={card.content} imgUrl={card.imgUrl} url={card.url} />
     ))}
   </Carousel>
 );
@@ -345,7 +345,7 @@ export const CarouselMobile = () => (
     responsive={responsive}
   >
     {cardsDataMobile.map((card) => (
-      <Card title={card.title} content={card.content} imgUrl={card.imgUrl} />
+      <Card key={card.id} title={card.title} content={card.content} imgUrl={card.imgUrl} />
     ))}
   </Carousel>
 );
@@ -359,7 +359,7 @@ export const CarouselNewEStore = () => (
     responsive={responsive}
   >
     {cardsDataNewEStore.map((card) => (
-      <Card title={card.title} imgUrl={card.imgUrl} />
+      <Card key={card.id} title={card.title} imgUrl={card.imgUrl} />
     ))}
   </Carousel>
 );
@@ -373,7 +373,7 @@ export const CarouselThriftStore = () => (
     responsive={responsiveThrift}
   >
     {cardsDataMobile.map((card) => (
-      <Card title={card.title} imgUrl={card.imgUrl} url={card.url} body />
+      <Card key={card.id} title={card.title} imgUrl={card.imgUrl} url={card.url} body />
     ))}
   </Carousel>
 );
@@ -387,7 +387,7 @@ export const CarouselAdsDetails = () => (
     responsive={responsiveAdsDetails}
   >
     {fisrtAdsDetails.map((card) => (
-      <Card title={card.title} imgUrl={card.imgUrl} body />
+      <Card key={card.id} title={card.title} imgUrl={card.imgUrl} body />
     ))}
   </Carousel>
 );

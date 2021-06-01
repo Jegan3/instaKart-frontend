@@ -1,22 +1,14 @@
-import * as INSTAKART from '../actionTypes/Otp';
+export const getOtp = (otpDetails) => ({
+  type: 'OTP_REQUEST',
+  otpDetails,
+});
 
-export function getOtp(otpDetails) {
-  return {
-    type: INSTAKART.OTP_REQUEST,
-    otpDetails,
-  };
-}
+export const getOtpSuccess = (otp) => ({
+  type: 'OTP_SUCCESS',
+  otp,
+});
 
-export function getOtpSuccess(otp) {
-  return {
-    type: INSTAKART.OTP_SUCCESS,
-    otp,
-  };
-}
-
-export function getOtpFailure(error) {
-  return {
-    type: INSTAKART.OTP_FAILURE,
-    error,
-  };
-}
+export const getOtpFailure = (error) => ({
+  type: 'OTP_FAILURE',
+  error,
+});

@@ -1,6 +1,6 @@
 /*eslint-disable*/
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem, Row, Col, Image } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkerAlt, faUserPlus, faCaretDown } from '@fortawesome/free-solid-svg-icons';
@@ -29,18 +29,19 @@ const Header = ({ basic }) => {
   const [login, setLogin] = useState(false);
   const [country, setCountry] = useState(<div><FontAwesomeIcon icon={faMapMarkerAlt} className="location" /><p>Select your country </p><FontAwesomeIcon icon={faCaretDown} className="caret-down" /></div>);
 
+  const dispatch = useDispatch();
   const validLogin = useSelector((state) => state.loginState.login);
-  const signup = useSelector((state) => state.signupState.signup);
+  // const signup = useSelector((state) => state.signupState.signup);
 
-  const name = validLogin && validLogin.user.name;
+  const name = validLogin && validLogin.user.name || sessionStorage.username ? sessionStorage.username : false;
   // name = name || 'Create My Account';
 
   const vendor = validLogin && validLogin.user.type === 'vendor'
 
   const flags = Country.map((item) => (
-    <MenuItem
+    <MenuItem key={item.id}
       eventKey={
-        <div>
+        <div >
           <img className="flag" src={item.flag} alt="new" />
           <p className="p-text" >{item.country}</p>
           <span><FontAwesomeIcon icon={faCaretDown} className="caret-down" /></span>
@@ -82,6 +83,11 @@ const Header = ({ basic }) => {
 
   const toHome = () => {
     history.push({ pathname: '/', });
+  }
+
+  const logout = () => {
+    sessionStorage.clear()
+    dispatch({ type: 'LOGOUT_SUCCESS' });
   }
 
   return (
@@ -128,6 +134,9 @@ const Header = ({ basic }) => {
                     </NavItem>
                     <NavItem eventKey={3} href="#">
                       {vendor ? <p onClick={dashboard}>Dashboard</p> : <p><Button className="vendor-signup" onClick={Signup}>Register Your E-Store</Button></p>}
+                    </NavItem>
+                    <NavItem eventKey={2} href="#">
+                      <p onClick={logout}>Log Out</p>
                     </NavItem>
                   </Nav>
                 </Navbar.Collapse>

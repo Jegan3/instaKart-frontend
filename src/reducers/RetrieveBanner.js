@@ -1,23 +1,19 @@
-import * as INSTAKART from '../actionTypes/RetrieveBanner';
-
-const initialState = {
-  // contacts: [],
-};
+const initialState = {};
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case INSTAKART.BANNER_RETRIEVE_REQUEST:
+    case 'BANNER_RETRIEVE_REQUEST':
       return {
         ...state,
         isLoading: true,
       };
-    case INSTAKART.BANNER_RETRIEVE_SUCCESS:
+    case 'BANNER_RETRIEVE_SUCCESS':
       return {
         ...state,
         isLoading: false,
         retreiveBanner: action.banner,
       };
-    case INSTAKART.BANNER_RETRIEVE_FAILURE:
+    case 'BANNER_RETRIEVE_FAILURE':
       return {
         ...state,
         isLoading: false,

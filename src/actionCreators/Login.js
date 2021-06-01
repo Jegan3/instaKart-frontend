@@ -1,22 +1,14 @@
-import * as INSTAKART from '../actionTypes/Login';
+export const getLogin = (loginDetails) => ({
+  type: 'LOGIN_REQUEST',
+  loginDetails,
+});
 
-export function getLogin(loginDetails) {
-  return {
-    type: INSTAKART.LOGIN_REQUEST,
-    loginDetails,
-  };
-}
+export const getLoginSucccess = (login) => ({
+  type: 'LOGIN_SUCCESS',
+  login,
+});
 
-export function getLoginSucccess(login) {
-  return {
-    type: INSTAKART.LOGIN_SUCCESS,
-    login,
-  };
-}
-
-export function getLoginFailure(error) {
-  return {
-    type: INSTAKART.LOGIN_FAILURE,
-    error,
-  };
-}
+export const getLoginFailure = (error) => ({
+  type: 'LOGIN_FAILURE',
+  error,
+});

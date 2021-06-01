@@ -86,7 +86,7 @@ const LoginModal = ({ showPopup, hidePopup }) => {
     // window.open(`${window.location.origin}/termsofcondition`, '', 'width=1400,height=1200');
     // const win = window.open('/termsofcondition', "_blank");
     // win.focus();
-    history.push({pathname: '/termsofcondition'});
+    history.push({ pathname: '/termsofcondition' });
     window.scrollTo(0, 0);
   };
 
@@ -156,18 +156,18 @@ const LoginModal = ({ showPopup, hidePopup }) => {
                       <button
                         type="button"
                         className="btn btn-primary btn-block modal-button"
-                        onClick={Login}
+                        onClick={Signup}
                       >
-                        Login
+                        Sign Up
                       </button>
                     </Col>
                     <Col md={6} sm={12} className="modal-row" >
                       <button
                         type="button"
                         className="btn btn-primary btn-block modal-button"
-                        onClick={Signup}
+                        onClick={Login}
                       >
-                        Sign Up
+                        Login
                       </button>
                     </Col>
                     <Col md={12} sm={12} className="login-error" >

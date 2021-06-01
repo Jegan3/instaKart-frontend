@@ -1,6 +1,5 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import envConfig from 'envConfig'; //eslint-disable-line
-import * as INSTAKART from '../actionTypes/UploadBanner';
 import * as instakartActionCreators from '../actionCreators/UploadBanner';
 import { doPostFile } from '../utils/fetchWrapper';
 
@@ -16,6 +15,6 @@ export function* getBannerUpload(data) {
 
 export function* uploadBannerWatchers() {
   yield [
-    takeLatest(INSTAKART.BANNER_UPLOAD_REQUEST, getBannerUpload),
+    takeLatest('BANNER_UPLOAD_REQUEST', getBannerUpload),
   ];
 }

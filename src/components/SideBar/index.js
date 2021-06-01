@@ -11,7 +11,7 @@ const Sidebar = () => {
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
   const [toggled, setToggled] = useState(false);
-  const sidebar = useSelector((state) => state.sidebar);
+  const sidebar = useSelector((state) => state.sidebarState);
 
   useEffect(() => {
     setToggled(sidebar.show);
