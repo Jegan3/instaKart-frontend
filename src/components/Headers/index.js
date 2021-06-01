@@ -37,13 +37,14 @@ const Header = ({ basic }) => {
   // name = name || 'Create My Account';
 
   const vendor = validLogin && validLogin.user.type === 'vendor'
+  const user = validLogin && validLogin.user.type === 'user'
 
   const flags = Country.map((item) => (
     <MenuItem key={item.id}
       eventKey={
         <div >
           <img className="flag" src={item.flag} alt="new" />
-          <p className="p-text" >{item.country}</p>
+          <p >{item.country}</p>
           <span><FontAwesomeIcon icon={faCaretDown} className="caret-down" /></span>
         </div>}
     >
@@ -132,12 +133,13 @@ const Header = ({ basic }) => {
                     <NavItem eventKey={2} href="#">
                       <p onClick={aboutUs}>About Us</p>
                     </NavItem>
-                    <NavItem eventKey={3} href="#">
-                      {vendor ? <p onClick={dashboard}>Dashboard</p> : <p><Button className="vendor-signup" onClick={Signup}>Register Your E-Store</Button></p>}
-                    </NavItem>
-                    <NavItem eventKey={2} href="#">
-                      <p onClick={logout}>Log Out</p>
-                    </NavItem>
+                    {!user && <NavItem eventKey={3} href="#">
+                      {/* {vendor ? <p onClick={dashboard}>Dashboard</p> : <p><Button className="vendor-signup" onClick={Signup}>Register Your E-Store</Button></p>} */}
+                      {vendor ? <p onClick={dashboard}>Dashboard</p> : <p className="vendor-signup" onClick={Signup}>Register Your E-Store</p>}
+                    </NavItem>}
+                    {(vendor || user) && <NavItem eventKey={2} href="#">
+                      <p onClick={logout}>Sign Out</p>
+                    </NavItem>}
                   </Nav>
                 </Navbar.Collapse>
               </Navbar>
