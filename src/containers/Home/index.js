@@ -3,8 +3,8 @@ import React, { useEffect } from "react";
 // import IntroBanner from '../../components/IntroBanner';
 import Footer from "../../components/Footer";
 import Header from "../../components/Headers";
-import Banners from "../../components/Banners";
 import { CarouselFirst, CarouselSecond, CarouselThird, CarouselFourth, CarouselMobile, CarouselNewEStore, } from "../../components/Carousel";
+import { Banners } from "../../components/Banners";
 
 const Home = () => {
 

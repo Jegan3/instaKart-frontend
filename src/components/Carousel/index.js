@@ -39,6 +39,25 @@ const responsiveThrift = {
   },
 };
 
+const responsiveThriftCategory = {
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 6,
+    // slidesToSlide: 4,
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 680 },
+    items: 4,
+    // slidesToSlide: 3,
+  },
+  mobile: {
+    breakpoint: { max: 680, min: 0 },
+    items: 3,
+    // slidesToSlide: 2,
+  },
+};
+
+
 const responsiveAdsDetails = {
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
@@ -289,7 +308,92 @@ const fisrtAdsDetails = [
     imgUrl: 'images/9_home.png',
   },
 ];
+const thriftStoreCategoryUp = [
+  {
+    id: 1,
+    title: 'Appliances',
+    imgUrl: 'images/Appliances.jpg',
+  },
+  {
+    id: 2,
+    title: 'Books',
+    imgUrl: 'images/Books.jpg',
+  },
+  {
+    id: 3,
+    title: 'Baby Products',
+    imgUrl: 'images/Toys & Baby Products.jpg',
+  },
+  {
+    id: 4,
+    title: 'Clothing',
+    imgUrl: 'images/Clothing.jpg',
+  },
+  {
+    id: 5,
+    title: 'Donate',
+    imgUrl: 'images/Donation.jpg',
+  },
+  {
+    id: 6,
+    title: 'Furniture',
+    imgUrl: 'images/Furniture.jpg',
+  },
+];
 
+const thriftStoreCategoryBottom = [
+  {
+    id: 7,
+    title: 'Footwear',
+    imgUrl: 'images/Footware.jpg',
+  },
+  {
+    id: 8,
+    title: 'Miscellaneous',
+    imgUrl: 'images/Miscellaneous.jpg',
+  },
+  {
+    id: 9,
+    title: 'Mobile Phones',
+    imgUrl: 'images/Mobile Phones.jpg',
+  },
+  {
+    id: 10,
+    title: 'Real Estate',
+    imgUrl: 'images/Real-Estate.jpg',
+  },
+  {
+    id: 11,
+    title: 'Tools',
+    imgUrl: 'images/Tools.jpg',
+  },
+  {
+    id: 12,
+    title: 'Vehicles',
+    imgUrl: 'images/Vehicles.jpg',
+  },
+];
+
+
+export const CarouselThriftStoreCategoryUp = () => (
+  <Carousel
+    responsive={responsiveThriftCategory}
+  >
+    {thriftStoreCategoryUp.map((card) => (
+      <Card title={card.title} imgUrl={card.imgUrl} />
+    ))}
+  </Carousel>
+);
+
+export const CarouselThriftStoreCategoryBottom = () => (
+  <Carousel
+    responsive={responsiveThriftCategory}
+  >
+    {thriftStoreCategoryBottom.map((card) => (
+      <Card title={card.title} imgUrl={card.imgUrl} />
+    ))}
+  </Carousel>
+);
 // Because this is an inframe, so the SSR mode doesn't not do well here.
 // It will work on real devices.
 export const CarouselFirst = () => (
@@ -298,7 +402,7 @@ export const CarouselFirst = () => (
     responsive={responsive}
   >
     {businessRowFirst.map((card) => (
-      <Card key={card.id} title={card.title} content={card.content} imgUrl={card.imgUrl} url={card.url} />
+      <Card key={card.id} content={card.content} imgUrl={card.imgUrl} url={card.url} />
     ))}
   </Carousel>
 );
@@ -309,7 +413,7 @@ export const CarouselSecond = () => (
     responsive={responsive}
   >
     {businessRowSecond.map((card) => (
-      <Card key={card.id} title={card.title} content={card.content} imgUrl={card.imgUrl} url={card.url} />
+      <Card key={card.id} content={card.content} imgUrl={card.imgUrl} url={card.url} />
     ))}
   </Carousel>
 );
@@ -320,7 +424,7 @@ export const CarouselThird = () => (
     responsive={responsive}
   >
     {businessRowThird.map((card) => (
-      <Card key={card.id} title={card.title} content={card.content} imgUrl={card.imgUrl} url={card.url} />
+      <Card key={card.id} content={card.content} imgUrl={card.imgUrl} url={card.url} />
     ))}
   </Carousel>
 );
@@ -331,7 +435,7 @@ export const CarouselFourth = () => (
     responsive={responsive}
   >
     {businessRowFourth.map((card) => (
-      <Card key={card.id} title={card.title} content={card.content} imgUrl={card.imgUrl} url={card.url} />
+      <Card key={card.id} content={card.content} imgUrl={card.imgUrl} url={card.url} />
     ))}
   </Carousel>
 );
@@ -345,7 +449,7 @@ export const CarouselMobile = () => (
     responsive={responsive}
   >
     {cardsDataMobile.map((card) => (
-      <Card key={card.id} title={card.title} content={card.content} imgUrl={card.imgUrl} />
+      <Card key={card.id} content={card.content} imgUrl={card.imgUrl} />
     ))}
   </Carousel>
 );
@@ -359,7 +463,7 @@ export const CarouselNewEStore = () => (
     responsive={responsive}
   >
     {cardsDataNewEStore.map((card) => (
-      <Card key={card.id} title={card.title} imgUrl={card.imgUrl} />
+      <Card key={card.id} imgUrl={card.imgUrl} />
     ))}
   </Carousel>
 );
@@ -373,7 +477,7 @@ export const CarouselThriftStore = () => (
     responsive={responsiveThrift}
   >
     {cardsDataMobile.map((card) => (
-      <Card key={card.id} title={card.title} imgUrl={card.imgUrl} url={card.url} body />
+      <Card key={card.id} imgUrl={card.imgUrl} url={card.url} body />
     ))}
   </Carousel>
 );
@@ -387,7 +491,7 @@ export const CarouselAdsDetails = () => (
     responsive={responsiveAdsDetails}
   >
     {fisrtAdsDetails.map((card) => (
-      <Card key={card.id} title={card.title} imgUrl={card.imgUrl} body />
+      <Card key={card.id} imgUrl={card.imgUrl} body />
     ))}
   </Carousel>
 );

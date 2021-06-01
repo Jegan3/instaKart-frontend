@@ -122,7 +122,7 @@ const Footer = () => (
               <div className="col-sm-4">
                 <p className="text-right">
                   <img
-                    src="  https://payals.co.uk/wp-content/uploads/2017/07/payment-icons.png "
+                    src='./images/payment-icons.png'
                     width="150px"
                     alt="new"
                   />
