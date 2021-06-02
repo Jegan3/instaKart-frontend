@@ -3,24 +3,26 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Row, Col, Form, Grid } from 'react-bootstrap';
 import Select from 'react-select';
+import Cleave from "cleave.js/react";
 import { history } from '../../routes';
 import Footer from '../../components/Footer';
-import Header from '../../components/Headers';
+import Header from '../../components/Header';
+import { faYenSign } from '@fortawesome/free-solid-svg-icons';
 
-const productList = [
-  { value: 'Bakery and Coffee', label: 'Bakery and Coffee' },
-  { value: 'Drinks and Cocktails', label: 'Drinks and Cocktails ' },
-  { value: 'Electronics ', label: 'Electronics' },
-  { value: 'Grocery', label: 'Grocery' },
-  { value: 'Restaurants and Food', label: 'VRestaurants and Food ' },
-  { value: 'Home and Garden', label: 'Home and Garden' },
-  { value: 'Hardware and Equipment', label: 'Hardware and Equipment ' },
-  { value: 'Pharmacy and Health', label: 'Pharmacy and Health' },
-  { value: 'Beauty', label: 'Beauty' },
-  { value: 'Clothing and Accessories', label: 'Clothing and Accessories' },
-  { value: 'Books and Paper Goods', label: 'Books and Paper Goods' },
-  { value: 'Party and Event Supplies', label: 'Party and Event Supplies' },
-];
+// const productList = [
+//   { value: 'Bakery and Coffee', label: 'Bakery and Coffee' },
+//   { value: 'Drinks and Cocktails', label: 'Drinks and Cocktails ' },
+//   { value: 'Electronics ', label: 'Electronics' },
+//   { value: 'Grocery', label: 'Grocery' },
+//   { value: 'Restaurants and Food', label: 'VRestaurants and Food ' },
+//   { value: 'Home and Garden', label: 'Home and Garden' },
+//   { value: 'Hardware and Equipment', label: 'Hardware and Equipment ' },
+//   { value: 'Pharmacy and Health', label: 'Pharmacy and Health' },
+//   { value: 'Beauty', label: 'Beauty' },
+//   { value: 'Clothing and Accessories', label: 'Clothing and Accessories' },
+//   { value: 'Books and Paper Goods', label: 'Books and Paper Goods' },
+//   { value: 'Party and Event Supplies', label: 'Party and Event Supplies' },
+// ];
 
 const bankList = [
   { value: 'First Citizens', label: 'First Citizens' },
@@ -36,6 +38,15 @@ const bankList = [
   { value: 'CAF Trinidad & Tobago', label: 'CAF Trinidad & Tobago' },
 ];
 
+const ikOptions = [
+  { value: 'Fortnightly', label: 'Fortnightly ' },
+  { value: 'Monthly', label: 'Monthly ' },
+]
+
+const youPrefer = [
+  { value: 'Bank Transfer', label: 'Bank Transfer' },
+  { value: 'Wipay Transfers', label: 'NWipay Transfers' },
+]
 
 const VendorInfo = () => {
   const [firstName, setFirstName] = useState('');
@@ -43,7 +54,8 @@ const VendorInfo = () => {
   const [email, setEmail] = useState('');
   const [companyName, setCompanyName] = useState('');
   const [businessLocation, setBusinessLocation] = useState('');
-  const [products, setProducts] = useState();
+  // const [products, setProducts] = useState();
+  const [mobile, setMobile] = useState('');
   const [bank, setBank] = useState();
   const [termscondition, setTermsCondition] = useState(false);
   const [alertMsg, setAlertMsg] = useState('');
@@ -81,6 +93,10 @@ const VendorInfo = () => {
     }
   }
 
+  const onMobile = (e) => (
+    setMobile(e.target.rawValue)
+  )
+
   const onEmail = (e) => {
     if (e.target.value.match('^[a-zA-Z0-9_@./#&+-]*$')) {
       setEmail(e.target.value);
@@ -88,25 +104,25 @@ const VendorInfo = () => {
   };
 
   const onCompany = (e) => {
-    if (e.target.value.match('^[a-zA-Z0-9]*$')) {
+    if (e.target.value.match('^[a-zA-Z0-9 ]*$')) {
       setCompanyName(e.target.value)
     }
   }
 
   const onBusiness = (e) => {
-    if (e.target.value.match('^[a-zA-Z0-9]*$')) {
+    if (e.target.value.match('^[a-zA-Z0-9 ]*$')) {
       setBusinessLocation(e.target.value)
     }
   }
 
-  const productSelect = productList.map(item => ({
-    value: item.value,
-    label: item.label
-  }))
+  // const productSelect = productList.map(item => ({
+  //   value: item.value,
+  //   label: item.label
+  // }))
 
-  const onProducts = (products) => {
-    setProducts(products)
-  }
+  // const onProducts = (products) => {
+  //   setProducts(products)
+  // }
 
   const bankSelect = bankList.map(item => ({
     value: item.value,
@@ -167,7 +183,7 @@ const VendorInfo = () => {
             </Col>
           </Row>
           <Form className="signup-form">
-            <Row>
+            <Row className="vendor-content card">
               <Col md={6} sm={12}>
                 <label className="signup-label" >What is your first name ? <span className="red-star">*</span></label>
                 <input
@@ -190,17 +206,6 @@ const VendorInfo = () => {
                   maxLength={30}
                 />
               </Col>
-              <Col md={6} sm={12}>
-                <label className="signup-label">Email <span className="red-star">*</span></label>
-                <input
-                  type="Email"
-                  className={alertError && email === '' ? ` form-control my-input` : `form-control formy`}
-                  placeholder="Email"
-                  value={email}
-                  onChange={onEmail}
-                  maxLength={30}
-                />
-              </Col>
               <Col md={6} sm={12} >
                 <label className="signup-label">What is your company's name ? <span className="red-star">*</span></label>
                 <input
@@ -212,8 +217,6 @@ const VendorInfo = () => {
                   maxLength={30}
                 />
               </Col>
-            </Row>
-            <Row>
               <Col md={6} sm={12}>
                 <label className="signup-label">Where is your business located ? <span className="red-star">*</span></label>
                 <input
@@ -225,21 +228,55 @@ const VendorInfo = () => {
                   maxLength={30}
                 />
               </Col>
-              <Col md={6} sm={12} className={`clear-city ${alertError && !products && `dropdown-alert`}`}>
-                <label className="signup-label">Select upto three products <span className="red-star">*</span></label>
-                <Select
-                  type="text"
-                  className="prof-select "
-                  isMulti
-                  placeholder="Choose Products"
-                  value={products}
-                  onChange={onProducts}
-                  options={productSelect}
-                  isSearchable={false}
+
+              <Col md={6} sm={12}>
+                <label className="signup-label">Business Contact Number </label>
+                <Cleave
+                  className="form-control"
+                  placeholder="Enter contact number"
+                  value={mobile}
+                  onChange={onMobile}
+                  options={{
+                    blocks: [3, 3, 4],
+                    numericOnly: true
+                  }}
+                // options={{ phone: true, phoneRegionCode: "US" }}
                 />
               </Col>
+              <Col md={6} sm={12}>
+                <label className="signup-label">Email <span className="red-star">*</span></label>
+                <input
+                  type="Email"
+                  className={alertError && email === '' ? ` form-control my-input` : `form-control formy`}
+                  placeholder="Email"
+                  value={email}
+                  onChange={onEmail}
+                  maxLength={30}
+                />
+              </Col>
+
+              <Col md={6} sm={12} >
+                <div className='select-file'>
+                  <label className="signup-label">Upload Photo of Yourself <span className="red-star">*</span></label>
+                  <div className='file-input'>
+                    <input type='file' />
+                    <span className='button'>Choose</span>
+                    <span className='label' >No file selected </span>
+                  </div>
+                </div>
+              </Col>
+              <Col md={6} sm={12} >
+                <div className='select-file'>
+                  <label className="signup-label">Upload Logo </label>
+                  <div className='file-input'>
+                    <input type='file' />
+                    <span className='button'>Choose</span>
+                    <span className='label' >No file selected </span>
+                  </div>
+                </div>
+              </Col>
             </Row>
-            <Row>
+            <Row className="vendor-content card">
               <Col md={6} sm={12} className={`clear-city ${alertError && !bank && `dropdown-alert`}`}>
                 <label className="signup-label">Choose your bank <span className="red-star">*</span></label>
                 <Select
@@ -249,8 +286,100 @@ const VendorInfo = () => {
                   value={bank}
                   onChange={onBank}
                   options={bankSelect}
+                  isSearchable={true}
+                />
+              </Col>
+              <Col md={6} sm={12} >
+                <label className="signup-label">Bank Account Number <span className="red-star">*</span></label>
+                <input
+                  type="text"
+                  className='form-control'
+                  placeholder="Company Name"
+                  // value={companyName}
+                  // onChange={onCompany}
+                  maxLength={30}
+                />
+              </Col>
+              <Col md={6} sm={12} >
+                <div className='select-file'>
+                  <label className="signup-label">Upload Company Registration <span className="red-star">*</span></label>
+                  <div className='file-input'>
+                    <input type='file' />
+                    <span className='button'>Choose</span>
+                    <span className='label' >No file selected </span>
+                  </div>
+                </div>
+              </Col>
+              <Col md={6} sm={12} >
+                <div className='select-file'>
+                  <label className="signup-label">Proof of Address</label>
+                  <div className='file-input'>
+                    <input type='file' />
+                    <span className='button'>Choose</span>
+                    <span className='label' >No file selected </span>
+                  </div>
+                </div>
+              </Col>
+            </Row>
+            <Row className="vendor-content card">
+              <Col md={6} sm={12} >
+                <div className='select-file'>
+                  <label className="signup-label radio-label">WiPiay Account <span className="red-star">*</span></label>
+                  <div className="form-check">
+                    <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked />
+                    <label className="form-check-label" for="exampleRadios1">
+                      Yes
+                      </label>
+                    <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked />
+                    <label className="form-check-label" for="exampleRadios1">
+                      NO
+                       </label>
+                  </div>
+                </div>
+              </Col>
+              <Col md={6} sm={12} >
+                <label className="signup-label">WiPiay Account Number <span className="red-star">*</span></label>
+                <input
+                  type="text"
+                  className='form-control '
+                  placeholder="WiPiay number "
+                  maxLength={30}
+                />
+              </Col>
+            </Row>
+            <Row className="vendor-content card">
+              <Col md={6} sm={12} >
+                <label className="signup-label">Which do you prefer?<span className="red-star">*</span></label>
+                <Select
+                  type="text"
+                  className="prof-select "
+                  options={youPrefer}
+                  placeholder="choose"
                   isSearchable={false}
                 />
+              </Col>
+              <Col md={6} sm={12} >
+                <label className="signup-label">IK Payout Options<span className="red-star">*</span></label>
+                <Select
+                  type="text"
+                  className="prof-select "
+                  options={ikOptions}
+                  placeholder="choose"
+                  isSearchable={false}
+                />
+              </Col>
+              <Col md={6} sm={12} >
+                <label className="signup-label radio-label">US Account Available<span className="red-star">*</span></label>
+                <div className="form-check">
+                  <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked />
+                  <label className="form-check-label" for="exampleRadios1">
+                    Yes
+                      </label>
+                  <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked />
+                  <label className="form-check-label" for="exampleRadios1">
+                    NO
+                       </label>
+                </div>
               </Col>
             </Row>
             <Row>

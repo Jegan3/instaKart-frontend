@@ -8,7 +8,7 @@ import Cleave from "cleave.js/react";
 import { history } from '../../routes';
 import OtpScreen from '../../components/OtpScreen';
 import Footer from '../../components/Footer';
-import Header from '../../components/Headers';
+import Header from '../../components/Header';
 
 const SignUp = (props) => {
   const [estore, setEstore] = useState('')
