@@ -19,6 +19,41 @@
   &:hover {
     box-shadow: 0 4px 1rem -4px #000;
   }
+
+  .photos {
+    opacity: 1;
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: 0.5s ease;
+    backface-visibility: hidden;
+  }
+
+  .middle {
+    transition: 0.5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+  }
+
+  .card-thriftStore:hover .photos {
+    opacity: 0.3;
+  }
+
+  .card-thriftStore:hover .middle {
+    opacity: 1;
+  }
+
+  .text {
+    color: #28a4d9;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 16px 32px;
+  }
 }
 
 .card-content {
@@ -43,6 +78,20 @@
   button:hover {
     background-color: #28a4d9;
     color: white;
+  }
+
+  .card-title {
+    text-align: center;
+    // width: 100%;
+    // margin: auto;
+    top: 5px;
+    position: relative;
+    font-size: 15px;
+    font-weight: 600;
+    background: #f5f5f5;
+    color: #28a4d9;
+    font-weight: 600;
+    white-space: nowrap;
   }
 }
 
