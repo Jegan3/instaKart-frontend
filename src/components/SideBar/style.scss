@@ -33,7 +33,7 @@
 .sidemenu-main {
   width: none !important;
   min-height: 100vh;
-  // background-color: #28a4d9;
+  //background-color: #28a4d9;
   // display: flex;
   flex-direction: column;
   align-items: center;
@@ -41,8 +41,14 @@
   flex-shrink: 0;
   transition: 0.3s;
   overflow-x: hidden;
-  // background: url('../images/caribbean1.png'), no-repeat;
+ //background: url('../images/caribbean1.png'),no-repeat;
   background-position: 60% -15%;
+  // background: url('../images/caribbean1.png');
+  // background-position: top;
+  // height:100%;
+  // position: fixed;
+  // margin: 0;
+  // padding: 0;
 }
 
 .hamburger-bars-icon {

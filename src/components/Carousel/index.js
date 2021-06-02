@@ -52,7 +52,7 @@ const responsiveThriftCategory = {
   },
   mobile: {
     breakpoint: { max: 680, min: 0 },
-    items: 3,
+    items: 2,
     // slidesToSlide: 2,
   },
 };
