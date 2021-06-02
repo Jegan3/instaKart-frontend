@@ -21,11 +21,11 @@ const Footer = () => (
   <div>
     <footer className="mainfooter" role="contentinfo">
       <div className="footer-header">
-      <div className="row fitness-pic">
-        <img className="addpic" src="images/icon-tcap.png" />
-        <img className="addpic" src="images/instakart.png" />
-        <img className="addpic" src="images/glorii_Logo4.png" />
-      </div>
+        <div className="row fitness-pic">
+          <img className="addpic" src="images/icon-tcap.png" />
+          <img className="addpic" src="images/instakart.png" />
+          <img className="addpic" src="images/glorii_Logo4.png" />
+        </div>
         <div className="row">
           <div className="col-md-4 col-sm-4">
             <h5>
@@ -46,7 +46,7 @@ const Footer = () => (
       </div>
       <div className="footer-container">
         <div className="row footer-top">
-          <div className="information col-md-5 col-sm-4">
+          <div className="information col-md-4 col-sm-4">
             <div className="footer-pad">
               <h4>Information</h4>
               <ul className="list-unstyled">
@@ -56,7 +56,7 @@ const Footer = () => (
               </ul>
             </div>
           </div>
-          <div className="help col-md-4 col-sm-4">
+          <div className="help col-md-5 col-sm-4">
             <div className="footer-pad">
               <h4>Help</h4>
               <ul className="list-unstyled">
