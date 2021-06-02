@@ -21,7 +21,6 @@
 }
 
 .arrival {
-  margin-top: 2% !important;
   width: 50% !important;
   margin: auto;
 }
@@ -48,42 +47,19 @@
   }
 }
 
-.bg-welcome-top {
-  background-color: #28a4d9;
+.bg-welcome-ban {
+  background-color: $color-background;
 
   .arrival {
-    margin-bottom: 1.5% !important;
+    padding-top: 3% !important;
+    margin-bottom: 1.75% !important;
+    padding-left: 0.75%;
+    padding-right: 0.75%;
   }
 }
 
 .bg-welcome {
-  background-color: #28a4d9;
-
-  .arrival {
-    margin-bottom: 1.5% !important;
-    margin-top: 0% !important;
-  }
-}
-
-.addpic {
-  height: 125px;
-  color: white;
-  padding: 1em 1em;
-  border: none;
-  border: 1px solid white;
-  margin: 0 5%;
-}
-
-.intro-banner {
-  margin-bottom: 3%;
-}
-
-.fitness-pic {
-  position: relative;
-  text-align: center;
-}
-
-.bg-welcome-pro {
+  background-color: #ffffff;
 
   .arrival {
     margin-bottom: 1.5% !important;
@@ -91,6 +67,23 @@
 
     h5 {
       color: black;
+    }
+  }
+}
+
+.intro-banner {
+  margin-bottom: 3%;
+}
+
+.bg-welcome-pro {
+  background-color: #28a4d9;
+
+  .arrival {
+    margin-bottom: 1.5% !important;
+    margin-top: 0% !important;
+
+    h5 {
+      color: white;
     }
   }
 }

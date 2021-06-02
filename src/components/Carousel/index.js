@@ -92,7 +92,7 @@ const businessRowFirst = [
   {
     id: 3,
     title: 'CARD 3',
-    content: 'Health & Wellness',
+    content: 'Medical Supplies, Health & Wellness',
     imgUrl: 'images/3_Health.png',
   },
 ];

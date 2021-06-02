@@ -4,7 +4,7 @@ import React, { useEffect } from "react";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import { CarouselFirst, CarouselSecond, CarouselThird, CarouselFourth, CarouselMobile, CarouselNewEStore, } from "../../components/Carousel";
-import { Banners } from "../../components/Banners";
+import { Banners, SecondaryBanners } from "../../components/Banners";
 
 const Home = () => {
 
@@ -36,10 +36,9 @@ const Home = () => {
         <CarouselThird />
         <CarouselFourth />
       </div>
-      <div className="bg-welcome-top">
+      <div className="bg-welcome-ban">
         <div className="arrival">
-          <h5>Second Banner</h5>
-          <CarouselNewEStore />
+          <SecondaryBanners />
         </div>
         <br />
       </div>
@@ -52,7 +51,7 @@ const Home = () => {
       </div>
       <div className="bg-welcome">
         <div className="arrival">
-          <h5>Advertising</h5>
+          <h5>IK Ads</h5>
           <CarouselNewEStore />
         </div>
         <br />
@@ -66,15 +65,10 @@ const Home = () => {
       </div>
       <div className="bg-welcome">
         <div className="arrival">
-          <h5>TimeCap Vids</h5>
+          <h5>TimeCap Logs</h5>
           <CarouselNewEStore />
         </div>
         <br />
-      </div>
-      <div className="fitness-pic">
-        <img className="addpic" src="images/icon-tcap.png" />
-        <img className="addpic" src="images/instakart.png" />
-        <img className="addpic" src="images/glorii_Logo4.png" />
       </div>
       <div>
         <Footer />
