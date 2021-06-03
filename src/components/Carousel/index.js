@@ -350,7 +350,7 @@ const thriftStoreCategoryBottom = [
   {
     id: 8,
     title: 'Miscellaneous',
-    imgUrl: 'images/Miscellaneous.jpg',
+    imgUrl: 'images/Misc.png',
   },
   {
     id: 9,

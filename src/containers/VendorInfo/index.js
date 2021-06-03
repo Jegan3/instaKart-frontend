@@ -36,6 +36,7 @@ const bankList = [
   { value: 'Agricultural Development Bank', label: 'Agricultural Development Bank ' },
   { value: 'Ansa Merchant Bank', label: 'Ansa Merchant Bank' },
   { value: 'CAF Trinidad & Tobago', label: 'CAF Trinidad & Tobago' },
+  { value: 'Others', label: 'Others' },
 ];
 
 const ikOptions = [
@@ -257,7 +258,7 @@ const VendorInfo = () => {
 
               <Col md={6} sm={12} >
                 <div className='select-file'>
-                  <label className="signup-label">Upload Photo of Yourself <span className="red-star">*</span></label>
+                  <label className="signup-label">Upload ID</label>
                   <div className='file-input'>
                     <input type='file' />
                     <span className='button'>Choose</span>
@@ -278,7 +279,7 @@ const VendorInfo = () => {
             </Row>
             <Row className="vendor-content card">
               <Col md={6} sm={12} className={`clear-city ${alertError && !bank && `dropdown-alert`}`}>
-                <label className="signup-label">Choose your bank <span className="red-star">*</span></label>
+                <label className="signup-label">Choose your Bank </label>
                 <Select
                   type="text"
                   className="prof-select "
@@ -290,7 +291,7 @@ const VendorInfo = () => {
                 />
               </Col>
               <Col md={6} sm={12} >
-                <label className="signup-label">Bank Account Number <span className="red-star">*</span></label>
+                <label className="signup-label">Bank Account Number </label>
                 <input
                   type="text"
                   className='form-control'
@@ -302,7 +303,7 @@ const VendorInfo = () => {
               </Col>
               <Col md={6} sm={12} >
                 <div className='select-file'>
-                  <label className="signup-label">Upload Company Registration <span className="red-star">*</span></label>
+                  <label className="signup-label">Upload Company Registration </label>
                   <div className='file-input'>
                     <input type='file' />
                     <span className='button'>Choose</span>
