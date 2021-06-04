@@ -2,9 +2,9 @@
 import React, { useRef } from 'react';
 import { Grid, Row } from 'react-bootstrap';
 import ReactTable from 'react-table';
-import Headerbar from '../../components/HeaderBar';
+import Headerbar from '../../components/Headerbar';
 import Table from '../../components/Table';
-import SideBar from '../../components/Sidebar';
+import Sidebar from '../../components/Sidebar';
 import Select from 'react-select';
 
 const productData = [
@@ -68,7 +68,7 @@ const ProductList = () => {
   return (
     <div className="wrapper">
       {/* <Upload showPopup={show} hidePopup={hidePopup} />  */}
-      <SideBar />
+      <Sidebar />
       <div className="rightside-panel">
         <Headerbar headerName="Product List" />
         <div className="main-content">

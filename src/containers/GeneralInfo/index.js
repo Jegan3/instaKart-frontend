@@ -4,8 +4,8 @@ import { Grid, Row, Col } from 'react-bootstrap';
 import Select from 'react-select';
 import Avatar from 'react-avatar';
 import ReactTable from 'react-table';
-import Headerbar from '../../components/HeaderBar';
-import SideBar from '../../components/Sidebar';
+import Headerbar from '../../components/Headerbar';
+import Sidebar from '../../components/Sidebar';
 import Table from '../../components/Table';
 import GoogleMap from '../../components/Map';
 
@@ -36,7 +36,7 @@ const weekData = [
 const GeneralInfo = () => {
   return (
     <div className="wrapper">
-      <SideBar />
+      <Sidebar />
       <div className="rightside-panel">
         <Headerbar headerName="General Information" />
         <div className="main-content general-info">

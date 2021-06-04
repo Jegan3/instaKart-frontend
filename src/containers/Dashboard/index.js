@@ -3,11 +3,11 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Col, Row, Grid, Button } from 'react-bootstrap';
 import ReactTable from 'react-table';
-import Headerbar from '../../components/HeaderBar';
+import Headerbar from '../../components/Headerbar';
 import Table from '../../components/Table';
 import StatsCard from '../../components/StatsCard';
 import Upload from '../../components/Upload';
-import SideBar from '../../components/Sidebar';
+import Sidebar from '../../components/Sidebar';
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -18,6 +18,8 @@ const Dashboard = () => {
 
   // temproraily for demo
   // const button = login.user.type === 'admin' ? 'APPROVE' : 'UPLOAD';
+
+  // const login = {user:'APPROVE', email: 'appu'}
 
   const button = login.user ? 'APPROVE' : 'UPLOAD';
 
@@ -42,7 +44,7 @@ const Dashboard = () => {
   return (
     <div className={`wrapper ${rtl ? 'rtl' : ''}`}>
       {/* <Upload showPopup={show} hidePopup={hidePopup} /> */}
-      <SideBar />
+      <Sidebar />
       <div className="rightside-panel">
         <Headerbar headerName="Dashboard" setRtlCallback={onRtl} />
         <div className="main-content">
