@@ -58,6 +58,8 @@ const VendorInfo = () => {
   // const [products, setProducts] = useState();
   const [mobile, setMobile] = useState('');
   const [bank, setBank] = useState();
+  const [registration, setRegistration] = useState('')
+  const [wipay, setWipay] = useState('')
   const [termscondition, setTermsCondition] = useState(false);
   const [alertMsg, setAlertMsg] = useState('');
   const [alertError, setAlertError] = useState(false);
@@ -125,6 +127,11 @@ const VendorInfo = () => {
   //   setProducts(products)
   // }
 
+  const onRegistration = (e) => {
+    let file = e.target.files[0];
+    setRegistration(file.name);
+  }
+
   const bankSelect = bankList.map(item => ({
     value: item.value,
     label: item.label
@@ -132,6 +139,11 @@ const VendorInfo = () => {
 
   const onBank = (bank) => {
     setBank(bank)
+  }
+
+  const onWipay = (e) => {
+    setWipay(e.target.value)
+    console.log(e.target.value)
   }
 
   const onTermsCondition = (e) => {
@@ -178,7 +190,7 @@ const VendorInfo = () => {
               {alertMsg && <div class="alert alert-info" role="alert">{alertMsg}</div>}
             </Col>
           </Row>
-          <Row>
+          <Row className="margin-control">
             <Col lg={12} className="sub-heading">
               Basic Information
             </Col>
@@ -255,7 +267,6 @@ const VendorInfo = () => {
                   maxLength={30}
                 />
               </Col>
-
               <Col md={6} sm={12} >
                 <div className='select-file'>
                   <label className="signup-label">Upload ID</label>
@@ -302,14 +313,14 @@ const VendorInfo = () => {
                 />
               </Col>
               <Col md={6} sm={12} >
-                <div className='select-file'>
-                  <label className="signup-label">Upload Company Registration </label>
-                  <div className='file-input'>
-                    <input type='file' />
-                    <span className='button'>Choose</span>
-                    <span className='label' >No file selected </span>
-                  </div>
+                {/* <div className='select-file'> */}
+                <label className="signup-label">Upload Company Registration </label>
+                <div className='file-input'>
+                  <input type='file' onChange={onRegistration} />
+                  <span className='button'>Choose</span>
+                  <span className='label' >{registration ? registration : 'No file selected'} </span>
                 </div>
+                {/* </div> */}
               </Col>
               <Col md={6} sm={12} >
                 <div className='select-file'>
@@ -325,32 +336,33 @@ const VendorInfo = () => {
             <Row className="vendor-content card">
               <Col md={6} sm={12} >
                 <div className='select-file'>
-                  <label className="signup-label radio-label">WiPiay Account <span className="red-star">*</span></label>
+                  <label className="signup-label radio-label">WiPay Account <span className="red-star">*</span></label>
                   <div className="form-check">
-                    <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked />
+                    <input className="form-check-input" type="radio" value='Yes' onChange={onWipay} checked={wipay === 'Yes' ? true : false} />
                     <label className="form-check-label" for="exampleRadios1">
                       Yes
-                      </label>
-                    <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked />
+                    </label>
+                    <input className="form-check-input" type="radio" value='No' onChange={onWipay} checked={wipay === 'No' ? true : false} />
                     <label className="form-check-label" for="exampleRadios1">
-                      NO
-                       </label>
+                      No
+                    </label>
                   </div>
                 </div>
               </Col>
               <Col md={6} sm={12} >
-                <label className="signup-label">WiPiay Account Number <span className="red-star">*</span></label>
+                <label className="signup-label">WiPay Account Number {wipay === 'Yes' && <span className="red-star">*</span>}</label>
                 <input
                   type="text"
                   className='form-control '
-                  placeholder="WiPiay number "
+                  placeholder="WiPay number "
                   maxLength={30}
+                  disabled={wipay === 'No'}
                 />
               </Col>
             </Row>
             <Row className="vendor-content card">
               <Col md={6} sm={12} >
-                <label className="signup-label">Which do you prefer?<span className="red-star">*</span></label>
+                <label className="signup-label">Which do you prefer? <span className="red-star">*</span></label>
                 <Select
                   type="text"
                   className="prof-select "
@@ -360,7 +372,7 @@ const VendorInfo = () => {
                 />
               </Col>
               <Col md={6} sm={12} >
-                <label className="signup-label">IK Payout Options<span className="red-star">*</span></label>
+                <label className="signup-label">IK Payout Options <span className="red-star">*</span></label>
                 <Select
                   type="text"
                   className="prof-select "
@@ -370,20 +382,20 @@ const VendorInfo = () => {
                 />
               </Col>
               <Col md={6} sm={12} >
-                <label className="signup-label radio-label">US Account Available<span className="red-star">*</span></label>
+                <label className="signup-label radio-label">US Account Available <span className="red-star">*</span></label>
                 <div className="form-check">
-                  <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked />
+                  <input className="form-check-input" type="radio" value="option1" checked={false} />
                   <label className="form-check-label" for="exampleRadios1">
                     Yes
-                      </label>
-                  <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked />
+                  </label>
+                  <input className="form-check-input" type="radio" value="option1" checked={false} />
                   <label className="form-check-label" for="exampleRadios1">
-                    NO
-                       </label>
+                    No
+                  </label>
                 </div>
               </Col>
             </Row>
-            <Row>
+            <Row className="margin-control">
               <Col md={12} sm={12} className="required" >
                 <label className="required-field">
                   <small><span className="red-star">*</span> Required Fields</small>
@@ -396,7 +408,7 @@ const VendorInfo = () => {
                 </label>
               </Col>
             </Row>
-            <Row>
+            <Row className="margin-control">
               <Col md={12} sm={12} className="signup-submit" >
                 <button
                   type="button"
