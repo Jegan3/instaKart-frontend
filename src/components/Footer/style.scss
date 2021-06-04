@@ -217,12 +217,12 @@ ul.social-network li {
 
 .footer-top {
   margin: 0% 7%;
-  margin-top: 1% !important;
   margin-right: 0px !important;
+  margin-bottom: 10px !important;
 }
 
 @mixin btn-border-drawing($color: #ccc,
-  $hover: black,
+  $hover: white,
   $width: 2px,
   $vertical: top,
   $horizontal: left,
@@ -258,7 +258,7 @@ ul.social-network li {
   }
 
   &:hover {
-    color: $hover;
+    color:$hover;
 
     &::before,
     &::after {
@@ -290,6 +290,7 @@ ul.social-network li {
   font-size: 15px;
   right: 60%;
   top: 8px;
+  color: white;
 }
 
 .side-Button {
@@ -314,17 +315,19 @@ ul.social-network li {
     }
 
     p {
-      bottom: 15px;
+      bottom: 12px;
       position: relative;
       font-size: 12px;
       left: 7px;
+      color: white;
     }
 
     strong {
       left: 7px;
-      bottom: 28px;
+      bottom: 25px;
       position: relative;
       font-size: 10px;
+      color: white;
     }
   }
 }
