@@ -2,14 +2,14 @@
 import React, { useRef } from 'react';
 import { Grid, Row, Col, Form } from 'react-bootstrap';
 import Select from 'react-select';
-import Headerbar from '../../components/HeaderBar';
-import SideBar from '../../components/Sidebar';
+import Headerbar from '../../components/Headerbar';
+import Sidebar from '../../components/Sidebar';
 
 const AddProduct = () => {
   return (
     <div className="wrapper">
       {/* <Upload showPopup={show} hidePopup={hidePopup} /> */}
-      <SideBar/>
+      <Sidebar/>
       <div className="rightside-panel">
         <Headerbar headerName="Add Product" />
         <div className="main-content add-product">

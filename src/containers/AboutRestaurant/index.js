@@ -2,13 +2,13 @@
 import React, { useRef } from 'react';
 import { Grid, Row, Col } from 'react-bootstrap';
 import Select from 'react-select';
-import Headerbar from '../../components/HeaderBar';
-import SideBar from '../../components/Sidebar';
+import Headerbar from '../../components/Headerbar';
+import Sidebar from '../../components/Sidebar';
 
 const AboutRestaurant = () => {
   return (
     <div className="wrapper">
-      <SideBar />
+      <Sidebar />
       <div className="rightside-panel">
         <Headerbar headerName="About Restaurant" />
         <div className="main-content about-restaurant">
