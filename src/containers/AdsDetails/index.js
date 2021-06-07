@@ -267,21 +267,22 @@ const AdsDetails = () => (
                           <textarea className="comment" name="comment" cols="45" rows="3" aria-required="true" required="required" placeholder="Review ">
                           </textarea>
                         </p>
-                        <div className=" comment-form-name comment-form-row">
+                        <Row md={12}>
+                        <Col md= {4} sm={12} className=" comment-form-name comment-form-row">
                           <i className="fa fa-user"></i>
                           <input type="text" name="author" className="text-input" placeholder="FULL NAME" />
-                        </div>
+                        </Col>
 
-                        <div className="comment-form-name comment-form-row">
+                         < Col md={4} sm ={6} className=" comment-form-name comment-form-row">
                           <i className="fa fa-envelope"></i>
                           <input type="text" name="email" className="text-input" placeholder="EMAIL ADDRESS" />
-                        </div>
+                        </Col>
 
-                        <div className="comment-form-name comment-form-row">
+                        < Col md={4} sm={6} className=" comment-form-name comment-form-row">
                           <i className="fa fa-globe"></i>
                           <input type="text" name="url" className="text-input" placeholder="WEBSITE" />
-                        </div>
-
+                        </Col>
+                        </Row>
                         <p className="comment-form-cookies-consent">
                           <input className="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes" />
                           <label className="label-save" >Save my name, email, and website in this browser for the next time I comment.
@@ -393,12 +394,14 @@ const AdsDetails = () => (
                     </div>
                   </div>
                   <div className="author-btns style2">
-                    <Col sm={12} className="author-btn-holder ">
+                    <Row md={12}>
+                    <Col lg={12} md ={12} sm={6} xs={12} className="author-btn-holder ">
                       <a className="" data-popup-open="single_contact_form" href="#">Send message</a>
                     </Col>
-                    <Col sm={12} className="author-btn-holder ">
+                    <Col lg={12} md ={12} sm={6} xs={12} className="author-btn-holder ">
                       <a data-popup-open="single_contact_form_bid" href="#" className="">Send Offer</a>
                     </Col>
+                    </Row>
                   </div>
                   <div className="about-social">
                   </div>
@@ -412,7 +415,7 @@ const AdsDetails = () => (
               <div className="widget-row">
                 <div className="widget-title">CATEGORIES</div>
                 {cardHolder.map((adsdetails) => (
-                  <div className="dtl" key={adsdetails.id}>
+                  <div className="dtl" key={adsdetails}>
                     <div className="content">
                       <img
                         className="field-icon"
