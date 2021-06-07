@@ -11,7 +11,6 @@ import ThriftStore from './containers/ThriftStore';
 import AdsDetails from './containers/AdsDetails';
 import ProductList from './containers/ProductList';
 import AddProduct from './containers/AddProduct';
-import AboutRestaurant from './containers/AboutRestaurant';
 import GeneralInfo from './containers/GeneralInfo';
 
 
@@ -31,7 +30,6 @@ const Routes = () => (
         <Route path="/advertisement" component={AdsDetails} />
         <Route path="/productlist" component={ProductList} />
         <Route path="/addproduct" component={AddProduct} />
-        <Route path="/aboutrestaurant" component={AboutRestaurant} />
         <Route path="/generalinfo" component={GeneralInfo} />
       </Switch>
     </React.Fragment>

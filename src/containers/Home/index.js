@@ -65,7 +65,7 @@ const Home = () => {
       </div>
       <div className="bg-welcome">
         <div className="arrival">
-          <h5>TimeCap Logs</h5>
+          <h5>TimeCap VLogs</h5>
           <CarouselNewEStore />
         </div>
         <br />

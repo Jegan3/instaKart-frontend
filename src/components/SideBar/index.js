@@ -27,7 +27,7 @@ const Sidebar = () => {
   };
 
   const toHome = () => {
-    history.push({pathname: '/',});
+    history.push({ pathname: '/' });
   }
 
   return (
@@ -62,25 +62,25 @@ const Sidebar = () => {
             <MenuItem icon={<FontAwesomeIcon icon={faHome} active={true} />}>
               Dashboard <Link to="/dashboard" />
             </MenuItem>
-            <SubMenu
-              title="Thrift Store"
-              icon={<FontAwesomeIcon icon={faNetworkWired} />}
-            >
+            <SubMenu title="Thrift Store" icon={<FontAwesomeIcon icon={faNetworkWired} />}>
               <MenuItem icon={<FontAwesomeIcon icon={faUserTag} />}>
                 General Info <Link to="/generalinfo" />
               </MenuItem>
               <MenuItem icon={<FontAwesomeIcon icon={faFolderPlus} />}>
-                About Restaurant <Link to="/aboutrestaurant" />
-              </MenuItem>
-            </SubMenu>
-            <SubMenu title="Product" icon={<FontAwesomeIcon icon={faBath} />}>
-              <MenuItem icon={<FontAwesomeIcon icon={faUser} />}>
                 Add Product <Link to="/addproduct" />
               </MenuItem>
               <MenuItem icon={<FontAwesomeIcon icon={faBuilding} />}>
                 Product List <Link to="/productlist" />
               </MenuItem>
             </SubMenu>
+            {/* <SubMenu title="Product" icon={<FontAwesomeIcon icon={faBath} />}>
+              <MenuItem icon={<FontAwesomeIcon icon={faUser} />}>
+                Add Product <Link to="/addproduct" />
+              </MenuItem>
+              <MenuItem icon={<FontAwesomeIcon icon={faBuilding} />}>
+                Product List <Link to="/productlist" />
+              </MenuItem>
+            </SubMenu> */}
             <MenuItem icon={<FontAwesomeIcon icon={faUser} />}>
               Customer Review
             </MenuItem>

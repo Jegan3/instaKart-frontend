@@ -26,7 +26,7 @@ const Footer = () => (
           <img className="addpic" src="images/instakart.png" />
           <img className="addpic" src="images/glorii_Logo4.png" />
         </div>
-        <div className="row">
+        <div className="row margin-control">
           <div className="col-md-4 col-sm-4">
             <h5>
               In Store Pick up, Curb Side Pick Up, Delivery Options

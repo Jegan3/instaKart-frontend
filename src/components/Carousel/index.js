@@ -354,7 +354,7 @@ const thriftStoreCategoryBottom = [
   },
   {
     id: 9,
-    title: 'Mobile Phones',
+    title: 'Electronics & Mobile Phones',
     imgUrl: 'images/Mobile Phones.jpg',
   },
   {
@@ -364,7 +364,7 @@ const thriftStoreCategoryBottom = [
   },
   {
     id: 11,
-    title: 'Tools',
+    title: 'Hand & Power Tools',
     imgUrl: 'images/Tools.jpg',
   },
   {
