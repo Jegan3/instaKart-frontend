@@ -10,7 +10,7 @@ export default {
   },
 
   apiBaseUrl: {
-    dev: 'http://54.91.179.217:8081',
-    prod: 'http://54.91.179.217:8081',
+    dev: 'https://backend.insta-kart.com',
+    prod: 'https://backend.insta-kart.com',
   },
 };
