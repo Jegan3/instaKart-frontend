@@ -18,6 +18,7 @@ const cardHolder = [
   },
 ];
 
+
 const AdsDetails = () => (
   <Grid fluid className="padding-control">
     <Header header />
@@ -317,7 +318,7 @@ const AdsDetails = () => (
                       <a href="#">
                         <img
                           alt="German Shepherd for sale"
-                          src="http://vaibhavk13.sg-host.com/wp-content/uploads/bfi_thumb/1-1-p4rv2zyx0afglukvgf9nlh4kjmkzfri8bs5mtjnadc.jpg"
+                          src="../images/germanShepherd.jpeg"
                         />
                       </a>
                     </div>
@@ -350,7 +351,7 @@ const AdsDetails = () => (
                     <div>
                       <div className="price-rate" title="good">
                         <div className="stars">
-                          <span className="rating-numbers">4.5</span>
+                          <span className="rating-numbers">4.5 </span>
                           <i className="fa fa-star"></i>
                           <i className="fa fa-star"></i>
                           <i className="fa fa-star"></i>
@@ -383,13 +384,14 @@ const AdsDetails = () => (
                 >
                   <div className="author-style clearfix">
                     <div className="author-img">
-                      <img src="http://2.gravatar.com/avatar/57b428d9d10fb423e4c08b271ebf45d7?s=110&amp;d=mm&amp;r=g" alt="author" />
+                      <img src="http://2.gravatar.com/avatar/57b428d9d10fb423e4c08b271ebf45d7?s=110&amp;d=mm&amp;r=g"
+                       alt="author" />
                     </div>
                     <div className="author-content">
                       <p className="author-name">vaibhav2131@gmail.com</p>
                       <p className="author-reg-date">Member since Mar 25, 2021</p>
                       <div className="author-link">
-                        <a href="http://vaibhavk13.sg-host.com/author/vaibhav2131gmail-com/" className="">view all ads</a>
+                        <a href="#" className="">view all ads</a>
                       </div>
                     </div>
                   </div>
@@ -409,7 +411,9 @@ const AdsDetails = () => (
               </div>
             </Col>
             <Col md={12} sm={12} xs={12} >
+              <div className="left-banner">
               <Banners />
+              </div>
             </Col>
             <Col md={12} sm={12} xs={12} >
               <div className="widget-row">
@@ -478,7 +482,7 @@ const AdsDetails = () => (
                 </div>
               </div>
             </Col>
-            <Col md={12} sm={12} xs={12} >s
+            <Col md={12} sm={12} xs={12} >
               <div className="widget-row">
                 <div className="widget-title">Saftey Tips</div>
                 <div className="textwidget">
