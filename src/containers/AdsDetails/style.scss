@@ -633,19 +633,25 @@
   padding: 30px;
   // top: 3px;
 
+  .left-banner{
+    margin-bottom: 30px;
+    box-shadow: 0 1px 1rem -4px #000;
+  }
+
   .pacz-sidebar {
     position: relative;
-    padding-top: 70px;
-    padding-bottom: 70px;
+    padding-top: 42px;
     margin-bottom: 30px;
     overflow: visible;
 
-    .widget {
+    .widget{
       background: #fff;
-      border: 1px solid #eee;
-      // box-shadow: 0 5px 10px rgba(0 0 0 / 4%);
-      padding: 30px 30px;
+    border: 1px solid #eee;
+    padding: 30px 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 1px 1rem -4px #000;
     }
+    
 
     .field-content {
       width: 100%;
@@ -750,6 +756,8 @@
     border: 1px solid #eee;
     // box-shadow: 0 5px 10px rgba(0 0 0 / 4%);
     padding: 30px 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 1px 1rem -4px #000;
 
     .widget-title {
       font-family: Roboto;

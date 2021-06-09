@@ -7,22 +7,7 @@ import Cleave from "cleave.js/react";
 import { history } from '../../routes';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
-import { faYenSign } from '@fortawesome/free-solid-svg-icons';
-
-// const productList = [
-//   { value: 'Bakery and Coffee', label: 'Bakery and Coffee' },
-//   { value: 'Drinks and Cocktails', label: 'Drinks and Cocktails ' },
-//   { value: 'Electronics ', label: 'Electronics' },
-//   { value: 'Grocery', label: 'Grocery' },
-//   { value: 'Restaurants and Food', label: 'VRestaurants and Food ' },
-//   { value: 'Home and Garden', label: 'Home and Garden' },
-//   { value: 'Hardware and Equipment', label: 'Hardware and Equipment ' },
-//   { value: 'Pharmacy and Health', label: 'Pharmacy and Health' },
-//   { value: 'Beauty', label: 'Beauty' },
-//   { value: 'Clothing and Accessories', label: 'Clothing and Accessories' },
-//   { value: 'Books and Paper Goods', label: 'Books and Paper Goods' },
-//   { value: 'Party and Event Supplies', label: 'Party and Event Supplies' },
-// ];
+// import { faYenSign } from '@fortawesome/free-solid-svg-icons';
 
 const bankList = [
   { value: 'First Citizens', label: 'First Citizens' },
@@ -39,27 +24,35 @@ const bankList = [
   { value: 'Others', label: 'Others' },
 ];
 
-const ikOptions = [
+const ikOptionsList = [
   { value: 'Fortnightly', label: 'Fortnightly ' },
   { value: 'Monthly', label: 'Monthly ' },
 ]
 
-const youPrefer = [
+const youPreferList = [
   { value: 'Bank Transfer', label: 'Bank Transfer' },
-  { value: 'Wipay Transfers', label: 'NWipay Transfers' },
+  { value: 'Wipay Transfer', label: 'Wipay Transfer' },
 ]
+
 
 const VendorInfo = () => {
   const [firstName, setFirstName] = useState('');
   const [surName, setSurName] = useState('');
-  const [email, setEmail] = useState('');
   const [companyName, setCompanyName] = useState('');
   const [businessLocation, setBusinessLocation] = useState('');
-  // const [products, setProducts] = useState();
   const [mobile, setMobile] = useState('');
+  const [email, setEmail] = useState('');
+  const [uploadId, setUploadId] = useState('');
+  const [uploadLogo, setUploadLogo] = useState('');
   const [bank, setBank] = useState();
+  const [bankAccount, setBankAccount] = useState();
   const [registration, setRegistration] = useState('')
+  const [uploadAddress, setUpladAddress] = useState('');
   const [wipay, setWipay] = useState('')
+  const [wipayNumber, setWipayNumber] = useState('')
+  const [youPrefer, setYouPrefer] = useState();
+  const [ikOptions, setIkoptions] = useState();
+  const [usAccount, setUsAccount] = useState();
   const [termscondition, setTermsCondition] = useState(false);
   const [alertMsg, setAlertMsg] = useState('');
   const [alertError, setAlertError] = useState(false);
@@ -95,17 +88,6 @@ const VendorInfo = () => {
       setSurName(e.target.value)
     }
   }
-
-  const onMobile = (e) => (
-    setMobile(e.target.rawValue)
-  )
-
-  const onEmail = (e) => {
-    if (e.target.value.match('^[a-zA-Z0-9_@./#&+-]*$')) {
-      setEmail(e.target.value);
-    }
-  };
-
   const onCompany = (e) => {
     if (e.target.value.match('^[a-zA-Z0-9 ]*$')) {
       setCompanyName(e.target.value)
@@ -117,19 +99,23 @@ const VendorInfo = () => {
       setBusinessLocation(e.target.value)
     }
   }
+  const onMobile = (e) => (
+    setMobile(e.target.rawValue)
+  )
 
-  // const productSelect = productList.map(item => ({
-  //   value: item.value,
-  //   label: item.label
-  // }))
+  const onEmail = (e) => {
+    if (e.target.value.match('^[a-zA-Z0-9_@./#&+-]*$')) {
+      setEmail(e.target.value);
+    }
+  };
 
-  // const onProducts = (products) => {
-  //   setProducts(products)
-  // }
-
-  const onRegistration = (e) => {
+  const onUploadId = (e) => {
     let file = e.target.files[0];
-    setRegistration(file.name);
+    setUploadId(file.name);
+  }
+  const onUploadLogo = (e) => {
+    let file = e.target.files[0];
+    setUploadLogo(file.name);
   }
 
   const bankSelect = bankList.map(item => ({
@@ -140,10 +126,33 @@ const VendorInfo = () => {
   const onBank = (bank) => {
     setBank(bank)
   }
+  const onBankAccount = (e) => {
+    setBankAccount(e.target.value)
+  }
+  const onRegistration = (e) => {
+    let file = e.target.files[0];
+    setRegistration(file.name);
+  }
+  const onUploadAddress = (e) => {
+    let file = e.target.files[0];
+    setUploadAddress(file.name);
+  }
 
   const onWipay = (e) => {
     setWipay(e.target.value)
-    console.log(e.target.value)
+  }
+
+  const onWipayNumber = (e) => {
+    setWipayNumber(e.target.value)
+  }
+  const onYouPrefer = (youPrefer) => {
+    setYouPrefer(youPrefer)
+  }
+  const onIkoptions = (ikOptions) => {
+    setIkoptions(ikOptions)
+  }
+  const onUsAccount = (e) => {
+    setUsAccount(e.target.value)
   }
 
   const onTermsCondition = (e) => {
@@ -159,7 +168,7 @@ const VendorInfo = () => {
   };
 
   const Submit = () => {
-    if (firstName === '' || surName === '' || email === '' || companyName === '' || businessLocation === '' || products === '' || bank === '') {
+    if (firstName === '' || surName === '' || email === '' || companyName === '' || businessLocation === '' || bank === '') {
       setAlertError(true)
       setAlertMsg('Please fill all the fields');
     } else if (termscondition === false) {
@@ -169,16 +178,33 @@ const VendorInfo = () => {
       const vendorInfo = {
         firstName,
         surName,
-        email,
         companyName,
         businessLocation,
-        products,
-        bank: 'abcd'
+        mobile,
+        email,
+        uploadId,
+        uploadLogo,
+        bank: 'abc',
+        bankAccount,
+        uploadCompanyRegistration: registration,
+        uploadAddress,
+        wipay,
+        wipayNumber,
+        youPrefer,
+        ikOptions,
+        usAccount,
       };
       dispatch({ type: 'VENDOR_INFO_REQUEST', vendorInfo });
       setAlertMsg('');
     }
   };
+
+  const menuStyles = {
+    ///.....
+    menuPortal: provided => ({ ...provided, zIndex: 9999 }),
+    menu: provided => ({ ...provided, zIndex: 9999 })
+    ///.....
+  }
 
   return (
     <Grid fluid>
@@ -271,9 +297,10 @@ const VendorInfo = () => {
                 <div className='select-file'>
                   <label className="signup-label">Upload ID</label>
                   <div className='file-input'>
-                    <input type='file' />
+                    <input type='file'
+                      onChange={onUploadId} />
                     <span className='button'>Choose</span>
-                    <span className='label' >No file selected </span>
+                    <span className='label' >{uploadId ? uploadId : 'No file selected'} </span>
                   </div>
                 </div>
               </Col>
@@ -281,9 +308,10 @@ const VendorInfo = () => {
                 <div className='select-file'>
                   <label className="signup-label">Upload Logo </label>
                   <div className='file-input'>
-                    <input type='file' />
+                    <input type='file'
+                      onChange={onUploadLogo} />
                     <span className='button'>Choose</span>
-                    <span className='label' >No file selected </span>
+                    <span className='label' >{uploadLogo ? uploadLogo : 'No file selected'} </span>
                   </div>
                 </div>
               </Col>
@@ -295,6 +323,10 @@ const VendorInfo = () => {
                   type="text"
                   className="prof-select "
                   placeholder="Choose Bank."
+                  //for menu 
+                  // menuPortalTarget={document.body}
+                  // menuPosition={'fixed'}
+                  // styles={menuStyles}
                   value={bank}
                   onChange={onBank}
                   options={bankSelect}
@@ -306,9 +338,9 @@ const VendorInfo = () => {
                 <input
                   type="text"
                   className='form-control'
-                  placeholder="Company Name"
-                  // value={companyName}
-                  // onChange={onCompany}
+                  placeholder="Bank account number"
+                  value={bankAccount}
+                  onChange={onBankAccount}
                   maxLength={30}
                 />
               </Col>
@@ -316,9 +348,10 @@ const VendorInfo = () => {
                 {/* <div className='select-file'> */}
                 <label className="signup-label">Upload Company Registration </label>
                 <div className='file-input'>
-                  <input type='file' onChange={onRegistration} />
+                  <input type='file'
+                    onChange={onRegistration} />
                   <span className='button'>Choose</span>
-                  <span className='label' >{registration ? registration : 'No file selected'} </span>
+                  <span className='label' >{uploadAddress? uploadAddress: 'No file selected'} </span>
                 </div>
                 {/* </div> */}
               </Col>
@@ -328,7 +361,7 @@ const VendorInfo = () => {
                   <div className='file-input'>
                     <input type='file' />
                     <span className='button'>Choose</span>
-                    <span className='label' >No file selected </span>
+                    <span className='label' >{uploadAddress ? uploadAddress : 'No file selected'} </span>
                   </div>
                 </div>
               </Col>
@@ -356,6 +389,8 @@ const VendorInfo = () => {
                   className='form-control '
                   placeholder="WiPay number "
                   maxLength={30}
+                  value={wipayNumber}
+                  onChange={onWipayNumber}
                   disabled={wipay === 'No'}
                 />
               </Col>
@@ -366,8 +401,10 @@ const VendorInfo = () => {
                 <Select
                   type="text"
                   className="prof-select "
-                  options={youPrefer}
                   placeholder="choose"
+                  value={youPrefer}
+                  onChange={onYouPrefer}
+                  options={youPreferList}
                   isSearchable={false}
                 />
               </Col>
@@ -376,19 +413,27 @@ const VendorInfo = () => {
                 <Select
                   type="text"
                   className="prof-select "
-                  options={ikOptions}
                   placeholder="choose"
+                  value={ikOptions}
+                  onChange={onIkoptions}
+                  options={ikOptionsList}
                   isSearchable={false}
                 />
               </Col>
               <Col md={6} sm={12} >
                 <label className="signup-label radio-label">US Account Available <span className="red-star">*</span></label>
                 <div className="form-check">
-                  <input className="form-check-input" type="radio" value="option1" checked={false} />
+                  <input className="form-check-input" type="radio" value="Yes"
+                    onChange={onUsAccount}
+                    checked={usAccount === 'Yes' ? true : false}
+                  />
                   <label className="form-check-label" for="exampleRadios1">
                     Yes
                   </label>
-                  <input className="form-check-input" type="radio" value="option1" checked={false} />
+                  <input className="form-check-input" type="radio" value="No"
+                    onChange={onUsAccount}
+                    checked={usAccount === 'No' ? true : false}
+                  />
                   <label className="form-check-label" for="exampleRadios1">
                     No
                   </label>
