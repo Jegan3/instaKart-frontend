@@ -4,9 +4,11 @@ import { Grid, Row, Col } from 'react-bootstrap';
 import Select from 'react-select';
 import Cleave from "cleave.js/react";
 import ReactTable from 'react-table';
+import { TimePicker } from 'antd';
 import Headerbar from '../../components/Headerbar';
 import Sidebar from '../../components/Sidebar';
 import Table from '../../components/Table';
+
 
 
 const weekData = [
@@ -46,6 +48,7 @@ const GeneralInfo = () => {
   const [igId, setIgId] = useState('');
   const [mobile, setMobile] = useState('');
 
+ 
 
   //avatar display from api
   const onAvatarImage = async e => {
@@ -110,7 +113,9 @@ const GeneralInfo = () => {
   const onMobile = (e) => (
     setMobile(e.target.rawValue)
   )
-
+  const onChange = (time, timeString) => {
+    console.log(time, timeString);
+  }
 
   const submit = () => {
     if
@@ -329,17 +334,21 @@ const GeneralInfo = () => {
                           // width: 300,
                           style: {
                             textAlign: 'left',
-                          },
-
-                        }, {
+                          },Cell: () => (
+                            <TimePicker use12Hours format="h:mm a" onChange={onChange} />
+                          ),
+                        },
+                         {
                           Header: 'Closing Time',
                           accessor: 'total',
                           filterable: false,
                           sortable: false,
                           style: {
                             textAlign: 'left',
-                          },
-                          width: 100,
+                          },Cell: () => (
+                            <TimePicker use12Hours format="h:mm a" onChange={onChange} />
+                          ),
+                          // width: 100,
                         },
                         {
                           Header: 'Closed',
