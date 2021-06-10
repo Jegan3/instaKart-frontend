@@ -142,3 +142,18 @@
 // .pro-sidebar .pro-menu .pro-menu-item > .pro-inner-item > .pro-item-content {
 //   font-size: 12px;
 // }
+
+//Sidebar mirror image
+.sidemenu-main {
+.pro-sidebar > .pro-sidebar-inner > img.sidebar-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 60% 50% !important;
+  position: absolute;
+  opacity: 0.3;
+  left: 0;
+  top: 0;
+  z-index: 100;
+}
+}
