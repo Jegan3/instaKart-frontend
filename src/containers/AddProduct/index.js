@@ -9,7 +9,7 @@ import { Upload, Modal, message } from 'antd';
 const { Dragger } = Upload;
 
 const AddProduct = () => {
-  const [imageList, setImageList] = useState([])
+  const [fileList, setImageList] = useState([])
   const [previewVisible, setPreviewVisible] = useState(false)
   const [previewImage, setPreviewImage] = useState('')
   const [previewTitle, setPreviewTitle] = useState('')
@@ -17,13 +17,13 @@ const AddProduct = () => {
 
   // console.log('videoList', videoList);
 
-  const onChangeImage = ({ imageList: newFileList }) => {
-    if (newFileList.length && newFileList[newFileList.length - 1].status === 'done' && imageList[imageList.length - 1].status !== 'removed') {
-      message.success(`${imageList[imageList.length - 1].name} file uploaded successfully`);
-    } else if (imageList.length && imageList[imageList.length - 1].status === 'error') {
-      message.error(`${imageList[imageList.length - 1].name} file uploaded failed`);
-    } else if (imageList.length && imageList[imageList.length - 1].status === 'removed') {
-      message.error(`${imageList[imageList.length - 1].name} file deleted successfully`);
+  const onChangeImage = ({ fileList: newFileList }) => {
+    if (newFileList.length && newFileList[newFileList.length - 1].status === 'done' && fileList[fileList.length - 1].status !== 'removed') {
+      message.success(`${fileList[fileList.length - 1].name} file uploaded successfully`);
+    } else if (fileList.length && fileList[fileList.length - 1].status === 'error') {
+      message.error(`${fileList[fileList.length - 1].name} file uploaded failed`);
+    } else if (fileList.length && fileList[fileList.length - 1].status === 'removed') {
+      message.error(`${fileList[fileList.length - 1].name} file deleted successfully`);
     }
     setImageList(newFileList);
   };
@@ -116,11 +116,11 @@ const AddProduct = () => {
                     // multiple accept="image/*,audio/*,video/*"
                     customRequest={fakeRequest}
                     listType="picture-card"
-                    imageList={imageList}
+                    fileList={fileList}
                     onChange={onChangeImage}
                     onPreview={onPreview}
                   >
-                    {imageList.length < 3 && '+ Upload'}
+                    {fileList.length < 3 && '+ Upload'}
                   </Upload>
                   <Modal
                     visible={previewVisible}
