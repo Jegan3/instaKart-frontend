@@ -178,10 +178,8 @@ const AddProduct = () => {
                   </Row>
                 </Col>
                 <Col sm={12} md={6}>
-                  <div className="form-group">
-                    <label className="signup-label">Message.. <span className="red-star">*</span></label>
-                    <textarea className="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
-                  </div>
+                  <label className="signup-label">Message.. <span className="red-star">*</span></label>
+                  <textarea className="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
                 </Col>
               </Row>
             </Row>
@@ -202,7 +200,7 @@ const AddProduct = () => {
                     className="btn btn-primary btn-block modal-button "
                   //onClick={Signup}
                   >
-                    
+
                     Submit
                       </button>
                 </Col>
