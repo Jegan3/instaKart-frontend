@@ -121,6 +121,7 @@ const AddProduct = () => {
                     accept="image/*"
                     // multiple accept="image/*,audio/*,video/*"
                     customRequest={fakeRequest}
+                    className='upload-image'
                     listType="picture-card"
                     fileList={fileList}
                     onChange={onChangeImage}
@@ -156,29 +157,37 @@ const AddProduct = () => {
               </Row>
               <Row>
                 <Col sm={12} md={6}>
-                  <Row>
-                    <Col sm={4}>
-                      <label className="signup-label">List Price <span className="red-star">*</span></label>
+                  <Row className='pricerow-list'>
+                    <Col sm={3}>
+                      <label className="signup-label">Item Price <span className="red-star">*</span></label>
                       <input
                         type="text"
                         className="form-control"
-                        maxLength={30}
+                        maxLength={10}
                       />
                     </Col>
-                    <Col sm={4}>
-                      <label className="signup-label">Sell Price <span className="red-star">*</span></label>
+                    <Col sm={3}>
+                      <label className="signup-label">Tax</label>
                       <input
-                        type="text"
+                       type="text"
                         className="form-control"
-                        maxLength={30}
+                        maxLength={10}
                       />
                     </Col>
-                    <Col sm={4}>
-                      <label className="signup-label">Total Amount <span className="red-star">*</span></label>
+                    <Col sm={3}>
+                      <label className="signup-label">Discount </label>
                       <input
                         type="text"
                         className="form-control"
-                        maxLength={30}
+                        maxLength={10}
+                      />
+                    </Col>
+                    <Col sm={3}>
+                      <label className="signup-label">Final Price </label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        maxLength={10}
                       />
                     </Col>
                   </Row>
