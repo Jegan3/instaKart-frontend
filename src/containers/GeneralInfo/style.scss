@@ -1,31 +1,10 @@
 .general-info {
-//   .ReactTable .rt-thead .rt-resizable-header-content {
-//     color: white;
-//     left: 16px;
-//     position: relative; 
-   
-// }
-// .ReactTable .-header .closed-header{
-//   right: 11px;
-//   position: relative;
-// }
-// .closed-header{
-//   right: 11px;
-//   position: relative;
-// }
-// .time-header{
-//   left: 20px;
-//   position: relative;
-// }
-// .ReactTable .-header :hover {
-//   background: transparent;
-// }
-.ant-picker {
-  padding: 4px;
-  width: 80%;
-  border-radius: 3px;
-  
-}
+  .ant-picker {
+    padding: 4px;
+    width: 80%;
+    border-radius: 3px;
+  }
+
   .zipcode {
     padding-bottom: 20px;
   }
@@ -45,11 +24,6 @@
     position: relative;
     cursor: grab;
   }
-  
-    font-size: 16px;
-    position: relative;
-    cursor: grab;
-
 
   .load-info {
     height: fit-content;

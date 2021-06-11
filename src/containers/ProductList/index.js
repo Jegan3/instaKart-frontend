@@ -90,16 +90,16 @@ const ProductList = () => {
                         style: {
                           textAlign: 'center',
                         },
-                         width: 50,
+                        width: 50,
                       },
-                     
+
                       {
                         Header: 'Product Name',
                         accessor: 'title',
                         // Cell: (row) => (<div>({row.imgUrl },{row.title})</div>),
                         filterable: false,
                         sortable: true,
-                         width: 250,
+                        width: 250,
                         style: {
                           textAlign: 'center',
                         },
@@ -136,7 +136,7 @@ const ProductList = () => {
                         width: 100,
                       }
                     ]
-                  }
+                    }
                     defaultPageSize={10}
                     // showPaginationTop
                     showPaginationBottom
