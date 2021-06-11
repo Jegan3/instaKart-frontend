@@ -169,7 +169,7 @@ const GeneralInfo = () => {
                       <div className='load-info'>
                         <div>
                           <div className="photo">
-                            {loading ? <h3 className='loading-info'>Loading...</h3> : logoImage ? <img src={logoImage} alt='' /> : <img src="images/Upload.jpeg" />}
+                            {loading ? <h3 className='loading-info'>Loading...</h3> : logoImage ? <img src={logoImage} alt='' /> : <img src="images/Your-logo-here..png" />}
                           </div>
                           {/* <p className="avatar-text">
                               Upload Logo
@@ -319,7 +319,7 @@ const GeneralInfo = () => {
                           accessor: 'title',
                           filterable: false,
                           sortable: false,
-                          // width: 500,
+                          width: 130,
                           style: {
                             textAlign: 'left',
                           },
@@ -330,7 +330,7 @@ const GeneralInfo = () => {
                           accessor: 'status',
                           filterable: false,
                           sortable: false,
-                          // width: 300,
+                          width: 220,
                           style: {
                             textAlign: 'left',
                           }, Cell: () => (
@@ -347,23 +347,22 @@ const GeneralInfo = () => {
                           }, Cell: () => (
                             <TimePicker use12Hours format="h:mm a" onChange={onChange} />
                           ),
-                          // width: 100,
+                          width: 220,
                         },
                         {
                           Header: 'Closed',
                           accessor: 'id',
                           filterable: false,
-                          sortable: true,
-                          border: 'white',
+                          sortable: false,
                           style: {
-                            textAlign: 'center',
-                            border: '2px solid whitesmoke',
+                            textAlign: 'right',
+                            //border: '2px solid whitesmoke',
                           }, Cell: () => (
                             <div>
-                              <input type="checkbox" value="" />
+                              <input type="checkbox" className='closed-header' value="" />
                             </div>
                           ),
-                          width: 200,
+                          width: 100,
                         },
                       ]}
                       defaultPageSize={7}

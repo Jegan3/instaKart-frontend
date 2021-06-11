@@ -1,4 +1,31 @@
 .general-info {
+//   .ReactTable .rt-thead .rt-resizable-header-content {
+//     color: white;
+//     left: 16px;
+//     position: relative; 
+   
+// }
+// .ReactTable .-header .closed-header{
+//   right: 11px;
+//   position: relative;
+// }
+// .closed-header{
+//   right: 11px;
+//   position: relative;
+// }
+// .time-header{
+//   left: 20px;
+//   position: relative;
+// }
+// .ReactTable .-header :hover {
+//   background: transparent;
+// }
+.ant-picker {
+  padding: 4px;
+  width: 80%;
+  border-radius: 3px;
+  
+}
   .zipcode {
     padding-bottom: 20px;
   }
@@ -12,11 +39,17 @@
   }
 
   .image-upload {
-    bottom: 68px;
+    bottom: 25px;
+    left: 160px;
     font-size: 16px;
     position: relative;
     cursor: grab;
   }
+  
+    font-size: 16px;
+    position: relative;
+    cursor: grab;
+
 
   .load-info {
     height: fit-content;
@@ -66,7 +99,7 @@
 
   .avtar-info {
     text-align: center;
-    top: 50px;
+    top: 85px;
   }
 
   .ReactTable .rt-thead .rt-resizable-header-content {
