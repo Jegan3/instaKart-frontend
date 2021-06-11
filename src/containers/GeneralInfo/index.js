@@ -367,9 +367,9 @@ const GeneralInfo = () => {
                           width: 200,
                         },
                       ]}
-                      defaultPageSize={9}
+                      defaultPageSize={7}
                       // showPaginationTop
-                      showPaginationBottom
+                      showPaginationBottom ={false}
                       className="-striped -highlight"
                     />
                   }
