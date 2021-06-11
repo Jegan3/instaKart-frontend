@@ -1,6 +1,6 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import envConfig from 'envConfig'; //eslint-disable-line
-import * as instakartActionCreators from '../actionCreators/RetrieveBanner';
+import * as instakartActionCreators from '../actions/RetrieveBanner';
 import { doGet } from '../utils/fetchWrapper';
 
 export function* getBannerRetrieve(data) {

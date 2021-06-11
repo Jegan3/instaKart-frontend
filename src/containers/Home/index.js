@@ -1,17 +1,15 @@
 /*eslint-disable*/
-import React, { useEffect } from "react";
-// import IntroBanner from '../../components/IntroBanner';
+import React from "react";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import { CarouselFirst, CarouselSecond, CarouselThird, CarouselFourth, CarouselMobile, CarouselNewEStore, } from "../../components/Carousel";
 import { Banners, SecondaryBanners } from "../../components/Banners";
 
 const Home = () => {
-
   return (
-    <div className="body-container welcome">
+    <div className="body-container home">
       <div>
-        <Header welcome />
+        <Header/>
       </div>
       <h2>
         Welcome To The Caribbean&#39;s Unified <br />
@@ -36,34 +34,34 @@ const Home = () => {
         <CarouselThird />
         <CarouselFourth />
       </div>
-      <div className="bg-welcome-ban">
+      <div className="bg-home-ban">
         <div className="arrival">
           <SecondaryBanners />
         </div>
         <br />
       </div>
-      <div className="bg-welcome-pro">
+      <div className="bg-home-pro">
         <div className="arrival">
           <h5>New Promotions</h5>
           <CarouselNewEStore />
         </div>
         <br />
       </div>
-      <div className="bg-welcome">
+      <div className="bg-home">
         <div className="arrival">
           <h5>IK Ads</h5>
           <CarouselNewEStore />
         </div>
         <br />
       </div>
-      <div className="bg-welcome-pro">
+      <div className="bg-home-pro">
         <div className="arrival">
           <h5>E-Stores Near You</h5>
           <CarouselNewEStore />
         </div>
         <br />
       </div>
-      <div className="bg-welcome">
+      <div className="bg-home">
         <div className="arrival">
           <h5>TimeCap VLogs</h5>
           <CarouselNewEStore />

@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import configureStore from './configureStore';
+import configureStore from './store';
 import Root from './root';
 import '../assets/sass/index.scss';
 

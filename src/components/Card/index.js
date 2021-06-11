@@ -4,13 +4,12 @@ import React from 'react';
 import Avatar from 'react-avatar';
 import { history } from '../../routes';
 
-const Card = ({ imgUrl, alt, content, url, body, title }) => {
+const Card = ({ imgUrl, alt, content, btnUrl, body, title }) => {
 
   const Button = () => {
-    history.push({ pathname: url })
+    history.push({ pathname: btnUrl })
     window.scrollTo(0, 0);
   }
-
 
   return (
     <div>
@@ -27,10 +26,10 @@ const Card = ({ imgUrl, alt, content, url, body, title }) => {
         :
         <div className="card">
           <div className="card-content">
-            {body && 'card-ads' ?
+            {body ?
               <img className="photos" src={imgUrl} onClick={() => history.push('/advertisement')} alt={alt || 'Image'} />
               :
-              <img className="photos" src={imgUrl} onClick={''} alt={alt || 'Image'} />
+              <img className="photos" src={imgUrl} />
             }
             {content && <button onClick={Button}>{content}</button>}
             {/* <p className='card-title'>{title && title}</p> */}
@@ -40,16 +39,16 @@ const Card = ({ imgUrl, alt, content, url, body, title }) => {
             <div className="card-avatar">
               <Avatar name="Keith" size="37" color="#f0f0f0" round />
             </div>
-            <div className="listing-header">
+            {/* <div className="listing-header">
               <a className="" href="http://vaibhavk13.sg-host.com/listings/business-category/events-notices/" >Events</a>
               <span className="seperator fas fa-angle-right"></span>
               <a className="" href="http://vaibhavk13.sg-host.com/listings/business-category/events-notices/business-events/" >Business</a>
-            </div>
+            </div> */}
             <div className="listing-job">
               {/* For reference */}
               {/* <a href="http://vaibhavk13.sg-host.com/listings/assistant-accountant/" title="Assistant Accountant">Assistant Accountant</a> */}
               <a
-                // href={url}
+                // href={btnUrl}
                 title="Assistant Accountant">Assistant Accountant</a>
               <span className="currency">$ 730</span>
               <div className="listing-country">
@@ -69,7 +68,6 @@ const Card = ({ imgUrl, alt, content, url, body, title }) => {
             </div>
           </div>}
         </div>
-        // </div>
       }
     </div>
   )

@@ -25,7 +25,7 @@
   margin: auto;
 }
 
-.welcome {
+.home {
   h2 {
     text-align: center;
     margin-top: 0px;
@@ -47,7 +47,7 @@
   }
 }
 
-.bg-welcome-ban {
+.bg-home-ban {
   background-color: $color-background;
 
   .arrival {
@@ -58,7 +58,7 @@
   }
 }
 
-.bg-welcome {
+.bg-home {
   background-color: #ffffff;
 
   .arrival {
@@ -75,7 +75,7 @@
   margin-bottom: 3%;
 }
 
-.bg-welcome-pro {
+.bg-home-pro {
   background-color: #28a4d9;
 
   .arrival {

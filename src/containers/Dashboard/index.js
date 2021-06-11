@@ -10,9 +10,9 @@ import Upload from '../../components/Upload';
 import Sidebar from '../../components/Sidebar';
 
 const Dashboard = () => {
-  const dispatch = useDispatch();
   const [rtl, setRtl] = useState();
-
+  
+  const dispatch = useDispatch();
   const login = useSelector((state) => state.loginState.login);
   const userData = useSelector((state) => state.retreiveBannerState.retreiveBanner);
 
@@ -21,12 +21,12 @@ const Dashboard = () => {
 
   // const login = {user:'APPROVE', email: 'appu'}
 
-  const button = login.user ? 'APPROVE' : 'UPLOAD';
+  // const button = login.user ? 'APPROVE' : 'UPLOAD';
 
-  useEffect(() => {
-    const { email } = login.user;
-    dispatch({ type: 'BANNER_RETRIEVE_REQUEST', email });
-  }, []);
+  // useEffect(() => {
+  //   const { email } = login.user;
+  //   dispatch({ type: 'BANNER_RETRIEVE_REQUEST', email });
+  // }, []);
 
   const onClick = () => {
     setShow(true);
@@ -145,16 +145,16 @@ const Dashboard = () => {
                         Header: 'Poster',
                         accessor: 'poster',
                       },
-                      {
-                        Header: 'Status',
-                        accessor: 'name',
-                        filterable: false,
-                        sortable: false,
-                        Cell: (original) => (
-                          <div className="actions-right">
-                            <Button className="btn btn-danger" simple onClick={() => onClick(original)}>{button}</Button>
-                          </div>),
-                      },
+                      // {
+                      //   Header: 'Status',
+                      //   accessor: 'name',
+                      //   filterable: false,
+                      //   sortable: false,
+                      //   Cell: (original) => (
+                      //     <div className="actions-right">
+                      //       <Button className="btn btn-danger" simple onClick={() => onClick(original)}>{button}</Button>
+                      //     </div>),
+                      // },
                     ]}
                     defaultPageSize={10}
                     // showPaginationTop

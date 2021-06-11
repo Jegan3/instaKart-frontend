@@ -319,7 +319,7 @@ const GeneralInfo = () => {
                           Header: 'Day',
                           accessor: 'title',
                           filterable: false,
-                          sortable: true,
+                          sortable: false,
                           // width: 500,
                           style: {
                             textAlign: 'left',

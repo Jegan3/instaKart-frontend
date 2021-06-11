@@ -1,6 +1,6 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import envConfig from 'envConfig'; //eslint-disable-line
-import * as instakartActionCreators from '../actionCreators/Login';
+import * as instakartActionCreators from '../actions/Login';
 import { doPost } from '../utils/fetchWrapper';
 
 export function* getLogin(data) {

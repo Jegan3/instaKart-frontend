@@ -15,15 +15,19 @@ const AddProduct = () => {
   const [previewTitle, setPreviewTitle] = useState('')
   const [videoList, setVideoList] = useState([])
 
-  // console.log('videoList', videoList);
+  // console.log('fileList', fileList);
 
   const onChangeImage = ({ fileList: newFileList }) => {
-    if (newFileList.length && newFileList[newFileList.length - 1].status === 'done' && fileList[fileList.length - 1].status !== 'removed') {
+
+    // To identify removed array
+    const removed = fileList.find(item => item.status === 'removed')
+
+    if (newFileList.length && newFileList[newFileList.length - 1].status === 'done' && !removed) {
       message.success(`${fileList[fileList.length - 1].name} file uploaded successfully`);
     } else if (fileList.length && fileList[fileList.length - 1].status === 'error') {
       message.error(`${fileList[fileList.length - 1].name} file uploaded failed`);
-    } else if (fileList.length && fileList[fileList.length - 1].status === 'removed') {
-      message.error(`${fileList[fileList.length - 1].name} file deleted successfully`);
+    } else if (fileList.length && removed) {
+      message.error(`${removed.name} file deleted successfully`);
     }
     setImageList(newFileList);
   };
@@ -69,11 +73,13 @@ const AddProduct = () => {
     }, 1000)
   }
 
-  const beforeUpload = () => {
+  const beforeUpload = (file) => {
     if (videoList.length > 0) {
       message.error(`You cannot upload more than one file`);
+    } else if (file.size > 31457280) {
+      message.error(`${file.name} exceeds the maximum upload size limit`);
     }
-    return videoList.length < 1 ? true : Upload.LIST_IGNORE;
+    return videoList.length < 1 && file.size < 31457280 ? true : Upload.LIST_IGNORE;
   }
 
   const handleCancel = () => setPreviewVisible(false);
@@ -192,7 +198,7 @@ const AddProduct = () => {
                   // onClick={Login}
                   >
                     Cancel
-                      </button>
+                  </button>
                 </Col>
                 <Col md={6} lg={6} sm={6} xs={6} className="modal-row" >
                   <button
@@ -202,7 +208,7 @@ const AddProduct = () => {
                   >
 
                     Submit
-                      </button>
+                  </button>
                 </Col>
                 {/* <Col md={12} sm={12} className="login-error" >
                       <span className="login-error-msg">{errorMsg}</span>

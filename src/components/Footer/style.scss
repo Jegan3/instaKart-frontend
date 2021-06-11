@@ -157,7 +157,7 @@ ul.social-network li {
 .zip {
   font-size: 24px;
   position: relative;
-  bottom: 1em;
+  bottom: 27px;
 }
 
 .text-right {
@@ -200,6 +200,7 @@ ul.social-network li {
   h5 {
     font-size: 14px;
     margin: 7% 0;
+    color: $color-white;
   }
 
   p {
@@ -257,7 +258,7 @@ ul.social-network li {
   }
 
   &:hover {
-    color:$hover;
+    color: $hover;
 
     &::before,
     &::after {
