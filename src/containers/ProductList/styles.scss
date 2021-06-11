@@ -1,21 +1,20 @@
-// // react table header
+// react table header
 .product-list {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    min-width: 280px;
-
-    .ReactTable .rt-thead .rt-resizable-header-content {
-        text-align: center;
-        color:white;
-    }
-   
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  min-width: 280px;
 }
-// //common
+
+//common
 .ReactTable .-header {
-    background: $color-primary;
-   
-} .ReactTable .-header :hover{
-    background: $color-primary;
-   
+  background: $color-primary;
+}
+
+.ReactTable .-header :hover {
+  background: $color-primary;
+}
+
+.ReactTable .rt-thead .rt-resizable-header-content {
+  text-align: center;
 }

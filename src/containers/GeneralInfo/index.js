@@ -321,7 +321,7 @@ const GeneralInfo = () => {
                           sortable: false,
                           width: 130,
                           style: {
-                            textAlign: 'left',
+                            textAlign: 'center',
                           },
                         },
 
@@ -332,7 +332,7 @@ const GeneralInfo = () => {
                           sortable: false,
                           width: 220,
                           style: {
-                            textAlign: 'left',
+                            textAlign: 'center',
                           }, Cell: () => (
                             <TimePicker use12Hours format="h:mm a" onChange={onChange} />
                           ),
@@ -343,7 +343,7 @@ const GeneralInfo = () => {
                           filterable: false,
                           sortable: false,
                           style: {
-                            textAlign: 'left',
+                            textAlign: 'center',
                           }, Cell: () => (
                             <TimePicker use12Hours format="h:mm a" onChange={onChange} />
                           ),
@@ -355,7 +355,7 @@ const GeneralInfo = () => {
                           filterable: false,
                           sortable: false,
                           style: {
-                            textAlign: 'right',
+                            textAlign: 'center',
                             //border: '2px solid whitesmoke',
                           }, Cell: () => (
                             <div>
