@@ -1,6 +1,34 @@
 .add-product {
     .form-content {
-        padding: 2%;
+        padding: 15px 35px;
+
+       .upload-image{
+        .ant-upload-list-picture-card-container {
+            //display: inline-block;
+           // width: 140px;
+            height: 107px;
+           // margin: 0px 7px;
+           // left: 10px;
+           // position: relative;
+           // vertical-align: top;
+        }
+        .ant-upload.ant-upload-select-picture-card {
+            
+           // margin: 0px 16px;
+           // width: 140px;
+            height: 107px;
+        }
+       }
+
+       .css-yk16xz-control {
+        border-radius: 7px;
+        max-height: 35px;
+        min-height: 0px !important;
+        box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    }
+    .pricerow-list{
+        margin-top: 10px;
+    }
 
         .btn-primary:focus,
         & :hover {
