@@ -9,8 +9,6 @@ import Headerbar from '../../components/Headerbar';
 import Sidebar from '../../components/Sidebar';
 import Table from '../../components/Table';
 
-
-
 const weekData = [
   {
     title: 'Monday',
@@ -48,7 +46,7 @@ const GeneralInfo = () => {
   const [igId, setIgId] = useState('');
   const [mobile, setMobile] = useState('');
 
- 
+
 
   //avatar display from api
   const onAvatarImage = async e => {
@@ -75,49 +73,58 @@ const GeneralInfo = () => {
       setStoreName(e.target.value)
     }
   }
+
   const onAddress = (e) => {
     if (e.target.value.match('^[a-zA-Z0-9]*$')) {
       setAddress(e.target.value)
     }
   }
+
   const onCountry = (e) => {
     if (e.target.value) {
       setCountry(e.target.value)
     }
   }
+
   const onCity = (e) => {
     if (e.target.value) {
       setCity(e.target.value)
     }
   }
+
   const onZipCode = (e) => {
     if (e.target.value.match('^[a-zA-Z0-9]*$')) {
       setZipCode(e.target.value)
     }
   }
+
   const onEmailId = (e) => {
     if (e.target.value.match('^[a-zA-Z0-9_@./#&+-]*$')) {
       setEmailId(e.target.value);
     }
   };
+
   const onFbId = (e) => {
     if (e.target.value.match('^[a-zA-Z0-9_@./#&+-]*$')) {
       setFbId(e.target.value);
     }
   };
+
   const onIgId = (e) => {
     if (e.target.value.match('^[a-zA-Z0-9_@./#&+-]*$')) {
       setIgId(e.target.value);
     }
   };
+
   const onMobile = (e) => (
     setMobile(e.target.rawValue)
   )
+
   const onChange = (time, timeString) => {
     console.log(time, timeString);
   }
 
-  const submit = () => {
+  const onSubmit = () => {
     if
       (storeName === '' || address === '') {
       console.log('test');
@@ -128,7 +135,6 @@ const GeneralInfo = () => {
     //   setAlertMsg('Please accept the Terms & Conditions and Privacy Policy');
     // } 
     else {
-
       const GeneralInfo = {
         logoImage,
         storeName,
@@ -161,29 +167,22 @@ const GeneralInfo = () => {
                   <Row>
                     <Col md={12} className='avtar-info' >
                       <div className='load-info'>
-                        {loading ? (
-                          <h3 className='loading-info'>Loading...</h3>
-                        ) : (
-                          <div>
-                            <div className="photo">
-                              <img src={logoImage} alt='avatar' />
-                              <div className="glow-wrap">
-                                <i className="glow"></i>
-                              </div>
-                            </div>
-                            <p className='avatar-text'>
-                              Upload Logo
-                        </p>
-                            <div className="image-upload">
-                              <label for="file-input">
-                                <i className="fa fa-camera" />
-                              </label>
-                              <input id="file-input"
-                                onChange={onAvatarImage}
-                                type="file" />
-                            </div>
+                        <div>
+                          <div className="photo">
+                            {loading ? <h3 className='loading-info'>Loading...</h3> : logoImage ? <img src={logoImage} alt='' /> : <img src="images/Upload.jpeg" />}
                           </div>
-                        )}
+                          {/* <p className="avatar-text">
+                              Upload Logo
+                            </p> */}
+                          {!loading && <div className="image-upload">
+                            <label for="file-input"><i className="fa fa-camera" /></label>
+                            <input id="file-input"
+                              onChange={onAvatarImage}
+                              type="file"
+                              accept="image/*"
+                            />
+                          </div>}
+                        </div>
                       </div>
                     </Col>
                   </Row>
@@ -334,18 +333,18 @@ const GeneralInfo = () => {
                           // width: 300,
                           style: {
                             textAlign: 'left',
-                          },Cell: () => (
+                          }, Cell: () => (
                             <TimePicker use12Hours format="h:mm a" onChange={onChange} />
                           ),
                         },
-                         {
+                        {
                           Header: 'Closing Time',
                           accessor: 'total',
                           filterable: false,
                           sortable: false,
                           style: {
                             textAlign: 'left',
-                          },Cell: () => (
+                          }, Cell: () => (
                             <TimePicker use12Hours format="h:mm a" onChange={onChange} />
                           ),
                           // width: 100,
@@ -369,7 +368,7 @@ const GeneralInfo = () => {
                       ]}
                       defaultPageSize={7}
                       // showPaginationTop
-                      showPaginationBottom ={false}
+                      showPaginationBottom={false}
                       className="-striped -highlight"
                     />
                   }
@@ -381,19 +380,19 @@ const GeneralInfo = () => {
                     <button
                       type="button"
                       className="btn btn-primary  btn-block modal-button "
-                      onClick={submit}
+                      onClick={onCancel}
                     >
-                      Submit
-                      </button>
+                      Cancel
+                    </button>
                   </Col>
                   <Col md={6} lg={6} sm={6} xs={6} className="modal-row" >
                     <button
                       type="button"
                       className="btn btn-primary btn-block modal-button "
-                      onClick={onCancel}
+                      onClick={onSubmit}
                     >
-                      Cancel
-                      </button>
+                      Submit
+                    </button>
                   </Col>
                   {/* <Col md={12} sm={12} className="login-error" >
                       <span className="login-error-msg">{errorMsg}</span>
