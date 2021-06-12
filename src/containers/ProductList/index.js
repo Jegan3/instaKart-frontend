@@ -1,5 +1,5 @@
 /*eslint-disable*/
-import React, { useRef } from 'react';
+import React, { useState } from 'react';
 import { Grid, Row } from 'react-bootstrap';
 import ReactTable from 'react-table';
 import Headerbar from '../../components/Headerbar';
@@ -59,12 +59,22 @@ const productData = [
   }
 ]
 
-const status = [
-  { value: 'Available', label: 'Available' },
-  { value: 'Not-Available', label: 'Not-Available' },
-];
-
 const ProductList = () => {
+  const [status, setStatus] = useState()
+
+
+  const statusOptions = [
+    { value: 'available', label: 'Available' },
+    { value: 'notAvailable', label: 'Not-Available' },
+  ];
+
+  const onStatus = (item) => {
+    console.log('item',item)
+    const { original } = item;
+    console.log("original",original)
+    setStatus(item.value)
+  }
+
   return (
     <div className="wrapper">
       {/* <Upload showPopup={show} hidePopup={hidePopup} />  */}
@@ -87,12 +97,8 @@ const ProductList = () => {
                         accessor: 'id',
                         filterable: false,
                         sortable: true,
-                        style: {
-                          textAlign: 'center',
-                        },
                         width: 50,
                       },
-
                       {
                         Header: 'Product Name',
                         accessor: 'title',
@@ -100,11 +106,7 @@ const ProductList = () => {
                         filterable: false,
                         sortable: true,
                         width: 250,
-                        style: {
-                          textAlign: 'center',
-                        },
                       },
-
                       {
                         Header: 'Status',
                         accessor: 'status',
@@ -112,15 +114,16 @@ const ProductList = () => {
                         sortable: false,
                         width: 250,
                         style: {
-                          textAlign: 'center',
+                          textAlign: 'left', overflow: 'visible'
                         },
                         Cell: () => (
                           <div>
                             <Select
                               name="Status"
                               placeholder="Status"
-                              // value={Status}
-                              options={status}
+                              value={status}
+                              options={statusOptions}
+                              onChange={onStatus}
                               isSearchable={false}
                             />
                           </div>
@@ -130,9 +133,6 @@ const ProductList = () => {
                         accessor: 'soh',
                         filterable: false,
                         sortable: false,
-                        style: {
-                          textAlign: 'center',
-                        },
                         width: 100,
                       }
                     ]

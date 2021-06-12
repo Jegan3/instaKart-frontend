@@ -413,13 +413,13 @@
   color: #333;
 }
 
-.ReactTable .rt-thead .rt-tr {
-  text-align: center;
-}
+// .ReactTable .rt-thead .rt-tr {
+//   text-align: center;
+// }
 
-.ReactTable .rt-thead .rt-th:last-child {
-  text-align: right;
-}
+// .ReactTable .rt-thead .rt-th:last-child {
+//   text-align: center;
+// }
 
 .ReactTable .rt-thead .rt-th.-cursor-pointer>div:first-of-type:after {
   opacity: 0.4;
@@ -487,6 +487,12 @@
 .ReactTable .rt-thead .rt-resizable-header-content {
   overflow: hidden;
   text-overflow: ellipsis;
+  text-align: center;
+}
+
+// To allign the coloumn rows/details of table
+.ReactTable .rt-td {
+  text-align: center;
 }
 
 .ReactTable .rt-thead .rt-resizable-header-content:focus {

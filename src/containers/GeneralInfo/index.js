@@ -320,9 +320,6 @@ const GeneralInfo = () => {
                           filterable: false,
                           sortable: false,
                           width: 130,
-                          style: {
-                            textAlign: 'center',
-                          },
                         },
 
                         {
@@ -331,9 +328,7 @@ const GeneralInfo = () => {
                           filterable: false,
                           sortable: false,
                           width: 220,
-                          style: {
-                            textAlign: 'center',
-                          }, Cell: () => (
+                          Cell: () => (
                             <TimePicker use12Hours format="h:mm a" onChange={onChange} />
                           ),
                         },
@@ -342,9 +337,7 @@ const GeneralInfo = () => {
                           accessor: 'total',
                           filterable: false,
                           sortable: false,
-                          style: {
-                            textAlign: 'center',
-                          }, Cell: () => (
+                          Cell: () => (
                             <TimePicker use12Hours format="h:mm a" onChange={onChange} />
                           ),
                           width: 220,
@@ -354,10 +347,7 @@ const GeneralInfo = () => {
                           accessor: 'id',
                           filterable: false,
                           sortable: false,
-                          style: {
-                            textAlign: 'center',
-                            //border: '2px solid whitesmoke',
-                          }, Cell: () => (
+                          Cell: () => (
                             <div>
                               <input type="checkbox" className='closed-header' value="" />
                             </div>
