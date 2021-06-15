@@ -1,6 +1,6 @@
 /*eslint-disable*/
-import React, { useState } from 'react';
-import { Grid, Row } from 'react-bootstrap';
+import React, { useEffect, useState } from 'react';
+import { Grid, Row, Col } from 'react-bootstrap';
 import ReactTable from 'react-table';
 import Headerbar from '../../components/Headerbar';
 import Table from '../../components/Table';
@@ -33,46 +33,79 @@ const productData = [
     id: '4',
     imgUrl: 'images/1_Food.png',
     title: 'Grilled Veg Cheese Sandwich',
-    status: 'available',
+    status: 'sold',
     soh: '123',
   },
   {
     id: '5',
     imgUrl: 'images/1_Food.png',
     title: 'Buffalo Chicken Wings',
-    status: 'available',
+    status: 'sold',
     soh: '156',
   },
   {
     id: '6',
     imgUrl: 'images/1_Food.png',
-    title: 'abc',
-    status: 'available',
+    title: 'Burger',
+    status: 'reserve',
     soh: '143',
   },
   {
     id: '7',
     imgUrl: 'images/1_Food.png',
     title: 'Grilled Chicken  Sandwich',
-    status: 'available',
+    status: 'reserve',
+    soh: '200',
+  },
+  {
+    id: '8',
+    imgUrl: 'images/1_Food.png',
+    title: 'Grilled Chicken  Sandwich',
+    status: 'reserve',
+    soh: '200',
+  },
+  {
+    id: '9',
+    imgUrl: 'images/1_Food.png',
+    title: 'Grilled Chicken  Sandwich',
+    status: 'reserve',
+    soh: '200',
+  },{
+    id: '10',
+    imgUrl: 'images/1_Food.png',
+    title: 'Grilled Chicken  Sandwich',
+    status: 'reserve',
     soh: '200',
   }
 ]
 
 const ProductList = () => {
   const [status, setStatus] = useState()
+  console.log('status', status)
 
+  // useEffect(() => {
+  //   // console.log('prdouct',productData)
+  //   // setStatus(abcd)
+  // },[])
 
   const statusOptions = [
     { value: 'available', label: 'Available' },
-    { value: 'notAvailable', label: 'Not-Available' },
+    { value: 'sold', label: 'Sold' },
+    { value: 'reserve', label: 'Reserve' },
   ];
 
-  const onStatus = (item) => {
-    console.log('item',item)
-    const { original } = item;
-    console.log("original",original)
-    setStatus(item.value)
+  const capitalizeFirstLetter = (string) => {
+    console.log('string', string)
+    string.charAt(0).toUpperCase() + string.slice(1)
+  }
+
+  const onStatus = (info, value) => {
+    // const option =  { value: info.original.status, label: info.original.status}
+    // console.log('item',item)
+    // const { original } = item;
+    console.log("e", info)
+    console.log("value", value)
+    setStatus(value[info.index])
   }
 
   return (
@@ -88,60 +121,87 @@ const ProductList = () => {
                 title=""
                 data={productData}
                 content={
-                  <ReactTable
-                    data={productData}
-                    filterable
-                    columns={[
-                      {
-                        Header: '#',
-                        accessor: 'id',
-                        filterable: false,
-                        sortable: true,
-                        width: 50,
-                      },
-                      {
-                        Header: 'Product Name',
-                        accessor: 'title',
-                        // Cell: (row) => (<div>({row.imgUrl },{row.title})</div>),
-                        filterable: false,
-                        sortable: true,
-                        width: 250,
-                      },
-                      {
-                        Header: 'Status',
-                        accessor: 'status',
-                        filterable: false,
-                        sortable: false,
-                        width: 250,
-                        style: {
-                          textAlign: 'left', overflow: 'visible'
+                  <Row className="margin-control">
+                    <ReactTable
+                      data={productData}
+                      filterable
+                      columns={[
+                        {
+                          Header: '#',
+                          accessor: 'id',
+                          filterable: false,
+                          sortable: true,
+                          width: 50,
                         },
-                        Cell: () => (
-                          <div>
-                            <Select
-                              name="Status"
-                              placeholder="Status"
-                              value={status}
-                              options={statusOptions}
-                              onChange={onStatus}
-                              isSearchable={false}
-                            />
-                          </div>
-                        ),
-                      }, {
-                        Header: 'SOH',
-                        accessor: 'soh',
-                        filterable: false,
-                        sortable: false,
-                        width: 100,
+                        {
+                          Header: 'Product Name',
+                          accessor: 'title',
+                          // Cell: (row) => (<div>({row.imgUrl },{row.title})</div>),
+                          filterable: false,
+                          sortable: true,
+                          width: 250,
+                        },
+                        {
+                          Header: 'Status',
+                          // accessor: 'status',
+                          filterable: false,
+                          sortable: false,
+                          width: 250,
+                          style: {
+                            textAlign: 'left', overflow: 'visible'
+                          },
+                          Cell: (info) => (
+                            <div>
+                              <Select
+                                key={info.original.id}
+                                name="Status"
+                                placeholder="Status"
+                                defaultValue={{ value: info.original.status, label: `${info.original.status.charAt(0).toUpperCase()}${info.original.status.slice(1)}` }}
+                                value={status}
+                                options={statusOptions}
+                                onChange={(value) => onStatus(info, value)}
+                                // onChange={onStatus}
+                                isSearchable={false}
+                              />
+                            </div>
+                          ),
+                        }, {
+                          Header: 'SOH',
+                          accessor: 'soh',
+                          filterable: false,
+                          sortable: false,
+                          width: 100,
+                        }
+                      ]
                       }
-                    ]
-                    }
-                    defaultPageSize={10}
-                    // showPaginationTop
-                    showPaginationBottom
-                    className="-striped -highlight"
-                  />
+                      defaultPageSize={10}
+                      // showPaginationTop
+                      showPaginationBottom
+                      className="-striped -highlight"
+                    />
+                    <Row md={12} className="margin-control">
+                      {/* <Col className="product-button"> */}
+                      <Col lg={2} md={3} sm={4} xs={6} className="product-button">
+                        <button
+                          type="button"
+                          className="btn btn-primary btn-block modal-button"
+                        // onClick={onSubmit}
+                        >
+                          Submit
+                        </button>
+                      </Col>
+                      <Col lg={2} md={3} sm={4} xs={6} className="product-button">
+                        <button
+                          type="button"
+                          className="btn btn-primary btn-block modal-button"
+                        // onClick={onCancel}
+                        >
+                          Cancel
+                        </button>
+                      </Col>
+                      {/* </Col> */}
+                    </Row>
+                  </Row>
                 }
               />
             </Row>

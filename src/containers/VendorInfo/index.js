@@ -34,10 +34,9 @@ const youPreferList = [
   { value: 'Wipay Transfer', label: 'Wipay Transfer' },
 ]
 
-
 const VendorInfo = () => {
   const [firstName, setFirstName] = useState('');
-  const [surName, setSurName] = useState('');
+  const [lastName, setLastName] = useState('');
   const [companyName, setCompanyName] = useState('');
   const [businessLocation, setBusinessLocation] = useState('');
   const [mobile, setMobile] = useState('');
@@ -46,8 +45,8 @@ const VendorInfo = () => {
   const [uploadLogo, setUploadLogo] = useState('');
   const [bank, setBank] = useState();
   const [bankAccount, setBankAccount] = useState();
-  const [registration, setRegistration] = useState('')
-  const [uploadAddress, setUpladAddress] = useState('');
+  const [uploadRegistration, setUploadRegistration] = useState('')
+  const [uploadAddress, setUploadAddress] = useState('');
   const [wipay, setWipay] = useState('')
   const [wipayNumber, setWipayNumber] = useState('')
   const [youPrefer, setYouPrefer] = useState();
@@ -56,6 +55,8 @@ const VendorInfo = () => {
   const [termscondition, setTermsCondition] = useState(false);
   const [alertMsg, setAlertMsg] = useState('');
   const [alertError, setAlertError] = useState(false);
+
+  console.log('uploadId', uploadId)
 
   const dispatch = useDispatch();
   const vendor = useSelector((state) => state.vendorInfoState.vendorInfo);
@@ -85,9 +86,10 @@ const VendorInfo = () => {
 
   const onSurName = (e) => {
     if (e.target.value.match('^[a-zA-Z0-9]*$')) {
-      setSurName(e.target.value)
+      setLastName(e.target.value)
     }
   }
+
   const onCompany = (e) => {
     if (e.target.value.match('^[a-zA-Z0-9 ]*$')) {
       setCompanyName(e.target.value)
@@ -99,6 +101,7 @@ const VendorInfo = () => {
       setBusinessLocation(e.target.value)
     }
   }
+
   const onMobile = (e) => (
     setMobile(e.target.rawValue)
   )
@@ -111,8 +114,13 @@ const VendorInfo = () => {
 
   const onUploadId = (e) => {
     let file = e.target.files[0];
-    setUploadId(file.name);
+    const reader = new FileReader();
+    reader.onload = () => {
+      setUploadId(reader.result);
+    };
+    reader.readAsDataURL(file);
   }
+
   const onUploadLogo = (e) => {
     let file = e.target.files[0];
     setUploadLogo(file.name);
@@ -126,13 +134,16 @@ const VendorInfo = () => {
   const onBank = (bank) => {
     setBank(bank)
   }
+
   const onBankAccount = (e) => {
     setBankAccount(e.target.value)
   }
-  const onRegistration = (e) => {
+
+  const onUploadRegistration = (e) => {
     let file = e.target.files[0];
-    setRegistration(file.name);
+    setUploadRegistration(file.name);
   }
+
   const onUploadAddress = (e) => {
     let file = e.target.files[0];
     setUploadAddress(file.name);
@@ -145,12 +156,15 @@ const VendorInfo = () => {
   const onWipayNumber = (e) => {
     setWipayNumber(e.target.value)
   }
+
   const onYouPrefer = (youPrefer) => {
     setYouPrefer(youPrefer)
   }
+
   const onIkoptions = (ikOptions) => {
     setIkoptions(ikOptions)
   }
+
   const onUsAccount = (e) => {
     setUsAccount(e.target.value)
   }
@@ -168,7 +182,7 @@ const VendorInfo = () => {
   };
 
   const Submit = () => {
-    if (firstName === '' || surName === '' || email === '' || companyName === '' || businessLocation === '' || bank === '') {
+    if (firstName === '' || lastName === '' || email === '' || companyName === '' || businessLocation === '' || bank === '') {
       setAlertError(true)
       setAlertMsg('Please fill all the fields');
     } else if (termscondition === false) {
@@ -177,7 +191,7 @@ const VendorInfo = () => {
 
       const vendorInfo = {
         firstName,
-        surName,
+        lastName,
         companyName,
         businessLocation,
         mobile,
@@ -186,7 +200,7 @@ const VendorInfo = () => {
         uploadLogo,
         bank: 'abc',
         bankAccount,
-        uploadCompanyRegistration: registration,
+        uploadCompanyRegistration: uploadRegistration,
         uploadAddress,
         wipay,
         wipayNumber,
@@ -235,12 +249,12 @@ const VendorInfo = () => {
                 />
               </Col>
               <Col md={6} sm={12}>
-                <label className="signup-label">What is your surname ? <span className="red-star">*</span></label>
+                <label className="signup-label">What is your last name ? <span className="red-star">*</span></label>
                 <input
                   type="text"
-                  className={alertError && surName === '' ? ` form-control my-input` : `form-control formy`}
+                  className={alertError && lastName === '' ? ` form-control my-input` : `form-control formy`}
                   placeholder="Surname"
-                  value={surName}
+                  value={lastName}
                   onChange={onSurName}
                   maxLength={30}
                 />
@@ -297,7 +311,8 @@ const VendorInfo = () => {
                 <div className='select-file'>
                   <label className="signup-label">Upload ID</label>
                   <div className='file-input'>
-                    <input type='file'
+                    <input
+                      type='file'
                       onChange={onUploadId} />
                     <span className='button'>Choose</span>
                     <span className='label' >{uploadId ? uploadId : 'No file selected'} </span>
@@ -308,7 +323,8 @@ const VendorInfo = () => {
                 <div className='select-file'>
                   <label className="signup-label">Upload Logo </label>
                   <div className='file-input'>
-                    <input type='file'
+                    <input
+                      type='file'
                       onChange={onUploadLogo} />
                     <span className='button'>Choose</span>
                     <span className='label' >{uploadLogo ? uploadLogo : 'No file selected'} </span>
@@ -348,18 +364,21 @@ const VendorInfo = () => {
                 {/* <div className='select-file'> */}
                 <label className="signup-label">Upload Company Registration </label>
                 <div className='file-input'>
-                  <input type='file'
-                    onChange={onRegistration} />
+                  <input
+                    type='file'
+                    onChange={onUploadRegistration} />
                   <span className='button'>Choose</span>
-                  <span className='label' >{uploadAddress? uploadAddress: 'No file selected'} </span>
+                  <span className='label' >{uploadAddress ? uploadAddress : 'No file selected'} </span>
                 </div>
                 {/* </div> */}
               </Col>
               <Col md={6} sm={12} >
                 <div className='select-file'>
-                  <label className="signup-label">Proof of Address</label>
+                  <label className="signup-label">Upload Proof of Address</label>
                   <div className='file-input'>
-                    <input type='file' />
+                    <input
+                      type='file'
+                      onChange={onUploadAddress} />
                     <span className='button'>Choose</span>
                     <span className='label' >{uploadAddress ? uploadAddress : 'No file selected'} </span>
                   </div>
@@ -423,14 +442,20 @@ const VendorInfo = () => {
               <Col md={6} sm={12} >
                 <label className="signup-label radio-label">US Account Available <span className="red-star">*</span></label>
                 <div className="form-check">
-                  <input className="form-check-input" type="radio" value="Yes"
+                  <input
+                    className="form-check-input"
+                    type="radio"
+                    value="Yes"
                     onChange={onUsAccount}
                     checked={usAccount === 'Yes' ? true : false}
                   />
                   <label className="form-check-label" for="exampleRadios1">
                     Yes
                   </label>
-                  <input className="form-check-input" type="radio" value="No"
+                  <input
+                    className="form-check-input"
+                    type="radio"
+                    value="No"
                     onChange={onUsAccount}
                     checked={usAccount === 'No' ? true : false}
                   />

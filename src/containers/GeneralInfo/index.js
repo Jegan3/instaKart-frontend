@@ -237,7 +237,7 @@ const GeneralInfo = () => {
                           />
                         </Col>
                         <Col md={6} className='zipcode'>
-                          <label className="signup-label">ZIP Code <span className="red-star">*</span></label>
+                          <label className="signup-label">ZIP Code </label>
                           <input
                             type="text"
                             className="form-control"

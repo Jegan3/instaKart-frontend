@@ -11,7 +11,7 @@ import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 
 const SignUp = (props) => {
-  const [estore, setEstore] = useState('')
+  const [company, setCompany] = useState('')
   const [userName, setUserName] = useState('');
   const [mobile, setMobile] = useState('');
   const [email, setEmail] = useState('');
@@ -42,7 +42,7 @@ const SignUp = (props) => {
     if (validSignup && !closeOtp && type === 'user') {
       setShowOtp(true);
     } else if (status) {
-      setEstore('');
+      setCompany('');
       setIndustryType('');
       setCountry('');
       setCity('');
@@ -63,7 +63,7 @@ const SignUp = (props) => {
 
   const onEstore = (e) => {
     if (/^(?![\s-])[\A-Za-z\s-]*$/.test(e.target.value)) {
-      setEstore(e.target.value)
+      setCompany(e.target.value)
     }
   }
 
@@ -145,7 +145,7 @@ const SignUp = (props) => {
       setAlertError(true)
       setAlertMsg('Please fill all the fields');
     }
-    else if (type === 'vendor' && (!estore || !userName || !email || !password || !industryType || !country || !city)) {
+    else if (type === 'vendor' && (!company || !userName || !email || !password || !industryType || !country || !city)) {
       setAlertError(true)
       setAlertMsg('Please fill all the fields');
     } else if (termscondition === false) {
@@ -165,7 +165,7 @@ const SignUp = (props) => {
         contactNumber: mobile,
         email,
         password,
-        estore,
+        company,
         industryType: industryType,
         countryId: country && country.value,
         cityId: city && city.value,
@@ -211,18 +211,18 @@ const SignUp = (props) => {
             {type === 'vendor' &&
               <Row>
                 <Col md={6} sm={12} >
-                  <label className="signup-label">E-Store Name <span className="red-star">*</span></label>
+                  <label className="signup-label">Company Name <span className="red-star">*</span></label>
                   <input
                     type='text'
-                    className={alertError && estore === '' ? ` form-control my-input` : `form-control formy`}
+                    className={alertError && company === '' ? ` form-control my-input` : `form-control formy`}
                     placeholder="Enter E-Store Name"
-                    value={estore}
+                    value={company}
                     onChange={onEstore}
                     maxLength={30}
                   />
                 </Col>
                 <Col md={6} sm={12} className={`clear-industry ${alertError && !industryType && `dropdown-alert`}`} >
-                  <label className="signup-label">Select Industry Type <span className="red-star">*</span></label>
+                  <label className="signup-label">Industry Type <span className="red-star">*</span></label>
                   <Select
                     name="Industry Type"
                     placeholder="Choose you're industry type"
@@ -234,7 +234,7 @@ const SignUp = (props) => {
                   />
                 </Col>
                 <Col md={6} sm={12} className={`clear-country ${alertError && !country && `dropdown-alert`}`}>
-                  <label className="signup-label">Select Country <span className="red-star">*</span></label>
+                  <label className="signup-label">Country <span className="red-star">*</span></label>
                   <Select
                     name="Country"
                     placeholder="Choose you're country"
@@ -245,7 +245,7 @@ const SignUp = (props) => {
                   />
                 </Col>
                 <Col md={6} sm={12} className={`clear-city ${alertError && !city && `dropdown-alert`}`} >
-                  <label className="signup-label">Select City <span className="red-star">*</span></label>
+                  <label className="signup-label">City <span className="red-star">*</span></label>
                   <Select
                     name="City"
                     placeholder="Choose you're city"
