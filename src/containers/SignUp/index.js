@@ -12,8 +12,8 @@ import Header from '../../components/Header';
 
 const SignUp = (props) => {
   const [company, setCompany] = useState('')
-  const [userName, setUserName] = useState('');
-  const [mobile, setMobile] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [termscondition, setTermsCondition] = useState(false);
@@ -46,7 +46,7 @@ const SignUp = (props) => {
       setIndustryType('');
       setCountry('');
       setCity('');
-      setUserName('');
+      setFirstName('');
       setMobile('');
       setEmail('');
       setPassword('');
@@ -67,15 +67,21 @@ const SignUp = (props) => {
     }
   }
 
-  const onUserName = (e) => {
+  const onFirstName = (e) => {
     if (e.target.value.match('^[a-zA-Z0-9]*$')) {
-      setUserName(e.target.value)
+      setFirstName(e.target.value)
     }
   }
 
-  const onMobile = (e) => (
-    setMobile(e.target.rawValue)
-  )
+  // const onMobile = (e) => (
+  //   setMobile(e.target.rawValue)
+  // )
+
+  const onLastName = (e) => {
+    if (e.target.value.match('^[a-zA-Z0-9]*$')) {
+      setLastName(e.target.value)
+    }
+  }
 
   const onEmail = (e) => {
     if (e.target.value.match('^[a-zA-Z0-9_@./#&+-]*$')) {
@@ -141,11 +147,11 @@ const SignUp = (props) => {
   }, [country])
 
   const Submit = () => {
-    if (type === 'user' && (!userName || !email || !password)) {
+    if (type === 'user' && (!firstName || !lastName || !email || !password)) {
       setAlertError(true)
       setAlertMsg('Please fill all the fields');
     }
-    else if (type === 'vendor' && (!company || !userName || !email || !password || !industryType || !country || !city)) {
+    else if (type === 'vendor' && (!company || !industryType || !country || !city || !email || !password)) {
       setAlertError(true)
       setAlertMsg('Please fill all the fields');
     } else if (termscondition === false) {
@@ -153,22 +159,22 @@ const SignUp = (props) => {
     } else {
 
       const signupDetailsUsers = {
-        name: userName,
-        contactNumber: mobile,
+        firstName,
+        lastName,
         email,
         password,
         type
       };
 
       const signupDetailsVendors = {
-        name: userName,
-        contactNumber: mobile,
-        email,
-        password,
+        // firstName: firstName,
+        // lastName: lastName,
         company,
-        industryType: industryType,
+        industryType,
         countryId: country && country.value,
         cityId: city && city.value,
+        email,
+        password,
         type
       };
 
@@ -257,24 +263,36 @@ const SignUp = (props) => {
                   />
                 </Col>
               </Row>}
-            <Row>
+            {type === 'user' && <Row>
               <Col md={6} sm={12}>
-                <label className="signup-label">User Name <span className="red-star">*</span></label>
+                <label className="signup-label">First Name <span className="red-star">*</span></label>
                 <input
                   type="text"
-                  className={alertError && userName === '' ? ` form-control my-input` : `form-control formy`}
+                  className={alertError && firstName === '' ? ` form-control my-input` : `form-control formy`}
                   placeholder="Enter user name"
-                  value={userName}
-                  onChange={onUserName}
+                  value={firstName}
+                  onChange={onFirstName}
                   maxLength={30}
                 />
               </Col>
               <Col md={6} sm={12}>
+                <label className="signup-label">Last Name <span className="red-star">*</span></label>
+                <input
+                  type="text"
+                  className={alertError && lastName === '' ? ` form-control my-input` : `form-control formy`}
+                  placeholder="Enter user name"
+                  value={lastName}
+                  onChange={onLastName}
+                  maxLength={30}
+                />
+              </Col>
+            </Row>}
+            {/* <Col md={6} sm={12}>
                 <label className="signup-label">Contact Number </label>
                 <Cleave
                   className="form-control"
                   placeholder="Enter contact number"
-                  value={mobile}
+                  value={lastName}
                   onChange={onMobile}
                   options={{
                     blocks: [3, 3, 4],
@@ -282,8 +300,7 @@ const SignUp = (props) => {
                   }}
                 // options={{ phone: true, phoneRegionCode: "US" }}
                 />
-              </Col>
-            </Row>
+              </Col> */}
             <Row>
               <Col md={6} sm={12}>
                 <label className="signup-label">Email <span className="red-star">*</span></label>
