@@ -7,6 +7,7 @@ import { history } from '../../routes';
 const LoginModal = ({ showPopup, hidePopup }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [termscondition, setTermsCondition] = useState(false);
   const [login, setLogin] = useState(false);
   const [showLogin, setShowLogin] = useState(showPopup);
@@ -49,6 +50,10 @@ const LoginModal = ({ showPopup, hidePopup }) => {
       setPassword(e.target.value)
     }
   };
+
+  const splitPassword = () => {
+    setShowPassword(!showPassword)
+  }
 
   const onTermsCondition = (e) => {
     setTermsCondition(!termscondition)
@@ -119,7 +124,8 @@ const LoginModal = ({ showPopup, hidePopup }) => {
                   <Row className="login-details">
                     <Col md={12} sm={12}>
                       <label >Email </label>
-                      <input type="email"
+                      <input
+                        type="email"
                         className={alertError && email === '' ? ` form-control my-input` : `form-control formy`}
                         placeholder="Enter Email"
                         maxLength={30}
@@ -129,13 +135,15 @@ const LoginModal = ({ showPopup, hidePopup }) => {
                     </Col>
                     <Col md={12} sm={12} className="password">
                       <label >Password</label>
-                      <input type="password"
+                      <input
+                        type={showPassword ? 'text' : 'password'}
                         className={alertError && password === '' ? ` form-control my-input` : `form-control formy`}
                         placeholder="Enter password"
                         maxLength={8}
                         value={password}
                         onChange={onPassword}
                       />
+                      <i class={`${showPassword ? `fa fa-unlock-alt` : `fa fa-lock`} unlock-password`} onClick={splitPassword}></i>
                     </Col>
                   </Row>
                   <Row className="check-recovery">

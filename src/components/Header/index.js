@@ -33,7 +33,7 @@ const Header = ({ basic }) => {
   const validLogin = useSelector((state) => state.loginState.login);
   // const signup = useSelector((state) => state.signupState.signup);
 
-  const name = validLogin && validLogin.user.name || sessionStorage.username ? sessionStorage.username : false;
+  const name = validLogin && validLogin.user.firstName || sessionStorage.firstName ? sessionStorage.firstName : false;
   // name = name || 'Create My Account';
 
   const vendor = validLogin && validLogin.user.type === 'vendor' || sessionStorage.type === 'vendor'
