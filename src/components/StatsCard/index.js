@@ -6,13 +6,13 @@ import { faInfoCircle, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 const StatsCard = ({ bigIcon, statsText, statsValue, className, priText, secText }) => (
   <div className="card card-stats">
     <div className="content">
-      <div className={`row ${className}`}>
-        <div className="col-xs-5 thrift-card">
+      <div className={`row${className ? className : ''}`}>
+        <div className="col-xs-4 thrift-card">
           <div className="icon-big icon-center icon-warning">
             {bigIcon}
           </div>
         </div>
-        <div className="col-xs-7 thrift-card">
+        <div className="col-xs-8 thrift-card">
           <div className="numbers">
           {priText && <p className="categories-title">{priText}</p>}
             {/* <p>{secText}</p> */}

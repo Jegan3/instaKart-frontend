@@ -56,12 +56,15 @@ const VendorInfo = (props) => {
   const [alertMsg, setAlertMsg] = useState('');
   const [alertError, setAlertError] = useState(false);
 
-  console.log('query', props.location.query)
-
   const dispatch = useDispatch();
   const vendor = useSelector((state) => state.vendorInfoState.vendorInfo);
 
-  const decode = props.loaction.query
+// vendor details from url
+  const search = window.location.search;
+  const params = new URLSearchParams(search);
+  const decode = params.get('info');
+  const info = window.atob(decode)
+  const vendorDetails = JSON.parse(info)
 
   useEffect(() => {
     if (vendor && vendor.status) {
@@ -267,7 +270,7 @@ const VendorInfo = (props) => {
                   type="text"
                   className={alertError && companyName === '' ? ` form-control my-input` : `form-control formy`}
                   placeholder="Company Name"
-                  value={decode.company}
+                  value={vendorDetails.company}
                   // onChange={onCompany}
                   maxLength={30}
                   disabled
@@ -279,7 +282,7 @@ const VendorInfo = (props) => {
                   type="text"
                   className={alertError && businessLocation === '' ? ` form-control my-input` : `form-control formy`}
                   placeholder="Business Located"
-                  value={decode.city}
+                  value={vendorDetails.city}
                   // onChange={onBusiness}
                   maxLength={30}
                   disabled
@@ -306,7 +309,7 @@ const VendorInfo = (props) => {
                   type="Email"
                   className={alertError && email === '' ? ` form-control my-input` : `form-control formy`}
                   placeholder="Email"
-                  value={decode.email}
+                  value={vendorDetails.email}
                   // onChange={onEmail}
                   maxLength={30}
                   disabled

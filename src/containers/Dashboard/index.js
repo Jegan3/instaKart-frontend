@@ -63,7 +63,7 @@ const Dashboard = () => {
                 <StatsCard
                   bigIcon={<i className="fas fa-truck fa-xs icon-2" />}
                   statsText="Pending Companies"
-                  statsValue="1054"
+                  statsValue="105"
                 //   statsIcon={<i className="fa fa-calendar-o" />}
                 // statsIconText="Last day"
                 />
@@ -81,7 +81,7 @@ const Dashboard = () => {
                 <StatsCard
                   bigIcon={<i className="fas fa-rupee-sign fa-xs icon-4" />}
                   statsText="Active Companies"
-                  statsValue="15000"
+                  statsValue="150"
                 //   statsIcon={<i className="fa fa-refresh" />}
                 // statsIconText="Updated now"
                 />

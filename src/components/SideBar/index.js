@@ -8,10 +8,14 @@ import { faBars, faCog, faHome, faUser, faBath, faBuilding, faTag, faFolderPlus,
 import { history } from '../../routes';
 
 const Sidebar = () => {
-  const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
   const [toggled, setToggled] = useState(false);
+
+  const dispatch = useDispatch();
   const sidebar = useSelector((state) => state.sidebarState);
+  const validLogin = useSelector((state) => state.loginState.login);
+
+  const admin = validLogin && validLogin.user.type === 'admin' || sessionStorage.type === 'admin'
 
   useEffect(() => {
     setToggled(sidebar.show);
@@ -59,20 +63,20 @@ const Sidebar = () => {
         </SidebarHeader>
         <SidebarContent>
           <Menu iconShape>
-            <MenuItem icon={<FontAwesomeIcon icon={faHome} active={true} />}>
+            {admin ? <MenuItem icon={<FontAwesomeIcon icon={faHome} active={true} />}>
               Dashboard <Link to="/dashboard" />
-            </MenuItem>
-            <SubMenu title="Thrift Store" icon={<FontAwesomeIcon icon={faNetworkWired} />}>
-              <MenuItem icon={<FontAwesomeIcon icon={faUserTag} />}>
-                General Info <Link to="/generalinfo" />
-              </MenuItem>
-              <MenuItem icon={<FontAwesomeIcon icon={faFolderPlus} />}>
-                Add Product <Link to="/addproduct" />
-              </MenuItem>
-              <MenuItem icon={<FontAwesomeIcon icon={faBuilding} />}>
-                Product List <Link to="/productlist" />
-              </MenuItem>
-            </SubMenu>
+            </MenuItem> :
+              <SubMenu title="Thrift Store" icon={<FontAwesomeIcon icon={faNetworkWired} />}>
+                <MenuItem icon={<FontAwesomeIcon icon={faUserTag} />}>
+                  General Info <Link to="/generalinfo" />
+                </MenuItem>
+                <MenuItem icon={<FontAwesomeIcon icon={faFolderPlus} />}>
+                  Add Product <Link to="/addproduct" />
+                </MenuItem>
+                <MenuItem icon={<FontAwesomeIcon icon={faBuilding} />}>
+                  Product List <Link to="/productlist" />
+                </MenuItem>
+              </SubMenu>}
             {/* <SubMenu title="Product" icon={<FontAwesomeIcon icon={faBath} />}>
               <MenuItem icon={<FontAwesomeIcon icon={faUser} />}>
                 Add Product <Link to="/addproduct" />
@@ -81,9 +85,7 @@ const Sidebar = () => {
                 Product List <Link to="/productlist" />
               </MenuItem>
             </SubMenu> */}
-            <MenuItem icon={<FontAwesomeIcon icon={faUser} />}>
-              Customer Review
-            </MenuItem>
+            <MenuItem icon={<FontAwesomeIcon icon={faUser} />}>Customer Review</MenuItem>
             <MenuItem icon={<FontAwesomeIcon icon={faCog} />}>Report</MenuItem>
             <MenuItem icon={<FontAwesomeIcon icon={faTag} />}>Support</MenuItem>
           </Menu>

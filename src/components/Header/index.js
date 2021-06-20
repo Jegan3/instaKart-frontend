@@ -36,6 +36,7 @@ const Header = ({ basic }) => {
   const name = validLogin && validLogin.user.firstName || sessionStorage.firstName ? sessionStorage.firstName : false;
   // name = name || 'Create My Account';
 
+  const admin = validLogin && validLogin.user.type === 'admin' || sessionStorage.type === 'admin'
   const vendor = validLogin && validLogin.user.type === 'vendor' || sessionStorage.type === 'vendor'
   const user = validLogin && validLogin.user.type === 'user' || sessionStorage.type === 'user'
 
@@ -135,9 +136,9 @@ const Header = ({ basic }) => {
                     </NavItem>
                     {!user && <NavItem eventKey={3} href="#">
                       {/* {vendor ? <p onClick={dashboard}>Dashboard</p> : <p><Button className="vendor-signup" onClick={Signup}>Register Your E-Store</Button></p>} */}
-                      {vendor ? <p onClick={dashboard}>Dashboard</p> : <p className="vendor-signup" onClick={Signup}>Register Your E-Store</p>}
+                      {vendor || admin ? <p onClick={dashboard}>Dashboard</p> : <p className="vendor-signup" onClick={Signup}>Register Your E-Store</p>}
                     </NavItem>}
-                    {(vendor || user) && <NavItem eventKey={2} href="#">
+                    {(admin || vendor || user) && <NavItem eventKey={2} href="#">
                       <p onClick={logout}>Sign Out</p>
                     </NavItem>}
                   </Nav>

@@ -189,6 +189,39 @@ const GeneralInfo = () => {
                 </Col>
                 <Col md={6} className='right-info' >
                   <Row>
+                  <Col md={12}>
+                      <label className="signup-label">Business Name </label>
+                      <input
+                        type="text"
+                        placeholder="business name"
+                        className="form-control"
+                        maxLength={30}
+                        value={storeName}
+                        disabled
+                      />
+                    </Col>
+                    <Col md={6}>
+                      <label className="signup-label">First Name </label>
+                      <input
+                        type="text"
+                        placeholder="first name"
+                        className="form-control"
+                        maxLength={30}
+                        value={storeName}
+                        disabled
+                      />
+                    </Col>
+                    <Col md={6}>
+                      <label className="signup-label">Last Name </label>
+                      <input
+                        type="text"
+                        placeholder="last name"
+                        className="form-control"
+                        maxLength={30}
+                        value={storeName}
+                        disabled
+                      />
+                    </Col>
                     <Col md={12}>
                       <label className="signup-label">E-store Name <span className="red-star">*</span></label>
                       <input
@@ -209,7 +242,6 @@ const GeneralInfo = () => {
                         maxLength={30}
                         value={address}
                         onChange={onAddress}
-
                       />
                     </Col>
                     <Col md={12}>
@@ -249,10 +281,8 @@ const GeneralInfo = () => {
                         </Col>
                       </Row>
                     </Col>
-
                   </Row>
                 </Col>
-
               </Row>
               <Row className="form-content card resta">
                 <Col md={12}>
