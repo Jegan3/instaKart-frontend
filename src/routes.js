@@ -12,7 +12,7 @@ import AdsDetails from './containers/AdsDetails';
 import ProductList from './containers/ProductList';
 import AddProduct from './containers/AddProduct';
 import GeneralInfo from './containers/GeneralInfo';
-
+import UpdatePassword from './containers/UpdatePassword';
 
 export const history = createBrowserHistory();
 
@@ -31,6 +31,7 @@ const Routes = () => (
         <Route path="/productlist" component={ProductList} />
         <Route path="/addproduct" component={AddProduct} />
         <Route path="/generalinfo" component={GeneralInfo} />
+        <Route path="/updatepassword" component={UpdatePassword} />
       </Switch>
     </React.Fragment>
   </Router>
