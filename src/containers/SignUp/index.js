@@ -318,7 +318,12 @@ const SignUp = (props) => {
                 />
               </Col>
               <Col md={6} sm={12}>
-                <label className="signup-label">Password <span className="red-star">*</span></label>
+                <label className="signup-label">Password <span className="red-star">*</span><a type="button"
+                  class="info-tooltip" data-toggle="tooltip" data-placement="right" title="•	Be at least 8 characters
+•	Have at least one number
+•	Have at least one upper case letter">
+                  <i class="fa fa-info" aria-hidden="true"></i>
+                </a></label>
                 <input
                   type={showPassword ? 'text' : 'password'}
                   className={alertError && password === '' ? ` form-control my-input` : `form-control formy`}
