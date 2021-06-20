@@ -53,7 +53,7 @@ const Dashboard = () => {
               <Col lg={3} md={6} sm={6}>
                 <StatsCard
                   bigIcon={<i className="fas fa-archive fa-xs icon-1" />}
-                  statsText="Order Received"
+                  statsText="Total Companies"
                   statsValue="634"
                 //   statsIcon={<i className="fa fa-refresh" />}
                 // statsIconText="Updated now"
@@ -62,7 +62,7 @@ const Dashboard = () => {
               <Col lg={3} md={6} sm={6}>
                 <StatsCard
                   bigIcon={<i className="fas fa-truck fa-xs icon-2" />}
-                  statsText="Total Delivery"
+                  statsText="Pending Companies"
                   statsValue="1054"
                 //   statsIcon={<i className="fa fa-calendar-o" />}
                 // statsIconText="Last day"
@@ -71,7 +71,7 @@ const Dashboard = () => {
               <Col lg={3} md={6} sm={6}>
                 <StatsCard
                   bigIcon={<i className="fa fa-cart-plus fa-xs icon-3" />}
-                  statsText="Cancel Orders"
+                  statsText="Rejected Companies"
                   statsValue="6"
                 //   statsIcon={<i className="fa fa-clock-o" />}
                 // statsIconText="In the last hour"
@@ -80,7 +80,7 @@ const Dashboard = () => {
               <Col lg={3} md={6} sm={6}>
                 <StatsCard
                   bigIcon={<i className="fas fa-rupee-sign fa-xs icon-4" />}
-                  statsText="Net Earning"
+                  statsText="Active Companies"
                   statsValue="15000"
                 //   statsIcon={<i className="fa fa-refresh" />}
                 // statsIconText="Updated now"
