@@ -87,7 +87,7 @@ const Dashboard = () => {
                 />
               </Col>
             </Row>
-            <Row>
+            {/* <Row>
               <Col lg={3} md={6} sm={6}>
                 <StatsCard
                   bigIcon={<i className="fa fa-cart-plus fa-xs icon-5" />}
@@ -124,7 +124,7 @@ const Dashboard = () => {
                 // statsIconText="Updated now"
                 />
               </Col>
-            </Row>
+            </Row> */}
             <Row>
               <Table
                 title="RECENT ORDER REQUESTED"
@@ -136,25 +136,34 @@ const Dashboard = () => {
                       {
                         Header: '#',
                         accessor: '_id',
+                        width: 100,
+                      },
+                      {
+                        Header: 'Company',
+                        accessor: 'company',
                       },
                       {
                         Header: 'E-Mail',
                         accessor: 'email',
                       },
                       {
-                        Header: 'Poster',
+                        Header: 'Bank Account Number',
                         accessor: 'poster',
                       },
-                      // {
-                      //   Header: 'Status',
-                      //   accessor: 'name',
-                      //   filterable: false,
-                      //   sortable: false,
-                      //   Cell: (original) => (
-                      //     <div className="actions-right">
-                      //       <Button className="btn btn-danger" simple onClick={() => onClick(original)}>{button}</Button>
-                      //     </div>),
-                      // },
+                      {
+                        Header: 'WiPay Account Number',
+                        accessor: 'poster',
+                      },
+                      {
+                        Header: 'Status',
+                        accessor: 'name',
+                        filterable: false,
+                        sortable: false,
+                        Cell: (original) => (
+                          <div className="actions-right">
+                            <Button className="btn btn-danger" simple onClick={() => onClick(original)}>{button}</Button>
+                          </div>),
+                      },
                     ]}
                     defaultPageSize={10}
                     // showPaginationTop

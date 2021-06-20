@@ -129,15 +129,15 @@ const ProductList = () => {
                         {
                           Header: '#',
                           accessor: 'id',
-                          filterable: false,
+                          // filterable: false,
                           sortable: true,
-                          width: 50,
+                          width: 100,
                         },
                         {
                           Header: 'Product Name',
                           accessor: 'title',
                           // Cell: (row) => (<div>({row.imgUrl },{row.title})</div>),
-                          filterable: false,
+                          // filterable: false,
                           sortable: true,
                           width: 250,
                         },
@@ -168,7 +168,7 @@ const ProductList = () => {
                         }, {
                           Header: 'SOH',
                           accessor: 'soh',
-                          filterable: false,
+                          // filterable: false,
                           sortable: false,
                           width: 100,
                         }

@@ -334,7 +334,7 @@ const VendorInfo = () => {
             </Row>
             <Row className="vendor-content card">
               <Col md={6} sm={12} className={`clear-city ${alertError && !bank && `dropdown-alert`}`}>
-                <label className="signup-label">Choose your Bank </label>
+                <label className="signup-label">Bank </label>
                 <Select
                   type="text"
                   className="prof-select "
@@ -388,7 +388,7 @@ const VendorInfo = () => {
             <Row className="vendor-content card">
               <Col md={6} sm={12} >
                 <div className='select-file'>
-                  <label className="signup-label radio-label">WiPay Account <span className="red-star">*</span></label>
+                  <label className="signup-label radio-label">WiPay <span className="red-star">*</span></label>
                   <div className="form-check">
                     <input className="form-check-input" type="radio" value='Yes' onChange={onWipay} checked={wipay === 'Yes' ? true : false} />
                     <label className="form-check-label" for="exampleRadios1">
