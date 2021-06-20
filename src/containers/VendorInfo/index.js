@@ -34,7 +34,7 @@ const youPreferList = [
   { value: 'Wipay Transfer', label: 'Wipay Transfer' },
 ]
 
-const VendorInfo = () => {
+const VendorInfo = (props) => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [companyName, setCompanyName] = useState('');
@@ -56,10 +56,12 @@ const VendorInfo = () => {
   const [alertMsg, setAlertMsg] = useState('');
   const [alertError, setAlertError] = useState(false);
 
-  console.log('uploadId', uploadId)
+  console.log('query', props.location.query)
 
   const dispatch = useDispatch();
   const vendor = useSelector((state) => state.vendorInfoState.vendorInfo);
+
+  const decode = props.loaction.query
 
   useEffect(() => {
     if (vendor && vendor.status) {
@@ -90,27 +92,27 @@ const VendorInfo = () => {
     }
   }
 
-  const onCompany = (e) => {
-    if (e.target.value.match('^[a-zA-Z0-9 ]*$')) {
-      setCompanyName(e.target.value)
-    }
-  }
+  // const onCompany = (e) => {
+  //   if (e.target.value.match('^[a-zA-Z0-9 ]*$')) {
+  //     setCompanyName(e.target.value)
+  //   }
+  // }
 
-  const onBusiness = (e) => {
-    if (e.target.value.match('^[a-zA-Z0-9 ]*$')) {
-      setBusinessLocation(e.target.value)
-    }
-  }
+  // const onBusiness = (e) => {
+  //   if (e.target.value.match('^[a-zA-Z0-9 ]*$')) {
+  //     setBusinessLocation(e.target.value)
+  //   }
+  // }
 
   const onMobile = (e) => (
     setMobile(e.target.rawValue)
   )
 
-  const onEmail = (e) => {
-    if (e.target.value.match('^[a-zA-Z0-9_@./#&+-]*$')) {
-      setEmail(e.target.value);
-    }
-  };
+  // const onEmail = (e) => {
+  //   if (e.target.value.match('^[a-zA-Z0-9_@./#&+-]*$')) {
+  //     setEmail(e.target.value);
+  //   }
+  // };
 
   const onUploadId = (e) => {
     let file = e.target.files[0];
@@ -192,13 +194,13 @@ const VendorInfo = () => {
       const vendorInfo = {
         firstName,
         lastName,
-        companyName,
-        businessLocation,
+        companyName: decode.company,
+        businessLocation: decode.city,
         mobile,
-        email,
+        email: decode.email,
         uploadId,
         uploadLogo,
-        bank: 'abc',
+        bank,
         bankAccount,
         uploadCompanyRegistration: uploadRegistration,
         uploadAddress,
@@ -265,9 +267,10 @@ const VendorInfo = () => {
                   type="text"
                   className={alertError && companyName === '' ? ` form-control my-input` : `form-control formy`}
                   placeholder="Company Name"
-                  value={companyName}
-                  onChange={onCompany}
+                  value={decode.company}
+                  // onChange={onCompany}
                   maxLength={30}
+                  disabled
                 />
               </Col>
               <Col md={6} sm={12}>
@@ -276,9 +279,10 @@ const VendorInfo = () => {
                   type="text"
                   className={alertError && businessLocation === '' ? ` form-control my-input` : `form-control formy`}
                   placeholder="Business Located"
-                  value={businessLocation}
-                  onChange={onBusiness}
+                  value={decode.city}
+                  // onChange={onBusiness}
                   maxLength={30}
+                  disabled
                 />
               </Col>
 
@@ -302,9 +306,10 @@ const VendorInfo = () => {
                   type="Email"
                   className={alertError && email === '' ? ` form-control my-input` : `form-control formy`}
                   placeholder="Email"
-                  value={email}
-                  onChange={onEmail}
+                  value={decode.email}
+                  // onChange={onEmail}
                   maxLength={30}
+                  disabled
                 />
               </Col>
               <Col md={6} sm={12} >
