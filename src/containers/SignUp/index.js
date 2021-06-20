@@ -48,7 +48,7 @@ const SignUp = (props) => {
       setCountry('');
       setCity('');
       setFirstName('');
-      setMobile('');
+      // setMobile('');
       setEmail('');
       setPassword('');
       setTermsCondition(false);
