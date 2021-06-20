@@ -16,6 +16,7 @@ const SignUp = (props) => {
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [termscondition, setTermsCondition] = useState(false);
   const [showOtp, setShowOtp] = useState(false);
   const [closeOtp, setCloseOtp] = useState(false);
@@ -94,6 +95,10 @@ const SignUp = (props) => {
       setPassword(e.target.value)
     }
   };
+
+  const splitPassword = () => {
+    setShowPassword(!showPassword)
+  }
 
   const onTermsCondition = (e) => {
     setTermsCondition(!termscondition)
@@ -315,13 +320,14 @@ const SignUp = (props) => {
               <Col md={6} sm={12}>
                 <label className="signup-label">Password <span className="red-star">*</span></label>
                 <input
-                  type="text"
+                  type={showPassword ? 'text' : 'password'}
                   className={alertError && password === '' ? ` form-control my-input` : `form-control formy`}
                   placeholder="Enter password"
                   value={password}
                   onChange={onPassword}
                   maxLength={15}
                 />
+                <i class={`${showPassword ? `fa fa-unlock-alt` : `fa fa-lock`} unlock-password`} onClick={splitPassword}></i>
               </Col>
             </Row>
             <Row>
