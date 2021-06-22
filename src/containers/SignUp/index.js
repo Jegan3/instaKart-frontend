@@ -332,7 +332,7 @@ const SignUp = (props) => {
                   onChange={onPassword}
                   maxLength={15}
                 />
-                <i class={`${showPassword ? `fa fa-unlock-alt` : `fa fa-lock`} unlock-password`} onClick={splitPassword}></i>
+                <i class={`${showPassword ? `fa fa-unlock-alt` : `fa fa-lock`} unlock-signup`} onClick={splitPassword}></i>
               </Col>
             </Row>
             <Row>

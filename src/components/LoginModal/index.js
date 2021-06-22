@@ -178,7 +178,7 @@ const LoginModal = ({ showPopup, hidePopup }) => {
                     {!forgotPassword &&
                       <Col md={12} sm={12} className="password">
                         <label >Password</label>
-                        <i className={`${showPassword ? 'fa fa-unlock-alt' : 'fa fa-lock'} unlock-password`} onClick={splitPassword}></i>
+                        <i className={`${showPassword ? 'fa fa-unlock-alt' : 'fa fa-lock'} unlock-login`} onClick={splitPassword}></i>
                         <input
                           type={showPassword ? 'text' : 'password'}
                           className={alertError && password === '' ? ' form-control my-input' : 'form-control formy'}
