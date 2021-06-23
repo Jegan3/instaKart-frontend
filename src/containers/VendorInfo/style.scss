@@ -5,6 +5,7 @@
 
     .vendor-content {
         padding: 20px;
+        overflow: visible;
     }
 
     .radio-label {
@@ -24,7 +25,14 @@
         border: 1px solid #e3e3e3;
         border-radius: 7px;
         color: #565656;
-        height: 35px;
+        height: 38px;
+    }
+    
+    .red {
+        border: 1px solid red;
+        border-radius: 7px;
+        color: #565656;
+        height: 38px;
     }
 
     .file-input>[type='file'] {
@@ -53,9 +61,17 @@
     }
 
     .file-input>.label {
+        font-size: 13px;
         color: #333;
         white-space: nowrap;
         opacity: .3;
+        width: 110px;
+        text-decoration: none;
+        text-overflow: ellipsis;
+        padding: 0;
+        overflow: hidden;
+        position: relative;
+        display: inline-block;
     }
 
     .file-input.-chosen>.label {

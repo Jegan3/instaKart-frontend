@@ -189,7 +189,7 @@ const GeneralInfo = () => {
                 </Col>
                 <Col md={6} className='right-info' >
                   <Row>
-                  <Col md={12}>
+                    <Col md={12}>
                       <label className="signup-label">Business Name </label>
                       <input
                         type="text"
@@ -393,31 +393,29 @@ const GeneralInfo = () => {
                   }
                 />
               </Row>
-              <Row >
-                <Col md={12} className="btn-general">
-                  <Col md={6} lg={6} sm={6} xs={6} className="modal-row " >
-                    <button
-                      type="button"
-                      className="btn btn-primary  btn-block modal-button "
-                      onClick={onCancel}
-                    >
-                      Cancel
-                    </button>
-                  </Col>
-                  <Col md={6} lg={6} sm={6} xs={6} className="modal-row" >
-                    <button
-                      type="button"
-                      className="btn btn-primary btn-block modal-button "
-                      onClick={onSubmit}
-                    >
-                      Submit
-                    </button>
-                  </Col>
-                  {/* <Col md={12} sm={12} className="login-error" >
-                      <span className="login-error-msg">{errorMsg}</span>
-                    </Col> */}
+              <Row md={12} className="margin-control">
+                {/* <Col className="product-button"> */}
+                <Col lg={2} md={3} sm={4} xs={6} className="product-button">
+                  <button
+                    type="button"
+                    className="btn btn-primary btn-block modal-button"
+                  // onClick={onSubmit}
+                  >
+                    Submit
+                  </button>
                 </Col>
+                <Col lg={2} md={3} sm={4} xs={6} className="product-button">
+                  <button
+                    type="button"
+                    className="btn btn-primary btn-block modal-button"
+                  // onClick={onCancel}
+                  >
+                    Cancel
+                  </button>
+                </Col>
+                {/* </Col> */}
               </Row>
+
             </Row>
           </Grid>
         </div>

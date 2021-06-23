@@ -4,10 +4,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Row, Col, Form, Grid } from 'react-bootstrap';
 import Select from 'react-select';
 import Cleave from "cleave.js/react";
+import { message } from 'antd';
 import { history } from '../../routes';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
-// import { faYenSign } from '@fortawesome/free-solid-svg-icons';
 
 const bankList = [
   { value: 'First Citizens', label: 'First Citizens' },
@@ -29,7 +29,7 @@ const ikOptionsList = [
   { value: 'Monthly', label: 'Monthly ' },
 ]
 
-const youPreferList = [
+const preferenceList = [
   { value: 'Bank Transfer', label: 'Bank Transfer' },
   { value: 'Wipay Transfer', label: 'Wipay Transfer' },
 ]
@@ -37,29 +37,29 @@ const youPreferList = [
 const VendorInfo = (props) => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
-  const [companyName, setCompanyName] = useState('');
-  const [businessLocation, setBusinessLocation] = useState('');
   const [mobile, setMobile] = useState('');
-  const [email, setEmail] = useState('');
   const [uploadId, setUploadId] = useState('');
+  const [uploadIdName, setUploadIdName] = useState('');
   const [uploadLogo, setUploadLogo] = useState('');
+  const [uploadLogoName, setUploadLogoName] = useState('');
   const [bank, setBank] = useState();
-  const [bankAccount, setBankAccount] = useState();
+  const [bankAccount, setBankAccount] = useState('');
   const [uploadRegistration, setUploadRegistration] = useState('')
+  const [uploadRegistrationName, setUploadRegistrationName] = useState('')
   const [uploadAddress, setUploadAddress] = useState('');
+  const [uploadAddressName, setUploadAddressName] = useState('');
   const [wipay, setWipay] = useState('')
   const [wipayNumber, setWipayNumber] = useState('')
-  const [youPrefer, setYouPrefer] = useState();
+  const [preference, setPreference] = useState();
   const [ikOptions, setIkoptions] = useState();
-  const [usAccount, setUsAccount] = useState();
   const [termscondition, setTermsCondition] = useState(false);
-  const [alertMsg, setAlertMsg] = useState('');
+  const [usAccount, setUsAccount] = useState('');
   const [alertError, setAlertError] = useState(false);
 
   const dispatch = useDispatch();
   const vendor = useSelector((state) => state.vendorInfoState.vendorInfo);
 
-// vendor details from url
+  // vendor details from url
   const search = window.location.search;
   const params = new URLSearchParams(search);
   const decode = params.get('info');
@@ -68,12 +68,11 @@ const VendorInfo = (props) => {
 
   useEffect(() => {
     if (vendor && vendor.status) {
-      setAlertMsg('Thanks!, Basic info form is successfully updated with us');
+      message.success('Thanks!, Basic info form is successfully updated with us')
       setTimeout(() => {
         history.push({ pathname: '/' })
       }, 3000);
     }
-
   })
 
   // const Option = props => {
@@ -95,32 +94,15 @@ const VendorInfo = (props) => {
     }
   }
 
-  // const onCompany = (e) => {
-  //   if (e.target.value.match('^[a-zA-Z0-9 ]*$')) {
-  //     setCompanyName(e.target.value)
-  //   }
-  // }
-
-  // const onBusiness = (e) => {
-  //   if (e.target.value.match('^[a-zA-Z0-9 ]*$')) {
-  //     setBusinessLocation(e.target.value)
-  //   }
-  // }
-
   const onMobile = (e) => (
     setMobile(e.target.rawValue)
   )
-
-  // const onEmail = (e) => {
-  //   if (e.target.value.match('^[a-zA-Z0-9_@./#&+-]*$')) {
-  //     setEmail(e.target.value);
-  //   }
-  // };
 
   const onUploadId = (e) => {
     let file = e.target.files[0];
     const reader = new FileReader();
     reader.onload = () => {
+      setUploadIdName(file.name)
       setUploadId(reader.result);
     };
     reader.readAsDataURL(file);
@@ -128,7 +110,12 @@ const VendorInfo = (props) => {
 
   const onUploadLogo = (e) => {
     let file = e.target.files[0];
-    setUploadLogo(file.name);
+    const reader = new FileReader();
+    reader.onload = () => {
+      setUploadLogoName(file.name);
+      setUploadLogo(reader.result);
+    };
+    reader.readAsDataURL(file);
   }
 
   const bankSelect = bankList.map(item => ({
@@ -146,12 +133,22 @@ const VendorInfo = (props) => {
 
   const onUploadRegistration = (e) => {
     let file = e.target.files[0];
-    setUploadRegistration(file.name);
+    const reader = new FileReader();
+    reader.onload = () => {
+      setUploadRegistrationName(file.name);
+      setUploadRegistration(reader.result);
+    };
+    reader.readAsDataURL(file);
   }
 
   const onUploadAddress = (e) => {
     let file = e.target.files[0];
-    setUploadAddress(file.name);
+    const reader = new FileReader();
+    reader.onload = () => {
+      setUploadAddressName(file.name);
+      setUploadAddress(reader.result);
+    };
+    reader.readAsDataURL(file);
   }
 
   const onWipay = (e) => {
@@ -162,8 +159,8 @@ const VendorInfo = (props) => {
     setWipayNumber(e.target.value)
   }
 
-  const onYouPrefer = (youPrefer) => {
-    setYouPrefer(youPrefer)
+  const onPreference = (preference) => {
+    setPreference(preference)
   }
 
   const onIkoptions = (ikOptions) => {
@@ -187,54 +184,45 @@ const VendorInfo = (props) => {
   };
 
   const Submit = () => {
-    if (firstName === '' || lastName === '' || email === '' || companyName === '' || businessLocation === '' || bank === '') {
+    if (!firstName || !lastName || !mobile || !uploadId || !uploadRegistration || !bank || !bankAccount || !ikOptions) {
       setAlertError(true)
-      setAlertMsg('Please fill all the fields');
+      message.error('Please fill all the fields')
+    } else if (wipay === 'Yes' && (!wipayNumber || !preference)) {
+      setAlertError(true)
+      message.error('Please fill all the fields')
     } else if (termscondition === false) {
-      setAlertMsg('Please accept the Terms & Conditions and Privacy Policy');
+      message.error('Please accept the Terms & Conditions and Privacy Policy')
     } else {
 
       const vendorInfo = {
         firstName,
         lastName,
-        companyName: decode.company,
-        businessLocation: decode.city,
+        companyName: vendorDetails.company,
+        businessLocation: vendorDetails.city,
         mobile,
-        email: decode.email,
+        email: vendorDetails.email,
         uploadId,
         uploadLogo,
-        bank,
+        bank: bank.value,
         bankAccount,
         uploadCompanyRegistration: uploadRegistration,
         uploadAddress,
         wipay,
         wipayNumber,
-        youPrefer,
-        ikOptions,
+        preference: preference.value,
+        ikOptions: ikOptions.value,
         usAccount,
       };
+      console.log('vendo', vendorInfo)
       dispatch({ type: 'VENDOR_INFO_REQUEST', vendorInfo });
-      setAlertMsg('');
     }
   };
-
-  const menuStyles = {
-    ///.....
-    menuPortal: provided => ({ ...provided, zIndex: 9999 }),
-    menu: provided => ({ ...provided, zIndex: 9999 })
-    ///.....
-  }
 
   return (
     <Grid fluid>
       <Header basic />
       <Row>
         <Col className="vendorinfo" >
-          <Row>
-            <Col lg={12}>
-              {alertMsg && <div class="alert alert-info" role="alert">{alertMsg}</div>}
-            </Col>
-          </Row>
           <Row className="margin-control">
             <Col lg={12} className="sub-heading">
               Basic Information
@@ -264,35 +252,21 @@ const VendorInfo = (props) => {
                   maxLength={30}
                 />
               </Col>
-              <Col md={6} sm={12} >
-                <label className="signup-label">What is your company's name ? <span className="red-star">*</span></label>
-                <input
-                  type="text"
-                  className={alertError && companyName === '' ? ` form-control my-input` : `form-control formy`}
-                  placeholder="Company Name"
-                  value={vendorDetails.company}
-                  // onChange={onCompany}
-                  maxLength={30}
-                  disabled
-                />
-              </Col>
               <Col md={6} sm={12}>
-                <label className="signup-label">Where is your business located ? <span className="red-star">*</span></label>
+                <label className="signup-label">Email </label>
                 <input
-                  type="text"
-                  className={alertError && businessLocation === '' ? ` form-control my-input` : `form-control formy`}
-                  placeholder="Business Located"
-                  value={vendorDetails.city}
-                  // onChange={onBusiness}
-                  maxLength={30}
-                  disabled
-                />
-              </Col>
-
-              <Col md={6} sm={12}>
-                <label className="signup-label">Business Contact Number </label>
-                <Cleave
+                  type="Email"
                   className="form-control"
+                  placeholder="Email"
+                  value={vendorDetails.email}
+                  maxLength={30}
+                  disabled
+                />
+              </Col>
+              <Col md={6} sm={12}>
+                <label className="signup-label">Business Contact Number <span className="red-star">*</span></label>
+                <Cleave
+                  className={alertError && mobile === '' ? ` form-control my-input` : `form-control formy`}
                   placeholder="Enter contact number"
                   value={mobile}
                   onChange={onMobile}
@@ -300,30 +274,41 @@ const VendorInfo = (props) => {
                     blocks: [3, 3, 4],
                     numericOnly: true
                   }}
-                // options={{ phone: true, phoneRegionCode: "US" }}
                 />
               </Col>
-              <Col md={6} sm={12}>
-                <label className="signup-label">Email <span className="red-star">*</span></label>
+              <Col md={6} sm={12} >
+                <label className="signup-label">What is your company's name ? </label>
                 <input
-                  type="Email"
-                  className={alertError && email === '' ? ` form-control my-input` : `form-control formy`}
-                  placeholder="Email"
-                  value={vendorDetails.email}
-                  // onChange={onEmail}
+                  type="text"
+                  className="form-control"
+                  placeholder="Company Name"
+                  value={vendorDetails.company}
                   maxLength={30}
                   disabled
                 />
               </Col>
+              <Col md={6} sm={12}>
+                <label className="signup-label">Where is your business located ? </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Business Located"
+                  value={vendorDetails.city}
+                  maxLength={30}
+                  disabled
+                />
+              </Col>
+            </Row>
+            <Row className="vendor-content card">
               <Col md={6} sm={12} >
                 <div className='select-file'>
-                  <label className="signup-label">Upload ID</label>
-                  <div className='file-input'>
+                  <label className="signup-label">Upload ID <span className="red-star">*</span></label>
+                  <div className={`file-input ${alertError && !uploadId && `red`}`}>
                     <input
                       type='file'
                       onChange={onUploadId} />
                     <span className='button'>Choose</span>
-                    <span className='label' >{uploadId ? uploadId : 'No file selected'} </span>
+                    <span className='label' >{uploadIdName ? uploadIdName : 'No file selected'} </span>
                   </div>
                 </div>
               </Col>
@@ -335,50 +320,19 @@ const VendorInfo = (props) => {
                       type='file'
                       onChange={onUploadLogo} />
                     <span className='button'>Choose</span>
-                    <span className='label' >{uploadLogo ? uploadLogo : 'No file selected'} </span>
+                    <span className='label' >{uploadLogoName ? uploadLogoName : 'No file selected'} </span>
                   </div>
                 </div>
               </Col>
-            </Row>
-            <Row className="vendor-content card">
-              <Col md={6} sm={12} className={`clear-city ${alertError && !bank && `dropdown-alert`}`}>
-                <label className="signup-label">Bank </label>
-                <Select
-                  type="text"
-                  className="prof-select "
-                  placeholder="Choose Bank."
-                  //for menu 
-                  // menuPortalTarget={document.body}
-                  // menuPosition={'fixed'}
-                  // styles={menuStyles}
-                  value={bank}
-                  onChange={onBank}
-                  options={bankSelect}
-                  isSearchable={true}
-                />
-              </Col>
               <Col md={6} sm={12} >
-                <label className="signup-label">Bank Account Number </label>
-                <input
-                  type="text"
-                  className='form-control'
-                  placeholder="Bank account number"
-                  value={bankAccount}
-                  onChange={onBankAccount}
-                  maxLength={30}
-                />
-              </Col>
-              <Col md={6} sm={12} >
-                {/* <div className='select-file'> */}
-                <label className="signup-label">Upload Company Registration </label>
-                <div className='file-input'>
+                <label className="signup-label">Upload Company Registration  <span className="red-star">*</span></label>
+                <div className={`file-input ${alertError && !uploadRegistration && `red`}`}>
                   <input
                     type='file'
                     onChange={onUploadRegistration} />
                   <span className='button'>Choose</span>
-                  <span className='label' >{uploadAddress ? uploadAddress : 'No file selected'} </span>
+                  <span className='label' >{uploadRegistrationName ? uploadRegistrationName : 'No file selected'} </span>
                 </div>
-                {/* </div> */}
               </Col>
               <Col md={6} sm={12} >
                 <div className='select-file'>
@@ -388,21 +342,53 @@ const VendorInfo = (props) => {
                       type='file'
                       onChange={onUploadAddress} />
                     <span className='button'>Choose</span>
-                    <span className='label' >{uploadAddress ? uploadAddress : 'No file selected'} </span>
+                    <span className='label' >{uploadAddressName ? uploadAddressName : 'No file selected'} </span>
                   </div>
                 </div>
               </Col>
             </Row>
             <Row className="vendor-content card">
+              <Col md={6} sm={12} className={`clear-city ${alertError && !bank && `dropdown-alert`}`} >
+                <label className="signup-label">Bank <span className="red-star">*</span></label>
+                <Select
+                  type="text"
+                  className="prof-select "
+                  placeholder="Choose Bank."
+                  value={bank}
+                  onChange={onBank}
+                  options={bankSelect}
+                  isSearchable={true}
+                />
+              </Col>
+              <Col md={6} sm={12} >
+                <label className="signup-label">Bank Account Number <span className="red-star">*</span></label>
+                <input
+                  type="text"
+                  className={alertError && bankAccount === '' ? ` form-control my-input` : `form-control formy`}
+                  placeholder="Bank account number"
+                  value={bankAccount}
+                  onChange={onBankAccount}
+                  maxLength={15}
+                />
+              </Col>
               <Col md={6} sm={12} >
                 <div className='select-file'>
-                  <label className="signup-label radio-label">WiPay <span className="red-star">*</span></label>
+                  <label className="signup-label radio-label">WiPay</label>
                   <div className="form-check">
-                    <input className="form-check-input" type="radio" value='Yes' onChange={onWipay} checked={wipay === 'Yes' ? true : false} />
+                    <input
+                      className="form-check-input"
+                      type="radio"
+                      value='Yes'
+                      onChange={onWipay}
+                      checked={wipay === 'Yes' ? true : false} />
                     <label className="form-check-label" for="exampleRadios1">
                       Yes
                     </label>
-                    <input className="form-check-input" type="radio" value='No' onChange={onWipay} checked={wipay === 'No' ? true : false} />
+                    <input
+                      className="form-check-input"
+                      type="radio"
+                      value='No'
+                      onChange={onWipay} checked={wipay === 'No' ? true : false} />
                     <label className="form-check-label" for="exampleRadios1">
                       No
                     </label>
@@ -413,34 +399,31 @@ const VendorInfo = (props) => {
                 <label className="signup-label">WiPay Account Number {wipay === 'Yes' && <span className="red-star">*</span>}</label>
                 <input
                   type="text"
-                  className='form-control '
-                  placeholder="WiPay number "
+                  className={alertError && wipayNumber === '' && wipay === 'Yes' ? ` form-control my-input` : `form-control formy`}
+                  placeholder="WiPay number"
                   maxLength={30}
                   value={wipayNumber}
                   onChange={onWipayNumber}
-                  disabled={wipay === 'No'}
+                  disabled={wipay === 'No' || !wipay}
                 />
               </Col>
-            </Row>
-            <Row className="vendor-content card">
-              <Col md={6} sm={12} >
-                <label className="signup-label">Which do you prefer? <span className="red-star">*</span></label>
+              <Col md={6} sm={12} className={`clear-country ${alertError && !preference && `dropdown-alert`}`} >
+                <label className="signup-label">Which do you prefer? {wipay === 'Yes' && <span className="red-star">*</span>}</label>
                 <Select
                   type="text"
-                  className="prof-select "
-                  placeholder="choose"
-                  value={youPrefer}
-                  onChange={onYouPrefer}
-                  options={youPreferList}
+                  placeholder="Choose you're preference"
+                  value={preference}
+                  onChange={onPreference}
+                  options={preferenceList}
                   isSearchable={false}
+                  isDisabled={wipay === 'No' || !wipay}
                 />
               </Col>
-              <Col md={6} sm={12} >
+              <Col md={6} sm={12} className={`clear-city ${alertError && !ikOptions && `dropdown-alert`}`}>
                 <label className="signup-label">IK Payout Options <span className="red-star">*</span></label>
                 <Select
                   type="text"
-                  className="prof-select "
-                  placeholder="choose"
+                  placeholder="Choose you're payout option"
                   value={ikOptions}
                   onChange={onIkoptions}
                   options={ikOptionsList}
@@ -448,7 +431,7 @@ const VendorInfo = (props) => {
                 />
               </Col>
               <Col md={6} sm={12} >
-                <label className="signup-label radio-label">US Account Available <span className="red-star">*</span></label>
+                <label className="signup-label radio-label">US Account Available </label>
                 <div className="form-check">
                   <input
                     className="form-check-input"
@@ -498,7 +481,6 @@ const VendorInfo = (props) => {
               </Col>
               <Col md={12} sm={12} className="login-error-signup" >
                 <span className="login-error-msg">
-                  {/* {alertMsg} */}
                 </span>
               </Col>
             </Row>
