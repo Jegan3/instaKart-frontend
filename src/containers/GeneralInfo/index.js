@@ -398,7 +398,7 @@ const GeneralInfo = () => {
                 <Col lg={2} md={3} sm={4} xs={6} className="product-button">
                   <button
                     type="button"
-                    className="btn btn-primary btn-block modal-button"
+                    className="btn btn-primary btn-block modal-butn"
                   // onClick={onSubmit}
                   >
                     Submit
@@ -407,7 +407,7 @@ const GeneralInfo = () => {
                 <Col lg={2} md={3} sm={4} xs={6} className="product-button">
                   <button
                     type="button"
-                    className="btn btn-primary btn-block modal-button"
+                    className="btn btn-primary btn-block modal-butn"
                   // onClick={onCancel}
                   >
                     Cancel
@@ -415,7 +415,6 @@ const GeneralInfo = () => {
                 </Col>
                 {/* </Col> */}
               </Row>
-
             </Row>
           </Grid>
         </div>

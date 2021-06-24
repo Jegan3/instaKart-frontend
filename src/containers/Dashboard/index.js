@@ -2,13 +2,14 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Col, Row, Grid, Button } from 'react-bootstrap';
-import { Modal, Header, ModalBody, ModalFooter }from 'react-bootstrap'
+import { Modal, Header, ModalBody, ModalFooter } from 'react-bootstrap'
 import ReactTable from 'react-table';
 import Headerbar from '../../components/Headerbar';
 import Table from '../../components/Table';
 import StatsCard from '../../components/StatsCard';
 // import Upload from '../../components/Upload';
 import Sidebar from '../../components/Sidebar';
+import Overlay from '../../components/Overlay';
 
 
 const productData = [
@@ -25,8 +26,9 @@ const productData = [
 const Dashboard = () => {
   const [rtl, setRtl] = useState();
   const [show, setShow] = useState(false);
+  //const [alert, setAlert] = useState('');
 
-  const handleClose = () => setShow(false);
+
   const handleShow = () => setShow(true);
 
   const dispatch = useDispatch();
@@ -45,9 +47,9 @@ const Dashboard = () => {
   //   dispatch({ type: 'BANNER_RETRIEVE_REQUEST', email });
   // }, []);
 
-  const onClick = () => {
-    setShow(true);
-  };
+  // const onClick = () => {
+  //   setShow(true);
+  // };
 
   const hidePopup = () => {
     setShow(false);
@@ -58,30 +60,15 @@ const Dashboard = () => {
     setRtl(rtl)
   }
 
-  // const onButton = () => {
-  //   alert('raki')
-  //   // <Alert
-  //   //   message="Info Text"
-  //   //   description="Info Description Info Description Info Description Info Description"
-  //   //   type="info"
-  //   //   action={
-  //   //     <Space direction="vertical">
-  //   //       <Button size="small" type="primary">
-  //   //         Accept
-  //   //       </Button>
-  //   //       <Button size="small" danger type="ghost">
-  //   //         Decline
-  //   //       </Button>
-  //   //     </Space>
-  //   //   }
-  //   //   closable
-  //   // />
-  // }
-
   return (
     <div className={`wrapper ${rtl ? 'rtl' : ''}`}>
       {/* <Upload showPopup={show} hidePopup={hidePopup} /> */}
+      <Overlay show={show} onHide={hidePopup} primary="accept"
+        secondary="reject" onSubmitSecondary={console.log('reject')}
+        onSubmitPrimary={console.log('Accept')} alert={'successful'} />
       <Sidebar />
+      <div>
+      </div>
       <div className="rightside-panel">
         <Headerbar headerName="Dashboard" setRtlCallback={onRtl} />
         <div className="main-content">
@@ -198,9 +185,9 @@ const Dashboard = () => {
                       },
                       {
                         Header: 'Status',
-                        accessor: 'name',
-                        filterable: false,
-                        sortable: false,
+                        accessor: 'status',
+                        // filterable: false,
+                        // sortable: false,
                         // Cell: (original) => (
                         //   <div className="actions-right">
                         //     <Button className="btn btn-danger" simple onClick={() => onClick(original)}>{button}</Button>
@@ -212,23 +199,10 @@ const Dashboard = () => {
                         filterable: false,
                         sortable: false,
                         Cell: (original) => (
-                          <div className="actions-right">
-                            <Button className="btn btn-danger" onClick={handleShow}>click me</Button>
-                            <Modal show={show} onHide={handleClose} animation={false}>
-                              <Modal.Header closeButton>
-                                <Modal.Title>Modal heading</Modal.Title>
-                              </Modal.Header>
-                              <Modal.Body></Modal.Body>
-                              <Modal.Footer>
-                                <Button variant="secondary" onClick={handleClose}>
-                                  Close
-                                </Button>
-                                <Button variant="primary" onClick={handleClose}>
-                                  Save Changes
-                                </Button>
-                              </Modal.Footer>
-                            </Modal>
-                          </div>),
+                          // <div className="actions-right">
+                          <span className="btn-sign" onClick={handleShow}><i class="fab fa-react"></i></span>
+                          // </div>
+                        ),
                       },
                     ]}
                     defaultPageSize={10}

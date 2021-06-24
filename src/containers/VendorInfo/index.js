@@ -187,7 +187,7 @@ const VendorInfo = (props) => {
     if (!firstName || !lastName || !mobile || !uploadId || !uploadRegistration || !bank || !bankAccount || !ikOptions) {
       setAlertError(true)
       message.error('Please fill all the fields')
-    } else if (wipay === 'Yes' && (!wipayNumber || !preference)) {
+    } else if (wipay === 'True' && (!wipayNumber || !preference)) {
       setAlertError(true)
       message.error('Please fill all the fields')
     } else if (termscondition === false) {
@@ -378,17 +378,18 @@ const VendorInfo = (props) => {
                     <input
                       className="form-check-input"
                       type="radio"
-                      value='Yes'
+                      value='True'
                       onChange={onWipay}
-                      checked={wipay === 'Yes' ? true : false} />
+                      checked={wipay === 'True' ? true : false} />
                     <label className="form-check-label" for="exampleRadios1">
                       Yes
                     </label>
                     <input
                       className="form-check-input"
                       type="radio"
-                      value='No'
-                      onChange={onWipay} checked={wipay === 'No' ? true : false} />
+                      value='False'
+                      onChange={onWipay}
+                      checked={wipay === 'False' ? true : false} />
                     <label className="form-check-label" for="exampleRadios1">
                       No
                     </label>
@@ -396,19 +397,19 @@ const VendorInfo = (props) => {
                 </div>
               </Col>
               <Col md={6} sm={12} >
-                <label className="signup-label">WiPay Account Number {wipay === 'Yes' && <span className="red-star">*</span>}</label>
+                <label className="signup-label">WiPay Account Number {wipay === 'True' && <span className="red-star">*</span>}</label>
                 <input
                   type="text"
-                  className={alertError && wipayNumber === '' && wipay === 'Yes' ? ` form-control my-input` : `form-control formy`}
+                  className={alertError && wipayNumber === '' && wipay === 'True' ? ` form-control my-input` : `form-control formy`}
                   placeholder="WiPay number"
                   maxLength={30}
                   value={wipayNumber}
                   onChange={onWipayNumber}
-                  disabled={wipay === 'No' || !wipay}
+                  disabled={wipay === 'False' || !wipay}
                 />
               </Col>
               <Col md={6} sm={12} className={`clear-country ${alertError && !preference && `dropdown-alert`}`} >
-                <label className="signup-label">Which do you prefer? {wipay === 'Yes' && <span className="red-star">*</span>}</label>
+                <label className="signup-label">Which do you prefer? {wipay === 'True' && <span className="red-star">*</span>}</label>
                 <Select
                   type="text"
                   placeholder="Choose you're preference"
@@ -416,7 +417,7 @@ const VendorInfo = (props) => {
                   onChange={onPreference}
                   options={preferenceList}
                   isSearchable={false}
-                  isDisabled={wipay === 'No' || !wipay}
+                  isDisabled={wipay === 'False' || !wipay}
                 />
               </Col>
               <Col md={6} sm={12} className={`clear-city ${alertError && !ikOptions && `dropdown-alert`}`}>
@@ -436,9 +437,9 @@ const VendorInfo = (props) => {
                   <input
                     className="form-check-input"
                     type="radio"
-                    value="Yes"
+                    value="True"
                     onChange={onUsAccount}
-                    checked={usAccount === 'Yes' ? true : false}
+                    checked={usAccount === 'True' ? true : false}
                   />
                   <label className="form-check-label" for="exampleRadios1">
                     Yes
@@ -446,9 +447,9 @@ const VendorInfo = (props) => {
                   <input
                     className="form-check-input"
                     type="radio"
-                    value="No"
+                    value="False"
                     onChange={onUsAccount}
-                    checked={usAccount === 'No' ? true : false}
+                    checked={usAccount === 'False' ? true : false}
                   />
                   <label className="form-check-label" for="exampleRadios1">
                     No
