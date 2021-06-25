@@ -159,9 +159,15 @@
 }
 
 .signup-label {
-  .info-tooltip {
-    color: black !important;
-    text-align: center;
-    padding-left: 5px;
+  .fa-info{
+    font-size: 10px;
+    margin: 5px;
   }
+}
+
+.tool-tip{
+  margin: 0px;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 0px;
 }
