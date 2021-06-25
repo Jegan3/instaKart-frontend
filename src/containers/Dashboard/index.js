@@ -1,8 +1,8 @@
 /*eslint-disable*/
 import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Col, Row, Grid, Button } from 'react-bootstrap';
-import { Modal, Header, ModalBody, ModalFooter } from 'react-bootstrap'
+import { Col, Row, Grid } from 'react-bootstrap';
+// import { Modal, Header, ModalBody, ModalFooter } from 'react-bootstrap'
 import ReactTable from 'react-table';
 import Headerbar from '../../components/Headerbar';
 import Table from '../../components/Table';
@@ -23,6 +23,7 @@ const productData = [
     poster: '123456789012',
   },
 ]
+
 const Dashboard = () => {
   const [rtl, setRtl] = useState();
   const [show, setShow] = useState(false);
@@ -50,6 +51,11 @@ const Dashboard = () => {
   // const onClick = () => {
   //   setShow(true);
   // };
+
+
+  useEffect(() => {
+ dispatch({ type: 'VENDOR_LIST_REQUEST' });
+  }, [])
 
   const hidePopup = () => {
     setShow(false);
