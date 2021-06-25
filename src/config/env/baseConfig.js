@@ -6,7 +6,7 @@ export default {
     getRetrieveBanner: '/api/admin/retrivePoster?adminemail=',
     getOtp: '/api/user/verifyUser',
     getSignupContent: '/api/staticContentRouter/registerStaticContents',
-    getVendorInfo: '/api/vendorRoute/vendorinfo',
+    getVendorInfo: '/api/vendor/vendorinfo',
   },
 
   apiBaseUrl: {
