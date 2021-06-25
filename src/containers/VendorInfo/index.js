@@ -213,7 +213,6 @@ const VendorInfo = (props) => {
         ikOptions: ikOptions.value,
         usAccount,
       };
-      console.log('vendo', vendorInfo)
       dispatch({ type: 'VENDOR_INFO_REQUEST', vendorInfo });
     }
   };
