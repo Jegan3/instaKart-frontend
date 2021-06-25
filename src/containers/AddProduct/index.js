@@ -169,7 +169,7 @@ const AddProduct = () => {
                     <Col sm={3}>
                       <label className="signup-label">Tax</label>
                       <input
-                       type="text"
+                        type="text"
                         className="form-control"
                         maxLength={10}
                       />
@@ -198,31 +198,27 @@ const AddProduct = () => {
                 </Col>
               </Row>
             </Row>
-            <Row >
-              <Col md={12} className="btns-style">
-                <Col md={6} lg={6} sm={6} xs={6} className="modal-row " >
-                  <button
-                    type="button"
-                    className="btn btn-primary  btn-block modal-button "
-                  // onClick={Login}
-                  >
-                    Cancel
-                  </button>
-                </Col>
-                <Col md={6} lg={6} sm={6} xs={6} className="modal-row" >
-                  <button
-                    type="button"
-                    className="btn btn-primary btn-block modal-button "
-                  //onClick={Signup}
-                  >
-
-                    Submit
-                  </button>
-                </Col>
-                {/* <Col md={12} sm={12} className="login-error" >
-                      <span className="login-error-msg">{errorMsg}</span>
-                    </Col> */}
+            <Row md={12} className="margin-control">
+              {/* <Col className="product-button"> */}
+              <Col lg={2} md={3} sm={4} xs={6} className="product-button">
+                <button
+                  type="button"
+                  className="btn btn-primary btn-block modal-butn"
+                // onClick={onSubmit}
+                >
+                  Submit
+                </button>
               </Col>
+              <Col lg={2} md={3} sm={4} xs={6} className="product-button">
+                <button
+                  type="button"
+                  className="btn btn-primary btn-block modal-butn"
+                // onClick={onCancel}
+                >
+                  Cancel
+                </button>
+              </Col>
+              {/* </Col> */}
             </Row>
           </Grid>
         </div>

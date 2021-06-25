@@ -2,16 +2,35 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Col, Row, Grid, Button } from 'react-bootstrap';
+import { Modal, Header, ModalBody, ModalFooter } from 'react-bootstrap'
 import ReactTable from 'react-table';
 import Headerbar from '../../components/Headerbar';
 import Table from '../../components/Table';
 import StatsCard from '../../components/StatsCard';
-import Upload from '../../components/Upload';
+// import Upload from '../../components/Upload';
 import Sidebar from '../../components/Sidebar';
+import Overlay from '../../components/Overlay';
 
+
+const productData = [
+  {
+    _id: '1',
+    company: 'Nike',
+    email: 'nike@gmail.com',
+    status: 'pending',
+    soh: '100',
+    country: 'America',
+    poster: '123456789012',
+  },
+]
 const Dashboard = () => {
   const [rtl, setRtl] = useState();
-  
+  const [show, setShow] = useState(false);
+  //const [alert, setAlert] = useState('');
+
+
+  const handleShow = () => setShow(true);
+
   const dispatch = useDispatch();
   const login = useSelector((state) => state.loginState.login);
   const userData = useSelector((state) => state.retreiveBannerState.retreiveBanner);
@@ -28,9 +47,9 @@ const Dashboard = () => {
   //   dispatch({ type: 'BANNER_RETRIEVE_REQUEST', email });
   // }, []);
 
-  const onClick = () => {
-    setShow(true);
-  };
+  // const onClick = () => {
+  //   setShow(true);
+  // };
 
   const hidePopup = () => {
     setShow(false);
@@ -40,11 +59,16 @@ const Dashboard = () => {
   const onRtl = (rtl) => {
     setRtl(rtl)
   }
- 
+
   return (
     <div className={`wrapper ${rtl ? 'rtl' : ''}`}>
       {/* <Upload showPopup={show} hidePopup={hidePopup} /> */}
+      <Overlay show={show} onHide={hidePopup} primary="accept"
+        secondary="reject" onSubmitSecondary={console.log('reject')}
+        onSubmitPrimary={console.log('Accept')} alert={'successful'} />
       <Sidebar />
+      <div>
+      </div>
       <div className="rightside-panel">
         <Headerbar headerName="Dashboard" setRtlCallback={onRtl} />
         <div className="main-content">
@@ -130,7 +154,8 @@ const Dashboard = () => {
                 title="RECENT ORDER REQUESTED"
                 content={
                   <ReactTable
-                    data={userData && userData.userData}
+                    //  data={userData && userData.userData}
+                    data={productData}
                     filterable
                     columns={[
                       {
@@ -147,6 +172,10 @@ const Dashboard = () => {
                         accessor: 'email',
                       },
                       {
+                        Header: 'Country',
+                        accessor: 'country',
+                      },
+                      {
                         Header: 'Bank Account Number',
                         accessor: 'poster',
                       },
@@ -156,13 +185,24 @@ const Dashboard = () => {
                       },
                       {
                         Header: 'Status',
+                        accessor: 'status',
+                        // filterable: false,
+                        // sortable: false,
+                        // Cell: (original) => (
+                        //   <div className="actions-right">
+                        //     <Button className="btn btn-danger" simple onClick={() => onClick(original)}>{button}</Button>
+                        //   </div>),
+                      },
+                      {
+                        Header: 'Action',
                         accessor: 'name',
                         filterable: false,
                         sortable: false,
                         Cell: (original) => (
-                          <div className="actions-right">
-                            <Button className="btn btn-danger" simple onClick={() => onClick(original)}>{button}</Button>
-                          </div>),
+                          // <div className="actions-right">
+                          <span className="btn-sign" onClick={handleShow}><i class="fab fa-react"></i></span>
+                          // </div>
+                        ),
                       },
                     ]}
                     defaultPageSize={10}

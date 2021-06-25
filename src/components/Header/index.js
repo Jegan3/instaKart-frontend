@@ -79,8 +79,9 @@ const Header = ({ basic }) => {
   }
 
   const dashboard = () => {
-    history.push('/dashboard');
+    history.push(admin ? '/dashboard' : '/generalinfo')
     window.scrollTo(0, 0);
+    console.log("test", validLogin.user.type)
   }
 
   const toHome = () => {

@@ -70,7 +70,7 @@ const productData = [
     title: 'Grilled Chicken  Sandwich',
     status: 'reserve',
     soh: '200',
-  },{
+  }, {
     id: '10',
     imgUrl: 'images/1_Food.png',
     title: 'Grilled Chicken  Sandwich',
@@ -119,7 +119,6 @@ const ProductList = () => {
             <Row>
               <Table
                 title=""
-                data={productData}
                 content={
                   <Row className="margin-control">
                     <ReactTable
@@ -179,31 +178,31 @@ const ProductList = () => {
                       showPaginationBottom
                       className="-striped -highlight"
                     />
-                    <Row md={12} className="margin-control">
-                      {/* <Col className="product-button"> */}
-                      <Col lg={2} md={3} sm={4} xs={6} className="product-button">
-                        <button
-                          type="button"
-                          className="btn btn-primary btn-block modal-button"
-                        // onClick={onSubmit}
-                        >
-                          Submit
-                        </button>
-                      </Col>
-                      <Col lg={2} md={3} sm={4} xs={6} className="product-button">
-                        <button
-                          type="button"
-                          className="btn btn-primary btn-block modal-button"
-                        // onClick={onCancel}
-                        >
-                          Cancel
-                        </button>
-                      </Col>
-                      {/* </Col> */}
-                    </Row>
                   </Row>
                 }
               />
+            </Row>
+            <Row md={12} className="margin-control">
+              {/* <Col className="product-button"> */}
+              <Col lg={2} md={3} sm={4} xs={6} className="product-button">
+                <button
+                  type="button"
+                  className="btn btn-primary btn-block modal-butn"
+                // onClick={onSubmit}
+                >
+                  Submit
+                </button>
+              </Col>
+              <Col lg={2} md={3} sm={4} xs={6} className="product-button">
+                <button
+                  type="button"
+                  className="btn btn-primary btn-block modal-butn"
+                // onClick={onCancel}
+                >
+                  Cancel
+                </button>
+              </Col>
+              {/* </Col> */}
             </Row>
           </Grid>
         </div>
