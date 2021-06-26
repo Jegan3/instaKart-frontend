@@ -9,6 +9,7 @@ export function* getLogin(data) {
     yield put(instakartActionCreators.getLoginSucccess(response));
     sessionStorage.firstName = response.user.firstName;
     sessionStorage.type = response.user.type;
+    sessionStorage.access = response.auth;
   } catch (error) {
     yield put(instakartActionCreators.getLoginFailure(error));
   }

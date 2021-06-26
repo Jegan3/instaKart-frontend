@@ -10,6 +10,7 @@ import StatsCard from '../../components/StatsCard';
 // import Upload from '../../components/Upload';
 import Sidebar from '../../components/Sidebar';
 import Overlay from '../../components/Overlay';
+import Desk from '../../components/Desk';
 
 
 const productData = [
@@ -27,15 +28,21 @@ const productData = [
 const Dashboard = () => {
   const [rtl, setRtl] = useState();
   const [show, setShow] = useState(false);
+  const [info, setInfo] = useState();
   //const [alert, setAlert] = useState('');
 
-
-  const handleShow = () => setShow(true);
+  // const handleShow = () => setShow(true);
 
   const dispatch = useDispatch();
-  const login = useSelector((state) => state.loginState.login);
+  const vendorList = useSelector((state) => state.vendorListState.vendorList && state.vendorListState.vendorList.data);
   const userData = useSelector((state) => state.retreiveBannerState.retreiveBanner);
 
+
+
+  vendorList && vendorList.map((info, i) => {
+    info.id = i + 1
+  })
+  console.log('vendorlist', vendorList)
   // temproraily for demo
   // const button = login.user.type === 'admin' ? 'APPROVE' : 'UPLOAD';
 
@@ -54,7 +61,7 @@ const Dashboard = () => {
 
 
   useEffect(() => {
- dispatch({ type: 'VENDOR_LIST_REQUEST' });
+    dispatch({ type: 'VENDOR_LIST_REQUEST' });
   }, [])
 
   const hidePopup = () => {
@@ -66,12 +73,29 @@ const Dashboard = () => {
     setRtl(rtl)
   }
 
+  const handleShow = (info) => {
+    // console.log('info',info)
+  setShow(true);
+  setInfo(info.original)
+  }
+
+  const onClose = () => {
+    setShow(false)
+  };
+
   return (
     <div className={`wrapper ${rtl ? 'rtl' : ''}`}>
       {/* <Upload showPopup={show} hidePopup={hidePopup} /> */}
-      <Overlay show={show} onHide={hidePopup} primary="accept"
+      {/* <Overlay show={show} onHide={hidePopup} primary="accept"
         secondary="reject" onSubmitSecondary={console.log('reject')}
-        onSubmitPrimary={console.log('Accept')} alert={'successful'} />
+        onSubmitPrimary={console.log('Accept')} alert={'successful'} /> */}
+        <Desk
+          // width={500}
+          // placement="right"
+          // closable={false}
+          info={info}
+          onClose={onClose}
+          show={show}/>
       <Sidebar />
       <div>
       </div>
@@ -161,52 +185,52 @@ const Dashboard = () => {
                 content={
                   <ReactTable
                     //  data={userData && userData.userData}
-                    data={productData}
+                    data={vendorList}
                     filterable
                     columns={[
                       {
                         Header: '#',
-                        accessor: '_id',
-                        width: 100,
+                        accessor: 'id',
+                        filterable: false,
+                        width: 50,
                       },
                       {
                         Header: 'Company',
-                        accessor: 'company',
+                        accessor: 'companyName',
                       },
                       {
                         Header: 'E-Mail',
                         accessor: 'email',
+                        width: 250,
                       },
                       {
                         Header: 'Country',
                         accessor: 'country',
                       },
                       {
-                        Header: 'Bank Account Number',
-                        accessor: 'poster',
+                        Header: 'Registered',
+                        accessor: '21/3/2019',
                       },
-                      {
-                        Header: 'WiPay Account Number',
-                        accessor: 'poster',
-                      },
+                      // {
+                      //   Header: 'Bank Account',
+                      //   accessor: 'bankAccount',
+                      // },
+                      // {
+                      //   Header: 'WiPay Account',
+                      //   accessor: 'wipayAccount',
+                      // },
                       {
                         Header: 'Status',
                         accessor: 'status',
-                        // filterable: false,
-                        // sortable: false,
-                        // Cell: (original) => (
-                        //   <div className="actions-right">
-                        //     <Button className="btn btn-danger" simple onClick={() => onClick(original)}>{button}</Button>
-                        //   </div>),
                       },
                       {
                         Header: 'Action',
-                        accessor: 'name',
+                        // accessor: 'status',
                         filterable: false,
                         sortable: false,
                         Cell: (original) => (
                           // <div className="actions-right">
-                          <span className="btn-sign" onClick={handleShow}><i class="fab fa-react"></i></span>
+                          <span className="btn-sign" onClick={()=>handleShow(original)}><i class="fab fa-react"></i></span>
                           // </div>
                         ),
                       },

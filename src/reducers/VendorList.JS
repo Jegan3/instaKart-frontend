@@ -6,7 +6,6 @@ export default (state = initialState, action) => {
       return {
         ...state,
         isLoading: true,
-        vendorList: false,
         error: false,
       };
     case 'VENDOR_LIST_SUCCESS':

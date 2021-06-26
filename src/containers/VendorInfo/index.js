@@ -49,7 +49,7 @@ const VendorInfo = (props) => {
   const [uploadAddress, setUploadAddress] = useState('');
   const [uploadAddressName, setUploadAddressName] = useState('');
   const [wipay, setWipay] = useState('')
-  const [wipayNumber, setWipayNumber] = useState('')
+  const [wipayAccount, setWipayAccount] = useState('')
   const [preference, setPreference] = useState();
   const [ikOptions, setIkoptions] = useState();
   const [termscondition, setTermsCondition] = useState(false);
@@ -156,7 +156,7 @@ const VendorInfo = (props) => {
   }
 
   const onWipayNumber = (e) => {
-    setWipayNumber(e.target.value)
+    setWipayAccount(e.target.value)
   }
 
   const onPreference = (preference) => {
@@ -187,7 +187,7 @@ const VendorInfo = (props) => {
     if (!firstName || !lastName || !mobile || !uploadId || !uploadRegistration || !bank || !bankAccount || !ikOptions) {
       setAlertError(true)
       message.error('Please fill all the fields')
-    } else if (wipay === 'Yes' && (!wipayNumber || !preference)) {
+    } else if (wipay === 'Yes' && (!wipayAccount || !preference)) {
       setAlertError(true)
       message.error('Please fill all the fields')
     } else if (termscondition === false) {
@@ -208,7 +208,7 @@ const VendorInfo = (props) => {
         uploadCompanyRegistration: uploadRegistration,
         uploadAddress,
         wipay,
-        wipayNumber,
+        wipayAccount,
         preference: preference.value,
         ikOptions: ikOptions.value,
         usAccount,
@@ -263,7 +263,7 @@ const VendorInfo = (props) => {
                 />
               </Col>
               <Col md={6} sm={12}>
-                <label className="signup-label">Business Contact Number <span className="red-star">*</span></label>
+                <label className="signup-label">Contact Number <span className="red-star">*</span></label>
                 <Cleave
                   className={alertError && mobile === '' ? ` form-control my-input` : `form-control formy`}
                   placeholder="Enter contact number"
@@ -399,10 +399,10 @@ const VendorInfo = (props) => {
                 <label className="signup-label">WiPay Account Number {wipay === 'Yes' && <span className="red-star">*</span>}</label>
                 <input
                   type="text"
-                  className={alertError && wipayNumber === '' && wipay === 'Yes' ? ` form-control my-input` : `form-control formy`}
+                  className={alertError && wipayAccount === '' && wipay === 'Yes' ? ` form-control my-input` : `form-control formy`}
                   placeholder="WiPay number"
                   maxLength={30}
-                  value={wipayNumber}
+                  value={wipayAccount}
                   onChange={onWipayNumber}
                   disabled={wipay === 'No' || !wipay}
                 />

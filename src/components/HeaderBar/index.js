@@ -41,10 +41,10 @@ const Headerbar = ({ navbar, setRtlCallback, headerName }) => {
         <div className="hamburger-bars-icon hamburger-mobile visible-xs-block" onClick={onBars}>
           <FontAwesomeIcon icon={faBars} />
         </div>
-        <div className="hamburger-bars-icon hamburger-mobile hidden-xs" onClick={onRtl}>
+      </Navbar.Header>
+      <div className="hamburger-bars-icon hamburger-mobile hidden-xs" onClick={onRtl}>
           <FontAwesomeIcon icon={faMapSigns} />
         </div>
-      </Navbar.Header>
     </Navbar>
   );
 };

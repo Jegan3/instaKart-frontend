@@ -7,6 +7,7 @@ export default {
     getOtp: '/api/user/verifyUser',
     getSignupContent: '/api/staticContentRouter/registerStaticContents',
     getVendorInfo: '/api/vendor/vendorinfo',
+    getVendorList: '/api/admin/vendorApplications',
   },
 
   apiBaseUrl: {

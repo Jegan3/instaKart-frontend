@@ -7,6 +7,7 @@ import otpState from './Otp';
 import signupContentState from './SignupContent';
 import vendorInfoState from './VendorInfo';
 import sidebarState from './Sidebar';
+import vendorListState from './VendorList';
 
 const rootReducer = combineReducers({
   signupState,
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   signupContentState,
   vendorInfoState,
   sidebarState,
+  vendorListState,
 });
 
 export default rootReducer;
