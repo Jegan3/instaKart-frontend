@@ -3,8 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Row, Col, Image, Form, Grid } from 'react-bootstrap';
 import Select from "react-select";
-import Cleave from "cleave.js/react";
-// import "cleave.js/dist/addons/cleave-phone.us";
+import { Tooltip } from 'antd';
 import { history } from '../../routes';
 import OtpScreen from '../../components/OtpScreen';
 import Footer from '../../components/Footer';
@@ -74,10 +73,6 @@ const SignUp = (props) => {
     }
   }
 
-  // const onMobile = (e) => (
-  //   setMobile(e.target.rawValue)
-  // )
-
   const onLastName = (e) => {
     if (e.target.value.match('^[a-zA-Z0-9]*$')) {
       setLastName(e.target.value)
@@ -105,9 +100,6 @@ const SignUp = (props) => {
   }
 
   const OpenTermsCondition = () => {
-    // window.open(`${window.location.origin}/termsofcondition`, '', 'width=1400,height=1200');
-    // const win = window.open('/termsofcondition', "_blank");
-    // win.focus();
     history.push({ pathname: '/termsofcondition' });
     window.scrollTo(0, 0);
   };
@@ -116,9 +108,6 @@ const SignUp = (props) => {
     setIndustryType(industryType)
   }
 
-  // IndustryType Options
-  // const sortIndustry = industry && industry.sort()
-  // const sortIndustry = industry && industry.sort((a, b) => a.industryType.localeCompare(b.industryType))
   const industryTypeOptions = industry && industry.sort((a, b) => a.industryType.localeCompare(b.industryType)).map((item) => ({
     value: item._id,
     label: item.industryType,
@@ -172,8 +161,6 @@ const SignUp = (props) => {
       };
 
       const signupDetailsVendors = {
-        // firstName: firstName,
-        // lastName: lastName,
         company,
         industryType,
         countryId: country && country.value,
@@ -292,20 +279,6 @@ const SignUp = (props) => {
                 />
               </Col>
             </Row>}
-            {/* <Col md={6} sm={12}>
-                <label className="signup-label">Contact Number </label>
-                <Cleave
-                  className="form-control"
-                  placeholder="Enter contact number"
-                  value={lastName}
-                  onChange={onMobile}
-                  options={{
-                    blocks: [3, 3, 4],
-                    numericOnly: true
-                  }}
-                // options={{ phone: true, phoneRegionCode: "US" }}
-                />
-              </Col> */}
             <Row>
               <Col md={6} sm={12}>
                 <label className="signup-label">Email <span className="red-star">*</span></label>
@@ -318,12 +291,18 @@ const SignUp = (props) => {
                 />
               </Col>
               <Col md={6} sm={12}>
-                <label className="signup-label">Password <span className="red-star">*</span><a type="button"
-                  class="info-tooltip" data-toggle="tooltip" data-placement="right" title="•	Be at least 8 characters
-•	Have at least one number
-•	Have at least one upper case letter">
-                  <i class="fa fa-info" aria-hidden="true"></i>
-                </a></label>
+                <label className="signup-label">Password <span className="red-star">*</span>
+                  <span>
+                    <Tooltip title={
+                      <div className="tool-list">
+                        <p className="tool-tip">•	Be at least 8 characters</p>
+                        <p className="tool-tip">•	Have at least one number</p>
+                        <p className="tool-tip">•	Have at least one upper case letter</p>
+                      </div>}
+                      placement="rightTop" >
+                      <i class="fa fa-info" /> </Tooltip>
+                  </span>
+                </label>
                 <input
                   type={showPassword ? 'text' : 'password'}
                   className={alertError && password === '' ? ` form-control my-input` : `form-control formy`}
