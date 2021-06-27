@@ -1,11 +1,11 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import envConfig from 'envConfig'; //eslint-disable-line
 import * as instakartActionCreators from '../actions/VendorStatus';
-import { doPatch } from '../utils/fetchWrapper';
+import { doPost } from '../utils/fetchWrapper';
 
 export function* getVendorStatus(data) {
   try {
-    const response = yield doPatch(envConfig.apiEndPoints.getVendorStatus, data.status);
+    const response = yield doPost(envConfig.apiEndPoints.getVendorStatus, data.status);
     yield put(instakartActionCreators.getVendorStatusSuccess(response));
   } catch (error) {
     yield put(instakartActionCreators.getVendorStatusFailure(error));
