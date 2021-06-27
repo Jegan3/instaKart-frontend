@@ -1,5 +1,6 @@
 /*eslint-disable*/
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Grid, Row, Col } from 'react-bootstrap';
 import Select from 'react-select';
 import Cleave from "cleave.js/react";
@@ -46,7 +47,11 @@ const GeneralInfo = () => {
   const [igId, setIgId] = useState('');
   const [mobile, setMobile] = useState('');
 
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch({ type: 'INDUSTRY_INFO_REQUEST' });
+  }, [])  
 
   //avatar display from api
   const onAvatarImage = async e => {

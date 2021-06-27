@@ -13,17 +13,17 @@ import Overlay from '../../components/Overlay';
 import Desk from '../../components/Desk';
 
 
-const productData = [
-  {
-    _id: '1',
-    company: 'Nike',
-    email: 'nike@gmail.com',
-    status: 'pending',
-    soh: '100',
-    country: 'America',
-    poster: '123456789012',
-  },
-]
+// const productData = [
+//   {
+//     _id: '1',
+//     company: 'Nike',
+//     email: 'nike@gmail.com',
+//     status: 'pending',
+//     soh: '100',
+//     country: 'America',
+//     poster: '123456789012',
+//   },
+// ]
 
 const Dashboard = () => {
   const [rtl, setRtl] = useState();
@@ -35,7 +35,7 @@ const Dashboard = () => {
 
   const dispatch = useDispatch();
   const vendorList = useSelector((state) => state.vendorListState.vendorList && state.vendorListState.vendorList.data);
-  const userData = useSelector((state) => state.retreiveBannerState.retreiveBanner);
+  // const userData = useSelector((state) => state.retreiveBannerState.retreiveBanner);
 
 
 
@@ -83,6 +83,15 @@ const Dashboard = () => {
     setShow(false)
   };
 
+  const onSubmit = () => {
+    console.log("infoooo",info)
+    const status = {
+email: info.email,
+regStatus: 'accepted',
+    }
+    dispatch({ type: 'VENDOR_STATUS_REQUEST', status });
+  };
+
   return (
     <div className={`wrapper ${rtl ? 'rtl' : ''}`}>
       {/* <Upload showPopup={show} hidePopup={hidePopup} /> */}
@@ -95,7 +104,9 @@ const Dashboard = () => {
           // closable={false}
           info={info}
           onClose={onClose}
-          show={show}/>
+          show={show}
+          submit={onSubmit}
+          />
       <Sidebar />
       <div>
       </div>

@@ -2,18 +2,18 @@ const initialState = {};
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case 'BANNER_RETRIEVE_REQUEST':
+    case 'VENDOR_STATUS_REQUEST':
       return {
         ...state,
         isLoading: true,
       };
-    case 'BANNER_RETRIEVE_SUCCESS':
+    case 'VENDOR_STATUS_SUCCESS':
       return {
         ...state,
         isLoading: false,
-        retreiveBanner: action.banner,
+        status: action.status,
       };
-    case 'BANNER_RETRIEVE_FAILURE':
+    case 'VENDOR_STATUS_FAILURE':
       return {
         ...state,
         isLoading: false,

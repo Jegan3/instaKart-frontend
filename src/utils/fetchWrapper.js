@@ -75,7 +75,7 @@ export const doPost = (url, body, urlPrefix = baseUrl) => timeoutPromise(fetch(
       'Content-Type': 'application/json; charset=UTF-8',
       Accept: 'application/json; charset=UTF-8',
       'Access-Control-Allow-Origin': '*',
-      Authorization: `Bearer ${sessionStorage.access}`,
+      'x-access-token': `${sessionStorage.access}`,
     },
     body: JSON.stringify(body),
   }),
@@ -105,25 +105,27 @@ export const doPost = (url, body, urlPrefix = baseUrl) => timeoutPromise(fetch(
  * @param {string} urlPrefix
  * @returns {Promise}
  */
-export const doPut = (url, body, urlPrefix = baseUrl) => timeoutPromise(fetch(
+export const doPatch = (url, body, urlPrefix = baseUrl) => timeoutPromise(fetch(
   urlPrefix.concat(url),
   Object.assign({}, {
-    method: 'put',
+    method: 'patch',
     headers: {
       'Content-Type': 'application/json; charset=UTF-8',
       Accept: 'application/json; charset=UTF-8',
       'Access-Control-Allow-Origin': '*',
+      'x-access-token': `${sessionStorage.access}`,
     },
-    credentials: 'include',
+    // credentials: 'include',
     body: JSON.stringify(body),
   }),
 ), TIMEOUT, 504)
   .then((res) => {
     let response = null;
+    response = res.json();
     if (res.ok) {
-      response = res.json();
+      return response;
     }
-    return response;
+    return response.then((error) => { throw error; });
   });
 
 /** @description Sending a DELETE request.

@@ -47,7 +47,7 @@ const ThriftStore = () => (
     <Row>
       <div className="bg-thriftstore">
         <div className="thift-ads">
-          <h3>FEATURED ADS</h3>
+          <h3>NEW ADDITIONS</h3>
           <h6>Buy & Sell Any Thing</h6>
           <CarouselThriftStore />
         </div>
@@ -57,7 +57,7 @@ const ThriftStore = () => (
     <Row>
       <div className="bg-thift">
         <div className="thift-ads">
-          <h3>FEATURED ADS</h3>
+          <h3>NEW PROMOTIONS</h3>
           <h6>Buy & Sell Any Thing</h6>
           <CarouselThriftStore />
         </div>
@@ -67,7 +67,7 @@ const ThriftStore = () => (
     <Row>
       <div className="bg-thriftstore">
         <div className="thift-ads">
-          <h3>FEATURED ADS</h3>
+          <h3>TIMECAP LOGS</h3>
           <h6>Buy & Sell Any Thing</h6>
           <CarouselThriftStore />
         </div>

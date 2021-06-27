@@ -2,18 +2,19 @@ const initialState = {};
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case 'BANNER_UPLOAD_REQUEST':
+    case 'INDUSTRY_INFO_REQUEST':
       return {
         ...state,
         isLoading: true,
+        error: false,
       };
-    case 'BANNER_UPLOAD_SUCCESS':
+    case 'INDUSTRY_INFO_SUCCESS':
       return {
         ...state,
         isLoading: false,
-        uploadBanner: action.banner,
+        industryInfo: action.industryInfo,
       };
-    case 'BANNER_UPLOAD_FAILURE':
+    case 'INDUSTRY_INFO_FAILURE':
       return {
         ...state,
         isLoading: false,

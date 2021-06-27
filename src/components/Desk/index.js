@@ -2,14 +2,14 @@
 import React from 'react';
 import { Drawer, Divider, Col, Row, Button } from 'antd';
 
-const DescriptionItem = ({ title, content, industry }) => (
+const DescriptionItem = ({ title, content }) => (
   <div className="site-description-item-profile-wrapper">
     <p className="site-description-item-profile-p-label">{title}:</p>
     {content}
   </div>
 );
 
-const Desk = ({ show, onClose, info }) =>
+const Desk = ({ show, onClose, info, submit }) =>
   <Drawer
     width={600}
     placement="right"
@@ -69,10 +69,10 @@ const Desk = ({ show, onClose, info }) =>
     </Row>
     <div className="desk-btns"
     >
-      <Button style={{ marginRight: 8 }}>
+      <Button style={{ marginRight: 8 }} >
         Cancel
       </Button>
-      <Button >
+      <Button onClick={submit}>
         Submit
       </Button>
     </div>
