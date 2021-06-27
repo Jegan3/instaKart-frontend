@@ -11,11 +11,39 @@
 }
 
 .ant-drawer-body p.site-description-item-profile-p {
+  margin-bottom: 24px;
   display: block;
-  margin-bottom: 16px;
-  color: rgba(0, 0, 0, 0.85);
-  font-size: 16px;
-  line-height: 1.5715;
+  color: grey;
+  font-size: 17px;
+}
+
+.title-desk {
+  text-align: center;
+  font-size: 25px !important;
+  font-weight: 600;
+  color: grey;
+}
+
+.desk-btns {
+  text-align: right;
+  margin-top: 10px;
+
+  .ant-btn {
+    position: relative;
+    display: inline-block;
+    font-weight: 400;
+    white-space: nowrap;
+    text-align: center;
+    border-color: #28a4d9 !important;
+    color: #28a4d9 !important;
+    margin-bottom: 15px;
+    cursor: pointer;
+    padding:4px 40px;
+    transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+    border-width: 1px;
+    background-color: transparent !important;
+    opacity: 0.8;
+  }
 }
 
 [data-theme='compact'] .ant-drawer-body p.site-description-item-profile-p {

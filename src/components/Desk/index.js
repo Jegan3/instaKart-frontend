@@ -1,6 +1,6 @@
 /*eslint-disable*/
 import React from 'react';
-import { Drawer, Divider, Col, Row } from 'antd';
+import { Drawer, Divider, Col, Row, Button } from 'antd';
 
 const DescriptionItem = ({ title, content, industry }) => (
   <div className="site-description-item-profile-wrapper">
@@ -17,7 +17,7 @@ const Desk = ({ show, onClose, info }) =>
     onClose={onClose}
     visible={show}
   >
-    <p className="site-description-item-profile-p" style={{ marginBottom: 24 }}>
+    <p className="site-description-item-profile-p title-desk">
       Vendor Profile
     </p>
     <p className="site-description-item-profile-p">Personal</p>
@@ -67,6 +67,15 @@ const Desk = ({ show, onClose, info }) =>
         <DescriptionItem title="WiPay Account Number" content={info && info.wipayAccount} />
       </Col>
     </Row>
+    <div className="desk-btns"
+    >
+      <Button style={{ marginRight: 8 }}>
+        Cancel
+      </Button>
+      <Button >
+        Submit
+      </Button>
+    </div>
   </Drawer>
 
 export default Desk;
