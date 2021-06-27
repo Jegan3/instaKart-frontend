@@ -1,17 +1,20 @@
 /*eslint-disable*/
-import React, {useState} from 'react';
+import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { Navbar } from 'react-bootstrap';
-import { useDispatch } from 'react-redux';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars,faMapSigns } from '@fortawesome/free-solid-svg-icons';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars, faMapSigns } from '@fortawesome/free-solid-svg-icons';
 
 const Headerbar = ({ navbar, setRtlCallback, headerName }) => {
   const dispatch = useDispatch();
   const [rtl, setRtl] = useState(false);
 
+  const industryInfo = useSelector((state) => state.industryInfoState.industryInfo);
+
   const onBars = () => {
     dispatch({ type: 'SHOW_SIDEBAR' });
-  }
+  };
 
   const onRtl = () => {
     setRtl(!rtl);
@@ -42,9 +45,12 @@ const Headerbar = ({ navbar, setRtlCallback, headerName }) => {
           <FontAwesomeIcon icon={faBars} />
         </div>
       </Navbar.Header>
+      <div className="registration" >
+        {industryInfo && industryInfo.data.vendorInfo.register_num}
+      </div>
       <div className="hamburger-bars-icon hamburger-mobile hidden-xs" onClick={onRtl}>
-          <FontAwesomeIcon icon={faMapSigns} />
-        </div>
+        <FontAwesomeIcon icon={faMapSigns} />
+      </div>
     </Navbar>
   );
 };

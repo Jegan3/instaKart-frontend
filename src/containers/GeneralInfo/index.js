@@ -48,6 +48,7 @@ const GeneralInfo = () => {
   const [mobile, setMobile] = useState('');
 
   const dispatch = useDispatch();
+  const industryInfo = useSelector((state) => state.industryInfoState.industryInfo);
 
   useEffect(() => {
     dispatch({ type: 'INDUSTRY_INFO_REQUEST' });
@@ -163,7 +164,7 @@ const GeneralInfo = () => {
     <div className="wrapper">
       <Sidebar />
       <div className="rightside-panel">
-        <Headerbar headerName="General Information" />
+        <Headerbar headerName="General Information"/>
         <div className="main-content general-info">
           <Grid fluid>
             <Row>
@@ -201,7 +202,7 @@ const GeneralInfo = () => {
                         placeholder="business name"
                         className="form-control"
                         maxLength={30}
-                        value={storeName}
+                        value={industryInfo && industryInfo.data.vendorInfo.companyName}
                         disabled
                       />
                     </Col>

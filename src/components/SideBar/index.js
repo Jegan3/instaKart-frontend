@@ -1,10 +1,10 @@
 /*eslint-disable*/
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from "react-router-dom";
-import { ProSidebar, SidebarHeader, SidebarFooter, SidebarContent, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faCog, faHome, faUser, faBath, faBuilding, faTag, faFolderPlus, faUserTag, faNetworkWired } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
+import { ProSidebar, SidebarHeader, SidebarFooter, SidebarContent, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars, faCog, faHome, faUser, faBuilding, faTag, faFolderPlus, faUserTag, faNetworkWired } from '@fortawesome/free-solid-svg-icons';
 import { history } from '../../routes';
 
 const Sidebar = () => {
@@ -15,7 +15,7 @@ const Sidebar = () => {
   const sidebar = useSelector((state) => state.sidebarState);
   const validLogin = useSelector((state) => state.loginState.login);
 
-  const admin = validLogin && validLogin.user.type === 'admin' || sessionStorage.type === 'admin'
+  const admin = (validLogin && validLogin.user.type === 'admin') || sessionStorage.type === 'admin';
 
   useEffect(() => {
     setToggled(sidebar.show);
@@ -27,16 +27,15 @@ const Sidebar = () => {
 
   const toggleSidebar = () => {
     setToggled(false);
-    dispatch({ type: "HIDE_SIDEBAR" });
+    dispatch({ type: 'HIDE_SIDEBAR' });
   };
 
   const toHome = () => {
     history.push({ pathname: '/' });
-  }
+  };
 
   return (
     <div className="sidemenu-main">
-      {/* <div className="sidemenu-background"> */}
       <ProSidebar
         collapsed={open}
         image="../images/caribbean1.png"
@@ -61,11 +60,15 @@ const Sidebar = () => {
             </div>
           </div>
         </SidebarHeader>
-        <SidebarContent>
+        {admin ? <SidebarContent>
           <Menu iconShape>
-            {admin ? <MenuItem icon={<FontAwesomeIcon icon={faHome} active={true} />}>
+            <MenuItem icon={<FontAwesomeIcon icon={faHome} active />}>
               Dashboard <Link to="/dashboard" />
-            </MenuItem> :
+            </MenuItem>
+          </Menu>
+        </SidebarContent> :
+          <SidebarContent>
+            <Menu iconShape>
               <SubMenu title="Thrift Store" icon={<FontAwesomeIcon icon={faNetworkWired} />}>
                 <MenuItem icon={<FontAwesomeIcon icon={faUserTag} />}>
                   General Info <Link to="/generalinfo" />
@@ -76,25 +79,16 @@ const Sidebar = () => {
                 <MenuItem icon={<FontAwesomeIcon icon={faBuilding} />}>
                   Product List <Link to="/productlist" />
                 </MenuItem>
-              </SubMenu>}
-            {/* <SubMenu title="Product" icon={<FontAwesomeIcon icon={faBath} />}>
-              <MenuItem icon={<FontAwesomeIcon icon={faUser} />}>
-                Add Product <Link to="/addproduct" />
-              </MenuItem>
-              <MenuItem icon={<FontAwesomeIcon icon={faBuilding} />}>
-                Product List <Link to="/productlist" />
-              </MenuItem>
-            </SubMenu> */}
-            <MenuItem icon={<FontAwesomeIcon icon={faUser} />}>Customer Review</MenuItem>
-            <MenuItem icon={<FontAwesomeIcon icon={faCog} />}>Report</MenuItem>
-            <MenuItem icon={<FontAwesomeIcon icon={faTag} />}>Support</MenuItem>
-          </Menu>
-        </SidebarContent>
+              </SubMenu>
+              <MenuItem icon={<FontAwesomeIcon icon={faUser} />}>Customer Review</MenuItem>
+              <MenuItem icon={<FontAwesomeIcon icon={faCog} />}>Report</MenuItem>
+              <MenuItem icon={<FontAwesomeIcon icon={faTag} />}>Support</MenuItem>
+            </Menu>
+          </SidebarContent>}
         <SidebarFooter className="sidebar-footer">
           &copy; Copyright 2021 - Insta-Kart. All rights reserved.
         </SidebarFooter>
       </ProSidebar>
-      {/* </div> */}
     </div>
   );
 };

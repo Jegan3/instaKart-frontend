@@ -9,7 +9,7 @@ export default {
     getVendorInfo: '/api/vendor/vendorinfo',
     getVendorList: '/api/admin/vendorApplications',
     getVendorStatus: '/api/admin/applicationApproval',
-    getIndustryInfo: '/api/vendor/vendorinfo',
+    getIndustryInfo: '/api/vendor/getApprovedVendorInfo',
   },
 
   apiBaseUrl: {
