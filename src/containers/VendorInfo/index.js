@@ -184,7 +184,7 @@ const VendorInfo = (props) => {
   };
 
   const Submit = () => {
-    if (!firstName || !lastName || !mobile || !uploadId || !uploadRegistration || !bank || !bankAccount || !ikOptions) {
+    if (!firstName || !lastName || !mobile || !uploadId || !uploadAddress || !bank || !bankAccount || !ikOptions) {
       setAlertError(true)
       message.error('Please fill all the fields')
     } else if (wipay === 'Yes' && (!wipayAccount || !preference)) {
@@ -313,7 +313,19 @@ const VendorInfo = (props) => {
               </Col>
               <Col md={6} sm={12} >
                 <div className='select-file'>
-                  <label className="signup-label">Upload Logo </label>
+                  <label className="signup-label">Upload Proof of Address <span className="red-star">*</span></label>
+                  <div className='file-input'>
+                    <input
+                      type='file'
+                      onChange={onUploadAddress} />
+                    <span className='button'>Choose</span>
+                    <span className='label' >{uploadAddressName ? uploadAddressName : 'No file selected'} </span>
+                  </div>
+                </div>
+              </Col>
+              <Col md={6} sm={12} >
+                <div className='select-file'>
+                  <label className="signup-label">Upload Logo</label>
                   <div className='file-input'>
                     <input
                       type='file'
@@ -324,25 +336,13 @@ const VendorInfo = (props) => {
                 </div>
               </Col>
               <Col md={6} sm={12} >
-                <label className="signup-label">Upload Company Registration  <span className="red-star">*</span></label>
+                <label className="signup-label">Upload Company Registration</label>
                 <div className={`file-input ${alertError && !uploadRegistration && `red`}`}>
                   <input
                     type='file'
                     onChange={onUploadRegistration} />
                   <span className='button'>Choose</span>
                   <span className='label' >{uploadRegistrationName ? uploadRegistrationName : 'No file selected'} </span>
-                </div>
-              </Col>
-              <Col md={6} sm={12} >
-                <div className='select-file'>
-                  <label className="signup-label">Upload Proof of Address</label>
-                  <div className='file-input'>
-                    <input
-                      type='file'
-                      onChange={onUploadAddress} />
-                    <span className='button'>Choose</span>
-                    <span className='label' >{uploadAddressName ? uploadAddressName : 'No file selected'} </span>
-                  </div>
                 </div>
               </Col>
             </Row>

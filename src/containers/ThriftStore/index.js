@@ -35,8 +35,8 @@ const ThriftStore = () => (
       </Row>
     </Row>
     <Row>
-      <div className="bg-thift">
-        <div className="thift-ads">
+      <div className="bg-thrift">
+        <div className="thrift-ads">
           <h3>FEATURED ADS</h3>
           <h6>Buy & Sell Any Thing</h6>
           <CarouselThriftStore />
@@ -46,7 +46,17 @@ const ThriftStore = () => (
     </Row>
     <Row>
       <div className="bg-thriftstore">
-        <div className="thift-ads">
+        <div className="thrift-ads">
+          <h3>THRIFT STORE NEAR YOU</h3>
+          <h6>Buy & Sell Any Thing</h6>
+          <CarouselThriftStore />
+        </div>
+        <br />
+      </div>
+    </Row>
+    <Row>
+      <div className="bg-thrift">
+        <div className="thrift-ads">
           <h3>NEW ADDITIONS</h3>
           <h6>Buy & Sell Any Thing</h6>
           <CarouselThriftStore />
@@ -55,8 +65,8 @@ const ThriftStore = () => (
       </div>
     </Row>
     <Row>
-      <div className="bg-thift">
-        <div className="thift-ads">
+      <div className="bg-thriftstore">
+        <div className="thrift-ads">
           <h3>NEW PROMOTIONS</h3>
           <h6>Buy & Sell Any Thing</h6>
           <CarouselThriftStore />
@@ -65,8 +75,8 @@ const ThriftStore = () => (
       </div>
     </Row>
     <Row>
-      <div className="bg-thriftstore">
-        <div className="thift-ads">
+      <div className="bg-thrift">
+        <div className="thrift-ads">
           <h3>TIMECAP LOGS</h3>
           <h6>Buy & Sell Any Thing</h6>
           <CarouselThriftStore />
