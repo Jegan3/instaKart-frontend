@@ -39,39 +39,36 @@ const GeneralInfo = () => {
   const [loading, setLoading] = useState(false);
   const [storeName, setStoreName] = useState('');
   const [address, setAddress] = useState('');
-  const [country, setCountry] = useState('');
-  const [city, setCity] = useState('');
+  const [country, setCountry] = useState();
+  const [city, setCity] = useState();
   const [zipCode, setZipCode] = useState('');
   const [emailId, setEmailId] = useState('');
   const [fbId, setFbId] = useState('');
   const [igId, setIgId] = useState('');
   const [mobile, setMobile] = useState('');
+  const [updatedCityOptions, setUpdatedCityOptions] = useState();
 
   const dispatch = useDispatch();
   const industryInfo = useSelector((state) => state.industryInfoState.industryInfo);
+  const generalInfo = useSelector((state) => state.generalInfoState.generalInfo);
+  //const signUpContent = useSelector((state) => state.signupContentState.signupContent);
+
+  const countries = generalInfo && generalInfo.countriesList;
+  //const countries = signUpContent && signUpContent.countriesList
 
   useEffect(() => {
     dispatch({ type: 'INDUSTRY_INFO_REQUEST' });
-  }, [])  
+  }, [])
 
-  //avatar display from api
-  const onAvatarImage = async e => {
-    const files = e.target.files
-    const data = new FormData()
-    data.append('file', files[0])
-    data.append('upload_preset', 'dmaqtveo')
-    setLoading(true)
-    const res = await fetch(
-      ' https://api.cloudinary.com/v1_1/dcoefaaro/image/upload ',
-      {
-        method: 'POST',
-        body: data
-      }
-    )
-    const file = await res.json()
+  
 
-    setLogoImage(file.secure_url)
-    setLoading(false)
+  const onAvatarImage = (e) => {
+    let file = e.target.files[0];
+    const reader = new FileReader();
+    reader.onload = () => {
+      setLogoImage(reader.result);
+    };
+    reader.readAsDataURL(file);
   }
 
   const onStoreName = (e) => {
@@ -86,17 +83,32 @@ const GeneralInfo = () => {
     }
   }
 
-  const onCountry = (e) => {
-    if (e.target.value) {
-      setCountry(e.target.value)
-    }
+  // Country Options
+  const onCountry = (country) => {
+    setCountry(country)
   }
 
-  const onCity = (e) => {
-    if (e.target.value) {
-      setCity(e.target.value)
-    }
+  const countryOptions = countries && countries.map(item => ({
+    value: item._id,
+    label: <div><img className="flag" src={item.flag} alt="new" /><span className="signup-flag">{item.countryName}</span></div>
+  }))
+
+  const onCity = (city) => {
+    setCity(city)
   }
+
+  // City Options
+  useEffect(() => {
+    countries && countries.filter((item) => {
+      if (country && item._id === country.value) {
+        const city = item.cities.sort((a, b) => a.cityName.localeCompare(b.cityName)).map(data => ({
+          value: data._id,
+          label: data.cityName,
+        }))
+        setUpdatedCityOptions(city)
+      };
+    });
+  }, [country])
 
   const onZipCode = (e) => {
     if (e.target.value.match('^[a-zA-Z0-9]*$')) {
@@ -133,38 +145,39 @@ const GeneralInfo = () => {
   const onSubmit = () => {
     if
       (storeName === '' || address === '') {
-      console.log('test');
-      //setAlertError(window.alert('done'));
+      // setAlertError(window.alert('done'));
       // setAlertMsg(window.alert('Please fill all the fields'));
     }
     // else if (termscondition === false) {
     //   setAlertMsg('Please accept the Terms & Conditions and Privacy Policy');
     // } 
     else {
-      const GeneralInfo = {
+      const generalList = {
         logoImage,
         storeName,
         address,
-        country,
-        city,
+        countryId: country && country.value,
+        cityId: city && city.value,
         zipCode,
         emailId,
         fbId,
         igId,
         mobile
       };
-      // dispatch({ type: 'VENDOR_INFO_REQUEST', vendorInfo });
-      //setAlertMsg('');
+      console.log('tst', generalList);
+      //   dispatch({ type: '_INFO_REQUEST', generalInfo });
+      //   setAlertMsg('');
     }
+
   };
 
-  const onCancel = () => window.alert("cancelled");
+  //const onCancel = () => window.alert("cancelled");
 
   return (
     <div className="wrapper">
       <Sidebar />
       <div className="rightside-panel">
-        <Headerbar headerName="General Information"/>
+        <Headerbar headerName="General Information" />
         <div className="main-content general-info">
           <Grid fluid>
             <Row>
@@ -177,9 +190,6 @@ const GeneralInfo = () => {
                           <div className="photo">
                             {loading ? <h3 className='loading-info'>Loading...</h3> : logoImage ? <img src={logoImage} alt='' /> : <img src="images/Your-logo-here..png" />}
                           </div>
-                          {/* <p className="avatar-text">
-                              Upload Logo
-                            </p> */}
                           {!loading && <div className="image-upload">
                             <label for="file-input"><i className="fa fa-camera" /></label>
                             <input id="file-input"
@@ -259,6 +269,7 @@ const GeneralInfo = () => {
                         isSearchable={false}
                         value={country}
                         onChange={onCountry}
+                        options={countryOptions}
                       />
                     </Col>
                     <Col md={12}>
@@ -268,10 +279,12 @@ const GeneralInfo = () => {
                           <Select
                             type="text"
                             className="prof-select "
-                            placeholder="select state"
-                            isSearchable={false}
+                            placeholder="select city"
                             value={city}
                             onChange={onCity}
+                            options={updatedCityOptions}
+                            isSearchable={false}
+                            isDisabled={!country}
                           />
                         </Col>
                         <Col md={6} className='zipcode'>
@@ -366,7 +379,7 @@ const GeneralInfo = () => {
                           width: 220,
                           Cell: () => (
                             <TimePicker use12Hours format="h:mm a" onChange={onChange} />
-                          ),
+                          )
                         },
                         {
                           Header: 'Closing Time',
@@ -387,9 +400,12 @@ const GeneralInfo = () => {
                             <div>
                               <input type="checkbox" className='closed-header' value="" />
                             </div>
+
+
                           ),
                           width: 100,
                         },
+
                       ]}
                       defaultPageSize={7}
                       // showPaginationTop
@@ -400,12 +416,11 @@ const GeneralInfo = () => {
                 />
               </Row>
               <Row md={12} className="margin-control">
-                {/* <Col className="product-button"> */}
                 <Col lg={2} md={3} sm={4} xs={6} className="product-button">
                   <button
                     type="button"
                     className="btn btn-primary btn-block modal-butn"
-                  // onClick={onSubmit}
+                    onClick={onSubmit}
                   >
                     Submit
                   </button>
@@ -419,7 +434,6 @@ const GeneralInfo = () => {
                     Cancel
                   </button>
                 </Col>
-                {/* </Col> */}
               </Row>
             </Row>
           </Grid>
