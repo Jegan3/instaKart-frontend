@@ -2,15 +2,17 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Row, Col, Image, Form, Grid } from 'react-bootstrap';
-import Select from "react-select";
+import Select from 'react-select';
 import { Tooltip } from 'antd';
 import { history } from '../../routes';
 import OtpScreen from '../../components/OtpScreen';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
+import { Locale } from '../../constants/Locale';
+import { Industries } from '../../constants/Industries';
 
 const SignUp = (props) => {
-  const [company, setCompany] = useState('')
+  const [company, setCompany] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
@@ -29,12 +31,10 @@ const SignUp = (props) => {
   const dispatch = useDispatch();
   const validSignup = useSelector((state) => state.signupState.signup);
   const invalidSignup = useSelector((state) => state.signupState.error);
-  const signUpContent = useSelector((state) => state.signupContentState.signupContent);
 
-  const status = validSignup && validSignup.status
-  const industry = signUpContent && signUpContent.industries
-  const countries = signUpContent && signUpContent.countriesList
-  // For Vendor SignUp 
+  const status = validSignup && validSignup.status;
+
+  // For Vendor SignUp
   const { state } = props.location;
   const type = state ? 'vendor' : 'user';
 
@@ -47,7 +47,6 @@ const SignUp = (props) => {
       setCountry('');
       setCity('');
       setFirstName('');
-      // setMobile('');
       setEmail('');
       setPassword('');
       setTermsCondition(false);
@@ -57,27 +56,23 @@ const SignUp = (props) => {
     }
   });
 
-  useEffect(() => {
-    type === 'vendor' && dispatch({ type: 'SIGNUP_CONTENT_REQUEST' });
-  }, [])
-
   const onEstore = (e) => {
     if (/^(?![\s-])[\A-Za-z\s-]*$/.test(e.target.value)) {
-      setCompany(e.target.value)
+      setCompany(e.target.value);
     }
-  }
+  };
 
   const onFirstName = (e) => {
     if (e.target.value.match('^[a-zA-Z0-9]*$')) {
-      setFirstName(e.target.value)
+      setFirstName(e.target.value);
     }
-  }
+  };
 
   const onLastName = (e) => {
     if (e.target.value.match('^[a-zA-Z0-9]*$')) {
-      setLastName(e.target.value)
+      setLastName(e.target.value);
     }
-  }
+  };
 
   const onEmail = (e) => {
     if (e.target.value.match('^[a-zA-Z0-9_@./#&+-]*$')) {
@@ -87,17 +82,17 @@ const SignUp = (props) => {
 
   const onPassword = (e) => {
     if (e.target.value.match('^[a-zA-Z0-9_@./#&+-]*$')) {
-      setPassword(e.target.value)
+      setPassword(e.target.value);
     }
   };
 
   const splitPassword = () => {
-    setShowPassword(!showPassword)
-  }
+    setShowPassword(!showPassword);
+  };
 
   const onTermsCondition = (e) => {
-    setTermsCondition(!termscondition)
-  }
+    setTermsCondition(!termscondition);
+  };
 
   const OpenTermsCondition = () => {
     history.push({ pathname: '/termsofcondition' });
@@ -105,59 +100,57 @@ const SignUp = (props) => {
   };
 
   const onIndustryType = (industryType) => {
-    setIndustryType(industryType)
-  }
+    setIndustryType(industryType);
+  };
 
-  const industryTypeOptions = industry && industry.sort((a, b) => a.industryType.localeCompare(b.industryType)).map((item) => ({
+  const industryTypeOptions = Industries.sort((a, b) => a.industryType.localeCompare(b.industryType)).map((item) => ({
     value: item._id,
     label: item.industryType,
-  }))
+  }));
 
   const onCountry = (country) => {
-    setCountry(country)
-  }
+    setCountry(country);
+  };
 
   // Country Options
-  const countryOptions = countries && countries.map(item => ({
+  const countryOptions = Locale.map((item) => ({
     value: item._id,
-    label: <div><img className="flag" src={item.flag} alt="new" /><span className="signup-flag">{item.countryName}</span></div>
-  }))
+    label: <div><img className="flag" src={item.flag} alt="new" /><span className="signup-flag">{item.countryName}</span></div>,
+  }));
 
   const onCity = (city) => {
-    setCity(city)
-  }
+    setCity(city);
+  };
 
   // City Options
   useEffect(() => {
-    countries && countries.filter((item) => {
+    Locale.filter((item) => {
       if (country && item._id === country.value) {
-        const city = item.cities.sort((a, b) => a.cityName.localeCompare(b.cityName)).map(data => ({
+        const city = item.cities.sort((a, b) => a.cityName.localeCompare(b.cityName)).map((data) => ({
           value: data._id,
           label: data.cityName,
-        }))
-        setUpdatedCityOptions(city)
-      };
+        }));
+        setUpdatedCityOptions(city);
+      }
     });
-  }, [country])
+  }, [country]);
 
   const Submit = () => {
     if (type === 'user' && (!firstName || !lastName || !email || !password)) {
-      setAlertError(true)
+      setAlertError(true);
       setAlertMsg('Please fill all the fields');
-    }
-    else if (type === 'vendor' && (!company || !industryType || !country || !city || !email || !password)) {
-      setAlertError(true)
+    } else if (type === 'vendor' && (!company || !industryType || !country || !city || !email || !password)) {
+      setAlertError(true);
       setAlertMsg('Please fill all the fields');
     } else if (termscondition === false) {
       setAlertMsg('Please accept the Terms & Conditions and Privacy Policy');
     } else {
-
       const signupDetailsUsers = {
         firstName,
         lastName,
         email,
         password,
-        type
+        type,
       };
 
       const signupDetailsVendors = {
@@ -167,7 +160,7 @@ const SignUp = (props) => {
         cityId: city && city.value,
         email,
         password,
-        type
+        type,
       };
 
       dispatch({ type: 'SIGNUP_REQUEST', signup: type === 'vendor' ? signupDetailsVendors : signupDetailsUsers });
@@ -178,18 +171,18 @@ const SignUp = (props) => {
   const handleClose = () => {
     setShowOtp(false);
     setCloseOtp(true);
-  }
+  };
 
   const onSubmitOtp = () => {
     history.push({
       pathname: '/',
     });
     dispatch({ type: 'OTP_REQUEST', signup: signupDetails });
-  }
+  };
 
   const resendOtp = () => {
-    window.alert("OTP resent to your mail ID");
-  }
+    window.alert('OTP resent to your mail ID');
+  };
 
   return (
     <Grid fluid>
@@ -211,15 +204,15 @@ const SignUp = (props) => {
                 <Col md={6} sm={12} >
                   <label className="signup-label">Company Name <span className="red-star">*</span></label>
                   <input
-                    type='text'
-                    className={alertError && company === '' ? ` form-control my-input` : `form-control formy`}
+                    type="text"
+                    className={alertError && company === '' ? ' form-control my-input' : 'form-control formy'}
                     placeholder="Enter E-Store Name"
                     value={company}
                     onChange={onEstore}
                     maxLength={30}
                   />
                 </Col>
-                <Col md={6} sm={12} className={`clear-industry ${alertError && !industryType && `dropdown-alert`}`} >
+                <Col md={6} sm={12} className={`clear-industry ${alertError && !industryType && 'dropdown-alert'}`} >
                   <label className="signup-label">Industry Type <span className="red-star">*</span></label>
                   <Select
                     name="Industry Type"
@@ -231,7 +224,7 @@ const SignUp = (props) => {
                     isMulti
                   />
                 </Col>
-                <Col md={6} sm={12} className={`clear-country ${alertError && !country && `dropdown-alert`}`}>
+                <Col md={6} sm={12} className={`clear-country ${alertError && !country && 'dropdown-alert'}`}>
                   <label className="signup-label">Country <span className="red-star">*</span></label>
                   <Select
                     name="Country"
@@ -242,7 +235,7 @@ const SignUp = (props) => {
                     isSearchable={false}
                   />
                 </Col>
-                <Col md={6} sm={12} className={`clear-city ${alertError && !city && `dropdown-alert`}`} >
+                <Col md={6} sm={12} className={`clear-city ${alertError && !city && 'dropdown-alert'}`} >
                   <label className="signup-label">City <span className="red-star">*</span></label>
                   <Select
                     name="City"
@@ -255,12 +248,13 @@ const SignUp = (props) => {
                   />
                 </Col>
               </Row>}
-            {type === 'user' && <Row>
+            {type === 'user' &&
+            <Row>
               <Col md={6} sm={12}>
                 <label className="signup-label">First Name <span className="red-star">*</span></label>
                 <input
                   type="text"
-                  className={alertError && firstName === '' ? ` form-control my-input` : `form-control formy`}
+                  className={alertError && firstName === '' ? ' form-control my-input' : 'form-control formy'}
                   placeholder="Enter user name"
                   value={firstName}
                   onChange={onFirstName}
@@ -271,7 +265,7 @@ const SignUp = (props) => {
                 <label className="signup-label">Last Name <span className="red-star">*</span></label>
                 <input
                   type="text"
-                  className={alertError && lastName === '' ? ` form-control my-input` : `form-control formy`}
+                  className={alertError && lastName === '' ? ' form-control my-input' : 'form-control formy'}
                   placeholder="Enter user name"
                   value={lastName}
                   onChange={onLastName}
@@ -282,8 +276,9 @@ const SignUp = (props) => {
             <Row>
               <Col md={6} sm={12}>
                 <label className="signup-label">Email <span className="red-star">*</span></label>
-                <input type="email"
-                  className={alertError && email === '' ? ` form-control my-input` : `form-control formy`}
+                <input
+                  type="email"
+                  className={alertError && email === '' ? ' form-control my-input' : 'form-control formy'}
                   placeholder="Enter email"
                   value={email}
                   onChange={onEmail}
@@ -293,25 +288,28 @@ const SignUp = (props) => {
               <Col md={6} sm={12}>
                 <label className="signup-label">Password <span className="red-star">*</span>
                   <span>
-                    <Tooltip title={
-                      <div className="tool-list">
-                        <p className="tool-tip">•	Be at least 8 characters</p>
-                        <p className="tool-tip">•	Have at least one number</p>
-                        <p className="tool-tip">•	Have at least one upper case letter</p>
-                      </div>}
-                      placement="rightTop" >
-                      <i class="fa fa-info" /> </Tooltip>
+                    <Tooltip
+                      title={
+                        <div className="tool-list">
+                          <p className="tool-tip">•	Be at least 8 characters</p>
+                          <p className="tool-tip">•	Have at least one number</p>
+                          <p className="tool-tip">•	Have at least one upper case letter</p>
+                        </div>}
+                      placement="rightTop"
+                    >
+                      <i className="fa fa-info" />
+                    </Tooltip>
                   </span>
                 </label>
                 <input
                   type={showPassword ? 'text' : 'password'}
-                  className={alertError && password === '' ? ` form-control my-input` : `form-control formy`}
+                  className={alertError && password === '' ? ' form-control my-input' : 'form-control formy'}
                   placeholder="Enter password"
                   value={password}
                   onChange={onPassword}
                   maxLength={15}
                 />
-                <i class={`${showPassword ? `fa fa-unlock-alt` : `fa fa-lock`} unlock-signup`} onClick={splitPassword}></i>
+                <i className={`${showPassword ? 'fa fa-unlock-alt' : 'fa fa-lock'} unlock-signup`} onClick={splitPassword}></i>
               </Col>
             </Row>
             <Row>
@@ -343,7 +341,7 @@ const SignUp = (props) => {
                 </button>
               </Col>
               <Col md={12} sm={12} className="login-error-signup" >
-                <span className={status ? "success-msg" : "login-error-msg"}>{alertMsg}</span>
+                <span className={status ? 'success-msg' : 'login-error-msg'}>{alertMsg}</span>
               </Col>
             </Row>
           </Form>

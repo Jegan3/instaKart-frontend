@@ -2,10 +2,7 @@ export default {
   apiEndPoints: {
     getSignup: '/api/user/signUp',
     getLogin: '/api/user/login',
-    // getUploadBanner: '/api/user/poster',
-    // getRetrieveBanner: '/api/admin/retrivePoster?adminemail=',
     getOtp: '/api/user/verifyUser',
-    getSignupContent: '/api/staticContentRouter/registerStaticContents',
     getVendorInfo: '/api/vendor/vendorinfo',
     getGeneralInfo: '/api/vendor/generalinfo',
     getVendorList: '/api/admin/vendorApplications',

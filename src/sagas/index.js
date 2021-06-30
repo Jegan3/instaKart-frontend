@@ -1,7 +1,6 @@
 import { signupWatchers } from './Signup';
 import { loginWatchers } from './Login';
 import { otpWatchers } from './Otp';
-import { signupContentWatchers } from './SignupContent';
 import { vendorInfoWatchers } from './VendorInfo';
 import { generalInfoWatchers } from './GeneralInfo';
 import { vendorListWatchers } from './VendorList';
@@ -13,7 +12,6 @@ export default function* rootWatchers() {
     signupWatchers(),
     loginWatchers(),
     otpWatchers(),
-    signupContentWatchers(),
     vendorInfoWatchers(),
     generalInfoWatchers(),
     vendorListWatchers(),

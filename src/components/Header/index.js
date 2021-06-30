@@ -13,7 +13,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Badge from '@material-ui/core/Badge';
 import { withStyles } from '@material-ui/core/styles';
 import LoginModal from '../LoginModal';
-import { Country } from '../../constants/Country';
+import { Locale } from '../../constants/Locale';
 import { history } from '../../routes';
 
 const StyledBadge = withStyles((theme) => ({
@@ -31,25 +31,24 @@ const Header = ({ basic }) => {
 
   const dispatch = useDispatch();
   const validLogin = useSelector((state) => state.loginState.login);
-  // const signup = useSelector((state) => state.signupState.signup);
 
   const name = validLogin && validLogin.user.firstName || sessionStorage.firstName ? sessionStorage.firstName : false;
-  // name = name || 'Create My Account';
 
-  const admin = validLogin && validLogin.user.type === 'admin' || sessionStorage.type === 'admin'
-  const vendor = validLogin && validLogin.user.type === 'vendor' || sessionStorage.type === 'vendor'
-  const user = validLogin && validLogin.user.type === 'user' || sessionStorage.type === 'user'
+  const admin = validLogin && validLogin.user.type === 'admin' || sessionStorage.type === 'admin';
+  const vendor = validLogin && validLogin.user.type === 'vendor' || sessionStorage.type === 'vendor';
+  const user = validLogin && validLogin.user.type === 'user' || sessionStorage.type === 'user';
 
-  const flags = Country.map((item) => (
-    <MenuItem key={item.id}
+  const locale = Locale.map((item) => (
+    <MenuItem
+      key={item._id}
       eventKey={
         <div >
           <img className="flag" src={item.flag} alt="new" />
-          <p >{item.country}</p>
+          <p >{item.countryName}</p>
           <span><FontAwesomeIcon icon={faCaretDown} className="caret-down" /></span>
         </div>}
     >
-      <img className="flag" src={item.flag} alt="new" />  <p className="p-text">{item.country}  </p>
+      <img className="flag" src={item.flag} alt="new" />  <p className="p-text">{item.countryName}  </p>
     </MenuItem>));
 
   const loginAccount = () => {
@@ -76,22 +75,21 @@ const Header = ({ basic }) => {
   const aboutUs = () => {
     history.push('/aboutus');
     window.scrollTo(0, 0);
-  }
+  };
 
   const dashboard = () => {
-    history.push(admin ? '/dashboard' : '/generalinfo')
+    history.push(admin ? '/dashboard' : '/generalinfo');
     window.scrollTo(0, 0);
-    console.log("test", validLogin.user.type)
-  }
+  };
 
   const toHome = () => {
-    history.push({ pathname: '/', });
-  }
+    history.push({ pathname: '/' });
+  };
 
   const logout = () => {
-    sessionStorage.clear()
+    sessionStorage.clear();
     dispatch({ type: 'LOGOUT_SUCCESS' });
-  }
+  };
 
   return (
     <div>
@@ -111,12 +109,6 @@ const Header = ({ basic }) => {
                 </Navbar.Header>
                 <Navbar.Collapse>
                   <Nav>
-                    {/* <NavItem >
-                  <FontAwesomeIcon icon={faMapMarkerAlt} className="location" />
-                  <p>
-                    {country}
-                  </p>
-                </NavItem> */}
                     <NavItem >
                       <NavDropdown
                         eventKey={country}
@@ -124,7 +116,7 @@ const Header = ({ basic }) => {
                         // alt="Dropdown"
                         id="basic-nav-dropdown"
                         onSelect={handleSelect}
-                      >{flags}
+                      >{locale}
                       </NavDropdown>
                     </NavItem>
                   </Nav>
@@ -135,11 +127,12 @@ const Header = ({ basic }) => {
                     <NavItem eventKey={2} href="#">
                       <p onClick={aboutUs}>About Us</p>
                     </NavItem>
-                    {!user && <NavItem eventKey={3} href="#">
-                      {/* {vendor ? <p onClick={dashboard}>Dashboard</p> : <p><Button className="vendor-signup" onClick={Signup}>Register Your E-Store</Button></p>} */}
+                    {!user &&
+                    <NavItem eventKey={3} href="#">
                       {vendor || admin ? <p onClick={dashboard}>Dashboard</p> : <p className="vendor-signup" onClick={Signup}>Register Your E-Store</p>}
                     </NavItem>}
-                    {(admin || vendor || user) && <NavItem eventKey={2} href="#">
+                    {(admin || vendor || user) &&
+                    <NavItem eventKey={2} href="#">
                       <p onClick={logout}>Sign Out</p>
                     </NavItem>}
                   </Nav>
@@ -172,26 +165,13 @@ const Header = ({ basic }) => {
                       fullWidth
                     />
                   </div>
-                  {/* <div className="col-md-2 col-sm-3 login-header-top-right">
-                    <div className="user" onClick={loginAccount} aria-hidden="true">
-                      <FontAwesomeIcon icon={faUserPlus} className="userPlus" />
-                      <div className="text">
-                        <div className="small-text">Login</div>
-                        <div className="bold-text">Create My Account</div>
-                      </div>
-                    </div>
-                    <IconButton aria-label="cart" >
-                      <StyledBadge badgeContent={7} color="secondary">
-                        <ShoppingCartIcon fontSize="large" />
-                      </StyledBadge>
-                    </IconButton>
-                  </div> */}
                   <div className="col-md-2 col-sm-3 login-header-top-right">
                     <div className="user" onClick={loginAccount} aria-hidden="true">
                       <FontAwesomeIcon icon={faUserPlus} className="userPlus" />
                       {name ? <div className="text bold-text">{`Hi, ${name}`}</div> : <div className="bold-text">Sign In</div>}
                     </div>
-                    {!name && <IconButton className="cart-icon" aria-label="cart" >
+                    {!name &&
+                    <IconButton className="cart-icon" aria-label="cart" >
                       <StyledBadge badgeContent={7} color="secondary">
                         <ShoppingCartIcon fontSize="large" />
                       </StyledBadge>
