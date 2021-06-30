@@ -3,6 +3,7 @@ import signupState from './Signup';
 import loginState from './Login';
 import otpState from './Otp';
 import signupContentState from './SignupContent';
+import generalInfoState from './GeneralInfo';
 import vendorInfoState from './VendorInfo';
 import sidebarState from './Sidebar';
 import vendorListState from './VendorList';
@@ -20,6 +21,7 @@ const rootReducer = combineReducers({
   vendorListState,
   vendorStatusState,
   industryInfoState,
+  generalInfoState,
 });
 
 export default rootReducer;
