@@ -8,6 +8,7 @@ import { message } from 'antd';
 import { history } from '../../routes';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
+import Loader from '../../components/Loader'
 
 const bankList = [
   { value: 'First Citizens', label: 'First Citizens' },
@@ -50,14 +51,15 @@ const VendorInfo = (props) => {
   const [uploadAddressName, setUploadAddressName] = useState('');
   const [wipay, setWipay] = useState('')
   const [wipayAccount, setWipayAccount] = useState('')
-  const [preference, setPreference] = useState();
-  const [ikOptions, setIkoptions] = useState();
+  const [preference, setPreference] = useState('');
+  const [ikOptions, setIkoptions] = useState('');
   const [termscondition, setTermsCondition] = useState(false);
   const [usAccount, setUsAccount] = useState('');
   const [alertError, setAlertError] = useState(false);
 
   const dispatch = useDispatch();
   const vendor = useSelector((state) => state.vendorInfoState.vendorInfo);
+  const isLoading = useSelector((state) => state.vendorInfoState.isLoading);
 
   // vendor details from url
   const search = window.location.search;
@@ -219,6 +221,7 @@ const VendorInfo = (props) => {
 
   return (
     <Grid fluid>
+      {isLoading && <Loader />}
       <Header basic />
       <Row>
         <Col className="vendorinfo" >
@@ -336,13 +339,15 @@ const VendorInfo = (props) => {
                 </div>
               </Col>
               <Col md={6} sm={12} >
-                <label className="signup-label">Upload Company Registration</label>
-                <div className={`file-input ${alertError && !uploadRegistration && `red`}`}>
-                  <input
-                    type='file'
-                    onChange={onUploadRegistration} />
-                  <span className='button'>Choose</span>
-                  <span className='label' >{uploadRegistrationName ? uploadRegistrationName : 'No file selected'} </span>
+                <div className='select-file'>
+                  <label className="signup-label">Upload Company Registration</label>
+                  <div className='file-input'>
+                    <input
+                      type='file'
+                      onChange={onUploadRegistration} />
+                    <span className='button'>Choose</span>
+                    <span className='label' >{uploadRegistrationName ? uploadRegistrationName : 'No file selected'} </span>
+                  </div>
                 </div>
               </Col>
             </Row>
