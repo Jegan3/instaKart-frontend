@@ -5,7 +5,7 @@ import { Grid, Row, Col } from 'react-bootstrap';
 import Select from 'react-select';
 import Cleave from "cleave.js/react";
 import ReactTable from 'react-table';
-import { TimePicker } from 'antd';
+import { message, TimePicker } from 'antd';
 import Headerbar from '../../components/Headerbar';
 import Sidebar from '../../components/Sidebar';
 import Table from '../../components/Table';
@@ -183,14 +183,13 @@ const GeneralInfo = () => {
   }
   
   const onSubmit = () => {
-    // if(!city) {
-    //   setAlertError(window.alert('done'));
-    //   setAlertMsg(window.alert('Please fill all the fields'));
-    // }
-    // // else if (termscondition === false) {
-    // //   setAlertMsg('Please accept the Terms & Conditions and Privacy Policy');
-    // // } 
-    // else {
+    if(!city) {
+     message.error('Please fill all the fields');
+    }
+    else if (termscondition === false) {
+      message.error('Please accept the Terms & Conditions and Privacy Policy');
+    } 
+    else {
       const generalList = {
         logoImage,
         storeName,
@@ -204,9 +203,10 @@ const GeneralInfo = () => {
         mobile
       };
       console.log('tst', generalList);
-      //   dispatch({ type: '_INFO_REQUEST', generalInfo });
-      //   setAlertMsg('');
-    // }
+        dispatch({ type: '_INFO_REQUEST', generalInfo });
+        setAlertMsg('');
+        message.success('Thanks!, Signup form is successfully registered with us ');
+    }
 
   };
 

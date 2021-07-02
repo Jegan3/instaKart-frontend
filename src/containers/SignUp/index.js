@@ -2,8 +2,8 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Row, Col, Image, Form, Grid } from 'react-bootstrap';
-import Select from 'react-select';
-import { Tooltip } from 'antd';
+import Select from "react-select";
+import { Tooltip,  message } from 'antd';
 import { history } from '../../routes';
 import OtpScreen from '../../components/OtpScreen';
 import Footer from '../../components/Footer';
@@ -50,11 +50,11 @@ const SignUp = (props) => {
       setEmail('');
       setPassword('');
       setTermsCondition(false);
-      setAlertMsg('Thanks!, Signup form is successfully registered with us , You will receive an email from us shortly');
+     message.success('Thanks!, Signup form is successfully registered with us , You will receive an email from us shortly');
     } else if (invalidSignup) {
-      setAlertMsg(`An account with email ${email} already exists`);
+      message.error(`An account with email ${email} already exists`);
     }
-  });
+  },[status,invalidSignup]);
 
   const onEstore = (e) => {
     if (/^(?![\s-])[\A-Za-z\s-]*$/.test(e.target.value)) {
@@ -137,13 +137,14 @@ const SignUp = (props) => {
 
   const Submit = () => {
     if (type === 'user' && (!firstName || !lastName || !email || !password)) {
-      setAlertError(true);
-      setAlertMsg('Please fill all the fields');
-    } else if (type === 'vendor' && (!company || !industryType || !country || !city || !email || !password)) {
-      setAlertError(true);
-      setAlertMsg('Please fill all the fields');
+      setAlertError(true)
+      message.error('Please fill all the fields')
+    }
+    else if (type === 'vendor' && (!company || !industryType || !country || !city || !email || !password)) {
+      setAlertError(true)
+      message.error('Please fill all the fields');
     } else if (termscondition === false) {
-      setAlertMsg('Please accept the Terms & Conditions and Privacy Policy');
+      message.error('Please accept the Terms & Conditions and Privacy Policy');
     } else {
       const signupDetailsUsers = {
         firstName,
