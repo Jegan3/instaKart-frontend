@@ -70,10 +70,10 @@ const Desk = ({ show, onClose, info, submit }) =>
     <div className="desk-btns"
     >
       <Button style={{ marginRight: 8 }} >
-        Cancel
+        Reject
       </Button>
       <Button onClick={submit}>
-        Submit
+        Approve
       </Button>
     </div>
   </Drawer>
