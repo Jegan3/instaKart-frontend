@@ -35,10 +35,10 @@ const Desk = ({ show, onClose, info, submit }) =>
         <DescriptionItem title="Contact Number" content={info && info.mobile} />
       </Col>
       <Col span={12}>
-        <DescriptionItem title="Country" content={info && info.country} />
+        <DescriptionItem title="Country" content={info && info.countryName} />
       </Col>
       <Col span={12}>
-        <DescriptionItem title="City" content={info && info.city} />
+        <DescriptionItem title="City" content={info && info.cityName} />
       </Col>
     </Row>
     <Divider />

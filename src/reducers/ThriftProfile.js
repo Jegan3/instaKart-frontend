@@ -2,20 +2,19 @@ const initialState = {};
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case 'GENERAL_INFO_REQUEST':
+    case 'THRIFT_PROFILE_REQUEST':
       return {
         ...state,
         isLoading: true,
-        generalInfo: false,
         error: false,
       };
-    case 'GENERAL_INFO_SUCCESS':
+    case 'THRIFT_PROFILE_SUCCESS':
       return {
         ...state,
         isLoading: false,
-        generalInfo: action.generalInfo,
+        profile: action.profile,
       };
-    case 'GENERAL_INFO_FAILURE':
+    case 'THRIFT_PROFILE_FAILURE':
       return {
         ...state,
         isLoading: false,

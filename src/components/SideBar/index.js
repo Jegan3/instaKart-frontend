@@ -71,7 +71,7 @@ const Sidebar = () => {
             <Menu iconShape>
               <SubMenu title="Thrift Store" icon={<FontAwesomeIcon icon={faNetworkWired} />}>
                 <MenuItem icon={<FontAwesomeIcon icon={faUserTag} />}>
-                  General Info <Link to="/generalinfo" />
+                  Profile <Link to="/profile" />
                 </MenuItem>
                 <MenuItem icon={<FontAwesomeIcon icon={faFolderPlus} />}>
                   Add Product <Link to="/addproduct" />

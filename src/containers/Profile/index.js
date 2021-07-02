@@ -9,28 +9,52 @@ import { TimePicker } from 'antd';
 import Headerbar from '../../components/Headerbar';
 import Sidebar from '../../components/Sidebar';
 import Table from '../../components/Table';
+import { Locale } from '../../constants/Locale';
+import moment from 'moment';
+// import { Industries } from '../../constants/Industries';
 
 const weekData = [
   {
     title: 'Monday',
+    openingTime: '8:08',
+    closingTime: '8:08',
+    closed: true,
   },
   {
     title: 'Tuesday',
+    openingTime: '08:08',
+    closingTime: '08:08',
+    closed: true,
   },
   {
     title: 'Wednesday',
+    openingTime: '1:00',
+    closingTime: '14:08',
+    closed: true,
   },
   {
     title: 'Thursday',
+    openingTime: '16:08',
+    closingTime: '14:08',
+    closed: true,
   },
   {
     title: 'Friday',
+    openingTime: '14:08',
+    closingTime: '14:08',
+    closed: true,
   },
   {
     title: 'Saturday',
+    openingTime: '14:08',
+    closingTime: '24:00',
+    closed: false,
   },
   {
     title: 'Sunday',
+    openingTime: '14:08',
+    closingTime: '16:00',
+    closed: false,
   },
 ]
 
@@ -47,13 +71,16 @@ const GeneralInfo = () => {
   const [igId, setIgId] = useState('');
   const [mobile, setMobile] = useState('');
   const [updatedCityOptions, setUpdatedCityOptions] = useState();
+  const [openingTime, setOpeningTime] = useState();
+  const [closingTime, setClosingTime] = useState();
+  const [closed, setClosed] = useState(false);
 
   const dispatch = useDispatch();
   const industryInfo = useSelector((state) => state.industryInfoState.industryInfo);
-  const generalInfo = useSelector((state) => state.generalInfoState.generalInfo);
+  // const generalInfo = useSelector((state) => state.generalInfoState.generalInfo);
   //const signUpContent = useSelector((state) => state.signupContentState.signupContent);
 
-  const countries = generalInfo && generalInfo.countriesList;
+  // const countries = generalInfo && generalInfo.countriesList;
   //const countries = signUpContent && signUpContent.countriesList
 
   useEffect(() => {
@@ -88,10 +115,11 @@ const GeneralInfo = () => {
     setCountry(country)
   }
 
-  const countryOptions = countries && countries.map(item => ({
+  // Country Options
+  const countryOptions = Locale.map((item) => ({
     value: item._id,
-    label: <div><img className="flag" src={item.flag} alt="new" /><span className="signup-flag">{item.countryName}</span></div>
-  }))
+    label: <div><img className="flag" src={item.flag} alt="new" /><span className="signup-flag">{item.countryName}</span></div>,
+  }));
 
   const onCity = (city) => {
     setCity(city)
@@ -99,16 +127,16 @@ const GeneralInfo = () => {
 
   // City Options
   useEffect(() => {
-    countries && countries.filter((item) => {
+    Locale.filter((item) => {
       if (country && item._id === country.value) {
-        const city = item.cities.sort((a, b) => a.cityName.localeCompare(b.cityName)).map(data => ({
+        const city = item.cities.sort((a, b) => a.cityName.localeCompare(b.cityName)).map((data) => ({
           value: data._id,
           label: data.cityName,
-        }))
-        setUpdatedCityOptions(city)
-      };
+        }));
+        setUpdatedCityOptions(city);
+      }
     });
-  }, [country])
+  }, [country]);
 
   const onZipCode = (e) => {
     if (e.target.value.match('^[a-zA-Z0-9]*$')) {
@@ -138,20 +166,31 @@ const GeneralInfo = () => {
     setMobile(e.target.rawValue)
   )
 
-  const onChange = (time, timeString) => {
-    console.log(time, timeString);
+  const onOpeningTime = (info, value) => {
+    console.log(info);
+    console.log(value);
   }
 
+  const onClosingTime = (info, time ,timeString) => {
+    console.log('timeString', timeString);
+    console.log('time', time);
+    console.log('closing info', info);
+  }
+
+  const onClosed = (info) => {
+    console.log('onClosed info', info);
+    setClosed(!closed);
+  }
+  
   const onSubmit = () => {
-    if
-      (storeName === '' || address === '') {
-      // setAlertError(window.alert('done'));
-      // setAlertMsg(window.alert('Please fill all the fields'));
-    }
-    // else if (termscondition === false) {
-    //   setAlertMsg('Please accept the Terms & Conditions and Privacy Policy');
-    // } 
-    else {
+    // if(!city) {
+    //   setAlertError(window.alert('done'));
+    //   setAlertMsg(window.alert('Please fill all the fields'));
+    // }
+    // // else if (termscondition === false) {
+    // //   setAlertMsg('Please accept the Terms & Conditions and Privacy Policy');
+    // // } 
+    // else {
       const generalList = {
         logoImage,
         storeName,
@@ -167,7 +206,7 @@ const GeneralInfo = () => {
       console.log('tst', generalList);
       //   dispatch({ type: '_INFO_REQUEST', generalInfo });
       //   setAlertMsg('');
-    }
+    // }
 
   };
 
@@ -177,7 +216,7 @@ const GeneralInfo = () => {
     <div className="wrapper">
       <Sidebar />
       <div className="rightside-panel">
-        <Headerbar headerName="General Information" />
+        <Headerbar headerName="Profile" />
         <div className="main-content general-info">
           <Grid fluid>
             <Row>
@@ -317,7 +356,7 @@ const GeneralInfo = () => {
                     />
                   </Col>
                   <Col md={3}>
-                    <label className="signup-label">FB ID </label>
+                    <label className="signup-label">Facebook ID </label>
                     <input
                       type="text"
                       className="form-control"
@@ -328,7 +367,7 @@ const GeneralInfo = () => {
                     />
                   </Col>
                   <Col md={3}>
-                    <label className="signup-label">IG ID </label>
+                    <label className="signup-label">Instagram ID </label>
                     <input
                       type="text"
                       className="form-control"
@@ -377,8 +416,13 @@ const GeneralInfo = () => {
                           filterable: false,
                           sortable: false,
                           width: 220,
-                          Cell: () => (
-                            <TimePicker use12Hours format="h:mm a" onChange={onChange} />
+                          Cell: (info) => (
+                            <TimePicker 
+                            use12Hours 
+                            format="h:mm a" 
+                            defaultValue={moment(info.original.openingTime, "HH:mm")}
+                            value={openingTime}
+                            onChange={(value) => onOpeningTime(info, value)} />
                           )
                         },
                         {
@@ -386,8 +430,13 @@ const GeneralInfo = () => {
                           accessor: 'total',
                           filterable: false,
                           sortable: false,
-                          Cell: () => (
-                            <TimePicker use12Hours format="h:mm a" onChange={onChange} />
+                          Cell: (info) => (
+                            <TimePicker 
+                            use12Hours 
+                            format="h:mm A" 
+                            defaultValue={moment(info.original.closingTime, "HH:mm")}
+                            value={closingTime}
+                            onChange={(time, timeString) => onClosingTime(info, time, timeString)} />
                           ),
                           width: 220,
                         },
@@ -396,12 +445,14 @@ const GeneralInfo = () => {
                           accessor: 'id',
                           filterable: false,
                           sortable: false,
-                          Cell: () => (
+                          Cell: (info) => (
                             <div>
-                              <input type="checkbox" className='closed-header' value="" />
+                              <input 
+                              type="checkbox" 
+                              className='closed-header' 
+                              checked={info.original.closed}
+                              onChange={(checked) => onClosed(info, checked)}/>
                             </div>
-
-
                           ),
                           width: 100,
                         },
