@@ -78,7 +78,7 @@ const Header = ({ basic }) => {
   };
 
   const dashboard = () => {
-    history.push(admin ? '/dashboard' : '/generalinfo');
+    history.push(admin ? '/dashboard' : '/profile');
     window.scrollTo(0, 0);
   };
 

@@ -456,7 +456,6 @@ const GeneralInfo = () => {
                           ),
                           width: 100,
                         },
-
                       ]}
                       defaultPageSize={7}
                       // showPaginationTop
