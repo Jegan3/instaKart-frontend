@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Row, Col, Image, Form, Grid } from 'react-bootstrap';
 import Select from "react-select";
-import { Tooltip,  message } from 'antd';
+import { Tooltip, message } from 'antd';
 import { history } from '../../routes';
 import OtpScreen from '../../components/OtpScreen';
 import Footer from '../../components/Footer';
@@ -50,11 +50,11 @@ const SignUp = (props) => {
       setEmail('');
       setPassword('');
       setTermsCondition(false);
-     message.success('Thanks!, Signup form is successfully registered with us , You will receive an email from us shortly');
+      message.success('Thanks!, Signup form is successfully registered with us , You will receive an email from us shortly');
     } else if (invalidSignup) {
       message.error(`An account with email ${email} already exists`);
     }
-  },[status,invalidSignup]);
+  }, [status, invalidSignup]);
 
   const onEstore = (e) => {
     if (/^(?![\s-])[\A-Za-z\s-]*$/.test(e.target.value)) {
@@ -63,13 +63,13 @@ const SignUp = (props) => {
   };
 
   const onFirstName = (e) => {
-    if (e.target.value.match('^[a-zA-Z0-9]*$')) {
+    if (e.target.value.match('^[a-zA-Z0-9 ]*$')) {
       setFirstName(e.target.value);
     }
   };
 
   const onLastName = (e) => {
-    if (e.target.value.match('^[a-zA-Z0-9]*$')) {
+    if (e.target.value.match('^[a-zA-Z0-9 ]*$')) {
       setLastName(e.target.value);
     }
   };
@@ -81,9 +81,7 @@ const SignUp = (props) => {
   };
 
   const onPassword = (e) => {
-    if (e.target.value.match('^[a-zA-Z0-9_@./#&+-]*$')) {
-      setPassword(e.target.value);
-    }
+    setPassword(e.target.value);
   };
 
   const splitPassword = () => {
@@ -250,30 +248,30 @@ const SignUp = (props) => {
                 </Col>
               </Row>}
             {type === 'user' &&
-            <Row>
-              <Col md={6} sm={12}>
-                <label className="signup-label">First Name <span className="red-star">*</span></label>
-                <input
-                  type="text"
-                  className={alertError && firstName === '' ? ' form-control my-input' : 'form-control formy'}
-                  placeholder="Enter user name"
-                  value={firstName}
-                  onChange={onFirstName}
-                  maxLength={30}
-                />
-              </Col>
-              <Col md={6} sm={12}>
-                <label className="signup-label">Last Name <span className="red-star">*</span></label>
-                <input
-                  type="text"
-                  className={alertError && lastName === '' ? ' form-control my-input' : 'form-control formy'}
-                  placeholder="Enter user name"
-                  value={lastName}
-                  onChange={onLastName}
-                  maxLength={30}
-                />
-              </Col>
-            </Row>}
+              <Row>
+                <Col md={6} sm={12}>
+                  <label className="signup-label">First Name <span className="red-star">*</span></label>
+                  <input
+                    type="text"
+                    className={alertError && firstName === '' ? ' form-control my-input' : 'form-control formy'}
+                    placeholder="Enter user name"
+                    value={firstName}
+                    onChange={onFirstName}
+                    maxLength={30}
+                  />
+                </Col>
+                <Col md={6} sm={12}>
+                  <label className="signup-label">Last Name <span className="red-star">*</span></label>
+                  <input
+                    type="text"
+                    className={alertError && lastName === '' ? ' form-control my-input' : 'form-control formy'}
+                    placeholder="Enter user name"
+                    value={lastName}
+                    onChange={onLastName}
+                    maxLength={30}
+                  />
+                </Col>
+              </Row>}
             <Row>
               <Col md={6} sm={12}>
                 <label className="signup-label">Email <span className="red-star">*</span></label>
