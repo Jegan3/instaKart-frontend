@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Col, Row, Grid } from 'react-bootstrap';
 import ReactTable from 'react-table';
+import { message } from 'antd';
 import Headerbar from '../../components/Headerbar';
 import Table from '../../components/Table';
 import StatsCard from '../../components/StatsCard';
@@ -10,6 +11,7 @@ import StatsCard from '../../components/StatsCard';
 import Sidebar from '../../components/Sidebar';
 import Overlay from '../../components/Overlay';
 import Desk from '../../components/Desk';
+import Loader from '../../components/Loader';
 
 const Dashboard = () => {
   const [rtl, setRtl] = useState();
@@ -21,9 +23,19 @@ const Dashboard = () => {
 
   const dispatch = useDispatch();
   const vendorList = useSelector((state) => state.vendorListState.vendorList && state.vendorListState.vendorList.data);
+  const invalidVendorStatus = useSelector((state) => state.vendorStatusState.error);
+  const validVendorStatus = useSelector((state) => state.vendorStatusState.status);
+  const isLoading = useSelector((state) => state.vendorStatusState.isLoading);
   // const userData = useSelector((state) => state.retreiveBannerState.retreiveBanner);
 
 
+  useEffect(() => {
+    if (validVendorStatus && validVendorStatus.status) {
+      message.success('Thanks!, Basic info form is successfully updated with us')
+    } else if (invalidVendorStatus) {
+      message.error('invalid Error');
+    }
+  }, [invalidVendorStatus]);
 
   vendorList && vendorList.map((info, i) => {
     info.id = i + 1
@@ -74,9 +86,20 @@ const Dashboard = () => {
       regStatus: 'Accepted',
     }
     dispatch({ type: 'VENDOR_STATUS_REQUEST', status });
+    setShow(false)
   };
 
+  const onReject = () => {
+    const status = {
+      email: info.email,
+      regStatus: 'Rejected',
+    }
+    dispatch({ type: 'VENDOR_STATUS_REQUEST', status });
+    setShow(false)
+  }
+
   return (
+
     <div className={`wrapper ${rtl ? 'rtl' : ''}`}>
       {/* <Upload showPopup={show} hidePopup={hidePopup} /> */}
       {/* <Overlay show={show} onHide={hidePopup} primary="accept"
@@ -90,6 +113,7 @@ const Dashboard = () => {
         onClose={onClose}
         show={show}
         submit={onSubmit}
+        reject={onReject}
       />
       <Sidebar />
       <div>
@@ -98,6 +122,7 @@ const Dashboard = () => {
         <Headerbar headerName="Dashboard" setRtlCallback={onRtl} />
         <div className="main-content">
           <Grid fluid>
+            {isLoading && <Loader />}
             <Row>
               <Col lg={3} md={6} sm={6}>
                 <StatsCard

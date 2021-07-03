@@ -9,7 +9,7 @@ const DescriptionItem = ({ title, content }) => (
   </div>
 );
 
-const Desk = ({ show, onClose, info, submit }) =>
+const Desk = ({ show, onClose, info, submit, reject }) =>
   <Drawer
     width={600}
     placement="right"
@@ -69,7 +69,7 @@ const Desk = ({ show, onClose, info, submit }) =>
     </Row>
     <div className="desk-btns"
     >
-      <Button style={{ marginRight: 8 }} >
+      <Button onClick={reject} style={{ marginRight: 8 }} >
         Reject
       </Button>
       <Button onClick={submit}>

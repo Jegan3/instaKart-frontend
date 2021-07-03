@@ -3,7 +3,7 @@ import loading from './loading.svg';
 
 const Loader = () => {
   const style = {
-    position: 'absolute',
+    position: 'fixed',
     display: 'flex',
     justifyContent: 'center',
     height: '10vh',

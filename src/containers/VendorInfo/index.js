@@ -78,8 +78,8 @@ const VendorInfo = (props) => {
     } else if (invalidVendor) {
       message.error('invalid Error');
     }
-  },[invalidVendor]);
-  
+  }, [invalidVendor]);
+
 
   // const Option = props => {
   //   return ( <div> <components.Option {...props}>
@@ -89,13 +89,13 @@ const VendorInfo = (props) => {
   //   };
 
   const onFirstName = (e) => {
-    if (e.target.value.match('^[a-zA-Z0-9]*$')) {
+    if (e.target.value.match('^[a-zA-Z ]*$')) {
       setFirstName(e.target.value)
     }
   }
 
   const onSurName = (e) => {
-    if (e.target.value.match('^[a-zA-Z0-9]*$')) {
+    if (e.target.value.match('^[a-zA-Z ]*$')) {
       setLastName(e.target.value)
     }
   }
@@ -132,7 +132,7 @@ const VendorInfo = (props) => {
   const onBank = (bank) => {
     setBank(bank)
     setPreference({ value: 'Bank Transfer', label: 'Bank Transfer' })
-    
+
   }
 
   const onBankAccount = (e) => {
@@ -161,10 +161,9 @@ const VendorInfo = (props) => {
 
   const onWipay = (e) => {
     setWipay(e.target.value)
-    if ( wipay === 'Yes'){
+    if (wipay === 'Yes') {
       setPreference('')
-    } 
-    else {
+    } else {
       setPreference({ value: 'Bank Transfer', label: 'Bank Transfer' })
     }
   }

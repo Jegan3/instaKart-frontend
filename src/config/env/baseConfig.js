@@ -8,6 +8,7 @@ export default {
     getVendorList: '/api/admin/vendorApplications',
     getVendorStatus: '/api/admin/applicationApproval',
     getIndustryInfo: '/api/vendor/getApprovedVendorInfo',
+    getThriftCategory: '/api/staticContentRouter/getCategories',
   },
 
   apiBaseUrl: {

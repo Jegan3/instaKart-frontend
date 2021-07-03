@@ -59,7 +59,7 @@ const weekData = [
 ]
 
 const GeneralInfo = () => {
-  const [logoImage, setLogoImage] = useState('');
+  const [companyLogo, setCompanyLogo] = useState('');
   const [loading, setLoading] = useState(false);
   const [storeName, setStoreName] = useState('');
   const [address, setAddress] = useState('');
@@ -92,19 +92,19 @@ const GeneralInfo = () => {
     let file = e.target.files[0];
     const reader = new FileReader();
     reader.onload = () => {
-      setLogoImage(reader.result);
+      setCompanyLogo(reader.result);
     };
     reader.readAsDataURL(file);
   }
 
   const onStoreName = (e) => {
-    if (e.target.value.match('^[a-zA-Z0-9]*$')) {
+    if (e.target.value.match('^[a-zA-Z0-9 ]*$')) {
       setStoreName(e.target.value)
     }
   }
 
   const onAddress = (e) => {
-    if (e.target.value.match('^[a-zA-Z0-9]*$')) {
+    if (e.target.value.match('^[a-zA-Z0-9 ]*$')) {
       setAddress(e.target.value)
     }
   }
@@ -150,13 +150,13 @@ const GeneralInfo = () => {
   };
 
   const onFbId = (e) => {
-    if (e.target.value.match('^[a-zA-Z0-9_@./#&+-]*$')) {
+    if (e.target.value.match('^[a-zA-Z0-9_@./#&+- ]*$')) {
       setFbId(e.target.value);
     }
   };
 
   const onIgId = (e) => {
-    if (e.target.value.match('^[a-zA-Z0-9_@./#&+-]*$')) {
+    if (e.target.value.match('^[a-zA-Z0-9_@./#&+- ]*$')) {
       setIgId(e.target.value);
     }
   };
@@ -194,7 +194,7 @@ const GeneralInfo = () => {
     }
     else {
       const generalList = {
-        logoImage,
+        companyLogo,
         storeName,
         address,
         countryId: country && country.value,
@@ -230,7 +230,7 @@ const GeneralInfo = () => {
                       <div className='load-info'>
                         <div>
                           <div className="photo">
-                            {loading ? <h3 className='loading-info'>Loading...</h3> : logoImage ? <img src={logoImage} alt='' /> : <img src="images/Your-logo-here..png" />}
+                            {loading ? <h3 className='loading-info'>Loading...</h3> : companyLogo ? <img src={companyLogo} alt='' /> : <img src="images/Your-logo-here..png" />}
                           </div>
                           {!loading && <div className="image-upload">
                             <label for="file-input"><i className="fa fa-camera" /></label>

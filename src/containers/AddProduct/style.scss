@@ -1,106 +1,110 @@
 .add-product {
-    .form-content {
-        padding: 15px 35px;
-        overflow:visible;
-       
-       .upload-image{
-        .ant-upload-list-picture-card-container {
-            //display: inline-block;
-           // width: 140px;
-            height: 107px;
-           // margin: 0px 7px;
-           // left: 10px;
-           // position: relative;
-           // vertical-align: top;
-        }
-        .ant-upload.ant-upload-select-picture-card {
-            
-           // margin: 0px 16px;
-           // width: 140px;
-            height: 107px;
-        }
-       }
+  .form-content {
+    padding: 15px 35px;
+    overflow: visible;
 
-       .css-yk16xz-control {
+    .upload-image {
+      .ant-upload-list-picture-card-container {
+        height: 107px;
+      }
+
+      .ant-upload.ant-upload-select-picture-card {
+        height: 107px;
+
+        :hover {
+          background-color: white;
+        }
+      }
+
+      .css-yk16xz-control {
         border-radius: 7px;
-        // max-height: 35px;
         min-height: 0px !important;
         box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
-    }
-    .pricerow-list{
+      }
+
+      .pricerow-list {
         margin-top: 12px;
-    }
+      }
 
-        .btn-primary:focus,
-        & :hover {
-            background-color: transparent;
-        }
+      // .btn-primary:focus,
+      // & :hover {
+      //  background-color: transparent;
+      // }
 
-        .form-check-input {
-            margin: 15px 6px 0px 8px;
-        }
+      .form-check-input {
+        margin: 15px 6px 0px 8px;
+      }
 
-        .signup-labels {
-            top: 10px;
-            position: relative;
-            margin-top: 3%;
-            white-space: nowrap;
-        }
+      .signup-labels {
+        top: 10px;
+        position: relative;
+        margin-top: 3%;
+        white-space: nowrap;
+      }
 
-        .form-check {
-            white-space: nowrap;
-        }
+      .form-check {
+        white-space: nowrap;
+      }
 
-        .file-input {
-            border: 1px solid #e3e3e3;
-            border-radius: 7px;
-            color: #565656;
-            height: 35px;
-        }
+      .file-input {
+        border: 1px solid #e3e3e3;
+        border-radius: 7px;
+        color: #565656;
+        height: 35px;
+      }
 
-        .file-input>[type='file'] {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            z-index: 10;
-            cursor: pointer;
-        }
+      .file-input>[type='file'] {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        z-index: 10;
+        cursor: pointer;
+      }
 
-        .file-input>.button {
-            display: inline-block;
-            cursor: pointer;
-            background: #eee;
-            padding: 7px 16px;
-            border-radius: 7px;
-            margin-right: 8px;
-        }
+      .file-input>.button {
+        display: inline-block;
+        cursor: pointer;
+        background: #eee;
+        padding: 7px 16px;
+        border-radius: 7px;
+        margin-right: 8px;
+      }
 
-        .file-input:hover>.button {
-            background: #28a4d9;
-            color: white;
-        }
+      .file-input:hover>.button {
+        background: #28a4d9;
+        color: white;
+      }
 
-        .file-input>.label {
-            color: #333;
-            white-space: nowrap;
-            opacity: .3;
-        }
+      .file-input>.label {
+        color: #333;
+        white-space: nowrap;
+        opacity: .3;
+      }
 
-        .file-input.-chosen>.label {
-            opacity: 1;
-        }
+      .file-input.-chosen>.label {
+        opacity: 1;
+      }
     }
 
     .btns-style {
-        padding-top: 5px;
+      padding-top: 5px;
     }
+  }
 }
 
-.drag-video {
- :hover {
-  background-color: none !important;
+.upload-red {
+  border-color: red;
 }
+
+.upload-blue {
+  border-color: blue;
+}
+
+
+.ant-upload.ant-upload-drag:not(.ant-upload-disabled):hover {
+  border-color: #40a9ff;
+  background-color: white;
 }

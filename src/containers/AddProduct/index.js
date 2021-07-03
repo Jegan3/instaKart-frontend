@@ -9,11 +9,6 @@ import { Upload, Modal, message } from 'antd';
 
 const { Dragger } = Upload;
 
-const options = [
-  { value: 'chocolate', label: 'Chocolate' },
-  { value: 'strawberry', label: 'Strawberry' },
-  { value: 'vanilla', label: 'Vanilla' }
-]
 
 const AddProduct = () => {
   const [productName, setProductName] = useState('');
@@ -22,61 +17,82 @@ const AddProduct = () => {
   const [previewVisible, setPreviewVisible] = useState(false)
   const [previewImage, setPreviewImage] = useState('')
   const [previewTitle, setPreviewTitle] = useState('')
-  const [videoList, setVideoList] = useState([])
-  const [itemPrice, setItemPrice] = useState('');
+  const [productVideo, setProductVideo] = useState([])
+  const [price, setPrice] = useState('');
   const [tax, setTax] = useState('');
   const [discount, setDiscount] = useState('');
   const [finalPrice, setFinalPrice] = useState('');
-  const [textArea, setTextArea] = useState('');
+  const [policy, setPolicy] = useState('');
+  const [alertError, setAlertError] = useState(false);
+  const [warranty, setWarranty] = useState('');
+
 
   // console.log('fileList', fileList);
 
   const dispatch = useDispatch();
- // const thriftProduct = useSelector((state) => state.thriftAddProductState.thriftAddProduct);
+  const thriftCategoryType = useSelector((state) => state.thriftCategoryState.thriftCategory);
+  console.log('test', thriftCategoryType && thriftCategoryType)
 
+
+  useEffect(() => {
+    dispatch({ type: 'THRIFT_CATEGORY_REQUEST' });
+  }, [])
   // useEffect(() => {
-  //   if (thriftProduct && thriftProduct.status) {
+  //   if (vendor && vendor.status) {
   //     message.success('Thanks!, Basic info form is successfully updated with us')
+  //     setTimeout(() => {
+  //       history.push({ pathname: '/' })
+  //     }, 3000);
+  //   } else if (invalidVendor) {
+  //     message.error('invalid Error');
   //   }
-  // })
+  // },[invalidVendor]);
 
   const onProductName = (e) => {
-    if (e.target.value.match('^[a-zA-Z0-9]*$')) {
+    if (e.target.value.match('^[a-zA-Z ]*$'))
       setProductName(e.target.value)
-    }
   }
 
-  const onCategory = () => {
-    setCategory()
+  const onCategory = (category) => {
+    setCategory(category)
   }
+  const thriftCategoryOptions = thriftCategoryType && thriftCategoryType.categoryDetails.sort((a, b) => a.categoryName.localeCompare(b.categoryName)).map((item) => ({
+    value: item._id,
+    label: item.categoryName,
+  }));
 
-  const onItemPrice = (e) => {
-    if (e.target.value.match('^[0-9]')) {
-      setItemPrice(e.target.value)
+  const onPrice = (e) => {
+    if (e.target.value.match('^[0-9]*$')) {
+      setPrice(e.target.value)
     }
   }
 
   const onTax = (e) => {
-    if (e.target.value.match('^[0-9]')) {
+    if (e.target.value.match('^[0-9]*$')) {
       setTax(e.target.value)
     }
   }
 
   const onDiscount = (e) => {
-    if (e.target.value.match('^[0-9]')) {
+    if (e.target.value.match('^[0-9]*$')) {
       setDiscount(e.target.value)
     }
   }
 
   const onFinalPrice = (e) => {
-    if (e.target.value.match('^[0-9]')) {
+    if (e.target.value.match('^[0-9]*$')) {
       setFinalPrice(e.target.value)
     }
   }
 
-  const onTextArea = (e) => {
+  const onPolicy = (e) => {
     if (e.target.value) {
-      setTextArea(e.target.value)
+      setPolicy(e.target.value)
+    }
+  }
+  const onWarranty = (e) => {
+    if (e.target.value) {
+      setWarranty(e.target.value)
     }
   }
 
@@ -110,11 +126,11 @@ const AddProduct = () => {
     } else if (!info.fileList.length) {
       message.error(`${info.file.name} file deleted successfully`);
     }
-    setVideoList(info.fileList)
+    setProductVideo(info.fileList)
   }
 
   const onPreview = async file => {
-    if (!file.url && !file.preview) { 
+    if (!file.url && !file.preview) {
       file.preview = await getBase64(file.originFileObj);
     }
     setPreviewVisible(true)
@@ -138,47 +154,38 @@ const AddProduct = () => {
   }
 
   const beforeUpload = (file) => {
-    if (videoList.length > 0) {
+    if (productVideo.length > 0) {
       message.error(`You cannot upload more than one file`);
     } else if (file.size > 31457280) {
       message.error(`${file.name} exceeds the maximum upload size limit`);
     }
-    return videoList.length < 1 && file.size < 31457280 ? true : Upload.LIST_IGNORE;
+    return productVideo.length < 1 && file.size < 31457280 ? true : Upload.LIST_IGNORE;
   }
 
   const handleCancel = () => setPreviewVisible(false);
 
-
-
-
-
-
-
   const onSubmit = () => {
     if
-      (productName=== '' ||  discount === '') {
-      // setAlertError(window.alert('done'));
-      // setAlertMsg(window.alert('Please fill all the fields'));
+      (!productName || !category || !fileList.length || !productVideo || !price || !policy || !warranty) {
+      setAlertError(true)
+      message.error('Please fill all the fields')
     }
-    // else if (termscondition === false) {
-    //   setAlertMsg('Please accept the Terms & Conditions and Privacy Policy');
-    // } 
     else {
       const addProduct = {
         productName,
         category,
-        tax,
+        productImage: fileList.map(info => info.thumbUrl),
+        productVideo,
+        price,
         discount,
         finalPrice,
-        textArea,
-        videoList,
-        fileList,
+        policy,
+        warranty,
       };
+      console.log('test44', fileList)
       console.log('tst', addProduct);
-         dispatch({ type: 'THRIFT_ADD_PRODUCT_REQUEST', addProduct });
-      //   setAlertMsg('');
+      dispatch({ type: 'THRIFT_ADD_PRODUCT_REQUEST', addProduct });
     }
-
   };
 
   return (
@@ -196,22 +203,23 @@ const AddProduct = () => {
                   <label className="signup-label">Product Name <span className="red-star">*</span></label>
                   <input
                     type="text"
-                    className="form-control"
+                    className={alertError && !productName ? ` form-control my-input` : `form-control formy`}
                     maxLength={30}
                     value={productName}
                     onChange={onProductName}
                   />
                 </Col>
-                <Col sm={12} md={6}>
+                <Col sm={12} md={6} className={`clear-city ${alertError && !category && `dropdown-alert`}`}>
                   <label className="signup-label">Select Category <span className="red-star">*</span></label>
                   <Select
                     type="text"
                     className="prof-select "
                     placeholder="Select Category."
                     isSearchable={false}
-                     value={category}
-                     onChange={onCategory}
-                     options={options}
+                    value={category}
+                    onChange={onCategory}
+                    options={thriftCategoryOptions}
+                  // menuIsOpen 
                   />
                 </Col>
               </Row>
@@ -221,9 +229,9 @@ const AddProduct = () => {
                   <Upload
                     action="png"
                     accept="image/*"
-                    // multiple accept="image/*,audio/*,video/*"
+                    // multiple accept="image/*,audio/*,productVideo/*"
                     customRequest={fakeRequest}
-                    className='upload-image'
+                    className="upload-image"
                     listType="picture-card"
                     fileList={fileList}
                     onChange={onChangeImage}
@@ -241,7 +249,7 @@ const AddProduct = () => {
                   </Modal>
                 </Col>
                 <Col sm={12} md={6}>
-                  <label className="signup-label">Upload Video <span className="red-star">*</span></label>
+                  <label className="signup-label">Upload Video </label>
                   <Dragger
                     name='file'
                     className="drag-video"
@@ -259,16 +267,16 @@ const AddProduct = () => {
                 </Col>
               </Row>
               <Row>
-                <Col sm={12} md={6}>
+                <Col sm={12} md={12}>
                   <Row className='pricerow-list'>
                     <Col sm={3}>
-                      <label className="signup-label">Item Price <span className="red-star">*</span></label>
+                      <label className="signup-label">Price <span className="red-star">*</span></label>
                       <input
                         type="text"
-                        className="form-control"
+                        className={alertError && !price ? ` form-control my-input` : `form-control formy`}
                         maxLength={10}
-                        value={itemPrice}
-                        onChange={onItemPrice}
+                        value={price}
+                        onChange={onPrice}
                       />
                     </Col>
                     <Col sm={3}>
@@ -292,25 +300,39 @@ const AddProduct = () => {
                       />
                     </Col>
                     <Col sm={3}>
-                      <label className="signup-label">Final Price </label>
+                      <label className="signup-label">Final Price  </label>
                       <input
                         type="text"
                         className="form-control"
                         maxLength={10}
                         value={finalPrice}
                         onChange={onFinalPrice}
+                        disabled
                       />
                     </Col>
                   </Row>
                 </Col>
-                <Col sm={12} md={6}>
-                  <label className="signup-label">Description<span className="red-star">*</span></label>
-                  <textarea className="form-control" 
-                  name="message" 
-                
-                  value={textArea}
-                  onChange={onTextArea}
-                  rows="4"></textarea>
+                <Col md={12}>
+                  <Row>
+                    <Col sm={12} md={6}>
+                      <label className="signup-label">Policy Description <span className="red-star">*</span></label>
+                      <textarea className={alertError && !policy ? ` form-control my-input` : `form-control formy`}
+                        name="message"
+                        placeholder='type something..'
+                        value={policy}
+                        onChange={onPolicy}
+                        rows="4"></textarea>
+                    </Col>
+                    <Col sm={12} md={6}>
+                      <label className="signup-label">Warranty< span className="red-star">*</span></label>
+                      <textarea className={alertError && !warranty ? ` form-control my-input` : `form-control formy`}
+                        name="message"
+                        placeholder='type something..'
+                        value={warranty}
+                        onChange={onWarranty}
+                        rows="4"></textarea>
+                    </Col>
+                  </Row>
                 </Col>
               </Row>
             </Row>
@@ -320,7 +342,7 @@ const AddProduct = () => {
                 <button
                   type="button"
                   className="btn btn-primary btn-block modal-butn"
-                onClick={onSubmit}
+                  onClick={onSubmit}
                 >
                   Submit
                 </button>
