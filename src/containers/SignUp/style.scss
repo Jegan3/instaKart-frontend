@@ -132,6 +132,9 @@
 
 .clear-industry {
   @include dropdown-height;
+  .css-1wa3eu0-placeholder {
+  white-space: nowrap;
+}
 }
 
 .required-field {

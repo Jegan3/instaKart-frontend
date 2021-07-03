@@ -60,6 +60,7 @@ const VendorInfo = (props) => {
   const dispatch = useDispatch();
   const vendor = useSelector((state) => state.vendorInfoState.vendorInfo);
   const isLoading = useSelector((state) => state.vendorInfoState.isLoading);
+  const invalidVendor = useSelector((state) => state.vendorInfoState.error);
 
   // vendor details from url
   const search = window.location.search;
@@ -74,8 +75,11 @@ const VendorInfo = (props) => {
       setTimeout(() => {
         history.push({ pathname: '/' })
       }, 3000);
+    } else if (invalidVendor) {
+      message.error('invalid Error');
     }
-  })
+  },[invalidVendor]);
+  
 
   // const Option = props => {
   //   return ( <div> <components.Option {...props}>
@@ -127,6 +131,8 @@ const VendorInfo = (props) => {
 
   const onBank = (bank) => {
     setBank(bank)
+    setPreference({ value: 'Bank Transfer', label: 'Bank Transfer' })
+    
   }
 
   const onBankAccount = (e) => {
@@ -155,6 +161,12 @@ const VendorInfo = (props) => {
 
   const onWipay = (e) => {
     setWipay(e.target.value)
+    if ( wipay === 'Yes'){
+      setPreference('')
+    } 
+    else {
+      setPreference({ value: 'Bank Transfer', label: 'Bank Transfer' })
+    }
   }
 
   const onWipayNumber = (e) => {
@@ -317,7 +329,7 @@ const VendorInfo = (props) => {
               <Col md={6} sm={12} >
                 <div className='select-file'>
                   <label className="signup-label">Upload Proof of Address <span className="red-star">*</span></label>
-                  <div className='file-input'>
+                  <div className={`file-input ${alertError && !uploadAddress && `red`}`}>
                     <input
                       type='file'
                       onChange={onUploadAddress} />

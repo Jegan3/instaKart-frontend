@@ -1,6 +1,7 @@
 /*eslint-disable*/
-import React, { useState } from 'react';
-import { Grid, Row, Col, Form } from 'react-bootstrap';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Grid, Row, Col } from 'react-bootstrap';
 import Select from 'react-select';
 import Headerbar from '../../components/Headerbar';
 import Sidebar from '../../components/Sidebar';
@@ -8,14 +9,76 @@ import { Upload, Modal, message } from 'antd';
 
 const { Dragger } = Upload;
 
+const options = [
+  { value: 'chocolate', label: 'Chocolate' },
+  { value: 'strawberry', label: 'Strawberry' },
+  { value: 'vanilla', label: 'Vanilla' }
+]
+
 const AddProduct = () => {
+  const [productName, setProductName] = useState('');
+  const [category, setCategory] = useState('');
   const [fileList, setImageList] = useState([])
   const [previewVisible, setPreviewVisible] = useState(false)
   const [previewImage, setPreviewImage] = useState('')
   const [previewTitle, setPreviewTitle] = useState('')
   const [videoList, setVideoList] = useState([])
+  const [itemPrice, setItemPrice] = useState('');
+  const [tax, setTax] = useState('');
+  const [discount, setDiscount] = useState('');
+  const [finalPrice, setFinalPrice] = useState('');
+  const [textArea, setTextArea] = useState('');
 
   // console.log('fileList', fileList);
+
+  const dispatch = useDispatch();
+ // const thriftProduct = useSelector((state) => state.thriftAddProductState.thriftAddProduct);
+
+  // useEffect(() => {
+  //   if (thriftProduct && thriftProduct.status) {
+  //     message.success('Thanks!, Basic info form is successfully updated with us')
+  //   }
+  // })
+
+  const onProductName = (e) => {
+    if (e.target.value.match('^[a-zA-Z0-9]*$')) {
+      setProductName(e.target.value)
+    }
+  }
+
+  const onCategory = () => {
+    setCategory()
+  }
+
+  const onItemPrice = (e) => {
+    if (e.target.value.match('^[0-9]')) {
+      setItemPrice(e.target.value)
+    }
+  }
+
+  const onTax = (e) => {
+    if (e.target.value.match('^[0-9]')) {
+      setTax(e.target.value)
+    }
+  }
+
+  const onDiscount = (e) => {
+    if (e.target.value.match('^[0-9]')) {
+      setDiscount(e.target.value)
+    }
+  }
+
+  const onFinalPrice = (e) => {
+    if (e.target.value.match('^[0-9]')) {
+      setFinalPrice(e.target.value)
+    }
+  }
+
+  const onTextArea = (e) => {
+    if (e.target.value) {
+      setTextArea(e.target.value)
+    }
+  }
 
   const onChangeImage = ({ fileList: newFileList }) => {
 
@@ -30,6 +93,7 @@ const AddProduct = () => {
       message.error(`${removed.name} file deleted successfully`);
     }
     setImageList(newFileList);
+    console.log('test33', fileList)
   };
 
   const onChangeVideo = (info) => {
@@ -50,7 +114,7 @@ const AddProduct = () => {
   }
 
   const onPreview = async file => {
-    if (!file.url && !file.preview) {
+    if (!file.url && !file.preview) { 
       file.preview = await getBase64(file.originFileObj);
     }
     setPreviewVisible(true)
@@ -84,6 +148,39 @@ const AddProduct = () => {
 
   const handleCancel = () => setPreviewVisible(false);
 
+
+
+
+
+
+
+  const onSubmit = () => {
+    if
+      (productName=== '' ||  discount === '') {
+      // setAlertError(window.alert('done'));
+      // setAlertMsg(window.alert('Please fill all the fields'));
+    }
+    // else if (termscondition === false) {
+    //   setAlertMsg('Please accept the Terms & Conditions and Privacy Policy');
+    // } 
+    else {
+      const addProduct = {
+        productName,
+        category,
+        tax,
+        discount,
+        finalPrice,
+        textArea,
+        videoList,
+        fileList,
+      };
+      console.log('tst', addProduct);
+         dispatch({ type: 'THRIFT_ADD_PRODUCT_REQUEST', addProduct });
+      //   setAlertMsg('');
+    }
+
+  };
+
   return (
     <div className="wrapper">
       {/* <Upload showPopup={show} hidePopup={hidePopup} /> */}
@@ -101,6 +198,8 @@ const AddProduct = () => {
                     type="text"
                     className="form-control"
                     maxLength={30}
+                    value={productName}
+                    onChange={onProductName}
                   />
                 </Col>
                 <Col sm={12} md={6}>
@@ -110,6 +209,9 @@ const AddProduct = () => {
                     className="prof-select "
                     placeholder="Select Category."
                     isSearchable={false}
+                     value={category}
+                     onChange={onCategory}
+                     options={options}
                   />
                 </Col>
               </Row>
@@ -142,6 +244,7 @@ const AddProduct = () => {
                   <label className="signup-label">Upload Video <span className="red-star">*</span></label>
                   <Dragger
                     name='file'
+                    className="drag-video"
                     accept="video/*"
                     customRequest={fakeRequest}
                     onChange={onChangeVideo}
@@ -164,6 +267,8 @@ const AddProduct = () => {
                         type="text"
                         className="form-control"
                         maxLength={10}
+                        value={itemPrice}
+                        onChange={onItemPrice}
                       />
                     </Col>
                     <Col sm={3}>
@@ -172,6 +277,8 @@ const AddProduct = () => {
                         type="text"
                         className="form-control"
                         maxLength={10}
+                        value={tax}
+                        onChange={onTax}
                       />
                     </Col>
                     <Col sm={3}>
@@ -180,6 +287,8 @@ const AddProduct = () => {
                         type="text"
                         className="form-control"
                         maxLength={10}
+                        value={discount}
+                        onChange={onDiscount}
                       />
                     </Col>
                     <Col sm={3}>
@@ -188,13 +297,20 @@ const AddProduct = () => {
                         type="text"
                         className="form-control"
                         maxLength={10}
+                        value={finalPrice}
+                        onChange={onFinalPrice}
                       />
                     </Col>
                   </Row>
                 </Col>
                 <Col sm={12} md={6}>
                   <label className="signup-label">Message.. <span className="red-star">*</span></label>
-                  <textarea className="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
+                  <textarea className="form-control" 
+                  name="message" 
+                
+                  value={textArea}
+                  onChange={onTextArea}
+                  rows="4"></textarea>
                 </Col>
               </Row>
             </Row>
@@ -204,7 +320,7 @@ const AddProduct = () => {
                 <button
                   type="button"
                   className="btn btn-primary btn-block modal-butn"
-                // onClick={onSubmit}
+                onClick={onSubmit}
                 >
                   Submit
                 </button>
