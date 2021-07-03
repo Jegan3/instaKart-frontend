@@ -73,7 +73,7 @@ const GeneralInfo = () => {
   const [updatedCityOptions, setUpdatedCityOptions] = useState();
   const [openingTime, setOpeningTime] = useState();
   const [closingTime, setClosingTime] = useState();
-  const [closed, setClosed] = useState(false);
+  const [closed, setClosed] = useState();
 
   const dispatch = useDispatch();
   const industryInfo = useSelector((state) => state.industryInfoState.industryInfo);
@@ -82,12 +82,11 @@ const GeneralInfo = () => {
 
   // const countries = generalInfo && generalInfo.countriesList;
   //const countries = signUpContent && signUpContent.countriesList
+  console.log('openingTime', openingTime);
 
   useEffect(() => {
     dispatch({ type: 'INDUSTRY_INFO_REQUEST' });
   }, [])
-
-  
 
   const onAvatarImage = (e) => {
     let file = e.target.files[0];
@@ -167,28 +166,32 @@ const GeneralInfo = () => {
   )
 
   const onOpeningTime = (info, value) => {
+    // setOpeningTime(value[info.index])
     console.log(info);
     console.log(value);
   }
 
-  const onClosingTime = (info, time ,timeString) => {
-    console.log('timeString', timeString);
-    console.log('time', time);
-    console.log('closing info', info);
+  const onClosingTime = (info, time, timeString) => {
+    // console.log('timeString', timeString);
+    // console.log('time', time);
+    // console.log('closing info', info);
   }
 
-  const onClosed = (info) => {
-    console.log('onClosed info', info);
-    setClosed(!closed);
+  const onClosed = (info, checked) => {
+    // console.log('info', info);
+    setClosed(checked[info.index])
+    console.log('info', info);
+    console.log('checked', checked);
+    // setClosed(!closed);
   }
-  
+
   const onSubmit = () => {
-    if(!city) {
-     message.error('Please fill all the fields');
+    if (!city) {
+      message.error('Please fill all the fields');
     }
     else if (termscondition === false) {
       message.error('Please accept the Terms & Conditions and Privacy Policy');
-    } 
+    }
     else {
       const generalList = {
         logoImage,
@@ -203,9 +206,9 @@ const GeneralInfo = () => {
         mobile
       };
       console.log('tst', generalList);
-        dispatch({ type: '_INFO_REQUEST', generalInfo });
-        setAlertMsg('');
-        message.success('Thanks!, Signup form is successfully registered with us ');
+      dispatch({ type: '_INFO_REQUEST', generalInfo });
+      setAlertMsg('');
+      message.success('Thanks!, Signup form is successfully registered with us ');
     }
 
   };
@@ -245,7 +248,7 @@ const GeneralInfo = () => {
                 <Col md={6} className='right-info' >
                   <Row>
                     <Col md={12}>
-                      <label className="signup-label">Business Name </label>
+                      <label className="signup-label">Business Name</label>
                       <input
                         type="text"
                         placeholder="business name"
@@ -256,24 +259,24 @@ const GeneralInfo = () => {
                       />
                     </Col>
                     <Col md={6}>
-                      <label className="signup-label">First Name </label>
+                      <label className="signup-label">First Name</label>
                       <input
                         type="text"
                         placeholder="first name"
                         className="form-control"
                         maxLength={30}
-                        value={storeName}
+                        value={industryInfo && industryInfo.data.vendorInfo.firstName}
                         disabled
                       />
                     </Col>
                     <Col md={6}>
-                      <label className="signup-label">Last Name </label>
+                      <label className="signup-label">Last Name</label>
                       <input
                         type="text"
                         placeholder="last name"
                         className="form-control"
                         maxLength={30}
-                        value={storeName}
+                        value={industryInfo && industryInfo.data.vendorInfo.lastName}
                         disabled
                       />
                     </Col>
@@ -314,7 +317,7 @@ const GeneralInfo = () => {
                     <Col md={12}>
                       <Row>
                         <Col md={6}>
-                          <label className="signup-label">City </label>
+                          <label className="signup-label">City</label>
                           <Select
                             type="text"
                             className="prof-select "
@@ -327,7 +330,7 @@ const GeneralInfo = () => {
                           />
                         </Col>
                         <Col md={6} className='zipcode'>
-                          <label className="signup-label">ZIP Code </label>
+                          <label className="signup-label">ZIP Code</label>
                           <input
                             type="text"
                             className="form-control"
@@ -356,7 +359,7 @@ const GeneralInfo = () => {
                     />
                   </Col>
                   <Col md={3}>
-                    <label className="signup-label">Facebook ID </label>
+                    <label className="signup-label">Facebook ID</label>
                     <input
                       type="text"
                       className="form-control"
@@ -367,7 +370,7 @@ const GeneralInfo = () => {
                     />
                   </Col>
                   <Col md={3}>
-                    <label className="signup-label">Instagram ID </label>
+                    <label className="signup-label">Instagram ID</label>
                     <input
                       type="text"
                       className="form-control"
@@ -417,12 +420,12 @@ const GeneralInfo = () => {
                           sortable: false,
                           width: 220,
                           Cell: (info) => (
-                            <TimePicker 
-                            use12Hours 
-                            format="h:mm a" 
-                            defaultValue={moment(info.original.openingTime, "HH:mm")}
-                            value={openingTime}
-                            onChange={(value) => onOpeningTime(info, value)} />
+                            <TimePicker
+                              use12Hours
+                              format="h:mm a"
+                              defaultValue={moment(info.original.openingTime, "HH:mm")}
+                              value={openingTime}
+                              onChange={(value) => onOpeningTime(info, value)} />
                           )
                         },
                         {
@@ -431,12 +434,12 @@ const GeneralInfo = () => {
                           filterable: false,
                           sortable: false,
                           Cell: (info) => (
-                            <TimePicker 
-                            use12Hours 
-                            format="h:mm A" 
-                            defaultValue={moment(info.original.closingTime, "HH:mm")}
-                            value={closingTime}
-                            onChange={(time, timeString) => onClosingTime(info, time, timeString)} />
+                            <TimePicker
+                              use12Hours
+                              format="h:mm A"
+                              defaultValue={moment(info.original.closingTime, "HH:mm")}
+                              value={closingTime}
+                              onChange={(time, timeString) => onClosingTime(info, time, timeString)} />
                           ),
                           width: 220,
                         },
@@ -447,11 +450,12 @@ const GeneralInfo = () => {
                           sortable: false,
                           Cell: (info) => (
                             <div>
-                              <input 
-                              type="checkbox" 
-                              className='closed-header' 
-                              checked={info.original.closed}
-                              onChange={(checked) => onClosed(info, checked)}/>
+                              <input
+                                type="checkbox"
+                                className='closed-header'
+                                defaultChecked={info.original.closed}
+                                checked={closed}
+                                onChange={(checked) => onClosed(info, checked)} />
                             </div>
                           ),
                           width: 100,

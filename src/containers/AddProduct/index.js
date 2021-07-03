@@ -304,7 +304,7 @@ const AddProduct = () => {
                   </Row>
                 </Col>
                 <Col sm={12} md={6}>
-                  <label className="signup-label">Message.. <span className="red-star">*</span></label>
+                  <label className="signup-label">Description<span className="red-star">*</span></label>
                   <textarea className="form-control" 
                   name="message" 
                 

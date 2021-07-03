@@ -2,7 +2,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Col, Row, Grid } from 'react-bootstrap';
-// import { Modal, Header, ModalBody, ModalFooter } from 'react-bootstrap'
 import ReactTable from 'react-table';
 import Headerbar from '../../components/Headerbar';
 import Table from '../../components/Table';
@@ -11,19 +10,6 @@ import StatsCard from '../../components/StatsCard';
 import Sidebar from '../../components/Sidebar';
 import Overlay from '../../components/Overlay';
 import Desk from '../../components/Desk';
-
-
-// const productData = [
-//   {
-//     _id: '1',
-//     company: 'Nike',
-//     email: 'nike@gmail.com',
-//     status: 'pending',
-//     soh: '100',
-//     country: 'America',
-//     poster: '123456789012',
-//   },
-// ]
 
 const Dashboard = () => {
   const [rtl, setRtl] = useState();
@@ -74,9 +60,8 @@ const Dashboard = () => {
   }
 
   const handleShow = (info) => {
-    // console.log('info',info)
-  setShow(true);
-  setInfo(info.original)
+    setShow(true);
+    setInfo(info.original)
   }
 
   const onClose = () => {
@@ -84,10 +69,9 @@ const Dashboard = () => {
   };
 
   const onSubmit = () => {
-    console.log("infoooo",info)
     const status = {
-email: info.email,
-regStatus: 'accepted',
+      email: info.email,
+      regStatus: 'Accepted',
     }
     dispatch({ type: 'VENDOR_STATUS_REQUEST', status });
   };
@@ -98,15 +82,15 @@ regStatus: 'accepted',
       {/* <Overlay show={show} onHide={hidePopup} primary="accept"
         secondary="reject" onSubmitSecondary={console.log('reject')}
         onSubmitPrimary={console.log('Accept')} alert={'successful'} /> */}
-        <Desk
-          // width={500}
-          // placement="right"
-          // closable={false}
-          info={info}
-          onClose={onClose}
-          show={show}
-          submit={onSubmit}
-          />
+      <Desk
+        // width={500}
+        // placement="right"
+        // closable={false}
+        info={info}
+        onClose={onClose}
+        show={show}
+        submit={onSubmit}
+      />
       <Sidebar />
       <div>
       </div>
@@ -216,7 +200,7 @@ regStatus: 'accepted',
                       },
                       {
                         Header: 'Country',
-                        accessor: 'country',
+                        accessor: 'countryName',
                       },
                       {
                         Header: 'Registered',
@@ -240,9 +224,7 @@ regStatus: 'accepted',
                         filterable: false,
                         sortable: false,
                         Cell: (original) => (
-                          // <div className="actions-right">
-                          <span className="btn-sign" onClick={()=>handleShow(original)}><i class="fab fa-react"></i></span>
-                          // </div>
+                          <span className="btn-sign" onClick={() => handleShow(original)}><i class="fab fa-react"></i></span>
                         ),
                       },
                     ]}

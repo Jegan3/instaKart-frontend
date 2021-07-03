@@ -63,7 +63,10 @@ const Sidebar = () => {
         {admin ? <SidebarContent>
           <Menu iconShape>
             <MenuItem icon={<FontAwesomeIcon icon={faHome} active />}>
-              Dashboard <Link to="/dashboard" />
+              Vendor <Link to="/dashboard" />
+            </MenuItem>
+            <MenuItem icon={<FontAwesomeIcon icon={faHome} active />}>
+              User <Link />
             </MenuItem>
           </Menu>
         </SidebarContent> :
