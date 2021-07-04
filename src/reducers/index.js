@@ -10,6 +10,7 @@ import industryInfoState from './IndustryInfo';
 import thriftProfileState from './ThriftProfile';
 import thriftAddProductState from './ThriftAddProduct';
 import thriftCategoryState from './ThriftCategory';
+import thriftDetailsState from './ThriftDetails';
 
 const rootReducer = combineReducers({
   signupState,
@@ -23,6 +24,7 @@ const rootReducer = combineReducers({
   thriftProfileState,
   thriftAddProductState,
   thriftCategoryState,
+  thriftDetailsState,
 });
 
 export default rootReducer;

@@ -173,10 +173,9 @@ const AddProduct = () => {
     else {
       const addProduct = {
         productName,
-        category,
-        productImage: fileList.map(info => info.thumbUrl),
+        category: category.value,
+        productImages: fileList.map(info => info.thumbUrl),
         productVideo,
-        price,
         discount,
         finalPrice,
         policy,

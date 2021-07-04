@@ -1,5 +1,6 @@
 /*eslint-disable*/
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Row, Col, Grid } from 'react-bootstrap';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
@@ -9,7 +10,18 @@ import { CarouselThriftStore, CarouselThriftStoreCategoryUp, CarouselThriftStore
 import { ThriftBanners } from '../../components/Banners';
 
 
-const ThriftStore = () => (
+const ThriftStore = () => {
+
+  const dispatch = useDispatch();
+  const thriftDetails = useSelector((state) => state.thriftDetailsState.thriftDetails);
+
+  console.log('thriftDetails', thriftDetails)
+
+  useEffect(() => {
+    dispatch({ type: 'THRIFT_DETAILS_REQUEST' });
+  }, [])
+
+  return (
   <Grid fluid className="padding-control thrift">
     <div>
       <Header />
@@ -91,6 +103,6 @@ const ThriftStore = () => (
       <Footer />
     </Row>
   </Grid>
-);
+)};
 
 export default ThriftStore;

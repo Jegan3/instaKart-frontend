@@ -5,7 +5,7 @@ import { doPost } from '../utils/fetchWrapper';
 
 export function* getThriftAddProduct(data) {
   try {
-    const response = yield doPost(envConfig.apiEndPoints.getThriftAddProduct, data.thriftAddProduct);
+    const response = yield doPost(envConfig.apiEndPoints.getThriftAddProduct, data.addProduct);
     yield put(instakartActionCreators.getThriftAddProductSuccess(response));
   } catch (error) {
     yield put(instakartActionCreators.getThriftAddProductFailure(error));
