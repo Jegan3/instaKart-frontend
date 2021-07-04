@@ -6,6 +6,7 @@ import Select from 'react-select';
 import Headerbar from '../../components/Headerbar';
 import Sidebar from '../../components/Sidebar';
 import { Upload, Modal, message } from 'antd';
+import ImgCrop from 'antd-img-crop';
 
 const { Dragger } = Upload;
 
@@ -225,19 +226,21 @@ const AddProduct = () => {
               <Row>
                 <Col sm={12} md={6}>
                   <label className="signup-label">Upload Image <span className="red-star">*</span></label>
-                  <Upload
-                    action="png"
-                    accept="image/*"
-                    // multiple accept="image/*,audio/*,productVideo/*"
-                    customRequest={fakeRequest}
-                    className="upload-image"
-                    listType="picture-card"
-                    fileList={fileList}
-                    onChange={onChangeImage}
-                    onPreview={onPreview}
-                  >
-                    {fileList.length < 3 && '+ Upload'}
-                  </Upload>
+                  <ImgCrop rotate>
+                    <Upload
+                      action="png"
+                      accept="image/*"
+                      // multiple accept="image/*,audio/*,productVideo/*"
+                      customRequest={fakeRequest}
+                      className="upload-image"
+                      listType="picture-card"
+                      fileList={fileList}
+                      onChange={onChangeImage}
+                      onPreview={onPreview}
+                    >
+                      {fileList.length < 3 && '+ Upload'}
+                    </Upload>
+                  </ImgCrop>
                   <Modal
                     visible={previewVisible}
                     title={previewTitle}
