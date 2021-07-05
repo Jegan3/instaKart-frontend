@@ -25,17 +25,19 @@ const Dashboard = () => {
   const vendorList = useSelector((state) => state.vendorListState.vendorList && state.vendorListState.vendorList.data);
   const invalidVendorStatus = useSelector((state) => state.vendorStatusState.error);
   const validVendorStatus = useSelector((state) => state.vendorStatusState.status);
-  const isLoading = useSelector((state) => state.vendorStatusState.isLoading);
+  const isLoadingStatus = useSelector((state) => state.vendorStatusState.isLoading);
+  const isLoadingList = useSelector((state) => state.vendorListState.isLoading);
   // const userData = useSelector((state) => state.retreiveBannerState.retreiveBanner);
 
 
   useEffect(() => {
     if (validVendorStatus && validVendorStatus.status) {
+      dispatch({ type: 'VENDOR_LIST_REQUEST' });
       message.success('Thanks!, Basic info form is successfully updated with us')
     } else if (invalidVendorStatus) {
       message.error('invalid Error');
     }
-  }, [invalidVendorStatus]);
+  }, [validVendorStatus, invalidVendorStatus]);
 
   vendorList && vendorList.map((info, i) => {
     info.id = i + 1
@@ -83,7 +85,7 @@ const Dashboard = () => {
   const onSubmit = () => {
     const status = {
       email: info.email,
-      regStatus: 'Accepted',
+      regStatus: 'accepted',
     }
     dispatch({ type: 'VENDOR_STATUS_REQUEST', status });
     setShow(false)
@@ -92,7 +94,7 @@ const Dashboard = () => {
   const onReject = () => {
     const status = {
       email: info.email,
-      regStatus: 'Rejected',
+      regStatus: 'rejected',
     }
     dispatch({ type: 'VENDOR_STATUS_REQUEST', status });
     setShow(false)
@@ -122,7 +124,7 @@ const Dashboard = () => {
         <Headerbar headerName="Dashboard" setRtlCallback={onRtl} />
         <div className="main-content">
           <Grid fluid>
-            {isLoading && <Loader />}
+            {(isLoadingList || isLoadingStatus ) && <Loader />}
             <Row>
               <Col lg={3} md={6} sm={6}>
                 <StatsCard

@@ -1,3 +1,4 @@
+/*eslint-disable*/
 import React from 'react';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
@@ -479,6 +480,20 @@ export const CarouselThriftStore = () => (
     {cardsDataMobile.map((card) => (
       <Card key={card.id} imgUrl={card.imgUrl} btnUrl={card.btnUrl} body />
     ))}
+  </Carousel>
+);
+
+export const CarouselThriftNewAdditions = ({thriftDetails}) => (
+  <Carousel
+    // ssr
+    infinite
+    // autoPlay
+    autoPlaySpeed={3000}
+    responsive={responsiveThrift}
+  >
+    {thriftDetails ? thriftDetails.productsInfo.map((info) => (
+      <Card key={info.productName} imgUrl={info.productImage} btnUrl={info.btnUrl} price={info.finalPrice} productName={info.productName} body />
+    )): <Card/>}
   </Carousel>
 );
 

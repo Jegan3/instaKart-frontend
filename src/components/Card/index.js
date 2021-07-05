@@ -4,7 +4,7 @@ import React from 'react';
 import Avatar from 'react-avatar';
 import { history } from '../../routes';
 
-const Card = ({ imgUrl, alt, content, btnUrl, body, title }) => {
+const Card = ({ imgUrl, alt, content, btnUrl, body, title, price, productName }) => {
 
   const Button = () => {
     history.push({ pathname: btnUrl })
@@ -49,8 +49,8 @@ const Card = ({ imgUrl, alt, content, btnUrl, body, title }) => {
               {/* <a href="http://vaibhavk13.sg-host.com/listings/assistant-accountant/" title="Assistant Accountant">Assistant Accountant</a> */}
               <a
                 // href={btnUrl}
-                title="Assistant Accountant">Assistant Accountant</a>
-              <span className="currency">$ 730</span>
+                title="Assistant Accountant">{productName}</a>
+              <span className="currency">{price}</span>
               <div className="listing-country">
                 <i className="fas fa-map-marker-alt"></i>
                 <span >Canada</span>

@@ -6,7 +6,7 @@ import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 // import StatsCard from '../../components/StatsCard';
 // import Card from '../../components/Card'
-import { CarouselThriftStore, CarouselThriftStoreCategoryUp, CarouselThriftStoreCategoryBottom } from '../../components/Carousel';
+import { CarouselThriftNewAdditions, CarouselThriftStore, CarouselThriftStoreCategoryUp, CarouselThriftStoreCategoryBottom } from '../../components/Carousel';
 import { ThriftBanners } from '../../components/Banners';
 
 
@@ -14,8 +14,6 @@ const ThriftStore = () => {
 
   const dispatch = useDispatch();
   const thriftDetails = useSelector((state) => state.thriftDetailsState.thriftDetails);
-
-  console.log('thriftDetails', thriftDetails)
 
   useEffect(() => {
     dispatch({ type: 'THRIFT_DETAILS_REQUEST' });
@@ -71,7 +69,7 @@ const ThriftStore = () => {
         <div className="thrift-ads">
           <h3>NEW ADDITIONS</h3>
           <h6>Buy & Sell Any Thing</h6>
-          <CarouselThriftStore />
+          <CarouselThriftNewAdditions thriftDetails={thriftDetails} />
         </div>
         <br />
       </div>
