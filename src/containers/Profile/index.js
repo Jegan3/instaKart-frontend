@@ -11,7 +11,6 @@ import Sidebar from '../../components/Sidebar';
 import Table from '../../components/Table';
 import { Locale } from '../../constants/Locale';
 import moment from 'moment';
-// import { Industries } from '../../constants/Industries';
 
 const weekData = [
   {
@@ -58,7 +57,7 @@ const weekData = [
   },
 ]
 
-const GeneralInfo = () => {
+const Profile = () => {
   const [companyLogo, setCompanyLogo] = useState('');
   const [loading, setLoading] = useState(false);
   const [storeName, setStoreName] = useState('');
@@ -74,9 +73,10 @@ const GeneralInfo = () => {
   const [openingTime, setOpeningTime] = useState();
   const [closingTime, setClosingTime] = useState();
   const [closed, setClosed] = useState();
+  const [timing, setTiming] = useState([])
 
   const dispatch = useDispatch();
-  const industryInfo = useSelector((state) => state.industryInfoState.industryInfo);
+  const thriftVendorInfo = useSelector((state) => state.thriftVendorInfoState.thriftVendorInfo);
   // const generalInfo = useSelector((state) => state.generalInfoState.generalInfo);
   //const signUpContent = useSelector((state) => state.signupContentState.signupContent);
 
@@ -85,7 +85,7 @@ const GeneralInfo = () => {
   console.log('openingTime', openingTime);
 
   useEffect(() => {
-    dispatch({ type: 'INDUSTRY_INFO_REQUEST' });
+    dispatch({ type: 'THRIFT_VENDOR_INFO_REQUEST' });
   }, [])
 
   const onAvatarImage = (e) => {
@@ -165,34 +165,45 @@ const GeneralInfo = () => {
     setMobile(e.target.rawValue)
   )
 
-  const onOpeningTime = (info, value) => {
-    // setOpeningTime(value[info.index])
-    console.log(info);
-    console.log(value);
+  const onOpeningTime = (info, timeString) => {
+    info.original.openingTime = moment(timeString, ["h:mm A"]).format("HH:mm");
+    if (!timing.length) {
+      setTiming([...timing, info.original])
+    } else {
+    timing.includes(info.original) ? {...timing, openingTime: moment(timeString, ["h:mm A"]).format("HH:mm")} : setTiming([...timing, info.original]) 
+    }
   }
 
-  const onClosingTime = (info, time, timeString) => {
-    // console.log('timeString', timeString);
-    // console.log('time', time);
-    // console.log('closing info', info);
+  const onClosingTime = (info,timeString) => {
+    info.original.closingTime = moment(timeString, ["h:mm A"]).format("HH:mm");
+    if (!timing.length) {
+      setTiming([...timing, info.original])
+    } else {
+    timing.includes(info.original) ? {...timing, closingTime: moment(timeString, ["h:mm A"]).format("HH:mm")} : setTiming([...timing, info.original]) 
+    }
   }
 
-  const onClosed = (info, checked) => {
-    // console.log('info', info);
-    setClosed(checked[info.index])
-    console.log('info', info);
-    console.log('checked', checked);
-    // setClosed(!closed);
-  }
+  const onClosed = (info, e) => {
+    setClosed(e.target.checked[info.index])
+    info.original.closed = e.target.checked
+    if (!timing.length) {
+      setTiming([...timing, info.original])
+    } else {
+    timing.includes(info.original) ? {...timing, closed: e.target.checked} : setTiming([...timing, info.original]) 
+    }
+    }
+  
 
   const onSubmit = () => {
-    if (!city) {
-      message.error('Please fill all the fields');
-    }
-    else if (termscondition === false) {
-      message.error('Please accept the Terms & Conditions and Privacy Policy');
-    }
-    else {
+    console.log('closed', closed);
+    console.log('timing', timing);
+    // if (!city) {
+    //   message.error('Please fill all the fields');
+    // }
+    // else if (termscondition === false) {
+    //   message.error('Please accept the Terms & Conditions and Privacy Policy');
+    // }
+    // else {
       const generalList = {
         companyLogo,
         storeName,
@@ -206,11 +217,10 @@ const GeneralInfo = () => {
         mobile
       };
       console.log('tst', generalList);
-      dispatch({ type: '_INFO_REQUEST', generalInfo });
-      setAlertMsg('');
+      dispatch({ type: '_INFO_REQUEST', generalList });
+      // setAlertMsg('');
       message.success('Thanks!, Signup form is successfully registered with us ');
-    }
-
+    // }
   };
 
   //const onCancel = () => window.alert("cancelled");
@@ -254,7 +264,7 @@ const GeneralInfo = () => {
                         placeholder="business name"
                         className="form-control"
                         maxLength={30}
-                        value={industryInfo && industryInfo.data.vendorInfo.companyName}
+                        value={thriftVendorInfo && thriftVendorInfo.data.vendorInfo.companyName}
                         disabled
                       />
                     </Col>
@@ -265,7 +275,7 @@ const GeneralInfo = () => {
                         placeholder="first name"
                         className="form-control"
                         maxLength={30}
-                        value={industryInfo && industryInfo.data.vendorInfo.firstName}
+                        value={thriftVendorInfo && thriftVendorInfo.data.vendorInfo.firstName}
                         disabled
                       />
                     </Col>
@@ -276,7 +286,7 @@ const GeneralInfo = () => {
                         placeholder="last name"
                         className="form-control"
                         maxLength={30}
-                        value={industryInfo && industryInfo.data.vendorInfo.lastName}
+                        value={thriftVendorInfo && thriftVendorInfo.data.vendorInfo.lastName}
                         disabled
                       />
                     </Col>
@@ -455,7 +465,7 @@ const GeneralInfo = () => {
                                 className='closed-header'
                                 defaultChecked={info.original.closed}
                                 checked={closed}
-                                onChange={(checked) => onClosed(info, checked)} />
+                                onChange={(e) => onClosed(info, e)} />
                             </div>
                           ),
                           width: 100,
@@ -497,4 +507,4 @@ const GeneralInfo = () => {
   )
 }
 
-export default GeneralInfo;
+export default Profile;

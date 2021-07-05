@@ -10,7 +10,7 @@ const Headerbar = ({ navbar, setRtlCallback, headerName }) => {
   const dispatch = useDispatch();
   const [rtl, setRtl] = useState(false);
 
-  const industryInfo = useSelector((state) => state.industryInfoState.industryInfo);
+  const thriftVendorInfo = useSelector((state) => state.thriftVendorInfoState.thriftVendorInfo);
 
   const onBars = () => {
     dispatch({ type: 'SHOW_SIDEBAR' });
@@ -46,7 +46,7 @@ const Headerbar = ({ navbar, setRtlCallback, headerName }) => {
         </div>
       </Navbar.Header>
       <div className="registration" >
-        {industryInfo && industryInfo.data.vendorInfo.register_num}
+        {thriftVendorInfo && thriftVendorInfo.data.vendorInfo.register_num}
       </div>
       <div className="hamburger-bars-icon hamburger-mobile hidden-xs" onClick={onRtl}>
         <FontAwesomeIcon icon={faMapSigns} />
