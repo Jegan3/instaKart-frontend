@@ -136,7 +136,9 @@ const VendorInfo = (props) => {
   }
 
   const onBankAccount = (e) => {
-    setBankAccount(e.target.value)
+    if (e.target.value.match('^[0-9]*$')) {
+      setBankAccount(e.target.value)
+    }
   }
 
   const onUploadRegistration = (e) => {
@@ -169,7 +171,9 @@ const VendorInfo = (props) => {
   }
 
   const onWipayNumber = (e) => {
-    setWipayAccount(e.target.value)
+    if (e.target.value.match('^[0-9]*$')) {
+      setWipayAccount(e.target.value)
+    }
   }
 
   const onPreference = (preference) => {
@@ -417,7 +421,7 @@ const VendorInfo = (props) => {
                   type="text"
                   className={alertError && wipayAccount === '' && wipay === 'Yes' ? ` form-control my-input` : `form-control formy`}
                   placeholder="WiPay number"
-                  maxLength={30}
+                  maxLength={10}
                   value={wipayAccount}
                   onChange={onWipayNumber}
                   disabled={wipay === 'No' || !wipay}
