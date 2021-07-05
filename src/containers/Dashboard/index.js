@@ -7,9 +7,7 @@ import { message } from 'antd';
 import Headerbar from '../../components/Headerbar';
 import Table from '../../components/Table';
 import StatsCard from '../../components/StatsCard';
-// import Upload from '../../components/Upload';
 import Sidebar from '../../components/Sidebar';
-import Overlay from '../../components/Overlay';
 import Desk from '../../components/Desk';
 import Loader from '../../components/Loader';
 
@@ -17,9 +15,6 @@ const Dashboard = () => {
   const [rtl, setRtl] = useState();
   const [show, setShow] = useState(false);
   const [info, setInfo] = useState();
-  //const [alert, setAlert] = useState('');
-
-  // const handleShow = () => setShow(true);
 
   const dispatch = useDispatch();
   const vendorList = useSelector((state) => state.vendorListState.vendorList && state.vendorListState.vendorList.data);
@@ -27,7 +22,6 @@ const Dashboard = () => {
   const validVendorStatus = useSelector((state) => state.vendorStatusState.status);
   const isLoadingStatus = useSelector((state) => state.vendorStatusState.isLoading);
   const isLoadingList = useSelector((state) => state.vendorListState.isLoading);
-  // const userData = useSelector((state) => state.retreiveBannerState.retreiveBanner);
 
 
   useEffect(() => {
@@ -40,25 +34,8 @@ const Dashboard = () => {
   }, [validVendorStatus, invalidVendorStatus]);
 
   vendorList && vendorList.map((info, i) => {
-    info.id = i + 1
+    info.id = i + 1, info.status = `${info.status.charAt(0).toUpperCase()}${info.status.slice(1)}`
   })
-  console.log('vendorlist', vendorList)
-  // temproraily for demo
-  // const button = login.user.type === 'admin' ? 'APPROVE' : 'UPLOAD';
-
-  // const login = {user:'APPROVE', email: 'appu'}
-
-  // const button = login.user ? 'APPROVE' : 'UPLOAD';
-
-  // useEffect(() => {
-  //   const { email } = login.user;
-  //   dispatch({ type: 'BANNER_RETRIEVE_REQUEST', email });
-  // }, []);
-
-  // const onClick = () => {
-  //   setShow(true);
-  // };
-
 
   useEffect(() => {
     dispatch({ type: 'VENDOR_LIST_REQUEST' });
@@ -101,16 +78,8 @@ const Dashboard = () => {
   }
 
   return (
-
     <div className={`wrapper ${rtl ? 'rtl' : ''}`}>
-      {/* <Upload showPopup={show} hidePopup={hidePopup} /> */}
-      {/* <Overlay show={show} onHide={hidePopup} primary="accept"
-        secondary="reject" onSubmitSecondary={console.log('reject')}
-        onSubmitPrimary={console.log('Accept')} alert={'successful'} /> */}
       <Desk
-        // width={500}
-        // placement="right"
-        // closable={false}
         info={info}
         onClose={onClose}
         show={show}
@@ -124,15 +93,13 @@ const Dashboard = () => {
         <Headerbar headerName="Dashboard" setRtlCallback={onRtl} />
         <div className="main-content">
           <Grid fluid>
-            {(isLoadingList || isLoadingStatus ) && <Loader />}
+            {(isLoadingList || isLoadingStatus) && <Loader />}
             <Row>
               <Col lg={3} md={6} sm={6}>
                 <StatsCard
                   bigIcon={<i className="fas fa-archive fa-xs icon-1" />}
                   statsText="Total Companies"
                   statsValue="634"
-                //   statsIcon={<i className="fa fa-refresh" />}
-                // statsIconText="Updated now"
                 />
               </Col>
               <Col lg={3} md={6} sm={6}>
@@ -140,8 +107,6 @@ const Dashboard = () => {
                   bigIcon={<i className="fas fa-truck fa-xs icon-2" />}
                   statsText="Pending Companies"
                   statsValue="105"
-                //   statsIcon={<i className="fa fa-calendar-o" />}
-                // statsIconText="Last day"
                 />
               </Col>
               <Col lg={3} md={6} sm={6}>
@@ -149,8 +114,6 @@ const Dashboard = () => {
                   bigIcon={<i className="fa fa-cart-plus fa-xs icon-3" />}
                   statsText="Rejected Companies"
                   statsValue="6"
-                //   statsIcon={<i className="fa fa-clock-o" />}
-                // statsIconText="In the last hour"
                 />
               </Col>
               <Col lg={3} md={6} sm={6}>
@@ -158,55 +121,14 @@ const Dashboard = () => {
                   bigIcon={<i className="fas fa-rupee-sign fa-xs icon-4" />}
                   statsText="Active Companies"
                   statsValue="150"
-                //   statsIcon={<i className="fa fa-refresh" />}
-                // statsIconText="Updated now"
                 />
               </Col>
             </Row>
-            {/* <Row>
-              <Col lg={3} md={6} sm={6}>
-                <StatsCard
-                  bigIcon={<i className="fa fa-cart-plus fa-xs icon-5" />}
-                  statsText="Today Ordered"
-                  statsValue="0"
-                //   statsIcon={<i className="fa fa-refresh" />}
-                // statsIconText="Updated now"
-                />
-              </Col>
-              <Col lg={3} md={6} sm={6}>
-                <StatsCard
-                  bigIcon={<i className="fas fa-shipping-fast fa-xs icon-6" />}
-                  statsText="Today Delivered"
-                  statsValue="0"
-                //   statsIcon={<i className="fa fa-calendar-o" />}
-                // statsIconText="Last day"
-                />
-              </Col>
-              <Col lg={3} md={6} sm={6}>
-                <StatsCard
-                  bigIcon={<i className="fas fa-rupee-sign fa-xs icon-7" />}
-                  statsText="Today Sales"
-                  statsValue="6"
-                //   statsIcon={<i className="fa fa-clock-o" />}
-                // statsIconText="In the last hour"
-                />
-              </Col>
-              <Col lg={3} md={6} sm={6}>
-                <StatsCard
-                  bigIcon={<i className="fas fa-users fa-xs icon-8" />}
-                  statsText="Total Customers"
-                  statsValue="1100"
-                //   statsIcon={<i className="fa fa-refresh" />}
-                // statsIconText="Updated now"
-                />
-              </Col>
-            </Row> */}
             <Row>
               <Table
                 title="RECENT ORDER REQUESTED"
                 content={
                   <ReactTable
-                    //  data={userData && userData.userData}
                     data={vendorList}
                     filterable
                     columns={[
@@ -233,21 +155,12 @@ const Dashboard = () => {
                         Header: 'Registered',
                         accessor: '21/3/2019',
                       },
-                      // {
-                      //   Header: 'Bank Account',
-                      //   accessor: 'bankAccount',
-                      // },
-                      // {
-                      //   Header: 'WiPay Account',
-                      //   accessor: 'wipayAccount',
-                      // },
                       {
                         Header: 'Status',
                         accessor: 'status',
                       },
                       {
                         Header: 'Action',
-                        // accessor: 'status',
                         filterable: false,
                         sortable: false,
                         Cell: (original) => (
@@ -256,7 +169,6 @@ const Dashboard = () => {
                       },
                     ]}
                     defaultPageSize={10}
-                    // showPaginationTop
                     showPaginationBottom
                     className="-striped -highlight"
                   />
@@ -268,7 +180,6 @@ const Dashboard = () => {
       </div>
     </div>
   );
-  // }
 };
 
 export default Dashboard;

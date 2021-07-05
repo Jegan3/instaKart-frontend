@@ -4,7 +4,7 @@ import React from 'react';
 import Avatar from 'react-avatar';
 import { history } from '../../routes';
 
-const Card = ({ imgUrl, alt, content, btnUrl, body, title, price, productName }) => {
+const Card = ({ imgUrl, alt, content, btnUrl, body, title, price, productName, className }) => {
 
   const Button = () => {
     history.push({ pathname: btnUrl })
@@ -13,8 +13,8 @@ const Card = ({ imgUrl, alt, content, btnUrl, body, title, price, productName })
 
   return (
     <div>
-      { title ?
-        <div className="card">
+      {title ?
+        <div className={className}>
           <div class="card-thriftStore">
             <img src={imgUrl} alt="Avatar" className="photos " />
             <div className="middle">
@@ -24,7 +24,7 @@ const Card = ({ imgUrl, alt, content, btnUrl, body, title, price, productName })
           </div>
         </div>
         :
-        <div className="card">
+        <div className={className}>
           <div className="card-content">
             {body ?
               <img className="photos" src={imgUrl} onClick={() => history.push('/advertisement')} alt={alt || 'Image'} />
@@ -32,23 +32,10 @@ const Card = ({ imgUrl, alt, content, btnUrl, body, title, price, productName })
               <img className="photos" src={imgUrl} />
             }
             {content && <button onClick={Button}>{content}</button>}
-            {/* <p className='card-title'>{title && title}</p> */}
           </div>
-
           {body && <div className="card-ads">
-            <div className="card-avatar">
-              <Avatar name="Keith" size="37" color="#f0f0f0" round />
-            </div>
-            {/* <div className="listing-header">
-              <a className="" href="http://vaibhavk13.sg-host.com/listings/business-category/events-notices/" >Events</a>
-              <span className="seperator fas fa-angle-right"></span>
-              <a className="" href="http://vaibhavk13.sg-host.com/listings/business-category/events-notices/business-events/" >Business</a>
-            </div> */}
             <div className="listing-job">
-              {/* For reference */}
-              {/* <a href="http://vaibhavk13.sg-host.com/listings/assistant-accountant/" title="Assistant Accountant">Assistant Accountant</a> */}
               <a
-                // href={btnUrl}
                 title="Assistant Accountant">{productName}</a>
               <span className="currency">{price}</span>
               <div className="listing-country">

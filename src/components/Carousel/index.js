@@ -58,25 +58,6 @@ const responsiveThriftCategory = {
   },
 };
 
-
-const responsiveAdsDetails = {
-  desktop: {
-    breakpoint: { max: 3000, min: 1024 },
-    items: 1,
-    // slidesToSlide: 4,
-  },
-  tablet: {
-    breakpoint: { max: 1024, min: 680 },
-    items: 1,
-    // slidesToSlide: 3,
-  },
-  mobile: {
-    breakpoint: { max: 680, min: 0 },
-    items: 1,
-    // slidesToSlide: 2,
-  },
-};
-
 const businessRowFirst = [
   {
     id: 1,
@@ -257,58 +238,35 @@ const fisrtAdsDetails = [
   {
     id: 1,
     title: 'CARD 1',
-    content: 'Food Avenue',
-    imgUrl: 'images/1_Food.png',
+    imgUrl: 'images/comingsoon.gif',
   },
   {
     id: 2,
     title: 'CARD 2',
-    content: 'Fashion District',
-    imgUrl: 'images/2_Fashion.jpg',
+    imgUrl: 'images/comingsoon.gif',
   },
   {
     id: 3,
     title: 'CARD 3',
-    content: 'Health & Wellness',
-    imgUrl: 'images/3_Health.png',
+    imgUrl: 'images/comingsoon.gif',
   },
   {
     id: 4,
     title: 'CARD 4',
-    content: 'Speciality Services',
-    imgUrl: 'images/4_Speciality.png',
+    imgUrl: 'images/comingsoon.gif',
   },
   {
     id: 5,
     title: 'CARD 5',
-    content: 'IK Thrift Store',
-    imgUrl: 'images/5_Thrift.png',
+    imgUrl: 'images/comingsoon.gif',
   },
   {
     id: 6,
     title: 'CARD 6',
-    content: 'Grocery & Fresh Produce',
-    imgUrl: 'images/6_Grocery.png',
-  },
-  {
-    id: 7,
-    title: 'CARD 7',
-    content: 'Appliances & Tech Gadgets',
-    imgUrl: 'images/7_applicance.jpg',
-  },
-  {
-    id: 8,
-    title: 'CARD 8',
-    content: 'Automotive, Hardware & Industrial Supplies',
-    imgUrl: 'images/8_hardware.png',
-  },
-  {
-    id: 9,
-    title: 'CARD 9',
-    content: 'Home & Garden Supplies',
-    imgUrl: 'images/9_home.png',
+    imgUrl: 'images/comingsoon.gif',
   },
 ];
+
 const thriftStoreCategoryUp = [
   {
     id: 1,
@@ -381,7 +339,7 @@ export const CarouselThriftStoreCategoryUp = () => (
     responsive={responsiveThriftCategory}
   >
     {thriftStoreCategoryUp.map((card) => (
-      <Card title={card.title} imgUrl={card.imgUrl} />
+      <Card title={card.title} className='card' imgUrl={card.imgUrl} />
     ))}
   </Carousel>
 );
@@ -391,7 +349,7 @@ export const CarouselThriftStoreCategoryBottom = () => (
     responsive={responsiveThriftCategory}
   >
     {thriftStoreCategoryBottom.map((card) => (
-      <Card title={card.title} imgUrl={card.imgUrl} />
+      <Card title={card.title} className='card' imgUrl={card.imgUrl} />
     ))}
   </Carousel>
 );
@@ -403,7 +361,7 @@ export const CarouselFirst = () => (
     responsive={responsive}
   >
     {businessRowFirst.map((card) => (
-      <Card key={card.id} content={card.content} imgUrl={card.imgUrl} btnUrl={card.btnUrl} />
+      <Card key={card.id} className='card' content={card.content} imgUrl={card.imgUrl} btnUrl={card.btnUrl} />
     ))}
   </Carousel>
 );
@@ -414,7 +372,7 @@ export const CarouselSecond = () => (
     responsive={responsive}
   >
     {businessRowSecond.map((card) => (
-      <Card key={card.id} content={card.content} imgUrl={card.imgUrl} btnUrl={card.btnUrl} />
+      <Card key={card.id} className='card' content={card.content} imgUrl={card.imgUrl} btnUrl={card.btnUrl} />
     ))}
   </Carousel>
 );
@@ -425,7 +383,7 @@ export const CarouselThird = () => (
     responsive={responsive}
   >
     {businessRowThird.map((card) => (
-      <Card key={card.id} content={card.content} imgUrl={card.imgUrl} btnUrl={card.btnUrl} />
+      <Card key={card.id} className='card' content={card.content} imgUrl={card.imgUrl} btnUrl={card.btnUrl} />
     ))}
   </Carousel>
 );
@@ -436,7 +394,7 @@ export const CarouselFourth = () => (
     responsive={responsive}
   >
     {businessRowFourth.map((card) => (
-      <Card key={card.id} content={card.content} imgUrl={card.imgUrl} btnUrl={card.btnUrl} />
+      <Card key={card.id} className='card' content={card.content} imgUrl={card.imgUrl} btnUrl={card.btnUrl} />
     ))}
   </Carousel>
 );
@@ -450,7 +408,7 @@ export const CarouselMobile = () => (
     responsive={responsive}
   >
     {cardsDataMobile.map((card) => (
-      <Card key={card.id} content={card.content} imgUrl={card.imgUrl} />
+      <Card key={card.id} className='card' content={card.content} imgUrl={card.imgUrl} />
     ))}
   </Carousel>
 );
@@ -464,7 +422,7 @@ export const CarouselNewEStore = () => (
     responsive={responsive}
   >
     {cardsDataNewEStore.map((card) => (
-      <Card key={card.id} imgUrl={card.imgUrl} />
+      <Card key={card.id} className='card' imgUrl={card.imgUrl} />
     ))}
   </Carousel>
 );
@@ -478,12 +436,12 @@ export const CarouselThriftStore = () => (
     responsive={responsiveThrift}
   >
     {cardsDataMobile.map((card) => (
-      <Card key={card.id} imgUrl={card.imgUrl} btnUrl={card.btnUrl} body />
+      <Card key={card.id} className='card' imgUrl={card.imgUrl} btnUrl={card.btnUrl} body />
     ))}
   </Carousel>
 );
 
-export const CarouselThriftNewAdditions = ({thriftDetails}) => (
+export const CarouselThriftNewAdditions = ({ thriftDetails }) => (
   <Carousel
     // ssr
     infinite
@@ -492,8 +450,8 @@ export const CarouselThriftNewAdditions = ({thriftDetails}) => (
     responsive={responsiveThrift}
   >
     {thriftDetails ? thriftDetails.productsInfo.map((info) => (
-      <Card key={info.productName} imgUrl={info.productImage} btnUrl={info.btnUrl} price={info.finalPrice} productName={info.productName} body />
-    )): <Card/>}
+      <Card key={info.productName} className='card' imgUrl={info.productImage} btnUrl={info.btnUrl} price={info.finalPrice} productName={info.productName} body />
+    )) : <Card />}
   </Carousel>
 );
 
@@ -503,10 +461,10 @@ export const CarouselAdsDetails = () => (
     infinite
     // autoPlay
     autoPlaySpeed={3000}
-    responsive={responsiveAdsDetails}
+    responsive={responsive}
   >
     {fisrtAdsDetails.map((card) => (
-      <Card key={card.id} imgUrl={card.imgUrl} body />
+      <Card key={card.id} imgUrl={card.imgUrl} className="card-thriftcards" />
     ))}
   </Carousel>
 );

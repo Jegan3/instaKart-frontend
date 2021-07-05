@@ -177,3 +177,17 @@
   right: 7%;
   bottom: 28%;
 }
+
+.card-thriftcards {
+  margin: 10px;
+  box-shadow: 0 1px 1rem -4px #000;
+  background: #fff;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 250ms ease-in-out;
+  overflow: visible;
+
+  &:hover {
+    box-shadow: 0 4px 1rem -4px #000;
+  }
+}

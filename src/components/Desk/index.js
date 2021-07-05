@@ -10,6 +10,7 @@ const DescriptionItem = ({ title, content }) => (
 );
 
 const Desk = ({ show, onClose, info, submit, reject }) =>
+
   <Drawer
     width={600}
     placement="right"
@@ -67,15 +68,15 @@ const Desk = ({ show, onClose, info, submit, reject }) =>
         <DescriptionItem title="WiPay Account Number" content={info && info.wipayAccount} />
       </Col>
     </Row>
-    <div className="desk-btns"
-    >
-      <Button onClick={reject} style={{ marginRight: 8 }} >
-        Reject
-      </Button>
-      <Button onClick={submit}>
-        Approve
-      </Button>
-    </div>
+    {info && info.status === 'Pending' &&
+      <div className="desk-btns">
+        <Button onClick={reject} style={{ marginRight: 8 }} >
+          Reject
+        </Button>
+        <Button onClick={submit}>
+          Approve
+        </Button>
+      </div>}
   </Drawer>
 
 export default Desk;

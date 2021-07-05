@@ -309,7 +309,6 @@ const AddProduct = () => {
                         maxLength={10}
                         value={finalPrice}
                         onChange={onFinalPrice}
-                        disabled
                       />
                     </Col>
                   </Row>
