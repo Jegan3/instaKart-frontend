@@ -7,6 +7,7 @@ import Headerbar from '../../components/Headerbar';
 import Sidebar from '../../components/Sidebar';
 import { Upload, Modal, message } from 'antd';
 import ImgCrop from 'antd-img-crop';
+import Cleave from "cleave.js/react";
 
 const { Dragger } = Upload;
 
@@ -69,13 +70,13 @@ const AddProduct = () => {
   }
 
   const onTax = (e) => {
-    if (e.target.value.match('^[0-9]*$')) {
+    if (e.target.value.match('^100(\.0{1,2})?$)|(^([1-9]([0-9])?|0)(\.[0-9]{1,2})?$')) {
       setTax(e.target.value)
     }
   }
 
   const onDiscount = (e) => {
-    if (e.target.value.match('^[0-9]*$')) {
+    if (e.target.value.match('^100(\.0{1,2})?$)|(^([1-9]([0-9])?|0)(\.[0-9]{1,2})?$')) {
       setDiscount(e.target.value)
     }
   }
@@ -87,12 +88,12 @@ const AddProduct = () => {
   }
 
   const onPolicy = (e) => {
-    if (e.target.value) {
+    if (e.target.value.match('^[a-zA-Z0-9 ]*$')) {
       setPolicy(e.target.value)
     }
   }
   const onWarranty = (e) => {
-    if (e.target.value) {
+    if (e.target.value.match('^[a-zA-Z0-9 ]*$')) {
       setWarranty(e.target.value)
     }
   }
@@ -273,38 +274,61 @@ const AddProduct = () => {
                   <Row className='pricerow-list'>
                     <Col sm={3}>
                       <label className="signup-label">Price <span className="red-star">*</span></label>
-                      <input
-                        type="text"
+                      <Cleave
                         className={alertError && !price ? ` form-control my-input` : `form-control formy`}
                         maxLength={10}
                         value={price}
                         onChange={onPrice}
+                        options={{
+                          prefix: '$',
+                          numeral: true,
+                          numeralThousandsGroupStyle: 'thousand'
+                        }}
                       />
+
                     </Col>
                     <Col sm={3}>
                       <label className="signup-label">Tax</label>
-                      <input
+                      <Cleave
                         type="text"
-                        className="form-control"
+                        options={{
+                          numeral: true,
+                          delimiter: '.',
+                          blocks: [2, 4]
+                        }}
+                        className="form-control price-style"
                         maxLength={10}
                         value={tax}
                         onChange={onTax}
                       />
+                      <span className="percentage">%</span>
                     </Col>
                     <Col sm={3}>
                       <label className="signup-label">Discount </label>
-                      <input
+                      <Cleave
                         type="text"
+                        type="text"
+                        options={{
+                          numeral: true,
+                          delimiter: '.',
+                          blocks: [2, 4]
+                        }}
                         className="form-control"
                         maxLength={10}
                         value={discount}
                         onChange={onDiscount}
                       />
+                      <span className="percentage">%</span>
                     </Col>
                     <Col sm={3}>
                       <label className="signup-label">Final Price  </label>
-                      <input
+                      <Cleave
                         type="text"
+                        options={{
+                          prefix: '$',
+                          numeral: true,
+                          numeralThousandsGroupStyle: 'thousand'
+                        }}
                         className="form-control"
                         maxLength={10}
                         value={finalPrice}
@@ -322,10 +346,11 @@ const AddProduct = () => {
                         placeholder='type something..'
                         value={policy}
                         onChange={onPolicy}
+                        maxLength={500}
                         rows="4"></textarea>
                     </Col>
                     <Col sm={12} md={6}>
-                      <label className="signup-label">Warranty< span className="red-star">*</span></label>
+                      <label className="signup-label">Warranty < span className="red-star">*</span> <i className="fa fa-info" /></label>
                       <textarea className={alertError && !warranty ? ` form-control my-input` : `form-control formy`}
                         name="message"
                         placeholder='type something..'

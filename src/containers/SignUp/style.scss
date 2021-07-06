@@ -132,9 +132,10 @@
 
 .clear-industry {
   @include dropdown-height;
+
   .css-1wa3eu0-placeholder {
-  white-space: nowrap;
-}
+    white-space: nowrap;
+  }
 }
 
 .required-field {
@@ -162,15 +163,23 @@
 }
 
 .signup-label {
-  .fa-info{
+  .fa-info {
     font-size: 10px;
     margin: 5px;
   }
 }
 
-.tool-tip{
+.tool-tip {
   margin: 0px;
   font-size: 11px;
   font-weight: 600;
   padding: 0px;
+}
+
+.percentage {
+  bottom: 30px;
+  position: relative;
+  float: right;
+  right: 10px;
+  font-weight: 600;
 }

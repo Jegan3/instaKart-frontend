@@ -150,13 +150,13 @@ const Profile = () => {
   };
 
   const onFbId = (e) => {
-    if (e.target.value.match('^[a-zA-Z0-9_@./#&+- ]*$')) {
+    if (e.target.value.match('^[a-zA-Z0-9._]*$')) {
       setFbId(e.target.value);
     }
   };
 
   const onIgId = (e) => {
-    if (e.target.value.match('^[a-zA-Z0-9_@./#&+- ]*$')) {
+    if (e.target.value.match('^[a-zA-Z0-9._]*$')) {
       setIgId(e.target.value);
     }
   };
@@ -170,16 +170,16 @@ const Profile = () => {
     if (!timing.length) {
       setTiming([...timing, info.original])
     } else {
-    timing.includes(info.original) ? {...timing, openingTime: moment(timeString, ["h:mm A"]).format("HH:mm")} : setTiming([...timing, info.original]) 
+      timing.includes(info.original) ? { ...timing, openingTime: moment(timeString, ["h:mm A"]).format("HH:mm") } : setTiming([...timing, info.original])
     }
   }
 
-  const onClosingTime = (info,timeString) => {
+  const onClosingTime = (info, timeString) => {
     info.original.closingTime = moment(timeString, ["h:mm A"]).format("HH:mm");
     if (!timing.length) {
       setTiming([...timing, info.original])
     } else {
-    timing.includes(info.original) ? {...timing, closingTime: moment(timeString, ["h:mm A"]).format("HH:mm")} : setTiming([...timing, info.original]) 
+      timing.includes(info.original) ? { ...timing, closingTime: moment(timeString, ["h:mm A"]).format("HH:mm") } : setTiming([...timing, info.original])
     }
   }
 
@@ -189,10 +189,10 @@ const Profile = () => {
     if (!timing.length) {
       setTiming([...timing, info.original])
     } else {
-    timing.includes(info.original) ? {...timing, closed: e.target.checked} : setTiming([...timing, info.original]) 
+      timing.includes(info.original) ? { ...timing, closed: e.target.checked } : setTiming([...timing, info.original])
     }
-    }
-  
+  }
+
 
   const onSubmit = () => {
     console.log('closed', closed);
@@ -204,23 +204,28 @@ const Profile = () => {
     //   message.error('Please accept the Terms & Conditions and Privacy Policy');
     // }
     // else {
-      const generalList = {
-        companyLogo,
-        storeName,
-        address,
-        countryId: country && country.value,
-        cityId: city && city.value,
-        zipCode,
-        emailId,
-        fbId,
-        igId,
-        mobile
-      };
-      console.log('tst', generalList);
-      dispatch({ type: '_INFO_REQUEST', generalList });
-      // setAlertMsg('');
-      message.success('Thanks!, Signup form is successfully registered with us ');
-    // }
+    const generalList = {
+      register_num: 'IKANTDR043',
+      companyLogo,
+      // companyName :thriftVendorInfo && thriftVendorInfo.data.vendorInfo.companyName,
+      // firstName : thriftVendorInfo && thriftVendorInfo.data.vendorInfo.firstName,
+      // lastName : thriftVendorInfo && thriftVendorInfo.data.vendorInfo.lastName,
+      storeName,
+      address,
+      countryId: country && country.value,
+      cityId: city && city.value,
+      zipCode,
+      emailId,
+      fbId,
+      igId,
+      mobile,
+      timing
+    };
+    console.log('tst', generalList);
+    //   dispatch({ type: '_INFO_REQUEST', generalList });
+    //   // setAlertMsg('');
+    //   message.success('Thanks!, Signup form is successfully registered with us ');
+    // // }
   };
 
   //const onCancel = () => window.alert("cancelled");
@@ -432,7 +437,7 @@ const Profile = () => {
                           Cell: (info) => (
                             <TimePicker
                               use12Hours
-                              format="h:mm a"
+                              format="h:mm A"
                               defaultValue={moment(info.original.openingTime, "HH:mm")}
                               value={openingTime}
                               onChange={(value) => onOpeningTime(info, value)} />
