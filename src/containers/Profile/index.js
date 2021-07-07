@@ -5,7 +5,7 @@ import { Grid, Row, Col } from 'react-bootstrap';
 import Select from 'react-select';
 import Cleave from "cleave.js/react";
 import ReactTable from 'react-table';
-import { TimePicker } from 'antd';
+import { TimePicker, message } from 'antd';
 import Headerbar from '../../components/Headerbar';
 import Sidebar from '../../components/Sidebar';
 import Table from '../../components/Table';
@@ -77,12 +77,21 @@ const Profile = () => {
 
   const dispatch = useDispatch();
   const thriftVendorInfo = useSelector((state) => state.thriftVendorInfoState.thriftVendorInfo);
+  const profileInfo = useSelector((state) => state.thriftProfileState.profileInfo);
   // const generalInfo = useSelector((state) => state.generalInfoState.generalInfo);
   //const signUpContent = useSelector((state) => state.signupContentState.signupContent);
+  const invalidProfileInfo = useSelector((state) => state.thriftProfileState.error);
 
   // const countries = generalInfo && generalInfo.countriesList;
   //const countries = signUpContent && signUpContent.countriesList
-  console.log('openingTime', openingTime);
+
+  useEffect(() => {
+    if (profileInfo &&  profileInfo.status) {
+      message.success('Thanks!, Thrift Store Profile is successfully updated with us')
+    } else if (invalidProfileInfo) {
+      message.error('invalid Error');
+    }
+  }, [profileInfo, invalidProfileInfo]);
 
   useEffect(() => {
     dispatch({ type: 'THRIFT_VENDOR_INFO_REQUEST' });

@@ -25,10 +25,10 @@ const AddProduct = () => {
   const [tax, setTax] = useState('');
   const [discount, setDiscount] = useState('');
   const [finalPrice, setFinalPrice] = useState('');
-  const [policy, setPolicy] = useState('');
+  const [product, setProduct] = useState('');
   const [alertError, setAlertError] = useState(false);
   const [warranty, setWarranty] = useState('');
-  const [modal, setModal]= useState(false);
+  const [modal, setModal] = useState(false);
 
 
   // console.log('fileList', fileList);
@@ -51,7 +51,7 @@ const AddProduct = () => {
   //     message.error('invalid Error');
   //   }
   // },[invalidVendor]);
- 
+
 
   const onProductName = (e) => {
     if (e.target.value.match('^[a-zA-Z ]*$'))
@@ -92,7 +92,7 @@ const AddProduct = () => {
 
   const onPolicy = (e) => {
     if (e.target.value.match('^[a-zA-Z0-9 ]*$')) {
-      setPolicy(e.target.value)
+      setProduct(e.target.value)
     }
   }
   const onWarranty = (e) => {
@@ -171,7 +171,7 @@ const AddProduct = () => {
 
   const onSubmit = () => {
     if
-      (!productName || !category || !fileList.length || !productVideo || !price || !policy || !warranty) {
+      (!productName || !category || !fileList.length || !productVideo || !price || !product || !warranty) {
       setAlertError(true)
       message.error('Please fill all the fields')
     }
@@ -183,7 +183,7 @@ const AddProduct = () => {
         productVideo,
         discount,
         finalPrice,
-        policy,
+        product,
         warranty,
       };
       console.log('test44', fileList)
@@ -192,17 +192,34 @@ const AddProduct = () => {
     }
   };
 
-  const onModal =()=>{
+  const onModal = () => {
     setModal(true)
   }
-  const onHide =()=>{
+  const onHide = () => {
     setModal(false)
   }
 
+
   return (
     <div className="wrapper">
-      {/* <Upload showPopup={show} hidePopup={hidePopup} /> */}
-       <OverlayModal show={modal}  onHide={onHide} /> 
+      <OverlayModal show={modal} onHide={onHide} title="WARNING : LIMITATIONS OF LIABILITY"
+        warningText=" IN NO EVENT SHALL INSTA-KART.COM, ITS OFFICERS, DIRECTORS, EMPLOYEES,
+        OR AGENTS, BE LIABLE FOR DIRECT, INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL OR EXEMPLARY 
+        DAMAGES (EVEN IF INSTA-KART.COM HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES), 
+        RESULTING FROM ANY ASPECT OF YOUR USE OF THE WEBSITE OR THE SERVICE, 
+        INCLUDING WITHOUT LIMITATION WHETHER THE DAMAGES ARISE FROM USE OR MISUSE OF THE WEBSITE OR THE SERVICE, 
+        FROM INABILITY TO USE THE WEBSITE OR THE SERVICE, OR THE INTERRUPTION, SUSPENSION, MODIFICATION, ALTERATION,
+         OR TERMINATION OF THE WEBSITE OR THE SERVICE. SUCH LIMITATION OF LIABILITY SHALL ALSO APPLY WITH RESPECT TO 
+         DAMAGES INCURRED BY REASON OF OTHER SERVICES OR PRODUCTS RECEIVED THROUGH OR ADVERTISED IN CONNECTION WITH THE 
+         WEBSITE OR THE SERVICE OR ANY LINKS ON THE WEBSITE, AS WELL AS BY REASON OF ANY INFORMATION, OPINIONS OR ADVICE 
+         RECEIVED THROUGH OR ADVERTISED IN CONNECTION WITH THE WEBSITE OR THE SERVICE OR ANY LINKS ON THEINSTA-KART.COM SITE. 
+         THESE LIMITATIONS SHALL APPLY TO THE FULLEST EXTENT PERMITTED BY LAW. YOU SPECIFICALLY ACKNOWLEDGE AND AGREE THAT 
+         INSTA-KART.COM SHALL NOT BE LIABLE FOR USER SUBMISSIONS OR THE DEFAMATORY, OFFENSIVE, OR ILLEGAL CONDUCT OF ANY
+          USER OR THIRD PARTY AND THAT THE RISK OF HARM OR DAMAGE FROM THE FOREGOING RESTS ENTIRELY WITH YOU. "
+          warningSubText="The Website is controlled and offered by INSTA-KART.COM from its facilities in the United States of America. INSTA-KART.COM 
+          makes no representations or warranties that the Website is appropriate for use in other locations. Those who access 
+          or use the Website from other jurisdictions do so at their own volition and risk and are responsible for compliance 
+          with local law." />
       <Sidebar />
       <div className="rightside-panel">
         <Headerbar headerName="Add Product" />
@@ -351,17 +368,17 @@ const AddProduct = () => {
                 <Col md={12}>
                   <Row>
                     <Col sm={12} md={6}>
-                      <label className="signup-label">Policy Description <span className="red-star">*</span></label>
-                      <textarea className={alertError && !policy ? ` form-control my-input` : `form-control formy`}
+                      <label className="signup-label">Product Description <span className="red-star">*</span></label>
+                      <textarea className={alertError && !product ? ` form-control my-input` : `form-control formy`}
                         name="message"
                         placeholder='type something..'
-                        value={policy}
+                        value={product}
                         onChange={onPolicy}
                         maxLength={500}
                         rows="4"></textarea>
                     </Col>
                     <Col sm={12} md={6}>
-                      <label className="signup-label">Warranty < span className="red-star">*</span> <i className="fa fa-info" onClick={onModal}/></label>
+                      <label className="signup-label">Warranty < span className="red-star">*</span> <i className="fa fa-info" onMouseEnter={onModal} /></label>
                       <textarea className={alertError && !warranty ? ` form-control my-input` : `form-control formy`}
                         name="message"
                         placeholder='type something..'

@@ -79,7 +79,6 @@ const VendorInfo = (props) => {
       message.error('invalid Error');
     }
   }, [vendor, invalidVendor]);
-  console.log('tets')
 
 
   // const Option = props => {
