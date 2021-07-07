@@ -46,7 +46,7 @@ const Headerbar = ({ navbar, setRtlCallback, headerName }) => {
         </div>
       </Navbar.Header>
       <div className="registration" >
-        {thriftVendorInfo && thriftVendorInfo.data.vendorInfo.register_num}
+        {thriftVendorInfo && thriftVendorInfo.vendorInfo.register_num}
       </div>
       <div className="hamburger-bars-icon hamburger-mobile hidden-xs" onClick={onRtl}>
         <FontAwesomeIcon icon={faMapSigns} />

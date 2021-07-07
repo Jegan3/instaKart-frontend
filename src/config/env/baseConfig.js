@@ -11,6 +11,7 @@ export default {
     getThriftCategory: '/api/staticContentRouter/getCategories',
     getThriftAddProduct: '/api/vendor/addProduct',
     getThriftDetails: '/api/staticContentRouter/getProducts',
+    getThriftProfile: '/api/vendor/estoreInfo',
   },
 
   apiBaseUrl: {

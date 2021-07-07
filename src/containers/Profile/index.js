@@ -5,7 +5,7 @@ import { Grid, Row, Col } from 'react-bootstrap';
 import Select from 'react-select';
 import Cleave from "cleave.js/react";
 import ReactTable from 'react-table';
-import { message, TimePicker } from 'antd';
+import { TimePicker } from 'antd';
 import Headerbar from '../../components/Headerbar';
 import Sidebar from '../../components/Sidebar';
 import Table from '../../components/Table';
@@ -15,44 +15,44 @@ import moment from 'moment';
 const weekData = [
   {
     title: 'Monday',
-    openingTime: '8:08',
-    closingTime: '8:08',
-    closed: true,
+    openingTime: '00:00',
+    closingTime: '00:00',
+    closed: false,
   },
   {
     title: 'Tuesday',
-    openingTime: '08:08',
-    closingTime: '08:08',
-    closed: true,
+    openingTime: '00:00',
+    closingTime: '00:00',
+    closed: false,
   },
   {
     title: 'Wednesday',
-    openingTime: '1:00',
-    closingTime: '14:08',
-    closed: true,
+    openingTime: '00:00',
+    closingTime: '00:00',
+    closed: false,
   },
   {
     title: 'Thursday',
-    openingTime: '16:08',
-    closingTime: '14:08',
-    closed: true,
+    openingTime: '00:00',
+    closingTime: '00:00',
+    closed: false,
   },
   {
     title: 'Friday',
-    openingTime: '14:08',
-    closingTime: '14:08',
-    closed: true,
+    openingTime: '00:00',
+    closingTime: '00:00',
+    closed: false,
   },
   {
     title: 'Saturday',
-    openingTime: '14:08',
-    closingTime: '24:00',
+    openingTime: '00:00',
+    closingTime: '00:00',
     closed: false,
   },
   {
     title: 'Sunday',
-    openingTime: '14:08',
-    closingTime: '16:00',
+    openingTime: '00:00',
+    closingTime: '00:00',
     closed: false,
   },
 ]
@@ -138,7 +138,7 @@ const Profile = () => {
   }, [country]);
 
   const onZipCode = (e) => {
-    if (e.target.value.match('^[a-zA-Z0-9]*$')) {
+    if (e.target.value.match('^[0-9]*$')) {
       setZipCode(e.target.value)
     }
   }
@@ -150,13 +150,13 @@ const Profile = () => {
   };
 
   const onFbId = (e) => {
-    if (e.target.value.match('^[a-zA-Z0-9_@./#&+- ]*$')) {
+    if (e.target.value.match('^[a-zA-Z0-9._]*$')) {
       setFbId(e.target.value);
     }
   };
 
   const onIgId = (e) => {
-    if (e.target.value.match('^[a-zA-Z0-9_@./#&+- ]*$')) {
+    if (e.target.value.match('^[a-zA-Z0-9._]*$')) {
       setIgId(e.target.value);
     }
   };
@@ -170,16 +170,16 @@ const Profile = () => {
     if (!timing.length) {
       setTiming([...timing, info.original])
     } else {
-    timing.includes(info.original) ? {...timing, openingTime: moment(timeString, ["h:mm A"]).format("HH:mm")} : setTiming([...timing, info.original]) 
+      timing.includes(info.original) ? { ...timing, openingTime: moment(timeString, ["h:mm A"]).format("HH:mm") } : setTiming([...timing, info.original])
     }
   }
 
-  const onClosingTime = (info,timeString) => {
+  const onClosingTime = (info, timeString) => {
     info.original.closingTime = moment(timeString, ["h:mm A"]).format("HH:mm");
     if (!timing.length) {
       setTiming([...timing, info.original])
     } else {
-    timing.includes(info.original) ? {...timing, closingTime: moment(timeString, ["h:mm A"]).format("HH:mm")} : setTiming([...timing, info.original]) 
+      timing.includes(info.original) ? { ...timing, closingTime: moment(timeString, ["h:mm A"]).format("HH:mm") } : setTiming([...timing, info.original])
     }
   }
 
@@ -189,10 +189,10 @@ const Profile = () => {
     if (!timing.length) {
       setTiming([...timing, info.original])
     } else {
-    timing.includes(info.original) ? {...timing, closed: e.target.checked} : setTiming([...timing, info.original]) 
+      timing.includes(info.original) ? { ...timing, closed: e.target.checked } : setTiming([...timing, info.original])
     }
-    }
-  
+  }
+
 
   const onSubmit = () => {
     console.log('closed', closed);
@@ -204,23 +204,28 @@ const Profile = () => {
     //   message.error('Please accept the Terms & Conditions and Privacy Policy');
     // }
     // else {
-      const generalList = {
-        companyLogo,
-        storeName,
-        address,
-        countryId: country && country.value,
-        cityId: city && city.value,
-        zipCode,
-        emailId,
-        fbId,
-        igId,
-        mobile
-      };
-      console.log('tst', generalList);
-      dispatch({ type: '_INFO_REQUEST', generalList });
-      // setAlertMsg('');
-      message.success('Thanks!, Signup form is successfully registered with us ');
-    // }
+    const profileInfo = {
+      // register_num: thriftVendorInfo && thriftVendorInfo.vendorInfo.register_num,
+      companyLogo,
+      // companyName :thriftVendorInfo && thriftVendorInfo.data.vendorInfo.companyName,
+      // firstName : thriftVendorInfo && thriftVendorInfo.data.vendorInfo.firstName,
+      // lastName : thriftVendorInfo && thriftVendorInfo.data.vendorInfo.lastName,
+      storeName,
+      address,
+      countryId: country && country.value,
+      cityId: city && city.value,
+      zipCode,
+      emailId,
+      fbId,
+      igId,
+      mobile,
+      timing
+    };
+    console.log('tst', profileInfo);
+      dispatch({ type: 'THRIFT_PROFILE_REQUEST', profileInfo });
+    //   // setAlertMsg('');
+    //   message.success('Thanks!, Signup form is successfully registered with us ');
+    // // }
   };
 
   //const onCancel = () => window.alert("cancelled");
@@ -240,7 +245,7 @@ const Profile = () => {
                       <div className='load-info'>
                         <div>
                           <div className="photo">
-                            {loading ? <h3 className='loading-info'>Loading...</h3> : companyLogo ? <img src={companyLogo} alt='' /> : <img src="images/Your-logo-here..png" />}
+                            {loading ? <h3 className='loading-info'>Loading...</h3> : companyLogo ? <img src={companyLogo} alt='' /> : <img src={thriftVendorInfo && thriftVendorInfo.vendorInfo.logo ? thriftVendorInfo.vendorInfo.logo : "images/Your-logo-here..png"} />}
                           </div>
                           {!loading && <div className="image-upload">
                             <label for="file-input"><i className="fa fa-camera" /></label>
@@ -264,7 +269,7 @@ const Profile = () => {
                         placeholder="business name"
                         className="form-control"
                         maxLength={30}
-                        value={thriftVendorInfo && thriftVendorInfo.data.vendorInfo.companyName}
+                        value={thriftVendorInfo && thriftVendorInfo.vendorInfo.companyName}
                         disabled
                       />
                     </Col>
@@ -275,7 +280,7 @@ const Profile = () => {
                         placeholder="first name"
                         className="form-control"
                         maxLength={30}
-                        value={thriftVendorInfo && thriftVendorInfo.data.vendorInfo.firstName}
+                        value={thriftVendorInfo && thriftVendorInfo.vendorInfo.firstName}
                         disabled
                       />
                     </Col>
@@ -286,7 +291,7 @@ const Profile = () => {
                         placeholder="last name"
                         className="form-control"
                         maxLength={30}
-                        value={thriftVendorInfo && thriftVendorInfo.data.vendorInfo.lastName}
+                        value={thriftVendorInfo && thriftVendorInfo.vendorInfo.lastName}
                         disabled
                       />
                     </Col>
@@ -344,7 +349,7 @@ const Profile = () => {
                           <input
                             type="text"
                             className="form-control"
-                            maxLength={30}
+                            maxLength={5}
                             value={zipCode}
                             onChange={onZipCode}
                             placeholder="Z1234"
@@ -432,7 +437,7 @@ const Profile = () => {
                           Cell: (info) => (
                             <TimePicker
                               use12Hours
-                              format="h:mm a"
+                              format="h:mm A"
                               defaultValue={moment(info.original.openingTime, "HH:mm")}
                               value={openingTime}
                               onChange={(value) => onOpeningTime(info, value)} />

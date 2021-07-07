@@ -1,10 +1,11 @@
-export const getThriftProfile = () => ({
+export const getThriftProfile = (profileInfo) => ({
   type: 'THRIFT_PROFILE_REQUEST',
+  profileInfo,
 });
 
-export const getThriftProfileSuccess = (profile) => ({
+export const getThriftProfileSuccess = (profileInfo) => ({
   type: 'THRIFT_PROFILE_SUCCESS',
-  profile,
+  profileInfo,
 });
 
 export const getThriftProfileFailure = (error) => ({

@@ -12,7 +12,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         isLoading: false,
-        profile: action.profile,
+        profileInfo: action.profile,
       };
     case 'THRIFT_PROFILE_FAILURE':
       return {
