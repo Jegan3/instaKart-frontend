@@ -5,7 +5,7 @@ import { Grid, Row, Col } from 'react-bootstrap';
 import Select from 'react-select';
 import Cleave from "cleave.js/react";
 import ReactTable from 'react-table';
-import { message, TimePicker } from 'antd';
+import { TimePicker } from 'antd';
 import Headerbar from '../../components/Headerbar';
 import Sidebar from '../../components/Sidebar';
 import Table from '../../components/Table';
@@ -15,44 +15,44 @@ import moment from 'moment';
 const weekData = [
   {
     title: 'Monday',
-    openingTime: '8:08',
-    closingTime: '8:08',
-    closed: true,
+    openingTime: '00:00',
+    closingTime: '00:00',
+    closed: false,
   },
   {
     title: 'Tuesday',
-    openingTime: '08:08',
-    closingTime: '08:08',
-    closed: true,
+    openingTime: '00:00',
+    closingTime: '00:00',
+    closed: false,
   },
   {
     title: 'Wednesday',
-    openingTime: '1:00',
-    closingTime: '14:08',
-    closed: true,
+    openingTime: '00:00',
+    closingTime: '00:00',
+    closed: false,
   },
   {
     title: 'Thursday',
-    openingTime: '16:08',
-    closingTime: '14:08',
-    closed: true,
+    openingTime: '00:00',
+    closingTime: '00:00',
+    closed: false,
   },
   {
     title: 'Friday',
-    openingTime: '14:08',
-    closingTime: '14:08',
-    closed: true,
+    openingTime: '00:00',
+    closingTime: '00:00',
+    closed: false,
   },
   {
     title: 'Saturday',
-    openingTime: '14:08',
-    closingTime: '24:00',
+    openingTime: '00:00',
+    closingTime: '00:00',
     closed: false,
   },
   {
     title: 'Sunday',
-    openingTime: '14:08',
-    closingTime: '16:00',
+    openingTime: '00:00',
+    closingTime: '00:00',
     closed: false,
   },
 ]
@@ -138,7 +138,7 @@ const Profile = () => {
   }, [country]);
 
   const onZipCode = (e) => {
-    if (e.target.value.match('^[a-zA-Z0-9]*$')) {
+    if (e.target.value.match('^[0-9]*$')) {
       setZipCode(e.target.value)
     }
   }
@@ -204,8 +204,8 @@ const Profile = () => {
     //   message.error('Please accept the Terms & Conditions and Privacy Policy');
     // }
     // else {
-    const generalList = {
-      register_num: 'IKANTDR043',
+    const profileInfo = {
+      // register_num: thriftVendorInfo && thriftVendorInfo.vendorInfo.register_num,
       companyLogo,
       // companyName :thriftVendorInfo && thriftVendorInfo.data.vendorInfo.companyName,
       // firstName : thriftVendorInfo && thriftVendorInfo.data.vendorInfo.firstName,
@@ -221,8 +221,8 @@ const Profile = () => {
       mobile,
       timing
     };
-    console.log('tst', generalList);
-    //   dispatch({ type: '_INFO_REQUEST', generalList });
+    console.log('tst', profileInfo);
+      dispatch({ type: 'THRIFT_PROFILE_REQUEST', profileInfo });
     //   // setAlertMsg('');
     //   message.success('Thanks!, Signup form is successfully registered with us ');
     // // }
@@ -245,7 +245,7 @@ const Profile = () => {
                       <div className='load-info'>
                         <div>
                           <div className="photo">
-                            {loading ? <h3 className='loading-info'>Loading...</h3> : companyLogo ? <img src={companyLogo} alt='' /> : <img src="images/Your-logo-here..png" />}
+                            {loading ? <h3 className='loading-info'>Loading...</h3> : companyLogo ? <img src={companyLogo} alt='' /> : <img src={thriftVendorInfo && thriftVendorInfo.vendorInfo.logo ? thriftVendorInfo.vendorInfo.logo : "images/Your-logo-here..png"} />}
                           </div>
                           {!loading && <div className="image-upload">
                             <label for="file-input"><i className="fa fa-camera" /></label>
@@ -269,7 +269,7 @@ const Profile = () => {
                         placeholder="business name"
                         className="form-control"
                         maxLength={30}
-                        value={thriftVendorInfo && thriftVendorInfo.data.vendorInfo.companyName}
+                        value={thriftVendorInfo && thriftVendorInfo.vendorInfo.companyName}
                         disabled
                       />
                     </Col>
@@ -280,7 +280,7 @@ const Profile = () => {
                         placeholder="first name"
                         className="form-control"
                         maxLength={30}
-                        value={thriftVendorInfo && thriftVendorInfo.data.vendorInfo.firstName}
+                        value={thriftVendorInfo && thriftVendorInfo.vendorInfo.firstName}
                         disabled
                       />
                     </Col>
@@ -291,7 +291,7 @@ const Profile = () => {
                         placeholder="last name"
                         className="form-control"
                         maxLength={30}
-                        value={thriftVendorInfo && thriftVendorInfo.data.vendorInfo.lastName}
+                        value={thriftVendorInfo && thriftVendorInfo.vendorInfo.lastName}
                         disabled
                       />
                     </Col>
@@ -349,7 +349,7 @@ const Profile = () => {
                           <input
                             type="text"
                             className="form-control"
-                            maxLength={30}
+                            maxLength={5}
                             value={zipCode}
                             onChange={onZipCode}
                             placeholder="Z1234"

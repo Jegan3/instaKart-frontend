@@ -6,6 +6,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         isLoading: true,
+        thriftVendorInfo: '',
         error: false,
       };
     case 'THRIFT_VENDOR_INFO_SUCCESS':

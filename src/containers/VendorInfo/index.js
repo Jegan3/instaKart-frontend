@@ -78,7 +78,8 @@ const VendorInfo = (props) => {
     } else if (invalidVendor) {
       message.error('invalid Error');
     }
-  }, [invalidVendor]);
+  }, [vendor, invalidVendor]);
+  console.log('tets')
 
 
   // const Option = props => {
@@ -163,9 +164,9 @@ const VendorInfo = (props) => {
 
   const onWipay = (e) => {
     setWipay(e.target.value)
-    if (wipay === 'Yes') {
+    if (e.target.value === 'Yes') {
       setPreference('')
-    } else {
+    } else if (e.target.value=== 'No'){
       setPreference({ value: 'Bank Transfer', label: 'Bank Transfer' })
     }
   }
