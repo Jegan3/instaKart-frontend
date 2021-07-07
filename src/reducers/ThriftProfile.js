@@ -6,13 +6,14 @@ export default (state = initialState, action) => {
       return {
         ...state,
         isLoading: true,
+        profileInfo: '',
         error: false,
       };
     case 'THRIFT_PROFILE_SUCCESS':
       return {
         ...state,
         isLoading: false,
-        profileInfo: action.profile,
+        profileInfo: action.profileInfo,
       };
     case 'THRIFT_PROFILE_FAILURE':
       return {

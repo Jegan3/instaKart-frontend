@@ -31,11 +31,9 @@ const AddProduct = () => {
   const [modal, setModal] = useState(false);
 
 
-  // console.log('fileList', fileList);
 
   const dispatch = useDispatch();
   const thriftCategoryType = useSelector((state) => state.thriftCategoryState.thriftCategory);
-  console.log('test', thriftCategoryType && thriftCategoryType)
 
 
   useEffect(() => {
@@ -67,9 +65,7 @@ const AddProduct = () => {
   }));
 
   const onPrice = (e) => {
-    if (e.target.value.match('^[0-9]*$')) {
       setPrice(e.target.value)
-    }
   }
 
   const onTax = (e) => {
@@ -85,9 +81,8 @@ const AddProduct = () => {
   }
 
   const onFinalPrice = (e) => {
-    if (e.target.value.match('^[0-9]*$')) {
       setFinalPrice(e.target.value)
-    }
+    
   }
 
   const onPolicy = (e) => {
@@ -114,15 +109,10 @@ const AddProduct = () => {
       message.error(`${removed.name} file deleted successfully`);
     }
     setImageList(newFileList);
-    console.log('test33', fileList)
   };
 
   const onChangeVideo = (info) => {
     const { status } = info.file;
-
-    // if (status !== 'uploading') {
-    //   console.log(info.file, info.fileList);
-    // }
 
     if (status === 'done') {
       message.success(`${info.file.name} file uploaded successfully.`);
@@ -171,7 +161,7 @@ const AddProduct = () => {
 
   const onSubmit = () => {
     if
-      (!productName || !category || !fileList.length || !productVideo || !price || !product || !warranty) {
+      (!productName || !category || !fileList.length || !price || !policy || !warranty) {
       setAlertError(true)
       message.error('Please fill all the fields')
     }
@@ -183,11 +173,9 @@ const AddProduct = () => {
         productVideo,
         discount,
         finalPrice,
-        product,
+        policy: product,
         warranty,
       };
-      console.log('test44', fileList)
-      console.log('tst', addProduct);
       dispatch({ type: 'THRIFT_ADD_PRODUCT_REQUEST', addProduct });
     }
   };
@@ -318,7 +306,6 @@ const AddProduct = () => {
                     <Col sm={3}>
                       <label className="signup-label">Tax</label>
                       <Cleave
-                        type="text"
                         options={{
                           numeral: true,
                           delimiter: '.',
@@ -334,8 +321,6 @@ const AddProduct = () => {
                     <Col sm={3}>
                       <label className="signup-label">Discount </label>
                       <Cleave
-                        type="text"
-                        type="text"
                         options={{
                           numeral: true,
                           delimiter: '.',
@@ -351,7 +336,6 @@ const AddProduct = () => {
                     <Col sm={3}>
                       <label className="signup-label">Final Price  </label>
                       <Cleave
-                        type="text"
                         options={{
                           prefix: '$',
                           numeral: true,

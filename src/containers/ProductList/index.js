@@ -112,7 +112,7 @@ const ProductList = () => {
     <div className="wrapper">
       {/* <Upload showPopup={show} hidePopup={hidePopup} />  */}
       <Sidebar />
-      <div className="product-list">
+      <div className="rightside-panel">
         <Headerbar headerName="Product List" />
         <div className="main-content">
           <Grid fluid>
