@@ -33,7 +33,6 @@
   font-size: 16px;
   border-radius: 0;
   background-color: #16222a;
-  // margin-bottom: none !important;
 
   .navbar-minimize {
     float: left;
@@ -100,10 +99,6 @@
       font-size: 16px;
     }
 
-    .caret {
-      // @include center-item();
-    }
-
     &.fixed {
       width: calc(100% - #{calc(100% - 260px) });
       right: 0;
@@ -147,12 +142,6 @@
 
 .hamburger-mobile {
   float: right;
-  position: relative;
-  margin: 21px;
-}
-
-.registration {
-  float: left;
   position: relative;
   margin: 21px;
 }

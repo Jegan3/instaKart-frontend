@@ -10,8 +10,6 @@ const Headerbar = ({ navbar, setRtlCallback, headerName }) => {
   const dispatch = useDispatch();
   const [rtl, setRtl] = useState(false);
 
-  const thriftVendorInfo = useSelector((state) => state.thriftVendorInfoState.thriftVendorInfo);
-
   const onBars = () => {
     dispatch({ type: 'SHOW_SIDEBAR' });
   };
@@ -23,31 +21,15 @@ const Headerbar = ({ navbar, setRtlCallback, headerName }) => {
 
   return (
     <Navbar fluid className={navbar ? 'navbar-fixed' : ''}>
-      {/* <div className="navbar-minimize">
-        <div
-          id="minimizeSidebar"
-          aria-hidden="true"
-          className="btn btn-default btn-fill btn-round btn-icon"
-          onClick={handleMiniClick}
-        >
-          <i className="fa fa-ellipsis-v visible-on-sidebar-regular" />
-          &nbsp;
-          <i className="fa fa-navicon visible-on-sidebar-mini" />
-        </div>
-      </div> */}
       <Navbar.Header>
         <Navbar.Brand>
           {/* Here we create navbar brand, based on route name */}
           {headerName}
         </Navbar.Brand>
-        {/* <Navbar.Toggle /> */}
         <div className="hamburger-bars-icon hamburger-mobile visible-xs-block" onClick={onBars}>
           <FontAwesomeIcon icon={faBars} />
         </div>
       </Navbar.Header>
-      <div className="registration" >
-        {thriftVendorInfo && thriftVendorInfo.vendorInfo.register_num}
-      </div>
       <div className="hamburger-bars-icon hamburger-mobile hidden-xs" onClick={onRtl}>
         <FontAwesomeIcon icon={faMapSigns} />
       </div>
