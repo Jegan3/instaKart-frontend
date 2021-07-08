@@ -81,12 +81,13 @@ const Profile = () => {
   // const generalInfo = useSelector((state) => state.generalInfoState.generalInfo);
   //const signUpContent = useSelector((state) => state.signupContentState.signupContent);
   const invalidProfileInfo = useSelector((state) => state.thriftProfileState.error);
+  const registerNumber = thriftVendorInfo && thriftVendorInfo.vendorInfo.register_num;
 
   // const countries = generalInfo && generalInfo.countriesList;
   //const countries = signUpContent && signUpContent.countriesList
 
   useEffect(() => {
-    if (profileInfo &&  profileInfo.status) {
+    if (profileInfo && profileInfo.status) {
       message.success('Thanks!, Thrift Store Profile is successfully updated with us')
     } else if (invalidProfileInfo) {
       message.error('invalid Error');
@@ -231,7 +232,7 @@ const Profile = () => {
       timing
     };
     console.log('tst', profileInfo);
-      dispatch({ type: 'THRIFT_PROFILE_REQUEST', profileInfo });
+    dispatch({ type: 'THRIFT_PROFILE_REQUEST', profileInfo });
     //   // setAlertMsg('');
     //   message.success('Thanks!, Signup form is successfully registered with us ');
     // // }
@@ -249,6 +250,9 @@ const Profile = () => {
             <Row>
               <Row className="form-content card">
                 <Col md={6} className='left-info' >
+                  <p className='reg-num'>
+                    {registerNumber}
+                  </p>
                   <Row>
                     <Col md={12} className='avtar-info' >
                       <div className='load-info'>

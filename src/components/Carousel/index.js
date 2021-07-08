@@ -427,7 +427,7 @@ export const CarouselNewEStore = () => (
   </Carousel>
 );
 
-export const CarouselThriftStore = () => (
+export const CarouselThriftStore = ({ thriftDetails }) => (
   <Carousel
     // ssr
     infinite
@@ -435,9 +435,9 @@ export const CarouselThriftStore = () => (
     autoPlaySpeed={3000}
     responsive={responsiveThrift}
   >
-    {cardsDataMobile.map((card) => (
-      <Card key={card.id} className='card' imgUrl={card.imgUrl} btnUrl={card.btnUrl} body />
-    ))}
+    {thriftDetails ? thriftDetails.thriftStore.map((info) => (
+      <Card key={info.countryName} className='card' imgUrl={info.logo} btnUrl={info.btnUrl} country={info.countryName} productName={info.storeName} body />
+    )) : <Card />}
   </Carousel>
 );
 
@@ -461,10 +461,23 @@ export const CarouselAdsDetails = () => (
     infinite
     // autoPlay
     autoPlaySpeed={3000}
-    responsive={responsive}
+    responsive={responsiveThrift}
   >
     {fisrtAdsDetails.map((card) => (
-      <Card key={card.id} imgUrl={card.imgUrl} className="card-thriftcards" />
+      <Card key={card.id} imgUrl={card.imgUrl} className="card-thriftcards" body />
+    ))}
+  </Carousel>
+);
+export const CarouselThriftPromotions = () => (
+  <Carousel
+    // ssr
+    infinite
+    // autoPlay
+    autoPlaySpeed={3000}
+    responsive={responsiveThrift}
+  >
+    {cardsDataMobile.map((card) => (
+      <Card key={card.id} imgUrl={card.imgUrl} className="card-thriftcards" body />
     ))}
   </Carousel>
 );

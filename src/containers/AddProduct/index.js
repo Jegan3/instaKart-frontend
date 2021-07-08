@@ -12,7 +12,6 @@ import OverlayModal from '../../components/Overlay';
 
 const { Dragger } = Upload;
 
-
 const AddProduct = () => {
   const [productName, setProductName] = useState('');
   const [category, setCategory] = useState('');
@@ -25,33 +24,35 @@ const AddProduct = () => {
   const [tax, setTax] = useState('');
   const [discount, setDiscount] = useState('');
   const [finalPrice, setFinalPrice] = useState('');
-  const [product, setProduct] = useState('');
+  const [policy, setPolicy] = useState('');
   const [alertError, setAlertError] = useState(false);
   const [warranty, setWarranty] = useState('');
   const [modal, setModal] = useState(false);
 
-
-  // console.log('fileList', fileList);
-
   const dispatch = useDispatch();
   const thriftCategoryType = useSelector((state) => state.thriftCategoryState.thriftCategory);
-  console.log('test', thriftCategoryType && thriftCategoryType)
+  const thriftAddProduct = useSelector((state) => state.thriftAddProductState.thriftAddProduct);
+  const invalidAddProduct = useSelector((state) => state.thriftAddProductState.error);
 
+  useEffect(() => {
+    if (thriftAddProduct && thriftAddProduct.status) {
+      message.success(`Thanks!, ${productName} succefully added`)
+    } else if (invalidAddProduct) {
+      message.error('invalid Error');
+    }
+
+  }, [thriftAddProduct, invalidAddProduct]);
 
   useEffect(() => {
     dispatch({ type: 'THRIFT_CATEGORY_REQUEST' });
   }, [])
-  // useEffect(() => {
-  //   if (vendor && vendor.status) {
-  //     message.success('Thanks!, Basic info form is successfully updated with us')
-  //     setTimeout(() => {
-  //       history.push({ pathname: '/' })
-  //     }, 3000);
-  //   } else if (invalidVendor) {
-  //     message.error('invalid Error');
-  //   }
-  // },[invalidVendor]);
 
+  const onModal = () => {
+    setModal(true)
+  }
+  const onHide = () => {
+    setModal(false)
+  }
 
   const onProductName = (e) => {
     if (e.target.value.match('^[a-zA-Z ]*$'))
@@ -67,34 +68,28 @@ const AddProduct = () => {
   }));
 
   const onPrice = (e) => {
-    if (e.target.value.match('^[0-9]*$')) {
-      setPrice(e.target.value)
-    }
+    setPrice(e.target.value)
   }
 
   const onTax = (e) => {
-    if (e.target.value.match('^100(\.0{1,2})?$)|(^([1-9]([0-9])?|0)(\.[0-9]{1,2})?$')) {
-      setTax(e.target.value)
-    }
+    setTax(e.target.value)
   }
 
   const onDiscount = (e) => {
-    if (e.target.value.match('^100(\.0{1,2})?$)|(^([1-9]([0-9])?|0)(\.[0-9]{1,2})?$')) {
-      setDiscount(e.target.value)
-    }
+    setDiscount(e.target.value)
   }
 
   const onFinalPrice = (e) => {
-    if (e.target.value.match('^[0-9]*$')) {
-      setFinalPrice(e.target.value)
-    }
+    setFinalPrice(e.target.value)
+
   }
 
   const onPolicy = (e) => {
     if (e.target.value.match('^[a-zA-Z0-9 ]*$')) {
-      setProduct(e.target.value)
+      setPolicy(e.target.value)
     }
   }
+
   const onWarranty = (e) => {
     if (e.target.value.match('^[a-zA-Z0-9 ]*$')) {
       setWarranty(e.target.value)
@@ -114,15 +109,10 @@ const AddProduct = () => {
       message.error(`${removed.name} file deleted successfully`);
     }
     setImageList(newFileList);
-    console.log('test33', fileList)
   };
 
   const onChangeVideo = (info) => {
     const { status } = info.file;
-
-    // if (status !== 'uploading') {
-    //   console.log(info.file, info.fileList);
-    // }
 
     if (status === 'done') {
       message.success(`${info.file.name} file uploaded successfully.`);
@@ -171,7 +161,7 @@ const AddProduct = () => {
 
   const onSubmit = () => {
     if
-      (!productName || !category || !fileList.length || !productVideo || !price || !product || !warranty) {
+      (!productName || !category || !fileList.length || !price || !policy || !warranty) {
       setAlertError(true)
       message.error('Please fill all the fields')
     }
@@ -183,22 +173,12 @@ const AddProduct = () => {
         productVideo,
         discount,
         finalPrice,
-        product,
+        policy,
         warranty,
       };
-      console.log('test44', fileList)
-      console.log('tst', addProduct);
       dispatch({ type: 'THRIFT_ADD_PRODUCT_REQUEST', addProduct });
     }
   };
-
-  const onModal = () => {
-    setModal(true)
-  }
-  const onHide = () => {
-    setModal(false)
-  }
-
 
   return (
     <div className="wrapper">
@@ -216,7 +196,7 @@ const AddProduct = () => {
          THESE LIMITATIONS SHALL APPLY TO THE FULLEST EXTENT PERMITTED BY LAW. YOU SPECIFICALLY ACKNOWLEDGE AND AGREE THAT 
          INSTA-KART.COM SHALL NOT BE LIABLE FOR USER SUBMISSIONS OR THE DEFAMATORY, OFFENSIVE, OR ILLEGAL CONDUCT OF ANY
           USER OR THIRD PARTY AND THAT THE RISK OF HARM OR DAMAGE FROM THE FOREGOING RESTS ENTIRELY WITH YOU. "
-          warningSubText="The Website is controlled and offered by INSTA-KART.COM from its facilities in the United States of America. INSTA-KART.COM 
+        warningSubText="The Website is controlled and offered by INSTA-KART.COM from its facilities in the United States of America. INSTA-KART.COM 
           makes no representations or warranties that the Website is appropriate for use in other locations. Those who access 
           or use the Website from other jurisdictions do so at their own volition and risk and are responsible for compliance 
           with local law." />
@@ -318,7 +298,6 @@ const AddProduct = () => {
                     <Col sm={3}>
                       <label className="signup-label">Tax</label>
                       <Cleave
-                        type="text"
                         options={{
                           numeral: true,
                           delimiter: '.',
@@ -334,8 +313,6 @@ const AddProduct = () => {
                     <Col sm={3}>
                       <label className="signup-label">Discount </label>
                       <Cleave
-                        type="text"
-                        type="text"
                         options={{
                           numeral: true,
                           delimiter: '.',
@@ -351,7 +328,6 @@ const AddProduct = () => {
                     <Col sm={3}>
                       <label className="signup-label">Final Price  </label>
                       <Cleave
-                        type="text"
                         options={{
                           prefix: '$',
                           numeral: true,
@@ -369,10 +345,10 @@ const AddProduct = () => {
                   <Row>
                     <Col sm={12} md={6}>
                       <label className="signup-label">Product Description <span className="red-star">*</span></label>
-                      <textarea className={alertError && !product ? ` form-control my-input` : `form-control formy`}
+                      <textarea className={alertError && !policy ? ` form-control my-input` : `form-control formy`}
                         name="message"
                         placeholder='type something..'
-                        value={product}
+                        value={policy}
                         onChange={onPolicy}
                         maxLength={500}
                         rows="4"></textarea>
@@ -384,6 +360,7 @@ const AddProduct = () => {
                         placeholder='type something..'
                         value={warranty}
                         onChange={onWarranty}
+                        maxLength={500}
                         rows="4"></textarea>
                     </Col>
                   </Row>
