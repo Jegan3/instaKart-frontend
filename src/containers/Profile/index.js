@@ -5,6 +5,8 @@ import { Grid, Row, Col } from 'react-bootstrap';
 import Select from 'react-select';
 import Cleave from "cleave.js/react";
 import ReactTable from 'react-table';
+import ImgCrop from 'antd-img-crop';
+import { Upload } from 'antd';
 import { TimePicker, message } from 'antd';
 import Headerbar from '../../components/Headerbar';
 import Sidebar from '../../components/Sidebar';
@@ -74,17 +76,19 @@ const Profile = () => {
   const [closingTime, setClosingTime] = useState();
   const [closed, setClosed] = useState();
   const [timing, setTiming] = useState([])
+  const [alertError, setAlertError] = useState(false);
 
   const dispatch = useDispatch();
   const thriftVendorInfo = useSelector((state) => state.thriftVendorInfoState.thriftVendorInfo);
   const profileInfo = useSelector((state) => state.thriftProfileState.profileInfo);
-  // const generalInfo = useSelector((state) => state.generalInfoState.generalInfo);
-  //const signUpContent = useSelector((state) => state.signupContentState.signupContent);
   const invalidProfileInfo = useSelector((state) => state.thriftProfileState.error);
   const registerNumber = thriftVendorInfo && thriftVendorInfo.vendorInfo.register_num;
 
-  // const countries = generalInfo && generalInfo.countriesList;
-  //const countries = signUpContent && signUpContent.countriesList
+  let fileList = [];
+
+  useEffect(() => {
+    dispatch({ type: 'THRIFT_VENDOR_INFO_REQUEST' });
+  }, [])
 
   useEffect(() => {
     if (profileInfo && profileInfo.status) {
@@ -94,12 +98,21 @@ const Profile = () => {
     }
   }, [profileInfo, invalidProfileInfo]);
 
+  // City Options
   useEffect(() => {
-    dispatch({ type: 'THRIFT_VENDOR_INFO_REQUEST' });
-  }, [])
+    Locale.filter((item) => {
+      if (country && item._id === country.value) {
+        const city = item.cities.sort((a, b) => a.cityName.localeCompare(b.cityName)).map((data) => ({
+          value: data._id,
+          label: data.cityName,
+        }));
+        setUpdatedCityOptions(city);
+      }
+    });
+  }, [country]);
 
-  const onAvatarImage = (e) => {
-    let file = e.target.files[0];
+  const onAvatarImage = ({ fileList: newFileList }) => {
+    let file = newFileList[0].originFileObj;
     const reader = new FileReader();
     reader.onload = () => {
       setCompanyLogo(reader.result);
@@ -134,18 +147,7 @@ const Profile = () => {
     setCity(city)
   }
 
-  // City Options
-  useEffect(() => {
-    Locale.filter((item) => {
-      if (country && item._id === country.value) {
-        const city = item.cities.sort((a, b) => a.cityName.localeCompare(b.cityName)).map((data) => ({
-          value: data._id,
-          label: data.cityName,
-        }));
-        setUpdatedCityOptions(city);
-      }
-    });
-  }, [country]);
+
 
   const onZipCode = (e) => {
     if (e.target.value.match('^[0-9]*$')) {
@@ -203,23 +205,19 @@ const Profile = () => {
     }
   }
 
+  const fakeRequest = ({ onSuccess }) => {
+    setTimeout(() => {
+      onSuccess('OK')
+    }, 1000)
+  }
 
   const onSubmit = () => {
-    console.log('closed', closed);
-    console.log('timing', timing);
-    // if (!city) {
-    //   message.error('Please fill all the fields');
-    // }
-    // else if (termscondition === false) {
-    //   message.error('Please accept the Terms & Conditions and Privacy Policy');
-    // }
-    // else {
+    if (!storeName || !address || !country || !emailId || !mobile ) {
+      setAlertError(true)
+      message.error('Please fill all the fields')
+    } else {
     const profileInfo = {
-      // register_num: thriftVendorInfo && thriftVendorInfo.vendorInfo.register_num,
       companyLogo,
-      // companyName :thriftVendorInfo && thriftVendorInfo.data.vendorInfo.companyName,
-      // firstName : thriftVendorInfo && thriftVendorInfo.data.vendorInfo.firstName,
-      // lastName : thriftVendorInfo && thriftVendorInfo.data.vendorInfo.lastName,
       storeName,
       address,
       countryId: country && country.value,
@@ -233,12 +231,8 @@ const Profile = () => {
     };
     console.log('tst', profileInfo);
     dispatch({ type: 'THRIFT_PROFILE_REQUEST', profileInfo });
-    //   // setAlertMsg('');
-    //   message.success('Thanks!, Signup form is successfully registered with us ');
-    // // }
   };
-
-  //const onCancel = () => window.alert("cancelled");
+}
 
   return (
     <div className="wrapper">
@@ -261,12 +255,20 @@ const Profile = () => {
                             {loading ? <h3 className='loading-info'>Loading...</h3> : companyLogo ? <img src={companyLogo} alt='' /> : <img src={thriftVendorInfo && thriftVendorInfo.vendorInfo.logo ? thriftVendorInfo.vendorInfo.logo : "images/Your-logo-here..png"} />}
                           </div>
                           {!loading && <div className="image-upload">
-                            <label for="file-input"><i className="fa fa-camera" /></label>
-                            <input id="file-input"
-                              onChange={onAvatarImage}
-                              type="file"
-                              accept="image/*"
-                            />
+                            <ImgCrop rotate>
+                              <Upload
+                                fileList={fileList}
+                                customRequest={fakeRequest}
+                                onChange={onAvatarImage}
+                                type="file"
+                                accept="image/*"
+                                showUploadList={false}
+                              >
+                                <label for="file-input">
+                                  <i className="fa fa-camera" />
+                                </label>
+                              </Upload>
+                            </ImgCrop>
                           </div>}
                         </div>
                       </div>
@@ -312,8 +314,8 @@ const Profile = () => {
                       <label className="signup-label">E-store Name <span className="red-star">*</span></label>
                       <input
                         type="text"
+                  className={alertError && !storeName ? ` form-control my-input` : `form-control formy`}
                         placeholder="store name"
-                        className="form-control"
                         maxLength={30}
                         value={storeName}
                         onChange={onStoreName}
@@ -324,13 +326,13 @@ const Profile = () => {
                       <input
                         type="text"
                         placeholder="address."
-                        className="form-control"
+                        className={alertError && !address ? ` form-control my-input` : `form-control formy`}
                         maxLength={30}
                         value={address}
                         onChange={onAddress}
                       />
                     </Col>
-                    <Col md={12}>
+                    <Col md={12} className={`clear-city ${alertError && !country && `dropdown-alert`}`}>
                       <label className="signup-label">Country <span className="red-star">*</span></label>
                       <Select
                         type="text"
@@ -379,7 +381,7 @@ const Profile = () => {
                     <label className="signup-label">Email ID <span className="red-star">*</span></label>
                     <input
                       type="text"
-                      className="form-control"
+                      className={alertError && !emailId ? ` form-control my-input` : `form-control formy`}
                       maxLength={30}
                       value={emailId}
                       onChange={onEmailId}
@@ -411,7 +413,7 @@ const Profile = () => {
                   <Col md={3} className='zipcode'>
                     <label className="signup-label">Contact Number <span className="red-star">*</span></label>
                     <Cleave
-                      className="form-control"
+                      className={alertError && !mobile ? ` form-control my-input` : `form-control formy`}
                       placeholder="contact number"
                       value={mobile}
                       onChange={onMobile}
@@ -427,11 +429,9 @@ const Profile = () => {
               <Row className="general-table">
                 <Table
                   title=""
-                  // data={WeekData}
                   content={
                     <ReactTable
-                      data={weekData}
-                      // filterable
+                      data={thriftVendorInfo && thriftVendorInfo.vendorInfo.timing}
                       columns={[
                         {
                           Header: 'Day',
