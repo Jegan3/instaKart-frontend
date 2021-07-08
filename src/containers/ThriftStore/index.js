@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Row, Col, Grid } from 'react-bootstrap';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
-import { CarouselThriftNewAdditions, CarouselThriftStore, CarouselThriftStoreCategoryUp, CarouselThriftStoreCategoryBottom, CarouselAdsDetails } from '../../components/Carousel';
+import { CarouselThriftNewAdditions, CarouselThriftStore, CarouselThriftStoreCategoryUp, CarouselThriftPromotions, CarouselThriftStoreCategoryBottom, CarouselAdsDetails } from '../../components/Carousel';
 import { ThriftBanners } from '../../components/Banners';
 
 
@@ -57,7 +57,7 @@ const ThriftStore = () => {
           <div className="thrift-ads">
             <h3>THRIFT STORE NEAR YOU</h3>
             <h6>Buy & Sell Any Thing</h6>
-            <CarouselThriftStore />
+            <CarouselThriftStore thriftDetails={thriftDetails} />
           </div>
           <br />
         </div>
@@ -77,7 +77,7 @@ const ThriftStore = () => {
           <div className="thrift-ads">
             <h3>NEW PROMOTIONS</h3>
             <h6>Buy & Sell Any Thing</h6>
-            <CarouselThriftStore />
+            <CarouselThriftPromotions />
           </div>
           <br />
         </div>
@@ -87,7 +87,7 @@ const ThriftStore = () => {
           <div className="thrift-ads">
             <h3>TIMECAP LOGS</h3>
             <h6>Buy & Sell Any Thing</h6>
-            <CarouselThriftStore />
+            <CarouselThriftPromotions />
           </div>
           <br />
         </div>

@@ -4,8 +4,8 @@
     width: 80%;
     border-radius: 3px;
   }
-  
-  .ant-picker-input > input {
+
+  .ant-picker-input>input {
     text-align: center;
   }
 
@@ -33,6 +33,14 @@
     height: fit-content;
     margin: auto;
     min-height: 100px;
+  }
+
+  .reg-num {
+    font-size: 24px;
+    margin: 5px;
+    text-align: center;
+    font-family: Garamond;
+    font-weight: 600;
   }
 
   .image-upload input {
