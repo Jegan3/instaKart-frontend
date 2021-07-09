@@ -15,7 +15,7 @@
 }
 
 .rightside-panel .navbar {
-  background: #ffffff;
+  background: #ffffff !important;
 }
 
 .nav {
@@ -32,6 +32,7 @@
   border: 0;
   font-size: 16px;
   border-radius: 0;
+  background-color: $color-primary !important;
 
   .navbar-minimize {
     float: left;
