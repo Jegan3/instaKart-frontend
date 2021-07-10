@@ -8,11 +8,12 @@ import ReactTable from 'react-table';
 import ImgCrop from 'antd-img-crop';
 import { Upload } from 'antd';
 import { TimePicker, message } from 'antd';
+import moment from 'moment';
 import Headerbar from '../../components/Headerbar';
 import Sidebar from '../../components/Sidebar';
 import Table from '../../components/Table';
 import { Locale } from '../../constants/Locale';
-import moment from 'moment';
+import Loader from '../../components/Loader';
 
 const weekData = [
   {
@@ -82,6 +83,7 @@ const Profile = () => {
   const thriftVendorInfo = useSelector((state) => state.thriftVendorInfoState.thriftVendorInfo);
   const profileInfo = useSelector((state) => state.thriftProfileState.profileInfo);
   const invalidProfileInfo = useSelector((state) => state.thriftProfileState.error);
+  const isLoading = useSelector((state) => state.thriftProfileState.isLoading || state.thriftVendorInfoState.isLoading);
   const registerNumber = thriftVendorInfo && thriftVendorInfo.vendorInfo.register_num;
 
   let fileList = [];
@@ -212,30 +214,30 @@ const Profile = () => {
   }
 
   const onSubmit = () => {
-    if (!storeName || !address || !country || !emailId || !mobile ) {
+    if (!storeName || !address || !country || !emailId || !mobile) {
       setAlertError(true)
       message.error('Please fill all the fields')
     } else {
-    const profileInfo = {
-      companyLogo,
-      storeName,
-      address,
-      countryId: country && country.value,
-      cityId: city && city.value,
-      zipCode,
-      emailId,
-      fbId,
-      igId,
-      mobile,
-      timing
+      const profileInfo = {
+        companyLogo,
+        storeName,
+        address,
+        countryId: country && country.value,
+        cityId: city && city.value,
+        zipCode,
+        emailId,
+        fbId,
+        igId,
+        mobile,
+        timing
+      };
+      dispatch({ type: 'THRIFT_PROFILE_REQUEST', profileInfo });
     };
-    console.log('tst', profileInfo);
-    dispatch({ type: 'THRIFT_PROFILE_REQUEST', profileInfo });
-  };
-}
+  }
 
   return (
     <div className="wrapper">
+      {isLoading && <Loader />}
       <Sidebar />
       <div className="rightside-panel">
         <Headerbar headerName="Profile" />
@@ -252,9 +254,9 @@ const Profile = () => {
                       <div className='load-info'>
                         <div>
                           <div className="photo">
-                            {loading ? <h3 className='loading-info'>Loading...</h3> : companyLogo ? <img src={companyLogo} alt='' /> : <img src={thriftVendorInfo && thriftVendorInfo.vendorInfo.logo ? thriftVendorInfo.vendorInfo.logo : "images/Your-logo-here..png"} />}
+                            {companyLogo ? <img src={companyLogo} alt='' /> : <img src={thriftVendorInfo && thriftVendorInfo.vendorInfo.logo ? thriftVendorInfo.vendorInfo.logo : "images/Your-logo-here..png"} />}
                           </div>
-                          {!loading && <div className="image-upload">
+                          <div className="image-upload">
                             <ImgCrop rotate>
                               <Upload
                                 fileList={fileList}
@@ -269,7 +271,7 @@ const Profile = () => {
                                 </label>
                               </Upload>
                             </ImgCrop>
-                          </div>}
+                          </div>
                         </div>
                       </div>
                     </Col>
@@ -314,7 +316,7 @@ const Profile = () => {
                       <label className="signup-label">E-store Name <span className="red-star">*</span></label>
                       <input
                         type="text"
-                  className={alertError && !storeName ? ` form-control my-input` : `form-control formy`}
+                        className={alertError && !storeName ? ` form-control my-input` : `form-control formy`}
                         placeholder="store name"
                         maxLength={30}
                         value={storeName}

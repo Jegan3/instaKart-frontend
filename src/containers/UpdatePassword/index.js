@@ -6,7 +6,7 @@ const Password = () => (
     <Row>
       <div className="pass-word" >
         <Col md={6} className="main-logo" >
-          <Image className="inst-logo" src="images/logo.png" fluid />
+          <Image className="inst-logo" src="../images/logo.png" fluid />
         </Col>
         <Row>
           <Col sm={12}>

@@ -129,7 +129,7 @@ const LoginModal = ({ showPopup, hidePopup }) => {
                 <Col md={12} sm={12}>
                   <Row>
                     <Col md={12} className="right-logo" >
-                      <Image className="inst-logo" src="images/logo.png" fluid />
+                      <Image className="inst-logo" src="../images/logo.png" fluid />
                     </Col>
                     <Col md={12} className="right-home" >
                       {!forgotPassword ?
