@@ -2,10 +2,11 @@
 import React, { useEffect, useState } from 'react';
 import { Grid, Row, Col } from 'react-bootstrap';
 import ReactTable from 'react-table';
+import Select from 'react-select';
 import Headerbar from '../../components/Headerbar';
 import Table from '../../components/Table';
 import Sidebar from '../../components/Sidebar';
-import Select from 'react-select';
+import { history } from '../../routes';
 
 const productData = [
   {
@@ -14,6 +15,7 @@ const productData = [
     title: 'Chicken Pies',
     status: 'available',
     soh: '100',
+    reserved: '15',
   },
   {
     id: '2',
@@ -21,6 +23,7 @@ const productData = [
     title: 'Jamaican Patties',
     status: 'available',
     soh: '143',
+    reserved: '15',
   },
   {
     id: '3',
@@ -28,6 +31,7 @@ const productData = [
     title: 'Lobster',
     status: 'available',
     soh: '213',
+    reserved: '15',
   },
   {
     id: '4',
@@ -35,6 +39,7 @@ const productData = [
     title: 'Grilled Veg Cheese Sandwich',
     status: 'sold',
     soh: '123',
+    reserved: '15',
   },
   {
     id: '5',
@@ -42,6 +47,7 @@ const productData = [
     title: 'Buffalo Chicken Wings',
     status: 'sold',
     soh: '156',
+    reserved: '15',
   },
   {
     id: '6',
@@ -49,6 +55,7 @@ const productData = [
     title: 'Burger',
     status: 'reserve',
     soh: '143',
+    reserved: '15',
   },
   {
     id: '7',
@@ -56,6 +63,7 @@ const productData = [
     title: 'Grilled Chicken  Sandwich',
     status: 'reserve',
     soh: '200',
+    reserved: '15',
   },
   {
     id: '8',
@@ -63,6 +71,7 @@ const productData = [
     title: 'Grilled Chicken  Sandwich',
     status: 'reserve',
     soh: '200',
+    reserved: '15',
   },
   {
     id: '9',
@@ -70,12 +79,14 @@ const productData = [
     title: 'Grilled Chicken  Sandwich',
     status: 'reserve',
     soh: '200',
+    reserved: '15',
   }, {
     id: '10',
     imgUrl: 'images/1_Food.png',
     title: 'Grilled Chicken  Sandwich',
     status: 'reserve',
     soh: '200',
+    reserved: '15',
   }
 ]
 
@@ -106,6 +117,14 @@ const ProductList = () => {
     console.log("e", info)
     console.log("value", value)
     setStatus(value[info.index])
+  } 
+
+  const viewProduct = (info) => {
+    const { original } = info;
+    history.push({
+      pathname: `/addproduct/${original.id}`,
+      state: original,
+    });
   }
 
   return (
@@ -141,6 +160,20 @@ const ProductList = () => {
                           width: 250,
                         },
                         {
+                          Header: 'Reserved',
+                          accessor: 'reserved',
+                          // filterable: false,
+                          // sortable: false,
+                          // width: 100,
+                        },
+                        {
+                          Header: 'SOH',
+                          accessor: 'soh',
+                          // filterable: false,
+                          // sortable: false,
+                          // width: 100,
+                        },
+                        {
                           Header: 'Status',
                           // accessor: 'status',
                           filterable: false,
@@ -164,13 +197,15 @@ const ProductList = () => {
                               />
                             </div>
                           ),
-                        }, {
-                          Header: 'SOH',
-                          accessor: 'soh',
-                          // filterable: false,
+                        },
+                        {
+                          Header: 'Analyze',
+                          filterable: false,
                           sortable: false,
-                          width: 100,
-                        }
+                          Cell: (info) => (
+                            <span className="btn-sign" onClick={() => viewProduct(info)}><i className="fab fa-react"></i></span>
+                          ),
+                        },
                       ]
                       }
                       defaultPageSize={10}

@@ -160,11 +160,11 @@ const Dashboard = () => {
                         accessor: 'status',
                       },
                       {
-                        Header: 'Action',
+                        Header: 'Analyze',
                         filterable: false,
                         sortable: false,
-                        Cell: (original) => (
-                          <span className="btn-sign" onClick={() => handleShow(original)}><i class="fab fa-react"></i></span>
+                        Cell: (info) => (
+                          <span className="btn-sign" onClick={() => handleShow(info)}><i className="fab fa-react"></i></span>
                         ),
                       },
                     ]}
