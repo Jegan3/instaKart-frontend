@@ -60,8 +60,9 @@ const Footer = () => (
             <div className="footer-pad">
               <h4>Help</h4>
               <ul className="list-unstyled">
-                <li className="footer-info" >Login</li>
-                <li className="footer-info" >Register</li>
+                <li className="footer-info" >Our Team</li>
+                <li className="footer-info" >Testimonials</li>
+                <li className="footer-info" >Services</li>
               </ul>
             </div>
           </div>
@@ -72,7 +73,8 @@ const Footer = () => (
             </div>
             <div className="number">868 388 1164</div>
             <div className="zip">+1</div>
-            <div className="side-Button ">
+            {/* For future use */}
+            {/* <div className="side-Button ">
               <button className="btn draw-border">
                 <FontAwesomeIcon className="appBtn" icon={faGooglePlay} />
                 <p>
@@ -91,7 +93,7 @@ const Footer = () => (
                   For Ios
                 </strong>
               </button>
-            </div>
+            </div> */}
           </div>
         </div>
         <div className="row">
