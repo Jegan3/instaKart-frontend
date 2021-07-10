@@ -1,8 +1,8 @@
 /*eslint-disable*/
 import React from 'react';
-import { Modal, Button } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
 
-const OverlayModal = ({
+const Overlay = ({
   show, onHide, centered, title, warningText, warningSubText, body, alert, alertClass, primary, secondary, onSubmitPrimary, onSubmitSecondary, footer,
 }) =>
   <Modal
@@ -18,8 +18,8 @@ const OverlayModal = ({
       <Modal.Title>{title}</Modal.Title>
     </Modal.Header>
     <Modal.Body className="justify-content-center">
-      <p className="warning-text"> {warningText} <br/> {warningSubText}</p>
-      </Modal.Body>
+      <p className="warning-text"> {warningText} <br /> {warningSubText}</p>
+    </Modal.Body>
     {/* <Modal.Footer className="no-border">
       {alert && <span className={`w-100 text-center text-${alertClass}`}><p>{alert}</p></span>}
       <div className="mx-auto">
@@ -30,4 +30,4 @@ const OverlayModal = ({
     </Modal.Footer> */}
   </Modal>
 
-export default OverlayModal;
+export default Overlay;

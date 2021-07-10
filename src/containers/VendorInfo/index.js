@@ -4,7 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Row, Col, Form, Grid } from 'react-bootstrap';
 import Select from 'react-select';
 import Cleave from "cleave.js/react";
-import { message } from 'antd';
+import { message, Upload } from 'antd';
+import ImgCrop from 'antd-img-crop';
 import { history } from '../../routes';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
@@ -24,6 +25,8 @@ const bankList = [
   { value: 'CAF Trinidad & Tobago', label: 'CAF Trinidad & Tobago' },
   { value: 'Others', label: 'Others' },
 ];
+
+let fileList = [];
 
 const ikOptionsList = [
   { value: 'Fortnightly', label: 'Fortnightly ' },
@@ -114,8 +117,8 @@ const VendorInfo = (props) => {
     reader.readAsDataURL(file);
   }
 
-  const onUploadLogo = (e) => {
-    let file = e.target.files[0];
+  const onUploadLogo = ({ fileList: newFileList }) => {
+    let file = newFileList[0].originFileObj;
     const reader = new FileReader();
     reader.onload = () => {
       setUploadLogoName(file.name);
@@ -165,7 +168,7 @@ const VendorInfo = (props) => {
     setWipay(e.target.value)
     if (e.target.value === 'Yes') {
       setPreference('')
-    } else if (e.target.value=== 'No'){
+    } else if (e.target.value === 'No') {
       setPreference({ value: 'Bank Transfer', label: 'Bank Transfer' })
     }
   }
@@ -199,6 +202,12 @@ const VendorInfo = (props) => {
     history.push({ pathname: '/termsofcondition' });
     window.scrollTo(0, 0);
   };
+
+  const fakeRequest = ({ onSuccess }) => {
+    setTimeout(() => {
+      onSuccess('OK')
+    }, 1000)
+  }
 
   const Submit = () => {
     if (!firstName || !lastName || !mobile || !uploadId || !uploadAddress || !bank || !bankAccount || !ikOptions) {
@@ -345,10 +354,18 @@ const VendorInfo = (props) => {
                 <div className='select-file'>
                   <label className="signup-label">Upload Logo</label>
                   <div className='file-input'>
-                    <input
-                      type='file'
-                      onChange={onUploadLogo} />
-                    <span className='button'>Choose</span>
+                    <ImgCrop rotate>
+                      <Upload
+                        fileList={fileList}
+                        customRequest={fakeRequest}
+                        onChange={onUploadLogo}
+                        type="file"
+                        accept="image/*"
+                        showUploadList={false}
+                      >
+                        <span className='button'>Choose</span>
+                      </Upload>
+                    </ImgCrop>
                     <span className='label' >{uploadLogoName ? uploadLogoName : 'No file selected'} </span>
                   </div>
                 </div>

@@ -96,7 +96,7 @@ const Header = ({ basic }) => {
       {basic ?
         <Row className="header-sec">
           <Col md={6} sm={6}>
-            <Image className="signup-logo" src="images/logo.png" fluid onClick={toHome} />
+            <Image className="signup-logo" src="../images/logo.png" fluid onClick={toHome} />
           </Col>
         </Row> :
         <div>
@@ -128,13 +128,13 @@ const Header = ({ basic }) => {
                       <p onClick={aboutUs}>About Us</p>
                     </NavItem>
                     {!user &&
-                    <NavItem eventKey={3} href="#">
-                      {vendor || admin ? <p onClick={dashboard}>Dashboard</p> : <p className="vendor-signup" onClick={Signup}>Register Your E-Store</p>}
-                    </NavItem>}
+                      <NavItem eventKey={3} href="#">
+                        {vendor || admin ? <p onClick={dashboard}>Dashboard</p> : <p className="vendor-signup" onClick={Signup}>Register Your E-Store</p>}
+                      </NavItem>}
                     {(admin || vendor || user) &&
-                    <NavItem eventKey={2} href="#">
-                      <p onClick={logout}>Sign Out</p>
-                    </NavItem>}
+                      <NavItem eventKey={2} href="#">
+                        <p onClick={logout}>Sign Out</p>
+                      </NavItem>}
                   </Nav>
                 </Navbar.Collapse>
               </Navbar>
@@ -145,7 +145,7 @@ const Header = ({ basic }) => {
                   <div className="col-md-3 col-sm-3 logo-header-top-left">
                     <img
                       className="instakart"
-                      src="images/logo.png"
+                      src="../images/logo.png"
                       alt="new"
                       onClick={toHome}
                     />
@@ -171,11 +171,11 @@ const Header = ({ basic }) => {
                       {name ? <div className="text bold-text">{`Hi, ${name}`}</div> : <div className="bold-text">Sign In</div>}
                     </div>
                     {!name &&
-                    <IconButton className="cart-icon" aria-label="cart" >
-                      <StyledBadge badgeContent={7} color="secondary">
-                        <ShoppingCartIcon fontSize="large" />
-                      </StyledBadge>
-                    </IconButton>}
+                      <IconButton className="cart-icon" aria-label="cart" >
+                        <StyledBadge badgeContent={7} color="secondary">
+                          <ShoppingCartIcon fontSize="large" />
+                        </StyledBadge>
+                      </IconButton>}
                   </div>
                 </div>
               </div>

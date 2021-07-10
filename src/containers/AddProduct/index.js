@@ -1,14 +1,15 @@
 /*eslint-disable*/
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Grid, Row, Col, Overlay } from 'react-bootstrap';
+import { Grid, Row, Col } from 'react-bootstrap';
 import Select from 'react-select';
 import Headerbar from '../../components/Headerbar';
 import Sidebar from '../../components/Sidebar';
 import { Upload, Modal, message } from 'antd';
 import ImgCrop from 'antd-img-crop';
 import Cleave from "cleave.js/react";
-import OverlayModal from '../../components/Overlay';
+import Overlay from '../../components/Overlay';
+import Loader from '../../components/Loader';
 
 const { Dragger } = Upload;
 
@@ -25,22 +26,36 @@ const AddProduct = () => {
   const [discount, setDiscount] = useState('');
   const [finalPrice, setFinalPrice] = useState('');
   const [policy, setPolicy] = useState('');
-  const [alertError, setAlertError] = useState(false);
+  const [stockReserve, setStockReserve] = useState('');
+  const [stockHand, setStockHand] = useState('');
   const [warranty, setWarranty] = useState('');
   const [modal, setModal] = useState(false);
+  const [alertError, setAlertError] = useState(false);
+  const [clear, setClear] = useState(false)
 
   const dispatch = useDispatch();
   const thriftCategoryType = useSelector((state) => state.thriftCategoryState.thriftCategory);
   const thriftAddProduct = useSelector((state) => state.thriftAddProductState.thriftAddProduct);
+  const isLoading = useSelector((state) => state.thriftAddProductState.isLoading);
   const invalidAddProduct = useSelector((state) => state.thriftAddProductState.error);
 
   useEffect(() => {
-    if (thriftAddProduct && thriftAddProduct.status) {
-      message.success(`Thanks!, ${productName} succefully added`)
-    } else if (invalidAddProduct) {
+    if (clear && thriftAddProduct && thriftAddProduct.status) {
+      setProductName('');
+      setCategory('');
+      setImageList([]);
+      setPrice('');
+      setTax('');
+      setDiscount('');
+      setFinalPrice('');
+      setPolicy('');
+      setWarranty('');
+      message.success(`Thanks!, ${productName} ${thriftAddProduct.message}`)
+      setClear(false)
+    } else if (clear && invalidAddProduct) {
       message.error('invalid Error');
+      setClear(false)
     }
-
   }, [thriftAddProduct, invalidAddProduct]);
 
   useEffect(() => {
@@ -81,7 +96,13 @@ const AddProduct = () => {
 
   const onFinalPrice = (e) => {
     setFinalPrice(e.target.value)
+  }
 
+  const onStockReserve = (e) => {
+    setStockReserve(e.target.value)
+  }
+  const onStockHand = (e) => {
+    setStockHand(e.target.value)
   }
 
   const onPolicy = (e) => {
@@ -173,16 +194,20 @@ const AddProduct = () => {
         productVideo,
         discount,
         finalPrice,
+        // stockReserve,
+        // stockHand,
         policy,
         warranty,
       };
       dispatch({ type: 'THRIFT_ADD_PRODUCT_REQUEST', addProduct });
     }
+    setClear(true)
   };
 
   return (
     <div className="wrapper">
-      <OverlayModal show={modal} onHide={onHide} title="WARNING : LIMITATIONS OF LIABILITY"
+      {isLoading && <Loader />}
+      <Overlay show={modal} onHide={onHide} title="WARNING : LIMITATIONS OF LIABILITY"
         warningText=" IN NO EVENT SHALL INSTA-KART.COM, ITS OFFICERS, DIRECTORS, EMPLOYEES,
         OR AGENTS, BE LIABLE FOR DIRECT, INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL OR EXEMPLARY 
         DAMAGES (EVEN IF INSTA-KART.COM HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES), 
@@ -278,7 +303,7 @@ const AddProduct = () => {
                 </Col>
               </Row>
               <Row>
-                <Col sm={12} md={12}>
+                <Col sm={12} md={6}>
                   <Row className='pricerow-list'>
                     <Col sm={3}>
                       <label className="signup-label">Price <span className="red-star">*</span></label>
@@ -341,29 +366,57 @@ const AddProduct = () => {
                     </Col>
                   </Row>
                 </Col>
-                <Col md={12}>
+                <Col md={6}>
                   <Row>
-                    <Col sm={12} md={6}>
-                      <label className="signup-label">Product Description <span className="red-star">*</span></label>
-                      <textarea className={alertError && !policy ? ` form-control my-input` : `form-control formy`}
-                        name="message"
-                        placeholder='type something..'
-                        value={policy}
-                        onChange={onPolicy}
-                        maxLength={500}
-                        rows="4"></textarea>
+                    <Col sm={6}>
+                      <label className="signup-label">Stock Reserve </label>
+                      <Cleave
+                        options={{
+                          numeral: true,
+                          numeralThousandsGroupStyle: 'thousand'
+                        }}
+                        className="form-control"
+                        maxLength={10}
+                        value={stockReserve}
+                        onChange={onStockReserve}
+                      />
                     </Col>
-                    <Col sm={12} md={6}>
-                      <label className="signup-label">Warranty < span className="red-star">*</span> <i className="fa fa-info" onMouseEnter={onModal} /></label>
-                      <textarea className={alertError && !warranty ? ` form-control my-input` : `form-control formy`}
-                        name="message"
-                        placeholder='type something..'
-                        value={warranty}
-                        onChange={onWarranty}
-                        maxLength={500}
-                        rows="4"></textarea>
+                    <Col sm={6}>
+                      <label className="signup-label">Stocks on Hand  </label>
+                      <Cleave
+                        options={{
+                          numeral: true,
+                          numeralThousandsGroupStyle: 'thousand'
+                        }}
+                        className="form-control"
+                        maxLength={10}
+                        value={stockHand}
+                        onChange={onStockHand}
+                      />
                     </Col>
                   </Row>
+                </Col>
+              </Row>
+              <Row>
+                <Col sm={12} md={6}>
+                  <label className="signup-label">Product Description <span className="red-star">*</span></label>
+                  <textarea className={alertError && !policy ? ` form-control my-input` : `form-control formy`}
+                    name="message"
+                    placeholder='type something..'
+                    value={policy}
+                    onChange={onPolicy}
+                    maxLength={500}
+                    rows="4"></textarea>
+                </Col>
+                <Col sm={12} md={6}>
+                  <label className="signup-label">Warranty < span className="red-star">*</span> <i className="fa fa-info" onMouseEnter={onModal} /></label>
+                  <textarea className={alertError && !warranty ? ` form-control my-input` : `form-control formy`}
+                    name="message"
+                    placeholder='type something..'
+                    value={warranty}
+                    onChange={onWarranty}
+                    maxLength={500}
+                    rows="4"></textarea>
                 </Col>
               </Row>
             </Row>
