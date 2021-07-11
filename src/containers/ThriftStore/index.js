@@ -92,9 +92,9 @@ const ThriftStore = () => {
           <br />
         </div>
       </Row>
-      <Row>
+      <div>
         <Footer />
-      </Row>
+      </div>
     </Grid>
   )
 };

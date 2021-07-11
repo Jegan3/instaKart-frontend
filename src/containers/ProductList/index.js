@@ -16,6 +16,7 @@ const productData = [
     status: 'available',
     soh: '100',
     reserved: '15',
+    sold: '900',
   },
   {
     id: '2',
@@ -24,6 +25,7 @@ const productData = [
     status: 'available',
     soh: '143',
     reserved: '15',
+    sold: '900',
   },
   {
     id: '3',
@@ -32,6 +34,7 @@ const productData = [
     status: 'available',
     soh: '213',
     reserved: '15',
+    sold: '900',
   },
   {
     id: '4',
@@ -40,6 +43,7 @@ const productData = [
     status: 'sold',
     soh: '123',
     reserved: '15',
+    sold: '900',
   },
   {
     id: '5',
@@ -48,6 +52,7 @@ const productData = [
     status: 'sold',
     soh: '156',
     reserved: '15',
+    sold: '900',
   },
   {
     id: '6',
@@ -56,6 +61,7 @@ const productData = [
     status: 'reserve',
     soh: '143',
     reserved: '15',
+    sold: '900',
   },
   {
     id: '7',
@@ -64,6 +70,7 @@ const productData = [
     status: 'reserve',
     soh: '200',
     reserved: '15',
+    sold: '900',
   },
   {
     id: '8',
@@ -72,6 +79,7 @@ const productData = [
     status: 'reserve',
     soh: '200',
     reserved: '15',
+    sold: '900',
   },
   {
     id: '9',
@@ -80,6 +88,7 @@ const productData = [
     status: 'reserve',
     soh: '200',
     reserved: '15',
+    sold: '900',
   }, {
     id: '10',
     imgUrl: 'images/1_Food.png',
@@ -87,6 +96,7 @@ const productData = [
     status: 'reserve',
     soh: '200',
     reserved: '15',
+    sold: '900',
   }
 ]
 
@@ -169,6 +179,13 @@ const ProductList = () => {
                         {
                           Header: 'SOH',
                           accessor: 'soh',
+                          // filterable: false,
+                          // sortable: false,
+                          // width: 100,
+                        },
+                        {
+                          Header: 'Sold',
+                          accessor: 'sold',
                           // filterable: false,
                           // sortable: false,
                           // width: 100,
