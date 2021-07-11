@@ -3,11 +3,11 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Grid, Row, Col } from 'react-bootstrap';
 import Select from 'react-select';
-import Headerbar from '../../components/Headerbar';
-import Sidebar from '../../components/Sidebar';
 import { Upload, Modal, message } from 'antd';
 import ImgCrop from 'antd-img-crop';
 import Cleave from "cleave.js/react";
+import Headerbar from '../../components/Headerbar';
+import Sidebar from '../../components/Sidebar';
 import Overlay from '../../components/Overlay';
 import Loader from '../../components/Loader';
 
