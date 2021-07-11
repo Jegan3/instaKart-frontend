@@ -6,7 +6,6 @@ import { CarouselFirst, CarouselSecond, CarouselThird, CarouselFourth, CarouselM
 import { Banners, SecondaryBanners } from '../../components/Banners';
 import Particle from '../../components/Particle';
 
-
 const Home = () => {
 
   useEffect(() => {
