@@ -15,7 +15,7 @@ const Card = ({ imgUrl, alt, content, btnUrl, body, title, price, productName, c
     <div>
       {title ?
         <div className={className}>
-          <div class="card-thriftStore">
+          <div className="card-thriftStore">
             <img src={imgUrl} alt="Avatar" className="photos " />
             <div className="middle">
               <div className="text">{title}

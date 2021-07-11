@@ -2,15 +2,15 @@
 import React from 'react';
 import Particles from 'react-particles-js';
 
-const Particle = () =>
+const Particle = ({color, number, direction}) =>
   <Particles
     params={{
       particles: {
         color: {
-          value: '#28a4d9',
+          value: `${color}`,
         },
         number: {
-          value: '700',
+          value: `${number}`,
           density: {
             enable: false,
           }
@@ -22,15 +22,15 @@ const Particle = () =>
           value: '3',
           random: true,
           anim: {
-            speed: ' 4',
+            speed: '3',
             size_min: '0.3',
           }
         },
         move: {
           random: true,
           speed: '1',
-          direction: 'top',
-          out_mode: 'out'
+          direction: `${direction}`,
+          out_mode: 'out',
         }
       },
       interactivity: {
@@ -52,7 +52,7 @@ const Particle = () =>
             opacity: ' 0'
           },
           repulse: {
-            distance: '400',
+            distance: '100',
             duration: '4'
           }
         }

@@ -50,7 +50,7 @@ const Sidebar = () => {
             {!open ? (
               <img
                 className="sidebar-instalogo"
-                src="images/logo.png"
+                src="../images/logo.png"
                 alt="INSTAKART"
                 onClick={toHome}
               />
