@@ -2,8 +2,8 @@
 import React from 'react';
 import Particles from 'react-particles-js';
 
-function Particle(color, number, direction) {
-  return (
+const Particle = ({ color, number, direction }) => 
+
     <Particles
       params={{
         particles: {
@@ -60,8 +60,6 @@ function Particle(color, number, direction) {
         },
       }}
     />
-  );
-}
 
 export default Particle;
 
