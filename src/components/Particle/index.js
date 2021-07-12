@@ -2,7 +2,7 @@
 import React from 'react';
 import Particles from 'react-particles-js';
 
-export const Particle = ({ color, number, direction }) => 
+const Particle = ({ color, number, direction }) => 
 
     <Particles
       params={{
@@ -61,5 +61,5 @@ export const Particle = ({ color, number, direction }) =>
       }}
     />
 
-// export default Particle;
+export default Particle;
 
