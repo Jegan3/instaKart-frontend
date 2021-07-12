@@ -19,7 +19,7 @@ const Home = () => {
   return (
     <div className='body-container home'>
       <div className='particles-main'>
-        <Particle color='#28a4d9' number='700' direction='top' />
+        <Particle color='#28a4d9' number='2100' direction='top' />
       </div>
       <div>
         <Header />
@@ -55,7 +55,7 @@ const Home = () => {
       </div>
       <div className='bg-home-pro'>
         <div className='particles-sub'>
-          <Particle color='#f5f5f5' number='300' direction='left' />
+          <Particle color='#f5f5f5' number='700' direction='left' />
         </div>
         <div className='arrival'>
           <h5>New Promotions</h5>
@@ -74,7 +74,7 @@ const Home = () => {
       </div>
       <div className='bg-home-pro'>
         <div className='particles-sub'>
-          <Particle color='#f5f5f5' number='300' direction='right' />
+          <Particle color='#f5f5f5' number='700' direction='right' />
         </div>
         <div className='arrival'>
           <h5>E-Stores Near You</h5>
