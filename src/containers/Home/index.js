@@ -55,7 +55,7 @@ const Home = () => {
       </div>
       <div className='bg-home-pro'>
         <div className='particles-sub'>
-          <Particle color='#f5f5f5' number='700' direction='left' />
+          {/* <Particle color='#f5f5f5' number='700' direction='left' /> */}
         </div>
         <div className='arrival'>
           <h5>New Promotions</h5>
@@ -74,7 +74,7 @@ const Home = () => {
       </div>
       <div className='bg-home-pro'>
         <div className='particles-sub'>
-          <Particle color='#f5f5f5' number='700' direction='right' />
+          {/* <Particle color='#f5f5f5' number='700' direction='right' /> */}
         </div>
         <div className='arrival'>
           <h5>E-Stores Near You</h5>
