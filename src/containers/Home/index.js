@@ -8,13 +8,13 @@ import Particle from '../../components/Particle';
 
 const Home = () => {
 
-  // useEffect(() => {
-  //   // dispatch it once mounted
-  //   setTimeout(
-  //     ()=>{window.dispatchEvent(new Event('resize'));},
-  //     1000
-  //     );
-  // }, []);
+  useEffect(() => {
+    // dispatch it once mounted
+    setTimeout(
+      ()=>{window.dispatchEvent(new Event('resize'));},
+      700
+      );
+  }, []);
 
   return (
     <div className='body-container home'>
