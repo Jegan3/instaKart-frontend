@@ -19,7 +19,7 @@ const Home = () => {
   return (
     <div className='body-container home'>
       <div className='particles-main'>
-        <Particle color='#28a4d9' number='2100' direction='top' />
+        {/* <Particle color='#28a4d9' number='2100' direction='top' /> */}
       </div>
       <div>
         <Header />
