@@ -4,17 +4,17 @@ import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 import { CarouselFirst, CarouselSecond, CarouselThird, CarouselFourth, CarouselMobile, CarouselNewEStore, } from '../../components/Carousel';
 import { Banners, SecondaryBanners } from '../../components/Banners';
-import { Particle } from '../../components/Particle';
+import Particle  from '../../components/Particle';
 
-function Home () {
+const Home = () => {
 
-  useEffect(() => {
-    // dispatch it once mounted
-    setTimeout(
-      ()=>{window.dispatchEvent(new Event('resize'));},
-      700
-      );
-  }, []);
+  // useEffect(() => {
+  //   // dispatch it once mounted
+  //   setTimeout(
+  //     ()=>{window.dispatchEvent(new Event('resize'));},
+  //     700
+  //     );
+  // }, []);
 
   return (
     <div className='body-container home'>
@@ -55,7 +55,7 @@ function Home () {
       </div>
       <div className='bg-home-pro'>
         <div className='particles-sub'>
-          <Particle color='#f5f5f5' number='700' direction='left' />
+          {/* <Particle color='#28a4d9' number='700' direction='left' /> */}
         </div>
         <div className='arrival'>
           <h5>New Promotions</h5>
@@ -74,7 +74,7 @@ function Home () {
       </div>
       <div className='bg-home-pro'>
         <div className='particles-sub'>
-          <Particle color='#f5f5f5' number='700' direction='right' />
+          {/* <Particle color='#000000' number='700' direction='right' /> */}
         </div>
         <div className='arrival'>
           <h5>E-Stores Near You</h5>
