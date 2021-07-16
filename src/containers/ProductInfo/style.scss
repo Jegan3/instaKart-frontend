@@ -1,15 +1,18 @@
 .ads-control {
-  overflow: hidden;
+  // overflow: hidden;
+  // background-color: rgba(0, 0, 0, 0.5);
 
   /* Jumbotron (hero) */
   .jumbotron {
     position: relative;
-    bottom: 75px;
+    // bottom: 74px;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
     background-attachment: fixed;
-
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
 
     &:before {
       position: absolute;
@@ -36,39 +39,42 @@
   }
 
   .ads-page {
+    // background-color: rgba(255,255,255,.3);
+    background-color: rgba(0, 0, 0, 0.75);
+    position: relative;
+    // bottom: 3.5em;
 
     .product-sides {
-      margin: 3% 2%;
-
+      margin: 0% 5%;
 
       .product-title {
-        font-size: 41px;
-        line-height: 41px;
+        font-size: 37px;
+        // line-height: 30px;
         margin-bottom: 15px;
         font-family: fantasy;
-        color: white;
-        font-weight: 800;
+        color: $color-background;
+        font-weight: 700;
       }
 
       .sale {
-        float: left;
-        left: 19%;
-        margin: 1%;
-        padding: 10px;
-        position: relative;
-        font-weight: 700;
-        color: #f1eeef;
+        // float: left;
+        // left: 19%;
+        // margin: 1%;
+        // padding: 10px;
+        // position: relative;
+        // font-weight: 700;
+        color: whitesmoke;
         font-family: fantasy;
       }
 
       .see-all {
         font-size: 15px;
-        left: 19%;
-        margin: 1%;
-        padding: 10px;
+        // left: 19%;
+        // margin: 1%;
+        // padding: 10px;
         position: relative;
         font-weight: 700;
-        color: #f1eeef;
+        color: whitesmoke;
         font-family: fantasy;
         text-decoration: underline;
       }
@@ -76,7 +82,13 @@
     }
 
     .position-top {
-      margin-top: 5%;
+      margin-top: 10%;
+      // background: $color-background;
+    }
+
+    .position-bottom {
+      margin-top: 10%;
+      background: $color-background;
     }
 
   }
@@ -87,13 +99,13 @@
   font-family: fantasy;
   font-size: 20px;
   margin: 0;
-  margin-left: 15px;
+  margin-left: 10px;
   padding-top: 2.5% !important;
 }
 
 .video-ads {
   text-align: center;
-  margin-top: 5%;
+  padding: 5%;
 }
 
 .butn-ads {
@@ -141,11 +153,9 @@
   font-family: monospace;
   padding-top: 7%;
   cursor: pointer;
-  top: 25px;
   border: transparent;
-  background: black;
+  background: transparent;
   position: relative;
-  padding: 2px 30px;
 
   &:hover {
     margin-bottom: 1%;
@@ -164,37 +174,46 @@
     font-size: 18px;
     color: whitesmoke;
   }
-
 }
 
-.wrapper-ads {
+.review-rate {
+  // display: inline;
+  // // float: right;
+  // font-size: 8px;
+  display: flex;
+  position: relative;
+  bottom: 10px;
 
-  .review-rate {
-    display: inline;
-    float: right;
-    font-size: 8px;
+  p {
+    padding: 8px;
+    font-size: 15px !important;
+    color: $color-background;
+  }
 
-    i {
-      font-size: 16px;
-      color: #ff9700;
-      vertical-align: middle;
-    }
+  .ant-rate {
+    color: $color-theme;
+  }
 
-    .comment-meta-main {
-      background: #f7f8f9;
-      border-bottom: none;
-    }
+  i {
+    font-size: 16px;
+    color: #ff9700;
+    vertical-align: middle;
+  }
 
-    .comment-content {
-      padding: 30px;
-      background: #fff;
-      border: 1px solid #eee;
-      border-bottom: none;
-    }
+  .comment-meta-main {
+    background: #f7f8f9;
+    border-bottom: none;
+  }
 
-    .comment-respond {
-      padding-bottom: 20px;
-    }
+  .comment-content {
+    padding: 30px;
+    background: #fff;
+    border: 1px solid #eee;
+    border-bottom: none;
+  }
+
+  .comment-respond {
+    padding-bottom: 20px;
   }
 }
 

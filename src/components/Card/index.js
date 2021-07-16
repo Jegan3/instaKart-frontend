@@ -27,7 +27,7 @@ const Card = ({ imgUrl, alt, content, btnUrl, body, title, price, productName, c
         <div className={className}>
           <div className="card-content">
             {body ?
-              <img className="photos" src={imgUrl} onClick={() => history.push('/advertisement')} alt={alt || 'Image'} />
+              <img className="photos" src={imgUrl} onClick={() => history.push('/productinfo')} alt={alt || 'Image'} />
               :
               <img className="photos" src={imgUrl} />
             }
