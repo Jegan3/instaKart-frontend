@@ -2,6 +2,7 @@
 @import '~react-multi-carousel/lib/styles.css';
 @import '~antd/dist/antd.css';
 @import '~react-pro-sidebar/dist/scss/styles.scss';
+@import "~react-image-gallery/styles/scss/image-gallery.scss";
 @import './custom.scss';
 @import "../../src/containers/Home/style.scss";
 @import '../../src/components/Card/style.scss';
@@ -29,3 +30,5 @@
 @import '../../src/containers/UpdatePassword/style.scss';
 @import '../../src/components/Desk/style.scss';
 @import '../../src/components/Overlay/style.scss';
+@import '../../src/containers/ProductInfo/style.scss';
+@import '../../src/containers/MyProfile/style.scss';

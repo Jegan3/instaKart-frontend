@@ -28,6 +28,8 @@
 .header-container-bottom {
   margin-bottom: 1%;
   display: flex;
+  z-index: 1;
+  position: relative;
 }
 
 .back-pic {
