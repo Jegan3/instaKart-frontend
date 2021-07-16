@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { ProSidebar, SidebarHeader, SidebarFooter, SidebarContent, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faCog, faHome, faUser, faBuilding, faTag, faFolderPlus, faUserTag, faNetworkWired } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faCog, faHome, faUser, faBuilding, faTag, faFolderPlus, faUserTag, faNetworkWired, faUserAlt } from '@fortawesome/free-solid-svg-icons';
 import { history } from '../../routes';
 
 const Sidebar = () => {
@@ -72,6 +72,7 @@ const Sidebar = () => {
         </SidebarContent> :
           <SidebarContent>
             <Menu iconShape>
+              <MenuItem icon={<FontAwesomeIcon icon={faUserAlt} />}>My Profile <Link to="/myprofile" /></MenuItem>
               <SubMenu title="Thrift Store" icon={<FontAwesomeIcon icon={faNetworkWired} />}>
                 <MenuItem icon={<FontAwesomeIcon icon={faUserTag} />}>
                   Profile <Link to="/profile" />

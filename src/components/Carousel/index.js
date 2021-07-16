@@ -22,6 +22,24 @@ const responsive = {
   },
 };
 
+const responsiveAds = {
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 5,
+    // slidesToSlide: 4,
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 680 },
+    items: 3,
+    // slidesToSlide: 3,
+  },
+  mobile: {
+    breakpoint: { max: 680, min: 0 },
+    items: 2,
+    // slidesToSlide: 2,
+  },
+};
+
 const responsiveThrift = {
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
@@ -163,6 +181,26 @@ const cardsDataNewEStore = [
   },
   {
     id: 4,
+    title: 'CARD 4',
+    imgUrl: 'images/sales.jpg',
+  },
+  {
+    id: 5,
+    title: 'CARD 1',
+    imgUrl: 'images/pizza.jpg',
+  },
+  {
+    id: 6,
+    title: 'CARD 2',
+    imgUrl: 'images/italian.jpg',
+  },
+  {
+    id: 7,
+    title: 'CARD 3',
+    imgUrl: 'images/new.jpg',
+  },
+  {
+    id: 8,
     title: 'CARD 4',
     imgUrl: 'images/sales.jpg',
   },
@@ -427,6 +465,19 @@ export const CarouselNewEStore = () => (
   </Carousel>
 );
 
+export const CarouselNewEStoreAds = () => (
+  <Carousel
+    // ssr
+    infinite
+    autoPlay
+    autoPlaySpeed={3000}
+    responsive={responsiveAds}
+  >
+    {cardsDataNewEStore.map((card) => (
+      <Card key={card.id} className='card' imgUrl={card.imgUrl} />
+    ))}
+  </Carousel>
+);
 export const CarouselThriftStore = ({ thriftDetails }) => (
   <Carousel
     // ssr
