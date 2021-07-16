@@ -77,7 +77,8 @@ const AddProduct = () => {
   const onCategory = (category) => {
     setCategory(category)
   }
-  const thriftCategoryOptions = thriftCategoryType && thriftCategoryType.categoryDetails.sort((a, b) => a.categoryName.localeCompare(b.categoryName)).map((item) => ({
+  
+  const thriftCategoryOptions = thriftCategoryType && thriftCategoryType.categoryDetails.sort((a, b) => a.categoryName && a.categoryName.localeCompare(b.categoryName)).map((item) => ({
     value: item._id,
     label: item.categoryName,
   }));
