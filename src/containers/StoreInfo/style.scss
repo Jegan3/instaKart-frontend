@@ -1,0 +1,84 @@
+
+.store-page{
+  background-color: #f5f5f5;
+}
+
+.store-image {
+  padding: 20px;
+}
+
+.store-info {
+  margin-top: 3%
+}
+
+.img-frame {
+  position: relative;
+  width: 100%;
+  background-size: cover;
+  background-position: center center;
+}
+
+.store-details {
+  margin: 5%;
+
+
+  .Subtitle-store {
+    margin: 10%;
+    font-size: 20px;
+    font-weight: 700;
+    font-family: fantasy;
+    text-align: left;
+  }
+
+  .store-information {
+    margin: 5%;
+    color: darkolivegreen;
+    font-size: 18px;
+    font-weight: 700;
+    font-family: fantasy;
+    text-align: center;
+  }
+
+  .underline {
+    position: relative;
+    font-size: 25px;
+    font-weight: 700;
+    font-family: fantasy;
+    text-align: center;
+  }
+
+  .underline:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+  }
+
+.scroll-tab{
+  margin-top: 2%;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out; }
+
+}
+
+.PrivateTabIndicator-colorPrimary-8 {
+  background-color: #a40606 !important;
+}
+
+.MuiTab-textColorPrimary {
+  color: black !important;
+}
+
+.MuiTab-root {
+  font-family: fantasy !important;
+  font-weight: 700 !important;
+  font-size: 12px !important;
+}
+.MuiPaper-elevation4 {
+  box-shadow: none !important;
+}
