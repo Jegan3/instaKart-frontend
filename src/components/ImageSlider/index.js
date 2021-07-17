@@ -1,6 +1,6 @@
 /*eslint-disable*/
 import React from 'react';
-import ImageGallery from 'react-image-gallery';
+import ImageGallery from '../../../node_modules/react-image-gallery';
 
 // const images = [
 //   {
@@ -49,12 +49,12 @@ class ImageSlider extends React.Component {
       // onClick={onClick}
       onThumbnailClick={(e, index) => background(images[index])}
       // disabled={disabled}
-      fullscreen
-      original
-      thumbnail
-      showFullscreenButton
-      useBrowserFullscreen
-    />}
+      // fullscreen
+      // original
+      // thumbnail
+      // showFullscreenButton
+      // useBrowserFullscreen
+    /> }
   </div>
 )}
     }
