@@ -191,3 +191,86 @@
     box-shadow: 0 4px 1rem -4px #000;
   }
 }
+
+
+.reviewcard {
+  margin: 10px;
+  box-shadow: 0 1px 1rem -4px #000;
+  background: #fff;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 250ms ease-in-out;
+  overflow: visible;
+  border-radius: 10px;
+  padding: 1%;
+
+  &:hover {
+    box-shadow: 0 4px 1rem -4px #000;
+    margin-top: 2%;
+  }
+
+  .review-title {
+    font-family: fantasy;
+    font-size: 18px;
+    left: 22px;
+    position: relative;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  .reveiew-text {
+    margin: 10px;
+
+    blockquote {
+      line-height: 1.6;
+      text-align: center;
+      position: relative;
+      border-left: none !important;
+    }
+
+    .content-text {
+      font-family: fantasy;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    blockquote::before {
+      font-family: fantasy;
+      content: "\201C";
+      color: red;
+      font-size: 4em;
+      position: absolute;
+      left: 10px;
+      top: -10px;
+    }
+
+    blockquote::after {
+      content: '';
+    }
+  }
+
+  .heart-icon {
+    :hover {
+      color: red;
+    }
+  }
+
+  .content-date {
+    float: right;
+    right: 27px;
+    position: relative;
+  }
+
+  .reviewstars {
+    padding: 3%;
+    left: 2px;
+    position: relative;
+  }
+
+  .fa-heart {
+    left: 20px;
+    bottom: 10px;
+    font-size: 19px;
+    position: relative;
+  }
+}
