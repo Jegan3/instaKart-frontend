@@ -1,6 +1,6 @@
 /*eslint-disable*/
 import React from 'react';
-import ImageGallery from '../../../node_modules/react-image-gallery';
+import ImageGallery from 'react-image-gallery';
 
 // const images = [
 //   {
@@ -18,34 +18,22 @@ import ImageGallery from '../../../node_modules/react-image-gallery';
 // ];
 
 
-class ImageSlider extends React.Component {
-
-  // const abc = (e, index, thumbnail) => {
-  //   console.log('original',index)
-  //   console.log('e',e)
-  //   console.log('thumbnail',thumbnail)
-  render() {
-  const {background,images } = this.props;
-  // }
- 
-  return (
+const ImageSlider = ({ background, images }) => (
   <div>
-    {images && 
+    {images &&
     <ImageGallery
       items={images}
-      lazyLoad={true}
+      lazyLoad
       showPlayButton={false}
-      thumbnailPosition = 'right'
-      disableThumbnailScroll={true}
-      disableKeyDown={true}
+      thumbnailPosition="right"
+      disableThumbnailScroll
+      disableKeyDown
       // infinite = {true}
       // autoPlay = {true}
       showBullets={false}
       showIndex={false}
       showNav={false}
-      showThumbnails={true}
-      lazyLoad={true}
-      showPlayButton={false}
+      showThumbnails
       // onClick={onClick}
       onThumbnailClick={(e, index) => background(images[index])}
       // disabled={disabled}
@@ -56,8 +44,6 @@ class ImageSlider extends React.Component {
       // useBrowserFullscreen
     /> }
   </div>
-)}
-    }
-
+);
 
 export default ImageSlider;

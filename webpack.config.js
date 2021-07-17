@@ -30,7 +30,7 @@ const config = {
     filename: '[name].[hash].js',
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.ts'],
+    extensions: ['.js','.jsx'],
     alias: {
       envConfig$: path.join(paths.appSrc, 'config', 'env', appEnv + '.js'),
     },

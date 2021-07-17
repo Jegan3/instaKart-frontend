@@ -7,7 +7,6 @@ import Header from '../../components/Header';
 import { CarouselThriftNewAdditions, CarouselThriftStore, CarouselThriftStoreCategoryUp, CarouselThriftPromotions, CarouselThriftStoreCategoryBottom, CarouselAdsDetails } from '../../components/Carousel';
 import { ThriftBanners } from '../../components/Banners';
 
-
 const ThriftStore = () => {
 
   const dispatch = useDispatch();
