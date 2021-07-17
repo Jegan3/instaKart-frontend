@@ -5,7 +5,7 @@ import { Row, Col, Grid } from 'react-bootstrap';
 import { Rate } from 'antd';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
-import ImageSlider from '../../components/ImageGallery';
+import ImageSlider from '../../components/ImageSlider';
 import Desk from '../../components/Desk';
 import { CarouselNewEStoreAds } from '../../components/Carousel';
 
@@ -26,7 +26,7 @@ const images = [
 ];
 
 
-const Ads = () => {
+const ProductInfo = () => {
   const [count, setCount] = useState(0);
   const [toggle, setToggle] = useState('true');
   const [background, setBackground] = useState(`${images[0].thumbnail}`);
@@ -236,4 +236,4 @@ const Ads = () => {
   )
 }
 
-export default Ads;
+export default ProductInfo;

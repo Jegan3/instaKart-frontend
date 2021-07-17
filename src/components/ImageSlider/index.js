@@ -18,13 +18,16 @@ import ImageGallery from 'react-image-gallery';
 // ];
 
 
-const ImageSlider = ({ background,images }) => {
+class ImageSlider extends React.Component {
 
   // const abc = (e, index, thumbnail) => {
   //   console.log('original',index)
   //   console.log('e',e)
   //   console.log('thumbnail',thumbnail)
+  render() {
+  const {background,images } = this.props;
   // }
+ 
   return (
   <div>
     {images && 
@@ -54,6 +57,7 @@ const ImageSlider = ({ background,images }) => {
     />}
   </div>
 )}
+    }
 
 
 export default ImageSlider;
