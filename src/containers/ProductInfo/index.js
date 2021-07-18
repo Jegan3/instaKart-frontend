@@ -7,7 +7,7 @@ import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 import ImageSlider from '../../components/ImageSlider';
 import Desk from '../../components/Desk';
-import { CarouselNewEStoreAds } from '../../components/Carousel';
+import { CarouselNewEStoreAds, CarouselReviewCard } from '../../components/Carousel';
 
 const images = [
 
@@ -15,14 +15,6 @@ const images = [
     original: 'images/1_Food.png',
     thumbnail: 'images/1_Food.png',
   },
-  // {
-  //   original: 'images/1_Food.png',
-  //   thumbnail: 'images/1_Food.png',
-  // },
-  // {
-  //   original: 'images/1_Food.png',
-  //   thumbnail: 'images/1_Food.png',
-  // }
 ];
 
 
@@ -205,7 +197,7 @@ const ProductInfo = () => {
                     <div className='bg-ads'>
                       <div className='arrival-ads'>
                         <span className="ik-ads">Reviews</span>
-                        <CarouselNewEStoreAds />
+                       < CarouselReviewCard />
                       </div>
                       <br />
                     </div>

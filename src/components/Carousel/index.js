@@ -2,7 +2,7 @@
 import React from 'react';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import Card from '../Card';
+import { Card, ReviewCard } from '../Card';
 
 const responsive = {
   desktop: {
@@ -22,10 +22,47 @@ const responsive = {
   },
 };
 
+
+const responsiveStoreInfo = {
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 1,
+    // slidesToSlide: 4,
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 680 },
+    items: 2,
+    // slidesToSlide: 3,
+  },
+  mobile: {
+    breakpoint: { max: 680, min: 0 },
+    items: 1,
+    // slidesToSlide: 2,
+  },
+};
+
 const responsiveAds = {
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
     items: 5,
+    // slidesToSlide: 4,
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 680 },
+    items: 3,
+    // slidesToSlide: 3,
+  },
+  mobile: {
+    breakpoint: { max: 680, min: 0 },
+    items: 2,
+    // slidesToSlide: 2,
+  },
+};
+
+const responsiveReview = {
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 4,
     // slidesToSlide: 4,
   },
   tablet: {
@@ -96,6 +133,69 @@ const businessRowFirst = [
     imgUrl: 'images/3_Health.png',
   },
 ];
+
+
+const reviewCardDetails = [
+  {
+    id: 1,
+    title: 'Rakesh',
+    content: 'Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry standard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
+    imgUrl: 'images/1_Food.png',
+    date: '12/1/2021',
+  },
+  {
+    id: 2,
+    title: 'Sumesh',
+    content: 'Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry standard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
+    imgUrl: 'images/test.jpeg',
+    date: '18/1/2021',
+  },
+  {
+    id: 3,
+    title: 'Hrithik',
+    content: 'Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry standard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
+    imgUrl: 'images/1_Food.png',
+    date: '31/1/2021',
+  },
+  {
+    id: 4,
+    title: 'Rakesh',
+    content: 'Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry standard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
+    imgUrl: 'images/test1.jpeg',
+    date: '15/1/2021',
+  },
+  {
+    id: 5,
+    title: 'Sumesh',
+    content: 'Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry standard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
+    imgUrl: 'images/1_Food.png',
+  },
+  {
+    id: 6,
+    title: 'Hrithik',
+    content: 'Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry standard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
+    imgUrl: 'images/1_Food.png',
+  },
+  {
+    id: 7,
+    title: 'Rakesh',
+    content: 'Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry standard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
+    imgUrl: 'images/1_Food.png',
+  },
+  {
+    id: 8,
+    title: 'Sumesh',
+    content: 'Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry standard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
+    imgUrl: 'images/1_Food.png',
+  },
+  {
+    id: 9,
+    title: 'Hrithik',
+    content: 'Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry standard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
+    imgUrl: 'images/1_Food.png',
+  },
+];
+
 
 const businessRowSecond = [
   {
@@ -382,6 +482,7 @@ export const CarouselThriftStoreCategoryUp = () => (
   </Carousel>
 );
 
+
 export const CarouselThriftStoreCategoryBottom = () => (
   <Carousel
     responsive={responsiveThriftCategory}
@@ -457,6 +558,21 @@ export const CarouselNewEStore = () => (
     infinite
     autoPlay
     autoPlaySpeed={3000}
+    responsive={responsiveStoreInfo}
+  >
+    {cardsDataMobile.map((card) => (
+      <Card key={card.id} className='card' imgUrl={card.imgUrl} />
+    ))}
+  </Carousel>
+);
+
+
+export const CarouselStoreInfo = () => (
+  <Carousel
+    // ssr
+    infinite
+    autoPlay
+    autoPlaySpeed={3000}
     responsive={responsive}
   >
     {cardsDataNewEStore.map((card) => (
@@ -478,6 +594,7 @@ export const CarouselNewEStoreAds = () => (
     ))}
   </Carousel>
 );
+
 export const CarouselThriftStore = ({ thriftDetails }) => (
   <Carousel
     // ssr
@@ -529,6 +646,20 @@ export const CarouselThriftPromotions = () => (
   >
     {cardsDataMobile.map((card) => (
       <Card key={card.id} imgUrl={card.imgUrl} className="card-thriftcards" body />
+    ))}
+  </Carousel>
+);
+
+export const CarouselReviewCard = () => (
+  <Carousel
+    // ssr
+    infinite
+    // autoPlay
+    autoPlaySpeed={3000}
+    responsive={responsiveReview}
+  >
+    {reviewCardDetails.map((card) => (
+      <ReviewCard key={card.id} imgUrl={card.imgUrl} title={card.title} date={card.date} content={card.content} />
     ))}
   </Carousel>
 );

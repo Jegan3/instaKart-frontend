@@ -4,7 +4,7 @@ import React from 'react';
 import Avatar from 'react-avatar';
 import { history } from '../../routes';
 
-const Card = ({ imgUrl, alt, content, btnUrl, body, title, price, productName, className, country }) => {
+export const Card = ({ imgUrl, alt, content, btnUrl, body, title, price, productName, className, country }) => {
 
   const Button = () => {
     history.push({ pathname: btnUrl })
@@ -60,4 +60,42 @@ const Card = ({ imgUrl, alt, content, btnUrl, body, title, price, productName, c
   )
 };
 
-export default Card;
+
+export const ReviewCard = ({ title, content, date }) => {
+  return (
+    <div className='reviewcard'>
+      <div className='reveiew-text'>
+        <div>
+          <span className="review-title">
+            {title}
+          </span>
+          <span className='content-date'>
+            {date}
+          </span>
+        </div>
+        <div className="listing-rating reviewstars">
+          <div className="stars">
+            <i className="fa fa-star"></i>
+            <i className="fa fa-star"></i>
+            <i className="fa fa-star"></i>
+            <i className="fa fa-star"></i>
+          </div>
+          <div className="ratings">
+            <span className="product-rating">4.6</span>
+            <span className="product-rating">/5</span>
+          </div>
+        </div>
+        <div>
+          <blockquote>
+            <span className='content-text'>
+              {content}
+            </span>
+          </blockquote>
+        </div>
+        <div className='heart-icon'>
+          <i class="fas fa-heart"></i>
+        </div>
+      </div>
+    </div>
+  )
+}
