@@ -3,9 +3,10 @@ import React from 'react';
 import { Row, Col, Grid, Image } from 'react-bootstrap';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
-import ScrollTab from '../../components/ScrollTab';
+import { Tabs } from '../../components/TabScroll';
 
-const StoreInfo = () => {
+const ThriftStoreInfo = () => {
+
   return (
     <div className="store-page">
       <Header header />
@@ -47,14 +48,14 @@ const StoreInfo = () => {
               </div>
             </Row>
             <Row>
-           <Col>
-           <div>
-           <span className="ik-ads">Categories</span>
-           <div className='scroll-tab'>
-           <ScrollTab />
-           </div>
-           </div>
-           </Col>
+              <Col>
+                <div>
+                  <span className="ik-ads">Categories</span>
+                  <div className='scroll-tab'>
+                    <Tabs />
+                  </div>
+                </div>
+              </Col>
             </Row>
           </div>
         </Grid>
@@ -64,4 +65,4 @@ const StoreInfo = () => {
   )
 }
 
-export default StoreInfo;
+export default ThriftStoreInfo;

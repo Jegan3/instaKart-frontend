@@ -27,7 +27,7 @@ export const Card = ({ imgUrl, alt, content, btnUrl, body, title, price, product
         <div className={className}>
           <div className="card-content">
             {body ?
-              <img className="photos" src={imgUrl} onClick={() => history.push('/productinfo')} alt={alt || 'Image'} />
+              <img className="photos" src={imgUrl} onClick={Button} alt={alt || 'Image'} />
               :
               <img className="photos" src={imgUrl} />
             }

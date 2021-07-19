@@ -22,25 +22,6 @@ const responsive = {
   },
 };
 
-
-const responsiveStoreInfo = {
-  desktop: {
-    breakpoint: { max: 3000, min: 1024 },
-    items: 1,
-    // slidesToSlide: 4,
-  },
-  tablet: {
-    breakpoint: { max: 1024, min: 680 },
-    items: 2,
-    // slidesToSlide: 3,
-  },
-  mobile: {
-    breakpoint: { max: 680, min: 0 },
-    items: 1,
-    // slidesToSlide: 2,
-  },
-};
-
 const responsiveAds = {
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
@@ -558,7 +539,7 @@ export const CarouselNewEStore = () => (
     infinite
     autoPlay
     autoPlaySpeed={3000}
-    responsive={responsiveStoreInfo}
+    responsive={responsive}
   >
     {cardsDataMobile.map((card) => (
       <Card key={card.id} className='card' imgUrl={card.imgUrl} />
@@ -604,7 +585,7 @@ export const CarouselThriftStore = ({ thriftDetails }) => (
     responsive={responsiveThrift}
   >
     {thriftDetails ? thriftDetails.thriftStore.map((info) => (
-      <Card key={info.countryName} className='card' imgUrl={info.logo} btnUrl={info.btnUrl} country={info.countryName} productName={info.storeName} body />
+      <Card key={info.countryName} className='card' imgUrl={info.logo} btnUrl={`/thriftstoreinfo`} country={info.countryName} productName={info.storeName} body />
     )) : <Card />}
   </Carousel>
 );
@@ -618,7 +599,7 @@ export const CarouselThriftNewAdditions = ({ thriftDetails }) => (
     responsive={responsiveThrift}
   >
     {thriftDetails ? thriftDetails.productsInfo.map((info) => (
-      <Card key={info.productName} className='card' imgUrl={info.productImage} btnUrl={info.btnUrl} price={info.finalPrice} productName={info.productName} body />
+      <Card key={info.productName} className='card' imgUrl={info.productImage} btnUrl={'/productinfo'} price={info.finalPrice} productName={info.productName} body />
     )) : <Card />}
   </Carousel>
 );

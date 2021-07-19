@@ -24,16 +24,16 @@ const ImageSlider = ({ background, images }) => (
     <ImageGallery
       items={images}
       lazyLoad
-      showPlayButton={false}
+      showPlayButton
       thumbnailPosition="right"
-      disableThumbnailScroll
-      disableKeyDown
+      disableThumbnailScroll={false}
+      // disableKeyDown
       // infinite = {true}
       // autoPlay = {true}
       showBullets={false}
       showIndex={false}
       showNav={false}
-      showThumbnails
+      // showThumbnails
       // onClick={onClick}
       onThumbnailClick={(e, index) => background(images[index])}
       // disabled={disabled}

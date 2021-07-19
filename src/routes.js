@@ -15,8 +15,8 @@ import Profile from './containers/Profile';
 import UpdatePassword from './containers/UpdatePassword';
 import MyProfile from './containers/MyProfile';
 // import StoreCard from './components/StoreCard';
-import productInfo from './containers/ProductInfo';
-import StoreInfo from './containers/StoreInfo';
+import ProductInfo from './containers/ProductInfo';
+import ThriftStoreInfo from './containers/ThriftStoreInfo';
 
 export const history = createBrowserHistory();
 
@@ -35,9 +35,9 @@ const Routes = () => (
         <Route path="/productlist" component={ProductList} />
         <Route path="/addproduct" component={AddProduct} />
         <Route path="/profile" component={Profile} />
-        <Route path="/storeinfo" component={StoreInfo} />
+        <Route path="/thriftstoreinfo" component={ThriftStoreInfo} />
         <Route path="/myprofile" component={MyProfile} />
-        <Route path="/productInfo" component={productInfo} />
+        <Route path="/productInfo" component={ProductInfo} />
         <Route path="/updatepassword" component={UpdatePassword} />
       </Switch>
     </React.Fragment>

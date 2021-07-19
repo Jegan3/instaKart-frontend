@@ -197,6 +197,8 @@ const AddProduct = () => {
         finalPrice,
         // stockReserve,
         // stockHand,
+        // productDescription,
+        // productWarranty,
         policy,
         warranty,
       };
