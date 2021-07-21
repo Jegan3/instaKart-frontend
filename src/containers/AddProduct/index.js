@@ -25,10 +25,10 @@ const AddProduct = () => {
   const [tax, setTax] = useState('');
   const [discount, setDiscount] = useState('');
   const [finalPrice, setFinalPrice] = useState('');
-  const [policy, setPolicy] = useState('');
+  const [productDescription, setProductDescription] = useState('');
   const [stockReserve, setStockReserve] = useState('');
   const [stockHand, setStockHand] = useState('');
-  const [warranty, setWarranty] = useState('');
+  const [productWarranty, setProductWarranty] = useState('');
   const [modal, setModal] = useState(false);
   const [alertError, setAlertError] = useState(false);
   const [clear, setClear] = useState(false)
@@ -48,8 +48,8 @@ const AddProduct = () => {
       setTax('');
       setDiscount('');
       setFinalPrice('');
-      setPolicy('');
-      setWarranty('');
+      setProductDescription('');
+      setProductWarranty('');
       message.success(`Thanks!, ${productName} ${thriftAddProduct.message}`)
       setClear(false)
     } else if (clear && invalidAddProduct) {
@@ -106,15 +106,15 @@ const AddProduct = () => {
     setStockHand(e.target.value)
   }
 
-  const onPolicy = (e) => {
+  const onProductDescription = (e) => {
     if (e.target.value.match('^[a-zA-Z0-9 ]*$')) {
-      setPolicy(e.target.value)
+      setProductDescription(e.target.value)
     }
   }
 
-  const onWarranty = (e) => {
+  const onProductWarranty = (e) => {
     if (e.target.value.match('^[a-zA-Z0-9 ]*$')) {
-      setWarranty(e.target.value)
+      setProductWarranty(e.target.value)
     }
   }
 
@@ -183,7 +183,7 @@ const AddProduct = () => {
 
   const onSubmit = () => {
     if
-      (!productName || !category || !fileList.length || !price || !policy || !warranty) {
+      (!productName || !category || !fileList.length || !price || !productDescription || !productWarranty) {
       setAlertError(true)
       message.error('Please fill all the fields')
     }
@@ -199,8 +199,6 @@ const AddProduct = () => {
         // stockHand,
         productDescription,
         productWarranty,
-        policy,
-        warranty,
       };
       dispatch({ type: 'THRIFT_ADD_PRODUCT_REQUEST', addProduct });
     }
@@ -403,21 +401,21 @@ const AddProduct = () => {
               <Row>
                 <Col sm={12} md={6}>
                   <label className="signup-label">Product Description <span className="red-star">*</span></label>
-                  <textarea className={alertError && !policy ? ` form-control my-input` : `form-control formy`}
+                  <textarea className={alertError && !productDescription ? ` form-control my-input` : `form-control formy`}
                     name="message"
                     placeholder='type something..'
-                    value={policy}
-                    onChange={onPolicy}
+                    value={productDescription}
+                    onChange={onProductDescription}
                     maxLength={500}
                     rows="4"></textarea>
                 </Col>
                 <Col sm={12} md={6}>
                   <label className="signup-label">Warranty < span className="red-star">*</span> <i className="fa fa-info" onMouseEnter={onModal} /></label>
-                  <textarea className={alertError && !warranty ? ` form-control my-input` : `form-control formy`}
+                  <textarea className={alertError && !productWarranty ? ` form-control my-input` : `form-control formy`}
                     name="message"
                     placeholder='type something..'
-                    value={warranty}
-                    onChange={onWarranty}
+                    value={productWarranty}
+                    onChange={onProductWarranty}
                     maxLength={500}
                     rows="4"></textarea>
                 </Col>
