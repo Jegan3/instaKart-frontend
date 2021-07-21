@@ -19,7 +19,7 @@ const Particle = ({ color, number, direction }) =>
         resize: true
       },
       modes: {
-        bubble: { distance: 250, duration: 0.3, opacity: 0, size: 0, speed: 3 },
+        bubble: { distance: 100, duration: 0.3, opacity: 0, size: 0, speed: 3 },
         // grab: { distance: 400, line_linked: { opacity: 0.5 } },
         // push: { particles_nb: 4 },
         // remove: { particles_nb: 2 },
