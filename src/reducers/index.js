@@ -11,6 +11,9 @@ import thriftProfileState from './ThriftProfile';
 import thriftAddProductState from './ThriftAddProduct';
 import thriftCategoryState from './ThriftCategory';
 import thriftDetailsState from './ThriftDetails';
+import thriftStoreInfoState from './ThriftStoreInfo ';
+import productInfoState from './ProductInfo';
+
 
 const rootReducer = combineReducers({
   signupState,
@@ -25,6 +28,8 @@ const rootReducer = combineReducers({
   thriftAddProductState,
   thriftCategoryState,
   thriftDetailsState,
+  thriftStoreInfoState,
+  productInfoState,
 });
 
 export default rootReducer;
