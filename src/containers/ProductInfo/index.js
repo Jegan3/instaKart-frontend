@@ -71,7 +71,7 @@ const ProductInfo = () => {
       <Header header />
       <div className="jumbotron jumbotron-fluid"
         //style={{ backgroundImage: `url(${someObject.someImage})` }}
-        style={{backgroundImage: `url(${background})`}}
+        style={{ backgroundImage: `url(${background})` }}
       >
         <div className='ads-page'>
           <Grid fluid>
@@ -189,15 +189,15 @@ const ProductInfo = () => {
                   </Col>
                 </div>
               </Row>
-              </div>
-              <div className="video-related">
+            </div>
+            <div className="video-related">
               <Row className='position-bottom'>
                 <div ClassName="ik-ads">
                   <Col md={12}>
                     <div className='bg-ads'>
                       <div className='arrival-ads'>
                         <span className="ik-ads">Reviews</span>
-                       < CarouselReviewCard />
+                        < CarouselReviewCard />
                       </div>
                       <br />
                     </div>
@@ -205,7 +205,7 @@ const ProductInfo = () => {
                 </div>
               </Row>
             </div>
-              <div className="video-related">
+            <div className="video-related">
               <Row className='position-bottom'>
                 <div ClassName="ik-ads">
                   <Col md={12}>

@@ -1,11 +1,29 @@
 /*eslint-disable*/
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Row, Col, Grid, Image } from 'react-bootstrap';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
-import { Tabs } from '../../components/TabScroll';
+//import { Tabs } from '../../components/TabScroll';
 
 const ThriftStoreInfo = () => {
+
+  const dispatch = useDispatch();
+  const thriftStoreInfotype = useSelector((state) => state.thriftStoreInfoState.thriftStoreInfo);
+  // const isLoading = useSelector((state) => state.thriftStoreInfo.isLoading);
+  // const invalidVendor = useSelector((state) => state.thriftStoreInfo.error);
+
+ 
+
+  useEffect(() => {
+    dispatch({ type: 'THRIFT_STORE_INFO_REQUEST' });
+  }, [])
+ 
+
+  console.log('testings-tsi', thriftStoreInfotype && thriftStoreInfotype)
+  //     dispatch({ type: 'THRIFT_STORE_INFO_REQUEST', thriftStoreInfo });
+  //   }
+  // };
 
   return (
     <div className="store-page">
@@ -52,7 +70,7 @@ const ThriftStoreInfo = () => {
                 <div>
                   <span className="ik-ads">Categories</span>
                   <div className='scroll-tab'>
-                    <Tabs />
+                    {/* <Tabs /> */}
                   </div>
                 </div>
               </Col>

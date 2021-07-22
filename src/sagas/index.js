@@ -9,6 +9,8 @@ import { ThriftVendorInfoWatchers } from './ThriftVendorInfo';
 import { thriftAddProductWatchers } from './ThriftAddProduct';
 import { thriftCategoryWatchers } from './ThriftCategory';
 import { thriftDetailsWatchers } from './ThriftDetails';
+import { productInfoWatchers } from './ProductInfo';
+import { thriftStoreInfoWatchers } from './ThriftStoreInfo ';
 
 export default function* rootWatchers() {
   yield [
@@ -23,5 +25,7 @@ export default function* rootWatchers() {
     thriftAddProductWatchers(),
     thriftCategoryWatchers(),
     thriftDetailsWatchers(),
+    productInfoWatchers(),
+    thriftStoreInfoWatchers(),
   ];
 }
