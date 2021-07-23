@@ -2,7 +2,7 @@
 import React from 'react';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import { Card, ReviewCard } from '../Card';
+import { Card, ThriftStoreNearYouCard,  NewAdditionCard , ReviewCard } from '../Card';
 
 const responsive = {
   desktop: {
@@ -576,7 +576,7 @@ export const CarouselNewEStoreAds = () => (
   </Carousel>
 );
 
-export const CarouselThriftStore = ({ thriftDetails }) => (
+export const ThriftStoreNearYou = ({ thriftDetails }) => (
   <Carousel
     // ssr
     infinite
@@ -585,8 +585,8 @@ export const CarouselThriftStore = ({ thriftDetails }) => (
     responsive={responsiveThrift}
   >
     {thriftDetails ? thriftDetails.thriftStore.map((info) => (
-      <Card key={info.countryName} className='card' imgUrl={info.logo} btnUrl={`/thriftstoreinfo`} country={info.countryName} productName={info.storeName} body />
-    )) : <Card />}
+      <ThriftStoreNearYouCard key={info.estoreId} thriftStore={info.estoreId} imgUrl={info.logo} path={`/thriftstoreinfo`} country={info.countryName} storeName={info.storeName} />
+    )) : <ThriftStoreNearYouCard />}
   </Carousel>
 );
 
@@ -599,8 +599,8 @@ export const CarouselThriftNewAdditions = ({ thriftDetails }) => (
     responsive={responsiveThrift}
   >
     {thriftDetails ? thriftDetails.productsInfo.map((info) => (
-      <Card key={info.productName} className='card' imgUrl={info.productImage} btnUrl={'/productinfo'} price={info.finalPrice} productName={info.productName} body />
-    )) : <Card />}
+      <NewAdditionCard key={info.productId} product={info.productId} imgUrl={info.productImage} path={'/productinfo'} price={info.finalPrice} productName={info.productName} />
+    )) : <NewAdditionCard />}
   </Carousel>
 );
 
@@ -617,6 +617,7 @@ export const CarouselAdsDetails = () => (
     ))}
   </Carousel>
 );
+
 export const CarouselThriftPromotions = () => (
   <Carousel
     // ssr

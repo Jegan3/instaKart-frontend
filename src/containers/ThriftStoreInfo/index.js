@@ -6,8 +6,7 @@ import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 //import { Tabs } from '../../components/TabScroll';
 
-const ThriftStoreInfo = () => {
-
+const ThriftStoreInfo = (props) => {
   const dispatch = useDispatch();
   const thriftStoreInfotype = useSelector((state) => state.thriftStoreInfoState.thriftStoreInfo);
   // const isLoading = useSelector((state) => state.thriftStoreInfo.isLoading);
@@ -16,7 +15,7 @@ const ThriftStoreInfo = () => {
  
 
   useEffect(() => {
-    dispatch({ type: 'THRIFT_STORE_INFO_REQUEST' });
+    dispatch({ type: 'THRIFT_STORE_INFO_REQUEST', thriftStoreInfoId : props.location.state });
   }, [])
  
 

@@ -4,14 +4,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Row, Col, Grid } from 'react-bootstrap';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
-import { CarouselThriftNewAdditions, CarouselThriftStore, CarouselThriftStoreCategoryUp, CarouselThriftPromotions, CarouselThriftStoreCategoryBottom, CarouselAdsDetails } from '../../components/Carousel';
+import { CarouselThriftNewAdditions, ThriftStoreNearYou, CarouselThriftStoreCategoryUp, CarouselThriftPromotions, CarouselThriftStoreCategoryBottom, CarouselAdsDetails } from '../../components/Carousel';
 import { ThriftBanners } from '../../components/Banners';
 
 const ThriftStore = () => {
 
   const dispatch = useDispatch();
   const thriftDetails = useSelector((state) => state.thriftDetailsState.thriftDetails);
-
   useEffect(() => {
     dispatch({ type: 'THRIFT_DETAILS_REQUEST' });
   }, [])
@@ -56,7 +55,7 @@ const ThriftStore = () => {
           <div className="thrift-ads">
             <h3>THRIFT STORE NEAR YOU</h3>
             <h6>Buy & Sell Any Thing</h6>
-            <CarouselThriftStore thriftDetails={thriftDetails} />
+            <ThriftStoreNearYou thriftDetails={thriftDetails} />
           </div>
           <br />
         </div>

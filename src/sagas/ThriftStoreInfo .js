@@ -3,9 +3,10 @@ import envConfig from 'envConfig'; //eslint-disable-line
 import * as instakartActionCreators from '../actions/ThriftStoreInfo';
 import { doGet } from '../utils/fetchWrapper';
 
-export function* getThriftStoreInfo() {
+export function* getThriftStoreInfo(data) {
+  const { thriftStoreInfoId } = data;
   try {
-    const response = yield doGet(envConfig.apiEndPoints.getThriftStoreInfo);
+    const response = yield doGet(`${envConfig.apiEndPoints.getThriftStoreInfo}?estoreId=${thriftStoreInfoId}`);
     yield put(instakartActionCreators.getThriftStoreInfoSuccess(response));
   } catch (error) {
     yield put(instakartActionCreators.getThriftStoreInfoFailure(error));

@@ -18,23 +18,26 @@ const images = [
 ];
 
 
-const ProductInfo = () => {
+const ProductInfo = (props) => {
   const [count, setCount] = useState(0);
   const [toggle, setToggle] = useState('true');
   const [background, setBackground] = useState(`${images[0].thumbnail}`);
+  // const [background, setBackground] = useState(product && `${productImages[0].thumbnail}`);
   const [show, setShow] = useState(false);
 
   const dispatch = useDispatch();
-  const thriftDetails = useSelector((state) => state.thriftDetailsState.thriftDetails);
-  const abcd = thriftDetails && thriftDetails.productsInfo
+  const productDetails = useSelector((state) => state.productInfoState.productInfo);
+  const product = productDetails && productDetails.productInfo
 
-  const abc = abcd && abcd.map(item => ({
-    original: item.productImage,
-    thumbnail: item.productImage,
+  console.log('product', product)
+
+  const productImages = product && product.productImages.map(item => ({
+    original: item,
+    thumbnail: item,
   }))
 
   useEffect(() => {
-    dispatch({ type: 'THRIFT_DETAILS_REQUEST' });
+    dispatch({ type: 'PRODUCT_INFO_REQUEST', productId : props.location.state  });
   }, [])
 
   const onWarranty = () => {
@@ -70,8 +73,8 @@ const ProductInfo = () => {
       />
       <Header header />
       <div className="jumbotron jumbotron-fluid"
-        //style={{ backgroundImage: `url(${someObject.someImage})` }}
         style={{ backgroundImage: `url(${background})` }}
+        // style={product && { backgroundImage: `url(${productImages[0].thumbnail})`}}
       >
         <div className='ads-page'>
           <Grid fluid>
@@ -151,7 +154,7 @@ const ProductInfo = () => {
                       <div className="leftads-side">
                         <ImageSlider
                           background={onBackground}
-                          images={abc}
+                          images={productImages}
                         />
                       </div>
                     </Col>

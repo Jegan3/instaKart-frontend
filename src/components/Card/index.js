@@ -35,8 +35,7 @@ export const Card = ({ imgUrl, alt, content, btnUrl, body, title, price, product
           </div>
           {body && <div className="card-ads">
             <div className="listing-job">
-              <a
-                title="Assistant Accountant">{productName}</a>
+              <a>{productName}</a>
               <span className="currency">{price}</span>
               <div className="listing-country">
                 <i className="fas fa-map-marker-alt"></i>
@@ -60,6 +59,70 @@ export const Card = ({ imgUrl, alt, content, btnUrl, body, title, price, product
   )
 };
 
+export const ThriftStoreNearYouCard = ({ imgUrl, storeName, country, path, thriftStore }) => {
+
+  const Card = () => {
+    history.push({ pathname: path, state: thriftStore })
+    window.scrollTo(0, 0);
+  }
+
+  return (
+    <div className="card" onClick={Card} >
+      <div className="card-content">
+        <img className="photos" src={imgUrl} />
+      </div>
+      <div className="card-ads">
+        <div className="listing-job">
+          <a>{storeName}</a>
+          <div className="listing-country">
+            <i className="fas fa-map-marker-alt"></i>
+            <span >{country}</span>
+          </div>
+        </div>
+        <div className="listing-rating">
+          <div className="stars"> <i className="fa fa-star"></i> <i className="fa fa-star"></i> <i className="fa fa-star"></i> <i className="fa fa-star"></i> </div>
+          <div className="ratings"> <span className="product-rating">4.6</span><span className="product-rating">/5</span></div>
+          <div className="tooltip-fields">
+            <i className="fa fa-envelope"></i>
+            <i className="fa fa-mobile"></i>
+            <i className="fa fa-heart"></i>
+          </div>
+          <div className="listing-country"> <span>46 ratings & 15 reviews</span> </div>
+        </div>
+      </div>
+    </div>)
+}
+
+export const NewAdditionCard = ({ imgUrl, product, path, price, productName }) => {
+
+  const Card = () => {
+    history.push({ pathname: path, state: product })
+    window.scrollTo(0, 0);
+  }
+
+  return (
+    <div className="card" onClick={Card} >
+      <div className="card-content">
+        <img className="photos" src={imgUrl} />
+      </div>
+      <div className="card-ads">
+        <div className="listing-job">
+          <a>{productName}</a>
+          <span className="currency">{price}</span>
+        </div>
+        <div className="listing-rating">
+          <div className="stars"> <i className="fa fa-star"></i> <i className="fa fa-star"></i> <i className="fa fa-star"></i> <i className="fa fa-star"></i> </div>
+          <div className="ratings"> <span className="product-rating">4.6</span><span className="product-rating">/5</span></div>
+          <div className="tooltip-fields">
+            <i className="fa fa-envelope"></i>
+            <i className="fa fa-mobile"></i>
+            <i className="fa fa-heart"></i>
+          </div>
+          <div className="listing-country"> <span>46 ratings & 15 reviews</span> </div>
+        </div>
+      </div>
+    </div>)
+}
 
 export const ReviewCard = ({ title, content, date }) => {
   return (
