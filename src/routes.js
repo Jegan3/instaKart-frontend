@@ -17,6 +17,7 @@ import MyProfile from './containers/MyProfile';
 // import StoreCard from './components/StoreCard';
 import ProductInfo from './containers/ProductInfo';
 import ThriftStoreInfo from './containers/ThriftStoreInfo';
+import CheckOut from './containers/CheckOut';
 
 export const history = createBrowserHistory();
 
@@ -39,6 +40,7 @@ const Routes = () => (
         <Route path="/myprofile" component={MyProfile} />
         <Route path="/productInfo" component={ProductInfo} />
         <Route path="/updatepassword" component={UpdatePassword} />
+        <Route path="/checkout" component={CheckOut} />
       </Switch>
     </React.Fragment>
   </Router>
