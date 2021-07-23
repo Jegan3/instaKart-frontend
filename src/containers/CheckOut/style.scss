@@ -1,0 +1,198 @@
+.checkout-page {
+  margin: 0%;
+  padding: 15px;
+}
+
+.titleproduct {
+  font-size: 25px;
+  padding-top: 7%;
+  cursor: pointer;
+  margin: 5% 0px;
+  font-weight: 800;
+  font-family: monospace;
+}
+
+.itemsproduct {
+  float: right;
+  cursor: pointer;
+  font-weight: 800;
+  font-family: initial;
+  font-size: 20px;
+}
+
+.product-list {
+  margin: 5%;
+}
+
+.total {
+  float: right;
+  margin: 3%;
+  cursor: pointer;
+  font-weight: 800;
+  font-family: initial;
+  font-size: 17px;
+
+  .sub-total {
+    color: gray;
+    font-weight: 800;
+  }
+
+  .sub-price {
+    font-size: 20px;
+  }
+}
+
+.checkout-details {
+  margin: 7% 2%;
+  padding: 2%;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(63, 63, 68, 0.1);
+  background-color: #ffffff;
+
+  .address-title {
+    color: #ffffff;
+    margin: 5% 0px;
+    font-weight: 800;
+    font-family: initial;
+  }
+
+  .checkout-feild {
+    margin: 3% 0%;
+  }
+
+  .name-price {
+    font-weight: 800;
+    font-family: initial;
+  }
+
+  .align-items-center {
+    display: flex;
+    margin: 1%;
+    padding: 10px;
+    border-bottom: 1px solid lightgrey;
+    text-align: center;
+
+    img {
+      width: 8rem
+    }
+
+    .close {
+      font-size: 18px;
+      font-weight: 700;
+      font-family: fantasy;
+      padding-top: 7%;
+      cursor: pointer;
+      float: right;
+    }
+
+    .productquanity {
+      font-size: 18px;
+      font-weight: 700;
+      font-family: fantasy;
+      padding-top: 7%;
+      cursor: pointer;
+    }
+  }
+
+  .billing-card {
+    background-color: #2F374B;
+    padding: 8%;
+  }
+
+  .checkout-label {
+    margin-top: 3%;
+    font-size: 15px;
+  }
+
+  .MuiFormLabel-root {
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: initial;
+  }
+
+  .MuiFormControl-root {
+    width: 100%;
+  }
+
+  .MuiInput-underline:before {
+    border-bottom: 1px solid#ffffff !important;
+  }
+
+  .MuiInput-underline:hover {
+    border-bottom: 1px solid#ffffff !important;
+  }
+
+  .MuiFormLabel-root.Mui-focused {
+    color: #ffffff;
+  }
+
+  .MuiInput-underline:after {
+    border-bottom: 1px solid #28a4d9 !important;
+  }
+
+  .MuiInputBase-input {
+    color: #ffffff;
+    font-size: 13px;
+    border-bottom: 1px solid#ffffff;
+  }
+
+  .MuiTypography-h6 {
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: initial;
+    line-height: 0;
+    margin-top: 10px;
+  }
+
+  .type-img {
+    display: -webkit-box;
+  }
+
+  .checkoutbtn {
+    text-align: center;
+    margin-top: 18%;
+    margin-bottom: 5%;
+
+    .MuiButton-containedPrimary {
+      color: #fff;
+      font-size: 13px;
+      padding: 10px 25px;
+      background-color: #3f51b5;
+    }
+  }
+
+  .cardlist {
+    margin-top: 7%;
+  }
+
+  .yearcard {
+    font-size: 11px;
+    float: right;
+    margin-top: 5px;
+    color: grey;
+  }
+
+  .namecard {
+    font-size: 11px;
+    margin-top: 5px;
+    color: grey;
+  }
+
+  .MuiButton-containedPrimary {
+    color: #fff;
+    font-size: 13px;
+    padding: 10px 25px;
+    background-color: #28a4d9 !important;
+  }
+
+  .MuiCard-root {
+    background-color: #515863;
+  }
+
+  .cardnumber {
+    text-align: center;
+    font-size: 14px;
+    color: #fff;
+  }
+}
