@@ -12,17 +12,9 @@ const ThriftStoreInfo = (props) => {
   // const isLoading = useSelector((state) => state.thriftStoreInfo.isLoading);
   // const invalidVendor = useSelector((state) => state.thriftStoreInfo.error);
 
- 
-
   useEffect(() => {
     dispatch({ type: 'THRIFT_STORE_INFO_REQUEST', thriftStoreInfoId : props.location.state });
   }, [])
- 
-
-  console.log('testings-tsi', thriftStoreInfotype && thriftStoreInfotype)
-  //     dispatch({ type: 'THRIFT_STORE_INFO_REQUEST', thriftStoreInfo });
-  //   }
-  // };
 
   return (
     <div className="store-page">

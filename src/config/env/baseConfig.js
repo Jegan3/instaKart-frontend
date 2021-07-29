@@ -8,7 +8,7 @@ export default {
     getVendorList: '/api/admin/vendorApplications',
     getVendorStatus: '/api/admin/applicationApproval',
     getThriftVendorInfo: '/api/vendor/getApprovedVendorInfo',
-    getThriftCategory: '/api/staticContentRouter/getCategories',
+    getThriftCategory: '/api/vendor/getCategories',
     getThriftAddProduct: '/api/vendor/addProduct',
     getThriftDetails: '/api/staticContentRouter/getProducts',
     getThriftProfile: '/api/vendor/estoreInfo',
