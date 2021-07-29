@@ -4,7 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Row, Col, Grid, Image } from 'react-bootstrap';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
-//import { Tabs } from '../../components/TabScroll';
+// import { Tabs } from '../../components/TabScroll';
+import { CarouselNewEStoreAds } from '../../components/Carousel';
 
 const ThriftStoreInfo = (props) => {
   const dispatch = useDispatch();
@@ -13,7 +14,7 @@ const ThriftStoreInfo = (props) => {
   // const invalidVendor = useSelector((state) => state.thriftStoreInfo.error);
 
   useEffect(() => {
-    dispatch({ type: 'THRIFT_STORE_INFO_REQUEST', thriftStoreInfoId : props.location.state });
+    dispatch({ type: 'THRIFT_STORE_INFO_REQUEST', thriftStoreInfoId: props.location.state });
   }, [])
 
   return (
@@ -57,12 +58,21 @@ const ThriftStoreInfo = (props) => {
               </div>
             </Row>
             <Row>
-              <Col>
+              {/* <Col>
                 <div>
                   <span className="ik-ads">Categories</span>
                   <div className='scroll-tab'>
-                    {/* <Tabs /> */}
+                    <Tabs />
                   </div>
+                </div>
+              </Col> */}
+              <Col md={12}>
+                <div className='bg-ads'>
+                  <div className='arrival-ads'>
+                    <span className="ik-ads">Similar stores</span>
+                    <CarouselNewEStoreAds />
+                  </div>
+                  <br />
                 </div>
               </Col>
             </Row>
