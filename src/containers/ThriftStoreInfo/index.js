@@ -1,17 +1,18 @@
 /*eslint-disable*/
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Row, Col, Grid, Image } from 'react-bootstrap';
+import { Grid, Row, Col } from 'react-bootstrap';
+import { CarouselNewEStoreAds } from '../../components/Carousel';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 // import { Tabs } from '../../components/TabScroll';
-import { CarouselNewEStoreAds } from '../../components/Carousel';
 
 const ThriftStoreInfo = (props) => {
+
   const dispatch = useDispatch();
   const thriftStoreInfotype = useSelector((state) => state.thriftStoreInfoState.thriftStoreInfo);
-  // const isLoading = useSelector((state) => state.thriftStoreInfo.isLoading);
-  // const invalidVendor = useSelector((state) => state.thriftStoreInfo.error);
+  
+  const {countryName, cityName, logo, address, storeName, emailId} = thriftStoreInfotype ? thriftStoreInfotype.storeInfo : '' ;
 
   useEffect(() => {
     dispatch({ type: 'THRIFT_STORE_INFO_REQUEST', thriftStoreInfoId: props.location.state });
@@ -20,45 +21,45 @@ const ThriftStoreInfo = (props) => {
   return (
     <div className="store-page">
       <Header header />
-      <div className='store-info'>
+      <div className="jumbotron fluid"
+      style={{ backgroundImage: `url(${logo})` }}
+      >
         <Grid fluid>
-          <div className="storeinfo">
-            <Row>
+          <Row className="bg-trans">
+            <Col sm={12}>
+              <h1 className='title-store'>
+               {storeName}
+              </h1>
+            </Col>
+            <Col sm={12}>
+              <h1 className='Subtitle-store'>
+                The Disaster Café unlocks the tales of traditions, tastes, and flavors that lingered
+                in the taste buds and was passed down from generations to generations. Established way
+              </h1>
+            </Col>
+            <Col sm={12}>
               <div>
-                <Col md={5}>
-                  <div className='store-image'>
-                    <Image className="img-frame" src='images/1_Food.png' fluid />
-                  </div>
-                </Col>
-                <Col md={7}>
-                  <div className='store-details'>
-                    <div>
-                      <h1 className='underline'>
-                        The Disaster Café
-                      </h1>
-                    </div>
-                    <div>
-                      <h1 className='Subtitle-store'>
-                        Tale Of Tastes
-                      </h1>
-                    </div>
-                    <div>
-                      <p className='store-information'>
-                        Tale Of Tastes
-                        The Disaster Café unlocks the tales of traditions, tastes, and flavors that lingered
-                        in the taste buds and was passed down from generations to generations. Established way
-                        back in the 1960s, the restaurant has come a long way delighting food lovers all over
-                        maldives with tastes that surpassed the test of time. Mathsya Restaurant has three branches
-                        in maldives- at Dhidhdhoo, Eydhafushi, Hithadhoo Located at prime locations, the restaurant is easy
-                        to access, with valet parking facilities and sumptuous cuisines.
-                      </p>
-                    </div>
-                  </div>
-                </Col>
+                <h1 className='address-store'>
+                  Business Address:
+                  <br /> <br />
+               {address}
+                  <br />
+                   { countryName} {cityName}
+                  <br />
+                  11205
+                  <br />
+                  US
+                  <br /><br />
+                  {emailId}
+                </h1>
               </div>
-            </Row>
-            <Row>
-              {/* <Col>
+            </Col>
+          </Row>
+        </Grid>
+      </div>
+      <div>
+        <Row>
+          {/* <Col>
                 <div>
                   <span className="ik-ads">Categories</span>
                   <div className='scroll-tab'>
@@ -66,18 +67,16 @@ const ThriftStoreInfo = (props) => {
                   </div>
                 </div>
               </Col> */}
-              <Col md={12}>
-                <div className='bg-ads'>
-                  <div className='arrival-ads'>
-                    <span className="ik-ads">Similar stores</span>
-                    <CarouselNewEStoreAds />
-                  </div>
-                  <br />
-                </div>
-              </Col>
-            </Row>
-          </div>
-        </Grid>
+          <Col sm={12}>
+            <div className='bg-ads'>
+              <div className='arrival-ads'>
+                <span className="ik-ads">Similar stores</span>
+                <CarouselNewEStoreAds />
+              </div>
+              <br />
+            </div>
+          </Col>
+        </Row>
       </div>
       <Footer />
     </div>

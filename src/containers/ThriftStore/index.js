@@ -11,6 +11,7 @@ const ThriftStore = () => {
 
   const dispatch = useDispatch();
   const thriftDetails = useSelector((state) => state.thriftDetailsState.thriftDetails);
+  
   useEffect(() => {
     dispatch({ type: 'THRIFT_DETAILS_REQUEST' });
   }, [])
