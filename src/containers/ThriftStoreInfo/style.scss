@@ -55,4 +55,31 @@
     font-family: fantasy;
     text-align: center;
   }
+
+  .bg-adss {
+    padding: 5% 5% 0% 5%;
+    margin: auto;
+  }
+}
+
+.products-storeinfo {
+  margin: 1%;
+}
+
+.PrivateTabIndicator-colorPrimary-8 {
+  background-color: #a40606 !important;
+}
+
+.MuiTab-textColorPrimary {
+  color: black !important;
+}
+
+.MuiTab-root {
+  font-family: fantasy !important;
+  font-weight: 700 !important;
+  font-size: 12px !important;
+}
+
+.MuiPaper-elevation4 {
+  box-shadow: none !important;
 }

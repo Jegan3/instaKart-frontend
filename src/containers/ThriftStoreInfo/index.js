@@ -2,17 +2,17 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Grid, Row, Col } from 'react-bootstrap';
-import { CarouselNewEStoreAds } from '../../components/Carousel';
+import { CarouselNewEStoreAds, CarouselReviewCard } from '../../components/Carousel';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
-// import { Tabs } from '../../components/TabScroll';
+import { MaterialTabs } from '../../components/TabScroll';
 
 const ThriftStoreInfo = (props) => {
 
   const dispatch = useDispatch();
   const thriftStoreInfotype = useSelector((state) => state.thriftStoreInfoState.thriftStoreInfo);
-  
-  const {countryName, cityName, logo, address, storeName, emailId} = thriftStoreInfotype ? thriftStoreInfotype.storeInfo : '' ;
+
+  const { countryName, cityName, logo, address, storeName, emailId } = thriftStoreInfotype ? thriftStoreInfotype.storeInfo : '';
 
   useEffect(() => {
     dispatch({ type: 'THRIFT_STORE_INFO_REQUEST', thriftStoreInfoId: props.location.state });
@@ -22,13 +22,13 @@ const ThriftStoreInfo = (props) => {
     <div className="store-page">
       <Header header />
       <div className="jumbotron fluid"
-      style={{ backgroundImage: `url(${logo})` }}
+        style={{ backgroundImage: `url(${logo})` }}
       >
         <Grid fluid>
           <Row className="bg-trans">
             <Col sm={12}>
               <h1 className='title-store'>
-               {storeName}
+                {storeName}
               </h1>
             </Col>
             <Col sm={12}>
@@ -42,9 +42,9 @@ const ThriftStoreInfo = (props) => {
                 <h1 className='address-store'>
                   Business Address:
                   <br /> <br />
-               {address}
+                  {address}
                   <br />
-                   { countryName} {cityName}
+                  {countryName} {cityName}
                   <br />
                   11205
                   <br />
@@ -59,14 +59,23 @@ const ThriftStoreInfo = (props) => {
       </div>
       <div>
         <Row>
-          {/* <Col>
-                <div>
-                  <span className="ik-ads">Categories</span>
-                  <div className='scroll-tab'>
-                    <Tabs />
-                  </div>
-                </div>
-              </Col> */}
+          <Col>
+            <div className="products-storeinfo">
+              <span className="ik-ads">Products</span>
+              <div className='scroll-tab'>
+                < MaterialTabs />
+              </div>
+            </div>
+          </Col>
+          <Col >
+            <div className='bg-adss'>
+              <div className='arrival-ads'>
+                <span className="ik-ads">Reviews</span>
+                < CarouselReviewCard />
+              </div>
+              <br />
+            </div>
+          </Col>
           <Col sm={12}>
             <div className='bg-ads'>
               <div className='arrival-ads'>
