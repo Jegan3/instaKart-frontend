@@ -40,6 +40,24 @@ const responsiveAds = {
   },
 };
 
+const responsiveThriftStoreInfoCategories = {
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 9,
+    //slidesToSlide: 2,
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 680 },
+    items: 6,
+    // slidesToSlide: 3,
+  },
+  mobile: {
+    breakpoint: { max: 680, min: 0 },
+    items: 4,
+    // slidesToSlide: 2,
+  },
+};
+
 const responsiveReview = {
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
@@ -287,6 +305,89 @@ const cardsDataNewEStore = [
   },
 ];
 
+const cardsStoreInfo = [
+  {
+    id: 1,
+    title: 'CARD 1',
+    imgUrl: 'images/pizza.jpg',
+  },
+  {
+    id: 2,
+    title: 'CARD 2',
+    imgUrl: 'images/italian.jpg',
+  },
+  {
+    id: 3,
+    title: 'CARD 3',
+    imgUrl: 'images/new.jpg',
+  },
+  {
+    id: 4,
+    title: 'CARD 4',
+    imgUrl: 'images/sales.jpg',
+  },
+  {
+    id: 5,
+    title: 'CARD 1',
+    imgUrl: 'images/pizza.jpg',
+  },
+  {
+    id: 6,
+    title: 'CARD 2',
+    imgUrl: 'images/italian.jpg',
+  },
+  {
+    id: 7,
+    title: 'CARD 3',
+    imgUrl: 'images/new.jpg',
+  },
+  {
+    id: 8,
+    title: 'CARD 4',
+    imgUrl: 'images/sales.jpg',
+  },
+  {
+    id: 9,
+    title: 'CARD 1',
+    imgUrl: 'images/pizza.jpg',
+  },
+  {
+    id: 10,
+    title: 'CARD 2',
+    imgUrl: 'images/italian.jpg',
+  },
+  {
+    id: 11,
+    title: 'CARD 3',
+    imgUrl: 'images/new.jpg',
+  },
+  {
+    id: 12,
+    title: 'CARD 4',
+    imgUrl: 'images/sales.jpg',
+  },
+  {
+    id: 13,
+    title: 'CARD 1',
+    imgUrl: 'images/pizza.jpg',
+  },
+  {
+    id: 14,
+    title: 'CARD 2',
+    imgUrl: 'images/italian.jpg',
+  },
+  {
+    id: 15,
+    title: 'CARD 3',
+    imgUrl: 'images/new.jpg',
+  },
+  {
+    id: 16,
+    title: 'CARD 4',
+    imgUrl: 'images/sales.jpg',
+  },
+];
+
 const cardsDataMobile = [
   {
     id: 1,
@@ -452,6 +553,17 @@ const thriftStoreCategoryBottom = [
   },
 ];
 
+export const ThriftStoreInfoCategories = () => (
+  <Carousel
+    responsive={responsiveThriftStoreInfoCategories}
+    //centerMode={true}
+    infinite={true}
+  >
+    {cardsStoreInfo.map((card) => (
+      <Card title={card.title} className='card' imgUrl={card.imgUrl} />
+    ))}
+  </Carousel>
+);
 
 export const CarouselThriftStoreCategoryUp = () => (
   <Carousel

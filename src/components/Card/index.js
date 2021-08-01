@@ -62,6 +62,7 @@ export const Card = ({ imgUrl, alt, content, btnUrl, body, title, price, product
 export const ThriftStoreNearYouCard = ({ imgUrl, storeName, country, path, thriftStore }) => {
 
   const Card = () => {
+    console.log('thriftStore',thriftStore)
     history.push({ pathname: path, state: thriftStore })
     window.scrollTo(0, 0);
   }

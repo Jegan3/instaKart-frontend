@@ -29,8 +29,6 @@ const ProductInfo = (props) => {
   const productDetails = useSelector((state) => state.productInfoState.productInfo);
   const product = productDetails && productDetails.productInfo
 
-  console.log('product', product)
-
   const productImages = product && product.productImages.map(item => ({
     original: item,
     thumbnail: item,
