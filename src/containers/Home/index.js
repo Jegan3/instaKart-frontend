@@ -4,16 +4,16 @@ import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 import { CarouselFirst, CarouselSecond, CarouselThird, CarouselFourth, CarouselMobile, CarouselNewEStore, } from '../../components/Carousel';
 import { Banners, SecondaryBanners } from '../../components/Banners';
-import Particle  from '../../components/Particle';
+import Particle from '../../components/Particle';
 
 const Home = () => {
 
   useEffect(() => {
     // dispatch it once mounted
     setTimeout(
-      ()=>{window.dispatchEvent(new Event('resize'));},
+      () => { window.dispatchEvent(new Event('resize')); },
       700
-      );
+    );
   }, []);
 
   return (

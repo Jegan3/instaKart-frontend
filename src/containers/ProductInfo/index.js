@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Row, Col, Grid } from 'react-bootstrap';
 import { Rate } from 'antd';
+import { history } from '../../routes';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 import ImageSlider from '../../components/ImageSlider';
@@ -10,13 +11,11 @@ import Desk from '../../components/Desk';
 import { CarouselNewEStoreAds, CarouselReviewCard } from '../../components/Carousel';
 
 const images = [
-
   {
     original: 'images/1_Food.png',
     thumbnail: 'images/1_Food.png',
   },
 ];
-
 
 const ProductInfo = (props) => {
   const [count, setCount] = useState(0);
@@ -35,7 +34,7 @@ const ProductInfo = (props) => {
   }))
 
   useEffect(() => {
-    dispatch({ type: 'PRODUCT_INFO_REQUEST', productId : props.location.state  });
+    dispatch({ type: 'PRODUCT_INFO_REQUEST', productId: props.location.state });
   }, [])
 
   const onWarranty = () => {
@@ -50,8 +49,13 @@ const ProductInfo = (props) => {
     setBackground(images.thumbnail)
   }
 
-  const handleShow = () => {
-    setShow(true);
+  // const handleShow = () => {
+  //   setShow(true);
+  // }
+
+  const onBuyNow = () => {
+    history.push({ pathname: '/checkout' });
+    window.scrollTo(0, 0);
   }
 
   const hidePopup = () => {
@@ -72,7 +76,7 @@ const ProductInfo = (props) => {
       <Header header />
       <div className="jumbotron jumbotron-fluid"
         style={{ backgroundImage: `url(${background})` }}
-        // style={product && { backgroundImage: `url(${productImages[0].thumbnail})`}}
+      // style={product && { backgroundImage: `url(${productImages[0].thumbnail})`}}
       >
         <div className='ads-page'>
           <Grid fluid>
@@ -108,23 +112,28 @@ const ProductInfo = (props) => {
                     </Col>
                     <Col sm={12}>
                       <Row>
-                        <Col sm={4}>
+                        <Col sm={3}>
                           <button className="butn-ads"
                             onClick={onWarranty}
                           >
                             Description
                           </button>
                         </Col>
-                        <Col sm={4}>
+                        <Col sm={3}>
                           <button className="butn-ads"
                             onClick={onWarranty}
                           >
                             Warranty
                           </button>
                         </Col>
-                        <Col sm={4}>
+                        <Col sm={3}>
                           <button className="butn-ads" onClick={onDescription}>
-                            Shipping
+                            Shipping & Pickup Location
+                          </button>
+                        </Col>
+                        <Col sm={3}>
+                          <button className="butn-ads" onClick={onDescription}>
+                            Message
                           </button>
                         </Col>
                       </Row>
@@ -157,16 +166,19 @@ const ProductInfo = (props) => {
                       </div>
                     </Col>
                     <Col md={12}>
-                      <div className="col-sm-6">
+                      <div className="col-sm-5">
                         <div className='quanity'>
                           <span>QTY</span>
-                          <span className=" quanitybtns" onClick={() => setCount(count + 1)}> + </span>
+                          <span className="quanitybtns" onClick={() => setCount(count + 1)}> + </span>
                           {count}
-                          <span className=" quanitybtns" onClick={() => setCount(count - 1)}> - </span>
+                          <span className="quanitybtns" onClick={() => setCount(count - 1)}> - </span>
                         </div>
                       </div>
-                      <div className="col-sm-6">
-                        <button className='buybtn' onClick={() => handleShow()}> Buy</button>
+                      <div className="col-sm-4">
+                        <button className='buybtn' onClick={() => handleShow()}>Add To Cart</button>
+                      </div>
+                      <div className="col-sm-3">
+                        <button className='buybtn' onClick={onBuyNow}>Buy Now</button>
                       </div>
                     </Col>
                   </Row>
