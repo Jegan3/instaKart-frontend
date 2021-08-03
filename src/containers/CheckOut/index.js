@@ -1,7 +1,9 @@
 /*eslint-disable*/
 import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Grid, Row, Col } from 'react-bootstrap';
 import TextField from '@material-ui/core/TextField';
+import ScrollAnimation from 'react-animate-on-scroll';
 import Typography from '@material-ui/core/Typography';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -10,11 +12,18 @@ import Button from '@material-ui/core/Button';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 
-const CheckOut = () => {
+const CheckOut = (props) => {
+  const [toggle, setToggle] = useState(true);
+
+  const { state } = props.location;
+  
+  const onProceedBuy = () => {
+    setToggle(false)
+  }
 
   return (
     <div>
-      <Header header />
+      <Header />
       <div className="checkout-page">
         <Grid fluid>
           <div className="checkout-details">
@@ -87,165 +96,187 @@ const CheckOut = () => {
                   </Row>
                 </div>
               </Col>
-              <Col md={3}>
-                <div className="product-card">
-                  <Row>
-                    <Col sm={12}>
-                      <div className="billing-card">
-                        <Row>
-                          <Col xs={12}>
-                            <h4 className="address-title">Shipping Address</h4>
-                          </Col>
-                          <Col xs={12}>
-                            <TextField id="standard-name"
-                              label="Full Name"
-                              className="checkout-feild"
-                            />
-                          </Col>
-                          <Col xs={12}>
-                            <TextField id="standard-name"
-                              label="Phone Number"
-                              className="checkout-feild"
-                            />
-                          </Col>
-                          <Col xs={12}>
-                            <TextField id="standard-name"
-                              label="Address"
-                              className="checkout-feild"
-                            />
-                          </Col>
-                          <Col xs={12}>
-                            <TextField id="standard-name"
-                              label="Country"
-                              className="checkout-feild" />
-                          </Col>
-                          <Col xs={12}>
-                            <TextField id="standard-name"
-                              label="City"
-                              className="checkout-feild" />
-                          </Col>
-                          <Col xs={12}>
-                            <TextField id="standard-name"
-                              label="Zip-Code"
-                              className="checkout-feild"
-                            />
-                          </Col>
-                          <Col xs={12}>
-                            <TextField id="standard-name"
-                              label="Email"
-                              className="checkout-feild"
-                            />
-                          </Col>
-                        </Row>
-                      </div>
-                      <Row>
-                      </Row>
-                    </Col>
-                  </Row>
+              {(!toggle || state === 'addCart' && < Col md={6}>
+
+                <div className="proceed-list">
+                  <div>
+                    <h3 className="subtotal">
+                      Subtotal (1 item): $ 123.00
+                    </h3>
+                    <button
+                      type="button"
+                      className="btn btn-primary btn-lg btn-block modal-button"
+                      onClick={onProceedBuy}
+                    >
+                      Proceed to Buy
+                    </button>
+                  </div>
                 </div>
-              </Col>
-              <Col md={3}>
-                <div className="product-card">
-                  <Row>
-                    <Col sm={12}>
-                      <div className="billing-card">
-                        <Row>
-                          <Col xs={12}>
-                            <h4 className="address-title">Card Details</h4>
-                          </Col>
-                          <Col xs={12}>
-                            <div className="cardlist">
-                              <Card >
-                                <CardContent>
-                                  <CardMedia
-                                    style={{ height: "25px" }}
-                                    component="img"
-                                    image="https://brand.mastercard.com/content/dam/mccom/brandcenter/thumbnails/mc_downloads_symbol_350x200.png"
-                                  />
-                                  <Typography
-                                    color="textSecondary"
-                                    className='cardnumber'
-                                    gutterBottom>
-                                    1122 3344 5566 7788
-                                  </Typography>
-                                  <div>
-                                    <span className="namecard">
-                                      Jennifer Aniston
-                                    </span>
-                                    <span className="yearcard">
-                                      mm/yy
-                                    </span>
-                                  </div>
-                                </CardContent>
-                              </Card>
-                            </div>
-                          </Col>
-                          <Col xs={12}>
-                            <TextField id="standard-name"
-                              label="Card Name"
-                              className="checkout-feild"
-                            />
-                          </Col>
-                          <Col xs={12}>
-                            <TextField id="standard-name"
-                              label="Card Number"
-                              className="checkout-feild"
-                            />
-                          </Col>
-                          <Col xs={12}>
-                            <div className="type-img">
-                              <Typography
-                                variant="h6"
-                                display="block" >
-                                Expiration card
-                              </Typography>
-                              <CardMedia
-                                style={{ height: "25px" }}
-                                dir="rtl"
-                                component="img"
-                                image="https://brand.mastercard.com/content/dam/mccom/brandcenter/thumbnails/mc_downloads_symbol_350x200.png"
-                              />
-                            </div>
+              </Col>)}
+              {(!toggle || state === 'buyNow') &&
+                <Col md={3}>
+                  <ScrollAnimation animateIn='bounceInDown' duration={3}>
+                    <div className="product-card">
+                      <Row>
+                        <Col sm={12}>
+                          <div className="billing-card">
                             <Row>
-                              <Col xs={4}>
+                              <Col xs={12}>
+                                <h4 className="address-title">Shipping Address</h4>
+                              </Col>
+                              <Col xs={12}>
                                 <TextField id="standard-name"
-                                  select
-                                  label="mm"
+                                  label="Full Name"
                                   className="checkout-feild"
                                 />
                               </Col>
-                              <Col xs={4}>
+                              <Col xs={12}>
                                 <TextField id="standard-name"
-                                  select
-                                  label="yyy"
+                                  label="Phone Number"
                                   className="checkout-feild"
                                 />
                               </Col>
-                              <Col xs={4}>
+                              <Col xs={12}>
                                 <TextField id="standard-name"
-                                  label="cvv"
+                                  label="Address"
+                                  className="checkout-feild"
+                                />
+                              </Col>
+                              <Col xs={12}>
+                                <TextField id="standard-name"
+                                  label="Country"
+                                  className="checkout-feild" />
+                              </Col>
+                              <Col xs={12}>
+                                <TextField id="standard-name"
+                                  label="City"
+                                  className="checkout-feild" />
+                              </Col>
+                              <Col xs={12}>
+                                <TextField id="standard-name"
+                                  label="Zip-Code"
+                                  className="checkout-feild"
+                                />
+                              </Col>
+                              <Col xs={12}>
+                                <TextField id="standard-name"
+                                  label="Email"
                                   className="checkout-feild"
                                 />
                               </Col>
                             </Row>
-                          </Col>
-                          <Col xs={12}>
-                            <div className="checkoutbtn">
-                              <Button
-                                variant="contained"
-                                color="primary">
-                                Checkout
-                              </Button>
-                            </div>
-                          </Col>
-                        </Row>
-                      </div>
-                      <Row>
+                          </div>
+                          <Row>
+                          </Row>
+                        </Col>
                       </Row>
-                    </Col>
-                  </Row>
-                </div>
-              </Col>
+                    </div>
+                  </ScrollAnimation>
+                </Col>}
+              {(!toggle || state === 'buyNow') && <Col md={3}>
+                <ScrollAnimation animateIn='bounceInUp' duration={3}>
+                  <div className="product-card">
+                    <Row>
+                      <Col sm={12}>
+                        <div className="billing-card">
+                          <Row>
+                            <Col xs={12}>
+                              <h4 className="address-title">Card Details</h4>
+                            </Col>
+                            <Col xs={12}>
+                              <div className="cardlist">
+                                <Card >
+                                  <CardContent>
+                                    <CardMedia
+                                      style={{ height: "25px" }}
+                                      component="img"
+                                      image="https://brand.mastercard.com/content/dam/mccom/brandcenter/thumbnails/mc_downloads_symbol_350x200.png"
+                                    />
+                                    <Typography
+                                      color="textSecondary"
+                                      className='cardnumber'
+                                      gutterBottom>
+                                      1122 3344 5566 7788
+                                    </Typography>
+                                    <div>
+                                      <span className="namecard">
+                                        Jennifer Aniston
+                                      </span>
+                                      <span className="yearcard">
+                                        mm/yy
+                                      </span>
+                                    </div>
+                                  </CardContent>
+                                </Card>
+                              </div>
+                            </Col>
+                            <Col xs={12}>
+                              <TextField id="standard-name"
+                                label="Card Name"
+                                className="checkout-feild"
+                              />
+                            </Col>
+                            <Col xs={12}>
+                              <TextField id="standard-name"
+                                label="Card Number"
+                                className="checkout-feild"
+                              />
+                            </Col>
+                            <Col xs={12}>
+                              <div className="type-img">
+                                <Typography
+                                  variant="h6"
+                                  display="block" >
+                                  Expiration card
+                                </Typography>
+                                <CardMedia
+                                  style={{ height: "25px" }}
+                                  dir="rtl"
+                                  component="img"
+                                  image="https://brand.mastercard.com/content/dam/mccom/brandcenter/thumbnails/mc_downloads_symbol_350x200.png"
+                                />
+                              </div>
+                              <Row>
+                                <Col xs={4}>
+                                  <TextField id="standard-name"
+                                    select
+                                    label="mm"
+                                    className="checkout-feild"
+                                  />
+                                </Col>
+                                <Col xs={4}>
+                                  <TextField id="standard-name"
+                                    select
+                                    label="yyy"
+                                    className="checkout-feild"
+                                  />
+                                </Col>
+                                <Col xs={4}>
+                                  <TextField id="standard-name"
+                                    label="cvv"
+                                    className="checkout-feild"
+                                  />
+                                </Col>
+                              </Row>
+                            </Col>
+                            <Col xs={12}>
+                              <div className="checkoutbtn">
+                                <Button
+                                  variant="contained"
+                                  color="primary">
+                                  Checkout
+                                </Button>
+                              </div>
+                            </Col>
+                          </Row>
+                        </div>
+                        <Row>
+                        </Row>
+                      </Col>
+                    </Row>
+                  </div>
+                </ScrollAnimation>
+              </Col>}
             </Row>
           </div>
         </Grid>
@@ -255,4 +286,4 @@ const CheckOut = () => {
   )
 }
 
-export default CheckOut
+export default CheckOut;

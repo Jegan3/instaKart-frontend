@@ -17,12 +17,13 @@ const images = [
   },
 ];
 
-const ProductInfo = (props) => {
+const ProductInfo = ({location}) => {
   const [count, setCount] = useState(0);
-  const [toggle, setToggle] = useState('true');
+  const [toggle, setToggle] = useState(true);
+  const [signIn, setSignIn] = useState(false);
   const [background, setBackground] = useState(`${images[0].thumbnail}`);
-  // const [background, setBackground] = useState(product && `${productImages[0].thumbnail}`);
-  const [show, setShow] = useState(false);
+
+  const auth = sessionStorage.access;
 
   const dispatch = useDispatch();
   const productDetails = useSelector((state) => state.productInfoState.productInfo);
@@ -34,7 +35,7 @@ const ProductInfo = (props) => {
   }))
 
   useEffect(() => {
-    dispatch({ type: 'PRODUCT_INFO_REQUEST', productId: props.location.state });
+    dispatch({ type: 'PRODUCT_INFO_REQUEST', productId: location.state });
   }, [])
 
   const onWarranty = () => {
@@ -49,12 +50,18 @@ const ProductInfo = (props) => {
     setBackground(images.thumbnail)
   }
 
-  // const handleShow = () => {
-  //   setShow(true);
-  // }
+  const onAddCart = () => {
+    if (auth) {
+      history.push({ pathname: '/checkout', state: 'addCart' });
+    } else {
+      // history.push({ pathname: '/checkout', state: 'addCart' });
+      setSignIn(true)
+    }
+    window.scrollTo(0, 0);
+  }
 
   const onBuyNow = () => {
-    history.push({ pathname: '/checkout' });
+    history.push({ pathname: '/checkout', state: 'buyNow' });
     window.scrollTo(0, 0);
   }
 
@@ -68,12 +75,7 @@ const ProductInfo = (props) => {
 
   return (
     <div className="ads-control">
-      <Desk
-        //info={info}
-        onClose={onClose}
-        show={show}
-      />
-      <Header header />
+      <Header signIn={signIn} />
       <div className="jumbotron jumbotron-fluid"
         style={{ backgroundImage: `url(${background})` }}
       // style={product && { backgroundImage: `url(${productImages[0].thumbnail})`}}
@@ -128,7 +130,7 @@ const ProductInfo = (props) => {
                         </Col>
                         <Col sm={3}>
                           <button className="butn-ads" onClick={onDescription}>
-                            Shipping & Pickup Location
+                            Shipping & Pickup
                           </button>
                         </Col>
                         <Col sm={3}>
@@ -175,7 +177,7 @@ const ProductInfo = (props) => {
                         </div>
                       </div>
                       <div className="col-sm-4">
-                        <button className='buybtn' onClick={() => handleShow()}>Add To Cart</button>
+                        <button className='buybtn' onClick={onAddCart}>Add To Cart</button>
                       </div>
                       <div className="col-sm-3">
                         <button className='buybtn' onClick={onBuyNow}>Buy Now</button>
