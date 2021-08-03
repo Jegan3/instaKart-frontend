@@ -10,20 +10,11 @@ import ImageSlider from '../../components/ImageSlider';
 import Desk from '../../components/Desk';
 import { CarouselNewEStoreAds, CarouselReviewCard } from '../../components/Carousel';
 
-const images = [
-  {
-    original: 'images/1_Food.png',
-    thumbnail: 'images/1_Food.png',
-  },
-];
-
-const ProductInfo = ({location}) => {
+const ProductInfo = ({ location }) => {
   const [count, setCount] = useState(0);
   const [toggle, setToggle] = useState(true);
-  const [signIn, setSignIn] = useState(false);
-  const [background, setBackground] = useState(`${images[0].thumbnail}`);
-
-  const auth = sessionStorage.access;
+  const [login, setLogin] = useState(false);
+  const [background, setBackground] = useState(false);
 
   const dispatch = useDispatch();
   const productDetails = useSelector((state) => state.productInfoState.productInfo);
@@ -51,34 +42,32 @@ const ProductInfo = ({location}) => {
   }
 
   const onAddCart = () => {
-    if (auth) {
+    if (sessionStorage.access) {
       history.push({ pathname: '/checkout', state: 'addCart' });
     } else {
-      // history.push({ pathname: '/checkout', state: 'addCart' });
-      setSignIn(true)
+      setLogin(true)
     }
     window.scrollTo(0, 0);
   }
 
   const onBuyNow = () => {
-    history.push({ pathname: '/checkout', state: 'buyNow' });
+    if (sessionStorage.access) {
+      history.push({ pathname: '/checkout', state: 'buyNow' });
+    } else {
+      setLogin(true)
+    }
     window.scrollTo(0, 0);
   }
 
-  const hidePopup = () => {
-    setShow(false);
-  };
-
-  const onClose = () => {
-    setShow(false)
-  };
+  const hideloginCart = () => {
+    setLogin(false)
+  }
 
   return (
     <div className="ads-control">
-      <Header signIn={signIn} />
+      <Header loginCart={login} hideloginCart={hideloginCart} />
       <div className="jumbotron jumbotron-fluid"
-        style={{ backgroundImage: `url(${background})` }}
-      // style={product && { backgroundImage: `url(${productImages[0].thumbnail})`}}
+        style={{ backgroundImage: `url(${!background ? product && product.productImages[0] : background})` }}
       >
         <div className='ads-page'>
           <Grid fluid>

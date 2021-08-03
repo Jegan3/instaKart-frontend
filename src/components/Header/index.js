@@ -25,7 +25,7 @@ const StyledBadge = withStyles((theme) => ({
   },
 }))(Badge);
 
-const Header = ({ basic }) => {
+const Header = ({ basic, loginCart, hideloginCart }) => {
   const [login, setLogin] = useState(false);
   const [country, setCountry] = useState(<div><FontAwesomeIcon icon={faMapMarkerAlt} className="location" /><p>Select your country </p><FontAwesomeIcon icon={faCaretDown} className="caret-down" /></div>);
 
@@ -100,7 +100,7 @@ const Header = ({ basic }) => {
           </Col>
         </Row> :
         <div>
-          <LoginModal showPopup={login} hidePopup={hidePopup} />
+          <LoginModal showPopup={login ? login : loginCart} hidePopup={login ? hidePopup : hideloginCart} />
           <div className="head">
             <div>
               <Navbar inverse collapseOnSelect>
