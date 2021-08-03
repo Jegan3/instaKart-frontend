@@ -1,7 +1,7 @@
 /*eslint-disable*/
 import { TitleOutlined } from '@material-ui/icons';
 import React from 'react';
-import Avatar from 'react-avatar';
+import { Row, Col, Grid } from 'react-bootstrap';
 import { history } from '../../routes';
 
 export const Card = ({ imgUrl, alt, content, btnUrl, body, title, price, productName, className, country }) => {
@@ -62,7 +62,6 @@ export const Card = ({ imgUrl, alt, content, btnUrl, body, title, price, product
 export const ThriftStoreNearYouCard = ({ imgUrl, storeName, country, path, thriftStore }) => {
 
   const Card = () => {
-    console.log('thriftStore',thriftStore)
     history.push({ pathname: path, state: thriftStore })
     window.scrollTo(0, 0);
   }
@@ -128,37 +127,27 @@ export const NewAdditionCard = ({ imgUrl, product, path, price, productName }) =
 export const ReviewCard = ({ title, content, date }) => {
   return (
     <div className='reviewcard'>
-      <div className='reveiew-text'>
-        <div>
-          <span className="review-title">
-            {title}
-          </span>
-          <span className='content-date'>
-            {date}
-          </span>
+      <span className="review-title"> {title} </span> <span className='content-date'>{date} </span>
+      <div className="listing-rating reviewstars">
+        <div className="stars">
+          <i className="fa fa-star"></i>
+          <i className="fa fa-star"></i>
+          <i className="fa fa-star"></i>
+          <i className="fa fa-star"></i>
         </div>
-        <div className="listing-rating reviewstars">
-          <div className="stars">
-            <i className="fa fa-star"></i>
-            <i className="fa fa-star"></i>
-            <i className="fa fa-star"></i>
-            <i className="fa fa-star"></i>
-          </div>
-          <div className="ratings">
-            <span className="product-rating">4.6</span>
-            <span className="product-rating">/5</span>
-          </div>
+        <div className="ratings">
+          <span className="product-rating">4.6</span>
+          <span className="product-rating">/5</span>
         </div>
-        <div>
-          <blockquote>
-            <span className='content-text'>
-              {content}
-            </span>
-          </blockquote>
-        </div>
-        <div className='heart-icon'>
-          <i class="fas fa-heart"></i>
-        </div>
+      </div>
+      <div className="content-details">
+        <p className="upquote">
+          "
+        </p> <p className="content-text">{content}
+        </p>
+      </div>
+      <div className='heart-icon'>
+        <i class="fas fa-heart"></i>
       </div>
     </div>
   )

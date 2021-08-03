@@ -8,7 +8,7 @@ import ScrollAnimation from 'react-animate-on-scroll';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import { ThriftStoreInfoCategories  } from '../Carousel';
+import { ThriftStoreInfoCategories } from '../Carousel';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -43,16 +43,9 @@ function a11yProps(index) {
   };
 }
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-    width: '100%',
-    backgroundColor: theme.palette.background.paper,
-  },
-}));
 
-export  const MaterialTabs = () => {
-  const classes = useStyles();
+
+export const MaterialTabs = () => {
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
@@ -60,7 +53,7 @@ export  const MaterialTabs = () => {
   };
 
   return (
-    <div className={classes.root}>
+    <div className='tab-scroll'>
       <AppBar position="static" color="default">
         <Tabs
           value={value}
@@ -81,35 +74,39 @@ export  const MaterialTabs = () => {
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-      <ScrollAnimation animateIn='flipInX'>
-      <ThriftStoreInfoCategories />
+        <ScrollAnimation animateIn='fadeIn' duration={5}>
+          <ThriftStoreInfoCategories />
         </ScrollAnimation>
       </TabPanel>
       <TabPanel value={value} index={1}>
-      <ScrollAnimation animateIn='bounceInRight'>
-        Item 2
+        <ScrollAnimation animateIn='fadeIn' duration={5}>
+          Item 2
         </ScrollAnimation>
       </TabPanel>
       <TabPanel value={value} index={2}>
-      <ScrollAnimation animateIn='bounceInRight'>
-      <ThriftStoreInfoCategories />
+        <ScrollAnimation animateIn='fadeIn' duration={5}>
+          <ThriftStoreInfoCategories />
         </ScrollAnimation>
       </TabPanel>
       <TabPanel value={value} index={3}>
-      <ScrollAnimation animateIn='bounceInRight'>
-        Item 4
+        <ScrollAnimation animateIn='fadeIn' duration={5}>
+          Item 4
         </ScrollAnimation>
       </TabPanel>
       <TabPanel value={value} index={4}>
-      <ScrollAnimation animateIn='fadeIn' duration={5}>
-      <ThriftStoreInfoCategories />
+        <ScrollAnimation animateIn='fadeIn' duration={5}>
+          <ThriftStoreInfoCategories />
         </ScrollAnimation>
       </TabPanel>
       <TabPanel value={value} index={5}>
-        Item Six
+        <ScrollAnimation animateIn='fadeIn' duration={5}>
+          Item Six
+        </ScrollAnimation>
       </TabPanel>
       <TabPanel value={value} index={6}>
-        Item Seven
+        <ScrollAnimation animateIn='fadeIn' duration={5}>
+          Item Seven
+        </ScrollAnimation>
       </TabPanel>
     </div>
   );

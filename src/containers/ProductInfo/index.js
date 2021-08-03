@@ -11,7 +11,7 @@ import Desk from '../../components/Desk';
 import { CarouselNewEStoreAds, CarouselReviewCard } from '../../components/Carousel';
 
 const ProductInfo = ({ location }) => {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(1);
   const [toggle, setToggle] = useState(true);
   const [login, setLogin] = useState(false);
   const [background, setBackground] = useState(false);
@@ -35,6 +35,14 @@ const ProductInfo = ({ location }) => {
 
   const onDescription = () => {
     setToggle(true)
+  }
+
+  const onDecrement = () => {
+    count > 1 && setCount(count - 1)
+  }
+
+  const onIncrement = () => {
+    setCount(count + 1)
   }
 
   const onBackground = (images) => {
@@ -160,9 +168,11 @@ const ProductInfo = ({ location }) => {
                       <div className="col-sm-5">
                         <div className='quanity'>
                           <span>QTY</span>
-                          <span className="quanitybtns" onClick={() => setCount(count + 1)}> + </span>
+                          <span className="quanitybtns"
+                            onClick={onDecrement}> - </span>
                           {count}
-                          <span className="quanitybtns" onClick={() => setCount(count - 1)}> - </span>
+                          <span className="quanitybtns"
+                            onClick={onIncrement}> + </span>
                         </div>
                       </div>
                       <div className="col-sm-4">
