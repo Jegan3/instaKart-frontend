@@ -1,8 +1,5 @@
 .ads-control {
-  // overflow: hidden;
-  // background-color: rgba(0, 0, 0, 0.5);
 
-  /* Jumbotron (hero) */
   .jumbotron {
     position: relative;
     // bottom: 74px;
@@ -23,6 +20,11 @@
       height: 100%;
       // background: rgba(0, 0, 0, .5);
     }
+  }
+
+  .image-gallery-slide .image-gallery-image {
+    width: 100%;
+    object-fit: cover;
   }
 
   .container-fluid {
@@ -144,6 +146,11 @@
   font-family: monospace;
   padding-top: 7%;
   cursor: pointer;
+
+  .quanitybtns {
+    cursor: pointer;
+  }
+
 }
 
 .buybtn {
@@ -160,7 +167,7 @@
   &:hover {
     margin-bottom: 1%;
     transition: all .2s ease-out;
-    border: 1px solid white;
+    color: #28a4d9;
   }
 }
 

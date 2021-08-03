@@ -313,7 +313,7 @@ const Profile = () => {
                       />
                     </Col>
                     <Col md={12}>
-                      <label className="signup-label">E-store Name <span className="red-star">*</span></label>
+                      <label className="signup-label">Thrift Store Name <span className="red-star">*</span></label>
                       <input
                         type="text"
                         className={alertError && !storeName ? ` form-control my-input` : `form-control formy`}
