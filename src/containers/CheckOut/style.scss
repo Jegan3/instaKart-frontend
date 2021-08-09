@@ -42,6 +42,18 @@
   }
 }
 
+.quanity-check {
+  font-size: 15px;
+  font-weight: 700;
+  font-family: monospace;
+  cursor: pointer;
+
+  .quanitybtn {
+    cursor: pointer;
+  }
+
+}
+
 .checkout-details {
   margin: 7% 2%;
   padding: 2%;
@@ -120,7 +132,7 @@
   }
 
   .MuiInput-underline:hover {
-    border-bottom: 1px solid#ffffff !important;
+    border-bottom: transparent !important;
   }
 
   .MuiFormLabel-root.Mui-focused {
@@ -129,6 +141,10 @@
 
   .MuiInput-underline:after {
     border-bottom: 1px solid #28a4d9 !important;
+  }
+
+  .MuiInput-underline {
+    border-bottom: transparent !important;
   }
 
   .MuiInputBase-input {

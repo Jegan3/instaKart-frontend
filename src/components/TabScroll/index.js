@@ -43,8 +43,6 @@ function a11yProps(index) {
   };
 }
 
-
-
 export const MaterialTabs = () => {
   const [value, setValue] = React.useState(0);
 
@@ -58,7 +56,11 @@ export const MaterialTabs = () => {
         <Tabs
           value={value}
           onChange={handleChange}
-          indicatorColor="primary"
+          TabIndicatorProps={{
+            style: {
+              backgroundColor: "#28a4d9"
+            }
+          }}
           textColor="primary"
           variant="scrollable"
           scrollButtons="auto"
