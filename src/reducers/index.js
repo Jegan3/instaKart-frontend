@@ -14,6 +14,7 @@ import thriftDetailsState from './ThriftDetails';
 import thriftStoreInfoState from './ThriftStoreInfo ';
 import productInfoState from './ProductInfo';
 import cartState from './Cart';
+import addCartState from './AddCart';
 
 const rootReducer = combineReducers({
   signupState,
@@ -31,6 +32,7 @@ const rootReducer = combineReducers({
   thriftStoreInfoState,
   productInfoState,
   cartState,
+  addCartState,
 });
 
 export default rootReducer;

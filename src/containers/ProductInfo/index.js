@@ -51,7 +51,16 @@ const ProductInfo = ({ location }) => {
 
   const onAddCart = () => {
     if (sessionStorage.access) {
-      history.push({ pathname: '/checkout', state: 'addCart' });
+      const productPrice = product.finalPrice.replace(/\D/g,'');
+
+      const addToCart = {
+          productId: product._id,
+          totalPrice: productPrice*count,
+          quantity: count,
+      }
+      console.log('count',addToCart)
+      dispatch({ type: 'ADD_CART_REQUEST', addToCart: addToCart});
+      history.push({ pathname: '/cart', state: 'addCart' });
     } else {
       setLogin(true)
     }
@@ -60,7 +69,7 @@ const ProductInfo = ({ location }) => {
 
   const onBuyNow = () => {
     if (sessionStorage.access) {
-      history.push({ pathname: '/checkout', state: 'buyNow' });
+      history.push({ pathname: '/cart', state: 'buyNow' });
     } else {
       setLogin(true)
     }
@@ -84,12 +93,12 @@ const ProductInfo = ({ location }) => {
                 <Col md={7}>
                   <Row>
                     <Col sm={12}>
-                      <h1 className='product-title'>Nike Roshe Run</h1>
+                      <h1 className='product-title'>{product && product.productName}</h1>
                     </Col>
                     <Col sm={12}>
                       <Row>
                         <Col sm={4}>
-                          <h3 className="sale">$114.99</h3>
+                          <h3 className="sale">{product && product.finalPrice}</h3>
                         </Col>
                         <Col sm={4}>
                           <div className="review-rate" title="good">
