@@ -5,10 +5,6 @@ import { Grid, Row, Col } from 'react-bootstrap';
 import { message } from 'antd';
 import TextField from '@material-ui/core/TextField';
 import ScrollAnimation from 'react-animate-on-scroll';
-import Typography from '@material-ui/core/Typography';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
@@ -19,15 +15,10 @@ const CheckOut = (props) => {
   const [fullName, setFullName] = useState('');
   const [mobile, setMobile] = useState('');
   const [address, setAddress] = useState('');
-  const [country, setCountry] = useState();
   const [city, setCity] = useState();
+  const [country, setCountry] = useState();
   const [zipCode, setZipCode] = useState();
   const [email, setEmail] = useState('');
-  const [cardName, setCardName] = useState('');
-  const [cardNumber, setCardNumber] = useState('');
-  const [month, setMonth] = useState('');
-  const [year, setYear] = useState('');
-  const [cvv, setCvv] = useState('');
   const [count, setCount] = useState(1);
   const [alertError, setAlertError] = useState(false);
 
@@ -42,7 +33,8 @@ const CheckOut = (props) => {
   }, []);
 
   const onMobile = (e) => {
-    if (e.target.value.match('^[2-9]\d{2}-\d{3}-\d{4}$')) {
+    if (e.target.value.match('^[0-9]*$')) {
+      // if (e.target.value.match('^[2-9]\d{2}-\d{3}-\d{4}$')) {
       //  if (/^[2-9]\d{2}-\d{3}-\d{4}$/.test(e.target.value)) {
       setMobile(e.target.value)
     }
@@ -84,38 +76,8 @@ const CheckOut = (props) => {
     }
   };
 
-  const onCardName = (e) => {
-    if (e.target.value.match('^[a-zA-Z0-9 ]*$')) {
-      setCardName(e.target.value);
-    }
-  };
-
-  const onCardNumber = (e) => {
-    if (e.target.value.match('^[0-9]*$')) {
-      setCardNumber(e.target.value);
-    }
-  };
-
   const onProceedBuy = () => {
     setToggle(false)
-  }
-
-  const onMonth = (e) => {
-    if (e.target.value.match('^[0-9]*$')) {
-      setMonth(e.target.value)
-    }
-  }
-
-  const onYear = (e) => {
-    if (e.target.value.match('^[0-9]*$')) {
-      setYear(e.target.value)
-    }
-  }
-
-  const onCvv = (e) => {
-    if (e.target.value.match('^[0-9]*$')) {
-      setCvv(e.target.value)
-    }
   }
 
   const onDecrement = () => {
@@ -127,8 +89,7 @@ const CheckOut = (props) => {
   }
 
   const submit = () => {
-    if (!fullName || !mobile || !address || !country || !city || !zipCode || !email || !cardName || !cardNumber || !month || !year || !cvv
-    ) {
+    if (!fullName || !mobile || !address || !country || !city || !zipCode || !email) {
       setAlertError(true)
       message.error('Please fill all the fields')
     } else {
@@ -137,16 +98,11 @@ const CheckOut = (props) => {
         fullName,
         mobile,
         address,
-        country,
         city,
+        country,
         zipCode,
         email,
-        cardName,
-        month,
-        year,
-        cvv,
       };
-      console.log('working')
       console.log('test', checkOut)
     };
   }
@@ -158,7 +114,7 @@ const CheckOut = (props) => {
         <Grid fluid>
           <div className="checkout-details">
             <Row>
-              <Col md={6}>
+              <Col md={7}>
                 <div className="product-card">
                   <Row>
                     <Col sm={12}>
@@ -176,12 +132,12 @@ const CheckOut = (props) => {
                               <img className="img-fluid" src={product && product.productImages[0]} />
                             </Col>
                             <Col xs={4}>
-                              <div className="product-name">
+                              <div className="productlist">
                                 <div className="product-name">{product && product.productName}</div>
                               </div>
                             </Col>
                             <Col xs={3}>
-                              <div className="productquanity">
+                              <div className="productlist">
                                 <div className='quanity-check'>
                                   <span>QTY</span>
                                   <span className="quanitybtn"
@@ -196,48 +152,66 @@ const CheckOut = (props) => {
                               <div className="product-price">
                                 <div className="product-name">{product && product.finalPrice}</div>
                               </div>
-                            </Col>
-                            <Col xs={1}>
-                              <span className="close">&#10005;</span>
+                              <br />
+                              <div className="product-remove">Remove</div>
                             </Col>
                           </div>
+                        </Row>
+                        <Row>
                           <div className="align-items-center">
                             <Col xs={3}>
-                              <img className="img-fluid" src="https://i.imgur.com/1GrakTl.jpg" />
+                              <img className="img-fluid" src={product && product.productImages[0]} />
                             </Col>
-                            <Col xs={6}>
-                              <div className="name-price">
-                                <div className="product-name">Cotton T-shirt</div>
-                                <div className="product-price">$213</div>
+                            <Col xs={4}>
+                              <div className="productlist">
+                                <div className="product-name">{product && product.productName}</div>
+                              </div>
+                            </Col>
+                            <Col xs={3}>
+                              <div className="productlist">
+                                <div className='quanity-check'>
+                                  <span>QTY</span>
+                                  <span className="quanitybtn"
+                                    onClick={onDecrement}> - </span>
+                                  {count}
+                                  <span className="quanitybtn"
+                                    onClick={onIncrement}> + </span>
+                                </div>
                               </div>
                             </Col>
                             <Col xs={2}>
-                              <div className="productquanity">1</div>
-                            </Col>
-                            <Col xs={1}>
-                              <span className="close">&#10005;</span>
+                              <div className="product-price">
+                                <div className="product-name">{product && product.finalPrice}</div>
+                              </div>
+                              <br />
+                              <div className="product-remove">Remove</div>
                             </Col>
                           </div>
                         </Row>
                       </div>
                     </Col>
                   </Row>
-                  <Row>
-                    <Col xs={12}>
-                      <div className="total">
-                        <div className="sub-total">
-                          Sub Total
+                  <Row >
+                    <Col xsOffset={7} sm={5}>
+                      <Col xs={6}>
+                        <div className="total">
+                          <div className="sub-total">
+                            Total
+                          </div>
                         </div>
-                        <div className="sub-price">
-                          $200
+                      </Col>
+                      <Col xs={6}>
+                        <div className="total">
+                          <div className="sub-price">
+                            $200
+                          </div>
                         </div>
-                      </div>
+                      </Col>
                     </Col>
                   </Row>
                 </div>
               </Col>
-              {(!toggle || state === 'addCart' && < Col md={6}>
-
+              {(!toggle || state === 'addCart' && < Col md={5}>
                 <div className="proceed-list">
                   <div>
                     <h3 className="subtotal">
@@ -254,7 +228,7 @@ const CheckOut = (props) => {
                 </div>
               </Col>)}
               {(!toggle || state === 'buyNow') &&
-                <Col md={3}>
+                <Col md={5}>
                   <ScrollAnimation animateIn='bounceInDown' duration={3}>
                     <div className="product-card">
                       <Row>
@@ -298,15 +272,6 @@ const CheckOut = (props) => {
                               </Col>
                               <Col xs={12}>
                                 <TextField id="standard-name"
-                                  label="Country"
-                                  className="checkout-feild"
-                                  value={country}
-                                  onChange={onCountry}
-                                  maxLength={30}
-                                  error={alertError} />
-                              </Col>
-                              <Col xs={12}>
-                                <TextField id="standard-name"
                                   label="City"
                                   className="checkout-feild"
                                   value={city}
@@ -317,9 +282,18 @@ const CheckOut = (props) => {
                               </Col>
                               <Col xs={12}>
                                 <TextField id="standard-name"
+                                  label="Country"
+                                  className="checkout-feild"
+                                  value={country}
+                                  onChange={onCountry}
+                                  maxLength={30}
+                                  error={alertError} />
+                              </Col>
+                              <Col xs={12}>
+                                <TextField id="standard-name"
                                   label="Zip-Code"
                                   className="checkout-feild"
-                                  maxLength={10}
+                                  maxLength={5}
                                   value={zipCode}
                                   onChange={onZipCode}
                                   error={alertError}
@@ -335,6 +309,17 @@ const CheckOut = (props) => {
                                   error={alertError}
                                 />
                               </Col>
+                              <Col xs={12}>
+                                <div className="checkoutbtn">
+                                  <Button
+                                    variant="contained"
+                                    color="primary"
+                                    onClick={submit}
+                                  >
+                                    Checkout
+                                  </Button>
+                                </div>
+                              </Col>
                             </Row>
                           </div>
                           <Row>
@@ -344,133 +329,6 @@ const CheckOut = (props) => {
                     </div>
                   </ScrollAnimation>
                 </Col>}
-              {(!toggle || state === 'buyNow') && <Col md={3}>
-                <ScrollAnimation animateIn='bounceInUp' duration={3}>
-                  <div className="product-card">
-                    <Row>
-                      <Col sm={12}>
-                        <div className="billing-card">
-                          <Row>
-                            <Col xs={12}>
-                              <h4 className="address-title">Card Details</h4>
-                            </Col>
-                            <Col xs={12}>
-                              <div className="cardlist">
-                                <Card >
-                                  <CardContent>
-                                    <CardMedia
-                                      style={{ height: "25px" }}
-                                      component="img"
-                                      image="https://brand.mastercard.com/content/dam/mccom/brandcenter/thumbnails/mc_downloads_symbol_350x200.png"
-                                    />
-                                    <Typography
-                                      color="textSecondary"
-                                      className='cardnumber'
-                                      gutterBottom>
-                                      1122 3344 5566 7788
-                                    </Typography>
-                                    <div>
-                                      <span className="namecard">
-                                        Jennifer Aniston
-                                      </span>
-                                      <span className="yearcard">
-                                        mm/yy
-                                      </span>
-                                    </div>
-                                  </CardContent>
-                                </Card>
-                              </div>
-                            </Col>
-                            <Col xs={12}>
-                              <TextField id="standard-name"
-                                label="Card Name"
-                                className="checkout-feild"
-                                maxLength={30}
-                                value={cardName}
-                                onChange={onCardName}
-                                error={alertError}
-                              />
-                            </Col>
-                            <Col xs={12}>
-                              <TextField id="standard-name"
-                                label="Card Number"
-                                className="checkout-feild"
-                                maxLength={18}
-                                value={cardNumber}
-                                onChange={onCardNumber}
-                                error={alertError}
-                              />
-                            </Col>
-                            <Col xs={12}>
-                              <div className="type-img">
-                                <Typography
-                                  variant="h6"
-                                  display="block" >
-                                  Expiration card
-                                </Typography>
-                                <CardMedia
-                                  style={{ height: "25px" }}
-                                  dir="rtl"
-                                  component="img"
-                                  image="https://brand.mastercard.com/content/dam/mccom/brandcenter/thumbnails/mc_downloads_symbol_350x200.png"
-                                />
-                              </div>
-                              <Row>
-                                <Col xs={4}>
-                                  <TextField id="standard-name"
-                                    label="mm"
-                                    className="checkout-feild"
-                                    value={month}
-                                    onChange={onMonth}
-                                    maxLength={2}
-                                    minLength={2}
-                                    error={alertError}
-                                  />
-                                </Col>
-                                <Col xs={4}>
-                                  <TextField id="standard-name"
-                                    label="yyy"
-                                    className="checkout-feild"
-                                    value={year}
-                                    onChange={onYear}
-                                    maxLength={2}
-                                    minLength={2}
-                                    error={alertError}
-                                  />
-                                </Col>
-                                <Col xs={4}>
-                                  <TextField id="standard-name"
-                                    label="cvv"
-                                    className="checkout-feild"
-                                    value={cvv}
-                                    onChange={onCvv}
-                                    maxLength={3}
-                                    minLength={3}
-                                    error={alertError}
-                                  />
-                                </Col>
-                              </Row>
-                            </Col>
-                            <Col xs={12}>
-                              <div className="checkoutbtn">
-                                <Button
-                                  variant="contained"
-                                  color="primary"
-                                  onClick={submit}
-                                >
-                                  Checkout
-                                </Button>
-                              </div>
-                            </Col>
-                          </Row>
-                        </div>
-                        <Row>
-                        </Row>
-                      </Col>
-                    </Row>
-                  </div>
-                </ScrollAnimation>
-              </Col>}
             </Row>
           </div>
         </Grid>
