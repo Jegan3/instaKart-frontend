@@ -29,6 +29,7 @@ const AddProduct = () => {
   const [stockReserve, setStockReserve] = useState('');
   const [stockHand, setStockHand] = useState('');
   const [productWarranty, setProductWarranty] = useState('');
+  const [productShipping, setProductShipping] = useState('');
   const [modal, setModal] = useState(false);
   const [alertError, setAlertError] = useState(false);
   const [clear, setClear] = useState(false)
@@ -77,7 +78,7 @@ const AddProduct = () => {
   const onCategory = (category) => {
     setCategory(category)
   }
-  
+
   const thriftCategoryOptions = thriftCategoryType && thriftCategoryType.categoryDetails.sort((a, b) => a.categoryName && a.categoryName.localeCompare(b.categoryName)).map((item) => ({
     value: item._id,
     label: item.categoryName,
@@ -115,6 +116,12 @@ const AddProduct = () => {
   const onProductWarranty = (e) => {
     if (e.target.value.match('^[a-zA-Z0-9 ]*$')) {
       setProductWarranty(e.target.value)
+    }
+  }
+
+  const onProductShipping = (e) => {
+    if (e.target.value.match('^[a-zA-Z0-9 ]*$')) {
+      setProductShipping(e.target.value)
     }
   }
 
@@ -199,6 +206,7 @@ const AddProduct = () => {
         // stockHand,
         productDescription,
         productWarranty,
+        productShipping,
       };
       dispatch({ type: 'THRIFT_ADD_PRODUCT_REQUEST', addProduct });
     }
@@ -407,17 +415,29 @@ const AddProduct = () => {
                     value={productDescription}
                     onChange={onProductDescription}
                     maxLength={500}
-                    rows="4"></textarea>
+                    rows="11  "></textarea>
                 </Col>
                 <Col sm={12} md={6}>
-                  <label className="signup-label">Warranty < span className="red-star">*</span> <i className="fa fa-info" onMouseEnter={onModal} /></label>
-                  <textarea className={alertError && !productWarranty ? ` form-control my-input` : `form-control formy`}
-                    name="message"
-                    placeholder='type something..'
-                    value={productWarranty}
-                    onChange={onProductWarranty}
-                    maxLength={500}
-                    rows="4"></textarea>
+                  <Col sm={12}>
+                    <label className="signup-label">Warranty < span className="red-star">*</span> <i className="fa fa-info" onMouseEnter={onModal} /></label>
+                    <textarea className={alertError && !productWarranty ? ` form-control my-input` : `form-control formy`}
+                      name="message"
+                      placeholder='type something..'
+                      value={productWarranty}
+                      onChange={onProductWarranty}
+                      maxLength={500}
+                      rows="4"></textarea>
+                  </Col>
+                  <Col sm={12}>
+                    <label className="signup-label">Shipping & Pickup</label>
+                    <textarea className='form-control'
+                      name="message"
+                      placeholder='type something..'
+                      value={productShipping}
+                      onChange={onProductShipping}
+                      maxLength={500}
+                      rows="4"></textarea>
+                  </Col>
                 </Col>
               </Row>
             </Row>
