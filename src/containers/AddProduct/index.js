@@ -24,6 +24,8 @@ const AddProduct = () => {
   const [price, setPrice] = useState('');
   const [tax, setTax] = useState('');
   const [discount, setDiscount] = useState('');
+  const [discountPrice, setDiscountPrice] = useState('');
+  const [taxPrice, setTaxPrice] = useState('');
   const [finalPrice, setFinalPrice] = useState('');
   const [productDescription, setProductDescription] = useState('');
   const [stockReserve, setStockReserve] = useState('');
@@ -85,20 +87,58 @@ const AddProduct = () => {
   }));
 
   const onPrice = (e) => {
-    setPrice(e.target.value)
-  }
-
-  const onTax = (e) => {
-    setTax(e.target.value)
+    setPrice(e.target.value.substring(e.target.value.lastIndexOf('$') + 1))
+    const a = e.target.value.substring(e.target.value.lastIndexOf('$') + 1)
+    const b = tax
+    const c = +a || +a * +b / 100
+    // setPrice(c)
+    setFinalPrice(c)
   }
 
   const onDiscount = (e) => {
     setDiscount(e.target.value)
+    const a = price
+    const b = e.target.value
+    const c = a * +b / 100
+    const d = a - c
+    const f = d * +tax / 100
+    const g = d + f
+    console.log('eeee', f)
+    setDiscountPrice(g)
+    setFinalPrice(g)
+  }
+  console.log('discount', discount)
+
+  const onTax = (e) => {
+    if (discount) {
+      setTax(e.target.value)
+      // const a = price 
+      // const b = discount
+      // var aa = a.substring(1)
+      const c = e.target.value
+      const d = discountPrice * +c / 100
+      const f = discountPrice + +d
+      console.log('cccc', d)
+      // let taxi = price + e.target.value
+      // console.log('taxi',taxi)
+      setTaxPrice(f)
+      setFinalPrice(f)
+    } else {
+      setTax(e.target.value)
+      // const a = price 
+      // const b = discount
+      // var aa = a.substring(1)
+      const c = e.target.value
+      const d = +price * +c / 100
+      const f = +price + +d
+      setFinalPrice(f)
+    }
+
   }
 
-  const onFinalPrice = (e) => {
-    setFinalPrice(e.target.value)
-  }
+  // const onFinalPrice = (e) => {
+  //   setFinalPrice(e.target.value)
+  // }
 
   const onStockReserve = (e) => {
     setStockReserve(e.target.value)
@@ -213,11 +253,14 @@ const AddProduct = () => {
     setClear(true)
   };
 
+  const symbol = `${thriftCategoryType && thriftCategoryType.symbol}`
+  console.log('symbol', "" + symbol)
+
   return (
-    <div className="wrapper">
-      {isLoading && <Loader />}
-      <Overlay show={modal} onHide={onHide} title="WARNING : LIMITATIONS OF LIABILITY"
-        warningText=" IN NO EVENT SHALL INSTA-KART.COM, ITS OFFICERS, DIRECTORS, EMPLOYEES,
+      <div className="wrapper">
+        {isLoading && <Loader />}
+        <Overlay show={modal} onHide={onHide} title="WARNING : LIMITATIONS OF LIABILITY"
+          warningText=" IN NO EVENT SHALL INSTA-KART.COM, ITS OFFICERS, DIRECTORS, EMPLOYEES,
         OR AGENTS, BE LIABLE FOR DIRECT, INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL OR EXEMPLARY 
         DAMAGES (EVEN IF INSTA-KART.COM HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES), 
         RESULTING FROM ANY ASPECT OF YOUR USE OF THE WEBSITE OR THE SERVICE, 
@@ -230,121 +273,137 @@ const AddProduct = () => {
          THESE LIMITATIONS SHALL APPLY TO THE FULLEST EXTENT PERMITTED BY LAW. YOU SPECIFICALLY ACKNOWLEDGE AND AGREE THAT 
          INSTA-KART.COM SHALL NOT BE LIABLE FOR USER SUBMISSIONS OR THE DEFAMATORY, OFFENSIVE, OR ILLEGAL CONDUCT OF ANY
           USER OR THIRD PARTY AND THAT THE RISK OF HARM OR DAMAGE FROM THE FOREGOING RESTS ENTIRELY WITH YOU. "
-        warningSubText="The Website is controlled and offered by INSTA-KART.COM from its facilities in the United States of America. INSTA-KART.COM 
+          warningSubText="The Website is controlled and offered by INSTA-KART.COM from its facilities in the United States of America. INSTA-KART.COM 
           makes no representations or warranties that the Website is appropriate for use in other locations. Those who access 
           or use the Website from other jurisdictions do so at their own volition and risk and are responsible for compliance 
           with local law." />
-      <Sidebar />
-      <div className="rightside-panel">
-        <Headerbar headerName="Add Product" />
-        <div className="main-content add-product">
-          <Grid fluid>
-            <Row className="form-content card">
-              {/* <Col md={6}> */}
-              <Row>
-                <Col sm={12} md={6}>
-                  <label className="signup-label">Product Name <span className="red-star">*</span></label>
-                  <input
-                    type="text"
-                    className={alertError && !productName ? ` form-control my-input` : `form-control formy`}
-                    maxLength={30}
-                    value={productName}
-                    onChange={onProductName}
-                  />
-                </Col>
-                <Col sm={12} md={6} className={`clear-city ${alertError && !category && `dropdown-alert`}`}>
-                  <label className="signup-label">Select Category <span className="red-star">*</span></label>
-                  <Select
-                    type="text"
-                    className="prof-select "
-                    placeholder="Select Category."
-                    isSearchable={false}
-                    value={category}
-                    onChange={onCategory}
-                    options={thriftCategoryOptions}
-                  // menuIsOpen 
-                  />
-                </Col>
-              </Row>
-              <Row>
-                <Col sm={12} md={6}>
-                  <label className="signup-label">Upload Image <span className="red-star">*</span></label>
-                  <ImgCrop rotate>
-                    <Upload
-                      action="png"
-                      accept="image/*"
-                      // multiple accept="image/*,audio/*,productVideo/*"
-                      customRequest={fakeRequest}
-                      className="upload-image"
-                      listType="picture-card"
-                      fileList={fileList}
-                      onChange={onChangeImage}
-                      onPreview={onPreview}
+        <Sidebar />
+        <div className="rightside-panel">
+          <Headerbar headerName="Add Product" />
+          <div className="main-content add-product">
+            <Grid fluid>
+              <Row className="form-content card">
+                {/* <Col md={6}> */}
+                <Row>
+                  <Col sm={12} md={6}>
+                    <label className="signup-label">Product Name <span className="red-star">*</span></label>
+                    <input
+                      type="text"
+                      className={alertError && !productName ? ` form-control my-input` : `form-control formy`}
+                      maxLength={30}
+                      value={productName}
+                      onChange={onProductName}
+                    />
+                  </Col>
+                  <Col sm={12} md={6} className={`clear-city ${alertError && !category && `dropdown-alert`}`}>
+                    <label className="signup-label">Select Category <span className="red-star">*</span></label>
+                    <Select
+                      type="text"
+                      className="prof-select "
+                      placeholder="Select Category."
+                      isSearchable={false}
+                      value={category}
+                      onChange={onCategory}
+                      options={thriftCategoryOptions}
+                    // menuIsOpen 
+                    />
+                  </Col>
+                </Row>
+                <Row>
+                  <Col sm={12} md={6}>
+                    <label className="signup-label">Upload Image <span className="red-star">*</span></label>
+                    <ImgCrop rotate>
+                      <Upload
+                        action="png"
+                        accept="image/*"
+                        // multiple accept="image/*,audio/*,productVideo/*"
+                        customRequest={fakeRequest}
+                        className="upload-image"
+                        listType="picture-card"
+                        fileList={fileList}
+                        onChange={onChangeImage}
+                        onPreview={onPreview}
+                      >
+                        {fileList.length < 3 && '+ Upload'}
+                      </Upload>
+                    </ImgCrop>
+                    <Modal
+                      visible={previewVisible}
+                      title={previewTitle}
+                      footer={null}
+                      onCancel={handleCancel}
                     >
-                      {fileList.length < 3 && '+ Upload'}
-                    </Upload>
-                  </ImgCrop>
-                  <Modal
-                    visible={previewVisible}
-                    title={previewTitle}
-                    footer={null}
-                    onCancel={handleCancel}
-                  >
-                    <img alt="example" style={{ width: '100%' }} src={previewImage} />
-                  </Modal>
-                </Col>
-                <Col sm={12} md={6}>
-                  <label className="signup-label">Upload Video </label>
-                  <Dragger
-                    name='file'
-                    className="drag-video"
-                    accept="video/*"
-                    customRequest={fakeRequest}
-                    onChange={onChangeVideo}
-                    beforeUpload={beforeUpload}
-                  >
-                    {/* <p className="ant-upload-drag-icon">
+                      <img alt="example" style={{ width: '100%' }} src={previewImage} />
+                    </Modal>
+                  </Col>
+                  <Col sm={12} md={6}>
+                    <label className="signup-label">Upload Video </label>
+                    <Dragger
+                      name='file'
+                      className="drag-video"
+                      accept="video/*"
+                      customRequest={fakeRequest}
+                      onChange={onChangeVideo}
+                      beforeUpload={beforeUpload}
+                    >
+                      {/* <p className="ant-upload-drag-icon">
                       <InboxOutlined /> HI 
                     </p> */}
-                    <p className="ant-upload-text">Click or drag file to this area to upload video</p>
-                    <p className="ant-upload-hint">You can upload only 1 video and maximum file size of the video should be less than 30 MB</p>
-                  </Dragger>
-                </Col>
-              </Row>
-              <Row>
-                <Col sm={12} md={6}>
-                  <Row className='pricerow-list'>
-                    <Col sm={3}>
-                      <label className="signup-label">Price <span className="red-star">*</span></label>
-                      <Cleave
-                        className={alertError && !price ? ` form-control my-input` : `form-control formy`}
-                        maxLength={10}
-                        value={price}
-                        onChange={onPrice}
-                        options={{
-                          prefix: '$',
-                          numeral: true,
-                          numeralThousandsGroupStyle: 'thousand'
-                        }}
-                      />
-
-                    </Col>
-                    <Col sm={3}>
-                      <label className="signup-label">Tax</label>
-                      <Cleave
-                        options={{
-                          numeral: true,
-                          delimiter: '.',
-                          blocks: [2, 4]
-                        }}
-                        className="form-control price-style"
-                        maxLength={10}
-                        value={tax}
-                        onChange={onTax}
-                      />
-                      <span className="percentage">%</span>
-                    </Col>
-                    <Col sm={3}>
+                      <p className="ant-upload-text">Click or drag file to this area to upload video</p>
+                      <p className="ant-upload-hint">You can upload only 1 video and maximum file size of the video should be less than 30 MB</p>
+                    </Dragger>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col sm={12} md={6}>
+                    <Row className='pricerow-list'>
+                      <Col sm={3}>
+                        <label className="signup-label">Price <span className="red-star">*</span></label>
+                        {thriftCategoryType && <Cleave
+                          className={alertError && !price ? ` form-control my-input` : `form-control formy`}
+                          maxLength={7}
+                          value={price}
+                          onChange={onPrice}
+                          options={{
+                            prefix: thriftCategoryType.symbol,
+                            numeral: true,
+                            delimiter: '',
+                            blocks: [7]
+                            // numeralThousandsGroupStyle: 'thousand'
+                          }}
+                        />}
+                      </Col>
+                      <Col sm={3}>
+                        <label className="signup-label">Discount </label>
+                        <Cleave
+                          options={{
+                            numeral: true,
+                            delimiter: '.',
+                            blocks: [2, 4]
+                          }}
+                          className="form-control"
+                          maxLength={10}
+                          value={discount}
+                          onChange={onDiscount}
+                        />
+                        <span className="percentage">%</span>
+                      </Col>
+                      <Col sm={3}>
+                        <label className="signup-label">Tax</label>
+                        <Cleave
+                          options={{
+                            numeral: true,
+                            delimiter: '.',
+                            blocks: [2, 2]
+                          }}
+                          className="form-control price-style"
+                          maxLength={5}
+                          value={tax}
+                          onChange={onTax}
+                        />
+                        <span className="percentage">%</span>
+                      </Col>
+                      {/* <Col sm={3}>
                       <label className="signup-label">Discount </label>
                       <Cleave
                         options={{
@@ -358,115 +417,115 @@ const AddProduct = () => {
                         onChange={onDiscount}
                       />
                       <span className="percentage">%</span>
-                    </Col>
-                    <Col sm={3}>
-                      <label className="signup-label">Final Price  </label>
-                      <Cleave
-                        options={{
-                          prefix: '$',
-                          numeral: true,
-                          numeralThousandsGroupStyle: 'thousand'
-                        }}
-                        className="form-control"
-                        maxLength={10}
-                        value={finalPrice}
-                        onChange={onFinalPrice}
-                      />
-                    </Col>
-                  </Row>
-                </Col>
-                <Col md={6}>
-                  <Row>
-                    <Col sm={6}>
-                      <label className="signup-label">Stock Reserve </label>
-                      <Cleave
-                        options={{
-                          numeral: true,
-                          numeralThousandsGroupStyle: 'thousand'
-                        }}
-                        className="form-control"
-                        maxLength={10}
-                        value={stockReserve}
-                        onChange={onStockReserve}
-                      />
-                    </Col>
-                    <Col sm={6}>
-                      <label className="signup-label">Stocks on Hand  </label>
-                      <Cleave
-                        options={{
-                          numeral: true,
-                          numeralThousandsGroupStyle: 'thousand'
-                        }}
-                        className="form-control"
-                        maxLength={10}
-                        value={stockHand}
-                        onChange={onStockHand}
-                      />
-                    </Col>
-                  </Row>
-                </Col>
-              </Row>
-              <Row>
-                <Col sm={12} md={6}>
-                  <label className="signup-label">Product Description <span className="red-star">*</span></label>
-                  <textarea className={alertError && !productDescription ? ` form-control my-input` : `form-control formy`}
-                    name="message"
-                    placeholder='type something..'
-                    value={productDescription}
-                    onChange={onProductDescription}
-                    maxLength={500}
-                    rows="11  "></textarea>
-                </Col>
-                <Col sm={12} md={6}>
-                  <Col sm={12}>
-                    <label className="signup-label">Warranty < span className="red-star">*</span> <i className="fa fa-info" onMouseEnter={onModal} /></label>
-                    <textarea className={alertError && !productWarranty ? ` form-control my-input` : `form-control formy`}
+                    </Col> */}
+                      <Col sm={3}>
+                        <label className="signup-label">Final Price  </label>
+                        {thriftCategoryType && <Cleave
+                          options={{
+                            prefix: thriftCategoryType.symbol,
+                            numeral: true,
+                            numeralThousandsGroupStyle: 'thousand'
+                          }}
+                          className="form-control"
+                          maxLength={10}
+                          value={finalPrice}
+                          // onChange={onFinalPrice}
+                          disabled
+                        />}
+                      </Col>
+                    </Row>
+                  </Col>
+                  <Col md={6}>
+                    <Row>
+                      <Col sm={6}>
+                        <label className="signup-label">Stock Reserve </label>
+                        <Cleave
+                          options={{
+                            numeral: true,
+                            numeralThousandsGroupStyle: 'thousand'
+                          }}
+                          className="form-control"
+                          maxLength={10}
+                          value={stockReserve}
+                          onChange={onStockReserve}
+                        />
+                      </Col>
+                      <Col sm={6}>
+                        <label className="signup-label">Stocks on Hand  </label>
+                        <Cleave
+                          options={{
+                            numeral: true,
+                            numeralThousandsGroupStyle: 'thousand'
+                          }}
+                          className="form-control"
+                          maxLength={10}
+                          value={stockHand}
+                          onChange={onStockHand}
+                        />
+                      </Col>
+                    </Row>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col sm={12} md={6}>
+                    <label className="signup-label">Product Description <span className="red-star">*</span></label>
+                    <textarea className={alertError && !productDescription ? ` form-control my-input` : `form-control formy`}
                       name="message"
                       placeholder='type something..'
-                      value={productWarranty}
-                      onChange={onProductWarranty}
+                      value={productDescription}
+                      onChange={onProductDescription}
                       maxLength={500}
-                      rows="4"></textarea>
+                      rows="11  "></textarea>
                   </Col>
-                  <Col sm={12}>
-                    <label className="signup-label">Shipping & Pickup</label>
-                    <textarea className='form-control'
-                      name="message"
-                      placeholder='type something..'
-                      value={productShipping}
-                      onChange={onProductShipping}
-                      maxLength={500}
-                      rows="4"></textarea>
+                  <Col sm={12} md={6}>
+                    <Col sm={12}>
+                      <label className="signup-label">Warranty < span className="red-star">*</span> <i className="fa fa-info" onMouseEnter={onModal} /></label>
+                      <textarea className={alertError && !productWarranty ? ` form-control my-input` : `form-control formy`}
+                        name="message"
+                        placeholder='type something..'
+                        value={productWarranty}
+                        onChange={onProductWarranty}
+                        maxLength={500}
+                        rows="4"></textarea>
+                    </Col>
+                    <Col sm={12}>
+                      <label className="signup-label">Shipping & Pickup</label>
+                      <textarea className='form-control'
+                        name="message"
+                        placeholder='type something..'
+                        value={productShipping}
+                        onChange={onProductShipping}
+                        maxLength={500}
+                        rows="4"></textarea>
+                    </Col>
                   </Col>
+                </Row>
+              </Row>
+              <Row md={12} className="margin-control">
+                {/* <Col className="product-button"> */}
+                <Col lg={2} md={3} sm={4} xs={6} className="product-button">
+                  <button
+                    type="button"
+                    className="btn btn-primary btn-block modal-butn"
+                    onClick={onSubmit}
+                  >
+                    Submit
+                  </button>
+                </Col>
+                <Col lg={2} md={3} sm={4} xs={6} className="product-button">
+                  <button
+                    type="button"
+                    className="btn btn-primary btn-block modal-butn"
+                  // onClick={onCancel}
+                  >
+                    Cancel
+                  </button>
                 </Col>
               </Row>
-            </Row>
-            <Row md={12} className="margin-control">
-              {/* <Col className="product-button"> */}
-              <Col lg={2} md={3} sm={4} xs={6} className="product-button">
-                <button
-                  type="button"
-                  className="btn btn-primary btn-block modal-butn"
-                  onClick={onSubmit}
-                >
-                  Submit
-                </button>
-              </Col>
-              <Col lg={2} md={3} sm={4} xs={6} className="product-button">
-                <button
-                  type="button"
-                  className="btn btn-primary btn-block modal-butn"
-                // onClick={onCancel}
-                >
-                  Cancel
-                </button>
-              </Col>
-              {/* </Col> */}
-            </Row>
-          </Grid>
+            </Grid>
+          </div>
         </div>
       </div>
-    </div>
   );
 };
 

@@ -9,7 +9,7 @@ import Button from '@material-ui/core/Button';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 
-const CheckOut = (props) => {
+const Cart = (props) => {
   const [toggle, setToggle] = useState(true);
   const [fullName, setFullName] = useState('');
   const [mobile, setMobile] = useState('');
@@ -25,10 +25,13 @@ const CheckOut = (props) => {
 
   const dispatch = useDispatch();
   const productDetails = useSelector((state) => state.productInfoState.productInfo);
+  const cart = useSelector((state) => state.cartState.cart);
   const product = productDetails && productDetails.productInfo
+  // const cartDetails = cart && cart.cartInfo
+  console.log('cartDetails',cart)
 
   useEffect(() => {
-    dispatch({ type: 'PRODUCT_INFO_REQUEST', productId: location.state });
+    dispatch({ type: 'CART_REQUEST' });
   }, []);
 
   const onMobile = (e) => {
@@ -81,11 +84,28 @@ const CheckOut = (props) => {
 
   const onDecrement = () => {
     count > 1 && setCount(count - 1)
+  //   const addToCart = {
+  //     productId: product._id,
+  //     totalPrice: productPrice*count,
+  //     quantity: count,
+  // }
+  // dispatch({ type: 'ADD_CART_REQUEST', addToCart: addToCart});
   }
 
-  const onIncrement = () => {
+  const onIncrement = (info) => {
+    console.log('info',info)
     setCount(count + 1)
+  //   const addToCart = {
+  //     productId: product._id,
+  //     totalPrice: productPrice*count,
+  //     quantity: count,
+  // }
+  // dispatch({ type: 'ADD_CART_REQUEST', addToCart: addToCart});
   }
+
+  const total = cart && cart.cartInfo
+  .map(item => parseInt(item.totalPrice))
+  .reduce((prev, curr) => prev + curr, 0);
 
   const submit = () => {
     if (!fullName || !mobile || !address || !country || !city || !zipCode || !email) {
@@ -125,7 +145,38 @@ const CheckOut = (props) => {
                     </Col>
                     <Col sm={12}>
                       <div className="product-list">
-                        <Row>
+                        {cart && cart.cartInfo.map((info) => <Row>
+                          <div className="align-items-center">
+                            <Col xs={3}>
+                              <img className="img-fluid" src={info && info.productImage} />
+                            </Col>
+                            <Col xs={4}>
+                              <div className="productlist">
+                                <div className="product-name">{info && info.productName}</div>
+                              </div>
+                            </Col>
+                            <Col xs={3}>
+                              <div className="productlist">
+                                <div className='quanity-check'>
+                                  <span>QTY</span>
+                                  <span className="quanitybtn"
+                                    onClick={onDecrement}> - </span>
+                                  {info && info.quantity}
+                                  <span className="quanitybtn"
+                                    onClick={() => onIncrement(info)}> + </span>
+                                </div>
+                              </div>
+                            </Col>
+                            <Col xs={2}>
+                              <div className="product-price">
+                                <div className="product-name">{info && info.totalPrice}</div>
+                              </div>
+                              <br />
+                              <div className="product-remove">Remove</div>
+                            </Col>
+                          </div>
+                        </Row>)}
+                        {/* <Row>
                           <div className="align-items-center">
                             <Col xs={3}>
                               <img className="img-fluid" src={product && product.productImages[0]} />
@@ -155,38 +206,7 @@ const CheckOut = (props) => {
                               <div className="product-remove">Remove</div>
                             </Col>
                           </div>
-                        </Row>
-                        <Row>
-                          <div className="align-items-center">
-                            <Col xs={3}>
-                              <img className="img-fluid" src={product && product.productImages[0]} />
-                            </Col>
-                            <Col xs={4}>
-                              <div className="productlist">
-                                <div className="product-name">{product && product.productName}</div>
-                              </div>
-                            </Col>
-                            <Col xs={3}>
-                              <div className="productlist">
-                                <div className='quanity-check'>
-                                  <span>QTY</span>
-                                  <span className="quanitybtn"
-                                    onClick={onDecrement}> - </span>
-                                  {count}
-                                  <span className="quanitybtn"
-                                    onClick={onIncrement}> + </span>
-                                </div>
-                              </div>
-                            </Col>
-                            <Col xs={2}>
-                              <div className="product-price">
-                                <div className="product-name">{product && product.finalPrice}</div>
-                              </div>
-                              <br />
-                              <div className="product-remove">Remove</div>
-                            </Col>
-                          </div>
-                        </Row>
+                        </Row> */}
                       </div>
                     </Col>
                   </Row>
@@ -202,7 +222,7 @@ const CheckOut = (props) => {
                       <Col xs={6}>
                         <div className="total">
                           <div className="sub-price">
-                            $200
+                          {total}
                           </div>
                         </div>
                       </Col>
@@ -337,4 +357,4 @@ const CheckOut = (props) => {
   )
 }
 
-export default CheckOut;
+export default Cart;

@@ -14,6 +14,8 @@ export default {
     getThriftProfile: '/api/vendor/estoreInfo',
     getProductInfo: '/api/staticContentRouter/getProductInfo',
     getThriftStoreInfo: '/api/staticContentRouter/getStoreInfo',
+    getAddCart: '/api/user/addToCart',
+    getCart: '/api/user/getCart',
   },
 
   apiBaseUrl: {

@@ -51,15 +51,14 @@ const ProductInfo = ({ location }) => {
 
   const onAddCart = () => {
     if (sessionStorage.access) {
-      const productPrice = product.finalPrice.replace(/\D/g,'');
+      const productPrice = product.finalPrice.replace(/\D/g, '');
 
       const addToCart = {
-          productId: product._id,
-          totalPrice: productPrice*count,
-          quantity: count,
+        productId: product._id,
+        totalPrice: `${productPrice * count}`,
+        quantity: count,
       }
-      console.log('count',addToCart)
-      dispatch({ type: 'ADD_CART_REQUEST', addToCart: addToCart});
+      dispatch({ type: 'ADD_CART_REQUEST', addToCart: addToCart });
       history.push({ pathname: '/cart', state: 'addCart' });
     } else {
       setLogin(true)
