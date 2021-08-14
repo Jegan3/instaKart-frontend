@@ -16,7 +16,7 @@
   float: right;
   cursor: pointer;
   font-weight: 800;
-  font-family: initial;
+  font-family: monospace;
   font-size: 20px;
 }
 
@@ -25,33 +25,33 @@
 }
 
 .total {
-  float: right;
   margin: 3%;
   cursor: pointer;
   font-weight: 800;
-  font-family: initial;
+  font-family: monospace;
   font-size: 17px;
 
   .sub-total {
     color: gray;
     font-weight: 800;
+    font-family: monospace;
   }
 
   .sub-price {
     font-size: 20px;
+    position: relative;
+    left: 13px;
+    font-family: monospace;
   }
 }
 
 .quanity-check {
-  font-size: 15px;
-  font-weight: 700;
-  font-family: monospace;
   cursor: pointer;
+  font-family: monospace;
 
   .quanitybtn {
     cursor: pointer;
   }
-
 }
 
 .checkout-details {
@@ -62,9 +62,10 @@
 
   .address-title {
     color: #ffffff;
-    margin: 5% 0px;
+    margin: 1% 0px;
     font-weight: 800;
     font-family: initial;
+    font-size: 30px;
   }
 
   .checkout-feild {
@@ -84,23 +85,34 @@
     text-align: center;
 
     img {
-      width: 8rem
+      width: 9rem
     }
 
-    .close {
+    .product-remove {
+      font-size: 15px;
+      font-weight: 700;
+      font-family: monospace;
+      color: gray;
+      cursor: pointer;
+
+      :hover {
+        color: black;
+      }
+    }
+
+    .productlist {
       font-size: 18px;
       font-weight: 700;
-      font-family: fantasy;
+      font-family: monospace;
       padding-top: 7%;
       cursor: pointer;
-      float: right;
     }
 
-    .productquanity {
+    .product-price {
       font-size: 18px;
       font-weight: 700;
       font-family: fantasy;
-      padding-top: 7%;
+      padding-top: 10%;
       cursor: pointer;
     }
   }
@@ -162,14 +174,9 @@
     margin-top: 10px;
   }
 
-  .type-img {
-    display: -webkit-box;
-  }
-
   .checkoutbtn {
     text-align: center;
-    margin-top: 18%;
-    margin-bottom: 5%;
+    margin-top: 7%;
 
     .MuiButton-containedPrimary {
       color: #fff;
@@ -177,23 +184,6 @@
       padding: 10px 25px;
       background-color: #3f51b5;
     }
-  }
-
-  .cardlist {
-    margin-top: 7%;
-  }
-
-  .yearcard {
-    font-size: 11px;
-    float: right;
-    margin-top: 5px;
-    color: grey;
-  }
-
-  .namecard {
-    font-size: 11px;
-    margin-top: 5px;
-    color: grey;
   }
 
   .MuiButton-containedPrimary {
@@ -207,22 +197,19 @@
     background-color: #515863;
   }
 
-  .cardnumber {
-    text-align: center;
-    font-size: 14px;
-    color: #fff;
-  }
-
   .proceed-list {
     display: flex;
     justify-content: center;
     text-align: center;
     margin: 10%;
     padding: 5%;
+    font-family: monospace;
   }
 
   .subtotal {
-    font-size: 23px;
+    font-size: 30px;
+    margin: 1%;
+    text-overflow: ellipsis;
     cursor: pointer;
     font-weight: 800;
     font-family: monospace;
