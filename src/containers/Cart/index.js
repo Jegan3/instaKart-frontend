@@ -26,19 +26,19 @@ const Cart = (props) => {
 
   const dispatch = useDispatch();
   const productDetails = useSelector((state) => state.productInfoState.productInfo);
+  const addCart = useSelector((state) => state.addCartState.addCart);
   const cart = useSelector((state) => state.cartState.cart);
   const checkout = useSelector((state) => state.checkoutState.checkout);
   const product = productDetails && productDetails.productInfo
   // const cartDetails = cart && cart.cartInfo
-  console.log('cartDetails',cart)
 
   useEffect(() => {
     dispatch({ type: 'CART_REQUEST' });
-  }, [count]);
+  }, [count, addCart]);
 
   useEffect(() => {
-    if(checkout && checkout.url){
-      window.location.assign(checkout.url );
+    if (checkout && checkout.url) {
+      window.location.assign(checkout.url);
     }
   }, [checkout]);
 
@@ -91,29 +91,49 @@ const Cart = (props) => {
   }
 
   const onDecrement = (info) => {
-    info.quantity  > 1 && setCount(info.quantity - 1)
+    info.quantity > 1 && setCount(info.quantity - 1)
+
+    const productPrice = info.productPrice.replace(/[^.1-9\.]+/g, '');
+    const currency = info.productPrice.replace(/\d+([,.]\d+)?\s*/g, '');
+
     const addToCart = {
       productId: info.productId,
-      totalPrice: info.productPrice*count,
-      quantity: count,
-  }
-  dispatch({ type: 'ADD_CART_REQUEST', addToCart: addToCart});
+      totalPrice: `${currency}${parseFloat(productPrice * (info.quantity - 1)).toFixed(2)}`,
+      quantity: info.quantity - 1,
+    }
+    dispatch({ type: 'ADD_CART_REQUEST', addToCart: addToCart });
   }
 
   const onIncrement = (info) => {
-    console.log('info',info)
-    setCount(info.quantity + 1)
+    console.log('info', info)
+
+    const productPrice = info.productPrice.replace(/[^.1-9\.]+/g, '');
+    const currency = info.productPrice.replace(/\d+([,.]\d+)?\s*/g, '');
+
+    // setCount(info.quantity + 1)
     const addToCart = {
       productId: info.productId,
-      totalPrice: info.productPrice*count,
-      quantity: count,
-  }
-  dispatch({ type: 'ADD_CART_REQUEST', addToCart: addToCart});
+      totalPrice: `${currency}${parseFloat(productPrice * (info.quantity + 1)).toFixed(2)}`,
+      quantity: info.quantity + 1,
+    }
+    dispatch({ type: 'ADD_CART_REQUEST', addToCart: addToCart });
   }
 
+  const onRemove = (info) => {
+
+    const addToCart = {
+      productId: info.productId,
+      totalPrice: '',
+      quantity: 0,
+    }
+    dispatch({ type: 'ADD_CART_REQUEST', addToCart: addToCart });
+  }
+
+  const currency = cart && cart.cartInfo[0].totalPrice.replace(/\d+([,.]\d+)?\s*/g, '');
+
   const total = cart && cart.cartInfo
-  .map(item => parseInt(item.totalPrice.replace(/\D/g, '')))
-  .reduce((prev, curr) => prev + curr, 0);
+    .map(item => parseFloat(item.totalPrice.replace(/[^.1-9\.]+/g, '')))
+    .reduce((prev, curr) => prev + curr, 0);
 
   const submit = () => {
     if (!fullName || !mobile || !address || !country || !city || !zipCode || !email) {
@@ -129,8 +149,8 @@ const Cart = (props) => {
         country,
         zipCode,
         email,
-        cartTotalPrice : parseFloat(total).toFixed(2),
-        currency: '$'
+        cartTotalPrice: parseFloat(total).toFixed(2),
+        currency
       };
       console.log('test', checkout)
       dispatch({ type: 'CHECKOUT_REQUEST', checkout });
@@ -171,7 +191,7 @@ const Cart = (props) => {
                                 <div className='quanity-check'>
                                   <span>QTY</span>
                                   <span className="quanitybtn"
-                                    onClick={onDecrement}> - </span>
+                                    onClick={() => onDecrement(info)}> - </span>
                                   {info && info.quantity}
                                   <span className="quanitybtn"
                                     onClick={() => onIncrement(info)}> + </span>
@@ -183,7 +203,7 @@ const Cart = (props) => {
                                 <div className="product-name">{info && info.totalPrice}</div>
                               </div>
                               <br />
-                              <div className="product-remove">Remove</div>
+                              <div className="product-remove" onClick={() => onRemove(info)}>Remove</div>
                             </Col>
                           </div>
                         </Row>)}
@@ -233,7 +253,7 @@ const Cart = (props) => {
                       <Col xs={6}>
                         <div className="total">
                           <div className="sub-price">
-                          {total}
+                            {`${currency}${parseFloat(total).toFixed(2)}`}
                           </div>
                         </div>
                       </Col>
@@ -244,9 +264,9 @@ const Cart = (props) => {
               {(!toggle || state === 'addCart' && < Col md={5}>
                 <div className="proceed-list">
                   <div>
-                    <h3 className="subtotal">
+                    {/* <h3 className="subtotal">
                       Subtotal (1 item): $ 123.00
-                    </h3>
+                    </h3> */}
                     <button
                       type="button"
                       className="btn btn-primary btn-lg btn-block modal-button"
