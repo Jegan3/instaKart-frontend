@@ -1,6 +1,6 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import envConfig from 'envConfig'; //eslint-disable-line
-import * as instakartActionCreators from '../actions/Cart';
+import * as instakartActionCreators from '../actions/Checkout';
 import { doPost } from '../utils/fetchWrapper';
 
 export function* getCheckout(data) {
