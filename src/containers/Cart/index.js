@@ -121,7 +121,7 @@ const Cart = (props) => {
         country,
         zipCode,
         email,
-        cartTotalrice : parseFloat(total).toFixed(2),
+        cartTotalPrice : parseFloat(total).toFixed(2),
         currency: '$'
       };
       console.log('test', checkout)
