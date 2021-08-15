@@ -8,6 +8,7 @@ import ScrollAnimation from 'react-animate-on-scroll';
 import Button from '@material-ui/core/Button';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
+import { history } from '../../routes';
 
 const Cart = (props) => {
   const [toggle, setToggle] = useState(true);
@@ -26,6 +27,7 @@ const Cart = (props) => {
   const dispatch = useDispatch();
   const productDetails = useSelector((state) => state.productInfoState.productInfo);
   const cart = useSelector((state) => state.cartState.cart);
+  const checkout = useSelector((state) => state.checkoutState.checkout);
   const product = productDetails && productDetails.productInfo
   // const cartDetails = cart && cart.cartInfo
   console.log('cartDetails',cart)
@@ -33,6 +35,12 @@ const Cart = (props) => {
   useEffect(() => {
     dispatch({ type: 'CART_REQUEST' });
   }, [count]);
+
+  useEffect(() => {
+    if(checkout && checkout.url){
+      window.location.assign(checkout.url );
+    }
+  }, [checkout]);
 
   const onMobile = (e) => {
     if (e.target.value.match('^[0-9]*$')) {
