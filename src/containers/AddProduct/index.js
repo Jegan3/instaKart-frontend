@@ -242,7 +242,7 @@ const AddProduct = () => {
         productImages: fileList.map(info => info.thumbUrl),
         productVideo,
         discount,
-        finalPrice: `${symbol}${(Math.round(finalPrice * 100) / 100).toFixed(2)}`,
+        finalPrice: `${symbol}${Math.round(finalPrice).toFixed(2)}`,
         // stockReserve,
         // stockHand,
         productDescription,

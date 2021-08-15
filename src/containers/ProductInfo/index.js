@@ -51,12 +51,12 @@ const ProductInfo = ({ location }) => {
 
   const onAddCart = () => {
     if (sessionStorage.access) {
-      const productPrice = product.finalPrice.replace(/[^.1-9\.]+/g, '');
+      const productPrice = product.finalPrice.replace(/[^.0-9\.]+/g, '');
       const currency = product.finalPrice.replace(/\d+([,.]\d+)?\s*/g, '');
 
       const addToCart = {
         productId: product._id,
-        totalPrice: `${currency}${parseFloat(productPrice * count).toFixed(2)}`,
+        totalPrice: `${currency}${Math.round(productPrice * count).toFixed(2)}`,
         quantity: count,
       }
       dispatch({ type: 'ADD_CART_REQUEST', addToCart: addToCart });

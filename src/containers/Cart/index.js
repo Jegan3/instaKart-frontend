@@ -132,7 +132,7 @@ const Cart = (props) => {
   const currency = cart && cart.cartInfo[0].totalPrice.replace(/\d+([,.]\d+)?\s*/g, '');
 
   const total = cart && cart.cartInfo
-    .map(item => parseFloat(item.totalPrice.replace(/[^.1-9\.]+/g, '')))
+    .map(item => parseFloat(item.totalPrice.replace(/[^.0-9\.]+/g, '')))
     .reduce((prev, curr) => prev + curr, 0);
 
   const submit = () => {
