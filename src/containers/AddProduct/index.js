@@ -228,6 +228,8 @@ const AddProduct = () => {
 
   const handleCancel = () => setPreviewVisible(false);
 
+  const symbol = `${thriftCategoryType && thriftCategoryType.symbol}`
+
   const onSubmit = () => {
     if
       (!productName || !category || !fileList.length || !price || !productDescription || !productWarranty) {
@@ -241,20 +243,18 @@ const AddProduct = () => {
         productImages: fileList.map(info => info.thumbUrl),
         productVideo,
         discount,
-        finalPrice,
+        finalPrice : `${symbol}${finalPrice}`,
         // stockReserve,
         // stockHand,
         productDescription,
         productWarranty,
-        productShipping,
+        // productShipping,
       };
       dispatch({ type: 'THRIFT_ADD_PRODUCT_REQUEST', addProduct });
     }
     setClear(true)
   };
 
-  const symbol = `${thriftCategoryType && thriftCategoryType.symbol}`
-  console.log('symbol', "" + symbol)
 
   return (
       <div className="wrapper">
@@ -428,7 +428,7 @@ const AddProduct = () => {
                           }}
                           className="form-control"
                           maxLength={10}
-                          value={finalPrice}
+                          value={parseFloat(finalPrice).toFixed(2)}
                           // onChange={onFinalPrice}
                           disabled
                         />}

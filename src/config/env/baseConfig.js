@@ -16,6 +16,7 @@ export default {
     getThriftStoreInfo: '/api/staticContentRouter/getStoreInfo',
     getAddCart: '/api/user/addToCart',
     getCart: '/api/user/getCart',
+    getCheckout: '/api/user/completePaymet',
   },
 
   apiBaseUrl: {

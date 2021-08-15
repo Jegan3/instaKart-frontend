@@ -18,7 +18,7 @@ const Cart = (props) => {
   const [country, setCountry] = useState();
   const [zipCode, setZipCode] = useState();
   const [email, setEmail] = useState('');
-  const [count, setCount] = useState(1);
+  const [count, setCount] = useState();
   const [alertError, setAlertError] = useState(false);
 
   const { state } = props.location;
@@ -32,7 +32,7 @@ const Cart = (props) => {
 
   useEffect(() => {
     dispatch({ type: 'CART_REQUEST' });
-  }, []);
+  }, [count]);
 
   const onMobile = (e) => {
     if (e.target.value.match('^[0-9]*$')) {
@@ -82,29 +82,29 @@ const Cart = (props) => {
     setToggle(false)
   }
 
-  const onDecrement = () => {
-    count > 1 && setCount(count - 1)
-  //   const addToCart = {
-  //     productId: product._id,
-  //     totalPrice: productPrice*count,
-  //     quantity: count,
-  // }
-  // dispatch({ type: 'ADD_CART_REQUEST', addToCart: addToCart});
+  const onDecrement = (info) => {
+    info.quantity  > 1 && setCount(info.quantity - 1)
+    const addToCart = {
+      productId: info.productId,
+      totalPrice: info.productPrice*count,
+      quantity: count,
+  }
+  dispatch({ type: 'ADD_CART_REQUEST', addToCart: addToCart});
   }
 
   const onIncrement = (info) => {
     console.log('info',info)
-    setCount(count + 1)
-  //   const addToCart = {
-  //     productId: product._id,
-  //     totalPrice: productPrice*count,
-  //     quantity: count,
-  // }
-  // dispatch({ type: 'ADD_CART_REQUEST', addToCart: addToCart});
+    setCount(info.quantity + 1)
+    const addToCart = {
+      productId: info.productId,
+      totalPrice: info.productPrice*count,
+      quantity: count,
+  }
+  dispatch({ type: 'ADD_CART_REQUEST', addToCart: addToCart});
   }
 
   const total = cart && cart.cartInfo
-  .map(item => parseInt(item.totalPrice))
+  .map(item => parseInt(item.totalPrice.replace(/\D/g, '')))
   .reduce((prev, curr) => prev + curr, 0);
 
   const submit = () => {
@@ -113,7 +113,7 @@ const Cart = (props) => {
       message.error('Please fill all the fields')
     } else {
       message.success(` ${fullName} Thank you for Your Purchase!!`)
-      const checkOut = {
+      const checkout = {
         fullName,
         mobile,
         address,
@@ -121,8 +121,11 @@ const Cart = (props) => {
         country,
         zipCode,
         email,
+        cartTotalrice : parseFloat(total).toFixed(2),
+        currency: '$'
       };
-      console.log('test', checkOut)
+      console.log('test', checkout)
+      dispatch({ type: 'CHECKOUT_REQUEST', checkout });
     };
   }
 
