@@ -33,7 +33,7 @@ export const Industries = [
   },
   {
     _id: '60a0c4c30ee7eff632294390',
-    industryType: 'Automotive, Hardware & Industrial Supplies',
+    industryType: 'Automotive, Hardware, Industrial & Safety Supplies',
   },
   {
     _id: '60a0c55e0ee7eff632294391',
