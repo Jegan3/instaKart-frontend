@@ -98,7 +98,7 @@ const Cart = (props) => {
 
     const addToCart = {
       productId: info.productId,
-      totalPrice: `${currency}${parseFloat(productPrice * (info.quantity - 1)).toFixed(2)}`,
+      totalPrice: `${currency}${Math.round(productPrice * (info.quantity - 1)).toFixed(2)}`,
       quantity: info.quantity - 1,
     }
     dispatch({ type: 'ADD_CART_REQUEST', addToCart: addToCart });
@@ -107,13 +107,13 @@ const Cart = (props) => {
   const onIncrement = (info) => {
     console.log('info', info)
 
-    const productPrice = info.productPrice.replace(/[^.1-9\.]+/g, '');
+    const productPrice = info.productPrice.replace(/[^.0-9\.]+/g, '');
     const currency = info.productPrice.replace(/\d+([,.]\d+)?\s*/g, '');
 
     // setCount(info.quantity + 1)
     const addToCart = {
       productId: info.productId,
-      totalPrice: `${currency}${parseFloat(productPrice * (info.quantity + 1)).toFixed(2)}`,
+      totalPrice: `${currency}${Math.round(productPrice * (info.quantity + 1)).toFixed(2)}`,
       quantity: info.quantity + 1,
     }
     dispatch({ type: 'ADD_CART_REQUEST', addToCart: addToCart });
