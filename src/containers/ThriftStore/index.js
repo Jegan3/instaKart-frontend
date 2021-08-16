@@ -84,7 +84,7 @@ const ThriftStore = () => {
       <Row>
         <div className="bg-thrift">
           <div className="thrift-ads">
-            <h3>TIMECAP LOGS</h3>
+            <h3>TIMECAP VLOGS</h3>
             <h6>Buy & Sell Any Thing</h6>
             <CarouselThriftPromotions />
           </div>
