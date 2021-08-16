@@ -247,7 +247,7 @@ const AddProduct = () => {
         // stockHand,
         productDescription,
         productWarranty,
-        // productShipping,
+        productShipping,
       };
       dispatch({ type: 'THRIFT_ADD_PRODUCT_REQUEST', addProduct });
     }
