@@ -53,6 +53,7 @@ const AddProduct = () => {
       setFinalPrice('');
       setProductDescription('');
       setProductWarranty('');
+      setProductShipping('');
       message.success(`Thanks!, ${productName} ${thriftAddProduct.message}`)
       setClear(false)
     } else if (clear && invalidAddProduct) {
@@ -242,7 +243,7 @@ const AddProduct = () => {
         productImages: fileList.map(info => info.thumbUrl),
         productVideo,
         discount,
-        finalPrice: `${symbol}${Math.round(finalPrice).toFixed(2)}`,
+        finalPrice: `${symbol}${finalPrice.toFixed(2)}`,
         // stockReserve,
         // stockHand,
         productDescription,
