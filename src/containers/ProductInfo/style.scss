@@ -2,7 +2,6 @@
 
   .jumbotron {
     position: relative;
-    // bottom: 74px;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
@@ -18,7 +17,6 @@
       left: 0;
       width: 100%;
       height: 100%;
-      // background: rgba(0, 0, 0, .5);
     }
   }
 
@@ -36,22 +34,18 @@
   }
 
   .jumbotron .container {
-    /* max-width: 100%; */
     width: 100%;
   }
 
   .ads-page {
-    // background-color: rgba(255,255,255,.3);
     background-color: rgba(0, 0, 0, 0.75);
     position: relative;
-    // bottom: 3.5em;
 
     .product-sides {
       margin: 0% 5%;
 
       .product-title {
         font-size: 37px;
-        // line-height: 30px;
         margin-bottom: 15px;
         font-family: fantasy;
         color: $color-background;
@@ -59,21 +53,12 @@
       }
 
       .sale {
-        // float: left;
-        // left: 19%;
-        // margin: 1%;
-        // padding: 10px;
-        // position: relative;
-        // font-weight: 700;
         color: whitesmoke;
         font-family: fantasy;
       }
 
       .see-all {
         font-size: 15px;
-        // left: 19%;
-        // margin: 1%;
-        // padding: 10px;
         position: relative;
         font-weight: 700;
         color: whitesmoke;
@@ -81,11 +66,14 @@
         text-decoration: underline;
       }
 
+      .prod-details {
+        font-size: 15px;
+        color: $color-white;
+      }
     }
 
     .position-top {
-      margin-top: 10%;
-      // background: $color-background;
+      margin-top: 10%
     }
 
     .position-bottom {
@@ -93,6 +81,9 @@
       background: $color-background;
     }
 
+    .active {
+      color: $color-theme;
+    }
   }
 }
 
@@ -114,7 +105,6 @@
   font-size: 18px;
   text-align: center;
   margin: 10px;
-  background-color: none;
   white-space: nowrap;
   background-color: transparent;
   border-color: transparent;
@@ -129,13 +119,8 @@
   transition: all .2s ease-out;
 
   &:hover {
-    // margin-top: 1%;
-    // color: white;
-    // transition: all .2s ease-out;
-    // border-bottom: 5px solid white;
     transition: color .3s cubic-bezier(.7, 0, .3, 1);
     position: relative;
-    color: #fff;
     letter-spacing: 1px;
     display: block;
   }
@@ -173,7 +158,7 @@
   }
 }
 
-.desc-warni {
+.desc {
   .title-lorem {
     font-size: 25px;
     color: whitesmoke;
@@ -183,12 +168,11 @@
     font-size: 18px;
     color: whitesmoke;
   }
+
+
 }
 
 .review-rate {
-  // display: inline;
-  // // float: right;
-  // font-size: 8px;
   display: flex;
   position: relative;
   bottom: 10px;

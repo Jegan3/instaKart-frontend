@@ -12,7 +12,7 @@ import { CarouselNewEStoreAds, CarouselReviewCard } from '../../components/Carou
 
 const ProductInfo = ({ location }) => {
   const [count, setCount] = useState(1);
-  const [toggle, setToggle] = useState(true);
+  const [toggle, setToggle] = useState(1);
   const [login, setLogin] = useState(false);
   const [background, setBackground] = useState(false);
 
@@ -29,12 +29,20 @@ const ProductInfo = ({ location }) => {
     dispatch({ type: 'PRODUCT_INFO_REQUEST', productId: location.state });
   }, [])
 
-  const onWarranty = () => {
-    setToggle(false)
+  const onDescription = () => {
+    setToggle(1)
   }
 
-  const onDescription = () => {
-    setToggle(true)
+  const onWarranty = () => {
+    setToggle(2)
+  }
+
+  const onShipping = () => {
+    setToggle(3)
+  }
+
+  const onMessage = () => {
+    setToggle(4)
   }
 
   const onDecrement = () => {
@@ -121,39 +129,40 @@ const ProductInfo = ({ location }) => {
                     <Col sm={12}>
                       <Row>
                         <Col sm={3}>
-                          <button className="butn-ads" onClick={onWarranty}>
+                          <button className={`butn-ads ${toggle === 1 && `active`}`} onClick={onDescription}>
                             Description
                           </button>
                         </Col>
                         <Col sm={3}>
-                          <button className="butn-ads" onClick={onWarranty}>
+                          <button className={`butn-ads ${toggle === 2 && `active`}`} onClick={onWarranty}>
                             Warranty
                           </button>
                         </Col>
                         <Col sm={3}>
-                          <button className="butn-ads" onClick={onDescription}>
+                          <button className={`butn-ads ${toggle === 3 && `active`}`} onClick={onShipping}>
                             Shipping & Pickup
                           </button>
                         </Col>
                         <Col sm={3}>
-                          <button className="butn-ads" onClick={onDescription}>
+                          <button className={`butn-ads ${toggle === 4 && `active`}`} onClick={onMessage}>
                             Message
                           </button>
                         </Col>
                       </Row>
                     </Col>
                     <Col sm={12}>
-                      <div className='desc-warni'>
-                        {toggle ?
-                          <div className="first" className="active">
-                            <p className='subtitle-lorem' >With a highly breathable  upper and casual silouette,
-                              the Nike Roshe Run is  definately a perfect model for summer. For Spring /Summer 2013 a
-                              fresh Mint Green colorway's version of this 'yet classic' pair is now available to order.</p>
-                          </div> :
-                          <div className="second" className="active">
-                            <p className='subtitle-lorem' >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec at viverra est,
-                              eu finibus mauris. Quisque tempus vestibulum fringilla. Morbi tortor eros,
-                              sollicitudin eu arcu sit amet, aliquet sagittis dolor.</p>
+                      <div className='desc'>
+                        {toggle === 1 &&
+                          <div>
+                            <h3 className="prod-details" >{product && product.productDescription}</h3>
+                          </div>}
+                        {toggle === 2 &&
+                          <div>
+                            <h3 className="prod-details">{product && product.productWarranty}</h3>
+                          </div>}
+                        {toggle === 3 &&
+                          <div>
+                            <h3 className="prod-details">{product && product.productShipping}</h3>
                           </div>}
                       </div>
                     </Col>
