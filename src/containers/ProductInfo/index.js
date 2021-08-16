@@ -121,16 +121,12 @@ const ProductInfo = ({ location }) => {
                     <Col sm={12}>
                       <Row>
                         <Col sm={3}>
-                          <button className="butn-ads"
-                            onClick={onWarranty}
-                          >
+                          <button className="butn-ads" onClick={onWarranty}>
                             Description
                           </button>
                         </Col>
                         <Col sm={3}>
-                          <button className="butn-ads"
-                            onClick={onWarranty}
-                          >
+                          <button className="butn-ads" onClick={onWarranty}>
                             Warranty
                           </button>
                         </Col>

@@ -93,7 +93,7 @@ const Cart = (props) => {
   const onDecrement = (info) => {
     info.quantity > 1 && setCount(info.quantity - 1)
 
-    const productPrice = info.productPrice.replace(/[^.1-9\.]+/g, '');
+    const productPrice = info.productPrice.replace(/[^.0-9\.]+/g, '');
     const currency = info.productPrice.replace(/\d+([,.]\d+)?\s*/g, '');
 
     const addToCart = {
