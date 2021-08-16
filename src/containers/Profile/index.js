@@ -329,7 +329,7 @@ const Profile = () => {
                         type="text"
                         placeholder="address."
                         className={alertError && !address ? ` form-control my-input` : `form-control formy`}
-                        maxLength={30}
+                        maxLength={100}
                         value={address}
                         onChange={onAddress}
                       />
@@ -366,7 +366,7 @@ const Profile = () => {
                           <input
                             type="text"
                             className="form-control"
-                            maxLength={5}
+                            maxLength={10}
                             value={zipCode}
                             onChange={onZipCode}
                             placeholder="Z1234"
