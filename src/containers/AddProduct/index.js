@@ -74,7 +74,7 @@ const AddProduct = () => {
   }
 
   const onProductName = (e) => {
-    if (e.target.value.match('^[a-zA-Z ]*$'))
+    if (e.target.value.match('^[a-zA-Z0-9 ]*$'))
       setProductName(e.target.value)
   }
 
@@ -147,21 +147,21 @@ const AddProduct = () => {
   }
 
   const onProductDescription = (e) => {
-    if (e.target.value.match('^[a-zA-Z0-9 ]*$')) {
+    // if (e.target.value.match('^[a-zA-Z0-9 !?",\'@#$%\^&*)(+=._-]*$')) {
       setProductDescription(e.target.value)
-    }
+   // }
   }
 
-  const onProductWarranty = (e) => {
-    if (e.target.value.match('^[a-zA-Z0-9 ]*$')) {
+   const onProductWarranty = (e) => {
+  //   if (e.target.value.match('^[a-zA-Z0-9 !?",\'@#$%\^&*)(+=._-]*$')) {
       setProductWarranty(e.target.value)
-    }
+   //}
   }
 
   const onProductShipping = (e) => {
-    if (e.target.value.match('^[a-zA-Z0-9 ]*$')) {
+    // if (e.target.value.match('^[a-zA-Z0-9 !?",\'@#$%\^&*)(+=._-]*$')) {
       setProductShipping(e.target.value)
-    }
+    //}
   }
 
   const onChangeImage = ({ fileList: newFileList }) => {
@@ -476,6 +476,7 @@ const AddProduct = () => {
                     rows="11  "></textarea>
                 </Col>
                 <Col sm={12} md={6}>
+                  <Row>
                   <Col sm={12}>
                     <label className="signup-label">Warranty < span className="red-star">*</span> <i className="fa fa-info" onMouseEnter={onModal} /></label>
                     <textarea className={alertError && !productWarranty ? ` form-control my-input` : `form-control formy`}
@@ -496,6 +497,7 @@ const AddProduct = () => {
                       maxLength={500}
                       rows="4"></textarea>
                   </Col>
+                  </Row>
                 </Col>
               </Row>
             </Row>
