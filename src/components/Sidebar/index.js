@@ -74,13 +74,13 @@ const Sidebar = () => {
             <Menu iconShape>
               <MenuItem icon={<FontAwesomeIcon icon={faUserAlt} />}>My Profile <Link to="/myprofile" /></MenuItem>
               <SubMenu title="Thrift Store" icon={<FontAwesomeIcon icon={faNetworkWired} />}>
-                <MenuItem icon={<FontAwesomeIcon icon={faUserTag} />}>
+                <MenuItem >
                   Profile <Link to="/profile" />
                 </MenuItem>
-                <MenuItem icon={<FontAwesomeIcon icon={faFolderPlus} />}>
+                <MenuItem >
                   Add Product <Link to="/addproduct" />
                 </MenuItem>
-                <MenuItem icon={<FontAwesomeIcon icon={faBuilding} />}>
+                <MenuItem >
                   Product List <Link to="/productlist" />
                 </MenuItem>
               </SubMenu>

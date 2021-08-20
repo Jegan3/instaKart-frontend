@@ -18,12 +18,29 @@ import MyProfile from './containers/MyProfile';
 import ProductInfo from './containers/ProductInfo';
 import ThriftStoreInfo from './containers/ThriftStoreInfo';
 import Cart from './containers/Cart';
+import Sidebar from './components/Sidebar';
 
 export const history = createBrowserHistory();
 
+const AuthenticatedRoutes = () => (
+  <Router history={history}>
+    <div style={{ height: '100%', display: 'flex' }}>
+      <Sidebar />
+      <Switch>
+        <Switch>
+          <Route path="/productlist" component={ProductList} />
+          <Route path="/addproduct" component={AddProduct} />
+          <Route path="/profile" component={Profile} />
+          <Route path="/myprofile" component={MyProfile} />
+        </Switch>
+      </Switch>
+    </div>
+  </Router>
+);
+
 const Routes = () => (
   <Router history={history}>
-    <React.Fragment>
+    <React.Fragment >
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/dashboard" component={Dashboard} />
@@ -33,14 +50,15 @@ const Routes = () => (
         <Route path="/vendorinfo" component={VendorInfo} />
         <Route path="/thriftstore" component={ThriftStore} />
         <Route path="/advertisement" component={AdsDetails} />
-        <Route path="/productlist" component={ProductList} />
+        {/* <Route path="/productlist" component={ProductList} />
         <Route path="/addproduct" component={AddProduct} />
-        <Route path="/profile" component={Profile} />
+        <Route path="/profile" component={Profile} /> */}
         <Route path="/thriftstoreinfo" component={ThriftStoreInfo} />
-        <Route path="/myprofile" component={MyProfile} />
+        {/* <Route path="/myprofile" component={MyProfile} /> */}
         <Route path="/productInfo" component={ProductInfo} />
         <Route path="/updatepassword" component={UpdatePassword} />
         <Route path="/cart" component={Cart} />
+        <Route component={AuthenticatedRoutes} />
       </Switch>
     </React.Fragment>
   </Router>

@@ -140,7 +140,7 @@ const ProductList = () => {
   return (
     <div className="wrapper">
       {/* <Upload showPopup={show} hidePopup={hidePopup} />  */}
-      <Sidebar />
+      {/* <Sidebar /> */}
       <div className="rightside-panel">
         <Headerbar headerName="Product List" />
         <div className="main-content">
