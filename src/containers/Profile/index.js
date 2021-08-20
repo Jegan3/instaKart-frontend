@@ -238,7 +238,7 @@ const Profile = () => {
   return (
     <div className="wrapper">
       {isLoading && <Loader />}
-      <Sidebar />
+      {/* <Sidebar /> */}
       <div className="rightside-panel">
         <Headerbar headerName="Profile" />
         <div className="main-content general-info">

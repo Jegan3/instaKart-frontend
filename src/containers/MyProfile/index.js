@@ -37,7 +37,7 @@ const MyProfile = () => {
 
   return (
     <div className="wrapper">
-      <Sidebar />
+      {/* <Sidebar /> */}
       <div className="rightside-panel">
         <Headerbar headerName="My-Profile" />
         <div className='my-profile'>
