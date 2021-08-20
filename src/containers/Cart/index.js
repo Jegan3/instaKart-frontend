@@ -105,7 +105,6 @@ const Cart = (props) => {
   }
 
   const onIncrement = (info) => {
-    console.log('info', info)
 
     const productPrice = info.productPrice.replace(/[^.0-9\.]+/g, '');
     const currency = info.productPrice.replace(/\d+([,.]\d+)?\s*/g, '');
