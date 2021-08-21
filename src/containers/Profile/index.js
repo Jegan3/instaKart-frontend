@@ -62,6 +62,7 @@ const weekData = [
 
 const Profile = () => {
   const [companyLogo, setCompanyLogo] = useState('');
+  const [aboutProduct, setAboutProduct] = useState('');
   const [loading, setLoading] = useState(false);
   const [storeName, setStoreName] = useState('');
   const [address, setAddress] = useState('');
@@ -120,6 +121,12 @@ const Profile = () => {
       setCompanyLogo(reader.result);
     };
     reader.readAsDataURL(file);
+  }
+
+  const onAboutProduct = (e) => {
+    //   if (e.target.value.match('^[a-zA-Z0-9 !?",\'@#$%\^&*)(+=._-]*$')) {
+    setAboutProduct(e.target.value)
+    //}
   }
 
   const onStoreName = (e) => {
@@ -250,7 +257,8 @@ const Profile = () => {
                     {registerNumber}
                   </p>
                   <Row>
-                    <Col md={12} className='avtar-info' >
+                    <Col md={12} >
+                    <div className='avtar-info' >
                       <div className='load-info'>
                         <div>
                           <div className="photo">
@@ -274,6 +282,17 @@ const Profile = () => {
                           </div>
                         </div>
                       </div>
+                      </div>
+                    </Col>
+                    <Col sm={12}>
+                      <label className="signup-label">About Product < span className="red-star">*</span> </label>
+                      <textarea className={alertError && !aboutProduct ? ` form-control my-input` : `form-control formy`}
+                        name="message"
+                        placeholder='type something..'
+                        value={aboutProduct}
+                        onChange={onAboutProduct}
+                        maxLength={500}
+                        rows="4"></textarea>
                     </Col>
                   </Row>
                 </Col>

@@ -232,11 +232,12 @@ const AddProduct = () => {
 
   const onSubmit = () => {
     if
-      (!productName || !category || !fileList.length || !price || !productDescription || !productWarranty) {
+      (!productName || !category || !price || !productDescription || !productWarranty) {
       setAlertError(true)
       message.error('Please fill all the fields')
-    }
-    else {
+    } else if ( !fileList.length ){
+      message.error('Please Upload the Images')
+    }else {
       const addProduct = {
         productName,
         category: category.value,
@@ -276,7 +277,7 @@ const AddProduct = () => {
           makes no representations or warranties that the Website is appropriate for use in other locations. Those who access 
           or use the Website from other jurisdictions do so at their own volition and risk and are responsible for compliance 
           with local law." />
-      <Sidebar />
+      {/* <Sidebar /> */}
       <div className="rightside-panel">
         <Headerbar headerName="Add Product" />
         <div className="main-content add-product">
