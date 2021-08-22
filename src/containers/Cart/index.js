@@ -240,42 +240,26 @@ const Cart = (props) => {
                       </div>
                     </Col>
                   </Row>
-                  <Row >
+                  {(!toggle || state === 'buyNow') && <Row >
                     <Col xsOffset={7} sm={5}>
-                      <Col xs={6}>
+                      <Col xs={5}>
                         <div className="total">
                           <div className="sub-total">
                             Total
                           </div>
                         </div>
                       </Col>
-                      <Col xs={6}>
+                      <Col xs={5}>
                         <div className="total">
-                          <div className="sub-price">
+                          <div className="subprice">
                             {`${currency}${parseFloat(total).toFixed(2)}`}
                           </div>
                         </div>
                       </Col>
                     </Col>
-                  </Row>
+                  </Row>}
                 </div>
               </Col>
-              {(!toggle || state === 'addCart' && < Col md={5}>
-                <div className="proceed-list">
-                  <div>
-                    {/* <h3 className="subtotal">
-                      Subtotal (1 item): $ 123.00
-                    </h3> */}
-                    <button
-                      type="button"
-                      className="btn btn-primary btn-lg btn-block modal-button"
-                      onClick={onProceedBuy}
-                    >
-                      Proceed to Buy
-                    </button>
-                  </div>
-                </div>
-              </Col>)}
               {(!toggle || state === 'buyNow') &&
                 <Col md={5}>
                   <ScrollAnimation animateIn='bounceInDown' duration={3}>
@@ -378,6 +362,42 @@ const Cart = (props) => {
                     </div>
                   </ScrollAnimation>
                 </Col>}
+            </Row>
+            <Row>
+              {(!toggle || state === 'addCart' && <Row >
+                <Col md={7} >
+                  <Col xs={10}>
+                    <div className="total">
+                      <div className="sub-total">
+                        Total
+                      </div>
+                    </div>
+                  </Col>
+                  <Col xs={2}>
+                    <div className="total">
+                      <div className="sub-price">
+                        {`${currency}${parseFloat(total).toFixed(2)}`}
+                      </div>
+                    </div>
+                  </Col>
+                </Col>
+                <Col md={5} className="d-flex justify-content-center">
+                  <div className="proceed-butn">
+                    <div>
+                      {/* <h3 className="subtotal">
+                      Subtotal (1 item): $ 123.00
+                    </h3>  */}
+                      <button
+                        type="button"
+                        className="proceedbtn  modal-button"
+                        onClick={onProceedBuy}
+                      >
+                        Proceed to Buy
+                      </button>
+                    </div>
+                  </div>
+                </Col>
+              </Row>)}
             </Row>
           </div>
         </Grid>

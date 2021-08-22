@@ -30,6 +30,7 @@
   font-weight: 800;
   font-family: monospace;
   font-size: 17px;
+  float: right;
 
   .sub-total {
     color: gray;
@@ -40,9 +41,22 @@
   .sub-price {
     font-size: 20px;
     position: relative;
-    left: 13px;
+    float: right;
+    right: 34px;
+    margin: 9%;
     font-family: monospace;
   }
+}
+
+.subprice {
+  font-size: 20px;
+  position: relative;
+  float: right;
+  bottom: 10px;
+  left: 20px;
+  // right: 20px;
+  margin: 9%;
+  font-family: monospace;
 }
 
 .quanity-check {
@@ -103,16 +117,17 @@
     .productlist {
       font-size: 18px;
       font-weight: 700;
+      top: 6px;
+      position: relative;
       font-family: monospace;
-      padding-top: 7%;
       cursor: pointer;
     }
 
     .product-price {
       font-size: 18px;
       font-weight: 700;
-      font-family: fantasy;
-      padding-top: 10%;
+      font-family: monospace;
+      padding-top: 6%;
       cursor: pointer;
     }
   }
@@ -197,14 +212,16 @@
     background-color: #515863;
   }
 
-  .proceed-list {
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    margin: 10%;
-    padding: 5%;
-    font-family: monospace;
-  }
+  // .proceed-list {
+  //   display: flex;
+  //   justify-content: center;
+  //   text-align: center;
+  //   margin: 10%;
+  //   //top: 290px;
+  //   white-space: nowrap;
+  //   position: relative;
+  //   font-family: monospace;
+  // }
 
   .subtotal {
     font-size: 30px;
@@ -213,5 +230,27 @@
     cursor: pointer;
     font-weight: 800;
     font-family: monospace;
+  }
+
+  .proceed-butn {
+    // display: flex;
+    justify-content: center;
+    text-align: center;
+    white-space: nowrap;
+    position: relative;
+    font-family: monospace;
+  }
+
+  .proceedbtn {
+    border-color: #28a4d9 !important;
+    color: #28a4d9 !important;
+    display: block;
+    width: 100%;
+    border-width: 1px;
+    background-color: transparent !important;
+    padding: 10px 40px;
+    font-size: 24px;
+    line-height: 1.3333333;
+    border-radius: 6px;
   }
 }
