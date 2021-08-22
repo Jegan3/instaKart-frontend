@@ -4,12 +4,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Row, Col, Image, Form, Grid } from 'react-bootstrap';
 import Select from "react-select";
 import { Tooltip, message } from 'antd';
-import { history } from '../../routes';
-import OtpScreen from '../../components/OtpScreen';
-import Footer from '../../components/Footer';
-import Header from '../../components/Header';
-import { Locale } from '../../constants/Locale';
-import { Industries } from '../../constants/Industries';
+import { history } from '../../../routes';
+import OtpScreen from '../../../components/OtpScreen';
+import Footer from '../../../components/Footer';
+import Header from '../../../components/Header';
+import { Locale } from '../../../constants/Locale';
+import { Industries } from '../../../constants/Industries';
 
 const SignUp = (props) => {
   const [company, setCompany] = useState('');

@@ -3,12 +3,12 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Row, Col, Grid } from 'react-bootstrap';
 import { Rate } from 'antd';
-import { history } from '../../routes';
-import Footer from '../../components/Footer';
-import Header from '../../components/Header';
-import ImageSlider from '../../components/ImageSlider';
-import Desk from '../../components/Desk';
-import { CarouselNewEStoreAds, CarouselReviewCard } from '../../components/Carousel';
+import { history } from '../../../routes';
+import Footer from '../../../components/Footer';
+import Header from '../../../components/Header';
+import ImageSlider from '../../../components/ImageSlider';
+import Desk from '../../../components/Desk';
+import { CarouselNewEStoreAds, CarouselReviewCard } from '../../../components/Carousel';
 
 const ProductInfo = ({ location }) => {
   const [count, setCount] = useState(1);

@@ -4,12 +4,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Col, Row, Grid } from 'react-bootstrap';
 import ReactTable from 'react-table';
 import { message } from 'antd';
-import Headerbar from '../../components/Headerbar';
-import Table from '../../components/Table';
-import StatsCard from '../../components/StatsCard';
-import Sidebar from '../../components/Sidebar';
-import Desk from '../../components/Desk';
-import Loader from '../../components/Loader';
+import Headerbar from '../../../components/Headerbar';
+import Table from '../../../components/Table';
+import StatsCard from '../../../components/StatsCard';
+import Sidebar from '../../../components/Sidebar';
+import Desk from '../../../components/Desk';
+import Loader from '../../../components/Loader';
 
 const Dashboard = () => {
   const [rtl, setRtl] = useState();

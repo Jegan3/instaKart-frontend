@@ -2,10 +2,10 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Grid, Row, Col } from 'react-bootstrap';
-import { CarouselNewEStoreAds, CarouselReviewCard } from '../../components/Carousel';
-import Footer from '../../components/Footer';
-import Header from '../../components/Header';
-import { MaterialTabs } from '../../components/TabScroll';
+import { CarouselNewEStoreAds, CarouselReviewCard } from '../../../components/Carousel';
+import Footer from '../../../components/Footer';
+import Header from '../../../components/Header';
+import { MaterialTabs } from '../../../components/TabScroll';
 
 const ThriftStoreInfo = (props) => {
 

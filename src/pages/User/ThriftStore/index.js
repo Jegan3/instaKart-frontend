@@ -2,10 +2,10 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Row, Col, Grid } from 'react-bootstrap';
-import Footer from '../../components/Footer';
-import Header from '../../components/Header';
-import { CarouselThriftNewAdditions, ThriftStoreNearYou, CarouselThriftStoreCategoryUp, CarouselThriftPromotions, CarouselThriftStoreCategoryBottom, CarouselAdsDetails } from '../../components/Carousel';
-import { ThriftBanners } from '../../components/Banners';
+import Footer from '../../../components/Footer';
+import Header from '../../../components/Header';
+import { CarouselThriftNewAdditions, ThriftStoreNearYou, CarouselThriftStoreCategoryUp, CarouselThriftPromotions, CarouselThriftStoreCategoryBottom, CarouselAdsDetails } from '../../../components/Carousel';
+import { ThriftBanners } from '../../../components/Banners';
 
 const ThriftStore = () => {
 

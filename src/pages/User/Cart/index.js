@@ -6,9 +6,9 @@ import { message } from 'antd';
 import TextField from '@material-ui/core/TextField';
 import ScrollAnimation from 'react-animate-on-scroll';
 import Button from '@material-ui/core/Button';
-import Header from '../../components/Header';
-import Footer from '../../components/Footer';
-import { history } from '../../routes';
+import Header from '../../../components/Header';
+import Footer from '../../../components/Footer';
+import { history } from '../../../routes';
 
 const Cart = (props) => {
   const [toggle, setToggle] = useState(true);

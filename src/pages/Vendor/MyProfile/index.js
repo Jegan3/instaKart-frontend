@@ -1,12 +1,11 @@
 /*eslint-disable*/
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Headerbar from '../../components/Headerbar';
-import Sidebar from '../../components/Sidebar';
 import { Row, Col } from 'react-bootstrap';
 import ImgCrop from 'antd-img-crop';
 import { Upload } from 'antd';
-
+import Headerbar from '../../../components/Headerbar';
+import Sidebar from '../../../components/Sidebar';
 
 const MyProfile = () => {
   const [companyLogo, setCompanyLogo] = useState('');

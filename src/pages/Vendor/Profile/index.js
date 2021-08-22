@@ -1,64 +1,65 @@
 /*eslint-disable*/
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { Grid, Row, Col } from 'react-bootstrap';
 import Select from 'react-select';
 import Cleave from "cleave.js/react";
 import ReactTable from 'react-table';
 import ImgCrop from 'antd-img-crop';
 import { Upload } from 'antd';
-import { TimePicker, message } from 'antd';
+import { Menu, TimePicker, message } from 'antd';
 import moment from 'moment';
-import Headerbar from '../../components/Headerbar';
-import Sidebar from '../../components/Sidebar';
-import Table from '../../components/Table';
-import { Locale } from '../../constants/Locale';
-import Loader from '../../components/Loader';
+import Headerbar from '../../../components/Headerbar';
+import Sidebar from '../../../components/Sidebar';
+import Table from '../../../components/Table';
+import { Locale } from '../../../constants/Locale';
+import Loader from '../../../components/Loader';
 
-const weekData = [
-  {
-    title: 'Monday',
-    openingTime: '00:00',
-    closingTime: '00:00',
-    closed: false,
-  },
-  {
-    title: 'Tuesday',
-    openingTime: '00:00',
-    closingTime: '00:00',
-    closed: false,
-  },
-  {
-    title: 'Wednesday',
-    openingTime: '00:00',
-    closingTime: '00:00',
-    closed: false,
-  },
-  {
-    title: 'Thursday',
-    openingTime: '00:00',
-    closingTime: '00:00',
-    closed: false,
-  },
-  {
-    title: 'Friday',
-    openingTime: '00:00',
-    closingTime: '00:00',
-    closed: false,
-  },
-  {
-    title: 'Saturday',
-    openingTime: '00:00',
-    closingTime: '00:00',
-    closed: false,
-  },
-  {
-    title: 'Sunday',
-    openingTime: '00:00',
-    closingTime: '00:00',
-    closed: false,
-  },
-]
+// const weekData = [
+//   {
+//     title: 'Monday',
+//     openingTime: '00:00',
+//     closingTime: '00:00',
+//     closed: false,
+//   },
+//   {
+//     title: 'Tuesday',
+//     openingTime: '00:00',
+//     closingTime: '00:00',
+//     closed: false,
+//   },
+//   {
+//     title: 'Wednesday',
+//     openingTime: '00:00',
+//     closingTime: '00:00',
+//     closed: false,
+//   },
+//   {
+//     title: 'Thursday',
+//     openingTime: '00:00',
+//     closingTime: '00:00',
+//     closed: false,
+//   },
+//   {
+//     title: 'Friday',
+//     openingTime: '00:00',
+//     closingTime: '00:00',
+//     closed: false,
+//   },
+//   {
+//     title: 'Saturday',
+//     openingTime: '00:00',
+//     closingTime: '00:00',
+//     closed: false,
+//   },
+//   {
+//     title: 'Sunday',
+//     openingTime: '00:00',
+//     closingTime: '00:00',
+//     closed: false,
+//   },
+// ]
 
 const Profile = () => {
   const [companyLogo, setCompanyLogo] = useState('');
@@ -243,13 +244,24 @@ const Profile = () => {
   }
 
   return (
-    <div className="wrapper">
+    <div >
       {isLoading && <Loader />}
       {/* <Sidebar /> */}
-      <div className="rightside-panel">
-        <Headerbar headerName="Profile" />
+      <div >
+        {/* <Headerbar headerName="Profile" /> */}
         <div className="main-content general-info">
           <Grid fluid>
+          {/* <Menu mode="horizontal">
+        <Menu.Item >
+          Profile <Link to="/profile" />
+        </Menu.Item>
+        <Menu.Item >
+          Add Product <Link to="/addproduct" />
+        </Menu.Item>
+        <Menu.Item >
+          Product List <Link to="/productlist" />
+        </Menu.Item>
+        </Menu> */}
             <Row>
               <Row className="form-content card">
                 <Col md={6} className='left-info' >

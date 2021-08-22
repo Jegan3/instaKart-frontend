@@ -6,10 +6,10 @@ import Select from 'react-select';
 import Cleave from "cleave.js/react";
 import { message, Upload } from 'antd';
 import ImgCrop from 'antd-img-crop';
-import { history } from '../../routes';
-import Footer from '../../components/Footer';
-import Header from '../../components/Header';
-import Loader from '../../components/Loader'
+import { history } from '../../../routes';
+import Footer from '../../../components/Footer';
+import Header from '../../../components/Header';
+import Loader from '../../../components/Loader'
 
 const bankList = [
   { value: 'First Citizens', label: 'First Citizens' },
@@ -356,11 +356,13 @@ const VendorInfo = (props) => {
                   <div className='file-input'>
                     <ImgCrop rotate>
                       <Upload
-                        fileList={fileList}
+                      action="png"
+                      accept="image/*"
                         customRequest={fakeRequest}
+                        fileList={fileList}
                         onChange={onUploadLogo}
-                        type="file"
-                        accept="image/*"
+                        // type="file"
+                        
                         showUploadList={false}
                       >
                         <span className='button'>Choose</span>

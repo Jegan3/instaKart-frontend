@@ -2,8 +2,8 @@
 import React from 'react';
 import { Row, Col, Grid } from 'react-bootstrap';
 import ScrollAnimation from 'react-animate-on-scroll';
-import Footer from '../../components/Footer';
-import Header from '../../components/Header';
+import Footer from '../../../components/Footer';
+import Header from '../../../components/Header';
 
 const AboutUs = () => (
   <Grid fluid>

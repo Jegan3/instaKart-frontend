@@ -6,10 +6,29 @@ import { ProSidebar, SidebarHeader, SidebarFooter, SidebarContent, Menu, MenuIte
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faCog, faHome, faUser, faBuilding, faTag, faFolderPlus, faUserTag, faNetworkWired, faUserAlt } from '@fortawesome/free-solid-svg-icons';
 import { history } from '../../routes';
+import Overlay from '../../components/Overlay';
+
+
+const store = [
+  {
+    id: '1',
+    name: 'Store 1'
+  },
+  {
+    id: '2',
+    name: 'Store 2'
+
+  },
+  {
+    id: '3',
+    name: 'Store 3'
+  },
+]
 
 const Sidebar = () => {
   const [open, setOpen] = useState(false);
   const [toggled, setToggled] = useState(false);
+  const [modal, setModal] = useState(false);
 
   const dispatch = useDispatch();
   const sidebar = useSelector((state) => state.sidebarState);
@@ -34,8 +53,21 @@ const Sidebar = () => {
     history.push({ pathname: '/' });
   };
 
+  // const onModal = () => {
+  //   setModal(true)
+  // }
+
+  const onHide = () => {
+    setModal(false)
+  }
+
+  const addNewStore = () => {
+    setModal(true)
+  }
+
   return (
     <div className="sidemenu-main">
+      <Overlay show={modal} onHide={onHide} title="ADD STORE"/>
       <ProSidebar
         collapsed={open}
         image="../images/caribbean1.png"
@@ -74,17 +106,24 @@ const Sidebar = () => {
             <Menu iconShape>
               <MenuItem icon={<FontAwesomeIcon icon={faUserAlt} />}>My Profile <Link to="/myprofile" /></MenuItem>
               <SubMenu title="Thrift Store" icon={<FontAwesomeIcon icon={faNetworkWired} />}>
-                <MenuItem >
-                  Profile <Link to="/profile" />
+                {store.map((info) => <div><MenuItem>
+                  {info.name} <Link to="/thriftstorevendor" />
                 </MenuItem>
-                <MenuItem >
-                  Add Product <Link to="/addproduct" />
-                </MenuItem>
-                <MenuItem >
-                  Product List <Link to="/productlist" />
-                </MenuItem>
+                  {/* <MenuItem >
+                    Add Product <Link to="/addproduct" />
+                  </MenuItem>
+                  <MenuItem >
+                    Product List <Link to="/productlist" />
+                  </MenuItem> */}
+                  </div> )}
+                {/* <MenuItem onClick={addNewStore}>
+                  Add store
+                </MenuItem> */}
               </SubMenu>
-              <MenuItem icon={<FontAwesomeIcon icon={faUser} />}>Customer Review</MenuItem>
+              {/* <MenuItem icon={<FontAwesomeIcon icon={faUser} />}>Customer Review</MenuItem> */}
+              <SubMenu title="Request" icon={<FontAwesomeIcon icon={faNetworkWired} />}>
+              <MenuItem onClick={addNewStore}>Add Store</MenuItem>
+              </SubMenu>
               <MenuItem icon={<FontAwesomeIcon icon={faCog} />}>Report</MenuItem>
               <MenuItem icon={<FontAwesomeIcon icon={faTag} />}>Support</MenuItem>
             </Menu>

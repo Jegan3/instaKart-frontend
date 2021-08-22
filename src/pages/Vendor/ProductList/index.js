@@ -3,10 +3,10 @@ import React, { useEffect, useState } from 'react';
 import { Grid, Row, Col } from 'react-bootstrap';
 import ReactTable from 'react-table';
 import Select from 'react-select';
-import Headerbar from '../../components/Headerbar';
-import Table from '../../components/Table';
-import Sidebar from '../../components/Sidebar';
-import { history } from '../../routes';
+import Headerbar from '../../../components/Headerbar';
+import Table from '../../../components/Table';
+import Sidebar from '../../../components/Sidebar';
+import { history } from '../../../routes';
 
 const productData = [
   {
@@ -138,11 +138,11 @@ const ProductList = () => {
   }
 
   return (
-    <div className="wrapper">
+    <div >
       {/* <Upload showPopup={show} hidePopup={hidePopup} />  */}
       {/* <Sidebar /> */}
-      <div className="rightside-panel">
-        <Headerbar headerName="Product List" />
+      <div >
+        {/* <Headerbar headerName="Product List" /> */}
         <div className="main-content">
           <Grid fluid>
             <Row>

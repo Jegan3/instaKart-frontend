@@ -78,7 +78,7 @@ const Header = ({ basic, loginCart, hideloginCart }) => {
   };
 
   const dashboard = () => {
-    history.push(admin ? '/dashboard' : '/profile');
+    history.push(admin ? '/dashboard' : '/myprofile');
     window.scrollTo(0, 0);
   };
 
