@@ -14,22 +14,22 @@ import ProductList from '../ProductList';
 const ThriftStoreVendor = () => {
   const [current, setToggle] = useState('profile')
 
-// const profile = () => {
-//   setToggle(1)
-// }
+  // const profile = () => {
+  //   setToggle(1)
+  // }
 
-// const addProduct = () => {
-//   setToggle(2)
-// }
+  // const addProduct = () => {
+  //   setToggle(2)
+  // }
 
-// const productList = () => {
-//   setToggle(3)
-// }
+  // const productList = () => {
+  //   setToggle(3)
+  // }
 
-const handleClick = e => {
-  console.log('click ', e);
-  setToggle(e.key );
-};
+  const handleClick = e => {
+    console.log('click ', e);
+    setToggle(e.key);
+  };
 
   return (
     <div className="wrapper">
@@ -38,24 +38,24 @@ const handleClick = e => {
       <div className="rightside-panel">
         <Headerbar headerName="Store Name" />
         {/* <div className="main-content general-info"> */}
-          {/* <Grid fluid> */}
-          <Menu onClick={handleClick} selectedKeys={[current]} mode="horizontal">
-        <Menu.Item key="profile" >
-          Profile 
-        </Menu.Item>
-        <Menu.Item key="addproduct" >
-          Add Product 
-        </Menu.Item>
-        <Menu.Item key="productlist" >
-          Product List
-        </Menu.Item>
+        {/* <Grid fluid> */}
+        <Menu onClick={handleClick} selectedKeys={[current]} mode="horizontal" className="card">
+          <Menu.Item key="profile" >
+            Profile
+          </Menu.Item>
+          <Menu.Item key="addproduct" >
+            Add Product
+          </Menu.Item>
+          <Menu.Item key="productlist" >
+            Product List
+          </Menu.Item>
         </Menu>
-        {current === 'profile' && <Profile/>}
-        {current === 'addproduct' && <AddProduct/>}
-        {current === 'productlist' && <ProductList/>}
-          {/* </Grid> */}
+        {current === 'profile' && <Profile />}
+        {current === 'addproduct' && <AddProduct />}
+        {current === 'productlist' && <ProductList />}
+        {/* </Grid> */}
         {/* </div> */}
-    </div>
+      </div>
     </div>
   )
 }
