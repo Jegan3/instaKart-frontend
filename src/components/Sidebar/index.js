@@ -8,20 +8,55 @@ import { faBars, faCog, faHome, faUser, faBuilding, faTag, faFolderPlus, faUserT
 import { history } from '../../routes';
 import Overlay from '../../components/Overlay';
 
-
-const store = [
+const industry = [
   {
     id: '1',
-    name: 'Store 1'
+    name: 'Threftstore',
+    store:[
+      {
+        id: '1',
+        name: 'Store 1'
+      },
+      {
+        id: '2',
+        name: 'Store 2'
+    
+      }
+
+    ]
   },
   {
     id: '2',
-    name: 'Store 2'
+    name: 'food',
+    store:[
+      {
+        id: '1',
+        name: 'Store 3'
+      },
+      {
+        id: '2',
+        name: 'Store 4'
+    
+      }
 
+    ]
   },
   {
     id: '3',
-    name: 'Store 3'
+    name: 'indus',
+    store:[
+      {
+        id: '1',
+        name: 'Store 5'
+      },
+      {
+        id: '2',
+        name: 'Store 6'
+    
+      }
+
+    ]
+
   },
 ]
 
@@ -105,8 +140,14 @@ const Sidebar = () => {
           <SidebarContent>
             <Menu iconShape>
               <MenuItem icon={<FontAwesomeIcon icon={faUserAlt} />}>My Profile <Link to="/myprofile" /></MenuItem>
-              <SubMenu title="Thrift Store" icon={<FontAwesomeIcon icon={faNetworkWired} />}>
-                {store.map((info) => <div><MenuItem>
+              {industry.map((item) => <SubMenu title={item.name} icon={<FontAwesomeIcon icon={faNetworkWired} />
+            }>
+                
+              {/* <SubMenu> */}
+              {/* <SubMenu title="Thrift Store" icon={<FontAwesomeIcon icon={faNetworkWired} />}> */}
+                {item.store.map((info) => <div>
+                  
+                  <MenuItem>
                   {info.name} <Link to="/thriftstorevendor" />
                 </MenuItem>
                   {/* <MenuItem >
@@ -119,7 +160,7 @@ const Sidebar = () => {
                 {/* <MenuItem onClick={addNewStore}>
                   Add store
                 </MenuItem> */}
-              </SubMenu>
+              </SubMenu>)}
               {/* <MenuItem icon={<FontAwesomeIcon icon={faUser} />}>Customer Review</MenuItem> */}
               <SubMenu title="Request" icon={<FontAwesomeIcon icon={faNetworkWired} />}>
               <MenuItem onClick={addNewStore}>Add Store</MenuItem>
