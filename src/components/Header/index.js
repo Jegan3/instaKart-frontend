@@ -86,6 +86,11 @@ const Header = ({ basic, loginCart, hideloginCart }) => {
     history.push({ pathname: '/' });
   };
 
+  const toListYourAds = () => {
+    history.push({ pathname: '/listyourads' });
+    window.scrollTo(0, 0);
+  };
+
   const logout = () => {
     sessionStorage.clear();
     dispatch({ type: 'LOGOUT_SUCCESS' });
@@ -122,7 +127,7 @@ const Header = ({ basic, loginCart, hideloginCart }) => {
                   </Nav>
                   <Nav pullRight>
                     <NavItem eventKey={1} href="#">
-                      <p>List Your Ads</p>
+                      <p onClick={toListYourAds}>List Your Ads</p>
                     </NavItem>
                     <NavItem eventKey={2} href="#">
                       <p onClick={aboutUs}>About Us</p>
