@@ -42,7 +42,7 @@ const Overlay = ({
       // };
       setModal(onHide)
 
-      history.push({ pathname: '/profile' });
+      history.push({ pathname: '/thriftstorevendor' });
       message.success(` ${storeName}  Succefully Created!!`);
 
     }
