@@ -130,9 +130,13 @@ const Cart = (props) => {
 
   const currency = cart && cart.cartInfo[0].totalPrice.replace(/\d+([,.]\d+)?\s*/g, '');
 
-  const total = cart && cart.cartInfo
+  const subTotal = cart && cart.cartInfo
     .map(item => parseFloat(item.totalPrice.replace(/[^.0-9\.]+/g, '')))
     .reduce((prev, curr) => prev + curr, 0);
+
+  const adminFee = subTotal * 0.025
+  const serviceTax = subTotal * 0.15
+  const total = subTotal + adminFee + serviceTax
 
   const submit = () => {
     if (!fullName || !mobile || !address || !country || !city || !zipCode || !email) {
@@ -163,49 +167,50 @@ const Cart = (props) => {
         <Grid fluid>
           <div className="checkout-details">
             <Row>
-              <Col md={7}>
+              <Col sm={7}>
                 <div className="product-card">
                   <Row>
-                    <Col sm={12}>
-                      <div>
+                    <Col sm={12} >
+                      <div className="shop-cart">
                         <span className="titleproduct">
                           Shopping Cart
                         </span>
                       </div>
                     </Col>
                     <Col sm={12}>
-                      <div className="product-list">
-                        {cart && cart.cartInfo.map((info) => <Row>
-                          <div className="align-items-center">
-                            <Col xs={3}>
-                              <img className="img-fluid" src={info && info.productImage} />
-                            </Col>
-                            <Col xs={4}>
-                              <div className="productlist">
-                                <div className="product-name">{info && info.productName}</div>
-                              </div>
-                            </Col>
-                            <Col xs={3}>
-                              <div className="productlist">
-                                <div className='quanity-check'>
-                                  <span>QTY</span>
-                                  <span className="quanitybtn"
-                                    onClick={() => onDecrement(info)}> - </span>
-                                  {info && info.quantity}
-                                  <span className="quanitybtn"
-                                    onClick={() => onIncrement(info)}> + </span>
+                      <div className="product-items">
+                        {cart && cart.cartInfo.map((info) =>
+                          <Row className="product-info-details">
+                            <div >
+                              <Col sm={3}>
+                                <img className="img-fluid" src={info && info.productImage} />
+                              </Col>
+                              <Col sm={4}>
+                                <div className="productlist">
+                                  <div className="product-name">{info && info.productName}</div>
                                 </div>
-                              </div>
-                            </Col>
-                            <Col xs={2}>
-                              <div className="product-price">
-                                <div className="product-name">{info && info.totalPrice}</div>
-                              </div>
-                              <br />
-                              <div className="product-remove" onClick={() => onRemove(info)}>Remove</div>
-                            </Col>
-                          </div>
-                        </Row>)}
+                              </Col>
+                              <Col sm={3}>
+                                <div className="productlist">
+                                  <div className='quanity-check'>
+                                    <span>QTY</span>
+                                    <span className="quanitybtn"
+                                      onClick={() => onDecrement(info)}> - </span>
+                                    {info && info.quantity}
+                                    <span className="quanitybtn"
+                                      onClick={() => onIncrement(info)}> + </span>
+                                  </div>
+                                </div>
+                              </Col>
+                              <Col sm={2}>
+                                <div className="product-price">
+                                  <div className="product-name">{info && info.totalPrice}</div>
+                                </div>
+                                <br />
+                                <div className="product-remove" onClick={() => onRemove(info)}>Remove</div>
+                              </Col>
+                            </div>
+                          </Row>)}
                         {/* <Row>
                           <div className="align-items-center">
                             <Col xs={3}>
@@ -364,39 +369,62 @@ const Cart = (props) => {
                 </Col>}
             </Row>
             <Row>
+              <div className=" col-sm-7 " >
+                <div className="total col-sm-10 ">
+                  <div className="sub-total">
+                    Admin Fee<span className="tax-info">(2.5%)</span>
+                  </div>
+                </div>
+                <div className="total col-sm-2">
+                  <div className="admin-service">
+                    {`${currency}${parseFloat(adminFee).toFixed(2)}`}
+                  </div>
+                </div>
+              </div>
+            </Row>
+            <Row>
+              <div className=" col-sm-7 " >
+                <div className="total col-sm-10 ">
+                  <div className="sub-total">
+                    Service Tax<span className="tax-info">(15%)</span>
+                  </div>
+                </div>
+                <div className="total col-sm-2">
+                  <div className="admin-service">
+                    {`${currency}${parseFloat(serviceTax).toFixed(2)}`}
+                  </div>
+                </div>
+              </div>
+            </Row>
+            <Row>
               {(!toggle || state === 'addCart' && <Row >
-                <Col md={7} >
-                  <Col xs={10}>
-                    <div className="total">
+                <div >
+                  <div className=" col-sm-7 " >
+                    <div className="final-total col-sm-10 ">
                       <div className="sub-total">
                         Total
                       </div>
                     </div>
-                  </Col>
-                  <Col xs={2}>
-                    <div className="total">
+                    <div className="total col-sm-2">
                       <div className="sub-price">
                         {`${currency}${parseFloat(total).toFixed(2)}`}
                       </div>
                     </div>
-                  </Col>
-                </Col>
-                <Col md={5} className="d-flex justify-content-center">
-                  <div className="proceed-butn">
-                    <div>
-                      {/* <h3 className="subtotal">
-                      Subtotal (1 item): $ 123.00
-                    </h3>  */}
-                      <button
-                        type="button"
-                        className="proceedbtn  modal-button"
-                        onClick={onProceedBuy}
-                      >
-                        Proceed to Buy
-                      </button>
+                  </div>
+                  <div className="btn-end col-sm-5">
+                    <div className="proceed-butn">
+                      <div>
+                        <button
+                          type="button"
+                          className="proceedbtn  modal-button"
+                          onClick={onProceedBuy}
+                        >
+                          Proceed to Buy
+                        </button>
+                      </div>
                     </div>
                   </div>
-                </Col>
+                </div>
               </Row>)}
             </Row>
           </div>

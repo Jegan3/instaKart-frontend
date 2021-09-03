@@ -20,17 +20,20 @@
   font-size: 20px;
 }
 
-.product-list {
-  margin: 5%;
+.final-total {
+  cursor: pointer;
+  font-weight: 800;
+  font-family: monospace;
+  font-size: 20px;
+  text-align: end;
 }
 
 .total {
-  margin: 3%;
   cursor: pointer;
   font-weight: 800;
   font-family: monospace;
   font-size: 17px;
-  float: right;
+  text-align: end;
 
   .sub-total {
     color: gray;
@@ -41,10 +44,23 @@
   .sub-price {
     font-size: 20px;
     position: relative;
-    float: right;
-    right: 34px;
-    margin: 9%;
     font-family: monospace;
+  }
+
+  .admin-service {
+    font-size: 17px;
+    font-weight: 700;
+    font-family: monospace;
+    color: gray;
+    cursor: pointer;
+  }
+
+  .tax-info {
+    font-size: 10px;
+    font-weight: 700;
+    font-family: monospace;
+    color: gray;
+    padding-left: 5px;
   }
 }
 
@@ -54,7 +70,6 @@
   float: right;
   bottom: 10px;
   left: 20px;
-  // right: 20px;
   margin: 9%;
   font-family: monospace;
 }
@@ -70,7 +85,9 @@
 
 .checkout-details {
   margin: 7% 2%;
-  padding: 2%;
+  padding: 7%;
+  padding-bottom: 7%;
+  padding-top: 5%;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(63, 63, 68, 0.1);
   background-color: #ffffff;
 
@@ -91,15 +108,13 @@
     font-family: initial;
   }
 
-  .align-items-center {
-    display: flex;
-    margin: 1%;
+  .product-info-details {
     padding: 10px;
     border-bottom: 1px solid lightgrey;
-    text-align: center;
+    text-align: end;
 
     img {
-      width: 9rem
+      width: 8rem
     }
 
     .product-remove {
@@ -117,17 +132,16 @@
     .productlist {
       font-size: 18px;
       font-weight: 700;
-      top: 6px;
       position: relative;
       font-family: monospace;
       cursor: pointer;
+      padding-bottom: 1%;
     }
 
     .product-price {
       font-size: 18px;
       font-weight: 700;
       font-family: monospace;
-      padding-top: 6%;
       cursor: pointer;
     }
   }
@@ -212,17 +226,6 @@
     background-color: #515863;
   }
 
-  // .proceed-list {
-  //   display: flex;
-  //   justify-content: center;
-  //   text-align: center;
-  //   margin: 10%;
-  //   //top: 290px;
-  //   white-space: nowrap;
-  //   position: relative;
-  //   font-family: monospace;
-  // }
-
   .subtotal {
     font-size: 30px;
     margin: 1%;
@@ -233,7 +236,7 @@
   }
 
   .proceed-butn {
-    // display: flex;
+    display: flex;
     justify-content: center;
     text-align: center;
     white-space: nowrap;
@@ -245,12 +248,16 @@
     border-color: #28a4d9 !important;
     color: #28a4d9 !important;
     display: block;
-    width: 100%;
     border-width: 1px;
     background-color: transparent !important;
-    padding: 10px 40px;
-    font-size: 24px;
+    padding: 8px 16px;
+    font-size: 18px;
     line-height: 1.3333333;
     border-radius: 6px;
+    opacity: .8;
+  }
+
+  .shop-cart {
+    padding-bottom: 10%;
   }
 }
