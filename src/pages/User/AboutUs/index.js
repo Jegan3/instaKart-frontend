@@ -9,7 +9,7 @@ const AboutUs = () => (
   <Grid fluid>
     <Header basic />
     <Row className="content-sec">
-      <ScrollAnimation animateIn='flipInX'
+      <ScrollAnimation animateIn='fadeIn'
       >
         <div className="content-cards">
           <Col md={12} sm={12} className="banner-img">

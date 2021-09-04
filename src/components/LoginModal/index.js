@@ -135,10 +135,7 @@ const LoginModal = ({ showPopup, hidePopup }) => {
                       {!forgotPassword ?
                         <div>
                           <h3>
-                            Welcome To The Caribbean&#39;s
-                          </h3>
-                          <h3>
-                            Unified e-Commerce Portal
+                            The Caribbean&#39;s Unified E-Commerce Website
                           </h3>
                         </div> :
                         <div>
