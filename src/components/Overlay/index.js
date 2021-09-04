@@ -1,5 +1,6 @@
 /*eslint-disable*/
 import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Modal } from 'react-bootstrap';
 import Select from 'react-select';
 import { Row, Col } from 'react-bootstrap';
@@ -15,6 +16,8 @@ const Overlay = ({
   const [alertError, setAlertError] = useState(false);
   const [storeName, setStoreName] = useState('');
   const [modal, setModal] = useState(false);
+
+  const dispatch = useDispatch();
 
   const onStoreName = (e) => {
     if (e.target.value.match('^[a-zA-Z0-9 ]*$'))
@@ -36,13 +39,13 @@ const Overlay = ({
 
     }
     else {
-      // const newStore = {
-      //   storeName,
-      //   industryType,
-      // };
+      const addStore = {
+        storeName,
+        industryName: industryType.label,
+      };
       setModal(onHide)
-
-      history.push({ pathname: '/thriftstorevendor' });
+      dispatch({ type: 'ADD_STORE_REQUEST', addStore });
+      // history.push({ pathname: '/thriftstorevendor' });
       message.success(` ${storeName}  Succefully Created!!`);
 
     }
@@ -63,45 +66,45 @@ const Overlay = ({
       </Modal.Header>
       {title === 'WARNING : LIMITATIONS OF LIABILITY' && <Modal.Body className="justify-content-center">
         <p className="warning-text"> {warningText} <br /> {warningSubText}</p>
-      </Modal.Body> }
-       {title === 'ADD STORE' && <Modal.Body className="justify-content-center">
-          <Row>
-            <Col md={6} sm={12} className={`clear-industry ${alertError && !industryType && 'dropdown-alert'}`} >
-              <label className="signup-label">Industry Type <span className="red-star">*</span></label>
-              <Select
-                name="Industry Type"
-                placeholder="Choose you're industry type"
-                value={industryType}
-                onChange={onIndustryType}
-                options={industryTypeOptions}
-                isSearchable={false}
-              // isMulti
-              />
-            </Col>
-            <Col md={6} sm={12} >
-              <label className="signup-label">Store Name <span className="red-star">*</span></label>
-              <input
-                type="text"
-                className={alertError && !storeName ? ' form-control my-input' : 'form-control formy'}
-                placeholder="Enter store name"
-                value={storeName}
-                onChange={onStoreName}
-                maxLength={30}
-              />
-            </Col>
-          </Row>
-          <Row>
-            <Col md={4} sm={12} className="signup-submit pull-right" >
-              <button
-                type="button"
-                className="btn btn-primary btn-lg btn-block modal-button"
-                onClick={submit}
-              >
-                Proceed
-              </button>
-            </Col>
-          </Row>
-        </Modal.Body>
+      </Modal.Body>}
+      {title === 'ADD STORE' && <Modal.Body className="justify-content-center">
+        <Row>
+          <Col md={6} sm={12} className={`clear-industry ${alertError && !industryType && 'dropdown-alert'}`} >
+            <label className="signup-label">Industry Type <span className="red-star">*</span></label>
+            <Select
+              name="Industry Type"
+              placeholder="Choose you're industry type"
+              value={industryType}
+              onChange={onIndustryType}
+              options={industryTypeOptions}
+              isSearchable={false}
+            // isMulti
+            />
+          </Col>
+          <Col md={6} sm={12} >
+            <label className="signup-label">Store Name <span className="red-star">*</span></label>
+            <input
+              type="text"
+              className={alertError && !storeName ? ' form-control my-input' : 'form-control formy'}
+              placeholder="Enter store name"
+              value={storeName}
+              onChange={onStoreName}
+              maxLength={30}
+            />
+          </Col>
+        </Row>
+        <Row>
+          <Col md={4} sm={12} className="signup-submit pull-right" >
+            <button
+              type="button"
+              className="btn btn-primary btn-lg btn-block modal-button"
+              onClick={submit}
+            >
+              Proceed
+            </button>
+          </Col>
+        </Row>
+      </Modal.Body>
       }
       {/* <Modal.Footer className="no-border">
       {alert && <span className={`w-100 text-center text-${alertClass}`}><p>{alert}</p></span>}

@@ -14,6 +14,8 @@ import { thriftStoreInfoWatchers } from './ThriftStoreInfo ';
 import { cartWatchers } from './Cart';
 import { addCartWatchers } from './AddCart';
 import { checkoutWatchers } from './Checkout';
+import { addStoreWatchers } from './AddStore';
+import { vendorCompanyDetailsWatchers } from './VendorCompanyDetails';
 
 export default function* rootWatchers() {
   yield [
@@ -33,5 +35,7 @@ export default function* rootWatchers() {
     cartWatchers(),
     addCartWatchers(),
     checkoutWatchers(),
+    addStoreWatchers(),
+    vendorCompanyDetailsWatchers(),
   ];
 }

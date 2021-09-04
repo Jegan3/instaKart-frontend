@@ -66,6 +66,34 @@ const AddProduct = () => {
     dispatch({ type: 'THRIFT_CATEGORY_REQUEST' });
   }, [])
 
+  useEffect(() => {
+    if (price && discount && tax) {
+      setFinalPrice(tax)
+    } else if (price && discount) {
+      setFinalPrice(discountPrice)
+    } else if (price) {
+      setFinalPrice(price)
+    } else {
+      setFinalPrice(0)
+    }
+  }, [price])
+
+  useEffect(() => {
+    if (discount) {
+      setFinalPrice(discountPrice)
+    } else {
+      setFinalPrice(price)
+    }
+  }, [discount])
+
+  useEffect(() => {
+    if (tax) {
+      setFinalPrice(taxPrice)
+    } else {
+      setFinalPrice(price)
+    }
+  }, [tax])
+
   const onModal = () => {
     setModal(true)
   }
@@ -89,12 +117,13 @@ const AddProduct = () => {
   }));
 
   const onPrice = (e) => {
-    setPrice(e.target.value.substring(e.target.value.lastIndexOf('$') + 1))
+    // setPrice(e.target.value.substring(e.target.value.lastIndexOf('$') + 1))
     const a = e.target.value.substring(e.target.value.lastIndexOf('$') + 1)
     const b = tax
     const c = +a || +a * +b / 100
     // setPrice(c)
-    setFinalPrice(c)
+    // setFinalPrice(c)
+    setPrice(e.target.value.substring(e.target.value.lastIndexOf('$') + 1))
   }
 
   const onDiscount = (e) => {
@@ -107,7 +136,7 @@ const AddProduct = () => {
     const g = d + f
     console.log('eeee', f)
     setDiscountPrice(g)
-    setFinalPrice(g)
+    // setFinalPrice(g)
   }
 
   const onTax = (e) => {
@@ -122,6 +151,7 @@ const AddProduct = () => {
       console.log('cccc', d)
       // let taxi = price + e.target.value
       // console.log('taxi',taxi)
+      setTax(f)
       setTaxPrice(f)
       setFinalPrice(f)
     } else {
@@ -132,6 +162,7 @@ const AddProduct = () => {
       const c = e.target.value
       const d = +price * +c / 100
       const f = +price + +d
+      setTaxPrice(f)
       setFinalPrice(f)
     }
   }
@@ -377,30 +408,30 @@ const AddProduct = () => {
                       <Col sm={3}>
                         <label className="signup-label">Discount </label>
                         <Cleave
+                          className="form-control"
+                          maxLength={10}
+                          value={discount}
+                          onChange={onDiscount}
                           options={{
                             numeral: true,
                             delimiter: '.',
                             blocks: [2, 4]
                           }}
-                          className="form-control"
-                          maxLength={10}
-                          value={discount}
-                          onChange={onDiscount}
                         />
                         <span className="percentage">%</span>
                       </Col>
                       <Col sm={3}>
                         <label className="signup-label">Tax</label>
                         <Cleave
+                          className="form-control price-style"
+                          maxLength={5}
+                          value={tax}
+                          onChange={onTax}
                           options={{
                             numeral: true,
                             delimiter: '.',
                             blocks: [2, 2]
                           }}
-                          className="form-control price-style"
-                          maxLength={5}
-                          value={tax}
-                          onChange={onTax}
                         />
                         <span className="percentage">%</span>
                       </Col>

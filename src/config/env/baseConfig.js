@@ -17,6 +17,8 @@ export default {
     getAddCart: '/api/user/addToCart',
     getCart: '/api/user/getCart',
     getCheckout: '/api/user/completePaymet',
+    getAddStore: '/api/vendor/createEstore',
+    getVendorCompanyDetails: '/api/vendor/getEstores',
   },
 
   apiBaseUrl: {

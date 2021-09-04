@@ -8,57 +8,57 @@ import { faBars, faCog, faHome, faUser, faBuilding, faTag, faFolderPlus, faUserT
 import { history } from '../../routes';
 import Overlay from '../../components/Overlay';
 
-const industry = [
-  {
-    id: '1',
-    name: 'Threftstore',
-    store:[
-      {
-        id: '1',
-        name: 'Store 1'
-      },
-      {
-        id: '2',
-        name: 'Store 2'
+// const industry = [
+//   {
+//     industryId: '1',
+//     industryName: 'Thrift',
+//     store:[
+//       {
+//         storeId: '1',
+//         storeName: 'Store 1'
+//       },
+//       {
+//         storeId: '2',
+//         storeName: 'Store 2'
     
-      }
+//       }
 
-    ]
-  },
-  {
-    id: '2',
-    name: 'food',
-    store:[
-      {
-        id: '1',
-        name: 'Store 3'
-      },
-      {
-        id: '2',
-        name: 'Store 4'
+//     ]
+//   },
+//   {
+//     industryId: '2',
+//     industryName: 'food',
+//     store:[
+//       {
+//         storeId: '1',
+//         storeName: 'Store 3'
+//       },
+//       {
+//         storeId: '2',
+//         storeName: 'Store 4'
     
-      }
+//       }
 
-    ]
-  },
-  {
-    id: '3',
-    name: 'indus',
-    store:[
-      {
-        id: '1',
-        name: 'Store 5'
-      },
-      {
-        id: '2',
-        name: 'Store 6'
+//     ]
+//   },
+//   {
+//     industryId: '3',
+//     industryName: 'indus',
+//     store:[
+//       {
+//         storeId: '1',
+//         storeName: 'Store 5'
+//       },
+//       {
+//         storeId: '2',
+//         storeName: 'Store 6'
     
-      }
+//       }
 
-    ]
+//     ]
 
-  },
-]
+//   },
+// ]
 
 const Sidebar = () => {
   const [open, setOpen] = useState(false);
@@ -68,8 +68,15 @@ const Sidebar = () => {
   const dispatch = useDispatch();
   const sidebar = useSelector((state) => state.sidebarState);
   const validLogin = useSelector((state) => state.loginState.login);
+  const vendorCompanyDetails = useSelector((state) => state.vendorCompanyDetailsState.vendorCompanyDetails);
+
+  console.log('vendorCompanyDetails',vendorCompanyDetails)
 
   const admin = (validLogin && validLogin.user.type === 'admin') || sessionStorage.type === 'admin';
+
+  useEffect(() => {
+    dispatch({ type: 'VENDOR_COMPANY_DETAILS_REQUEST' });
+  }, [])
 
   useEffect(() => {
     setToggled(sidebar.show);
@@ -140,15 +147,15 @@ const Sidebar = () => {
           <SidebarContent>
             <Menu iconShape>
               <MenuItem icon={<FontAwesomeIcon icon={faUserAlt} />}>My Profile <Link to="/myprofile" /></MenuItem>
-              {industry.map((item) => <SubMenu title={item.name} icon={<FontAwesomeIcon icon={faNetworkWired} />
+              {vendorCompanyDetails && vendorCompanyDetails.industries.map((item) => <SubMenu title={item.industryType} icon={<FontAwesomeIcon icon={faNetworkWired} />
             }>
                 
               {/* <SubMenu> */}
               {/* <SubMenu title="Thrift Store" icon={<FontAwesomeIcon icon={faNetworkWired} />}> */}
-                {item.store.map((info) => <div>
+                {item.stores.map((info) => <div>
                   
                   <MenuItem>
-                  {info.name} <Link to="/thriftstorevendor" />
+                  {info.storeName} <Link to="/thriftstorevendor" />
                 </MenuItem>
                   {/* <MenuItem >
                     Add Product <Link to="/addproduct" />
