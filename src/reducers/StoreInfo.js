@@ -2,19 +2,19 @@ const initialState = {};
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case 'THRIFT_VENDOR_INFO_REQUEST':
+    case 'STORE_INFO_REQUEST':
       return {
         ...state,
         isLoading: true,
         error: false,
       };
-    case 'THRIFT_VENDOR_INFO_SUCCESS':
+    case 'STORE_INFO_SUCCESS':
       return {
         ...state,
         isLoading: false,
-        thriftVendorInfo: action.thriftVendorInfo,
+        storeInfo: action.storeInfo,
       };
-    case 'THRIFT_VENDOR_INFO_FAILURE':
+    case 'STORE_INFO_FAILURE':
       return {
         ...state,
         isLoading: false,

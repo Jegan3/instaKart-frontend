@@ -107,6 +107,11 @@ const Sidebar = () => {
     setModal(true)
   }
 
+  const onStore = (info) => {
+    console.log('info',info)
+    history.push({ pathname: '/storedetails', state: info.estoreId });
+  }
+
   return (
     <div className="sidemenu-main">
       <Overlay show={modal} onHide={onHide} title="ADD STORE"/>
@@ -154,8 +159,8 @@ const Sidebar = () => {
               {/* <SubMenu title="Thrift Store" icon={<FontAwesomeIcon icon={faNetworkWired} />}> */}
                 {item.stores.map((info) => <div>
                   
-                  <MenuItem>
-                  {info.storeName} <Link to="/thriftstorevendor" />
+                  <MenuItem onClick={() => onStore(info)}>
+                  {info.storeName} 
                 </MenuItem>
                   {/* <MenuItem >
                     Add Product <Link to="/addproduct" />

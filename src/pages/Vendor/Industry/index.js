@@ -6,12 +6,12 @@ import { Grid, Row, Col } from 'react-bootstrap';
 import { Menu, TimePicker, message } from 'antd';
 import Headerbar from '../../../components/Headerbar';
 import Loader from '../../../components/Loader';
-import Profile from '../Profile';
+import StoreInfo from '../StoreInfo';
 import AddProduct from '../AddProduct';
 import ProductList from '../ProductList';
 
 
-const ThriftStoreVendor = () => {
+const Industry = (props) => {
   const [current, setToggle] = useState('profile')
 
   // const profile = () => {
@@ -25,6 +25,7 @@ const ThriftStoreVendor = () => {
   // const productList = () => {
   //   setToggle(3)
   // }
+  const storeId = props.location.state
 
   const handleClick = e => {
     console.log('click ', e);
@@ -41,7 +42,7 @@ const ThriftStoreVendor = () => {
         {/* <Grid fluid> */}
         <Menu onClick={handleClick} selectedKeys={[current]} mode="horizontal" className="card">
           <Menu.Item key="profile" >
-            Profile
+            Store Info
           </Menu.Item>
           <Menu.Item key="addproduct" >
             Add Product
@@ -50,9 +51,9 @@ const ThriftStoreVendor = () => {
             Product List
           </Menu.Item>
         </Menu>
-        {current === 'profile' && <Profile />}
-        {current === 'addproduct' && <AddProduct />}
-        {current === 'productlist' && <ProductList />}
+        {current === 'profile' && <StoreInfo storeId={storeId}/>}
+        {current === 'addproduct' && <AddProduct storeId={storeId}/>}
+        {current === 'productlist' && <ProductList storeId={storeId}/>}
         {/* </Grid> */}
         {/* </div> */}
       </div>
@@ -60,4 +61,4 @@ const ThriftStoreVendor = () => {
   )
 }
 
-export default ThriftStoreVendor;
+export default Industry;

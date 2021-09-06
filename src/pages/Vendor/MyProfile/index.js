@@ -11,7 +11,7 @@ const MyProfile = () => {
   const [companyLogo, setCompanyLogo] = useState('');
 
   const dispatch = useDispatch();
-  const thriftVendorInfo = useSelector((state) => state.thriftVendorInfoState.thriftVendorInfo);
+  const storeInfo = useSelector((state) => state.storeInfoState.storeInfo);
 
   useEffect(() => {
     dispatch({ type: 'THRIFT_VENDOR_INFO_REQUEST' });

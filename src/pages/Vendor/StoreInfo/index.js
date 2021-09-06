@@ -61,9 +61,9 @@ import Loader from '../../../components/Loader';
 //   },
 // ]
 
-const Profile = () => {
+const StoreInfo = ({storeId}) => {
   const [companyLogo, setCompanyLogo] = useState('');
-  const [aboutProduct, setAboutProduct] = useState('');
+  const [aboutStore, setAboutStore] = useState('');
   const [loading, setLoading] = useState(false);
   const [storeName, setStoreName] = useState('');
   const [address, setAddress] = useState('');
@@ -82,16 +82,18 @@ const Profile = () => {
   const [alertError, setAlertError] = useState(false);
 
   const dispatch = useDispatch();
-  const thriftVendorInfo = useSelector((state) => state.thriftVendorInfoState.thriftVendorInfo);
+  const storeInfo = useSelector((state) => state.storeInfoState.storeInfo);
   const profileInfo = useSelector((state) => state.thriftProfileState.profileInfo);
   const invalidProfileInfo = useSelector((state) => state.thriftProfileState.error);
-  const isLoading = useSelector((state) => state.thriftProfileState.isLoading || state.thriftVendorInfoState.isLoading);
-  const registerNumber = thriftVendorInfo && thriftVendorInfo.vendorInfo.register_num;
+  const isLoading = useSelector((state) => state.thriftProfileState.isLoading || state.storeInfoState.isLoading);
+  const registerNumber = storeInfo && storeInfo.vendorInfo.register_num;
 
   let fileList = [];
 
+  // const { state } = props.location;
+  // console.log('location',props.location)
   useEffect(() => {
-    dispatch({ type: 'THRIFT_VENDOR_INFO_REQUEST' });
+    dispatch({ type: 'STORE_INFO_REQUEST',storeId});
   }, [])
 
   useEffect(() => {
@@ -124,9 +126,9 @@ const Profile = () => {
     reader.readAsDataURL(file);
   }
 
-  const onAboutProduct = (e) => {
+  const onAboutStore = (e) => {
     //   if (e.target.value.match('^[a-zA-Z0-9 !?",\'@#$%\^&*)(+=._-]*$')) {
-    setAboutProduct(e.target.value)
+      setAboutStore(e.target.value)
     //}
   }
 
@@ -237,7 +239,8 @@ const Profile = () => {
         fbId,
         igId,
         mobile,
-        timing
+        timing,
+        estoreId:storeId,
       };
       dispatch({ type: 'THRIFT_PROFILE_REQUEST', profileInfo });
     };
@@ -274,7 +277,7 @@ const Profile = () => {
                       <div className='load-info'>
                         <div>
                           <div className="photo">
-                            {companyLogo ? <img src={companyLogo} alt='' /> : <img src={thriftVendorInfo && thriftVendorInfo.vendorInfo.logo ? thriftVendorInfo.vendorInfo.logo : "images/Your-logo-here..png"} />}
+                            {companyLogo ? <img src={companyLogo} alt='' /> : <img src={storeInfo && storeInfo.vendorInfo.logo ? storeInfo.vendorInfo.logo : "images/Your-logo-here..png"} />}
                           </div>
                           <div className="image-upload">
                             <ImgCrop rotate>
@@ -297,12 +300,12 @@ const Profile = () => {
                       </div>
                     </Col>
                     <Col sm={12}>
-                      <label className="signup-label">About Product < span className="red-star">*</span> </label>
-                      <textarea className={alertError && !aboutProduct ? ` form-control my-input` : `form-control formy`}
+                      <label className="signup-label">About Store < span className="red-star">*</span> </label>
+                      <textarea className={alertError && !aboutStore ? ` form-control my-input` : `form-control formy`}
                         name="message"
                         placeholder='type something..'
-                        value={aboutProduct}
-                        onChange={onAboutProduct}
+                        value={aboutStore}
+                        onChange={onAboutStore}
                         maxLength={500}
                         rows="4"></textarea>
                     </Col>
@@ -317,7 +320,7 @@ const Profile = () => {
                         placeholder="business name"
                         className="form-control"
                         maxLength={30}
-                        value={thriftVendorInfo && thriftVendorInfo.vendorInfo.companyName}
+                        value={storeInfo && storeInfo.vendorInfo.companyName}
                         disabled
                       />
                     </Col>
@@ -328,7 +331,7 @@ const Profile = () => {
                         placeholder="first name"
                         className="form-control"
                         maxLength={30}
-                        value={thriftVendorInfo && thriftVendorInfo.vendorInfo.firstName}
+                        value={storeInfo && storeInfo.vendorInfo.firstName}
                         disabled
                       />
                     </Col>
@@ -339,12 +342,12 @@ const Profile = () => {
                         placeholder="last name"
                         className="form-control"
                         maxLength={30}
-                        value={thriftVendorInfo && thriftVendorInfo.vendorInfo.lastName}
+                        value={storeInfo && storeInfo.vendorInfo.lastName}
                         disabled
                       />
                     </Col>
                     <Col md={12}>
-                      <label className="signup-label">Thrift Store Name <span className="red-star">*</span></label>
+                      <label className="signup-label">Store Name <span className="red-star">*</span></label>
                       <input
                         type="text"
                         className={alertError && !storeName ? ` form-control my-input` : `form-control formy`}
@@ -464,7 +467,7 @@ const Profile = () => {
                   title=""
                   content={
                     <ReactTable
-                      data={thriftVendorInfo && thriftVendorInfo.vendorInfo.timing}
+                      data={storeInfo && storeInfo.vendorInfo.estore.timing}
                       columns={[
                         {
                           Header: 'Day',
@@ -558,4 +561,4 @@ const Profile = () => {
   )
 }
 
-export default Profile;
+export default StoreInfo;

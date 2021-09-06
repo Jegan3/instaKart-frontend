@@ -2,7 +2,7 @@
 import React from 'react';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import { Card, ThriftStoreNearYouCard,  NewAdditionCard , ReviewCard } from '../Card';
+import { Card, ThriftStoreNearYouCard, NewAdditionCard, ReviewCard } from '../Card';
 
 const responsive = {
   desktop: {
@@ -698,7 +698,7 @@ export const ThriftStoreNearYou = ({ thriftDetails }) => (
   >
     {thriftDetails ? thriftDetails.thriftStore.map((info) => (
       <ThriftStoreNearYouCard key={info.estoreId} thriftStore={info.estoreId} imgUrl={info.logo} path={`/thriftstoreinfo`} country={info.countryName} storeName={info.storeName} />
-    )) : <ThriftStoreNearYouCard />}
+    )) : []}
   </Carousel>
 );
 
@@ -712,7 +712,7 @@ export const CarouselThriftNewAdditions = ({ thriftDetails }) => (
   >
     {thriftDetails ? thriftDetails.productsInfo.map((info) => (
       <NewAdditionCard key={info.productId} product={info.productId} imgUrl={info.productImage} path={'/productinfo'} price={info.finalPrice} productName={info.productName} />
-    )) : <NewAdditionCard />}
+    )) : []}
   </Carousel>
 );
 

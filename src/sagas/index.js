@@ -5,7 +5,7 @@ import { vendorInfoWatchers } from './VendorInfo';
 import { thriftProfileWatchers } from './ThriftProfile';
 import { vendorListWatchers } from './VendorList';
 import { vendorStatusWatchers } from './VendorStatus';
-import { ThriftVendorInfoWatchers } from './ThriftVendorInfo';
+import { StoreInfoWatchers } from './StoreInfo';
 import { thriftAddProductWatchers } from './ThriftAddProduct';
 import { thriftCategoryWatchers } from './ThriftCategory';
 import { thriftDetailsWatchers } from './ThriftDetails';
@@ -26,7 +26,7 @@ export default function* rootWatchers() {
     thriftProfileWatchers(),
     vendorListWatchers(),
     vendorStatusWatchers(),
-    ThriftVendorInfoWatchers(),
+    StoreInfoWatchers(),
     thriftAddProductWatchers(),
     thriftCategoryWatchers(),
     thriftDetailsWatchers(),

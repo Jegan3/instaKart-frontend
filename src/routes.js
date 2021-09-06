@@ -12,14 +12,14 @@ import ThriftStore from './pages/User/ThriftStore';
 // import AdsDetails from './pages/AdsDetails';
 import ProductList from './pages/Vendor/ProductList';
 import AddProduct from './pages/Vendor/AddProduct';
-import Profile from './pages/Vendor/Profile';
+import Profile from './pages/Vendor/StoreInfo';
 import UpdatePassword from './pages/User/UpdatePassword';
 import MyProfile from './pages/Vendor/MyProfile';
 // import StoreCard from './components/StoreCard';
 import ProductInfo from './pages/User/ProductInfo';
 import ThriftStoreInfo from './pages/User/ThriftStoreInfo';
 import Cart from './pages/User/Cart';
-import ThriftStoreVendor from './pages/Vendor/ThriftStore';
+import Industry from './pages/Vendor/Industry';
 import ListYourAds from './pages/User/ListYourAds';
 
 export const history = createBrowserHistory();
@@ -34,7 +34,7 @@ const AuthenticatedRoutes = () => (
           <Route path="/addproduct" component={AddProduct} />
           <Route path="/profile" component={Profile} />
           <Route path="/myprofile" component={MyProfile} />
-          <Route path="/thriftstorevendor" component={ThriftStoreVendor} />
+          <Route path="/storedetails" component={Industry} />
         </Switch>
       </Switch>
     </div>
@@ -59,7 +59,7 @@ const Routes = () => (
         <Route path="/thriftstoreinfo" component={ThriftStoreInfo} />
         {/* <Route path="/myprofile" component={MyProfile} /> */}
         <Route path="/listyourads" component={ListYourAds} />
-        <Route path="/productInfo" component={ProductInfo} />
+        <Route path="/productinfo" component={ProductInfo} />
         <Route path="/updatepassword" component={UpdatePassword} />
         <Route path="/cart" component={Cart} />
         <Route component={AuthenticatedRoutes} />

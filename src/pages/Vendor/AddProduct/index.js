@@ -13,7 +13,7 @@ import Loader from '../../../components/Loader';
 
 const { Dragger } = Upload;
 
-const AddProduct = () => {
+const AddProduct = ({storeId}) => {
   const [productName, setProductName] = useState('');
   const [category, setCategory] = useState('');
   const [fileList, setImageList] = useState([])
@@ -281,6 +281,7 @@ const AddProduct = () => {
         productDescription,
         productWarranty,
         productShipping,
+        estoreId:storeId,
       };
       dispatch({ type: 'THRIFT_ADD_PRODUCT_REQUEST', addProduct });
     }

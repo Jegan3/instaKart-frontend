@@ -78,7 +78,7 @@ const ListYourAds = () => {
       <Header basic />
       <div className="Listyour-ads">
         <h2 className="advertise">
-          Advertise Your Product For Better Sales !!
+          Advertise Your Product For Better Sales 
         </h2>
         <div className="list-your card">
           <Row>
@@ -99,8 +99,8 @@ const ListYourAds = () => {
                         <img src={primaryImage} alt='' />
                       </div> :
                         <div>
-                          <p className="ant-upload-text">Click or drag file to this area to upload Primary Banner</p>
-                          <p className="ant-upload-hint">You can upload only 1 Image </p>
+                          <p className="ant-upload-text">Click or drag file to this area to upload primary banner</p>
+                          {/* <p className="ant-upload-hint">You can upload only 1 Image </p> */}
                         </div>}
                     </Dragger>
                   </div>
@@ -146,8 +146,8 @@ const ListYourAds = () => {
                         <img src={secondaryImage} alt='' />
                       </div> :
                         <div>
-                          <p className="ant-upload-text">Click or drag file to this area to upload Secondary Banner</p>
-                          <p className="ant-upload-hint">You can upload only 1 Image </p>
+                          <p className="ant-upload-text">Click or drag file to this area to upload secondary banner</p>
+                          {/* <p className="ant-upload-hint">You can upload only 1 Image </p> */}
                         </div>}
                     </Dragger>
                   </div>
@@ -191,6 +191,9 @@ const ListYourAds = () => {
                         onChange={onChangeVideo}
                         beforeUpload={beforeUpload}
                       >
+                        <div>
+                          <p className="ant-upload-text">Click or drag file to this area to upload video</p>
+                        </div>
                       </Dragger>
                     }
                   </div>
