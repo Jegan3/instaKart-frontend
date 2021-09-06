@@ -12,7 +12,7 @@ const ThriftStoreInfo = (props) => {
   const dispatch = useDispatch();
   const thriftStoreInfotype = useSelector((state) => state.thriftStoreInfoState.thriftStoreInfo);
 
-  const { countryName, cityName, logo, address, storeName, emailId } = thriftStoreInfotype ? thriftStoreInfotype.storeInfo : '';
+  const { countryName, cityName, logo, address, storeName, emailId, mobile, zipCode, aboutStore } = thriftStoreInfotype ? thriftStoreInfotype.storeInfo : '';
 
   useEffect(() => {
     dispatch({ type: 'THRIFT_STORE_INFO_REQUEST', thriftStoreInfoId: props.location.state });
@@ -32,9 +32,10 @@ const ThriftStoreInfo = (props) => {
               </h1>
             </Col>
             <Col sm={12}>
-              <h1 className='Subtitle-store'>
-                The Disaster Café unlocks the tales of traditions, tastes, and flavors that lingered
-                in the taste buds and was passed down from generations to generations. Established way
+              <h1 className='subtitle-store'>
+                {/* The Disaster Café unlocks the tales of traditions, tastes, and flavors that lingered
+                in the taste buds and was passed down from generations to generations. Established way */}
+                {aboutStore}
               </h1>
             </Col>
             <Col sm={12}>
@@ -44,12 +45,17 @@ const ThriftStoreInfo = (props) => {
                   <br /> <br />
                   {address}
                   <br />
-                  {countryName} {cityName}
+                  {cityName}
                   <br />
-                  11205
+                  {countryName}
                   <br />
+                  {zipCode}
+                  {/* <br />
                   US
-                  <br /><br />
+                  <br /><br /> */}
+                  <br />
+                  {mobile}
+                  <br />
                   {emailId}
                 </h1>
               </div>

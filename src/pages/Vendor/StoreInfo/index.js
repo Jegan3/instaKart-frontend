@@ -86,7 +86,7 @@ const StoreInfo = ({storeId}) => {
   const profileInfo = useSelector((state) => state.thriftProfileState.profileInfo);
   const invalidProfileInfo = useSelector((state) => state.thriftProfileState.error);
   const isLoading = useSelector((state) => state.thriftProfileState.isLoading || state.storeInfoState.isLoading);
-  const registerNumber = storeInfo && storeInfo.vendorInfo.register_num;
+  // const registerNumber = storeInfo && storeInfo.vendorInfo.register_num;
 
   let fileList = [];
 
@@ -229,8 +229,9 @@ const StoreInfo = ({storeId}) => {
       message.error('Please fill all the fields')
     } else {
       const profileInfo = {
+        // storeName,
         companyLogo,
-        storeName,
+        aboutStore,
         address,
         countryId: country && country.value,
         cityId: city && city.value,
@@ -269,7 +270,7 @@ const StoreInfo = ({storeId}) => {
               <Row className="form-content card">
                 <Col md={6} className='left-info' >
                   <p className='reg-num'>
-                    {registerNumber}
+                    {/* {registerNumber} */}
                   </p>
                   <Row>
                     <Col md={12} >
@@ -277,7 +278,7 @@ const StoreInfo = ({storeId}) => {
                       <div className='load-info'>
                         <div>
                           <div className="photo">
-                            {companyLogo ? <img src={companyLogo} alt='' /> : <img src={storeInfo && storeInfo.vendorInfo.logo ? storeInfo.vendorInfo.logo : "images/Your-logo-here..png"} />}
+                            {companyLogo ? <img src={companyLogo} alt='' /> : <img src={storeInfo && storeInfo.storeInfo.storeLogo ? storeInfo.storeInfo.storeLogo : "images/Your-logo-here..png"} />}
                           </div>
                           <div className="image-upload">
                             <ImgCrop rotate>
@@ -320,7 +321,7 @@ const StoreInfo = ({storeId}) => {
                         placeholder="business name"
                         className="form-control"
                         maxLength={30}
-                        value={storeInfo && storeInfo.vendorInfo.companyName}
+                        value={storeInfo && storeInfo.storeInfo.companyName}
                         disabled
                       />
                     </Col>
@@ -331,7 +332,7 @@ const StoreInfo = ({storeId}) => {
                         placeholder="first name"
                         className="form-control"
                         maxLength={30}
-                        value={storeInfo && storeInfo.vendorInfo.firstName}
+                        value={storeInfo && storeInfo.storeInfo.firstName}
                         disabled
                       />
                     </Col>
@@ -342,7 +343,7 @@ const StoreInfo = ({storeId}) => {
                         placeholder="last name"
                         className="form-control"
                         maxLength={30}
-                        value={storeInfo && storeInfo.vendorInfo.lastName}
+                        value={storeInfo && storeInfo.storeInfo.lastName}
                         disabled
                       />
                     </Col>
@@ -353,8 +354,9 @@ const StoreInfo = ({storeId}) => {
                         className={alertError && !storeName ? ` form-control my-input` : `form-control formy`}
                         placeholder="store name"
                         maxLength={30}
-                        value={storeName}
+                        value={storeInfo && storeInfo.storeInfo.storeName}
                         onChange={onStoreName}
+                        disabled
                       />
                     </Col>
                     <Col md={12}>
@@ -467,7 +469,7 @@ const StoreInfo = ({storeId}) => {
                   title=""
                   content={
                     <ReactTable
-                      data={storeInfo && storeInfo.vendorInfo.estore.timing}
+                      data={storeInfo && storeInfo.storeInfo.timing}
                       columns={[
                         {
                           Header: 'Day',

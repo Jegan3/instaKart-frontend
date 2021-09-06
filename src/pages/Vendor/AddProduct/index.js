@@ -273,7 +273,7 @@ const AddProduct = ({storeId}) => {
         productName,
         category: category.value,
         productImages: fileList.map(info => info.thumbUrl),
-        productVideo,
+        // productVideo,
         discount,
         finalPrice: `${symbol}${finalPrice.toFixed(2)}`,
         // stockReserve,

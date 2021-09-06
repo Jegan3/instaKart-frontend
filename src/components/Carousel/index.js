@@ -697,7 +697,7 @@ export const ThriftStoreNearYou = ({ thriftDetails }) => (
     responsive={responsiveThrift}
   >
     {thriftDetails ? thriftDetails.thriftStore.map((info) => (
-      <ThriftStoreNearYouCard key={info.estoreId} thriftStore={info.estoreId} imgUrl={info.logo} path={`/thriftstoreinfo`} country={info.countryName} storeName={info.storeName} />
+      <ThriftStoreNearYouCard key={info.estoreId} thriftStore={info.estoreId} imgUrl={info.storeLogo} path={`/thriftstoreinfo`} country={info.countryName} storeName={info.storeName} />
     )) : []}
   </Carousel>
 );
