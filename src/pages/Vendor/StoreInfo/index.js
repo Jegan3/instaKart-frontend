@@ -62,7 +62,7 @@ import Loader from '../../../components/Loader';
 // ]
 
 const StoreInfo = ({storeId}) => {
-  const [companyLogo, setCompanyLogo] = useState('');
+  const [storeLogo, setStoreLogo] = useState('');
   const [aboutStore, setAboutStore] = useState('');
   const [loading, setLoading] = useState(false);
   const [storeName, setStoreName] = useState('');
@@ -121,7 +121,7 @@ const StoreInfo = ({storeId}) => {
     let file = newFileList[0].originFileObj;
     const reader = new FileReader();
     reader.onload = () => {
-      setCompanyLogo(reader.result);
+      setStoreLogo(reader.result);
     };
     reader.readAsDataURL(file);
   }
@@ -230,7 +230,7 @@ const StoreInfo = ({storeId}) => {
     } else {
       const profileInfo = {
         // storeName,
-        companyLogo,
+        storeLogo,
         aboutStore,
         address,
         countryId: country && country.value,
@@ -278,7 +278,7 @@ const StoreInfo = ({storeId}) => {
                       <div className='load-info'>
                         <div>
                           <div className="photo">
-                            {companyLogo ? <img src={companyLogo} alt='' /> : <img src={storeInfo && storeInfo.storeInfo.storeLogo ? storeInfo.storeInfo.storeLogo : "images/Your-logo-here..png"} />}
+                            {storeLogo ? <img src={storeLogo} alt='' /> : <img src={storeInfo && storeInfo.storeInfo.storeLogo ? storeInfo.storeInfo.storeLogo : "images/Your-logo-here..png"} />}
                           </div>
                           <div className="image-upload">
                             <ImgCrop rotate>
