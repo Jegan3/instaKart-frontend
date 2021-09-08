@@ -2,6 +2,7 @@
 import React, { useEffect } from 'react';
 import Footer from '../../../components/Footer';
 import Header from '../../../components/Header';
+import TextLoop from "react-text-loop";
 import { CarouselFirst, CarouselSecond, CarouselThird, CarouselFourth, CarouselMobile, CarouselNewEStore, } from '../../../components/Carousel';
 import { Banners, SecondaryBanners } from '../../../components/Banners';
 import Particle from '../../../components/Particle';
@@ -29,7 +30,16 @@ const Home = () => {
         e-Commerce Portal
       </h2> */}
       <h2>
-        The Caribbean&#39;s Unified E-Commerce Website
+        The Caribbean&#39;s
+        {" "} <TextLoop  className ='text-loop' springConfig={{ stiffness: 70, damping: 31 }}
+        adjustingSpeed={500}>
+          {/* <span>&nbsp;Allied</span>  */}
+          {/* <span>Allied</span> */}
+          <span>Linked</span>
+          <span>United</span>
+          <span>Joined</span>
+        </TextLoop>{" "}
+        E-Commerce Website
       </h2>
       <div className='intro-banner'>
         <Banners />

@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Grid, Row, Col } from 'react-bootstrap';
 import { CarouselNewEStoreAds, CarouselReviewCard } from '../../../components/Carousel';
+import ScrollAnimation from 'react-animate-on-scroll';
 import Footer from '../../../components/Footer';
 import Header from '../../../components/Header';
 import { MaterialTabs } from '../../../components/TabScroll';
@@ -21,24 +22,34 @@ const ThriftStoreInfo = (props) => {
   return (
     <div className="store-page">
       <Header header />
-      <div className="jumbotron fluid"
-        style={{ backgroundImage: `url(${logo})` }}
-      >
+       <div className="jumbotron fluid" 
+        style={ logo ? { backgroundImage: `url(${logo})` } : { backgroundImage: `url(images/Your-logo-here..png)` } } > 
         <Grid fluid>
           <Row className="bg-trans">
             <Col sm={12}>
+            <ScrollAnimation animateIn='bounceInDown' duration={3}>
               <h1 className='title-store'>
                 {storeName}
               </h1>
+              </ScrollAnimation>
             </Col>
             <Col sm={12}>
+            <ScrollAnimation animateIn='bounceInDown' duration={7}>
               <h1 className='subtitle-store'>
-                {/* The Disaster Café unlocks the tales of traditions, tastes, and flavors that lingered
-                in the taste buds and was passed down from generations to generations. Established way */}
-                {aboutStore}
+                The Disaster Café unlocks the tales of traditions, tastes, and flavors that lingered
+                in the taste buds and was passed down from generations to generations. Established way
+                The Disaster Café unlocks the tales of traditions, tastes, and flavors that lingered
+                in the taste buds and was passed down from generations to generations. Established way
+                The Disaster Café unlocks the tales of traditions, tastes, and flavors that lingered
+                in the taste buds and was passed down from generations to generations. Established way
+                The Disaster Café unlocks the tales of traditions, tastes, and flavors that lingered
+                in the taste buds and was passed down from generations to generations. Established way
+                {/* {aboutStore} */}
               </h1>
+              </ScrollAnimation>
             </Col>
             <Col sm={12}>
+            <ScrollAnimation animateIn='bounceInDown' duration={21}>
               <div>
                 <h1 className='address-store'>
                   Business Address:
@@ -59,10 +70,12 @@ const ThriftStoreInfo = (props) => {
                   {emailId}
                 </h1>
               </div>
+              </ScrollAnimation>
             </Col>
           </Row>
         </Grid>
       </div>
+    
       <div>
         <Row>
           <Col>
