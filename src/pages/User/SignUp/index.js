@@ -205,7 +205,7 @@ const SignUp = (props) => {
                   <input
                     type="text"
                     className={alertError && company === '' ? ' form-control my-input' : 'form-control formy'}
-                    placeholder="Enter E-Store Name"
+                    placeholder="Enter you're company name"
                     value={company}
                     onChange={onEstore}
                     maxLength={30}
@@ -254,7 +254,7 @@ const SignUp = (props) => {
                   <input
                     type="text"
                     className={alertError && firstName === '' ? ' form-control my-input' : 'form-control formy'}
-                    placeholder="Enter user name"
+                    placeholder="Enter you're first name"
                     value={firstName}
                     onChange={onFirstName}
                     maxLength={30}
@@ -265,7 +265,7 @@ const SignUp = (props) => {
                   <input
                     type="text"
                     className={alertError && lastName === '' ? ' form-control my-input' : 'form-control formy'}
-                    placeholder="Enter user name"
+                    placeholder="Enter you're last name"
                     value={lastName}
                     onChange={onLastName}
                     maxLength={30}
@@ -278,7 +278,7 @@ const SignUp = (props) => {
                 <input
                   type="email"
                   className={alertError && email === '' ? ' form-control my-input' : 'form-control formy'}
-                  placeholder="Enter email"
+                  placeholder="Enter you're email"
                   value={email}
                   onChange={onEmail}
                   maxLength={30}
@@ -303,7 +303,7 @@ const SignUp = (props) => {
                 <input
                   type={showPassword ? 'text' : 'password'}
                   className={alertError && password === '' ? ' form-control my-input' : 'form-control formy'}
-                  placeholder="Enter password"
+                  placeholder="Enter you're password"
                   value={password}
                   onChange={onPassword}
                   maxLength={15}
