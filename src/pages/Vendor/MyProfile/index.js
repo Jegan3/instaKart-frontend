@@ -47,7 +47,7 @@ const MyProfile = () => {
                   <Row>
                     <Col md={12} className='avtar-info' >
                       <div className="profilephoto">
-                        <img src="images/Your-logo-here..png" />
+                        <img src="images/Your-logo-here.png" />
                       </div>
                     </Col>
                     <Col md={12} >

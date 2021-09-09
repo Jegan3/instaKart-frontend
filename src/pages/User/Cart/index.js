@@ -135,8 +135,9 @@ const Cart = (props) => {
     .reduce((prev, curr) => prev + curr, 0);
 
   const adminFee = subTotal * 0.025
-  const serviceTax = subTotal * 0.15
-  const total = subTotal + adminFee + serviceTax
+  // trinidad tobago wipay charges
+  const wipayFee = subTotal * 0.035 + 1.70
+  const total = subTotal + adminFee + wipayFee
 
   const submit = () => {
     if (!fullName || !mobile || !address || !country || !city || !zipCode || !email) {
@@ -386,12 +387,12 @@ const Cart = (props) => {
               <div className=" col-sm-7 " >
                 <div className="total col-sm-10 ">
                   <div className="sub-total">
-                    Service Tax<span className="tax-info">(15%)</span>
+                    Wipay Fee<span className="tax-info">(3.5% + $0.25 USD)</span>
                   </div>
                 </div>
                 <div className="total col-sm-2">
                   <div className="admin-service">
-                    {`${currency}${parseFloat(serviceTax).toFixed(2)}`}
+                    {`${currency}${parseFloat(wipayFee).toFixed(2)}`}
                   </div>
                 </div>
               </div>

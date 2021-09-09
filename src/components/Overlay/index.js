@@ -46,7 +46,7 @@ const Overlay = ({
       setModal(onHide)
       dispatch({ type: 'ADD_STORE_REQUEST', addStore });
       // history.push({ pathname: '/thriftstorevendor' });
-      message.success(` ${storeName}  created succesfully !!`);
+      // message.success(` ${storeName}  created succesfully !!`);
 
     }
   }
