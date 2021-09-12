@@ -19,8 +19,8 @@ import Loader from '../../../components/Loader';
 // const weekData = [
 //   {
 //     title: 'Monday',
-//     openingTime: '00:00',
-//     closingTime: '00:00',
+//     openingTime: null,
+//     closingTime: null,
 //     closed: false,
 //   },
 //   {
@@ -224,7 +224,8 @@ const StoreInfo = ({storeId}) => {
   }
 
   const onSubmit = () => {
-    if (!storeName || !address || !country || !emailId || !mobile) {
+    console.log('timing',timing)
+    if (!address || !country || !emailId || !mobile) {
       setAlertError(true)
       message.error('Please fill all the fields')
     } else {
@@ -340,18 +341,18 @@ const StoreInfo = ({storeId}) => {
                       <label className="signup-label">Last Name</label>
                       <input
                         type="text"
-                        placeholder="last name"
                         className="form-control"
+                        placeholder="last name"
                         maxLength={30}
                         value={storeInfo && storeInfo.storeInfo.lastName}
                         disabled
                       />
                     </Col>
                     <Col md={12}>
-                      <label className="signup-label">Store Name <span className="red-star">*</span></label>
+                      <label className="signup-label">Store Name</label>
                       <input
                         type="text"
-                        className={alertError && !storeName ? ` form-control my-input` : `form-control formy`}
+                        className="form-control"
                         placeholder="store name"
                         maxLength={30}
                         value={storeInfo && storeInfo.storeInfo.storeName}
@@ -360,7 +361,7 @@ const StoreInfo = ({storeId}) => {
                       />
                     </Col>
                     <Col md={12}>
-                      <label className="signup-label">Address <span className="red-star">*</span></label>
+                      <label className="signup-label">Address<span className="red-star">*</span></label>
                       <input
                         type="text"
                         placeholder="address."
@@ -419,7 +420,7 @@ const StoreInfo = ({storeId}) => {
                     <label className="signup-label">Email ID <span className="red-star">*</span></label>
                     <input
                       type="text"
-                      className={alertError && !emailId ? ` form-control my-input` : `form-control formy`}
+                      className={alertError && !emailId ? `form-control my-input` : `form-control formy`}
                       maxLength={30}
                       value={emailId}
                       onChange={onEmailId}
@@ -451,7 +452,7 @@ const StoreInfo = ({storeId}) => {
                   <Col md={3} className='zipcode'>
                     <label className="signup-label">Contact Number <span className="red-star">*</span></label>
                     <Cleave
-                      className={alertError && !mobile ? ` form-control my-input` : `form-control formy`}
+                      className={alertError && !mobile ? `form-control my-input` : `form-control formy`}
                       placeholder="contact number"
                       value={mobile}
                       onChange={onMobile}
