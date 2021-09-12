@@ -279,7 +279,7 @@ const StoreInfo = ({storeId}) => {
                       <div className='load-info'>
                         <div>
                           <div className="photo">
-                            {storeLogo ? <img src={storeLogo} alt='' /> : <img src={storeInfo && storeInfo.storeInfo.storeLogo ? storeInfo.storeInfo.storeLogo : "images/Your-logo-here..png"} />}
+                            {storeLogo ? <img src={storeLogo} alt='' /> : <img src={storeInfo && storeInfo.storeInfo.storeLogo ? storeInfo.storeInfo.storeLogo : "images/logo-here.png"} />}
                           </div>
                           <div className="image-upload">
                             <ImgCrop rotate>

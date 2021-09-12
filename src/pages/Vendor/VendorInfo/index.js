@@ -44,7 +44,7 @@ const VendorInfo = (props) => {
   const [mobile, setMobile] = useState('');
   const [uploadId, setUploadId] = useState('');
   const [uploadIdName, setUploadIdName] = useState('');
-  const [uploadLogo, setUploadLogo] = useState('');
+  const [uploadCompanyLogo, setUploadCompanyLogo] = useState('');
   const [uploadLogoName, setUploadLogoName] = useState('');
   const [bank, setBank] = useState();
   const [bankAccount, setBankAccount] = useState('');
@@ -117,12 +117,12 @@ const VendorInfo = (props) => {
     reader.readAsDataURL(file);
   }
 
-  const onUploadLogo = ({ fileList: newFileList }) => {
+  const onUploadCompanyLogo = ({ fileList: newFileList }) => {
     let file = newFileList[0].originFileObj;
     const reader = new FileReader();
     reader.onload = () => {
       setUploadLogoName(file.name);
-      setUploadLogo(reader.result);
+      setUploadCompanyLogo(reader.result);
     };
     reader.readAsDataURL(file);
   }
@@ -228,7 +228,7 @@ const VendorInfo = (props) => {
         mobile,
         email: vendorDetails.email,
         uploadId,
-        uploadLogo,
+        uploadLogo: uploadCompanyLogo,
         bank: bank.value,
         bankAccount,
         uploadCompanyRegistration: uploadRegistration,
@@ -352,17 +352,17 @@ const VendorInfo = (props) => {
               </Col>
               <Col md={6} sm={12} >
                 <div className='select-file'>
-                  <label className="signup-label">Upload Logo</label>
+                  <label className="signup-label">Upload Company Logo</label>
                   <div className='file-input'>
                     <ImgCrop rotate>
                       <Upload
-                      action="png"
-                      accept="image/*"
+                        action="png"
+                        accept="image/*"
                         customRequest={fakeRequest}
                         fileList={fileList}
-                        onChange={onUploadLogo}
+                        onChange={onUploadCompanyLogo}
                         // type="file"
-                        
+
                         showUploadList={false}
                       >
                         <span className='button'>Choose</span>

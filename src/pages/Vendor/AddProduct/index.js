@@ -6,6 +6,7 @@ import Select from 'react-select';
 import { Upload, Modal, message } from 'antd';
 import ImgCrop from 'antd-img-crop';
 import Cleave from "cleave.js/react";
+import ReactPlayer from "react-player";
 import Headerbar from '../../../components/Headerbar';
 import Sidebar from '../../../components/Sidebar';
 import Overlay from '../../../components/Overlay';
@@ -20,7 +21,7 @@ const AddProduct = ({storeId}) => {
   const [previewVisible, setPreviewVisible] = useState(false)
   const [previewImage, setPreviewImage] = useState('')
   const [previewTitle, setPreviewTitle] = useState('')
-  const [productVideo, setProductVideo] = useState([])
+  const [video, setVideo] = useState(null);
   const [price, setPrice] = useState('');
   const [tax, setTax] = useState('');
   const [discount, setDiscount] = useState('');
@@ -211,18 +212,26 @@ const AddProduct = ({storeId}) => {
     setImageList(newFileList);
   };
 
-  const onChangeVideo = (info) => {
-    const { status } = info.file;
+  //let fileList = [];
 
-    if (status === 'done') {
-      message.success(`${info.file.name} file uploaded successfully.`);
-    } else if (status === 'error') {
-      message.error(`${info.file.name} file upload failed`);
-    } else if (!info.fileList.length) {
-      message.error(`${info.file.name} file deleted successfully`);
-    }
-    setProductVideo(info.fileList)
-  }
+  const onChangeVideo = ({ fileList: newFileList }) => {
+    let file = newFileList[0].originFileObj;
+    setVideo(URL.createObjectURL(file));
+    console.log('test-1', file)
+  };
+
+  // const onChangeVideo = (info) => {
+  //   const { status } = info.file;
+
+  //   if (status === 'done') {
+  //     message.success(`${info.file.name} file uploaded successfully.`);
+  //   } else if (status === 'error') {
+  //     message.error(`${info.file.name} file upload failed`);
+  //   } else if (!info.fileList.length) {
+  //     message.error(`${info.file.name} file deleted successfully`);
+  //   }
+  //   setProductVideo(info.fileList)
+  // }
 
   const onPreview = async file => {
     if (!file.url && !file.preview) {
@@ -249,12 +258,12 @@ const AddProduct = ({storeId}) => {
   }
 
   const beforeUpload = (file) => {
-    if (productVideo.length > 0) {
+    if (video.length > 0) {
       message.error(`You cannot upload more than one file`);
     } else if (file.size > 31457280) {
       message.error(`${file.name} exceeds the maximum upload size limit`);
     }
-    return productVideo.length < 1 && file.size < 31457280 ? true : Upload.LIST_IGNORE;
+    return video.length < 1 && file.size < 31457280 ? true : Upload.LIST_IGNORE;
   }
 
   const handleCancel = () => setPreviewVisible(false);
@@ -371,6 +380,8 @@ const AddProduct = ({storeId}) => {
                   </Col>
                   <Col sm={12} md={6}>
                     <label className="signup-label">Upload Video </label>
+                    {video ?
+                      <ReactPlayer url={video} width="100%" height="100%" controls={true} /> :
                     <Dragger
                       name='file'
                       className="drag-video"
@@ -384,7 +395,7 @@ const AddProduct = ({storeId}) => {
                     </p> */}
                       <p className="ant-upload-text">Click or drag file to this area to upload video</p>
                       <p className="ant-upload-hint">You can upload only 1 video and maximum file size of the video should be less than 30 MB</p>
-                    </Dragger>
+                    </Dragger> }
                   </Col>
                 </Row>
                 <Row>
