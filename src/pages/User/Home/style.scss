@@ -13,9 +13,6 @@
   width: 50% !important;
   margin-left: 332px;
 }
-.text-loop{
-  color: #28a4d9;
-}
 
 .arrivals {
   margin-top: 2%;
@@ -47,6 +44,14 @@
 
   h4 {
     font-size: 20px;
+  }
+
+  .text-loop-home {
+    color: #28a4d9;
+
+    .x3 {
+      width: 135px !important;
+    }
   }
 }
 

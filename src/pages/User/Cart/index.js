@@ -168,30 +168,30 @@ const Cart = (props) => {
         <Grid fluid>
           <div className="checkout-details">
             <Row>
-              <Col sm={7}>
+              <Col md={7}>
                 <div className="product-card">
                   <Row>
-                    <Col sm={12} >
+                    <Col md={12} >
                       <div className="shop-cart">
                         <span className="titleproduct">
                           Shopping Cart
                         </span>
                       </div>
                     </Col>
-                    <Col sm={12}>
+                    <Col md={12}>
                       <div className="product-items">
                         {cart && cart.cartInfo.map((info) =>
                           <Row className="product-info-details">
                             <div >
-                              <Col sm={3}>
+                              <Col md={3}>
                                 <img className="img-fluid" src={info && info.productImage} />
                               </Col>
-                              <Col sm={4}>
+                              <Col md={3}>
                                 <div className="productlist">
                                   <div className="product-name">{info && info.productName}</div>
                                 </div>
                               </Col>
-                              <Col sm={3}>
+                              <Col md={3}>
                                 <div className="productlist">
                                   <div className='quanity-check'>
                                     <span>QTY</span>
@@ -203,7 +203,7 @@ const Cart = (props) => {
                                   </div>
                                 </div>
                               </Col>
-                              <Col sm={2}>
+                              <Col md={3}>
                                 <div className="product-price">
                                   <div className="product-name">{info && info.totalPrice}</div>
                                 </div>
@@ -212,42 +212,12 @@ const Cart = (props) => {
                               </Col>
                             </div>
                           </Row>)}
-                        {/* <Row>
-                          <div className="align-items-center">
-                            <Col xs={3}>
-                              <img className="img-fluid" src={product && product.productImages[0]} />
-                            </Col>
-                            <Col xs={4}>
-                              <div className="productlist">
-                                <div className="product-name">{product && product.productName}</div>
-                              </div>
-                            </Col>
-                            <Col xs={3}>
-                              <div className="productlist">
-                                <div className='quanity-check'>
-                                  <span>QTY</span>
-                                  <span className="quanitybtn"
-                                    onClick={onDecrement}> - </span>
-                                  {count}
-                                  <span className="quanitybtn"
-                                    onClick={onIncrement}> + </span>
-                                </div>
-                              </div>
-                            </Col>
-                            <Col xs={2}>
-                              <div className="product-price">
-                                <div className="product-name">{product && product.finalPrice}</div>
-                              </div>
-                              <br />
-                              <div className="product-remove">Remove</div>
-                            </Col>
-                          </div>
-                        </Row> */}
                       </div>
                     </Col>
                   </Row>
-                  {(!toggle || state === 'buyNow') && <Row >
-                    <Col xsOffset={7} sm={5}>
+                  {(!toggle || state === 'buyNow') && 
+                  <Row >
+                    <Col xsOffset={7} md={5}>
                       <Col xs={5}>
                         <div className="total">
                           <div className="sub-total">
@@ -271,7 +241,7 @@ const Cart = (props) => {
                   <ScrollAnimation animateIn='bounceInDown' duration={3}>
                     <div className="product-card">
                       <Row>
-                        <Col sm={12}>
+                        <Col md={12}>
                           <div className="billing-card">
                             <Row>
                               <Col xs={12}>
@@ -370,49 +340,45 @@ const Cart = (props) => {
                 </Col>}
             </Row>
             <Row>
-              <div className=" col-sm-7 " >
-                <div className="total col-sm-10 ">
+              <div className=" col-md-7 " >
+                <div className="total col-md-9 ">
                   <div className="sub-total">
                     Admin Fee<span className="tax-info">(2.5%)</span>
                   </div>
                 </div>
-                <div className="total col-sm-2">
+                <div className="total col-md-3">
                   <div className="admin-service">
                     {`${currency}${parseFloat(adminFee).toFixed(2)}`}
                   </div>
                 </div>
               </div>
-            </Row>
-            <Row>
-              <div className=" col-sm-7 " >
-                <div className="total col-sm-10 ">
+              <div className=" col-md-7 " >
+                <div className="total col-md-9 ">
                   <div className="sub-total">
                     Wipay Fee<span className="tax-info">(3.5% + $0.25 USD)</span>
                   </div>
                 </div>
-                <div className="total col-sm-2">
+                <div className="total col-md-3">
                   <div className="admin-service">
                     {`${currency}${parseFloat(wipayFee).toFixed(2)}`}
                   </div>
                 </div>
               </div>
-            </Row>
-            <Row>
-              {(!toggle || state === 'addCart' && <Row >
+              {(!toggle || state === 'addCart' && 
                 <div >
-                  <div className=" col-sm-7 " >
-                    <div className="final-total col-sm-10 ">
+                  <div className=" col-md-7 " >
+                    <div className="final-total col-md-9 ">
                       <div className="sub-total">
                         Total
                       </div>
                     </div>
-                    <div className="total col-sm-2">
+                    <div className="total col-md-3">
                       <div className="sub-price">
                         {`${currency}${parseFloat(total).toFixed(2)}`}
                       </div>
                     </div>
                   </div>
-                  <div className="btn-end col-sm-5">
+                  <div className="btn-end col-md-5">
                     <div className="proceed-butn">
                       <div>
                         <button
@@ -425,8 +391,7 @@ const Cart = (props) => {
                       </div>
                     </div>
                   </div>
-                </div>
-              </Row>)}
+                </div>)}
             </Row>
           </div>
         </Grid>

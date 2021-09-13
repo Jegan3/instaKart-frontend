@@ -31,14 +31,12 @@ const Home = () => {
       </h2> */}
       <h2>
         The Caribbean&#39;s
-        {" "} <TextLoop  className ='text-loop' springConfig={{ stiffness: 70, damping: 31 }}
-        adjustingSpeed={500}>
-          {/* <span>&nbsp;Allied</span>  */}
-          {/* <span>Allied</span> */}
+        <TextLoop className='text-loop-home' springConfig={{ stiffness: 70, damping: 31 }}
+          adjustingSpeed={500}>
+          <span>Allied</span>
           <span>Linked</span>
-          <span>United</span>
-          <span>Joined</span>
-        </TextLoop>{" "}
+          <span>Unified</span>
+        </TextLoop>
         E-Commerce Website
       </h2>
       <div className='intro-banner'>
