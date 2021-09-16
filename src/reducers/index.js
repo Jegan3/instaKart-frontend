@@ -18,6 +18,7 @@ import addCartState from './AddCart';
 import checkoutState from './Checkout';
 import addStoreState from './AddStore';
 import vendorCompanyDetailsState from './VendorCompanyDetails';
+import productMessageState from './ProductMessage';
 
 const rootReducer = combineReducers({
   signupState,
@@ -39,6 +40,7 @@ const rootReducer = combineReducers({
   checkoutState,
   addStoreState,
   vendorCompanyDetailsState,
+  productMessageState,
 });
 
 export default rootReducer;

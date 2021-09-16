@@ -98,7 +98,7 @@ const Cart = (props) => {
 
     const addToCart = {
       productId: info.productId,
-      totalPrice: `${currency}${Math.round(productPrice * (info.quantity - 1)).toFixed(2)}`,
+      totalPrice: `${currency}${parseFloat(productPrice * (info.quantity - 1)).toFixed(2)}`,
       quantity: info.quantity - 1,
     }
     dispatch({ type: 'ADD_CART_REQUEST', addToCart: addToCart });
@@ -112,7 +112,7 @@ const Cart = (props) => {
     // setCount(info.quantity + 1)
     const addToCart = {
       productId: info.productId,
-      totalPrice: `${currency}${Math.round(productPrice * (info.quantity + 1)).toFixed(2)}`,
+      totalPrice: `${currency}${parseFloat(productPrice * (info.quantity + 1)).toFixed(2)}`,
       quantity: info.quantity + 1,
     }
     dispatch({ type: 'ADD_CART_REQUEST', addToCart: addToCart });
@@ -137,9 +137,9 @@ const Cart = (props) => {
   const adminFee = subTotal * 0.025
   // trinidad tobago wipay charges
   const wipayFee = subTotal * 0.035 + 1.70
-  const total = subTotal + adminFee + wipayFee
+  const orderTotal = subTotal + adminFee + wipayFee
 
-  const submit = () => {
+  const submit = () => { 
     if (!fullName || !mobile || !address || !country || !city || !zipCode || !email) {
       setAlertError(true)
       message.error('Please fill all the fields')
@@ -153,10 +153,9 @@ const Cart = (props) => {
         country,
         zipCode,
         email,
-        cartTotalPrice: parseFloat(total).toFixed(2),
+        cartTotalPrice: subTotal,
         currency
       };
-      console.log('test', checkout)
       dispatch({ type: 'CHECKOUT_REQUEST', checkout });
     };
   }
@@ -215,25 +214,73 @@ const Cart = (props) => {
                       </div>
                     </Col>
                   </Row>
-                  {(!toggle || state === 'buyNow') && 
-                  <Row >
-                    <Col xsOffset={7} md={5}>
-                      <Col xs={5}>
-                        <div className="total">
-                          <div className="sub-total">
-                            Total
-                          </div>
-                        </div>
-                      </Col>
-                      <Col xs={5}>
-                        <div className="total">
-                          <div className="subprice">
-                            {`${currency}${parseFloat(total).toFixed(2)}`}
-                          </div>
-                        </div>
-                      </Col>
-                    </Col>
-                  </Row>}
+                  <Row>
+            <div className=" col-sm-12 " >
+                    <div className="final-total col-sm-9 ">
+                      <div className="sub-total">
+                        Subtotal
+                      </div>
+                    </div>
+                    <div className="total col-sm-3">
+                      <div className="sub-price">
+                        {`${currency}${parseFloat(subTotal).toFixed(2)}`}
+                      </div>
+                    </div>
+                  </div>
+              <div className=" col-sm-12 " >
+                <div className="total col-sm-9 ">
+                  <div className="sub-total">
+                    Admin Fee<span className="tax-info">(2.5%)</span>
+                  </div>
+                </div>
+                <div className="total col-sm-3">
+                  <div className="admin-service">
+                    {`${currency}${parseFloat(adminFee).toFixed(2)}`}
+                  </div>
+                </div>
+              </div>
+              <div className=" col-sm-12 " >
+                <div className="total col-sm-9 ">
+                  <div className="sub-total">
+                    Wipay Fee<span className="tax-info">(3.5% + $0.25 USD)</span>
+                  </div>
+                </div>
+                <div className="total col-sm-3">
+                  <div className="admin-service">
+                    {`${currency}${parseFloat(wipayFee).toFixed(2)}`}
+                  </div>
+                </div>
+              </div>
+              {/* {(!toggle || state === 'addCart' &&  */}
+                <div >
+                  <div className=" col-sm-12 " >
+                    <div className="final-total col-sm-9 ">
+                      <div className="sub-total">
+                        Order Total
+                      </div>
+                    </div>
+                    <div className="total col-sm-3">
+                      <div className="sub-price">
+                        {`${currency}${parseFloat(orderTotal).toFixed(2)}`}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="btn-end col-sm-5">
+                    <div className="proceed-butn">
+                      <div>
+                        <button
+                          type="button"
+                          className="proceedbtn  modal-button"
+                          onClick={onProceedBuy}
+                        >
+                          Proceed to Buy
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {/* )} */}
+            </Row>
                 </div>
               </Col>
               {(!toggle || state === 'buyNow') &&
@@ -338,60 +385,6 @@ const Cart = (props) => {
                     </div>
                   </ScrollAnimation>
                 </Col>}
-            </Row>
-            <Row>
-              <div className=" col-md-7 " >
-                <div className="total col-md-9 ">
-                  <div className="sub-total">
-                    Admin Fee<span className="tax-info">(2.5%)</span>
-                  </div>
-                </div>
-                <div className="total col-md-3">
-                  <div className="admin-service">
-                    {`${currency}${parseFloat(adminFee).toFixed(2)}`}
-                  </div>
-                </div>
-              </div>
-              <div className=" col-md-7 " >
-                <div className="total col-md-9 ">
-                  <div className="sub-total">
-                    Wipay Fee<span className="tax-info">(3.5% + $0.25 USD)</span>
-                  </div>
-                </div>
-                <div className="total col-md-3">
-                  <div className="admin-service">
-                    {`${currency}${parseFloat(wipayFee).toFixed(2)}`}
-                  </div>
-                </div>
-              </div>
-              {(!toggle || state === 'addCart' && 
-                <div >
-                  <div className=" col-md-7 " >
-                    <div className="final-total col-md-9 ">
-                      <div className="sub-total">
-                        Total
-                      </div>
-                    </div>
-                    <div className="total col-md-3">
-                      <div className="sub-price">
-                        {`${currency}${parseFloat(total).toFixed(2)}`}
-                      </div>
-                    </div>
-                  </div>
-                  <div className="btn-end col-md-5">
-                    <div className="proceed-butn">
-                      <div>
-                        <button
-                          type="button"
-                          className="proceedbtn  modal-button"
-                          onClick={onProceedBuy}
-                        >
-                          Proceed to Buy
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>)}
             </Row>
           </div>
         </Grid>
