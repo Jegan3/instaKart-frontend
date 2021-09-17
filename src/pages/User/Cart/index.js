@@ -130,6 +130,8 @@ const Cart = (props) => {
 
   const currency = cart && cart.cartInfo[0].totalPrice.replace(/\d+([,.]\d+)?\s*/g, '');
 
+  console.log('trst1', currency)
+
   const subTotal = cart && cart.cartInfo
     .map(item => parseFloat(item.totalPrice.replace(/[^.0-9\.]+/g, '')))
     .reduce((prev, curr) => prev + curr, 0);
@@ -139,7 +141,7 @@ const Cart = (props) => {
   const wipayFee = subTotal * 0.035 + 1.70
   const orderTotal = subTotal + adminFee + wipayFee
 
-  const submit = () => { 
+  const submit = () => {
     if (!fullName || !mobile || !address || !country || !city || !zipCode || !email) {
       setAlertError(true)
       message.error('Please fill all the fields')
@@ -169,120 +171,129 @@ const Cart = (props) => {
             <Row>
               <Col md={7}>
                 <div className="product-card">
-                  <Row>
-                    <Col md={12} >
-                      <div className="shop-cart">
-                        <span className="titleproduct">
-                          Shopping Cart
-                        </span>
-                      </div>
-                    </Col>
-                    <Col md={12}>
-                      <div className="product-items">
-                        {cart && cart.cartInfo.map((info) =>
-                          <Row className="product-info-details">
-                            <div >
-                              <Col md={3}>
-                                <img className="img-fluid" src={info && info.productImage} />
-                              </Col>
-                              <Col md={3}>
-                                <div className="productlist">
-                                  <div className="product-name">{info && info.productName}</div>
-                                </div>
-                              </Col>
-                              <Col md={3}>
-                                <div className="productlist">
-                                  <div className='quanity-check'>
-                                    <span>QTY</span>
-                                    <span className="quanitybtn"
-                                      onClick={() => onDecrement(info)}> - </span>
-                                    {info && info.quantity}
-                                    <span className="quanitybtn"
-                                      onClick={() => onIncrement(info)}> + </span>
-                                  </div>
-                                </div>
-                              </Col>
-                              <Col md={3}>
-                                <div className="product-price">
-                                  <div className="product-name">{info && info.totalPrice}</div>
-                                </div>
-                                <br />
-                                <div className="product-remove" onClick={() => onRemove(info)}>Remove</div>
-                              </Col>
-                            </div>
-                          </Row>)}
-                      </div>
-                    </Col>
+                  <Col md={12} >
+                    <div className="shop-cart">
+                      <span className="titleproduct">
+                        Shopping Cart
+                      </span>
+                    </div>
+                  </Col>
+
+                  {!currency ? <Row>
+                    <div className='basket'>
+                      Your Backet Is Empty
+                    </div>
                   </Row>
-                  <Row>
-            <div className=" col-sm-12 " >
-                    <div className="final-total col-sm-9 ">
-                      <div className="sub-total">
-                        Subtotal
-                      </div>
-                    </div>
-                    <div className="total col-sm-3">
-                      <div className="sub-price">
-                        {`${currency}${parseFloat(subTotal).toFixed(2)}`}
-                      </div>
-                    </div>
-                  </div>
-              <div className=" col-sm-12 " >
-                <div className="total col-sm-9 ">
-                  <div className="sub-total">
-                    Admin Fee<span className="tax-info">(2.5%)</span>
-                  </div>
-                </div>
-                <div className="total col-sm-3">
-                  <div className="admin-service">
-                    {`${currency}${parseFloat(adminFee).toFixed(2)}`}
-                  </div>
-                </div>
-              </div>
-              <div className=" col-sm-12 " >
-                <div className="total col-sm-9 ">
-                  <div className="sub-total">
-                    Wipay Fee<span className="tax-info">(3.5% + $0.25 USD)</span>
-                  </div>
-                </div>
-                <div className="total col-sm-3">
-                  <div className="admin-service">
-                    {`${currency}${parseFloat(wipayFee).toFixed(2)}`}
-                  </div>
-                </div>
-              </div>
-              {/* {(!toggle || state === 'addCart' &&  */}
-                <div >
-                  <div className=" col-sm-12 " >
-                    <div className="final-total col-sm-9 ">
-                      <div className="sub-total">
-                        Order Total
-                      </div>
-                    </div>
-                    <div className="total col-sm-3">
-                      <div className="sub-price">
-                        {`${currency}${parseFloat(orderTotal).toFixed(2)}`}
-                      </div>
-                    </div>
-                  </div>
-                  <div className="btn-end col-sm-5">
-                    <div className="proceed-butn">
-                      <div>
-                        <button
-                          type="button"
-                          className="proceedbtn  modal-button"
-                          onClick={onProceedBuy}
-                        >
-                          Proceed to Buy
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                {/* )} */}
-            </Row>
+                    : <Row>
+                      <Row>
+                        <Col md={12}>
+                          <div className="product-items">
+                            {cart && cart.cartInfo.map((info) =>
+                              <Row className="product-info-details">
+                                <div >
+                                  <Col md={3}>
+                                    <img className="img-fluid" src={info && info.productImage} />
+                                  </Col>
+                                  <Col md={3}>
+                                    <div className="productlist">
+                                      <div className="product-name">{info && info.productName}</div>
+                                    </div>
+                                  </Col>
+                                  <Col md={3}>
+                                    <div className="productlist">
+                                      <div className='quanity-check'>
+                                        <span>QTY</span>
+                                        <span className="quanitybtn"
+                                          onClick={() => onDecrement(info)}> - </span>
+                                        {info && info.quantity}
+                                        <span className="quanitybtn"
+                                          onClick={() => onIncrement(info)}> + </span>
+                                      </div>
+                                    </div>
+                                  </Col>
+                                  <Col md={3}>
+                                    <div className="product-price">
+                                      <div className="product-name">{info && info.totalPrice}</div>
+                                    </div>
+                                    <br />
+                                    <div className="product-remove" onClick={() => onRemove(info)}>Remove</div>
+                                  </Col>
+                                </div>
+                              </Row>)}
+                          </div>
+                        </Col>
+                      </Row>
+                      <Row>
+                        <div className=" col-sm-12 " >
+                          <div className="final-total col-sm-9 ">
+                            <div className="sub-total">
+                              Subtotal
+                            </div>
+                          </div>
+                          <div className="total col-sm-3">
+                            <div className="sub-price">
+                              {`${currency}${parseFloat(subTotal).toFixed(2)}`}
+                            </div>
+                          </div>
+                        </div>
+                        <div className=" col-sm-12 " >
+                          <div className="total col-sm-9 ">
+                            <div className="sub-total">
+                              Admin Fee<span className="tax-info">(2.5%)</span>
+                            </div>
+                          </div>
+                          <div className="total col-sm-3">
+                            <div className="admin-service">
+                              {`${currency}${parseFloat(adminFee).toFixed(2)}`}
+                            </div>
+                          </div>
+                        </div>
+                        <div className=" col-sm-12 " >
+                          <div className="total col-sm-9 ">
+                            <div className="sub-total">
+                              Wipay Fee<span className="tax-info">(3.5% + $0.25 USD)</span>
+                            </div>
+                          </div>
+                          <div className="total col-sm-3">
+                            <div className="admin-service">
+                              {`${currency}${parseFloat(wipayFee).toFixed(2)}`}
+                            </div>
+                          </div>
+                        </div>
+                        {/* {(!toggle || state === 'addCart' &&  */}
+                        <div >
+                          <div className=" col-sm-12 " >
+                            <div className="final-total col-sm-9 ">
+                              <div className="sub-total">
+                                Order Total
+                              </div>
+                            </div>
+                            <div className="total col-sm-3">
+                              <div className="sub-price">
+                                {`${currency}${parseFloat(orderTotal).toFixed(2)}`}
+                              </div>
+                            </div>
+                          </div>
+                          <div className="btn-end col-sm-5">
+                            <div className="proceed-butn">
+                              <div>
+                                <button
+                                  type="button"
+                                  className="proceedbtn  modal-button"
+                                  onClick={onProceedBuy}
+                                >
+                                  Proceed to Buy
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        {/* )} */}
+                      </Row>
+                    </Row>}
                 </div>
               </Col>
+
               {(!toggle || state === 'buyNow') &&
                 <Col md={5}>
                   <ScrollAnimation animateIn='bounceInDown' duration={3}>
