@@ -9,6 +9,7 @@ import TermsConditions from './pages/User/TermsConditions';
 import AboutUs from './pages/User/AboutUs';
 import VendorInfo from './pages/Vendor/VendorInfo';
 import ThriftStore from './pages/User/ThriftStore';
+import ComingSoon from './pages/User/ComingSoon';
 // import AdsDetails from './pages/AdsDetails';
 import ProductList from './pages/Vendor/ProductList';
 import AddProduct from './pages/Vendor/AddProduct';
@@ -52,6 +53,7 @@ const Routes = () => (
         <Route path="/aboutus" component={AboutUs} />
         <Route path="/vendorinfo" component={VendorInfo} />
         <Route path="/thriftstore" component={ThriftStore} />
+        <Route path="/comingsoon" component={ComingSoon} />
         {/* <Route path="/advertisement" component={AdsDetails} /> */}
         {/* <Route path="/productlist" component={ProductList} />
         <Route path="/addproduct" component={AddProduct} />

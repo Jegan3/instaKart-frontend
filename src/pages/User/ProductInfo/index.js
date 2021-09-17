@@ -14,6 +14,7 @@ const ProductInfo = ({ location }) => {
   const [count, setCount] = useState(1);
   const [toggle, setToggle] = useState(1);
   const [login, setLogin] = useState(false);
+  const [productMessage, setProductMessage] = useState('');
   const [background, setBackground] = useState(false);
 
   const dispatch = useDispatch();
@@ -57,6 +58,10 @@ const ProductInfo = ({ location }) => {
     setBackground(images.thumbnail)
   }
 
+  const onProductMessage = (e) => {
+    setProductMessage(e.target.value)
+  }
+
   const onAddCart = () => {
     if (sessionStorage.access) {
       const productPrice = product.finalPrice.replace(/[^.0-9\.]+/g, '');
@@ -64,9 +69,10 @@ const ProductInfo = ({ location }) => {
 
       const addToCart = {
         productId: product._id,
-        totalPrice: `${currency}${Math.round(productPrice * count).toFixed(2)}`,
+        totalPrice: `${currency}${parseFloat(productPrice * count).toFixed(2)}`,
         quantity: count,
       }
+
       dispatch({ type: 'ADD_CART_REQUEST', addToCart: addToCart });
       history.push({ pathname: '/cart', state: 'addCart' });
     } else {
@@ -88,6 +94,12 @@ const ProductInfo = ({ location }) => {
     setLogin(false)
   }
 
+  const onProceed = () => {
+    // const SendMessage = {
+    //   productMessage,
+    // };
+    dispatch({ type: 'PRODUCT_MESSAGE_REQUEST', productMessage });
+  };
   return (
     <div className="ads-control">
       <Header loginCart={login} hideloginCart={hideloginCart} />
@@ -163,6 +175,25 @@ const ProductInfo = ({ location }) => {
                         {toggle === 3 &&
                           <div>
                             <h3 className="prod-details">{product && product.productShipping}</h3>
+                          </div>}
+                        {toggle === 4 &&
+                          <div className="product-info-message">
+                            <textarea className=" form-control my-input"
+                              name="message"
+                              placeholder='type something..'
+                              rows="4"
+                              value={productMessage}
+                              onChange={onProductMessage}
+                              maxLength={500}
+                            >
+                            </textarea>
+                            <button
+                              type="button"
+                              className="btn btn-primary btn-lg btn-block modal-button"
+                              onClick={onProceed}
+                            >
+                              Proceed
+                            </button>
                           </div>}
                       </div>
                     </Col>

@@ -14,7 +14,7 @@ import Loader from '../../../components/Loader';
 
 const { Dragger } = Upload;
 
-const AddProduct = ({storeId}) => {
+const AddProduct = ({ storeId }) => {
   const [productName, setProductName] = useState('');
   const [category, setCategory] = useState('');
   const [fileList, setImageList] = useState([])
@@ -284,13 +284,13 @@ const AddProduct = ({storeId}) => {
         productImages: fileList.map(info => info.thumbUrl),
         // productVideo,
         discount,
-        finalPrice: `${symbol}${finalPrice.toFixed(2)}`,
+        finalPrice: `${symbol}${parseFloat(finalPrice).toFixed(2)}`,
         // stockReserve,
         // stockHand,
         productDescription,
         productWarranty,
         productShipping,
-        estoreId:storeId,
+        estoreId: storeId,
       };
       dispatch({ type: 'THRIFT_ADD_PRODUCT_REQUEST', addProduct });
     }
@@ -382,20 +382,20 @@ const AddProduct = ({storeId}) => {
                     <label className="signup-label">Upload Video </label>
                     {video ?
                       <ReactPlayer url={video} width="100%" height="100%" controls={true} /> :
-                    <Dragger
-                      name='file'
-                      className="drag-video"
-                      accept="video/*"
-                      customRequest={fakeRequest}
-                      onChange={onChangeVideo}
-                      beforeUpload={beforeUpload}
-                    >
-                      {/* <p className="ant-upload-drag-icon">
+                      <Dragger
+                        name='file'
+                        className="drag-video"
+                        accept="video/*"
+                        customRequest={fakeRequest}
+                        onChange={onChangeVideo}
+                        beforeUpload={beforeUpload}
+                      >
+                        {/* <p className="ant-upload-drag-icon">
                       <InboxOutlined /> HI 
                     </p> */}
-                      <p className="ant-upload-text">Click or drag file to this area to upload video</p>
-                      <p className="ant-upload-hint">You can upload only 1 video and maximum file size of the video should be less than 30 MB</p>
-                    </Dragger> }
+                        <p className="ant-upload-text">Click or drag file to this area to upload video</p>
+                        <p className="ant-upload-hint">You can upload only 1 video and maximum file size of the video should be less than 30 MB</p>
+                      </Dragger>}
                   </Col>
                 </Row>
                 <Row>
@@ -405,7 +405,7 @@ const AddProduct = ({storeId}) => {
                         <label className="signup-label">Price <span className="red-star">*</span></label>
                         {thriftCategoryType && <Cleave
                           className={alertError && !price ? ` form-control my-input` : `form-control formy`}
-                          maxLength={7}
+                          maxLength={13}
                           value={price}
                           onChange={onPrice}
                           options={{

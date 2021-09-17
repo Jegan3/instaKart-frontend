@@ -231,3 +231,25 @@
     display: inline;
   }
 }
+
+.product-info-message {
+  .form-control {
+    background-color: rgba(0, 0, 0, -13.25) !important;
+    border-color: $color-theme;
+    color: whitesmoke;
+  }
+
+  .modal-button {
+    background-color: $color-theme !important;
+    color: whitesmoke !important;
+
+  }
+
+  .btn-block {
+    width: 90px;
+    float: right;
+    padding: 6px 12px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+}

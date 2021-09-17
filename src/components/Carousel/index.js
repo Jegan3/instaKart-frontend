@@ -118,18 +118,21 @@ const businessRowFirst = [
     title: 'CARD 1',
     content: 'Food Avenue',
     imgUrl: 'images/1_Food.png',
+    btnUrl: '/comingsoon',
   },
   {
     id: 2,
     title: 'CARD 2',
     content: 'Fashion District',
     imgUrl: 'images/2_Fashion.jpg',
+    btnUrl: '/comingsoon',
   },
   {
     id: 3,
     title: 'CARD 3',
     content: 'Medical Supplies, Health & Wellness',
     imgUrl: 'images/3_Health.png',
+    btnUrl: '/comingsoon',
   },
 ];
 
@@ -202,6 +205,7 @@ const businessRowSecond = [
     title: 'CARD 4',
     content: 'Speciality Services',
     imgUrl: 'images/4_Speciality.png',
+    btnUrl: '/comingsoon',
   },
   {
     id: 5,
@@ -216,6 +220,7 @@ const businessRowSecond = [
     title: 'CARD 6',
     content: 'Grocery & Fresh Produce',
     imgUrl: 'images/6_Grocery.png',
+    btnUrl: '/comingsoon',
   },
 ];
 
@@ -225,18 +230,21 @@ const businessRowThird = [
     title: 'CARD 7',
     content: 'Appliances & Tech Gadgets',
     imgUrl: 'images/7_applicance.jpg',
+    btnUrl: '/comingsoon',
   },
   {
     id: 8,
     title: 'CARD 8',
     content: 'Automotive, Hardware, Industrial & Safety Supplies',
     imgUrl: 'images/8_hardware.png',
+    btnUrl: '/comingsoon',
   },
   {
     id: 9,
     title: 'CARD 9',
     content: 'Home & Garden Supplies',
     imgUrl: 'images/9_home.png',
+    btnUrl: '/comingsoon',
   },
 ];
 
@@ -244,7 +252,7 @@ const businessRowFourth = [
   {
     id: 10,
     title: 'CARD 10',
-    content: 'Insta-Kart Elearning',
+    content: 'Insta-Kart E-learning',
     imgUrl: 'images/10_TechGadgets.jpg',
     btnUrl: 'https://instakartelearning.com/chess-school/',
   },
@@ -253,12 +261,14 @@ const businessRowFourth = [
     title: 'CARD 11',
     content: 'Social Media',
     imgUrl: 'images/11_TimeCap.png',
+    btnUrl: '/comingsoon',
   },
   {
     id: 12,
     title: 'CARD 12',
     content: 'Wholesale Suppliers & Drop Shipping',
     imgUrl: 'images/12_WholesaleDS.jpg',
+    btnUrl: '/comingsoon',
   },
 ];
 

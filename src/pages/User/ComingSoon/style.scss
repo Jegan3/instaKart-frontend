@@ -1,0 +1,50 @@
+.comingsoon {
+  box-sizing: border-box;
+  overflow-x: hidden;
+  width: 100%;
+  height: 100%;
+  background-color: #140a42;
+
+  .blob {
+    overflow: hidden;
+  }
+
+  .blob-inner {
+    position: absolute;
+    height: 100vh;
+    width: 50%;
+    bottom: 23vh;
+    margin-right: -80%;
+    top: -10vh;
+    transform: rotateY(-18deg);
+    z-index: 0;
+  }
+
+  .styles_typicalWrapper__1_Uvh {
+    padding-top: 90px;
+  }
+
+  .user {
+    color: whitesmoke;
+  }
+
+  .MuiSvgIcon-root {
+    color: whitesmoke;
+  }
+}
+
+.soon {
+  width: 100% !important;
+  margin: auto;
+  height: 50%;
+}
+
+.page-text {
+  text-align: center;
+  font-family: 'Open Sans';
+  color: whitesmoke;
+  font-size: 35px;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
