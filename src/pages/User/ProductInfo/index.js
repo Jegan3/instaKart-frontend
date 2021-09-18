@@ -95,11 +95,13 @@ const ProductInfo = ({ location }) => {
   }
 
   const onProceed = () => {
-    // const SendMessage = {
-    //   productMessage,
-    // };
-    dispatch({ type: 'PRODUCT_MESSAGE_REQUEST', productMessage });
+    const enquiry = {
+      productId: product._id,
+      message: productMessage,
+    };
+    dispatch({ type: 'PRODUCT_MESSAGE_REQUEST', enquiry });
   };
+
   return (
     <div className="ads-control">
       <Header loginCart={login} hideloginCart={hideloginCart} />

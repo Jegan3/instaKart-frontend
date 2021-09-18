@@ -3,11 +3,11 @@ export const getProductMessage = () => ({
 });
 
 export const getProductMessageSuccess = (productMessage) => ({
-  type: 'PRODUCT_MESSAGE_REQUEST',
+  type: 'PRODUCT_MESSAGE_SUCCESS',
   productMessage,
 });
 
 export const getProductMessageFailure = (error) => ({
-  type: 'PRODUCT_MESSAGE_REQUEST',
+  type: 'PRODUCT_MESSAGE_FAILURE',
   error,
 });

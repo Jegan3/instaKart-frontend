@@ -20,6 +20,7 @@ export default {
     getCheckout: '/api/user/completePaymet',
     getAddStore: '/api/vendor/createEstore',
     getVendorCompanyDetails: '/api/vendor/getEstores',
+    getProductMessage: '/api/user/userProductEnquiry',
   },
 
   apiBaseUrl: {
