@@ -7,7 +7,6 @@ import { history } from '../../../routes';
 import Footer from '../../../components/Footer';
 import Header from '../../../components/Header';
 import ImageSlider from '../../../components/ImageSlider';
-import Desk from '../../../components/Desk';
 import { CarouselNewEStoreAds, CarouselReviewCard } from '../../../components/Carousel';
 
 const ProductInfo = ({ location }) => {
@@ -25,6 +24,9 @@ const ProductInfo = ({ location }) => {
     original: item,
     thumbnail: item,
   }))
+
+  // For Header Menu 
+  const module = location.state.module;
 
   useEffect(() => {
     dispatch({ type: 'PRODUCT_INFO_REQUEST', productId: location.state });
@@ -104,7 +106,7 @@ const ProductInfo = ({ location }) => {
 
   return (
     <div className="ads-control">
-      <Header loginCart={login} hideloginCart={hideloginCart} />
+      <Header loginCart={login} hideloginCart={hideloginCart} module={module} />
       <div className="jumbotron jumbotron-fluid"
         style={{ backgroundImage: `url(${!background ? product && product.productImages[0] : background})` }}
       >

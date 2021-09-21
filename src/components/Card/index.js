@@ -59,10 +59,10 @@ export const Card = ({ imgUrl, alt, content, btnUrl, body, title, price, product
   )
 };
 
-export const ThriftStoreNearYouCard = ({ imgUrl, storeName, country, path, thriftStore }) => {
+export const ThriftStoreNearYouCard = ({ imgUrl, storeName, country, path, thriftStore, module }) => {
 
   const Card = () => {
-    history.push({ pathname: path, state: thriftStore })
+    history.push({ pathname: path, state: { thriftStore: thriftStore, module: module } })
     window.scrollTo(0, 0);
   }
 
@@ -93,10 +93,10 @@ export const ThriftStoreNearYouCard = ({ imgUrl, storeName, country, path, thrif
     </div>)
 }
 
-export const NewAdditionCard = ({ imgUrl, product, path, price, productName }) => {
+export const NewAdditionCard = ({ imgUrl, product, path, price, productName, module }) => {
 
   const Card = () => {
-    history.push({ pathname: path, state: product })
+    history.push({ pathname: path, state: { product: product, module: module } })
     window.scrollTo(0, 0);
   }
 
