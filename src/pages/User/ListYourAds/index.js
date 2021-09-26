@@ -13,6 +13,11 @@ const ListYourAds = () => {
   const [primaryImage, setPrimaryImage] = useState('');
   const [secondaryImage, setSecondaryImage] = useState('');
   const [video, setVideo] = useState(null);
+  const [submit, setName] = useState('');
+
+  function handleChange(event) {
+    setName(event.target.value);
+  }
 
   const onPrimaryImage = ({ fileList: newFileList }) => {
     let file = newFileList[0].originFileObj;
@@ -30,7 +35,7 @@ const ListYourAds = () => {
       setSecondaryImage(reader.result);
     };
     reader.readAsDataURL(file);
-  }
+  };
 
   const fakeRequest = ({ onSuccess }) => {
     setTimeout(() => {
@@ -106,22 +111,58 @@ const ListYourAds = () => {
                   </div>
                 </Col>
                 <Col md={3}>
-                  <Row>
-                    <Col className="listtop">
-                      <div className="ads-price">
-                        <p> $10  </p>
+                  <div className="price-col">
+                    <div className="primay-banner">
+                      <input
+                        className="Per-Day"
+                        type="radio"
+                        value="10"
+                        name="price"
+                        id="10$ PerDay"
+                        onChange={handleChange}
+                      />
+                      <label className="per-day-label" for="10$ PerDay">
+                        $10 / Day
+                      </label>
+
+                      <div>
+                        <input
+                          className="Per-Week"
+                          type="radio"
+                          value="20"
+                          name="price"
+                          id="20$ PerWeek"
+                          onChange={handleChange}
+                        />
+                        <label className="per-week-label" for="20$ PerWeek">
+                          $20 / Week
+                        </label>
                       </div>
-                    </Col>
-                    <Col className="listtop">
-                      <div className="ads-price">
-                        <button type="button"
-                          className="adslistbtn modal-button"
-                        // onClick={submit}
-                        > Advertise Now
-                        </button>
+                      <div>
+                        <input
+                          className="Per-Month"
+                          type="radio"
+                          value="30"
+                          name="price"
+                          id="30$ PerMonth"
+                          onChange={handleChange}
+                        />
+                        <label className="per-month-label" for="30$ PerMonth">
+                          $30 / Month
+                        </label>
                       </div>
-                    </Col>
-                  </Row>
+                    </div>
+                    <div className="ads-price">
+                      <button
+                        type="button"
+                        className="adslistbtn modal-butn"
+                        onClick={submit}
+                      >
+                        {" "}
+                        Advertise Now
+                      </button>
+                    </div>
+                  </div>
                 </Col>
               </Row>
             </Col>
@@ -153,22 +194,59 @@ const ListYourAds = () => {
                   </div>
                 </Col>
                 <Col md={3}>
-                  <Row>
-                    <Col className="listtop">
-                      <div className="ads-price">
-                        <p> $20  </p>
+                  <div className="price-col">
+                    <div className="secondary-banner">
+                      <div className="hover-look">
+                        <input
+                          className="Per-Day"
+                          type="radio"
+                          value="40"
+                          name="price"
+                          id="40$ PerDay"
+                          onChange={handleChange}
+                        />
+                        <label className="per-day-label" for="40$ PerDay">
+                          $40 / Day
+                        </label>
                       </div>
-                    </Col>
-                    <Col className="listtop">
-                      <div className="ads-price">
-                        <button type="button"
-                          className="adslistbtn modal-button"
+                      <div>
+                        <input
+                          className="Per-Week"
+                          type="radio"
+                          value="50"
+                          name="price"
+                          id="50$ PerWeek"
+                          onChange={handleChange}
+                        />
+                        <label className="per-week-label" for="50$ PerWeek">
+                          $50 / Week
+                        </label>
+                      </div>
+                      <div>
+                        <input
+                          className="Per-Month"
+                          type="radio"
+                          value="60"
+                          name="price"
+                          id="60$ PerMonth"
+                          onChange={handleChange}
+                        />
+                        <label className="per-month-label" for="60$ PerMonth">
+                          $60 / Month
+                        </label>
+                      </div>
+                    </div>
+                    <div className="ads-price-one">
+                      <button
+                        type="button"
+                        className="adslistbtn modal-button"
                         // onClick={submit}
-                        > Advertise Now
-                        </button>
-                      </div>
-                    </Col>
-                  </Row>
+                      >
+                        {" "}
+                        Advertise Now
+                      </button>
+                    </div>
+                  </div>
                 </Col>
               </Row>
             </Col>
@@ -199,23 +277,61 @@ const ListYourAds = () => {
                   </div>
                 </Col>
                 <Col md={3}>
-                  <Row>
-                    <Col className="listtop">
-                      <div className="ads-price">
-                        <p> $30  </p>
+                  <div className="price-col">
+                    <div className="video-banner">
+                      <div className="hover-look">
+                        <input
+                          className="Per-Day"
+                          type="radio"
+                          value="70"
+                          name="price"
+                          id="70$ PerDay"
+                          onChange={handleChange}
+                        />
+                        <label className="per-day-label" for="70$ PerDay">
+                          $70 / Day
+                        </label>
                       </div>
-                    </Col>
-                    <Col className="listtop">
-                      <div className="ads-price">
-                        <button type="button"
-                          className="adslistbtn modal-button"
+                      <div>
+                        <input
+                          className="Per-Week"
+                          type="radio"
+                          value="80"
+                          name="price"
+                          id="80$ PerWeek"
+                          onChange={handleChange}
+                        />
+                        <label className="per-week-label" for="80$ PerWeek">
+                          $80 / Week
+                        </label>
+                      </div>
+                      <div>
+                        <input
+                          className="Per-Month"
+                          type="radio"
+                          value="90"
+                          name="price"
+                          id="90$ PerMonth"
+                          onChange={handleChange}
+                        />
+                        <label className="per-month-label" for="90$ PerMonth">
+                          $90 / Month
+                        </label>
+                      </div>
+                    </div>
+                    <div className="ads-price-one">
+                      <button
+                        type="button"
+                        className="adslistbtn modal-button"
                         // onClick={submit}
-                        > Advertise Now
-                        </button>
-                      </div>
-                    </Col>
-                  </Row>
+                      >
+                        {" "}
+                        Advertise Now
+                      </button>
+                    </div>
+                  </div>
                 </Col>
+
               </Row>
             </Col>
           </Row>

@@ -19,21 +19,24 @@
   }
 
   .ant-upload.ant-upload-drag .ant-upload-drag-container {
-    background: floralwhite;
+    background: #28a4d9;
   }
 
   .list-your {
-    margin: 3%
+    margin: 25px;
   }
 
-  .ads-price {
-    text-align: center;
-    top: 45px;
-    position: relative;
-    margin: 1%;
-    p{
-      font-size: 8rem;
-    }
+  // .ads-price {
+  //   text-align: center;
+  //   top: 45px;
+  //   position: relative;
+  //   margin: 1%;
+  //   p{
+  //     font-size: 8rem;
+  //   }
+  .signup-label
+  {
+    font-size: 17px;
   }
 
   .adslistbtn {
@@ -43,19 +46,79 @@
     background-color: transparent !important;
     opacity: 0.8;
     filter: alpha(opacity=80);
-    padding: 8px 16px;
-    font-size: 22px;
+    padding: 8px 28px;
+    font-size: 17px;
     margin: 10%;
+    margin-left: 35px;
+    margin-top: 28px;
     white-space: nowrap;
+    border-radius: 5px;
   }
 
-  .listtop {
-    margin-top:5%;
-    top: 25px;
-    position: relative;
+  .modal-butn {
+    margin-bottom: 15px;
+    cursor: pointer;
+    box-shadow: 0 6px 6px rgba(0, 0, 0, 0.6);
+  }
+  .adslistbtn:hover,
+  .adslistbtn:focus {
+    opacity: 1;
+    filter: alpha(opacity=100);
+    outline: 0 !important;
+  }
+  .adslistbtn:active,
+  .adslistbtn.active {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    outline: 0 !important;
   }
 
   .advertise {
     margin: 3%;
   }
+  .primay-banner {
+    margin-top: 150px;
+    line-height: 40px;
+    font-size: 17px;
+    margin-left: 35px;
+  }
+
+  .secondary-banner {
+    margin-top: 150px;
+    line-height: 40px;
+    font-size: 17px;
+    margin-left: 35px;
+  }
+
+  .video-banner {
+    margin-top: 150px;
+    line-height: 40px;
+    font-size: 17px;
+    margin-left: 35px;
+  }
+
+  .per-day-label {
+    padding-left: 10px;
+  }
+
+  .per-week-label {
+    padding-left: 10px;
+  }
+  .per-month-label {
+    padding-left: 10px;
+  }
+  .price-col {
+    margin: 25px;
+    border: 1px solid rgb(255, 255, 255);
+    height: 359px;
+  }
+  .Per-Day,
+  .Per-Week,
+  .Per-Month {
+    position: relative;
+    top: 1px;
+    width: 13px;
+    height: 13px;
+  }
 }
+
