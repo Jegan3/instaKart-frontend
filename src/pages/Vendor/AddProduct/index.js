@@ -21,7 +21,7 @@ const AddProduct = ({ storeId }) => {
   const [previewVisible, setPreviewVisible] = useState(false)
   const [previewImage, setPreviewImage] = useState('')
   const [previewTitle, setPreviewTitle] = useState('')
-  const [video, setVideo] = useState(null);
+  const [video, setVideo] = useState('')
   const [price, setPrice] = useState('');
   const [tax, setTax] = useState('');
   const [discount, setDiscount] = useState('');
@@ -214,11 +214,29 @@ const AddProduct = ({ storeId }) => {
 
   //let fileList = [];
 
-  const onChangeVideo = ({ fileList: newFileList }) => {
-    let file = newFileList[0].originFileObj;
-    setVideo(URL.createObjectURL(file));
-    console.log('test-1', file)
-  };
+  // const onChangeVideo = ({ fileList: newFileList }) => {
+  //   let file = newFileList[0].originFileObj;
+  //   setVideo(URL.createObjectURL(file));
+  //   console.log('test-1', file)
+  // };
+
+
+  const onChangeVideo = async info => {
+    const { status } = info.file;
+
+    if (status === 'done') {
+      message.success(`${info.file.name} file uploaded successfully.`);
+    } else if (status === 'error') {
+      message.error(`${info.file.name} file upload failed`);
+    } else if (!info.fileList.length) {
+      message.error(`${info.file.name} file deleted successfully`);
+    }
+    // setProductVideo(info.fileList)
+    let videoTo64 = await getBase64(info.file.originFileObj);
+    let videoConversion = videoTo64.split(" ")
+    //console.log(videoConversion);
+    setVideo(videoConversion)
+  }
 
   // const onChangeVideo = (info) => {
   //   const { status } = info.file;
@@ -251,6 +269,12 @@ const AddProduct = ({ storeId }) => {
     });
   }
 
+  // const getBase64 = (file) => {
+  //     const reader = new FileReader();
+  //     reader.readAsDataURL(file);
+  // }
+
+
   const fakeRequest = ({ onSuccess }) => {
     setTimeout(() => {
       onSuccess('OK')
@@ -282,7 +306,7 @@ const AddProduct = ({ storeId }) => {
         productName,
         category: category.value,
         productImages: fileList.map(info => info.thumbUrl),
-        // productVideo,
+        productVideo : video,
         discount,
         finalPrice: `${symbol}${parseFloat(finalPrice).toFixed(2)}`,
         // stockReserve,
@@ -292,11 +316,13 @@ const AddProduct = ({ storeId }) => {
         productShipping,
         estoreId: storeId,
       };
+      console.log('addproduct', addProduct )
       dispatch({ type: 'THRIFT_ADD_PRODUCT_REQUEST', addProduct });
     }
     setClear(true)
+  
   };
-
+  
   return (
     <div >
       {isLoading && <Loader />}

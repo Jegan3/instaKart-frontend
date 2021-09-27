@@ -12,6 +12,13 @@
   font-family: monospace;
 }
 
+.basket {
+  font-size: 30px;
+  text-align: center;
+  font-family: cursive;
+  font-weight: 900;
+}
+
 .itemsproduct {
   float: right;
   cursor: pointer;
@@ -145,7 +152,7 @@
       padding-bottom: 1%;
     }
 
-    .product-name{
+    .product-name {
       padding-right: 12px;
     }
 
@@ -155,7 +162,6 @@
       font-family: monospace;
       cursor: pointer;
     }
-    
   }
 
   .billing-card {
@@ -247,13 +253,14 @@
     font-family: monospace;
   }
 
-  .proceed-butn {
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    white-space: nowrap;
-    position: relative;
-    font-family: monospace;
+  .btn-end {
+    float: right;
+
+    .proceed-butn {
+      white-space: nowrap;
+      position: relative;
+      font-family: monospace;
+    }
   }
 
   .proceedbtn {
@@ -267,6 +274,7 @@
     line-height: 1.3333333;
     border-radius: 6px;
     opacity: .8;
+    float: right;
   }
 
   .shop-cart {

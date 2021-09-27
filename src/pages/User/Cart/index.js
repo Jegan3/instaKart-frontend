@@ -8,9 +8,10 @@ import ScrollAnimation from 'react-animate-on-scroll';
 import Button from '@material-ui/core/Button';
 import Header from '../../../components/Header';
 import Footer from '../../../components/Footer';
+import Loader from '../../../components/Loader';
 import { history } from '../../../routes';
 
-const Cart = (props) => {
+const Cart = ({ location }) => {
   const [toggle, setToggle] = useState(true);
   const [fullName, setFullName] = useState('');
   const [mobile, setMobile] = useState('');
@@ -22,15 +23,13 @@ const Cart = (props) => {
   const [count, setCount] = useState();
   const [alertError, setAlertError] = useState(false);
 
-  const { state } = props.location;
-
   const dispatch = useDispatch();
   const productDetails = useSelector((state) => state.productInfoState.productInfo);
   const addCart = useSelector((state) => state.addCartState.addCart);
+  const buyNow = useSelector((state) => state.addCartState.buyNow);
   const cart = useSelector((state) => state.cartState.cart);
+  const isLoading = useSelector((state) => state.cartState.isLoading);
   const checkout = useSelector((state) => state.checkoutState.checkout);
-  const product = productDetails && productDetails.productInfo
-  // const cartDetails = cart && cart.cartInfo
 
   useEffect(() => {
     dispatch({ type: 'CART_REQUEST' });
@@ -44,8 +43,6 @@ const Cart = (props) => {
 
   const onMobile = (e) => {
     if (e.target.value.match('^[0-9]*$')) {
-      // if (e.target.value.match('^[2-9]\d{2}-\d{3}-\d{4}$')) {
-      //  if (/^[2-9]\d{2}-\d{3}-\d{4}$/.test(e.target.value)) {
       setMobile(e.target.value)
     }
   }
@@ -91,31 +88,64 @@ const Cart = (props) => {
   }
 
   const onDecrement = (info) => {
-    info.quantity > 1 && setCount(info.quantity - 1)
 
-    const productPrice = info.productPrice.replace(/[^.0-9\.]+/g, '');
-    const currency = info.productPrice.replace(/\d+([,.]\d+)?\s*/g, '');
+    if (location.state === 'addCart' && info.quantity > 1) {
 
-    const addToCart = {
-      productId: info.productId,
-      totalPrice: `${currency}${parseFloat(productPrice * (info.quantity - 1)).toFixed(2)}`,
-      quantity: info.quantity - 1,
+      const productPrice = info.productPrice.replace(/[^.0-9\.]+/g, '');
+      const currency = info.productPrice.replace(/\d+([,.]\d+)?\s*/g, '');
+
+      const addToCart = {
+        productId: info.productId,
+        totalPrice: `${currency}${parseFloat(productPrice * (info.quantity - 1)).toFixed(2)}`,
+        quantity: info.quantity - 1,
+      }
+      dispatch({ type: 'ADD_CART_REQUEST', addToCart: addToCart });
+      setCount(info.quantity - 1)
+
+    } else if (location.state === 'buyNow' && info.quantity > 1) {
+      const productPrice = info.productPrice.replace(/[^.0-9\.]+/g, '');
+      const currency = info.productPrice.replace(/\d+([,.]\d+)?\s*/g, '');
+
+      const addToCart = {
+        productId: info.productId,
+        productName: info.productName,
+        productImage: info.productImage,
+        productPrice: info.productPrice,
+        totalPrice: `${currency}${parseFloat(productPrice * (info.quantity - 1)).toFixed(2)}`,
+        quantity: info.quantity - 1,
+      }
+      dispatch({ type: 'BUY_NOW', buyNow: addToCart });
+      setCount(info.quantity - 1)
     }
-    dispatch({ type: 'ADD_CART_REQUEST', addToCart: addToCart });
   }
 
   const onIncrement = (info) => {
 
-    const productPrice = info.productPrice.replace(/[^.0-9\.]+/g, '');
-    const currency = info.productPrice.replace(/\d+([,.]\d+)?\s*/g, '');
+    if (location.state === 'addCart') {
+      const productPrice = info.productPrice.replace(/[^.0-9\.]+/g, '');
+      const currency = info.productPrice.replace(/\d+([,.]\d+)?\s*/g, '');
 
-    // setCount(info.quantity + 1)
-    const addToCart = {
-      productId: info.productId,
-      totalPrice: `${currency}${parseFloat(productPrice * (info.quantity + 1)).toFixed(2)}`,
-      quantity: info.quantity + 1,
+      const addToCart = {
+        productId: info.productId,
+        totalPrice: `${currency}${parseFloat(productPrice * (info.quantity + 1)).toFixed(2)}`,
+        quantity: info.quantity + 1,
+      }
+      dispatch({ type: 'ADD_CART_REQUEST', addToCart: addToCart });
+
+    } else {
+      const productPrice = info.productPrice.replace(/[^.0-9\.]+/g, '');
+      const currency = info.productPrice.replace(/\d+([,.]\d+)?\s*/g, '');
+
+      const addToCart = {
+        productId: info.productId,
+        productName: info.productName,
+        productImage: info.productImage,
+        productPrice: info.productPrice,
+        totalPrice: `${currency}${parseFloat(productPrice * (info.quantity + 1)).toFixed(2)}`,
+        quantity: info.quantity + 1,
+      }
+      dispatch({ type: 'BUY_NOW', buyNow: addToCart });
     }
-    dispatch({ type: 'ADD_CART_REQUEST', addToCart: addToCart });
   }
 
   const onRemove = (info) => {
@@ -127,19 +157,28 @@ const Cart = (props) => {
     }
     dispatch({ type: 'ADD_CART_REQUEST', addToCart: addToCart });
   }
+  //passing buyNowproduct details
+  const buyNowDetails = []
+  buyNowDetails.push(buyNow);
 
-  const currency = cart && cart.cartInfo[0].totalPrice.replace(/\d+([,.]\d+)?\s*/g, '');
+  //passing state and api value 
+  const productList = location.state === 'addCart' ? cart && cart.cartInfo : buyNowDetails;
 
-  const subTotal = cart && cart.cartInfo
-    .map(item => parseFloat(item.totalPrice.replace(/[^.0-9\.]+/g, '')))
-    .reduce((prev, curr) => prev + curr, 0);
+  const currency = productList && productList[0].totalPrice.replace(/\d+([,.]\d+)?\s*/g, '');
 
-  const adminFee = subTotal * 0.025
+
+
+  const subTotal = productList && productList.map(item => parseFloat(item.totalPrice.replace(/[^.0-9\.]+/g, ''))).reduce((prev, curr) => prev + curr, 0)
+
+  const adminFee = subTotal * 0.025;
   // trinidad tobago wipay charges
-  const wipayFee = subTotal * 0.035 + 1.70
-  const orderTotal = subTotal + adminFee + wipayFee
+  const wipayFee = subTotal * 0.035 + 1.70;
 
-  const submit = () => { 
+  const orderTotal = subTotal + adminFee + wipayFee;
+
+
+
+  const submit = () => {
     if (!fullName || !mobile || !address || !country || !city || !zipCode || !email) {
       setAlertError(true)
       message.error('Please fill all the fields')
@@ -165,125 +204,132 @@ const Cart = (props) => {
       <Header />
       <div className="checkout-page">
         <Grid fluid>
+          <div> {(isLoading) && <Loader />} </div>
           <div className="checkout-details">
             <Row>
               <Col md={7}>
                 <div className="product-card">
-                  <Row>
-                    <Col md={12} >
-                      <div className="shop-cart">
-                        <span className="titleproduct">
-                          Shopping Cart
-                        </span>
-                      </div>
-                    </Col>
-                    <Col md={12}>
-                      <div className="product-items">
-                        {cart && cart.cartInfo.map((info) =>
-                          <Row className="product-info-details">
-                            <div >
-                              <Col md={3}>
-                                <img className="img-fluid" src={info && info.productImage} />
-                              </Col>
-                              <Col md={3}>
-                                <div className="productlist">
-                                  <div className="product-name">{info && info.productName}</div>
-                                </div>
-                              </Col>
-                              <Col md={3}>
-                                <div className="productlist">
-                                  <div className='quanity-check'>
-                                    <span>QTY</span>
-                                    <span className="quanitybtn"
-                                      onClick={() => onDecrement(info)}> - </span>
-                                    {info && info.quantity}
-                                    <span className="quanitybtn"
-                                      onClick={() => onIncrement(info)}> + </span>
-                                  </div>
-                                </div>
-                              </Col>
-                              <Col md={3}>
-                                <div className="product-price">
-                                  <div className="product-name">{info && info.totalPrice}</div>
-                                </div>
-                                <br />
-                                <div className="product-remove" onClick={() => onRemove(info)}>Remove</div>
-                              </Col>
+                  <Col md={12} >
+                    <div className="shop-cart">
+                      <span className="titleproduct">
+                        Shopping Cart
+                      </span>
+                    </div>
+                  </Col>
+                  {currency ?
+                    <Row>
+                      <Row>
+                        <Col md={12}>
+                          <div className="product-items">
+                            <Row className="product-info-details">
+                              {productList && productList.map((info) =>
+                                <div >
+                                  <Col md={3}>
+                                    <img className="img-fluid" src={info && info.productImage} />
+                                  </Col>
+                                  <Col md={3}>
+                                    <div className="productlist">
+                                      <div className="product-name">{info && info.productName}</div>
+                                    </div>
+                                  </Col>
+                                  <Col md={3}>
+                                    <div className="productlist">
+                                      <div className='quanity-check'>
+                                        <span>QTY</span>
+                                        <span className="quanitybtn"
+                                          onClick={() => onDecrement(info)}> - </span>
+                                        {info && info.quantity}
+                                        <span className="quanitybtn"
+                                          onClick={() => onIncrement(info)}> + </span>
+                                      </div>
+                                    </div>
+                                  </Col>
+                                  <Col md={3}>
+                                    <div className="product-price">
+                                      <div className="product-name">{info && info.totalPrice}</div>
+                                    </div>
+                                    <br />
+                                    {location.state === 'addCart' && <div className="product-remove" onClick={() => onRemove(info)}>Remove</div>}
+                                  </Col>
+                                </div>)}
+                            </Row>
+                          </div>
+                        </Col>
+                      </Row>
+                      <Row>
+                        <div className="col-sm-12" >
+                          <div className="final-total col-sm-9 ">
+                            <div className="sub-total">
+                              Subtotal
                             </div>
-                          </Row>)}
+                          </div>
+                          <div className="total col-sm-3">
+                            <div className="sub-price">
+                              {`${currency}${parseFloat(subTotal).toFixed(2)}`}
+                            </div>
+                          </div>
+                        </div>
+                        <div className=" col-sm-12 " >
+                          <div className="total col-sm-9 ">
+                            <div className="sub-total">
+                              Admin Fee<span className="tax-info">(2.5%)</span>
+                            </div>
+                          </div>
+                          <div className="total col-sm-3">
+                            <div className="admin-service">
+                              {`${currency}${parseFloat(adminFee).toFixed(2)}`}
+                            </div>
+                          </div>
+                        </div>
+                        <div className=" col-sm-12 " >
+                          <div className="total col-sm-9 ">
+                            <div className="sub-total">
+                              Wipay Fee<span className="tax-info">(3.5% + $0.25 USD)</span>
+                            </div>
+                          </div>
+                          <div className="total col-sm-3">
+                            <div className="admin-service">
+                              {`${currency}${parseFloat(wipayFee).toFixed(2)}`}
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div className=" col-sm-12 " >
+                            <div className="final-total col-sm-9 ">
+                              <div className="sub-total">
+                                Order Total
+                              </div>
+                            </div>
+                            <div className="total col-sm-3">
+                              <div className="sub-price">
+                                {`${currency}${parseFloat(orderTotal).toFixed(2)}`}
+                              </div>
+                            </div>
+                          </div>
+                          <div className="btn-end col-sm-5">
+                            <div className="proceed-butn">
+                              {location.state === 'addCart' && <div>
+                                <button
+                                  type="button "
+                                  className="proceedbtn  modal-button"
+                                  onClick={onProceedBuy}
+                                >
+                                  Proceed to Buy
+                                </button>
+                              </div>}
+                            </div>
+                          </div>
+                        </div>
+                      </Row>
+                    </Row>
+                    : <Row>
+                      <div className='basket'>
+                        Your Bucket Is Empty
                       </div>
-                    </Col>
-                  </Row>
-                  <Row>
-            <div className=" col-sm-12 " >
-                    <div className="final-total col-sm-9 ">
-                      <div className="sub-total">
-                        Subtotal
-                      </div>
-                    </div>
-                    <div className="total col-sm-3">
-                      <div className="sub-price">
-                        {`${currency}${parseFloat(subTotal).toFixed(2)}`}
-                      </div>
-                    </div>
-                  </div>
-              <div className=" col-sm-12 " >
-                <div className="total col-sm-9 ">
-                  <div className="sub-total">
-                    Admin Fee<span className="tax-info">(2.5%)</span>
-                  </div>
-                </div>
-                <div className="total col-sm-3">
-                  <div className="admin-service">
-                    {`${currency}${parseFloat(adminFee).toFixed(2)}`}
-                  </div>
-                </div>
-              </div>
-              <div className=" col-sm-12 " >
-                <div className="total col-sm-9 ">
-                  <div className="sub-total">
-                    Wipay Fee<span className="tax-info">(3.5% + $0.25 USD)</span>
-                  </div>
-                </div>
-                <div className="total col-sm-3">
-                  <div className="admin-service">
-                    {`${currency}${parseFloat(wipayFee).toFixed(2)}`}
-                  </div>
-                </div>
-              </div>
-              {/* {(!toggle || state === 'addCart' &&  */}
-                <div >
-                  <div className=" col-sm-12 " >
-                    <div className="final-total col-sm-9 ">
-                      <div className="sub-total">
-                        Order Total
-                      </div>
-                    </div>
-                    <div className="total col-sm-3">
-                      <div className="sub-price">
-                        {`${currency}${parseFloat(orderTotal).toFixed(2)}`}
-                      </div>
-                    </div>
-                  </div>
-                  <div className="btn-end col-sm-5">
-                    <div className="proceed-butn">
-                      <div>
-                        <button
-                          type="button"
-                          className="proceedbtn  modal-button"
-                          onClick={onProceedBuy}
-                        >
-                          Proceed to Buy
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                {/* )} */}
-            </Row>
+                    </Row>}
                 </div>
               </Col>
-              {(!toggle || state === 'buyNow') &&
+              {(!toggle || location.state === 'buyNow') &&
                 <Col md={5}>
                   <ScrollAnimation animateIn='bounceInDown' duration={3}>
                     <div className="product-card">
@@ -297,7 +343,6 @@ const Cart = (props) => {
                               <Col xs={12} >
                                 <TextField id="standard-name"
                                   label="Full Name"
-                                  // className={alertError && !fullName ? ' checkout-feild alert-error' : 'checkout }
                                   className="checkout-feild"
                                   value={fullName}
                                   onChange={onFullName}

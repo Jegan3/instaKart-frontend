@@ -7,6 +7,8 @@ import { history } from '../../../routes';
 import Footer from '../../../components/Footer';
 import Header from '../../../components/Header';
 import ImageSlider from '../../../components/ImageSlider';
+import Desk from '../../../components/Desk';
+import ReactPlayer from "react-player";
 import { CarouselNewEStoreAds, CarouselReviewCard } from '../../../components/Carousel';
 
 const ProductInfo = ({ location }) => {
@@ -25,8 +27,16 @@ const ProductInfo = ({ location }) => {
     thumbnail: item,
   }))
 
-  // For Header Menu 
-  const module = location.state.module;
+  const productVideo = product && product.productVideo.map(item => ({
+    original: item,
+    thumbnail: item,
+    item
+  }))
+  // const productVideo = product && product.productVideo[0]
+
+  console.log('video',productVideo)
+  console.log('apiproduct', product)
+
 
   useEffect(() => {
     dispatch({ type: 'PRODUCT_INFO_REQUEST', productId: location.state });
@@ -240,14 +250,8 @@ const ProductInfo = ({ location }) => {
                 <div className>
                   <Col md={12}>
                     <div className="video-ads">
-                      <iframe
-                        width="70%"
-                        height="400"
-                        className="directorypress-video-iframe fitvidsignore"
-                        src="//www.youtube.com/embed/6bxcjXYkWrY"
-                        frameBorder="0"
-                        allowFullScreen=""
-                      />
+                      {/* { productVideo ?  <ReactPlayer url={productVideo} width="100%" height="100%" controls={true} /> : <ReactPlayer url={'https://www.youtube.com/watch?v=1-wYsS4EwJk'} width="100%" height="100%" controls={true} />  } */}
+                      <ReactPlayer url={'https://www.youtube.com/watch?v=1-wYsS4EwJk'} width="100%" height="100%" controls={true} /> 
                     </div>
                   </Col>
                 </div>

@@ -31,8 +31,10 @@ const Header = ({ basic, loginCart, hideloginCart, module }) => {
 
   const dispatch = useDispatch();
   const validLogin = useSelector((state) => state.loginState.login);
+  const cart = useSelector((state) => state.cartState.cart);
 
   const name = validLogin && validLogin.user.firstName || sessionStorage.firstName ? sessionStorage.firstName : false;
+  const cartCount = cart && cart.cartInfo.map(item => (item.quantity)).reduce((prev, curr) => prev + curr, 0);
 
   const admin = validLogin && validLogin.user.type === 'admin' || sessionStorage.type === 'admin';
   const vendor = validLogin && validLogin.user.type === 'vendor' || sessionStorage.type === 'vendor';
@@ -101,7 +103,7 @@ const Header = ({ basic, loginCart, hideloginCart, module }) => {
   };
 
   return (
-    <div>
+    <div className='header-bar'>
       {basic ?
         <Row className="header-sec">
           <Col md={6} sm={6}>
@@ -183,12 +185,11 @@ const Header = ({ basic, loginCart, hideloginCart, module }) => {
                       <FontAwesomeIcon icon={faUserPlus} className="userPlus" />
                       {name ? <div className="text bold-text">{`Hi, ${name}`}</div> : <div className="bold-text">Sign In</div>}
                     </div>
-                    {!name &&
-                      <IconButton className="cart-icon" aria-label="cart" >
-                        <StyledBadge badgeContent={7} color="secondary">
-                          <ShoppingCartIcon fontSize="large" />
-                        </StyledBadge>
-                      </IconButton>}
+                    <IconButton className="cart-icon" aria-label="cart" >
+                      <StyledBadge badgeContent={cartCount} >
+                        <ShoppingCartIcon fontSize="large" />
+                      </StyledBadge>
+                    </IconButton>
                   </div>
                 </div>
               </div>
