@@ -11,3 +11,8 @@ export const getAddCartFailure = (error) => ({
   type: 'ADD_CART_FAILURE',
   error,
 });
+
+// export const getAddCartGlobal = (addCartGlobal) => ({
+//   type: 'ADD_CART_GLOBAL',
+//   addCartGlobal,
+// });

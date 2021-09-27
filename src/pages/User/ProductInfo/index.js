@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Row, Col, Grid } from 'react-bootstrap';
-import { Rate } from 'antd';
+import { Rate, message } from 'antd';
 import { history } from '../../../routes';
 import Footer from '../../../components/Footer';
 import Header from '../../../components/Header';
@@ -11,7 +11,7 @@ import Desk from '../../../components/Desk';
 import ReactPlayer from "react-player";
 import { CarouselNewEStoreAds, CarouselReviewCard } from '../../../components/Carousel';
 
-const ProductInfo = ({ location }) => {
+const ProductInfo = ({ location, module }) => {
   const [count, setCount] = useState(1);
   const [toggle, setToggle] = useState(1);
   const [login, setLogin] = useState(false);
@@ -21,6 +21,7 @@ const ProductInfo = ({ location }) => {
   const dispatch = useDispatch();
   const productDetails = useSelector((state) => state.productInfoState.productInfo);
   const product = productDetails && productDetails.productInfo
+  const addCart = useSelector((state) => state.addCartState.addCart);
 
   const productImages = product && product.productImages.map(item => ({
     original: item,
@@ -34,13 +35,19 @@ const ProductInfo = ({ location }) => {
   }))
   // const productVideo = product && product.productVideo[0]
 
-  console.log('video',productVideo)
+  console.log('video', productVideo)
   console.log('apiproduct', product)
 
 
   useEffect(() => {
-    dispatch({ type: 'PRODUCT_INFO_REQUEST', productId: location.state });
+    dispatch({ type: 'PRODUCT_INFO_REQUEST', productId: location.state.product });
   }, [])
+
+  // useEffect(() => {
+  //   if (sessionStorage.type === 'user' && addCart && addCart.status) {
+  //     history.push({pathname: '/cart'});
+  //   }
+  // })
 
   const onDescription = () => {
     setToggle(1)
@@ -75,20 +82,43 @@ const ProductInfo = ({ location }) => {
   }
 
   const onAddCart = () => {
-    if (sessionStorage.access) {
-      const productPrice = product.finalPrice.replace(/[^.0-9\.]+/g, '');
-      const currency = product.finalPrice.replace(/\d+([,.]\d+)?\s*/g, '');
+    const productPrice = product.finalPrice.replace(/[^.0-9\.]+/g, '');
+    const currency = product.finalPrice.replace(/\d+([,.]\d+)?\s*/g, '');
 
-      const addToCart = {
-        productId: product._id,
-        totalPrice: `${currency}${parseFloat(productPrice * count).toFixed(2)}`,
-        quantity: count,
-      }
+    const addToCart = {
+      productId: product._id,
+      totalPrice: `${currency}${parseFloat(productPrice * count).toFixed(2)}`,
+      quantity: count,
+    }
+    if (sessionStorage.type === 'user') {
+      // const productPrice = product.finalPrice.replace(/[^.0-9\.]+/g, '');
+      // const currency = product.finalPrice.replace(/\d+([,.]\d+)?\s*/g, '');
+
+      // const addToCart = {
+      //   productId: product._id,
+      //   totalPrice: `${currency}${parseFloat(productPrice * count).toFixed(2)}`,
+      //   quantity: count,
+      // }
 
       dispatch({ type: 'ADD_CART_REQUEST', addToCart: addToCart });
       history.push({ pathname: '/cart', state: 'addCart' });
-    } else {
+    } else if (sessionStorage.type === 'vendor') {
+      message.error('Please Login As User');
+    }
+
+    else {
+      // const productPrice = product.finalPrice.replace(/[^.0-9\.]+/g, '');
+      // const currency = product.finalPrice.replace(/\d+([,.]\d+)?\s*/g, '');
+
+      // const addToCart = {
+      //   productId: product._id,
+      //   totalPrice: `${currency}${parseFloat(productPrice * count).toFixed(2)}`,
+      //   quantity: count,
+      // }
+      // history.push({pathname: '/productinfo', state:addToCart})
+      dispatch({ type: 'ADD_CART_GLOBAL', addCartGlobal: addToCart });
       setLogin(true)
+
     }
     window.scrollTo(0, 0);
   }
@@ -251,7 +281,7 @@ const ProductInfo = ({ location }) => {
                   <Col md={12}>
                     <div className="video-ads">
                       {/* { productVideo ?  <ReactPlayer url={productVideo} width="100%" height="100%" controls={true} /> : <ReactPlayer url={'https://www.youtube.com/watch?v=1-wYsS4EwJk'} width="100%" height="100%" controls={true} />  } */}
-                      <ReactPlayer url={'https://www.youtube.com/watch?v=1-wYsS4EwJk'} width="100%" height="100%" controls={true} /> 
+                      <ReactPlayer url={'https://www.youtube.com/watch?v=1-wYsS4EwJk'} width="100%" height="100%" controls={true} />
                     </div>
                   </Col>
                 </div>

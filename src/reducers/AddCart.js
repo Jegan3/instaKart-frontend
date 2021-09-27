@@ -20,6 +20,12 @@ export default (state = initialState, action) => {
         isLoading: false,
         error: action.error,
       };
+    case 'ADD_CART_GLOBAL':
+      return {
+        ...state,
+        isLoading: false,
+        addCartGlobal: action.addCartGlobal,
+      };
     case 'BUY_NOW':
       return {
         ...state,

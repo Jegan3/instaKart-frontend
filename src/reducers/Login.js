@@ -21,12 +21,6 @@ export default (state = initialState, action) => {
         isLoading: false,
         error: action.error,
       };
-    case 'LOGOUT_SUCCESS':
-      return {
-        ...state,
-        isLoading: false,
-        login: null,
-      };
     default:
       return state;
   }

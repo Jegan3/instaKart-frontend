@@ -94,7 +94,9 @@ const Header = ({ basic, loginCart, hideloginCart, module }) => {
   };
 
   const logout = () => {
+    // dispatch({ type: 'RESET' });
     sessionStorage.clear();
+    history.push('/');
     dispatch({ type: 'LOGOUT_SUCCESS' });
   };
 

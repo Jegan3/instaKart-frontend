@@ -19,6 +19,7 @@ const LoginModal = ({ showPopup, hidePopup }) => {
   const dispatch = useDispatch();
   const validLogin = useSelector((state) => state.loginState.login);
   const invalidLogin = useSelector((state) => state.loginState.error);
+  const addCartGlobal = useSelector((state) => state.addCartState.addCartGlobal);
 
   useEffect(() => {
     setShowLogin(showPopup);
@@ -31,6 +32,10 @@ const LoginModal = ({ showPopup, hidePopup }) => {
 
   useEffect(() => {
     if (login && validLogin) {
+      if (sessionStorage.type === 'user' && addCartGlobal) {
+        dispatch({ type: 'ADD_CART_REQUEST', addToCart: addCartGlobal });
+        history.push({ pathname: '/cart', state: 'addCart' });
+      }
       setShowLogin(hidePopup);
       setLogin(false);
       // history.push({

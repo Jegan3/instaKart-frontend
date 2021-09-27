@@ -1,3 +1,4 @@
+/* eslint-disable*/
 import { combineReducers } from 'redux';
 import signupState from './Signup';
 import loginState from './Login';
@@ -20,7 +21,7 @@ import addStoreState from './AddStore';
 import vendorCompanyDetailsState from './VendorCompanyDetails';
 import productMessageState from './ProductMessage';
 
-const rootReducer = combineReducers({
+const combinedReducer = combineReducers({
   signupState,
   loginState,
   otpState,
@@ -42,5 +43,12 @@ const rootReducer = combineReducers({
   vendorCompanyDetailsState,
   productMessageState,
 });
+
+const rootReducer = (state, action) => {
+  if (action.type === 'LOGOUT_SUCCESS') {
+    state = undefined;
+  }
+  return combinedReducer(state, action);
+};
 
 export default rootReducer;
