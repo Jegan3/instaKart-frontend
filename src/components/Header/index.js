@@ -25,7 +25,7 @@ const StyledBadge = withStyles((theme) => ({
   },
 }))(Badge);
 
-const Header = ({ basic, loginCart, hideloginCart }) => {
+const Header = ({ basic, loginCart, hideloginCart, module }) => {
   const [login, setLogin] = useState(false);
   const [country, setCountry] = useState(<div><FontAwesomeIcon icon={faMapMarkerAlt} className="location" /><p>Select your country </p><FontAwesomeIcon icon={faCaretDown} className="caret-down" /></div>);
 
@@ -98,6 +98,10 @@ const Header = ({ basic, loginCart, hideloginCart }) => {
     dispatch({ type: 'LOGOUT_SUCCESS' });
   };
 
+  const thriftStore = () => {
+    history.push({ pathname: `/${module}`.toLowerCase().replace(/ /g, "") })
+  };
+
   return (
     <div className='header-bar'>
       {basic ?
@@ -137,6 +141,10 @@ const Header = ({ basic, loginCart, hideloginCart }) => {
                     {!user &&
                       <NavItem eventKey={3} href="#">
                         {vendor || admin ? <p onClick={dashboard}>Dashboard</p> : <p className="vendor-signup" onClick={Signup}>Register Your E-Store</p>}
+                      </NavItem>}
+                    {module &&
+                      <NavItem eventKey={2} href="#">
+                        <p onClick={thriftStore}>{module}</p>
                       </NavItem>}
                     {(admin || vendor || user) &&
                       <NavItem eventKey={2} href="#">

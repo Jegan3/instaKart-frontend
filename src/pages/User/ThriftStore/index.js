@@ -11,7 +11,7 @@ const ThriftStore = () => {
 
   const dispatch = useDispatch();
   const thriftDetails = useSelector((state) => state.thriftDetailsState.thriftDetails);
-  
+
   useEffect(() => {
     dispatch({ type: 'THRIFT_DETAILS_REQUEST' });
   }, [])
@@ -56,7 +56,7 @@ const ThriftStore = () => {
           <div className="thrift-ads">
             <h3>THRIFT STORE NEAR YOU</h3>
             <h6>Buy & Sell Any Thing</h6>
-            <ThriftStoreNearYou thriftDetails={thriftDetails} />
+            <ThriftStoreNearYou thriftDetails={thriftDetails} module='Thrift Store' />
           </div>
           <br />
         </div>
@@ -66,7 +66,7 @@ const ThriftStore = () => {
           <div className="thrift-ads">
             <h3>NEW ADDITIONS</h3>
             <h6>Buy & Sell Any Thing</h6>
-            <CarouselThriftNewAdditions thriftDetails={thriftDetails} />
+            <CarouselThriftNewAdditions thriftDetails={thriftDetails} module='Thrift Store' />
           </div>
           <br />
         </div>

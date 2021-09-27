@@ -48,6 +48,26 @@
     font-size: 16px;
     font-weight: 500;
   }
+
+  .striked-out {
+    color: rgb(141, 141, 141);
+    text-decoration: line-through;
+    font-size: 100%;
+    padding-left: 4%;
+  }
+
+  .discount {
+    color: $color-theme;
+    font-size: 80%;
+    padding-left: 3px;
+  }
+
+  .card-listing-job {
+    padding-left: 0% !important;
+    text-align: left !important;
+    padding-top: 0% !important;
+  }
+
 }
 
 .card-content {
@@ -65,7 +85,6 @@
     box-shadow: 0 6px 6px rgba(0, 0, 0, 0.6);
     background-color: rgb(245, 245, 245);
     border: 1px solid white;
-    // margin-top: 30px;
     width: 75%;
   }
 
@@ -76,8 +95,6 @@
 
   .card-title {
     text-align: center;
-    // width: 100%;
-    // margin: auto;
     top: 5px;
     position: relative;
     font-size: 15px;
@@ -109,15 +126,18 @@
   a {
     font-size: 10px;
   }
+
 }
 
 .listing-job {
   clear: both;
   display: block;
-  padding: 3%;
+  padding: 2%;
+  text-align: center;
 
   a {
-    font-size: 12px;
+    font-size: 120%;
+    font-weight: 700;
   }
 }
 
@@ -126,12 +146,12 @@
   font-size: 9px;
 
   span {
-    padding-left: 3%;
+    padding-left: 0%;
   }
 }
 
 .listing-rating {
-  padding: 3%;
+  padding: 2%;
 }
 
 .stars {
@@ -154,8 +174,8 @@
 
 .currency {
   font-weight: 700;
-  float: right;
-  font-size: 21px;
+  font-size: 100%;
+
 }
 
 .tooltip-fields {
@@ -244,7 +264,7 @@
   .heart-icon {
     position: relative;
     bottom: 10px;
-    
+
     :hover {
       color: red;
     }
@@ -262,4 +282,74 @@
     font-size: 19px;
     position: relative;
   }
+}
+
+.property-card {
+  height: 18em;
+  // width:14em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  position: relative;
+  -webkit-transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+  -o-transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+  transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+  border-radius: 16px;
+  overflow: hidden;
+  -webkit-box-shadow: 15px 15px 27px #e1e1e3, -15px -15px 27px #ffffff;
+  box-shadow: 15px 15px 27px #e1e1e3, -15px -15px 27px #ffffff;
+}
+
+/* ^-- The margin bottom is necessary for the drop shadow otherwise it gets clipped in certain cases. */
+
+/* Top Half of card, image. */
+
+.property-image {
+  height: 10em;
+  width: 14em;
+  position: Absolute;
+  top: 0px;
+  -webkit-transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+  -o-transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+  transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* Bottom Card Section */
+
+.property-description {
+  background-color: #ffffff;
+  height: 50%;
+  width: 100%;
+  position: absolute;
+  bottom: 0em;
+  -webkit-transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+  -o-transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+  transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+  padding: 1em 1em;
+  padding-top: 14px;
+  text-align: left !important;
+}
+
+.property-card:hover .property-description {
+  height: 0em;
+  padding: 0px 1em;
+}
+
+.property-card:hover .property-image {
+  height: 18em;
+}
+
+.property-card:hover .property-social-icons {
+  background-color: white;
+}
+
+.property-card:hover .property-social-icons:hover {
+  background-color: blue;
+  cursor: pointer;
 }

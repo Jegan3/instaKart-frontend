@@ -59,10 +59,10 @@ export const Card = ({ imgUrl, alt, content, btnUrl, body, title, price, product
   )
 };
 
-export const ThriftStoreNearYouCard = ({ imgUrl, storeName, country, path, thriftStore }) => {
+export const ThriftStoreNearYouCard = ({ imgUrl, storeName, country, path, thriftStore, module }) => {
 
   const Card = () => {
-    history.push({ pathname: path, state: thriftStore })
+    history.push({ pathname: path, state: { thriftStore: thriftStore, module: module } })
     window.scrollTo(0, 0);
   }
 
@@ -82,42 +82,48 @@ export const ThriftStoreNearYouCard = ({ imgUrl, storeName, country, path, thrif
         <div className="listing-rating">
           <div className="stars"> <i className="fa fa-star"></i> <i className="fa fa-star"></i> <i className="fa fa-star"></i> <i className="fa fa-star"></i> </div>
           <div className="ratings"> <span className="product-rating">4.6</span><span className="product-rating">/5</span></div>
-          <div className="tooltip-fields">
+          {/* <div className="tooltip-fields">
             <i className="fa fa-envelope"></i>
             <i className="fa fa-mobile"></i>
             <i className="fa fa-heart"></i>
-          </div>
+          </div> */}
           <div className="listing-country"> <span>46 ratings & 15 reviews</span> </div>
         </div>
       </div>
     </div>)
 }
 
-export const NewAdditionCard = ({ imgUrl, product, path, price, productName }) => {
+export const NewAdditionCard = ({ imgUrl, product, path, price, productName, module }) => {
 
   const Card = () => {
-    history.push({ pathname: path, state: product })
+    history.push({ pathname: path, state: { product: product, module: module } })
     window.scrollTo(0, 0);
   }
 
   return (
-    <div className="card" onClick={Card} >
-      <div className="card-content">
-        <img className="photos" src={imgUrl} />
+    <div className=" property-card card" onClick={Card} >
+      <div className=" property card-ads">
+        {/* <div class="property-image-title">
+           Optional <h5>Card Title</h5> If you want it, turn on the CSS also.
+        </div> */}
+        <img className="property-image" src={imgUrl} />
       </div>
-      <div className="card-ads">
-        <div className="listing-job">
+      <div className="property-description">
+        <div className="listing-job card-listing-job ">
           <a>{productName}</a>
-          <span className="currency">{price}</span>
         </div>
-        <div className="listing-rating">
+        <div className="listing-job card-listing-job">
+          <span className="currency">{price}</span>
+          <span className="striked-out">{price}</span><span className="discount">20%off</span>
+        </div>
+        <div className="listing-rating card-listing-job">
           <div className="stars"> <i className="fa fa-star"></i> <i className="fa fa-star"></i> <i className="fa fa-star"></i> <i className="fa fa-star"></i> </div>
           <div className="ratings"> <span className="product-rating">4.6</span><span className="product-rating">/5</span></div>
-          <div className="tooltip-fields">
+          {/* <div className="tooltip-fields">
             <i className="fa fa-envelope"></i>
             <i className="fa fa-mobile"></i>
             <i className="fa fa-heart"></i>
-          </div>
+          </div> */}
           <div className="listing-country"> <span>46 ratings & 15 reviews</span> </div>
         </div>
       </div>
