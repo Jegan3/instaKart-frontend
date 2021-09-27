@@ -11,7 +11,7 @@ import Desk from '../../../components/Desk';
 import ReactPlayer from "react-player";
 import { CarouselNewEStoreAds, CarouselReviewCard } from '../../../components/Carousel';
 
-const ProductInfo = ({ location, module }) => {
+const ProductInfo = ({ location }) => {
   const [count, setCount] = useState(1);
   const [toggle, setToggle] = useState(1);
   const [login, setLogin] = useState(false);
@@ -23,6 +23,9 @@ const ProductInfo = ({ location, module }) => {
   const product = productDetails && productDetails.productInfo
   const addCart = useSelector((state) => state.addCartState.addCart);
 
+  // For Header Menu 
+  const module = location.state.module
+  
   const productImages = product && product.productImages.map(item => ({
     original: item,
     thumbnail: item,
