@@ -33,11 +33,8 @@ const ProductInfo = ({ location, module }) => {
     thumbnail: item,
     item
   }))
+
   // const productVideo = product && product.productVideo[0]
-
-  console.log('video', productVideo)
-  console.log('apiproduct', product)
-
 
   useEffect(() => {
     dispatch({ type: 'PRODUCT_INFO_REQUEST', productId: location.state.product });
@@ -125,7 +122,19 @@ const ProductInfo = ({ location, module }) => {
 
   const onBuyNow = () => {
     if (sessionStorage.access) {
+      const productPrice = product.finalPrice.replace(/[^.0-9\.]+/g, '');
+      const currency = product.finalPrice.replace(/\d+([,.]\d+)?\s*/g, '');
+
+      const buyNowProduct = {
+        productId: product._id,
+        productName: product && product.productName,
+        productImage: product && product.productImages,
+        totalPrice: `${currency}${parseFloat(productPrice * count).toFixed(2)}`,
+        quantity: count,
+        productPrice: `${currency}${parseFloat(productPrice).toFixed(2)}`
+      }
       history.push({ pathname: '/cart', state: 'buyNow' });
+      dispatch({ type: 'BUY_NOW', buyNow: buyNowProduct });
     } else {
       setLogin(true)
     }
