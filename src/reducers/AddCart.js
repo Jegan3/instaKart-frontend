@@ -20,6 +20,12 @@ export default (state = initialState, action) => {
         isLoading: false,
         error: action.error,
       };
+    case 'BUY_NOW':
+      return {
+        ...state,
+        isLoading: false,
+        buyNow: action.buyNow,
+      };
     default:
       return state;
   }

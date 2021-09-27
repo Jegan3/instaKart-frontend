@@ -24,9 +24,7 @@ export default {
   },
 
   apiBaseUrl: {
-    // dev: 'https://backend.insta-kart.com',
-    // prod: 'https://backend.insta-kart.com',
-    dev: 'http://localhost:8080',
-    prod: 'https://localhost:8081',
+    dev: 'https://backend.insta-kart.com',
+    prod: 'https://backend.insta-kart.com',
   },
 };

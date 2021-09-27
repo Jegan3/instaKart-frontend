@@ -8,9 +8,10 @@ import ScrollAnimation from 'react-animate-on-scroll';
 import Button from '@material-ui/core/Button';
 import Header from '../../../components/Header';
 import Footer from '../../../components/Footer';
+import Loader from '../../../components/Loader';
 import { history } from '../../../routes';
 
-const Cart = (props) => {
+const Cart = ({ location }) => {
   const [toggle, setToggle] = useState(true);
   const [fullName, setFullName] = useState('');
   const [mobile, setMobile] = useState('');
@@ -22,15 +23,13 @@ const Cart = (props) => {
   const [count, setCount] = useState();
   const [alertError, setAlertError] = useState(false);
 
-  const { state } = props.location;
-
   const dispatch = useDispatch();
   const productDetails = useSelector((state) => state.productInfoState.productInfo);
   const addCart = useSelector((state) => state.addCartState.addCart);
+  const buyNow = useSelector((state) => state.addCartState.buyNow);
   const cart = useSelector((state) => state.cartState.cart);
+  const isLoading = useSelector((state) => state.cartState.isLoading);
   const checkout = useSelector((state) => state.checkoutState.checkout);
-  const product = productDetails && productDetails.productInfo
-  // const cartDetails = cart && cart.cartInfo
 
   useEffect(() => {
     dispatch({ type: 'CART_REQUEST' });
@@ -44,8 +43,6 @@ const Cart = (props) => {
 
   const onMobile = (e) => {
     if (e.target.value.match('^[0-9]*$')) {
-      // if (e.target.value.match('^[2-9]\d{2}-\d{3}-\d{4}$')) {
-      //  if (/^[2-9]\d{2}-\d{3}-\d{4}$/.test(e.target.value)) {
       setMobile(e.target.value)
     }
   }
@@ -91,31 +88,64 @@ const Cart = (props) => {
   }
 
   const onDecrement = (info) => {
-    info.quantity > 1 && setCount(info.quantity - 1)
 
-    const productPrice = info.productPrice.replace(/[^.0-9\.]+/g, '');
-    const currency = info.productPrice.replace(/\d+([,.]\d+)?\s*/g, '');
+    if (location.state === 'addCart' && info.quantity > 1) {
 
-    const addToCart = {
-      productId: info.productId,
-      totalPrice: `${currency}${parseFloat(productPrice * (info.quantity - 1)).toFixed(2)}`,
-      quantity: info.quantity - 1,
+      const productPrice = info.productPrice.replace(/[^.0-9\.]+/g, '');
+      const currency = info.productPrice.replace(/\d+([,.]\d+)?\s*/g, '');
+
+      const addToCart = {
+        productId: info.productId,
+        totalPrice: `${currency}${parseFloat(productPrice * (info.quantity - 1)).toFixed(2)}`,
+        quantity: info.quantity - 1,
+      }
+      dispatch({ type: 'ADD_CART_REQUEST', addToCart: addToCart });
+      setCount(info.quantity - 1)
+
+    } else if (location.state === 'buyNow' && info.quantity > 1) {
+      const productPrice = info.productPrice.replace(/[^.0-9\.]+/g, '');
+      const currency = info.productPrice.replace(/\d+([,.]\d+)?\s*/g, '');
+
+      const addToCart = {
+        productId: info.productId,
+        productName: info.productName,
+        productImage: info.productImage,
+        productPrice: info.productPrice,
+        totalPrice: `${currency}${parseFloat(productPrice * (info.quantity - 1)).toFixed(2)}`,
+        quantity: info.quantity - 1,
+      }
+      dispatch({ type: 'BUY_NOW', buyNow: addToCart });
+      setCount(info.quantity - 1)
     }
-    dispatch({ type: 'ADD_CART_REQUEST', addToCart: addToCart });
   }
 
   const onIncrement = (info) => {
 
-    const productPrice = info.productPrice.replace(/[^.0-9\.]+/g, '');
-    const currency = info.productPrice.replace(/\d+([,.]\d+)?\s*/g, '');
+    if (location.state === 'addCart') {
+      const productPrice = info.productPrice.replace(/[^.0-9\.]+/g, '');
+      const currency = info.productPrice.replace(/\d+([,.]\d+)?\s*/g, '');
 
-    // setCount(info.quantity + 1)
-    const addToCart = {
-      productId: info.productId,
-      totalPrice: `${currency}${parseFloat(productPrice * (info.quantity + 1)).toFixed(2)}`,
-      quantity: info.quantity + 1,
+      const addToCart = {
+        productId: info.productId,
+        totalPrice: `${currency}${parseFloat(productPrice * (info.quantity + 1)).toFixed(2)}`,
+        quantity: info.quantity + 1,
+      }
+      dispatch({ type: 'ADD_CART_REQUEST', addToCart: addToCart });
+
+    } else {
+      const productPrice = info.productPrice.replace(/[^.0-9\.]+/g, '');
+      const currency = info.productPrice.replace(/\d+([,.]\d+)?\s*/g, '');
+
+      const addToCart = {
+        productId: info.productId,
+        productName: info.productName,
+        productImage: info.productImage,
+        productPrice: info.productPrice,
+        totalPrice: `${currency}${parseFloat(productPrice * (info.quantity + 1)).toFixed(2)}`,
+        quantity: info.quantity + 1,
+      }
+      dispatch({ type: 'BUY_NOW', buyNow: addToCart });
     }
-    dispatch({ type: 'ADD_CART_REQUEST', addToCart: addToCart });
   }
 
   const onRemove = (info) => {
@@ -127,19 +157,26 @@ const Cart = (props) => {
     }
     dispatch({ type: 'ADD_CART_REQUEST', addToCart: addToCart });
   }
+  //passing buyNowproduct details
+  const buyNowDetails = []
+  buyNowDetails.push(buyNow);
 
-  const currency = cart && cart.cartInfo[0].totalPrice.replace(/\d+([,.]\d+)?\s*/g, '');
+  //passing state and api value 
+  const productList = location.state === 'addCart' ? cart && cart.cartInfo : buyNowDetails;
 
-  console.log('trst1', currency)
+  const currency = productList && productList[0].totalPrice.replace(/\d+([,.]\d+)?\s*/g, '');
 
-  const subTotal = cart && cart.cartInfo
-    .map(item => parseFloat(item.totalPrice.replace(/[^.0-9\.]+/g, '')))
-    .reduce((prev, curr) => prev + curr, 0);
 
-  const adminFee = subTotal * 0.025
+
+  const subTotal = productList && productList.map(item => parseFloat(item.totalPrice.replace(/[^.0-9\.]+/g, ''))).reduce((prev, curr) => prev + curr, 0)
+
+  const adminFee = subTotal * 0.025;
   // trinidad tobago wipay charges
-  const wipayFee = subTotal * 0.035 + 1.70
-  const orderTotal = subTotal + adminFee + wipayFee
+  const wipayFee = subTotal * 0.035 + 1.70;
+
+  const orderTotal = subTotal + adminFee + wipayFee;
+
+
 
   const submit = () => {
     if (!fullName || !mobile || !address || !country || !city || !zipCode || !email) {
@@ -167,6 +204,7 @@ const Cart = (props) => {
       <Header />
       <div className="checkout-page">
         <Grid fluid>
+          <div> {(isLoading) && <Loader />} </div>
           <div className="checkout-details">
             <Row>
               <Col md={7}>
@@ -178,18 +216,13 @@ const Cart = (props) => {
                       </span>
                     </div>
                   </Col>
-
-                  {!currency ? <Row>
-                    <div className='basket'>
-                      Your Backet Is Empty
-                    </div>
-                  </Row>
-                    : <Row>
+                  {currency ?
+                    <Row>
                       <Row>
                         <Col md={12}>
                           <div className="product-items">
-                            {cart && cart.cartInfo.map((info) =>
-                              <Row className="product-info-details">
+                            <Row className="product-info-details">
+                              {productList && productList.map((info) =>
                                 <div >
                                   <Col md={3}>
                                     <img className="img-fluid" src={info && info.productImage} />
@@ -216,15 +249,15 @@ const Cart = (props) => {
                                       <div className="product-name">{info && info.totalPrice}</div>
                                     </div>
                                     <br />
-                                    <div className="product-remove" onClick={() => onRemove(info)}>Remove</div>
+                                    {location.state === 'addCart' && <div className="product-remove" onClick={() => onRemove(info)}>Remove</div>}
                                   </Col>
-                                </div>
-                              </Row>)}
+                                </div>)}
+                            </Row>
                           </div>
                         </Col>
                       </Row>
                       <Row>
-                        <div className=" col-sm-12 " >
+                        <div className="col-sm-12" >
                           <div className="final-total col-sm-9 ">
                             <div className="sub-total">
                               Subtotal
@@ -260,8 +293,7 @@ const Cart = (props) => {
                             </div>
                           </div>
                         </div>
-                        {/* {(!toggle || state === 'addCart' &&  */}
-                        <div >
+                        <div>
                           <div className=" col-sm-12 " >
                             <div className="final-total col-sm-9 ">
                               <div className="sub-total">
@@ -276,25 +308,28 @@ const Cart = (props) => {
                           </div>
                           <div className="btn-end col-sm-5">
                             <div className="proceed-butn">
-                              <div>
+                              {location.state === 'addCart' && <div>
                                 <button
-                                  type="button"
+                                  type="button "
                                   className="proceedbtn  modal-button"
                                   onClick={onProceedBuy}
                                 >
                                   Proceed to Buy
                                 </button>
-                              </div>
+                              </div>}
                             </div>
                           </div>
                         </div>
-                        {/* )} */}
                       </Row>
+                    </Row>
+                    : <Row>
+                      <div className='basket'>
+                        Your Bucket Is Empty
+                      </div>
                     </Row>}
                 </div>
               </Col>
-
-              {(!toggle || state === 'buyNow') &&
+              {(!toggle || location.state === 'buyNow') &&
                 <Col md={5}>
                   <ScrollAnimation animateIn='bounceInDown' duration={3}>
                     <div className="product-card">
@@ -308,7 +343,6 @@ const Cart = (props) => {
                               <Col xs={12} >
                                 <TextField id="standard-name"
                                   label="Full Name"
-                                  // className={alertError && !fullName ? ' checkout-feild alert-error' : 'checkout }
                                   className="checkout-feild"
                                   value={fullName}
                                   onChange={onFullName}
