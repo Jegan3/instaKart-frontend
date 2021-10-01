@@ -1,0 +1,189 @@
+@mixin dropdown-height {
+
+  .css-yk16xz-control,
+  .css-1fhf3k1-control,
+  .css-1pahdxg-control {
+
+    min-height: auto;
+    border-radius: 7px;
+    color: #565656;
+    // max-height: 35px;
+    transition: border 0.1s linear;
+  }
+}
+
+.signup-logo {
+  width: 15em;
+}
+
+.sub-heading {
+  font-size: 1.5em;
+}
+
+.heading {
+  font-size: 2em;
+  font-weight: 600;
+}
+
+.signup-form {
+  padding-top: 2%;
+}
+
+.signup-label {
+  margin-top: 3%;
+  white-space: nowrap;
+}
+
+.signup-submit {
+  padding-top: 3%;
+
+  .btn-primary {
+    padding: 2%;
+  }
+
+  .btn-primary:focus,
+  & :hover {
+    background-color: transparent;
+  }
+}
+
+.container-fluid {
+  overflow-x: hidden;
+  overflow-y: hidden;
+  margin: unset;
+}
+
+.left-side {
+  height: 550px;
+  width: 100%;
+  margin-bottom: 15px;
+
+  @media only screen and (max-width: 992px) {
+    height: auto !important;
+  }
+}
+
+.login-error-signup {
+  margin: 3% 0;
+}
+
+.form-radio {
+  position: relative;
+  top: 2px;
+}
+
+.signup-flag {
+  position: relative;
+  margin-left: 3%;
+  top: 1px;
+}
+
+.css-1uccc91-singleValue {
+  overflow: none !important;
+  width: 100%;
+}
+
+.form-control {
+  border: 1px solid #e3e3e3;
+  border-radius: 7px;
+  color: #565656;
+  padding: 8px 12px;
+  height: 38px;
+}
+
+.form-control:focus {
+  box-shadow: 0 0 0 1px #28a4d9 !important;
+  border-color: #28a4d9;
+  outline: 0;
+}
+
+// .prof-select {
+//   .css-1pahdxg-control {
+//     box-shadow: 0 0 0 1px #28a4d9 !important;
+//     border-color: #28a4d9 !important;
+//     border-radius: 7px;
+//   }
+// }
+
+.css-1pahdxg-control {
+  box-shadow: 0 0 0 1px #28a4d9 !important;
+  border-color: #28a4d9 !important;
+  border-radius: 7px;
+  // height: 35px;
+}
+
+.btn-primary {
+  border-color: #28a4d9 !important;
+  color: #28a4d9 !important;
+}
+
+.red-star {
+  color: red;
+}
+
+.clear-country {
+  clear: both;
+  @include dropdown-height;
+}
+
+.clear-city {
+  @include dropdown-height;
+}
+
+.clear-industry {
+  @include dropdown-height;
+
+  .css-1wa3eu0-placeholder {
+    white-space: nowrap;
+  }
+}
+
+.required-field {
+  position: relative;
+  top: 10px;
+  color: #9d9d9d;
+}
+
+.success-msg {
+  color: green;
+  white-space: nowrap;
+}
+
+.signup-margin {
+  margin-top: 15px;
+}
+
+.unlock-signup {
+  float: right;
+  margin: 10px;
+  bottom: 35px;
+  position: relative;
+  cursor: pointer;
+  margin-bottom: -25px;
+}
+
+.signup-label {
+  .fa-info {
+    font-size: 10px;
+    margin: 5px;
+  }
+}
+
+.tool-tip {
+  margin: 0px;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 0px;
+}
+
+.percentage {
+  bottom: 30px;
+  position: relative;
+  float: right;
+  right: 10px;
+  font-weight: 600;
+}
+
+.css-1rhbuit-multiValue {
+  max-width: calc(100% - 8px);
+}

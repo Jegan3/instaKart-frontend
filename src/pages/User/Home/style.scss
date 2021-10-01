@@ -1,0 +1,117 @@
+.body {
+  width: 50% !important;
+  margin: auto;
+}
+
+.body-container {
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.intro-div {
+  margin-top: 5%;
+  width: 50% !important;
+  margin-left: 332px;
+}
+
+.arrivals {
+  margin-top: 2%;
+  width: 50% !important;
+  margin: auto;
+}
+
+.arrival {
+  width: 50% !important;
+  margin: auto;
+}
+
+.home {
+  h2 {
+    text-align: center;
+    margin-top: 0px;
+    font-weight: 700;
+    color: #33334b;
+    font-size: 36px;
+  }
+
+  h5 {
+    color: white;
+    font-size: 20px;
+    margin: 0;
+    margin-left: 15px;
+    padding-top: 2.5% !important;
+  }
+
+  h4 {
+    font-size: 20px;
+  }
+
+  .text-loop-home {
+    color: #28a4d9;
+
+    .x3 {
+      width: 135px !important;
+    }
+  }
+}
+
+.bg-home-ban {
+  background-color: $color-background;
+
+  .arrival {
+    padding-top: 3% !important;
+    margin-bottom: 1.75% !important;
+    padding-left: 0.75%;
+    padding-right: 0.75%;
+  }
+}
+
+.bg-home {
+  background-color: #ffffff;
+
+  .arrival {
+    margin-bottom: 1.5% !important;
+    margin-top: 0% !important;
+
+    h5 {
+      color: black;
+    }
+  }
+}
+
+.intro-banner {
+  margin-bottom: 3%;
+}
+
+.bg-home-pro {
+  position: relative !important;
+  background-color: #28a4d9;
+
+  .arrival {
+    margin-bottom: 1.5% !important;
+    margin-top: 0% !important;
+
+    h5 {
+      color: white;
+    }
+  }
+
+  .promotions {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+.particles-main {
+  canvas {
+    position: fixed;
+    z-index: 0;
+    top: 0px;
+  }
+}
+
+.particles-sub {
+  canvas {
+    position: absolute;
+  }
+}

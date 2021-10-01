@@ -1,0 +1,283 @@
+.checkout-page {
+  margin: 0%;
+  padding: 15px;
+}
+
+.titleproduct {
+  font-size: 25px;
+  padding-top: 7%;
+  cursor: pointer;
+  margin: 5% 0px;
+  font-weight: 800;
+  font-family: monospace;
+}
+
+.basket {
+  font-size: 30px;
+  text-align: center;
+  font-family: cursive;
+  font-weight: 900;
+}
+
+.itemsproduct {
+  float: right;
+  cursor: pointer;
+  font-weight: 800;
+  font-family: monospace;
+  font-size: 20px;
+}
+
+.final-total {
+  cursor: pointer;
+  font-weight: 800;
+  font-family: monospace;
+  font-size: 20px;
+  text-align: end;
+}
+
+.total {
+  cursor: pointer;
+  font-weight: 800;
+  font-family: monospace;
+  font-size: 17px;
+  text-align: end;
+
+  .sub-total {
+    color: gray;
+    font-weight: 800;
+    font-family: monospace;
+  }
+
+  .sub-price {
+    font-size: 20px;
+    position: relative;
+    font-family: monospace;
+  }
+
+  .admin-service {
+    font-size: 17px;
+    font-weight: 700;
+    font-family: monospace;
+    color: gray;
+    cursor: pointer;
+    padding-right: 35px;
+  }
+
+  .tax-info {
+    font-size: 10px;
+    font-weight: 700;
+    font-family: monospace;
+    color: gray;
+    padding-left: 5px;
+  }
+}
+
+.subprice {
+  font-size: 20px;
+  position: relative;
+  float: right;
+  bottom: 10px;
+  left: 20px;
+  margin: 9%;
+  font-family: monospace;
+}
+
+.quanity-check {
+  cursor: pointer;
+  font-family: monospace;
+
+  .quanitybtn {
+    cursor: pointer;
+  }
+}
+
+.checkout-details {
+  margin: 7% 2%;
+  padding: 7%;
+  padding-bottom: 7%;
+  padding-top: 5%;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(63, 63, 68, 0.1);
+  background-color: #ffffff;
+
+  .product-items {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+
+  .address-title {
+    color: #ffffff;
+    margin: 1% 0px;
+    font-weight: 800;
+    font-family: initial;
+    font-size: 30px;
+  }
+
+  .checkout-feild {
+    margin: 3% 0%;
+  }
+
+  .name-price {
+    font-weight: 800;
+    font-family: initial;
+  }
+
+  .product-info-details {
+    padding-bottom: 10px;
+    border-bottom: 1px solid lightgrey;
+    text-align: end;
+
+    img {
+      width: 8rem
+    }
+
+    .product-remove {
+      font-size: 15px;
+      font-weight: 700;
+      font-family: monospace;
+      color: gray;
+      cursor: pointer;
+      padding-right: 58px;
+
+      :hover {
+        color: black;
+      }
+    }
+
+    .productlist {
+      font-size: 18px;
+      font-weight: 700;
+      position: relative;
+      font-family: monospace;
+      cursor: pointer;
+      padding-bottom: 1%;
+    }
+
+    .product-name {
+      padding-right: 12px;
+    }
+
+    .product-price {
+      font-size: 18px;
+      font-weight: 700;
+      font-family: monospace;
+      cursor: pointer;
+    }
+  }
+
+  .billing-card {
+    background-color: #2F374B;
+    padding: 8%;
+    margin: 1%;
+  }
+
+  .checkout-label {
+    margin-top: 3%;
+    font-size: 15px;
+  }
+
+  .MuiFormLabel-root {
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: initial;
+  }
+
+  .MuiFormControl-root {
+    width: 100%;
+  }
+
+  .MuiInput-underline:before {
+    border-bottom: 1px solid#ffffff !important;
+  }
+
+  .MuiInput-underline:hover {
+    border-bottom: transparent !important;
+  }
+
+  .MuiFormLabel-root.Mui-focused {
+    color: #ffffff;
+  }
+
+  .MuiInput-underline:after {
+    border-bottom: 1px solid #28a4d9 !important;
+  }
+
+  .MuiInput-underline {
+    border-bottom: transparent !important;
+  }
+
+  .MuiInputBase-input {
+    color: #ffffff;
+    font-size: 13px;
+    border-bottom: 1px solid#ffffff;
+  }
+
+  .MuiTypography-h6 {
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: initial;
+    line-height: 0;
+    margin-top: 10px;
+  }
+
+  .checkoutbtn {
+    text-align: center;
+    margin-top: 7%;
+
+    .MuiButton-containedPrimary {
+      color: #fff;
+      font-size: 13px;
+      padding: 10px 25px;
+      background-color: #3f51b5;
+    }
+  }
+
+  .MuiButton-containedPrimary {
+    color: #fff;
+    font-size: 13px;
+    padding: 10px 25px;
+    background-color: #28a4d9 !important;
+  }
+
+  .MuiCard-root {
+    background-color: #515863;
+  }
+
+  .subtotal {
+    font-size: 30px;
+    margin: 1%;
+    text-overflow: ellipsis;
+    cursor: pointer;
+    font-weight: 800;
+    font-family: monospace;
+  }
+
+  .btn-end {
+    float: right;
+
+    .proceed-butn {
+      white-space: nowrap;
+      position: relative;
+      font-family: monospace;
+    }
+  }
+
+  .proceedbtn {
+    border-color: #28a4d9 !important;
+    color: #28a4d9 !important;
+    display: block;
+    border-width: 1px;
+    background-color: transparent !important;
+    padding: 8px 16px;
+    font-size: 18px;
+    line-height: 1.3333333;
+    border-radius: 6px;
+    opacity: .8;
+    float: right;
+  }
+
+  .shop-cart {
+    padding-bottom: 10%;
+  }
+}

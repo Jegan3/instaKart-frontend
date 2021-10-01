@@ -1,0 +1,112 @@
+.general-info {
+  .ant-picker {
+    padding: 4px;
+    width: 80%;
+    border-radius: 3px;
+  }
+
+  .ant-picker-input>input {
+    text-align: center;
+  }
+
+  .zipcode {
+    padding-bottom: 20px;
+  }
+
+  .avatar-text {
+    font-family: "Righteous", cursive;
+    font-size: 2em;
+    font-weight: 600;
+    top: 25px;
+    position: relative;
+  }
+
+  .image-upload {
+    bottom: 25px;
+    left: 160px;
+    font-size: 16px;
+    position: relative;
+    cursor: grab;
+  }
+
+  .load-info {
+    height: fit-content;
+    margin: auto;
+    min-height: 100px;
+  }
+
+  .reg-num {
+    font-size: 24px;
+    margin: 20px;
+    text-align: center;
+    font-family: Garamond;
+    font-weight: 600;
+  }
+
+  .image-upload input {
+    display: none;
+  }
+
+  .photo {
+    height: fit-content !important;
+  }
+
+  .loading-info {
+    top: 30px;
+    position: relative;
+  }
+
+  .photo img {
+    width: 350px;
+    height: 200px;
+    margin: auto;
+    box-shadow: 10px 15px 25px 0 rgba(0, 0, 0, 0.2);
+    display: block;
+    transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+    margin-top: -10px;
+  }
+
+  .photo:hover img {
+    box-shadow: 1px 1px 10px 0 rgba(0, 0, 0, 0.1);
+  }
+
+  .photo:hover img,
+  .photo:hover .glow-wrap {
+    margin-top: 0;
+  }
+
+  .left-info {
+    margin: 30px 0px;
+  }
+
+  .right-info {
+    margin: 30px 0px;
+  }
+
+  .avtar-info {
+    text-align: center;
+    top: 60px;
+    margin-bottom: 35px;
+
+  }
+
+  .resta {
+    top: 10px;
+    position: relative;
+  }
+
+  .general-table {
+    padding: 10px 16px;
+  }
+
+  .btn-general {
+    bottom: 2px;
+    position: relative;
+  }
+}
+
+.modal-butn {
+  margin-bottom: 15px;
+  cursor: pointer;
+  box-shadow: 0 6px 6px rgba(0, 0, 0, 0.6);
+}

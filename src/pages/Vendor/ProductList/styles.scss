@@ -1,0 +1,21 @@
+// react table header
+.product-list {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  min-width: 280px;
+}
+
+//common
+.ReactTable .-header {
+  background: $color-primary;
+}
+
+.ReactTable .-header :hover {
+  background: $color-primary;
+}
+
+.product-button {
+  float: right;
+  padding-top: 15px;
+}

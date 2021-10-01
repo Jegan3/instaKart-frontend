@@ -1,0 +1,212 @@
+.body {
+  margin-top: auto;
+  margin: auto;
+}
+
+.photo {
+  height: 300px;
+  width: 100%;
+}
+
+.photos {
+  //height: 140px;
+  width: 100%;
+}
+
+.flex-group {
+  display: flex;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  width: 100%;
+}
+
+.flex-group-centre {
+  margin: 0 3%;
+  width: 75%;
+}
+
+.pic {
+  height: 375px;
+  width: 97%;
+  margin-left: 11px;
+}
+
+.food {
+  position: relative;
+  width: 75%;
+}
+
+.food img {
+  width: 100%;
+}
+
+/* Style the button and place it in the middle of the container/image */
+.food button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  color: black;
+  font-size: 12px;
+  padding: 1em 1em;
+  border: none;
+  cursor: pointer;
+  border-radius: 7px;
+  box-shadow: 0 6px 6px rgba(0, 0, 0, 0.6);
+  background-color: rgb(245,245,245);
+  border: 1px solid white;
+}
+
+.food button:hover {
+  background-color:dodgerblue;
+  color:white;
+}
+
+.health {
+  position: relative;
+}
+
+.health img {
+  width: 100%;
+}
+
+/* Style the button and place it in the middle of the container/image */
+.health button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  color:black;
+  font-size: 12px;
+  padding: 1em 1em;
+  border: none;
+  background-color: rgb(245,245,245);
+  cursor: pointer;
+  border-radius: 7px;
+  box-shadow: 0 6px 6px rgba(0, 0, 0, 0.6);
+  //background-color: transparent;
+  border: 1px solid white;
+}
+
+.health button:hover {
+  background-color:dodgerblue;
+  color:white;
+}
+
+.services {
+  position: relative;
+  top: 7%
+}
+
+.services img {
+  width: 100%;
+}
+
+/* Style the button and place it in the middle of the container/image */
+.services button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  font-size: 12px;
+  padding: 1em 1em;
+  border: none;
+  cursor: pointer;
+  background-color: rgb(245,245,245);
+  border-radius: 7px;
+  box-shadow: 0 6px 6px rgba(0, 0, 0, 0.6);
+  color:black;
+  //background-color: transparent;
+  border: 1px solid white;
+}
+
+.services button:hover {
+  background-color:dodgerblue;
+  color:white;
+}
+
+.desert {
+  position: relative;
+  width: 75%;
+}
+
+.desert img {
+  width: 100%;
+}
+
+/* Style the button and place it in the middle of the container/image */
+.desert button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  font-size: 12px;
+  padding: 1em 1em;
+  background-color: rgb(245,245,245);
+  border: none;
+  cursor: pointer;
+  border-radius: 7px;
+  box-shadow: 0 6px 6px rgba(0, 0, 0, 0.6);
+  color:black;
+  //background-color: transparent;
+  border: 1px solid white;
+}
+
+.desert button:hover {
+  background-color:dodgerblue;
+  color:white;
+}
+
+@media screen and (max-width: 720px) {
+  .flex-group {
+    display: block;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    width: 100%;
+  }
+
+  .food {
+    position: relative;
+    width: 100%;
+    margin-bottom: 5%;
+  }
+
+  .flex-group-centre {
+    margin: 5% 0%;
+    width: 100%;
+  }
+
+  .desert {
+    position: relative;
+    width: 100%;
+    margin-bottom: 5%;
+  }
+
+  .health {
+    position: relative;
+    margin-bottom: 5%;
+  }
+
+  .photo {
+    height: auto;
+  }
+
+  .photos {
+    height: auto;
+  }
+
+  .pic {
+    height: auto;
+    margin-left: 10px;
+    width: 90%;
+  }
+  
+  p{
+    width: 375;
+    height: 375;    
+  }
+}
