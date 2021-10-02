@@ -69,7 +69,7 @@ const AddProduct = ({ storeId }) => {
 
   useEffect(() => {
     if (price && discount && tax) {
-      setFinalPrice(tax)
+      setFinalPrice(finalPrice)
     } else if (price && discount) {
       setFinalPrice(discountPrice)
     } else if (price) {
@@ -81,9 +81,9 @@ const AddProduct = ({ storeId }) => {
 
   useEffect(() => {
     if (discount) {
-      setFinalPrice(discountPrice)
+      setFinalPrice(finalPrice)
     } else {
-      setFinalPrice(price)
+      setFinalPrice(finalPrice)
     }
   }, [discount])
 
@@ -91,7 +91,7 @@ const AddProduct = ({ storeId }) => {
     if (tax) {
       setFinalPrice(taxPrice)
     } else {
-      setFinalPrice(price)
+      setFinalPrice(finalPrice)
     }
   }, [tax])
 
@@ -118,50 +118,54 @@ const AddProduct = ({ storeId }) => {
   }));
 
   const onPrice = (e) => {
-    // setPrice(e.target.value.substring(e.target.value.lastIndexOf('$') + 1))
-    const a = e.target.value.substring(e.target.value.lastIndexOf('$') + 1)
-    const b = tax
-    const c = +a || +a * +b / 100
-    // setPrice(c)
-    // setFinalPrice(c)
     setPrice(e.target.value.substring(e.target.value.lastIndexOf('$') + 1))
+    const a = e.target.value.substring(e.target.value.lastIndexOf('$') + 1)
+    const b = discount
+    const c = tax
+    const d = a * (b / 100)
+    const h = a - d
+    const f = a * (c / 100)
+    const g = a - d + f
+    setDiscountPrice(h)
+    setFinalPrice(g)
   }
 
   const onDiscount = (e) => {
-    setDiscount(e.target.value)
-    const a = price
-    const b = e.target.value
-    const c = a * +b / 100
-    const d = a - c
-    const f = d * +tax / 100
-    const g = d + f
-    console.log('eeee', f)
-    setDiscountPrice(g)
-    // setFinalPrice(g)
+    if (tax) {
+      setDiscount(e.target.value)
+      const a = price
+      const b = e.target.value
+      const c = a * (b / 100)
+      const d = a - c
+      const f = a * (tax / 100)
+      const g = d + f
+      setDiscountPrice(d)
+      setFinalPrice(g)
+    }
+    else {
+      setDiscount(e.target.value)
+      const a = price
+      const b = e.target.value
+      const c = a * (b / 100)
+      const d = a - c
+      setDiscountPrice(d)
+      setFinalPrice(d)
+    }
   }
 
   const onTax = (e) => {
     if (discount) {
       setTax(e.target.value)
-      // const a = price 
-      // const b = discount
-      // var aa = a.substring(1)
       const c = e.target.value
-      const d = discountPrice * +c / 100
+      const d = (c / 100) * price
       const f = discountPrice + +d
-      console.log('cccc', d)
-      // let taxi = price + e.target.value
-      // console.log('taxi',taxi)
-      setTax(f)
       setTaxPrice(f)
       setFinalPrice(f)
-    } else {
+    }
+    else {
       setTax(e.target.value)
-      // const a = price 
-      // const b = discount
-      // var aa = a.substring(1)
       const c = e.target.value
-      const d = +price * +c / 100
+      const d = (c / 100) * price
       const f = +price + +d
       setTaxPrice(f)
       setFinalPrice(f)
@@ -306,7 +310,7 @@ const AddProduct = ({ storeId }) => {
         productName,
         category: category.value,
         productImages: fileList.map(info => info.thumbUrl),
-        productVideo : video,
+        productVideo: video,
         discount,
         finalPrice: `${symbol}${parseFloat(finalPrice).toFixed(2)}`,
         // stockReserve,
@@ -316,13 +320,11 @@ const AddProduct = ({ storeId }) => {
         productShipping,
         estoreId: storeId,
       };
-      console.log('addproduct', addProduct )
       dispatch({ type: 'THRIFT_ADD_PRODUCT_REQUEST', addProduct });
     }
     setClear(true)
-  
   };
-  
+
   return (
     <div >
       {isLoading && <Loader />}
