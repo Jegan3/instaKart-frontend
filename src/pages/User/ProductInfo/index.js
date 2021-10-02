@@ -196,24 +196,24 @@ const ProductInfo = ({ location }) => {
                     </Col>
                     <Col sm={12}>
                       <Row>
-                        <Col sm={3}>
+                        <Col sm={3} className ="btnads">
                           <button className={`butn-ads ${toggle === 1 && `active`}`} onClick={onDescription}>
                             Description
                           </button>
                         </Col>
-                        <Col sm={3}>
+                        <Col sm={3} className ="btnads">
                           <button className={`butn-ads ${toggle === 2 && `active`}`} onClick={onWarranty}>
                             Warranty
                           </button>
                         </Col>
-                        <Col sm={3}>
+                        <Col sm={3} className ="btnads">
                           <button className={`butn-ads ${toggle === 3 && `active`}`} onClick={onShipping}>
                             Shipping & Pickup
                           </button>
                         </Col>
-                        <Col sm={3}>
+                        <Col sm={3} className ="btnads">
                           <button className={`butn-ads ${toggle === 4 && `active`}`} onClick={onMessage}>
-                            Message
+                            Message Seller
                           </button>
                         </Col>
                       </Row>
