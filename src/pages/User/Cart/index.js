@@ -31,6 +31,20 @@ const Cart = ({ location }) => {
   const isLoading = useSelector((state) => state.cartState.isLoading);
   const checkout = useSelector((state) => state.checkoutState.checkout);
 
+  //passing buyNowproduct details
+  const buyNowDetails = []
+  buyNowDetails.push(buyNow);
+
+  //passing state and api value 
+  const productList = location.state === 'addCart' ? cart && cart.cartInfo : buyNowDetails;
+  const currency = productList && productList.length && productList[0].totalPrice.replace(/\d+([,.]\d+)?\s*/g, '');
+  const subTotal = productList && productList.map(item => parseFloat(item.totalPrice.replace(/[^.0-9\.]+/g, ''))).reduce((prev, curr) => prev + curr, 0)
+  // admin charges
+  const adminFee = subTotal * 0.025;
+  // trinidad tobago wipay charges
+  const wipayFee = subTotal * 0.035 + 1.70;
+  const orderTotal = subTotal + adminFee + wipayFee;
+
   useEffect(() => {
     dispatch({ type: 'CART_REQUEST' });
   }, [count, addCart]);
@@ -149,7 +163,6 @@ const Cart = ({ location }) => {
   }
 
   const onRemove = (info) => {
-
     const addToCart = {
       productId: info.productId,
       totalPrice: '',
@@ -157,26 +170,6 @@ const Cart = ({ location }) => {
     }
     dispatch({ type: 'ADD_CART_REQUEST', addToCart: addToCart });
   }
-  //passing buyNowproduct details
-  const buyNowDetails = []
-  buyNowDetails.push(buyNow);
-
-  //passing state and api value 
-  const productList = location.state === 'addCart' ? cart && cart.cartInfo : buyNowDetails;
-
-  const currency = productList && productList[0].totalPrice.replace(/\d+([,.]\d+)?\s*/g, '');
-
-
-
-  const subTotal = productList && productList.map(item => parseFloat(item.totalPrice.replace(/[^.0-9\.]+/g, ''))).reduce((prev, curr) => prev + curr, 0)
-
-  const adminFee = subTotal * 0.025;
-  // trinidad tobago wipay charges
-  const wipayFee = subTotal * 0.035 + 1.70;
-
-  const orderTotal = subTotal + adminFee + wipayFee;
-
-
 
   const submit = () => {
     if (!fullName || !mobile || !address || !country || !city || !zipCode || !email) {
@@ -204,7 +197,6 @@ const Cart = ({ location }) => {
       <Header />
       <div className="checkout-page">
         <Grid fluid>
-          <div> {(isLoading) && <Loader />} </div>
           <div className="checkout-details">
             <Row>
               <Col md={7}>
@@ -216,13 +208,18 @@ const Cart = ({ location }) => {
                       </span>
                     </div>
                   </Col>
-                  {currency ?
+                  {!subTotal ?
+                    (isLoading ? <div> {isLoading && <Loader />} </div> : <Row>
+                      <div className='basket'>
+                        Your Bucket Is Empty
+                      </div>
+                    </Row>) :
                     <Row>
                       <Row>
                         <Col md={12}>
                           <div className="product-items">
-                            <Row className="product-info-details">
-                              {productList && productList.map((info) =>
+                            {productList && productList.map((info) =>
+                              <Row className="product-info-details">
                                 <div >
                                   <Col md={3}>
                                     <img className="img-fluid" src={info && info.productImage} />
@@ -251,8 +248,8 @@ const Cart = ({ location }) => {
                                     <br />
                                     {location.state === 'addCart' && <div className="product-remove" onClick={() => onRemove(info)}>Remove</div>}
                                   </Col>
-                                </div>)}
-                            </Row>
+                                </div>
+                              </Row>)}
                           </div>
                         </Col>
                       </Row>
@@ -321,11 +318,6 @@ const Cart = ({ location }) => {
                           </div>
                         </div>
                       </Row>
-                    </Row>
-                    : <Row>
-                      <div className='basket'>
-                        Your Bucket Is Empty
-                      </div>
                     </Row>}
                 </div>
               </Col>
