@@ -185,7 +185,7 @@ const Cart = ({ location }) => {
         country,
         zipCode,
         email,
-        cartTotalPrice: subTotal,
+        cartTotalPrice: subTotal.toFixed(2),
         currency
       };
       dispatch({ type: 'CHECKOUT_REQUEST', checkout });
