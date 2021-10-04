@@ -36,13 +36,14 @@ const Overlay = ({
   const submit = () => {
     if (!industryType || !storeName) {
       setAlertError(true)
-
     }
     else {
       const addStore = {
         storeName,
         industryName: industryType.label,
       };
+      setIndustryType()
+      setStoreName('')
       setModal(onHide)
       dispatch({ type: 'ADD_STORE_REQUEST', addStore });
       // history.push({ pathname: '/thriftstorevendor' });

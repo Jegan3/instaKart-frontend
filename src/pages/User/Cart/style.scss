@@ -60,7 +60,6 @@
     font-family: monospace;
     color: gray;
     cursor: pointer;
-    padding-right: 35px;
   }
 
   .tax-info {
@@ -135,10 +134,10 @@
       font-size: 15px;
       font-weight: 700;
       left: 15px;
+      position: relative;
       font-family: monospace;
       color: gray;
       cursor: pointer;
-      padding-right: 58px;
 
       :hover {
         color: black;
@@ -152,6 +151,10 @@
       font-family: monospace;
       cursor: pointer;
       padding-bottom: 1%;
+    }
+
+    .nowrap {
+      white-space: nowrap;
     }
 
     .product-name {
@@ -258,6 +261,7 @@
   .btn-end {
     float: right;
     margin: 2%;
+    margin-top: 5%;
 
     .proceed-butn {
       white-space: nowrap;
