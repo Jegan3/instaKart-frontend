@@ -42,7 +42,9 @@ const Cart = ({ location }) => {
   // admin charges
   const adminFee = subTotal * 0.025;
   // trinidad tobago wipay charges
-  const wipayFee = subTotal * 0.035 + 1.70;
+  const wipayFee = (subTotal + adminFee) * 0.035 + 1.70;
+  // wipay total 
+  const wipayTotal = subTotal + adminFee;
   const orderTotal = subTotal + adminFee + wipayFee;
 
   useEffect(() => {
@@ -185,7 +187,7 @@ const Cart = ({ location }) => {
         country,
         zipCode,
         email,
-        cartTotalPrice: subTotal.toFixed(2),
+        cartTotalPrice: wipayTotal.toFixed(2),
         currency
       };
       dispatch({ type: 'CHECKOUT_REQUEST', checkout });

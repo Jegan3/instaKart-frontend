@@ -271,6 +271,29 @@ const SignUp = (props) => {
                     maxLength={30}
                   />
                 </Col>
+                <Col md={6} sm={12} className={`clear-country ${alertError && !country && 'dropdown-alert'}`}>
+                  <label className="signup-label">Country <span className="red-star">*</span></label>
+                  <Select
+                    name="Country"
+                    placeholder="Choose you're country"
+                    value={country}
+                    onChange={onCountry}
+                    options={countryOptions}
+                    isSearchable={false}
+                  />
+                </Col>
+                <Col md={6} sm={12} className={`clear-city ${alertError && !city && 'dropdown-alert'}`} >
+                  <label className="signup-label">City <span className="red-star">*</span></label>
+                  <Select
+                    name="City"
+                    placeholder="Choose you're city"
+                    value={city}
+                    onChange={onCity}
+                    options={updatedCityOptions}
+                    isSearchable={false}
+                    isDisabled={!country}
+                  />
+                </Col>
               </Row>}
             <Row>
               <Col md={6} sm={12}>
