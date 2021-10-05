@@ -22,6 +22,7 @@ import ThriftStoreInfo from './pages/User/ThriftStoreInfo';
 import Cart from './pages/User/Cart';
 import Industry from './pages/Vendor/Industry';
 import ListYourAds from './pages/User/ListYourAds';
+import PaymentStatus from './pages/User/PaymentStatus';
 
 export const history = createBrowserHistory();
 
@@ -64,6 +65,7 @@ const Routes = () => (
         <Route path="/productinfo" component={ProductInfo} />
         <Route path="/updatepassword" component={UpdatePassword} />
         <Route path="/cart" component={Cart} />
+        <Route path="/paymentstatus" component={PaymentStatus} />
         <Route component={AuthenticatedRoutes} />
       </Switch>
     </React.Fragment>

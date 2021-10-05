@@ -21,6 +21,7 @@ export default {
     getAddStore: '/api/vendor/createEstore',
     getVendorCompanyDetails: '/api/vendor/getEstores',
     getProductMessage: '/api/user/userProductEnquiry',
+    getPaymentStatus: '/api/user/paymentStatus',
   },
 
   apiBaseUrl: {
