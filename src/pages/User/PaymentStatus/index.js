@@ -12,11 +12,11 @@ const PaymentStatus = () => {
   const paymentStatus = {
     card: url.searchParams.get("card"),
     currency: url.searchParams.get("currency"),
-    customerName: url.searchParams.get("customer_name"),
+    customer_name: url.searchParams.get("customer_name"),
     date: url.searchParams.get("date"),
     hash: url.searchParams.get("hash"),
     message: url.searchParams.get("message"),
-    orderId: url.searchParams.get("order_id"),
+    order_id: url.searchParams.get("order_id"),
     status: url.searchParams.get("status"),
     total: url.searchParams.get("total"),
     transaction_id: url.searchParams.get("transaction_id"),
