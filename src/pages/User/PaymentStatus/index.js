@@ -35,7 +35,7 @@ const PaymentStatus = () => {
             <Row>
               <Col>
                 <h1>
-                  {paymentDetails.message}
+                  {paymentStatus.message}
                 </h1>
               </Col>
             </Row>
