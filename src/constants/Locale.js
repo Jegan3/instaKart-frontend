@@ -27,6 +27,10 @@ export const Locale = [
         _id: '609251ec115d58506a6e9287',
         cityName: 'Codrington',
       },
+      {
+        _id: '',
+        cityName: 'Others',
+      },
     ],
     flag: 'images/antigua.png',
   },
@@ -78,6 +82,10 @@ export const Locale = [
         _id: '609251ec115d58506a6e9293',
         cityName: 'Hillaby',
       },
+      {
+        _id: '',
+        cityName: 'Others',
+      },
     ],
     flag: 'images/barbados.png',
   },
@@ -112,6 +120,10 @@ export const Locale = [
       {
         _id: '609253c9ff1b0351fc81d53f',
         cityName: 'Sauteurs',
+      },
+      {
+        _id: '',
+        cityName: 'Others',
       },
     ],
     flag: 'images/grenada.png',
@@ -168,6 +180,10 @@ export const Locale = [
         _id: '609253c9ff1b0351fc81d54c',
         cityName: 'New Amsterdam',
       },
+      {
+        _id: '',
+        cityName: 'Others',
+      },
     ],
     flag: 'images/guyana.png',
   },
@@ -222,6 +238,10 @@ export const Locale = [
       {
         _id: '6092540eb21baf5244a0e3ea',
         cityName: 'May Pen',
+      },
+      {
+        _id: '',
+        cityName: 'Others',
       },
     ],
     flag: 'images/jamaica.png',
@@ -278,6 +298,10 @@ export const Locale = [
         _id: '609254bff29cee530268f67e',
         cityName: 'Market Shop',
       },
+      {
+        _id: '',
+        cityName: 'Others',
+      },
     ],
     flag: 'images/saint-kits.png',
   },
@@ -329,6 +353,10 @@ export const Locale = [
         _id: '6092555137d591539574da43',
         cityName: 'Dennery',
       },
+      {
+        _id: '',
+        cityName: 'Others',
+      },
     ],
     flag: 'images/saint-lucia.png',
   },
@@ -371,6 +399,10 @@ export const Locale = [
       {
         _id: '609270d4b5c92470d9443b16',
         cityName: 'Bvera Village',
+      },
+      {
+        _id: '',
+        cityName: 'Others',
       },
     ],
     flag: 'images/saint-vincent.png',
@@ -422,6 +454,10 @@ export const Locale = [
       {
         _id: '609255bb77108453ed9b3b80',
         cityName: 'Wageningen',
+      },
+      {
+        _id: '',
+        cityName: 'Others',
       },
     ],
     flag: 'images/suriname.png',
@@ -521,6 +557,10 @@ export const Locale = [
       {
         _id: '609270b7b5c92470d9443b0c',
         cityName: 'Plymouth',
+      },
+      {
+        _id: '',
+        cityName: 'Others',
       },
     ],
     flag: 'images/trinidad-and-tobago-flag.png',
