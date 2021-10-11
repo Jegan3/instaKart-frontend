@@ -15,6 +15,8 @@ import { cartWatchers } from './Cart';
 import { addCartWatchers } from './AddCart';
 import { checkoutWatchers } from './Checkout';
 import { addStoreWatchers } from './AddStore';
+import { forgotPasswordWatchers } from './ForgetPassword';
+import { updatePasswordWatchers } from './UpdatePassword';
 import { vendorCompanyDetailsWatchers } from './VendorCompanyDetails';
 import { productMessageWatchers } from './ProductMessage';
 import { paymentStatusWatchers } from './PaymentStatus';
@@ -38,6 +40,8 @@ export default function* rootWatchers() {
     addCartWatchers(),
     checkoutWatchers(),
     addStoreWatchers(),
+    forgotPasswordWatchers(),
+    updatePasswordWatchers(),
     vendorCompanyDetailsWatchers(),
     productMessageWatchers(),
     paymentStatusWatchers(),

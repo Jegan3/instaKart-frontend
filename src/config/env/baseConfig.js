@@ -25,7 +25,7 @@ export default {
   },
 
   apiBaseUrl: {
-    dev: 'https://stagingbe.insta-kart.com/',
+    dev: 'https://stagingbe.insta-kart.com',
     prod: 'https://backend.insta-kart.com',
   },
 };

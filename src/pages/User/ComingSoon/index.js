@@ -46,7 +46,7 @@ const ComingSoon = () => {
       <div className=" soon">
         <div className="page-text">
           <Typical
-            steps={['We are currently working on something awesome.', 1, 'Stay tuned!', 500]}
+            steps={['We are currently working on something awesome.', 1000, 'Stay tuned!', 500]}
             loop={Infinity}
             wrapper="p" />
         </div>

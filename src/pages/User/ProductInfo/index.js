@@ -25,19 +25,14 @@ const ProductInfo = ({ location }) => {
 
   // For Header Menu 
   const module = location.state.module
-  
+
   const productImages = product && product.productImages.map(item => ({
     original: item,
     thumbnail: item,
   }))
 
-  const productVideo = product && product.productVideo.map(item => ({
-    original: item,
-    thumbnail: item,
-    item
-  }))
+  const productVideo = product && product.productVideo[0]
 
-  // const productVideo = product && product.productVideo[0]
 
   useEffect(() => {
     dispatch({ type: 'PRODUCT_INFO_REQUEST', productId: location.state.product });
@@ -196,22 +191,22 @@ const ProductInfo = ({ location }) => {
                     </Col>
                     <Col sm={12}>
                       <Row>
-                        <Col sm={3} className ="btnads">
+                        <Col sm={3} className="btnads">
                           <button className={`butn-ads ${toggle === 1 && `active`}`} onClick={onDescription}>
                             Description
                           </button>
                         </Col>
-                        <Col sm={3} className ="btnads">
+                        <Col sm={3} className="btnads">
                           <button className={`butn-ads ${toggle === 2 && `active`}`} onClick={onWarranty}>
                             Warranty
                           </button>
                         </Col>
-                        <Col sm={3} className ="btnads">
+                        <Col sm={3} className="btnads">
                           <button className={`butn-ads ${toggle === 3 && `active`}`} onClick={onShipping}>
                             Shipping & Pickup
                           </button>
                         </Col>
-                        <Col sm={3} className ="btnads">
+                        <Col sm={3} className="btnads">
                           <button className={`butn-ads ${toggle === 4 && `active`}`} onClick={onMessage}>
                             Message Seller
                           </button>
@@ -292,8 +287,7 @@ const ProductInfo = ({ location }) => {
                 <div className>
                   <Col md={12}>
                     <div className="video-ads">
-                      {/* { productVideo ?  <ReactPlayer url={productVideo} width="100%" height="100%" controls={true} /> : <ReactPlayer url={'https://www.youtube.com/watch?v=1-wYsS4EwJk'} width="100%" height="100%" controls={true} />  } */}
-                      <ReactPlayer url={'https://www.youtube.com/watch?v=1-wYsS4EwJk'} width="100%" height="100%" controls={true} />
+                      {productVideo ? <ReactPlayer url={productVideo} width="100%" height="100%" controls={true} /> : <ReactPlayer url={'https://www.youtube.com/watch?v=1-wYsS4EwJk'} width="100%" height="100%" controls={true} />}
                     </div>
                   </Col>
                 </div>
