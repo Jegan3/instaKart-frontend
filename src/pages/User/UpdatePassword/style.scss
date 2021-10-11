@@ -1,74 +1,83 @@
-.password-page{
-background-color: white;
-height:100vh;
-padding: 1em;
-max-width:100wh;
-min-height:100vh;
-margin: auto;
-box-sizing:border-box;
-.pass-word{
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 10%;
-  margin-bottom: 20px;
-  box-shadow: 0 0 5px;
-  border-radius: 15px;
-  padding: 5%;
-  text-align: center;
-  background: #fff;
-  width: fit-content;
+.password-page {
   overflow: hidden;
-  cursor: pointer;
-  // transition: all 1000ms ease-in-out;
-
-  &:hover {
-    box-shadow: 0 4px 1rem -4px #000;
-    // margin-top:8%;
-  }
-  .view-header{
-    font-family: HelveticaNeue,Helvetica!important;
-    font-size:30px;
-    font-weight: 800;
-    line-height: 22px;
-    font-weight: 400;
-    padding-bottom: 27px;
-    text-transform: none!important;
-  }
-  .view-sub-header {
-    font-family: HelveticaNeue,Helvetica!important;
-    font-weight: 400;
-    font-size:25px;
-    padding-bottom: 27px;
-    text-transform: none!important;
-}
-.form-control {
-  border: 1px solid #e3e3e3;
-  border-radius: 7px;
-  color: #565656;
-  padding: 8px 12px;
-  height: 38px;
-}
-
-.form-control:focus {
-  box-shadow: 0 0 0 1px #28a4d9 !important;
-  border-color: #28a4d9;
-  outline: 0;
-} 
-.input-text{
-  padding: 5% 0%;
-}
-.update{
-  padding: 7% 0% 0% 0%;
-}
-}
-.main-logo{
-  bottom: 25px;
+  background-color: white;
+  height: 100vh;
+  padding: 1em;
+  max-width: 100wh;
+  min-height: 100vh;
   margin: auto;
-  position: relative;
-  padding: 4%;
-  margin-bottom: 3%;
-  .inst-logo{
-    width:300px;
+  box-sizing: border-box;
+
+  .pass-word {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10%;
+    margin-bottom: 20px;
+    box-shadow: 0 0 5px;
+    border-radius: 15px;
+    padding: 5%;
+    text-align: center;
+    background: #fff;
+    width: fit-content;
+    overflow: hidden;
+    cursor: pointer;
+    // transition: all 1000ms ease-in-out;
+
+    &:hover {
+      box-shadow: 0 4px 1rem -4px #000;
+      // margin-top:8%;
+    }
+
+    .view-header {
+      font-family: HelveticaNeue, Helvetica !important;
+      font-size: 30px;
+      font-weight: 800;
+      line-height: 22px;
+      font-weight: 400;
+      padding-bottom: 27px;
+      text-transform: none !important;
+    }
+
+    .view-sub-header {
+      font-family: HelveticaNeue, Helvetica !important;
+      font-weight: 400;
+      font-size: 25px;
+      padding-bottom: 27px;
+      text-transform: none !important;
+    }
+
+    .form-control {
+      border: 1px solid #e3e3e3;
+      border-radius: 7px;
+      color: #565656;
+      padding: 8px 12px;
+      height: 38px;
+    }
+
+    .form-control:focus {
+      box-shadow: 0 0 0 1px #28a4d9 !important;
+      border-color: #28a4d9;
+      outline: 0;
+    }
+
+    .input-text {
+      padding: 5% 0%;
+    }
+
+    .update {
+      padding: 2% 25% 0% 25%;
+    }
   }
-}
+
+  .main-logo {
+    bottom: 25px;
+    margin: auto;
+    position: relative;
+    padding: 4%;
+    margin-bottom: 3%;
+
+    .inst-logo {
+      width: 300px;
+    }
+  }
 }
