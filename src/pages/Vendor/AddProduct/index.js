@@ -21,7 +21,7 @@ const AddProduct = ({ storeId }) => {
   const [previewVisible, setPreviewVisible] = useState(false)
   const [previewImage, setPreviewImage] = useState('')
   const [previewTitle, setPreviewTitle] = useState('')
-  const [video, setVideo] = useState('')
+  const [video, setVideo] = useState([])
   const [price, setPrice] = useState('');
   const [tax, setTax] = useState('');
   const [discount, setDiscount] = useState('');
@@ -52,6 +52,7 @@ const AddProduct = ({ storeId }) => {
       setTax('');
       setDiscount('');
       setFinalPrice('');
+      setVideo([]);
       setProductDescription('');
       setProductWarranty('');
       setProductShipping('');
@@ -216,15 +217,6 @@ const AddProduct = ({ storeId }) => {
     setImageList(newFileList);
   };
 
-  //let fileList = [];
-
-  // const onChangeVideo = ({ fileList: newFileList }) => {
-  //   let file = newFileList[0].originFileObj;
-  //   setVideo(URL.createObjectURL(file));
-  //   console.log('test-1', file)
-  // };
-
-
   const onChangeVideo = async info => {
     const { status } = info.file;
 
@@ -235,25 +227,10 @@ const AddProduct = ({ storeId }) => {
     } else if (!info.fileList.length) {
       message.error(`${info.file.name} file deleted successfully`);
     }
-    // setProductVideo(info.fileList)
     let videoTo64 = await getBase64(info.file.originFileObj);
     let videoConversion = videoTo64.split(" ")
-    //console.log(videoConversion);
     setVideo(videoConversion)
   }
-
-  // const onChangeVideo = (info) => {
-  //   const { status } = info.file;
-
-  //   if (status === 'done') {
-  //     message.success(`${info.file.name} file uploaded successfully.`);
-  //   } else if (status === 'error') {
-  //     message.error(`${info.file.name} file upload failed`);
-  //   } else if (!info.fileList.length) {
-  //     message.error(`${info.file.name} file deleted successfully`);
-  //   }
-  //   setProductVideo(info.fileList)
-  // }
 
   const onPreview = async file => {
     if (!file.url && !file.preview) {
@@ -272,12 +249,6 @@ const AddProduct = ({ storeId }) => {
       reader.onerror = error => reject(error);
     });
   }
-
-  // const getBase64 = (file) => {
-  //     const reader = new FileReader();
-  //     reader.readAsDataURL(file);
-  // }
-
 
   const fakeRequest = ({ onSuccess }) => {
     setTimeout(() => {
@@ -380,7 +351,7 @@ const AddProduct = ({ storeId }) => {
                   </Col>
                 </Row>
                 <Row>
-                  <Col sm={12} md={6}>
+                  <Col sm={12} md={12}>
                     <label className="signup-label">Upload Image <span className="red-star">*</span></label>
                     <ImgCrop rotate>
                       <Upload
@@ -394,7 +365,7 @@ const AddProduct = ({ storeId }) => {
                         onChange={onChangeImage}
                         onPreview={onPreview}
                       >
-                        {fileList.length < 3 && '+ Upload'}
+                        {fileList.length < 9 && '+ Upload'}
                       </Upload>
                     </ImgCrop>
                     <Modal
@@ -406,10 +377,10 @@ const AddProduct = ({ storeId }) => {
                       <img alt="example" style={{ width: '100%' }} src={previewImage} />
                     </Modal>
                   </Col>
-                  <Col sm={12} md={6}>
+                  <Col sm={12} md={12}>
                     <label className="signup-label">Upload Video </label>
-                    {video ?
-                      <ReactPlayer url={video} width="100%" height="100%" controls={true} /> :
+                    {video.length ?
+                      <ReactPlayer url={video} width="100%" height="221px" controls={true} /> :
                       <Dragger
                         name='file'
                         className="drag-video"

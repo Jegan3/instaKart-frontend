@@ -76,18 +76,16 @@
   }
 
   .left-info {
-    margin: 30px 0px;
+    margin: 3% 0px;
   }
 
-  .right-info {
-    margin: 30px 0px;
-  }
+  // .right-info {
+  //   margin: 1% 0px;
+  // }
 
   .avtar-info {
     text-align: center;
     top: 60px;
-    margin-bottom: 35px;
-
   }
 
   .resta {
@@ -102,6 +100,12 @@
   .btn-general {
     bottom: 2px;
     position: relative;
+  }
+
+  .store-label {
+    margin-top: 4%;
+    line-height: 27px;
+    white-space: nowrap;
   }
 }
 
