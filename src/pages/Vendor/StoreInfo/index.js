@@ -61,7 +61,7 @@ import Loader from '../../../components/Loader';
 //   },
 // ]
 
-const StoreInfo = ({storeId}) => {
+const StoreInfo = ({ storeId }) => {
   const [storeLogo, setStoreLogo] = useState('');
   const [aboutStore, setAboutStore] = useState('');
   const [loading, setLoading] = useState(false);
@@ -91,9 +91,9 @@ const StoreInfo = ({storeId}) => {
   let fileList = [];
 
   // const { state } = props.location;
-  // console.log('location',props.location)
+
   useEffect(() => {
-    dispatch({ type: 'STORE_INFO_REQUEST',storeId});
+    dispatch({ type: 'STORE_INFO_REQUEST', storeId });
   }, [])
 
   useEffect(() => {
@@ -128,7 +128,7 @@ const StoreInfo = ({storeId}) => {
 
   const onAboutStore = (e) => {
     //   if (e.target.value.match('^[a-zA-Z0-9 !?",\'@#$%\^&*)(+=._-]*$')) {
-      setAboutStore(e.target.value)
+    setAboutStore(e.target.value)
     //}
   }
 
@@ -224,7 +224,7 @@ const StoreInfo = ({storeId}) => {
   }
 
   const onSubmit = () => {
-    console.log('timing',timing)
+    console.log('timing', timing)
     if (!address || !country || !emailId || !mobile) {
       setAlertError(true)
       message.error('Please fill all the fields')
@@ -242,7 +242,7 @@ const StoreInfo = ({storeId}) => {
         igId,
         mobile,
         timing,
-        estoreId:storeId,
+        estoreId: storeId,
       };
       dispatch({ type: 'THRIFT_PROFILE_REQUEST', profileInfo });
     };
@@ -256,7 +256,7 @@ const StoreInfo = ({storeId}) => {
         {/* <Headerbar headerName="Profile" /> */}
         <div className="main-content general-info">
           <Grid fluid>
-          {/* <Menu mode="horizontal">
+            {/* <Menu mode="horizontal">
         <Menu.Item >
           Profile <Link to="/profile" />
         </Menu.Item>
@@ -275,30 +275,30 @@ const StoreInfo = ({storeId}) => {
                   </p>
                   <Row>
                     <Col md={12} >
-                    <div className='avtar-info' >
-                      <div className='load-info'>
-                        <div>
-                          <div className="photo">
-                            {storeLogo ? <img src={storeLogo} alt='' /> : <img src={storeInfo && storeInfo.storeInfo.storeLogo ? storeInfo.storeInfo.storeLogo : "images/logo-here.png"} />}
-                          </div>
-                          <div className="image-upload">
-                            <ImgCrop rotate>
-                              <Upload
-                                fileList={fileList}
-                                customRequest={fakeRequest}
-                                onChange={onAvatarImage}
-                                type="file"
-                                accept="image/*"
-                                showUploadList={false}
-                              >
-                                <label for="file-input">
-                                  <i className="fa fa-camera" />
-                                </label>
-                              </Upload>
-                            </ImgCrop>
+                      <div className='avtar-info' >
+                        <div className='load-info'>
+                          <div>
+                            <div className="photo">
+                              {storeLogo ? <img src={storeLogo} alt='' /> : <img src={storeInfo && storeInfo.storeInfo.storeLogo ? storeInfo.storeInfo.storeLogo : "images/logo-here.png"} />}
+                            </div>
+                            <div className="image-upload">
+                              <ImgCrop rotate>
+                                <Upload
+                                  fileList={fileList}
+                                  customRequest={fakeRequest}
+                                  onChange={onAvatarImage}
+                                  type="file"
+                                  accept="image/*"
+                                  showUploadList={false}
+                                >
+                                  <label for="file-input">
+                                    <i className="fa fa-camera" />
+                                  </label>
+                                </Upload>
+                              </ImgCrop>
+                            </div>
                           </div>
                         </div>
-                      </div>
                       </div>
                     </Col>
                     <Col sm={12}>
@@ -315,7 +315,7 @@ const StoreInfo = ({storeId}) => {
                 </Col>
                 <Col md={6} className='right-info' >
                   <Row>
-                    <Col md={12}>
+                    {/* <Col md={12}>
                       <label className="signup-label">Business Name</label>
                       <input
                         type="text"
@@ -347,9 +347,9 @@ const StoreInfo = ({storeId}) => {
                         value={storeInfo && storeInfo.storeInfo.lastName}
                         disabled
                       />
-                    </Col>
+                    </Col> */}
                     <Col md={12}>
-                      <label className="signup-label">Store Name</label>
+                      <label className="store-label">Store Name</label>
                       <input
                         type="text"
                         className="form-control"
@@ -361,18 +361,27 @@ const StoreInfo = ({storeId}) => {
                       />
                     </Col>
                     <Col md={12}>
-                      <label className="signup-label">Address<span className="red-star">*</span></label>
-                      <input
+                      <label className="store-label">Address<span className="red-star">*</span></label>
+
+                      <textarea className={alertError && !address ? ` form-control my-input` : `form-control formy`}
+                        type="text"
+                        placeholder="address."
+                        maxLength={100}
+                        value={address}
+                        onChange={onAddress}
+                        rows="4"></textarea>
+
+                      {/* <input
                         type="text"
                         placeholder="address."
                         className={alertError && !address ? ` form-control my-input` : `form-control formy`}
                         maxLength={100}
                         value={address}
                         onChange={onAddress}
-                      />
+                      /> */}
                     </Col>
                     <Col md={12} className={`clear-city ${alertError && !country && `dropdown-alert`}`}>
-                      <label className="signup-label">Country <span className="red-star">*</span></label>
+                      <label className="store-label">Country <span className="red-star">*</span></label>
                       <Select
                         type="text"
                         className="prof-select "
@@ -386,7 +395,7 @@ const StoreInfo = ({storeId}) => {
                     <Col md={12}>
                       <Row>
                         <Col md={6}>
-                          <label className="signup-label">City</label>
+                          <label className="store-label">City</label>
                           <Select
                             type="text"
                             className="prof-select "
@@ -399,7 +408,7 @@ const StoreInfo = ({storeId}) => {
                           />
                         </Col>
                         <Col md={6} className='zipcode'>
-                          <label className="signup-label">ZIP Code</label>
+                          <label className="store-label">ZIP Code</label>
                           <input
                             type="text"
                             className="form-control"
