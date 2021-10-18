@@ -287,7 +287,7 @@ const ProductInfo = ({ location }) => {
                 <div className>
                   <Col md={12}>
                     <div className="video-ads">
-                      {productVideo ? <ReactPlayer url={productVideo} width="100%" height="100%" controls={true} /> : <ReactPlayer url={'https://www.youtube.com/watch?v=1-wYsS4EwJk'} width="100%" height="100%" controls={true} />}
+                      {productVideo ? <ReactPlayer className="video-prop" url={productVideo} width="100%" height="100%" controls={true} /> : <ReactPlayer className="video-prop" url={'https://www.youtube.com/watch?v=1-wYsS4EwJk'} width="100%" height="100%" controls={true} />}
                     </div>
                   </Col>
                 </div>
@@ -302,7 +302,6 @@ const ProductInfo = ({ location }) => {
                         <span className="ik-ads">Reviews</span>
                         < CarouselReviewCard />
                       </div>
-                      <br />
                     </div>
                   </Col>
                 </div>
@@ -317,7 +316,6 @@ const ProductInfo = ({ location }) => {
                         <span className="ik-ads">Related products</span>
                         <CarouselNewEStoreAds />
                       </div>
-                      <br />
                     </div>
                   </Col>
                 </div>
