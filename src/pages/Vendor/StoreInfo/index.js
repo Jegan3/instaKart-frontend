@@ -10,8 +10,6 @@ import ImgCrop from 'antd-img-crop';
 import { Upload } from 'antd';
 import { Menu, TimePicker, message } from 'antd';
 import moment from 'moment';
-import Headerbar from '../../../components/Headerbar';
-import Sidebar from '../../../components/Sidebar';
 import Table from '../../../components/Table';
 import { Locale } from '../../../constants/Locale';
 import Loader from '../../../components/Loader';
@@ -64,6 +62,7 @@ import Loader from '../../../components/Loader';
 const StoreInfo = ({ storeId }) => {
   const [storeLogo, setStoreLogo] = useState('');
   const [aboutStore, setAboutStore] = useState('');
+  const [storeDetail, setStoreDetail] = useState(false);
   const [loading, setLoading] = useState(false);
   const [storeName, setStoreName] = useState('');
   const [address, setAddress] = useState('');
@@ -129,24 +128,27 @@ const StoreInfo = ({ storeId }) => {
   const onAboutStore = (e) => {
     //   if (e.target.value.match('^[a-zA-Z0-9 !?",\'@#$%\^&*)(+=._-]*$')) {
     setAboutStore(e.target.value)
-    //}
+    setStoreDetail(true)
   }
 
   const onStoreName = (e) => {
     if (e.target.value.match('^[a-zA-Z0-9 ]*$')) {
       setStoreName(e.target.value)
+      setStoreDetail(true)
     }
   }
 
   const onAddress = (e) => {
     if (e.target.value.match('^[a-zA-Z0-9 ]*$')) {
       setAddress(e.target.value)
+      setStoreDetail(true)
     }
   }
 
   // Country Options
   const onCountry = (country) => {
     setCountry(country)
+    // setStoreDetail(true)
   }
 
   // Country Options
@@ -157,37 +159,41 @@ const StoreInfo = ({ storeId }) => {
 
   const onCity = (city) => {
     setCity(city)
+    // setStoreDetail(true)
   }
-
-
 
   const onZipCode = (e) => {
     if (e.target.value.match('^[0-9]*$')) {
       setZipCode(e.target.value)
+      setStoreDetail(true)
     }
   }
 
   const onEmailId = (e) => {
     if (e.target.value.match('^[a-zA-Z0-9_@./#&+-]*$')) {
       setEmailId(e.target.value);
+      setStoreDetail(true)
     }
   };
 
   const onFbId = (e) => {
     if (e.target.value.match('^[a-zA-Z0-9._]*$')) {
-      setFbId(e.target.value);
+      setFbId(e.target.value)
+      setStoreDetail(true)
     }
   };
 
   const onIgId = (e) => {
     if (e.target.value.match('^[a-zA-Z0-9._]*$')) {
-      setIgId(e.target.value);
+      setIgId(e.target.value)
+      setStoreDetail(true)
     }
   };
 
-  const onMobile = (e) => (
+  const onMobile = (e) => {
     setMobile(e.target.rawValue)
-  )
+    setStoreDetail(true)
+  }
 
   const onOpeningTime = (info, timeString) => {
     info.original.openingTime = moment(timeString, ["h:mm A"]).format("HH:mm");
@@ -224,23 +230,33 @@ const StoreInfo = ({ storeId }) => {
   }
 
   const onSubmit = () => {
-    console.log('timing', timing)
-    if (!address || !country || !emailId || !mobile) {
+    const storeLogoInfo = storeDetail ? storeLogo : storeInfo && storeInfo.storeInfo.storeLogo;
+    const aboutStoreInfo = storeDetail ? aboutStore : storeInfo && storeInfo.storeInfo.aboutStore;
+    const addressInfo = storeDetail ? address : storeInfo && storeInfo.storeInfo.address;
+    const countryIdInfo = country && country.value;
+    const cityIdInfo = city && city.value;
+    const zipCodeInfo = storeDetail ? zipCode : storeInfo && storeInfo.storeInfo.zipCode;
+    const emailIdInfo = storeDetail ? emailId : storeInfo && storeInfo.storeInfo.emailId;
+    const fbIdInfo = storeDetail ? fbId : storeInfo && storeInfo.storeInfo.fbId;
+    const igIdInfo = storeDetail ? igId : storeInfo && storeInfo.storeInfo.igId;
+    const mobileInfo = storeDetail ? mobile : storeInfo && storeInfo.storeInfo.mobile;
+
+    if (!addressInfo || !countryIdInfo || !emailIdInfo || !mobileInfo) {
       setAlertError(true)
       message.error('Please fill all the fields')
     } else {
       const profileInfo = {
         // storeName,
-        storeLogo,
-        aboutStore,
-        address,
-        countryId: country && country.value,
-        cityId: city && city.value,
-        zipCode,
-        emailId,
-        fbId,
-        igId,
-        mobile,
+        storeLogo: storeLogoInfo,
+        aboutStore: aboutStoreInfo,
+        address: addressInfo,
+        countryId: countryIdInfo,
+        cityId: cityIdInfo,
+        zipCode: zipCodeInfo,
+        emailId: emailIdInfo,
+        fbId: fbIdInfo,
+        igId: igIdInfo,
+        mobile: mobileInfo,
         timing,
         estoreId: storeId,
       };
@@ -279,7 +295,7 @@ const StoreInfo = ({ storeId }) => {
                         <div className='load-info'>
                           <div>
                             <div className="photo">
-                              {storeLogo ? <img src={storeLogo} alt='' /> : <img src={storeInfo && storeInfo.storeInfo.storeLogo ? storeInfo.storeInfo.storeLogo : "images/logo-here.png"} />}
+                              {storeDetail ? <img src={storeLogo} alt='' /> : <img src={storeInfo && storeInfo.storeInfo.storeLogo ? storeInfo.storeInfo.storeLogo : "images/logo-here.png"} />}
                             </div>
                             <div className="image-upload">
                               <ImgCrop rotate>
@@ -303,13 +319,14 @@ const StoreInfo = ({ storeId }) => {
                     </Col>
                     <Col sm={12}>
                       <label className="signup-label">About Store < span className="red-star">*</span> </label>
-                      <textarea className={alertError && !aboutStore ? ` form-control my-input` : `form-control formy`}
+                      <textarea className={alertError && !aboutStore && storeDetail ? ` form-control my-input` : `form-control formy`}
                         name="message"
                         placeholder='type something..'
-                        value={aboutStore}
+                        value={storeDetail ? aboutStore : storeInfo && storeInfo.storeInfo.aboutStore}
                         onChange={onAboutStore}
                         maxLength={500}
-                        rows="4"></textarea>
+                        rows="4">
+                      </textarea>
                     </Col>
                   </Row>
                 </Col>
@@ -362,14 +379,14 @@ const StoreInfo = ({ storeId }) => {
                     </Col>
                     <Col md={12}>
                       <label className="store-label">Address<span className="red-star">*</span></label>
-
-                      <textarea className={alertError && !address ? ` form-control my-input` : `form-control formy`}
+                      <textarea className={alertError && !address && storeDetail ? ` form-control my-input` : `form-control formy`}
                         type="text"
                         placeholder="address."
                         maxLength={100}
-                        value={address}
+                        value={storeDetail ? address : storeInfo && storeInfo.storeInfo.address}
                         onChange={onAddress}
-                        rows="4"></textarea>
+                        rows="4">
+                      </textarea>
 
                       {/* <input
                         type="text"
@@ -380,14 +397,14 @@ const StoreInfo = ({ storeId }) => {
                         onChange={onAddress}
                       /> */}
                     </Col>
-                    <Col md={12} className={`clear-city ${alertError && !country && `dropdown-alert`}`}>
+                    <Col md={12} className={`clear-city ${alertError && !country && storeDetail && `dropdown-alert`}`}>
                       <label className="store-label">Country <span className="red-star">*</span></label>
                       <Select
                         type="text"
                         className="prof-select "
                         placeholder="select country"
                         isSearchable={false}
-                        value={country}
+                        value={storeDetail ? country : storeInfo && storeInfo.storeInfo.country}
                         onChange={onCountry}
                         options={countryOptions}
                       />
@@ -400,7 +417,7 @@ const StoreInfo = ({ storeId }) => {
                             type="text"
                             className="prof-select "
                             placeholder="select city"
-                            value={city}
+                            value={storeDetail ? city : storeInfo && storeInfo.storeInfo.city}
                             onChange={onCity}
                             options={updatedCityOptions}
                             isSearchable={false}
@@ -413,7 +430,7 @@ const StoreInfo = ({ storeId }) => {
                             type="text"
                             className="form-control"
                             maxLength={10}
-                            value={zipCode}
+                            value={storeDetail ? zipCode : storeInfo && storeInfo.storeInfo.zipCode}
                             onChange={onZipCode}
                             placeholder="Z1234"
                           />
@@ -429,9 +446,9 @@ const StoreInfo = ({ storeId }) => {
                     <label className="signup-label">Email ID <span className="red-star">*</span></label>
                     <input
                       type="text"
-                      className={alertError && !emailId ? `form-control my-input` : `form-control formy`}
+                      className={alertError && !emailId && storeDetail ? `form-control my-input` : `form-control formy`}
                       maxLength={30}
-                      value={emailId}
+                      value={storeDetail ? emailId : storeInfo && storeInfo.storeInfo.emailId}
                       onChange={onEmailId}
                       placeholder="@gmail.com"
                     />
@@ -443,7 +460,7 @@ const StoreInfo = ({ storeId }) => {
                       className="form-control"
                       maxLength={30}
                       placeholder="facebook"
-                      value={fbId}
+                      value={storeDetail ? fbId : storeInfo && storeInfo.storeInfo.fbId}
                       onChange={onFbId}
                     />
                   </Col>
@@ -453,7 +470,7 @@ const StoreInfo = ({ storeId }) => {
                       type="text"
                       className="form-control"
                       maxLength={30}
-                      value={igId}
+                      value={storeDetail ? igId : storeInfo && storeInfo.storeInfo.igId}
                       onChange={onIgId}
                       placeholder="instagram"
                     />
@@ -461,9 +478,9 @@ const StoreInfo = ({ storeId }) => {
                   <Col md={3} className='zipcode'>
                     <label className="signup-label">Contact Number <span className="red-star">*</span></label>
                     <Cleave
-                      className={alertError && !mobile ? `form-control my-input` : `form-control formy`}
+                      className={alertError && !mobile && storeDetail ? `form-control my-input` : `form-control formy`}
                       placeholder="contact number"
-                      value={mobile}
+                      value={storeDetail ? mobile : storeInfo && storeInfo.storeInfo.mobile}
                       onChange={onMobile}
                       options={{
                         blocks: [3, 3, 4],
