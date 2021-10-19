@@ -1,45 +1,46 @@
 /*eslint-disable*/
 import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Row, Col } from 'react-bootstrap';
-import ImgCrop from 'antd-img-crop';
-import { Upload } from 'antd';
+import Typical from "react-typical";
 import Headerbar from '../../../components/Headerbar';
-import Sidebar from '../../../components/Sidebar';
+// import { useDispatch, useSelector } from 'react-redux';
+// import { Row, Col } from 'react-bootstrap';
+// import ImgCrop from 'antd-img-crop';
+// import { Upload } from 'antd';
+//import Sidebar from '../../../components/Sidebar';
 
 const MyProfile = () => {
-  const [companyLogo, setCompanyLogo] = useState('');
+  // const [companyLogo, setCompanyLogo] = useState('');
 
-  const dispatch = useDispatch();
-  const storeInfo = useSelector((state) => state.storeInfoState.storeInfo);
+  // const dispatch = useDispatch();
+  // const storeInfo = useSelector((state) => state.storeInfoState.storeInfo);
 
-  useEffect(() => {
-    dispatch({ type: 'THRIFT_VENDOR_INFO_REQUEST' });
-  }, [])
+  // useEffect(() => {
+  //   dispatch({ type: 'THRIFT_VENDOR_INFO_REQUEST' });
+  // }, [])
 
-  let fileList = [];
+  // let fileList = [];
 
-  const onAvatarImage = ({ fileList: newFileList }) => {
-    let file = newFileList[0].originFileObj;
-    const reader = new FileReader();
-    reader.onload = () => {
-      setCompanyLogo(reader.result);
-    };
-    reader.readAsDataURL(file);
-  }
+  // const onAvatarImage = ({ fileList: newFileList }) => {
+  //   let file = newFileList[0].originFileObj;
+  //   const reader = new FileReader();
+  //   reader.onload = () => {
+  //     setCompanyLogo(reader.result);
+  //   };
+  //   reader.readAsDataURL(file);
+  // }
 
-  const fakeRequest = ({ onSuccess }) => {
-    setTimeout(() => {
-      onSuccess('OK')
-    }, 1000)
-  }
+  // const fakeRequest = ({ onSuccess }) => {
+  //   setTimeout(() => {
+  //     onSuccess('OK')
+  //   }, 1000)
+  // }
 
   return (
     <div className="wrapper">
       {/* <Sidebar /> */}
       <div className="rightside-panel">
         <Headerbar headerName="My-Profile" />
-        <div className='my-profile'>
+        {/* <div className='my-profile'>
           <div className="profilelist">
             <Row>
               <Col md={6}>
@@ -98,9 +99,20 @@ const MyProfile = () => {
               </Col>
             </Row>
           </div>
+        </div> */}
+        <div className="profileInfo">
+          <div className=" soon">
+            <div className="page-text">
+              <Typical
+                steps={['Something Awesome', 2000, 'is', 2000, 'COMING SOON', 3000, 'Stay tuned!', 500]}
+                loop={Infinity}
+                wrapper="span" />
+            </div>
+          </div>
         </div>
       </div>
     </div>
   )
 }
+
 export default MyProfile;

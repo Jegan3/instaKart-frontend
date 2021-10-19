@@ -87,6 +87,8 @@ const StoreInfo = ({ storeId }) => {
   const isLoading = useSelector((state) => state.thriftProfileState.isLoading || state.storeInfoState.isLoading);
   // const registerNumber = storeInfo && storeInfo.vendorInfo.register_num;
 
+  //for update and submit!
+  const emailInfo = storeInfo && storeInfo.storeInfo.emailId;
   let fileList = [];
 
   // const { state } = props.location;
@@ -568,17 +570,7 @@ const StoreInfo = ({ storeId }) => {
                     type="button"
                     className="btn btn-primary btn-block modal-butn"
                     onClick={onSubmit}
-                  >
-                    Submit
-                  </button>
-                </Col>
-                <Col lg={2} md={3} sm={4} xs={6} className="product-button">
-                  <button
-                    type="button"
-                    className="btn btn-primary btn-block modal-butn"
-                  // onClick={onCancel}
-                  >
-                    Cancel
+                  > {emailInfo && emailInfo ? 'Update ' : 'Submit'}
                   </button>
                 </Col>
               </Row>
