@@ -1,35 +1,71 @@
-.my-profile{
-  margin:1%;
-  
-.profilelist{
+// .my-profile{
+//   margin:1%;
 
-  .cardetails {
-    background: white;
-    box-shadow: 0 1px 1rem -4px #000;
-    margin: 5%;
-    padding: 5%;
-    text-align: center;
-    /* border: 30px; */
-    border-radius: 15px;
-  }
+// .profilelist{
 
-  .profilephoto {
-    img {
+//   .cardetails {
+//     background: white;
+//     box-shadow: 0 1px 1rem -4px #000;
+//     margin: 5%;
+//     padding: 5%;
+//     text-align: center;
+//     /* border: 30px; */
+//     border-radius: 15px;
+//   }
+
+//   .profilephoto {
+//     img {
+//       width: 100%;
+//       height:277px;
+//     }
+//   }
+
+//   .label-myprofile {
+//     text-align: center;
+//     margin: 5%;
+//     padding: 5%;
+//     font-size: 15px;
+//     font-family: initial;
+//     font-weight: 700;
+//     span{
+//       margin:1%;
+//     }
+//   }
+// }
+
+.rightside-panel {
+  .profileInfo {
+    box-sizing: border-box;
+    overflow-x: hidden;
+    width: 100%;
+    height: 100%;
+
+    .soon {
+      width: 100% !important;
+      margin: auto;
+      height: 50%;
+    }
+
+    .page-text {
+      top: 200px;
+      position: relative;
+      text-align: center;
+      font-family: 'Kelly Slab', cursive;
+      color: black;
+      font-size: 5rem;
       width: 100%;
-      height:277px;
+      font-weight: 800;
+      height: 100%;
+      position: relative;
     }
-  }
 
-  .label-myprofile {
-    text-align: center;
-    margin: 5%;
-    padding: 5%;
-    font-size: 15px;
-    font-family: initial;
-    font-weight: 700;
-    span{
-      margin:1%;
+    .styles_typicalWrapper__1_Uvh::after {
+      content: "!";
+      left: 10px;
+      font-size: 6rem;
+      position: relative;
+      animation: styles_blink__2CKyC 12s infinite step-start;
+
     }
   }
-}
 }
