@@ -124,11 +124,17 @@ const SignUp = (props) => {
   useEffect(() => {
     Locale.filter((item) => {
       if (country && item._id === country.value) {
-        const city = item.cities.sort((a, b) => a.cityName.localeCompare(b.cityName)).map((data) => ({
+        // to sort alphabetically and push others at last item 
+        const list = item.cities.filter(({ cityName }) => cityName !== 'Others').sort((a, b) => a.cityName.localeCompare(b.cityName));
+        const others = item.cities.find(({ cityName }) => cityName === 'Others');
+
+        list.push(others)
+
+        const cityList = list.map((data) => ({
           value: data._id,
           label: data.cityName,
         }));
-        setUpdatedCityOptions(city);
+        setUpdatedCityOptions(cityList);
       }
     });
   }, [country]);
@@ -147,6 +153,8 @@ const SignUp = (props) => {
       const signupDetailsUsers = {
         firstName,
         lastName,
+        countryId: country && country.value,
+        cityId: city && city.value,
         email,
         password,
         type,
