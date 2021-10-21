@@ -10,33 +10,52 @@
     }
   }
 
+  .col-md-9 {
+    padding: 30px 0px 30px 30px;
+    @media screen and (max-width: 992px) {
+      padding: 30px 30px 30px 30px;
+    }
+  }
+
+  .col-md-3 {
+    padding: 0px;
+    top: 275px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    @media screen and (max-width: 992px) {
+      top: -15px;
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+  }
+
   .ant-upload.ant-upload-drag {
     height: 300px;
+    border: none;
   }
 
   .ant-upload.ant-upload-drag .ant-upload {
     padding: 0px;
   }
 
-  .ant-upload.ant-upload-drag .ant-upload-drag-container {
+  .ant-upload {
     background: #28a4d9;
   }
 
-  .list-your {
-    margin: 25px;
+  .ant-upload-text {
+    color: #28a4d9;
   }
 
-  // .ads-price {
-  //   text-align: center;
-  //   top: 45px;
-  //   position: relative;
-  //   margin: 1%;
-  //   p{
-  //     font-size: 8rem;
-  //   }
-  .signup-label
-  {
+  .ant-upload-text-error {
+    color: #f50404;
+    font-size: 16px;
+  }
+
+  .banner-label {
     font-size: 17px;
+    margin: 20px 40px 0px 30px;
   }
 
   .adslistbtn {
@@ -46,26 +65,26 @@
     background-color: transparent !important;
     opacity: 0.8;
     filter: alpha(opacity=80);
-    padding: 8px 28px;
+    padding: 8px 15px;
     font-size: 17px;
-    margin: 10%;
-    margin-left: 35px;
-    margin-top: 28px;
     white-space: nowrap;
     border-radius: 5px;
+    position: relative;
   }
 
   .modal-butn {
-    margin-bottom: 15px;
     cursor: pointer;
     box-shadow: 0 6px 6px rgba(0, 0, 0, 0.6);
+    margin: 10px;
   }
+
   .adslistbtn:hover,
   .adslistbtn:focus {
     opacity: 1;
     filter: alpha(opacity=100);
     outline: 0 !important;
   }
+
   .adslistbtn:active,
   .adslistbtn.active {
     -webkit-box-shadow: none;
@@ -76,49 +95,30 @@
   .advertise {
     margin: 3%;
   }
-  .primay-banner {
-    margin-top: 150px;
-    line-height: 40px;
-    font-size: 17px;
-    margin-left: 35px;
-  }
 
-  .secondary-banner {
-    margin-top: 150px;
-    line-height: 40px;
+  .price-label {
+    margin: 10px;
     font-size: 17px;
-    margin-left: 35px;
-  }
-
-  .video-banner {
-    margin-top: 150px;
-    line-height: 40px;
-    font-size: 17px;
-    margin-left: 35px;
-  }
-
-  .per-day-label {
     padding-left: 10px;
   }
 
-  .per-week-label {
-    padding-left: 10px;
-  }
-  .per-month-label {
-    padding-left: 10px;
-  }
   .price-col {
-    margin: 25px;
-    border: 1px solid rgb(255, 255, 255);
-    height: 359px;
+    position: relative;
   }
-  .Per-Day,
-  .Per-Week,
-  .Per-Month {
+
+  .price-col-error {
+    color: red;
+    position: relative;
+  }
+
+  .radio-btn-size {
     position: relative;
     top: 1px;
     width: 13px;
     height: 13px;
   }
-}
 
+  .free-trail-col {
+    text-align: center;
+  }
+}

@@ -2,6 +2,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Row, Col, Grid } from 'react-bootstrap';
+import TextLoop from "react-text-loop";
 import Footer from '../../../components/Footer';
 import Header from '../../../components/Header';
 import { CarouselThriftNewAdditions, ThriftStoreNearYou, CarouselThriftStoreCategoryUp, CarouselThriftPromotions, CarouselThriftStoreCategoryBottom, CarouselAdsDetails } from '../../../components/Carousel';
@@ -21,9 +22,15 @@ const ThriftStore = () => {
       <div>
         <Header />
       </div>
-      <h2>
-        Welcome To The Caribbean&#39;s <br />
-        Largest Thrift Shop
+      <h2 className="heading-text">
+        The Caribbean&#39;s
+        <TextLoop className='text-loop' springConfig={{ stiffness: 70, damping: 31 }}
+          adjustingSpeed={500}>
+          <span>Largest</span>
+          <span>Biggest</span>
+          <span>Greatest</span>
+        </TextLoop>
+        Thrift Shop
       </h2>
       <Row >
         <Col>
