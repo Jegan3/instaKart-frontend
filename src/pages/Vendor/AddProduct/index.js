@@ -398,9 +398,9 @@ const AddProduct = ({ storeId }) => {
                   </Col>
                 </Row>
                 <Row>
-                  <Col sm={12} md={6}>
+                  <Col md={6}>
                     <Row className='pricerow-list'>
-                      <Col sm={3}>
+                      <Col sm={3} xs ={6}>
                         <label className="signup-label">Price <span className="red-star">*</span></label>
                         {thriftCategoryType && <Cleave
                           className={alertError && !price ? ` form-control my-input` : `form-control formy`}
@@ -416,7 +416,7 @@ const AddProduct = ({ storeId }) => {
                           }}
                         />}
                       </Col>
-                      <Col sm={3}>
+                      <Col sm={3} xs ={6}>
                         <label className="signup-label">Discount </label>
                         <Cleave
                           className="form-control"
@@ -431,7 +431,7 @@ const AddProduct = ({ storeId }) => {
                         />
                         <span className="percentage">%</span>
                       </Col>
-                      <Col sm={3}>
+                      <Col sm={3} xs ={6}>
                         <label className="signup-label">Tax</label>
                         <Cleave
                           className="form-control price-style"
@@ -461,7 +461,7 @@ const AddProduct = ({ storeId }) => {
                       />
                       <span className="percentage">%</span>
                     </Col> */}
-                      <Col sm={3}>
+                      <Col sm={3} xs ={6}>
                         <label className="signup-label">Final Price  </label>
                         {thriftCategoryType && <Cleave
                           options={{
@@ -480,7 +480,7 @@ const AddProduct = ({ storeId }) => {
                   </Col>
                   <Col md={6}>
                     <Row>
-                      <Col sm={6}>
+                    <Col sm={6} xs={6}>
                         <label className="signup-label">Stock Reserve </label>
                         <Cleave
                           options={{
@@ -493,7 +493,7 @@ const AddProduct = ({ storeId }) => {
                           onChange={onStockReserve}
                         />
                       </Col>
-                      <Col sm={6}>
+                      <Col sm={6} xs={6}>
                         <label className="signup-label">Stocks on Hand  </label>
                         <Cleave
                           options={{
@@ -507,7 +507,7 @@ const AddProduct = ({ storeId }) => {
                         />
                       </Col>
                     </Row>
-                  </Col>
+                  </Col> 
                 </Row>
                 <Row>
                   <Col sm={12} md={6}>

@@ -33,7 +33,7 @@ const Home = () => {
         The Caribbean&#39;s
         <TextLoop className='text-loop-home' springConfig={{ stiffness: 70, damping: 31 }}
           adjustingSpeed={500}>
-          <span>Allied</span>
+          <span>Joined</span>
           <span>Linked</span>
           <span>Unified</span>
         </TextLoop>
