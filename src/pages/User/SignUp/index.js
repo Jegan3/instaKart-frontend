@@ -50,7 +50,7 @@ const SignUp = (props) => {
       setEmail('');
       setPassword('');
       setTermsCondition(false);
-      message.success('Thanks!, Signup form is successfully registered with us , You will receive an email from us shortly');
+      message.success('Thanks!, Signup form is successfully registered with us , You will receive an email from us shortly Note: If you using Outlook please check ur spam folder too');
     } else if (invalidSignup) {
       message.error(`An account with email ${email} already exists`);
     }
