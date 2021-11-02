@@ -10,8 +10,10 @@ const Password = () => {
 
   const dispatch = useDispatch();
 
+  const url = new URL(`${window.location.href}`);
+
   const onPassword = (e) => {
-      setNewPassword(e.target.value);
+    setNewPassword(e.target.value);
   };
 
   const splitPassword = () => {
@@ -19,11 +21,11 @@ const Password = () => {
   };
 
   const onUpdatePassword = () => {
-    const updatePasswordDetails = {
-      newpassword,
+    sessionStorage.access = url.searchParams.get("auth")
+    const updatePassword = {
+      password: newpassword,
     };
-    dispatch({ type: 'UPDATE_PASSWORD_REQUEST', updatePasswordDetails });
-    console.log("newpassword",updatePasswordDetails)
+    dispatch({ type: 'UPDATE_PASSWORD_REQUEST', updatePassword });
   };
 
   return (
@@ -57,9 +59,9 @@ const Password = () => {
                   data-componentname="passwordCreate"
                   maxLength="36"
                   aria-autocomplete="list"
-                  
+
                 />
-                 <i className={`${showPassword ? 'fa fa-unlock-alt' : 'fa fa-lock'} unlock-signup`} onClick={splitPassword}></i>
+                <i className={`${showPassword ? 'fa fa-unlock-alt' : 'fa fa-lock'} unlock-signup`} onClick={splitPassword}></i>
                 {/* <button id="7cc7256b-6b64-4859-825f-1b7edb9af194" type="button" tabIndex="-1" className="nike-unite-hide-button">HIDE</button> */}
                 {/* <div className="tip">Password does not meet minimum requirements.</div> */}
                 {/* <div className="nike-unite-password-complexity">
@@ -83,7 +85,6 @@ const Password = () => {
         </div>
       </Row>
     </div>
-
   );
 };
 
