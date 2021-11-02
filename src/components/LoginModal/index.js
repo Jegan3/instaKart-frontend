@@ -107,7 +107,7 @@ const LoginModal = ({ showPopup, hidePopup }) => {
     const forgotPasswordDetails ={
       email,
     };
-    dispatch({ type: 'FORGOT_PASSWORD_REQUEST', reset: forgotPasswordDetails });
+    dispatch({ type: 'RESET_PASSWORD_REQUEST', reset: forgotPasswordDetails });
   };
  
 
