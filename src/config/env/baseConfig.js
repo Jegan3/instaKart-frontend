@@ -22,6 +22,8 @@ export default {
     getVendorCompanyDetails: '/api/vendor/getEstores',
     getProductMessage: '/api/user/userProductEnquiry',
     getPaymentStatus: '/api/user/paymentStatus',
+    getResetPassword: '/api/user/forgotPassword',
+    getUpdatePassword: '/api/user/resetPassword ',
   },
 
   apiBaseUrl: {

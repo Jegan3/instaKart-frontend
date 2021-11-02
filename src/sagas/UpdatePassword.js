@@ -5,7 +5,7 @@ import { doPost } from '../utils/fetchWrapper';
 
 export function* getUpdatePassword(data) {
   try {
-    const response = yield doPost(envConfig.apiEndPoints.getUpdatePassword, data.UpdatePassword);
+    const response = yield doPost(envConfig.apiEndPoints.getUpdatePassword, data.updatePassword);
     yield put(instakartActionCreators.getUpdatePasswordSuccess(response));
   } catch (error) {
     yield put(instakartActionCreators.getUpdatePasswordFailure(error));

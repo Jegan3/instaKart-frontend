@@ -119,20 +119,24 @@ const ProductInfo = ({ location }) => {
   }
 
   const onBuyNow = () => {
-    if (sessionStorage.access) {
-      const productPrice = product.finalPrice.replace(/[^.0-9\.]+/g, '');
-      const currency = product.finalPrice.replace(/\d+([,.]\d+)?\s*/g, '');
+    const productPrice = product.finalPrice.replace(/[^.0-9\.]+/g, '');
+    const currency = product.finalPrice.replace(/\d+([,.]\d+)?\s*/g, '');
 
-      const buyNowProduct = {
-        productId: product._id,
-        productName: product && product.productName,
-        productImage: product && product.productImages,
-        totalPrice: `${currency}${parseFloat(productPrice * count).toFixed(2)}`,
-        quantity: count,
-        productPrice: `${currency}${parseFloat(productPrice).toFixed(2)}`
-      }
+    const buyNowProduct = {
+      productId: product._id,
+      productName: product && product.productName,
+      productImage: product && product.productImages,
+      totalPrice: `${currency}${parseFloat(productPrice * count).toFixed(2)}`,
+      quantity: count,
+      productPrice: `${currency}${parseFloat(productPrice).toFixed(2)}`
+    }
+
+    if (sessionStorage.type === 'user') {
       history.push({ pathname: '/cart', state: 'buyNow' });
       dispatch({ type: 'BUY_NOW', buyNow: buyNowProduct });
+    }
+    else if (sessionStorage.type === 'vendor') {
+      message.error('Please Login As User');
     } else {
       setLogin(true)
     }
