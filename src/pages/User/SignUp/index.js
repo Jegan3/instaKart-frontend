@@ -312,7 +312,7 @@ const SignUp = (props) => {
                   placeholder="Enter you're email"
                   value={email}
                   onChange={onEmail}
-                  maxLength={30}
+                  maxLength={50}
                 />
               </Col>
               <Col md={6} sm={12}>

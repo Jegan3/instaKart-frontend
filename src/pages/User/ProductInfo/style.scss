@@ -52,14 +52,14 @@
       .product-title {
         font-size: 37px;
         margin-bottom: 15px;
-        font-family: fantasy;
+        font-family: serif;
         color: $color-background;
         font-weight: 700;
       }
 
       .sale {
         color: whitesmoke;
-        font-family: fantasy;
+        font-family: serif;
       }
 
       .see-all {
@@ -67,7 +67,7 @@
         position: relative;
         font-weight: 700;
         color: whitesmoke;
-        font-family: fantasy;
+        font-family: serif;
         text-decoration: underline;
       }
 
@@ -90,7 +90,7 @@
 .ik-ads {
   color: whitesmoke;
   font-weight: 300;
-  font-family: fantasy;
+  font-family: serif;
   font-size: 20px;
   margin: 0;
   margin-left: 10px;
@@ -133,7 +133,7 @@
   color: white;
   font-size: 18px;
   font-weight: 700;
-  font-family: monospace;
+  font-family: serif;
   padding-top: 7%;
   cursor: pointer;
 
@@ -147,7 +147,7 @@
   color: white;
   font-size: 18px;
   font-weight: 700;
-  font-family: monospace;
+  font-family: serif;
   padding-top: 7%;
   cursor: pointer;
   border: transparent;
@@ -227,7 +227,7 @@
   position: relative;
   font-weight: 700;
   color: #f1eeef;
-  font-family: fantasy;
+  font-family: serif;
 
   .stars {
     background-color: transparent;

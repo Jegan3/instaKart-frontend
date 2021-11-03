@@ -175,7 +175,7 @@ const LoginModal = ({ showPopup, hidePopup }) => {
                           type="email"
                           className={alertError && email === '' ? ' form-control my-input' : 'form-control formy'}
                           placeholder="Enter Email"
-                          maxLength={30}
+                          maxLength={50}
                           value={email}
                           onChange={onUserName}
                         />

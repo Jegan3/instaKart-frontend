@@ -23,6 +23,22 @@ const Dashboard = () => {
   const isLoadingStatus = useSelector((state) => state.vendorStatusState.isLoading);
   const isLoadingList = useSelector((state) => state.vendorListState.isLoading);
 
+  //company details in count
+  const totalCompany = vendorList && vendorList.filter((value) => {
+    return value.status;
+  }).length
+
+  const activeCompany = vendorList && vendorList.filter((value) => {
+    return value.status === 'accepted';
+  }).length
+
+  const rejectedCompany = vendorList && vendorList.filter((value) => {
+    return value.status === 'rejected';
+  }).length
+
+  const pendingCompany = vendorList && vendorList.filter((value) => {
+    return value.status === 'pending';
+  }).length
 
   useEffect(() => {
     if (validVendorStatus && validVendorStatus.status) {
@@ -40,7 +56,6 @@ const Dashboard = () => {
   useEffect(() => {
     dispatch({ type: 'VENDOR_LIST_REQUEST' });
   }, [])
-
   const hidePopup = () => {
     setShow(false);
   };
@@ -87,8 +102,6 @@ const Dashboard = () => {
         reject={onReject}
       />
       <Sidebar />
-      <div>
-      </div>
       <div className="rightside-panel">
         <Headerbar headerName="Dashboard" setRtlCallback={onRtl} />
         <div className="main-content">
@@ -99,28 +112,28 @@ const Dashboard = () => {
                 <StatsCard
                   bigIcon={<i className="fas fa-archive fa-xs icon-1" />}
                   statsText="Total Companies"
-                  statsValue="634"
+                  statsValue={totalCompany}
                 />
               </Col>
               <Col lg={3} md={6} sm={6}>
                 <StatsCard
                   bigIcon={<i className="fas fa-truck fa-xs icon-2" />}
                   statsText="Pending Companies"
-                  statsValue="105"
+                  statsValue={pendingCompany}
                 />
               </Col>
               <Col lg={3} md={6} sm={6}>
                 <StatsCard
                   bigIcon={<i className="fa fa-cart-plus fa-xs icon-3" />}
                   statsText="Rejected Companies"
-                  statsValue="6"
+                  statsValue={rejectedCompany}
                 />
               </Col>
               <Col lg={3} md={6} sm={6}>
                 <StatsCard
                   bigIcon={<i className="fas fa-rupee-sign fa-xs icon-4" />}
                   statsText="Active Companies"
-                  statsValue="150"
+                  statsValue={activeCompany}
                 />
               </Col>
             </Row>
