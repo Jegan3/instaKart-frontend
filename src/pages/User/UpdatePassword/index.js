@@ -26,6 +26,7 @@ const Password = () => {
       password: newpassword,
     };
     dispatch({ type: 'UPDATE_PASSWORD_REQUEST', updatePassword });
+    setNewPassword('');
   };
 
   return (

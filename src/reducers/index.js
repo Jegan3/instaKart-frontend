@@ -20,6 +20,7 @@ import checkoutState from './Checkout';
 import addStoreState from './AddStore';
 import vendorCompanyDetailsState from './VendorCompanyDetails';
 import productMessageState from './ProductMessage';
+import resetState from './ResetPassword';
 
 const combinedReducer = combineReducers({
   signupState,
@@ -42,6 +43,7 @@ const combinedReducer = combineReducers({
   addStoreState,
   vendorCompanyDetailsState,
   productMessageState,
+  resetState,
 });
 
 const rootReducer = (state, action) => {

@@ -12,14 +12,17 @@ const LoginModal = ({ showPopup, hidePopup }) => {
   const [resetPassword, setResetPassword] = useState(false);
   const [termscondition, setTermsCondition] = useState(false);
   const [login, setLogin] = useState(false);
-  const [showLogin, setShowLogin] = useState(showPopup);
-  const [errorMsg, setErrorMsg] = useState('');
+  const [showLogin, setShowLogin] = useState(showPopup); const [errorMsg, setErrorMsg] = useState('');
   const [alertError, setAlertError] = useState(false);
+  const [successmsg, setSuccessMsg] = useState(false);
+  const [failuremsg, setFailureMsg] = useState(false);
 
   const dispatch = useDispatch();
   const validLogin = useSelector((state) => state.loginState.login);
   const invalidLogin = useSelector((state) => state.loginState.error);
   const addCartGlobal = useSelector((state) => state.addCartState.addCartGlobal);
+  const resetSuccess = useSelector((state) => state.resetState.resetPassword);
+  const resetFailure = useSelector((state) => state.resetState.error);
 
   useEffect(() => {
     setShowLogin(showPopup);
@@ -29,6 +32,15 @@ const LoginModal = ({ showPopup, hidePopup }) => {
     setForgotPassword(false);
     setResetPassword(false);
   }, [showPopup]);
+
+  useEffect(() => {
+    if (resetPassword && resetSuccess) {
+      setSuccessMsg(resetSuccess.message)
+    }
+    else if (resetFailure) {
+      setFailureMsg(resetFailure.message)
+    }
+  });
 
   useEffect(() => {
     if (login && validLogin) {
@@ -45,7 +57,7 @@ const LoginModal = ({ showPopup, hidePopup }) => {
       //   sessionStorage.clear();
       //   dispatch({ type: 'LOGOUT_SUCCESS' });
     } else if (login && invalidLogin) {
-      setErrorMsg('Please enter the valid credentials');
+      setErrorMsg(invalidLogin.error);
     }
   });
 
@@ -105,13 +117,14 @@ const LoginModal = ({ showPopup, hidePopup }) => {
   const Reset = () => {
     setResetPassword(true);
     dispatch({ type: 'RESET_PASSWORD_REQUEST', reset: email });
-  
+    setSuccessMsg('');
+    setFailureMsg('');
   };
- 
 
   const BackToLogin = () => {
     setForgotPassword(false);
     setResetPassword(false);
+    setPassword('');
   };
 
   const openTermsCondition = () => {
@@ -160,9 +173,15 @@ const LoginModal = ({ showPopup, hidePopup }) => {
                               <h3>
                                 PASSWORD RESET
                               </h3>
-                              <h5>
-                                You should receive a link in a few moments. Please open that link to reset your password.
-                              </h5>
+                              {successmsg ?
+                                <h5 className="reset-success">
+                                  {successmsg}
+                                </h5>
+                                :
+                                <h5 className="reset-failure">
+                                  {failuremsg}
+                                </h5>
+                              }
                             </div>}
                         </div>}
                     </Col>
