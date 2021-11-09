@@ -401,7 +401,7 @@ const Cart = ({ location }) => {
                                 <TextField id="standard-name"
                                   label="Email"
                                   className="checkout-feild"
-                                  maxLength={30}
+                                  maxLength={50}
                                   value={email}
                                   onChange={onEmail}
                                   error={alertError && !email}

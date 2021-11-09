@@ -2,7 +2,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Navbar } from 'react-bootstrap';
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faMapSigns } from '@fortawesome/free-solid-svg-icons';
 
