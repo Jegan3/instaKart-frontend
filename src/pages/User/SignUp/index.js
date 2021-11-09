@@ -150,13 +150,14 @@ const SignUp = (props) => {
     } else if (termscondition === false) {
       message.error('Please accept the Terms & Conditions and Privacy Policy');
     } else {
+      const passcode = Buffer.from(password).toString("base64");
       const signupDetailsUsers = {
         firstName,
         lastName,
         countryId: country && country.value,
         cityId: city && city.value,
         email,
-        password,
+        password: passcode,
         type,
       };
 
@@ -166,7 +167,7 @@ const SignUp = (props) => {
         countryId: country && country.value,
         cityId: city && city.value,
         email,
-        password,
+        password: passcode,
         type,
       };
 
