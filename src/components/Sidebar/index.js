@@ -159,9 +159,12 @@ const Sidebar = () => {
             <MenuItem icon={<FontAwesomeIcon icon={faHome} active />}>
               Vendor <Link to="/dashboard" />
             </MenuItem>
-            <MenuItem icon={<FontAwesomeIcon icon={faHome} active />}>
+            {/* <MenuItem icon={<FontAwesomeIcon icon={faHome} active />}>
               User <Link />
-            </MenuItem>
+            </MenuItem> */}
+            <SubMenu title="User" icon={<FontAwesomeIcon icon={faHome} active />}>
+              <MenuItem>UserDetails <Link to="/userdetails" /></MenuItem>
+            </SubMenu>
           </Menu>
         </SidebarContent> :
           <SidebarContent>
