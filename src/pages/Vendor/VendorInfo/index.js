@@ -389,11 +389,8 @@ const VendorInfo = (props) => {
               </Col>
             </Row>
             <Row className="vendor-content card">
-              <Col md={6} sm={12}
-                className='clear-city'
-              // className={`clear-city ${alertError && !bank && `dropdown-alert`}`} 
-              >
-                <label className="signup-label">Bank</label>
+              <Col md={6} sm={12} className={`clear-city ${alertError && !bank && `dropdown-alert`}`} >
+                <label className="signup-label">Bank <span className="red-star">*</span></label>
                 <Select
                   type="text"
                   className="prof-select "
@@ -405,15 +402,16 @@ const VendorInfo = (props) => {
                 />
               </Col>
               <Col md={6} sm={12} >
-                <label className="signup-label">Bank Account Number </label>
+                <label className="signup-label">Bank Account Number <span className="red-star">*</span> </label>
                 <input
                   type="text"
-                  className="form-control my-input"
-                  //className={alertError && bankAccount === '' ? ` form-control my-input` : `form-control formy`}
+                  // className="form-control my-input"
+                  className={alertError && bankAccount === '' ? ` form-control my-input` : `form-control formy`}
                   placeholder="Bank account number"
                   value={bankAccount}
                   onChange={onBankAccount}
                   maxLength={15}
+                  disabled={!bank}
                 />
               </Col>
               <Col md={6} sm={12} >
@@ -445,7 +443,7 @@ const VendorInfo = (props) => {
                 <label className="signup-label">WiPay Account Number {wipay === 'Yes'}</label>
                 <input
                   type="text"
-                  className="form-control my-input"
+                  className="form-control formy"
                   // className={alertError && wipayAccount === '' && wipay === 'Yes' ? ` form-control my-input` : `form-control formy`}
                   placeholder="WiPay number"
                   maxLength={10}
@@ -477,7 +475,7 @@ const VendorInfo = (props) => {
                   isSearchable={false}
                 />
               </Col>
-              <Col md={6} sm={12} >
+              {/* <Col md={6} sm={12} >
                 <label className="signup-label radio-label">US Account Available </label>
                 <div className="form-check">
                   <input
@@ -501,7 +499,7 @@ const VendorInfo = (props) => {
                     No
                   </label>
                 </div>
-              </Col>
+              </Col> */}
             </Row>
             <Row className="margin-control">
               <Col md={12} sm={12} className="required" >
