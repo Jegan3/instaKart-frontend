@@ -22,8 +22,9 @@ const Password = () => {
 
   const onUpdatePassword = () => {
     sessionStorage.access = url.searchParams.get("auth")
+    const passcode = Buffer.from(newpassword).toString("base64");
     const updatePassword = {
-      password: newpassword,
+      password: passcode,
     };
     dispatch({ type: 'UPDATE_PASSWORD_REQUEST', updatePassword });
     setNewPassword('');

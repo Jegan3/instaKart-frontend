@@ -66,7 +66,7 @@ const LoginModal = ({ showPopup, hidePopup }) => {
   const validateEmail = (email) => {
     const regex = /\S+@\S+\.\S+/;
     return regex.test(email);
-  }; 
+  };
   const valid = validateEmail(email);
 
   const onUserName = (e) => {
@@ -102,20 +102,21 @@ const LoginModal = ({ showPopup, hidePopup }) => {
       setAlertError(true);
     } else if (email && valid === false) {
       setAlertError(true)
-     setValidate(true)
+      setValidate(true)
       setErrorMsg('Please enter the valid Email');
       //message.error('Please enter the valid Email')
-    }else if (password === '') {
+    } else if (password === '') {
       setAlertError(true);
     } else if (termscondition === false) {
       setErrorMsg('Please accept the Terms & Conditions and Privacy Policy');
     } else {
       setLogin(true);
+      const passcode = Buffer.from(password).toString("base64");
       const loginDetails = {
         // email: 'gopinath.chandar@gmail.com',
         // password: 'Football7&',
         email,
-        password,
+        password: passcode,
       };
       dispatch({ type: 'LOGIN_REQUEST', login: loginDetails });
     }
