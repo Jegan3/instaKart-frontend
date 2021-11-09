@@ -30,8 +30,12 @@
     margin-bottom: 10px;
   }
 
-  h5 {
-    color: $color-grey;
+  .reset-success {
+    color: green !important;
+  }
+
+  .reset-failure {
+    color: red !important;
   }
 }
 
@@ -115,7 +119,7 @@
 //   margin-bottom: 10px;
 // }
 
-.unlock-login{
+.unlock-login {
   float: right;
   margin: 10px;
   top: 36px;
