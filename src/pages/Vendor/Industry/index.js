@@ -57,7 +57,7 @@ const Industry = (props) => {
           <Menu.Item key="addproduct" disabled={storeInfo && storeInfo.storeInfo.emailId === ''} >
             Add Product
           </Menu.Item>
-          <Menu.Item key="productlist" disabled>
+          <Menu.Item key="productlist" >
             Product List
           </Menu.Item>
         </Menu>

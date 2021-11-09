@@ -17,6 +17,7 @@ const { Dragger } = Upload;
 const AddProduct = ({ storeId }) => {
   const [productName, setProductName] = useState('');
   const [category, setCategory] = useState('');
+  const [productDetail, setproductetail] = useState(false);
   const [fileList, setImageList] = useState([])
   const [previewVisible, setPreviewVisible] = useState(false)
   const [previewImage, setPreviewImage] = useState('')
@@ -35,13 +36,20 @@ const AddProduct = ({ storeId }) => {
   const [productShipping, setProductShipping] = useState('');
   const [modal, setModal] = useState(false);
   const [alertError, setAlertError] = useState(false);
-  const [clear, setClear] = useState(false)
+  const [clear, setClear] = useState(false);
+  const [status, setStatus] = useState(false)
 
   const dispatch = useDispatch();
   const thriftCategoryType = useSelector((state) => state.thriftCategoryState.thriftCategory);
   const thriftAddProduct = useSelector((state) => state.thriftAddProductState.thriftAddProduct);
   const isLoading = useSelector((state) => state.thriftAddProductState.isLoading);
   const invalidAddProduct = useSelector((state) => state.thriftAddProductState.error);
+
+  const statusOptions = [
+    { value: 'available', label: 'Available' },
+    { value: 'sold', label: 'Sold' },
+    { value: 'reserve', label: 'Reserve' },
+  ];
 
   useEffect(() => {
     if (clear && thriftAddProduct && thriftAddProduct.status) {
@@ -172,6 +180,9 @@ const AddProduct = ({ storeId }) => {
       setFinalPrice(f)
     }
   }
+  const onStatus = (status) => {
+    setStatus(status)
+  } 
 
   // const onFinalPrice = (e) => {
   //   setFinalPrice(e.target.value)
@@ -284,8 +295,9 @@ const AddProduct = ({ storeId }) => {
         productVideo: video,
         discount,
         finalPrice: `${symbol}${parseFloat(finalPrice).toFixed(2)}`,
-        // stockReserve,
-        // stockHand,
+        stockReserve,
+        stockHand,
+        status,
         productDescription,
         productWarranty,
         productShipping,
@@ -389,9 +401,6 @@ const AddProduct = ({ storeId }) => {
                         onChange={onChangeVideo}
                         beforeUpload={beforeUpload}
                       >
-                        {/* <p className="ant-upload-drag-icon">
-                      <InboxOutlined /> HI 
-                    </p> */}
                         <p className="ant-upload-text">Click or drag file to this area to upload video</p>
                         <p className="ant-upload-hint">You can upload only 1 video and maximum file size of the video should be less than 30 MB</p>
                       </Dragger>}
@@ -400,7 +409,7 @@ const AddProduct = ({ storeId }) => {
                 <Row>
                   <Col md={6}>
                     <Row className='pricerow-list'>
-                      <Col sm={3} xs ={6}>
+                      <Col sm={3} xs={6}>
                         <label className="signup-label">Price <span className="red-star">*</span></label>
                         {thriftCategoryType && <Cleave
                           className={alertError && !price ? ` form-control my-input` : `form-control formy`}
@@ -416,7 +425,7 @@ const AddProduct = ({ storeId }) => {
                           }}
                         />}
                       </Col>
-                      <Col sm={3} xs ={6}>
+                      <Col sm={3} xs={6}>
                         <label className="signup-label">Discount </label>
                         <Cleave
                           className="form-control"
@@ -431,7 +440,7 @@ const AddProduct = ({ storeId }) => {
                         />
                         <span className="percentage">%</span>
                       </Col>
-                      <Col sm={3} xs ={6}>
+                      <Col sm={3} xs={6}>
                         <label className="signup-label">Tax</label>
                         <Cleave
                           className="form-control price-style"
@@ -461,7 +470,7 @@ const AddProduct = ({ storeId }) => {
                       />
                       <span className="percentage">%</span>
                     </Col> */}
-                      <Col sm={3} xs ={6}>
+                      <Col sm={3} xs={6}>
                         <label className="signup-label">Final Price  </label>
                         {thriftCategoryType && <Cleave
                           options={{
@@ -479,8 +488,8 @@ const AddProduct = ({ storeId }) => {
                     </Row>
                   </Col>
                   <Col md={6}>
-                    <Row>
-                    <Col sm={6} xs={6}>
+                    <Row className="pricerow-list">
+                      <Col sm={3} xs={4}>
                         <label className="signup-label">Stock Reserve </label>
                         <Cleave
                           options={{
@@ -493,7 +502,7 @@ const AddProduct = ({ storeId }) => {
                           onChange={onStockReserve}
                         />
                       </Col>
-                      <Col sm={6} xs={6}>
+                      <Col sm={3} xs={4}>
                         <label className="signup-label">Stocks on Hand  </label>
                         <Cleave
                           options={{
@@ -505,9 +514,22 @@ const AddProduct = ({ storeId }) => {
                           value={stockHand}
                           onChange={onStockHand}
                         />
+                        </Col>
+                        <Col sm={6} xs={4}>
+                          <label className="pricerow-list">Available</label>
+                          <Select
+                           // key={info.original.id}
+                            name="Status"
+                            placeholder="Status"
+                            className="prof-select "
+                            value={status}
+                            options={statusOptions}
+                            onChange={onStatus}
+                            isSearchable={false}
+                          />
                       </Col>
                     </Row>
-                  </Col> 
+                  </Col>
                 </Row>
                 <Row>
                   <Col sm={12} md={6}>

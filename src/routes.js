@@ -23,6 +23,7 @@ import Cart from './pages/User/Cart';
 import Industry from './pages/Vendor/Industry';
 import ListYourAds from './pages/User/ListYourAds';
 import PaymentStatus from './pages/User/PaymentStatus';
+import UserDetails from './components/UserDetails';
 
 export const history = createBrowserHistory();
 
@@ -37,6 +38,7 @@ const AuthenticatedRoutes = () => (
           <Route path="/profile" component={Profile} />
           <Route path="/myprofile" component={MyProfile} />
           <Route path="/storedetails" component={Industry} />
+          <Route path="/userdetails" component={UserDetails} />
         </Switch>
       </Switch>
     </div>

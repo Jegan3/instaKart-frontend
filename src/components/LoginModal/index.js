@@ -16,6 +16,7 @@ const LoginModal = ({ showPopup, hidePopup }) => {
   const [alertError, setAlertError] = useState(false);
   const [successmsg, setSuccessMsg] = useState(false);
   const [failuremsg, setFailureMsg] = useState(false);
+  const [validate, setValidate] = useState('');
 
   const dispatch = useDispatch();
   const validLogin = useSelector((state) => state.loginState.login);
@@ -31,6 +32,7 @@ const LoginModal = ({ showPopup, hidePopup }) => {
     setTermsCondition(false);
     setForgotPassword(false);
     setResetPassword(false);
+    setValidate(false);
   }, [showPopup]);
 
   useEffect(() => {
@@ -60,6 +62,12 @@ const LoginModal = ({ showPopup, hidePopup }) => {
       setErrorMsg(invalidLogin.error);
     }
   });
+
+  const validateEmail = (email) => {
+    const regex = /\S+@\S+\.\S+/;
+    return regex.test(email);
+  }; 
+  const valid = validateEmail(email);
 
   const onUserName = (e) => {
     if (e.target.value.match('^[a-zA-Z0-9_@./#&+-]*$')) {
@@ -92,7 +100,12 @@ const LoginModal = ({ showPopup, hidePopup }) => {
       setErrorMsg('Please fill all the fields');
     } else if (email === '') {
       setAlertError(true);
-    } else if (password === '') {
+    } else if (email && valid === false) {
+      setAlertError(true)
+     setValidate(true)
+      setErrorMsg('Please enter the valid Email');
+      //message.error('Please enter the valid Email')
+    }else if (password === '') {
       setAlertError(true);
     } else if (termscondition === false) {
       setErrorMsg('Please accept the Terms & Conditions and Privacy Policy');
@@ -192,7 +205,7 @@ const LoginModal = ({ showPopup, hidePopup }) => {
                         <label >Email </label>
                         <input
                           type="email"
-                          className={alertError && email === '' ? ' form-control my-input' : 'form-control formy'}
+                          className={alertError && email === '' || validateEmail(email) === false && validate ? ' form-control my-input' : 'form-control formy'}
                           placeholder="Enter Email"
                           maxLength={50}
                           value={email}

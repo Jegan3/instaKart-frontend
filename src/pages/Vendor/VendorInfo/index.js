@@ -210,7 +210,8 @@ const VendorInfo = (props) => {
   }
 
   const Submit = () => {
-    if (!firstName || !lastName || !mobile || !uploadId || !uploadAddress || !bank || !bankAccount || !ikOptions) {
+    if (!firstName || !lastName || !mobile || !ikOptions) {
+      // !uploadId || !uploadAddress || !bank || !bankAccount ||
       setAlertError(true)
       message.error('Please fill all the fields')
     } else if (wipay === 'Yes' && (!wipayAccount || !preference)) {
@@ -285,7 +286,7 @@ const VendorInfo = (props) => {
                   className="form-control"
                   placeholder="Email"
                   value={vendorDetails.email}
-                  maxLength={30}
+                  maxLength={50}
                   disabled
                 />
               </Col>
@@ -328,8 +329,9 @@ const VendorInfo = (props) => {
             <Row className="vendor-content card">
               <Col md={6} sm={12} >
                 <div className='select-file'>
-                  <label className="signup-label">Upload ID <span className="red-star">*</span></label>
-                  <div className={`file-input ${alertError && !uploadId && `red`}`}>
+                  <label className="signup-label">Upload ID</label>
+                  <div className='file-input'>
+                    {/* <div className={`file-input ${alertError && !uploadId && `red`}`}> */}
                     <input
                       type='file'
                       onChange={onUploadId} />
@@ -340,8 +342,9 @@ const VendorInfo = (props) => {
               </Col>
               <Col md={6} sm={12} >
                 <div className='select-file'>
-                  <label className="signup-label">Upload Proof of Address <span className="red-star">*</span></label>
-                  <div className={`file-input ${alertError && !uploadAddress && `red`}`}>
+                  <label className="signup-label">Upload Proof of Address</label>
+                  <div className='file-input'>
+                    {/* <div className={`file-input ${alertError && !uploadAddress && `red`}`}> */}
                     <input
                       type='file'
                       onChange={onUploadAddress} />
@@ -386,8 +389,11 @@ const VendorInfo = (props) => {
               </Col>
             </Row>
             <Row className="vendor-content card">
-              <Col md={6} sm={12} className={`clear-city ${alertError && !bank && `dropdown-alert`}`} >
-                <label className="signup-label">Bank <span className="red-star">*</span></label>
+              <Col md={6} sm={12}
+                className='clear-city'
+              // className={`clear-city ${alertError && !bank && `dropdown-alert`}`} 
+              >
+                <label className="signup-label">Bank</label>
                 <Select
                   type="text"
                   className="prof-select "
@@ -399,10 +405,11 @@ const VendorInfo = (props) => {
                 />
               </Col>
               <Col md={6} sm={12} >
-                <label className="signup-label">Bank Account Number <span className="red-star">*</span></label>
+                <label className="signup-label">Bank Account Number </label>
                 <input
                   type="text"
-                  className={alertError && bankAccount === '' ? ` form-control my-input` : `form-control formy`}
+                  className="form-control my-input"
+                  //className={alertError && bankAccount === '' ? ` form-control my-input` : `form-control formy`}
                   placeholder="Bank account number"
                   value={bankAccount}
                   onChange={onBankAccount}
@@ -435,10 +442,11 @@ const VendorInfo = (props) => {
                 </div>
               </Col>
               <Col md={6} sm={12} >
-                <label className="signup-label">WiPay Account Number {wipay === 'Yes' && <span className="red-star">*</span>}</label>
+                <label className="signup-label">WiPay Account Number {wipay === 'Yes'}</label>
                 <input
                   type="text"
-                  className={alertError && wipayAccount === '' && wipay === 'Yes' ? ` form-control my-input` : `form-control formy`}
+                  className="form-control my-input"
+                  // className={alertError && wipayAccount === '' && wipay === 'Yes' ? ` form-control my-input` : `form-control formy`}
                   placeholder="WiPay number"
                   maxLength={10}
                   value={wipayAccount}
