@@ -42,16 +42,13 @@ const ListYourAds = () => {
       message.error("Please fill all the fields");
     } else {
       const advertiseNow = {
-        primaryBannerImg,
+        advertise: 'primary banner',
+        media: primaryBannerImg,
       };
       //message.success("sucessfully Updated");
       setAlertError(false)
       setPrimaryBannerImg()
-      // console.log("advertiseNow", advertiseNow);
-      dispatch({
-        type: "ADVERTISE_NOW_REQUEST",
-        advertiseNow,
-      });
+      dispatch({ type: "ADVERTISE_NOW_REQUEST", advertiseNow });
     }
   };
 
@@ -70,9 +67,10 @@ const ListYourAds = () => {
       message.error("Please fill all the fields");
     } else {
       const advertiseNow = {
-        secondaryBannerImg,
+        advertise: 'secondary banner',
+        media: secondaryBannerImg,
       };
-     // message.success("sucessfully Updated");
+      // message.success("sucessfully Updated");
       setAlertError2(false)
       setSecondaryBannerImg()
       console.log("advertiseNow", advertiseNow);
@@ -114,9 +112,10 @@ const ListYourAds = () => {
       message.error("Please fill all the fields");
     } else {
       const advertiseNow = {
-        video,
+        advertise: 'video',
+        media: video,
       };
-     // message.success("sucessfully Updated");
+      // message.success("sucessfully Updated");
       setAlertError3(false)
       setVideo()
       console.log("advertiseNow", advertiseNow);
