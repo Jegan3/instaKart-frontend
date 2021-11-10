@@ -223,15 +223,15 @@ const Cart = ({ location }) => {
                               {productList && productList.map((info) =>
                                 <Row className="product-info-details">
                                   <div >
-                                    <Col md={3}>
+                                    <Col sm={3}>
                                       <img className="img-fluid" src={info && info.productImage} />
                                     </Col>
-                                    <Col md={3}>
+                                    <Col sm={3}>
                                       <div className="productlist">
                                         <div className="product-name">{info && info.productName}</div>
                                       </div>
                                     </Col>
-                                    <Col md={3}>
+                                    <Col sm={3}>
                                       <div className="productlist nowrap">
                                         <div className='quanity-check'>
                                           <span>QTY</span>
@@ -243,7 +243,7 @@ const Cart = ({ location }) => {
                                         </div>
                                       </div>
                                     </Col>
-                                    <Col md={3}>
+                                    <Col sm={3}>
                                       <div className="product-price">
                                         <div className="product-name">{info && info.totalPrice}</div>
                                       </div>

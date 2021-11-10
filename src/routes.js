@@ -3,6 +3,7 @@ import { createBrowserHistory } from 'history';
 import { Router, Route, Switch } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
 import Home from './pages/User/Home';
+import Vendor from './pages/Admin/Vendor ';
 import Dashboard from './pages/Admin/Dashboard';
 import SignUp from './pages/User/SignUp';
 import TermsConditions from './pages/User/TermsConditions';
@@ -13,7 +14,7 @@ import ComingSoon from './pages/User/ComingSoon';
 // import AdsDetails from './pages/AdsDetails';
 import ProductList from './pages/Vendor/ProductList';
 import AddProduct from './pages/Vendor/AddProduct';
-import Profile from './pages/Vendor/StoreInfo';
+import StoreInfo from './pages/Vendor/StoreInfo';
 import UpdatePassword from './pages/User/UpdatePassword';
 import MyProfile from './pages/Vendor/MyProfile';
 // import StoreCard from './components/StoreCard';
@@ -23,7 +24,8 @@ import Cart from './pages/User/Cart';
 import Industry from './pages/Vendor/Industry';
 import ListYourAds from './pages/User/ListYourAds';
 import PaymentStatus from './pages/User/PaymentStatus';
-import UserDetails from './components/UserDetails';
+import User from './pages/Admin/User';
+
 
 export const history = createBrowserHistory();
 
@@ -35,10 +37,12 @@ const AuthenticatedRoutes = () => (
         <Switch>
           <Route path="/productlist" component={ProductList} />
           <Route path="/addproduct" component={AddProduct} />
-          <Route path="/profile" component={Profile} />
+          <Route path="/storeInfo" component={StoreInfo} />
           <Route path="/myprofile" component={MyProfile} />
           <Route path="/storedetails" component={Industry} />
-          <Route path="/userdetails" component={UserDetails} />
+          <Route path="/dashboard" component={Dashboard} />
+          <Route path="/vendor" component={Vendor} />
+          <Route path="/user" component={User} />
         </Switch>
       </Switch>
     </div>
@@ -50,7 +54,6 @@ const Routes = () => (
     <React.Fragment >
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route path="/dashboard" component={Dashboard} />
         <Route path="/signup" component={SignUp} />
         <Route path="/termsofcondition" component={TermsConditions} />
         <Route path="/aboutus" component={AboutUs} />
