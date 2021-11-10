@@ -1,5 +1,5 @@
 /*eslint-disable*/
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem, Row, Col, Image } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -39,6 +39,12 @@ const Header = ({ basic, loginCart, hideloginCart, module }) => {
   const admin = validLogin && validLogin.user.type === 'admin' || sessionStorage.type === 'admin';
   const vendor = validLogin && validLogin.user.type === 'vendor' || sessionStorage.type === 'vendor';
   const user = validLogin && validLogin.user.type === 'user' || sessionStorage.type === 'user';
+
+  useEffect(() => {
+    if (user && name) {
+      dispatch({ type: 'CART_REQUEST' });
+    }
+  }, [name]);
 
   const locale = Locale.map((item) => (
     <MenuItem
@@ -102,6 +108,10 @@ const Header = ({ basic, loginCart, hideloginCart, module }) => {
 
   const thriftStore = () => {
     history.push({ pathname: `/${module}`.toLowerCase().replace(/ /g, "") })
+  };
+
+  const onCart = () => {
+    history.push({ pathname: '/cart', state: 'addCart' });
   };
 
   return (
@@ -187,11 +197,16 @@ const Header = ({ basic, loginCart, hideloginCart, module }) => {
                       <FontAwesomeIcon icon={faUserPlus} className="userPlus" />
                       {name ? <div className="text bold-text">{`Hi, ${name}`}</div> : <div className="bold-text">Sign In</div>}
                     </div>
-                    <IconButton className="cart-icon" aria-label="cart" >
-                      <StyledBadge badgeContent={cartCount} >
-                        <ShoppingCartIcon fontSize="large" />
-                      </StyledBadge>
-                    </IconButton>
+                    {user ?
+                      <IconButton
+                        onClick={onCart}
+                        className="cart-icon" aria-label="cart" >
+                        <StyledBadge badgeContent={cartCount} >
+                          <ShoppingCartIcon fontSize="large" />
+                        </StyledBadge>
+                      </IconButton>
+                      : null
+                    }
                   </div>
                 </div>
               </div>

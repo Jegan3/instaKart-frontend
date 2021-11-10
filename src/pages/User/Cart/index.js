@@ -47,9 +47,9 @@ const Cart = ({ location }) => {
   const wipayTotal = subTotal + adminFee;
   const orderTotal = subTotal + adminFee + wipayFee;
 
-  useEffect(() => {
-    dispatch({ type: 'CART_REQUEST' });
-  }, [count]);
+  // useEffect(() => {
+  //   dispatch({ type: 'CART_REQUEST' });
+  // }, [count]);
 
   useEffect(() => {
     if (checkout && checkout.url) {

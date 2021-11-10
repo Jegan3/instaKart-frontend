@@ -37,7 +37,8 @@ const AddProduct = ({ storeId }) => {
   const [modal, setModal] = useState(false);
   const [alertError, setAlertError] = useState(false);
   const [clear, setClear] = useState(false);
-  const [status, setStatus] = useState(false)
+  const [status, setStatus] = useState(false);
+  const [totalprice, setTotalPrice] = useState('');
 
   const dispatch = useDispatch();
   const thriftCategoryType = useSelector((state) => state.thriftCategoryState.thriftCategory);
@@ -81,6 +82,8 @@ const AddProduct = ({ storeId }) => {
       setFinalPrice(finalPrice)
     } else if (price && discount) {
       setFinalPrice(discountPrice)
+    } else if (price && tax) {
+      setFinalPrice(taxPrice)
     } else if (price) {
       setFinalPrice(price)
     } else {
@@ -90,7 +93,7 @@ const AddProduct = ({ storeId }) => {
 
   useEffect(() => {
     if (discount) {
-      setFinalPrice(finalPrice)
+      setFinalPrice(discountPrice)
     } else {
       setFinalPrice(finalPrice)
     }
@@ -129,14 +132,38 @@ const AddProduct = ({ storeId }) => {
   const onPrice = (e) => {
     setPrice(e.target.value.substring(e.target.value.lastIndexOf('$') + 1))
     const a = e.target.value.substring(e.target.value.lastIndexOf('$') + 1)
-    const b = discount
-    const c = tax
+    const b = tax
+    const c = discount
     const d = a * (b / 100)
-    const h = a - d
-    const f = a * (c / 100)
-    const g = a - d + f
-    setDiscountPrice(h)
-    setFinalPrice(g)
+    const h = + a + d
+    const f = h * (c / 100)
+    const g = h - f
+    const i = + a + d - f
+    setDiscountPrice(g)
+    setTaxPrice(h)
+    setFinalPrice(i)
+  }
+
+  const onTax = (e) => {
+    if (discount) {
+      setTax(e.target.value)
+      const c = e.target.value
+      const d = (c / 100) * price
+      const f = + price + d
+      const g = f * (discount / 100)
+      const h = f - g
+      setTaxPrice(h)
+      setFinalPrice(h)
+      setTotalPrice(f)
+    } else {
+      setTax(e.target.value)
+      const c = e.target.value
+      const d = (c / 100) * price
+      const f = +price + +d
+      setTaxPrice(f)
+      setFinalPrice(f)
+      setTotalPrice(f)
+    }
   }
 
   const onDiscount = (e) => {
@@ -144,14 +171,13 @@ const AddProduct = ({ storeId }) => {
       setDiscount(e.target.value)
       const a = price
       const b = e.target.value
-      const c = a * (b / 100)
-      const d = a - c
-      const f = a * (tax / 100)
-      const g = d + f
-      setDiscountPrice(d)
+      const c = a * (tax / 100)
+      const d = +price + c
+      const f = d * (b / 100)
+      const g = d - f
+      setDiscountPrice(g)
       setFinalPrice(g)
-    }
-    else {
+    } else {
       setDiscount(e.target.value)
       const a = price
       const b = e.target.value
@@ -162,27 +188,9 @@ const AddProduct = ({ storeId }) => {
     }
   }
 
-  const onTax = (e) => {
-    if (discount) {
-      setTax(e.target.value)
-      const c = e.target.value
-      const d = (c / 100) * price
-      const f = discountPrice + +d
-      setTaxPrice(f)
-      setFinalPrice(f)
-    }
-    else {
-      setTax(e.target.value)
-      const c = e.target.value
-      const d = (c / 100) * price
-      const f = +price + +d
-      setTaxPrice(f)
-      setFinalPrice(f)
-    }
-  }
   const onStatus = (status) => {
     setStatus(status)
-  } 
+  }
 
   // const onFinalPrice = (e) => {
   //   setFinalPrice(e.target.value)
@@ -278,7 +286,10 @@ const AddProduct = ({ storeId }) => {
 
   const handleCancel = () => setPreviewVisible(false);
 
-  const symbol = `${thriftCategoryType && thriftCategoryType.symbol}`
+  const symbol = `${thriftCategoryType && thriftCategoryType.symbol}`;
+
+  //product price without discount
+  const productPrice = !tax ? price : totalprice;
 
   const onSubmit = () => {
     if
@@ -293,6 +304,7 @@ const AddProduct = ({ storeId }) => {
         category: category.value,
         productImages: fileList.map(info => info.thumbUrl),
         productVideo: video,
+        productPrice,
         discount,
         finalPrice: `${symbol}${parseFloat(finalPrice).toFixed(2)}`,
         stockReserve,
@@ -426,21 +438,6 @@ const AddProduct = ({ storeId }) => {
                         />}
                       </Col>
                       <Col sm={3} xs={6}>
-                        <label className="signup-label">Discount </label>
-                        <Cleave
-                          className="form-control"
-                          maxLength={10}
-                          value={discount}
-                          onChange={onDiscount}
-                          options={{
-                            numeral: true,
-                            delimiter: '.',
-                            blocks: [2, 4]
-                          }}
-                        />
-                        <span className="percentage">%</span>
-                      </Col>
-                      <Col sm={3} xs={6}>
                         <label className="signup-label">Tax</label>
                         <Cleave
                           className="form-control price-style"
@@ -451,6 +448,21 @@ const AddProduct = ({ storeId }) => {
                             numeral: true,
                             delimiter: '.',
                             blocks: [2, 2]
+                          }}
+                        />
+                        <span className="percentage">%</span>
+                      </Col>
+                      <Col sm={3} xs={6}>
+                        <label className="signup-label">Discount </label>
+                        <Cleave
+                          className="form-control"
+                          maxLength={10}
+                          value={discount}
+                          onChange={onDiscount}
+                          options={{
+                            numeral: true,
+                            delimiter: '.',
+                            blocks: [2, 4]
                           }}
                         />
                         <span className="percentage">%</span>
@@ -514,19 +526,19 @@ const AddProduct = ({ storeId }) => {
                           value={stockHand}
                           onChange={onStockHand}
                         />
-                        </Col>
-                        <Col sm={6} xs={4}>
-                          <label className="pricerow-list">Available</label>
-                          <Select
-                           // key={info.original.id}
-                            name="Status"
-                            placeholder="Status"
-                            className="prof-select "
-                            value={status}
-                            options={statusOptions}
-                            onChange={onStatus}
-                            isSearchable={false}
-                          />
+                      </Col>
+                      <Col sm={6} xs={4}>
+                        <label className="pricerow-list">Available</label>
+                        <Select
+                          // key={info.original.id}
+                          name="Status"
+                          placeholder="Status"
+                          className="prof-select "
+                          value={status}
+                          options={statusOptions}
+                          onChange={onStatus}
+                          isSearchable={false}
+                        />
                       </Col>
                     </Row>
                   </Col>
