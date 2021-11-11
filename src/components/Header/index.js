@@ -86,7 +86,7 @@ const Header = ({ basic, loginCart, hideloginCart, module }) => {
   };
 
   const dashboard = () => {
-    history.push(admin ? '/dashboard' : '/myprofile');
+    history.push(admin ? '/dashboard' : '/profile');
     window.scrollTo(0, 0);
   };
 

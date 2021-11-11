@@ -16,7 +16,7 @@ import ProductList from './pages/Vendor/ProductList';
 import AddProduct from './pages/Vendor/AddProduct';
 import StoreInfo from './pages/Vendor/StoreInfo';
 import UpdatePassword from './pages/User/UpdatePassword';
-import MyProfile from './pages/Vendor/MyProfile';
+import Profile from './pages/Vendor/Profile';
 // import StoreCard from './components/StoreCard';
 import ProductInfo from './pages/User/ProductInfo';
 import ThriftStoreInfo from './pages/User/ThriftStoreInfo';
@@ -38,7 +38,7 @@ const AuthenticatedRoutes = () => (
           <Route path="/productlist" component={ProductList} />
           <Route path="/addproduct" component={AddProduct} />
           <Route path="/storeInfo" component={StoreInfo} />
-          <Route path="/myprofile" component={MyProfile} />
+          <Route path="/profile" component={Profile} />
           <Route path="/storedetails" component={Industry} />
           <Route path="/dashboard" component={Dashboard} />
           <Route path="/vendor" component={Vendor} />
