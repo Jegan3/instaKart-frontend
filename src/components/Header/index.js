@@ -41,7 +41,7 @@ const Header = ({ basic, loginCart, hideloginCart, module }) => {
   const user = validLogin && validLogin.user.type === 'user' || sessionStorage.type === 'user';
 
   useEffect(() => {
-    if (user && name) {
+    if (user && name && !basic) {
       dispatch({ type: 'CART_REQUEST' });
     }
   }, [name]);
