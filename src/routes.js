@@ -3,7 +3,7 @@ import { createBrowserHistory } from 'history';
 import { Router, Route, Switch } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
 import Home from './pages/User/Home';
-import Vendor from './pages/Admin/Vendor ';
+import Vendor from './pages/Admin/Vendor';
 import Dashboard from './pages/Admin/Dashboard';
 import SignUp from './pages/User/SignUp';
 import TermsConditions from './pages/User/TermsConditions';
