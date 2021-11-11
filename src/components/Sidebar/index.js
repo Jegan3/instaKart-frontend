@@ -72,7 +72,7 @@ const Sidebar = () => {
   const vendorCompanyDetails = useSelector((state) => state.vendorCompanyDetailsState.vendorCompanyDetails);
   const addStore = useSelector((state) => state.addStoreState.addStore);
   const addStoreError = useSelector((state) => state.addStoreState.error);
-  
+
   const admin = (validLogin && validLogin.user.type === 'admin') || sessionStorage.type === 'admin';
 
   useEffect(() => {
@@ -153,7 +153,7 @@ const Sidebar = () => {
         </SidebarHeader>
         {admin ? <SidebarContent>
           <Menu iconShape>
-          <MenuItem icon={<FontAwesomeIcon icon={faHome} active />}>
+            <MenuItem icon={<FontAwesomeIcon icon={faHome} active />}>
               Dashboard <Link to="/dashboard" />
             </MenuItem>
             <MenuItem icon={<FontAwesomeIcon icon={faHome} active />}>
@@ -167,7 +167,7 @@ const Sidebar = () => {
           <SidebarContent>
             <Menu iconShape>
               <MenuItem icon={<FontAwesomeIcon icon={faUserAlt} />}>
-                Profile <Link to="/myprofile" />
+                Profile <Link to="/profile" />
               </MenuItem>
               <MenuItem icon={<FontAwesomeIcon icon={faHome} />}>
                 User Details <Link to="/user" />

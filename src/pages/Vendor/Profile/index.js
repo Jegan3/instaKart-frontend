@@ -24,7 +24,7 @@ const preferenceList = [
   { value: 'Wipay Transfer', label: 'Wipay Transfer' },
 ]
 
-const MyProfile = () => {
+const Profile = () => {
   const [companyName, setCompanyName] = useState("");
   const [businessLocation, setbusinessLocation] = useState("");
   const [companyLogo, setCompanyLogo] = useState("");
@@ -592,4 +592,4 @@ const MyProfile = () => {
   )
 }
 
-export default MyProfile;
+export default Profile;
