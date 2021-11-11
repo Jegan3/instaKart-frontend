@@ -7,9 +7,10 @@ import { history } from '../../../routes';
 import Footer from '../../../components/Footer';
 import Header from '../../../components/Header';
 import ImageSlider from '../../../components/ImageSlider';
-import Desk from '../../../components/Desk';
+// import Desk from '../../../components/Desk';
 import ReactPlayer from "react-player";
 import { CarouselNewEStoreAds, CarouselReviewCard } from '../../../components/Carousel';
+import Loader from '../../../components/Loader';
 
 const ProductInfo = ({ location }) => {
   const [count, setCount] = useState(1);
@@ -22,7 +23,7 @@ const ProductInfo = ({ location }) => {
   const productDetails = useSelector((state) => state.productInfoState.productInfo);
   const product = productDetails && productDetails.productInfo
   const addCart = useSelector((state) => state.addCartState.addCart);
-
+  const isLoadingProduct = useSelector((state) => state.productInfoState.isLoading);
   // For Header Menu 
   const module = location.state.module
 
@@ -152,6 +153,8 @@ const ProductInfo = ({ location }) => {
       productId: product._id,
       message: productMessage,
     };
+    message.success('Hi.(name) this msg has successfully sent to Seller!')
+    setProductMessage('')
     dispatch({ type: 'PRODUCT_MESSAGE_REQUEST', enquiry });
   };
 
@@ -162,6 +165,7 @@ const ProductInfo = ({ location }) => {
         style={{ backgroundImage: `url(${!background ? product && product.productImages[0] : background})` }}
       >
         <div className='ads-page'>
+          {isLoadingProduct && <Loader />}
           <Grid fluid>
             <Row className='position-top justify-content-center'>
               <div className="product-sides">

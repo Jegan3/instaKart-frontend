@@ -72,9 +72,7 @@ const Sidebar = () => {
   const vendorCompanyDetails = useSelector((state) => state.vendorCompanyDetailsState.vendorCompanyDetails);
   const addStore = useSelector((state) => state.addStoreState.addStore);
   const addStoreError = useSelector((state) => state.addStoreState.error);
-
-  // console.log('addStore',addStore)
-
+  
   const admin = (validLogin && validLogin.user.type === 'admin') || sessionStorage.type === 'admin';
 
   useEffect(() => {
@@ -122,7 +120,6 @@ const Sidebar = () => {
   }
 
   const onStore = (info) => {
-    // console.log('info',info)
     history.push({ pathname: '/storedetails', state: info.estoreId });
     dispatch({ type: 'STORE_INFO_REQUEST', storeId: info.estoreId });
   }
@@ -156,23 +153,27 @@ const Sidebar = () => {
         </SidebarHeader>
         {admin ? <SidebarContent>
           <Menu iconShape>
-            <MenuItem icon={<FontAwesomeIcon icon={faHome} active />}>
-              Vendor <Link to="/dashboard" />
+          <MenuItem icon={<FontAwesomeIcon icon={faHome} active />}>
+              Dashboard <Link to="/dashboard" />
             </MenuItem>
-            {/* <MenuItem icon={<FontAwesomeIcon icon={faHome} active />}>
-              User <Link />
-            </MenuItem> */}
-            <SubMenu title="User" icon={<FontAwesomeIcon icon={faHome} active />}>
-              <MenuItem>UserDetails <Link to="/userdetails" /></MenuItem>
-            </SubMenu>
+            <MenuItem icon={<FontAwesomeIcon icon={faHome} active />}>
+              Vendor <Link to="/vendor" />
+            </MenuItem>
+            <MenuItem icon={<FontAwesomeIcon icon={faHome} />}>
+              User<Link to="/user" />
+            </MenuItem>
           </Menu>
         </SidebarContent> :
           <SidebarContent>
             <Menu iconShape>
-              <MenuItem icon={<FontAwesomeIcon icon={faUserAlt} />}> My Profile <Link to="/ MyProfile" /></MenuItem>
+              <MenuItem icon={<FontAwesomeIcon icon={faUserAlt} />}>
+                Profile <Link to="/myprofile" />
+              </MenuItem>
+              <MenuItem icon={<FontAwesomeIcon icon={faHome} />}>
+                User Details <Link to="/user" />
+              </MenuItem>
               {vendorCompanyDetails && vendorCompanyDetails.industries.map((item) => <SubMenu title={item.industryType} icon={<FontAwesomeIcon icon={faNetworkWired} />
               }>
-
                 {/* <SubMenu> */}
                 {/* <SubMenu title="Thrift Store" icon={<FontAwesomeIcon icon={faNetworkWired} />}> */}
                 {item.stores.map((info) => <div>
