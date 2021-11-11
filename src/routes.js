@@ -62,7 +62,7 @@ const Routes = () => (
         <Route path="/addproduct" component={AddProduct} />
         <Route path="/profile" component={Profile} /> */}
         <Route path="/thriftstoreinfo" component={ThriftStoreInfo} />
-        {/* <Route path="/myprofile" component={MyProfile} /> */}
+        <Route path="/myprofile" component={MyProfile} />
         <Route path="/listyourads" component={ListYourAds} />
         <Route path="/productinfo" component={ProductInfo} />
         <Route path="/updatepassword" component={UpdatePassword} />

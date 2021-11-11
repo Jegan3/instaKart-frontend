@@ -169,7 +169,7 @@ const Sidebar = () => {
         </SidebarContent> :
           <SidebarContent>
             <Menu iconShape>
-              <MenuItem icon={<FontAwesomeIcon icon={faUserAlt} />}>My Profile <Link to="/myprofile" /></MenuItem>
+              <MenuItem icon={<FontAwesomeIcon icon={faUserAlt} />}> My Profile <Link to="/ MyProfile" /></MenuItem>
               {vendorCompanyDetails && vendorCompanyDetails.industries.map((item) => <SubMenu title={item.industryType} icon={<FontAwesomeIcon icon={faNetworkWired} />
               }>
 
