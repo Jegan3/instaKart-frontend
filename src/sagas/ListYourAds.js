@@ -5,7 +5,7 @@ import { doPost } from '../utils/fetchWrapper';
 
 export function* getListYourAds(data) {
   try {
-    const response = yield doPost(envConfig.apiEndPoints.getListYourAds, data.getListYourAds);
+    const response = yield doPost(envConfig.apiEndPoints.getListYourAds, data.advertiseNow);
     yield put(instakartActionCreators.getListYourAdsSuccess(response));
   } catch (error) {
     yield put(instakartActionCreators.getListYourAdsFailure(error));

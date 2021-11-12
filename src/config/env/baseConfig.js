@@ -25,6 +25,8 @@ export default {
     getResetPassword: '/api/user/forgotPassword',
     getUpdatePassword: '/api/user/resetPassword ',
     getListYourAds: '/api/user/advt/uploadAds',
+    getProfile: '/api/user/advt/uploadAds',
+    getProductList: '/api/vendor/product',
   },
 
   apiBaseUrl: {
