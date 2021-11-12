@@ -199,6 +199,7 @@ const AddProduct = ({ storeId }) => {
   const onStockReserve = (e) => {
     setStockReserve(e.target.value)
   }
+  console.log(stockReserve);
   const onStockHand = (e) => {
     setStockHand(e.target.value)
   }
@@ -304,7 +305,7 @@ const AddProduct = ({ storeId }) => {
         category: category.value,
         productImages: fileList.map(info => info.thumbUrl),
         productVideo: video,
-        productPrice,
+        productPrice: `${symbol}${parseFloat(productPrice).toFixed(2)}`,
         discount,
         finalPrice: `${symbol}${parseFloat(finalPrice).toFixed(2)}`,
         stockReserve,
@@ -315,6 +316,7 @@ const AddProduct = ({ storeId }) => {
         productShipping,
         estoreId: storeId,
       };
+      console.log(addProduct)
       dispatch({ type: 'THRIFT_ADD_PRODUCT_REQUEST', addProduct });
     }
     setClear(true)

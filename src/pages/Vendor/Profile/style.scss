@@ -87,19 +87,21 @@
     left: 160px;
     font-size: 16px;
     position: relative;
-    cursor: grab;
+    cursor: pointer;
 
     .fa {
       color: rgb(140, 141, 143);
       position: absolute;
-      right: 200px;
+      right: 160px;
+      top: 12px;
     }
 
     .fa-none {
       display: none;
       color: rgb(140, 141, 143);
       position: absolute;
-      right: 200px;
+      right: 160px;
+      top: 12px;
     }
   }
 
@@ -153,7 +155,7 @@
 
   .my-input {
     border-color: red;
-}
+  }
 
   .form-check-input {
     margin: 5px;
