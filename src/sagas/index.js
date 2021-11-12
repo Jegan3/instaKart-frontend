@@ -20,6 +20,7 @@ import { updatePasswordWatchers } from './UpdatePassword';
 import { vendorCompanyDetailsWatchers } from './VendorCompanyDetails';
 import { productMessageWatchers } from './ProductMessage';
 import { paymentStatusWatchers } from './PaymentStatus';
+import { profileWatchers } from './Profile';
 
 export default function* rootWatchers() {
   yield [
@@ -45,5 +46,6 @@ export default function* rootWatchers() {
     vendorCompanyDetailsWatchers(),
     productMessageWatchers(),
     paymentStatusWatchers(),
+    profileWatchers(),
   ];
 }

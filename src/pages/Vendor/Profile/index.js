@@ -196,7 +196,7 @@ const Profile = () => {
     } else {
       message.success('Your Info Update Successfully');
       (setDisabled(true))
-      const myProfileUpdate = {
+      const Profile = {
         firstName,
         lastName,
         companyName,
@@ -214,7 +214,7 @@ const Profile = () => {
         ikOptions: ikOptions.value,
 
       };
-      dispatch({ type: 'MY_PROFILE_UPDATE_REQUEST', myProfileUpdate });
+      dispatch({ type: 'PROFILE_REQUEST', Profile });
     }
   }
 
@@ -246,7 +246,7 @@ const Profile = () => {
                           showUploadList={false}
                         >
                           <label for="file-input">
-                            <i className="fa fa-camera"
+                            <i className={!disabled ? "fa fa-camera" : " fa fa-none"}
                               disabled={disabled} />
                           </label>
                         </Upload>
@@ -444,15 +444,13 @@ const Profile = () => {
                         <label className="card-info-label"> Bank <span className="red-star">*</span> </label>
                         <Select
                           type="text"
-                          className="prof-select "
-                          // className={alertError && bank === '' ? ` form-control my-input` : `form-control formy`}
+                          className={`${alertError && !bank && `dropdown-alert`}`}
                           placeholder="Choose Bank."
                           value={bank}
                           onChange={onBank}
                           options={bankSelect}
                           isSearchable={true}
-                          // isDisabled={disabled ? bankSelect : null}
-                          disabled={!bank}
+                          isDisabled={disabled ? bankSelect : null}
 
                         >
                         </Select>
@@ -486,6 +484,7 @@ const Profile = () => {
                         <label className="card-info-label">Which do you prefer? {wipay === 'Yes' && <span className="red-star">*</span>}</label>
                         <Select
                           type="text"
+                          className={`${alertError && wipay === "Yes" && !preference && `dropdown-alert`}`}
                           placeholder=" preference"
                           value={preference}
                           disabled={disabled}
@@ -501,12 +500,12 @@ const Profile = () => {
                       <div className="label-myprofile">
                         <label className="card-info-label"> Bank Account No <span className="red-star">*</span> </label>
                         <input
-                          disabled={disabled}
                           type="text"
-                          className={alertError && bankAccount === '' ? ` form-control my-input` : `form-control formy`}
+                          className={alertError && bank && !bankAccount ? ` form-control my-input` : `form-control formy`}
                           placeholder="Bank account number"
                           value={bankAccount}
                           onChange={onBankAccount}
+                          disabled={!bank}
                           maxLength={15}>
                         </input>
                       </div>
@@ -523,9 +522,10 @@ const Profile = () => {
                         />
                       </div>
                       <div className="label-myprofile">
-                        <label className="card-info-label"> IK Payout Option<span className="red-star">*</span>  </label>
+                        <label className="card-info-label"> IK Payout Option <span className="red-star">*</span>  </label>
                         <Select
                           type="text"
+                          className={`${alertError && !ikOptions && `dropdown-alert`}`}
                           placeholder=" payout option"
                           value={ikOptions}
                           onChange={onIkoptions}

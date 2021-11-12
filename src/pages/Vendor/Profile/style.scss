@@ -72,17 +72,13 @@
     border-radius: 10px;
   }
 
-  .ant-upload.error {
-    color: red;
-  }
-
   .label-myprofile {
     text-align: left;
     margin: 4px;
     padding: 9px;
   }
 
-  .col-lg-4 {
+  .upload-proofs {
     padding: 0px;
   }
 
@@ -94,6 +90,13 @@
     cursor: grab;
 
     .fa {
+      color: rgb(140, 141, 143);
+      position: absolute;
+      right: 200px;
+    }
+
+    .fa-none {
+      display: none;
       color: rgb(140, 141, 143);
       position: absolute;
       right: 200px;
@@ -128,7 +131,7 @@
   }
 
   .info-lable-right-side {
-    padding: 23px;
+    padding: 20px;
     position: relative;
     top: -10px;
   }
@@ -147,6 +150,10 @@
     position: relative;
     left: -8px;
   }
+
+  .my-input {
+    border-color: red;
+}
 
   .form-check-input {
     margin: 5px;
