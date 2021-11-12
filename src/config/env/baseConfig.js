@@ -24,7 +24,7 @@ export default {
     getPaymentStatus: '/api/user/paymentStatus',
     getResetPassword: '/api/user/forgotPassword',
     getUpdatePassword: '/api/user/resetPassword ',
-    getProfile: '/api/user/advt/uploadAds',
+    getListYourAds: '/api/user/advt/uploadAds',
   },
 
   apiBaseUrl: {

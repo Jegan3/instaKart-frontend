@@ -28,9 +28,9 @@ const Profile = () => {
   const [companyName, setCompanyName] = useState("");
   const [businessLocation, setbusinessLocation] = useState("");
   const [companyLogo, setCompanyLogo] = useState("");
-  const [uploadAddress, setUploadAddress] = useState([]);
-  const [uploadRegistration, setUploadRegistration] = useState('')
-  const [uploadId, setUploadId] = useState('');
+  const [uploadAddress, setUploadAddress] = useState("");
+  const [uploadRegistration, setUploadRegistration] = useState([]);
+  const [uploadId, setUploadId] = useState([]);
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [mobile, setMobile] = useState('');
@@ -41,13 +41,13 @@ const Profile = () => {
   const [wipayAccount, setWipayAccount] = useState('')
   const [preference, setPreference] = useState('');
   const [ikOptions, setIkoptions] = useState('');
-  const [fileListRegistration, setImageRegistration] = useState([])
-  const [fileListID, setImageID] = useState([])
   const [previewVisible, setPreviewVisible] = useState(false)
   const [previewImage, setPreviewImage] = useState('')
   const [previewTitle, setPreviewTitle] = useState('')
   const [disabled, setDisabled] = useState(true);
   const [usAccount, setUsAccount] = useState('');
+  const [validate, setValidate] = useState('');
+  // const [validateMobile, setValidateMobile] = useState("")
   const [alertError, setAlertError] = useState(false);
 
 
@@ -65,18 +65,30 @@ const Profile = () => {
   }
 
   const onChangeImageAddress = ({ fileList: newFileList }) => {
-
-    setUploadAddress(newFileList);
+    let file = newFileList[0].originFileObj;
+    const reader = new FileReader();
+    reader.onload = () => {
+      setUploadAddress(reader.result);
+    };
+    reader.readAsDataURL(file);
   };
 
   const onChangeImageRegistration = ({ fileList: newFileList }) => {
-
-    setImageRegistration(newFileList);
+    let file = newFileList[0].originFileObj;
+    const reader = new FileReader();
+    reader.onload = () => {
+      setUploadRegistration(reader.result);
+    };
+    reader.readAsDataURL(file);
   };
 
   const onChangeID = ({ fileList: newFileList }) => {
-
-    setImageID(newFileList);
+    let file = newFileList[0].originFileObj;
+    const reader = new FileReader();
+    reader.onload = () => {
+      setUploadId(reader.result);
+    };
+    reader.readAsDataURL(file);
   };
 
   const onUsAccount = (e) => {
@@ -101,7 +113,6 @@ const Profile = () => {
     });
   }
 
-
   const fakeRequest = ({ onSuccess }) => {
     setTimeout(() => {
       onSuccess('OK')
@@ -120,10 +131,6 @@ const Profile = () => {
     }
   }
 
-  const onMobile = (e) => (
-    setMobile(e.target.rawValue)
-  )
-
   const onCompanyName = (e) => {
     if (e.target.value.match('^[a-zA-Z ]*$')) {
       setCompanyName(e.target.value)
@@ -136,10 +143,26 @@ const Profile = () => {
     }
   }
 
+  const validateEmail = (email) => {
+    const regex = /\S+@\S+\.\S+/;
+    return regex.test(email);
+  };
+
+  const valid = validateEmail(email);
+
   const onEmail = (e) => {
     if (e.target.value.match('^[a-zA-Z0-9_@./#&+-]*$')) {
       setEmail(e.target.value)
     }
+  }
+
+  // const validateMobile = (mobile) => {
+
+  // };
+  // const validMob = validateMobile(mobile);
+
+  const onMobile = e => {
+    setMobile(e.target.value)
   }
 
   const onWipay = (e) => {
@@ -153,6 +176,10 @@ const Profile = () => {
 
   const onPreference = (preference) => {
     setPreference(preference)
+  }
+
+  const onIkoptions = (ikOptions) => {
+    setIkoptions(ikOptions)
   }
 
   const onWipayNumber = (e) => {
@@ -175,27 +202,33 @@ const Profile = () => {
   const onBank = (bank) => {
     setBank(bank)
     setPreference({ value: 'Bank Transfer', label: 'Bank Transfer' })
-
-  }
-
-  function onIkoptions(ikOptions) {
-    setIkoptions(ikOptions);
   }
 
   const handleCancel = () => setPreviewVisible(false);
 
   const onSubmit = () => {
-
     if (!firstName || !lastName || !mobile || !bank || !bankAccount || !ikOptions || !email || !companyName
       || !businessLocation || !uploadAddress) {
       setAlertError(true)
+      setDisabled(false)
       message.error('Please fill all the fields')
+    } else if (email === '') {
+      setAlertError(true);
+    } else if (email && valid === false) {
+      setAlertError(true)
+      setValidate(true)
+      message.error('Please enter the valid Email')
+    } else if (mobile.length !== 12) {
+      message.error('Please enter the valid Mobile')
     } else if (wipay === 'Yes' && (!wipayAccount || !preference)) {
       setAlertError(true)
+      setDisabled(false)
       message.error('Please fill all the fields')
+    } else if (disabled) {
+      setDisabled(false)
     } else {
       message.success('Your Info Update Successfully');
-      (setDisabled(true))
+      setDisabled(true)
       const Profile = {
         firstName,
         lastName,
@@ -204,19 +237,22 @@ const Profile = () => {
         uploadLogo: companyLogo,
         bank: bank.value,
         bankAccount,
+        businessLocation,
         wipay,
         wipayAccount,
         usAccount,
-        fileListID,
+        uploadId,
         uploadAddress,
-        fileListRegistration,
+        uploadRegistration,
         preference: preference.value,
         ikOptions: ikOptions.value,
-
       };
       dispatch({ type: 'PROFILE_REQUEST', Profile });
+      console.log(Profile);
     }
   }
+
+  const button = disabled ? 'Edit' : 'Save'
 
   return (
     <div className="wrapper">
@@ -287,11 +323,11 @@ const Profile = () => {
                                 <Upload
                                   action="png"
                                   accept="image/*"
+                                  type="file"
                                   customRequest={fakeRequest}
-                                  className={alertError && uploadAddress === '' ? ` ant-upload` : `ant-upload.error`}
                                   className="upload-image"
                                   listType="picture-card"
-                                  fileList={uploadAddress}
+                                  filelist={fileList}
                                   onChange={onChangeImageAddress}
                                   onPreview={onPreview}
                                   disabled={disabled}
@@ -316,15 +352,15 @@ const Profile = () => {
                                 <Upload
                                   action="png"
                                   accept="image/*"
+                                  filelist={fileList}
                                   customRequest={fakeRequest}
                                   className="upload-image"
                                   listType="picture-card"
-                                  fileList={fileListRegistration}
                                   onChange={onChangeImageRegistration}
                                   onPreview={onPreview}
                                   disabled={disabled}
                                 >
-                                  {fileListRegistration.length < 1 && '+ Upload'}
+                                  {uploadRegistration.length < 1 && '+ Upload'}
                                 </Upload>
                               </ImgCrop>
                               <Modal
@@ -344,15 +380,15 @@ const Profile = () => {
                                 <Upload
                                   action="png"
                                   accept="image/*"
+                                  filelist={fileList}
                                   customRequest={fakeRequest}
                                   className="upload-image"
                                   listType="picture-card"
-                                  fileList={fileListID}
                                   onChange={onChangeID}
                                   onPreview={onPreview}
                                   disabled={disabled}
                                 >
-                                  {fileListID.length < 1 && '+ Upload'}
+                                  {uploadId.length < 1 && '+ Upload'}
                                 </Upload>
                               </ImgCrop>
                               <Modal
@@ -398,7 +434,7 @@ const Profile = () => {
                           disabled={disabled}
                           type="text"
                           className={alertError && lastName === '' ? ` form-control my-input` : `form-control formy`}
-                          placeholder="Surname"
+                          placeholder="Lastname"
                           value={lastName}
                           onChange={onSurName}
                           maxLength={30}>
@@ -410,7 +446,7 @@ const Profile = () => {
                         <label className="card-info-label">Email </label>
                         <input
                           disabled={disabled}
-                          className={alertError && email === '' ? ` form-control my-input` : `form-control formy`}
+                          className={alertError && email === '' || validateEmail(email) === false && validate ? ' form-control my-input' : 'form-control formy'}
                           type="Email"
                           placeholder="Email"
                           onChange={onEmail}
@@ -451,7 +487,6 @@ const Profile = () => {
                           options={bankSelect}
                           isSearchable={true}
                           isDisabled={disabled ? bankSelect : null}
-
                         >
                         </Select>
                       </div>
@@ -494,7 +529,6 @@ const Profile = () => {
                           isDisabled={wipay === 'No' || !wipay}
                         />
                       </div>
-
                     </Col>
                     <Col xs={12} sm={6} md={6} lg={6}>
                       <div className="label-myprofile">
@@ -536,7 +570,6 @@ const Profile = () => {
                       </div>
                     </Col>
                     <div className="label-myprofile">
-
                       <Col md={6} sm={12} >
                         <label className="signup-label radio-label">US Account Available </label>
                         <div className="form-check">
@@ -572,18 +605,12 @@ const Profile = () => {
           </Row>
           <Row className="bottom-row">
             <Col className="product-button">
-              {disabled ? <button
+              <button
                 type="button"
                 className="btn btn-primary btn-block modal-butn"
-                onClick={() => { setDisabled(false) }}>
-                Edit
-              </button> :
-                <button
-                  type="button"
-                  className="btn btn-primary btn-block modal-butn"
-                  onClick={onSubmit} >
-                  Save
-                </button>}
+                onClick={onSubmit} >
+                {button}
+              </button>
             </Col>
           </Row>
         </div>

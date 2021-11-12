@@ -48,7 +48,7 @@ const ListYourAds = () => {
       //message.success("sucessfully Updated");
       setAlertError(false)
       setPrimaryBannerImg()
-      dispatch({ type: "ADVERTISE_NOW_REQUEST", advertiseNow });
+      dispatch({ type: "LIST_YOUR_ADS_REQUEST", advertiseNow });
     }
   };
 
@@ -74,10 +74,7 @@ const ListYourAds = () => {
       setAlertError2(false)
       setSecondaryBannerImg()
       console.log("advertiseNow", advertiseNow);
-      dispatch({
-        type: "ADVERTISE_NOW_REQUEST",
-        advertiseNow,
-      });
+      dispatch({ type: "LIST_YOUR_ADS_REQUEST", advertiseNow });
     }
   };
 
@@ -119,10 +116,7 @@ const ListYourAds = () => {
       setAlertError3(false)
       setVideo()
       console.log("advertiseNow", advertiseNow);
-      dispatch({
-        type: "ADVERTISE_NOW_REQUEST",
-        advertiseNow,
-      });
+      dispatch({ type: "LIST_YOUR_ADS_REQUEST", advertiseNow });
     }
   };
 
