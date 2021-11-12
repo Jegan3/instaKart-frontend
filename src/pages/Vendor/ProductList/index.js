@@ -1,5 +1,6 @@
 /*eslint-disable*/
 import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Grid, Row, Col } from 'react-bootstrap';
 import ReactTable from 'react-table';
 import Select from 'react-select';
@@ -7,53 +8,24 @@ import Headerbar from '../../../components/Headerbar';
 import Table from '../../../components/Table';
 import Sidebar from '../../../components/Sidebar';
 import { history } from '../../../routes';
-
-const productData = [
-  
-  {
-    estoreId:'1',
-    productName: 'Chicken Pies',
-    status :'Available',
-    finalPrice: '$20',
-    stockReserve: '100',
-    stockHand:'40',
-    stockSold:'900'
-  },
-  {
-    estoreId:'2',
-    productName: 'Chicken Fries',
-    status :'Sold',
-    finalPrice: '$23',
-    stockReserve: '101',
-    stockHand:'60',
-    stockSold:'700'
-  },
-  {
-    estoreId:'3',
-    productName: 'Chicken Steak',
-    status :'Reserve',
-    finalPrice: '$30',
-    stockReserve: '90',
-    stockHand:'60',
-    stockSold:'790'
-  },
-]
+import Loader from '../../../components/Loader';
 
 const ProductList = () => {
   const [status, setStatus] = useState()
-  console.log('status', status)
 
-  // useEffect(() => {
-  //   // console.log('prdouct',productData)
-  //   // setStatus(abcd)
-  // },[])
+  const dispatch = useDispatch();
+  const productListInfo = useSelector((state) => state.productListState.productList );
+  const isLoading = useSelector((state) => state.productListState.isLoading);
+
+  useEffect(() => {
+    dispatch({ type: 'PRODUCT_LIST_REQUEST' });
+  }, [])
 
   
-
-  const capitalizeFirstLetter = (string) => {
-    console.log('string', string)
-    string.charAt(0).toUpperCase() + string.slice(1)
-  }
+  // const capitalizeFirstLetter = (string) => {
+  //   console.log('string', string)
+  //   string.charAt(0).toUpperCase() + string.slice(1)
+  // }
 
   // const onStatus = (info, value) => {
   //   // const option =  { value: info.original.status, label: info.original.status}
@@ -62,7 +34,13 @@ const ProductList = () => {
   //   console.log("e", info)
   //   console.log("value", value)
   //   setStatus(value[info.index])
+
+
   // } 
+
+ productListInfo && productListInfo.map((info, i) => {
+    info.id = i + 1 
+  })
 
   const viewProduct = (info) => {
     const { original } = info;
@@ -79,6 +57,7 @@ const ProductList = () => {
       <div >
         {/* <Headerbar headerName="Product List" /> */}
         <div className="main-content">
+        {isLoading && <Loader />}
           <Grid fluid>
             <Row>
               <Table
@@ -86,15 +65,16 @@ const ProductList = () => {
                 content={
                   <Row className="margin-control">
                     <ReactTable
-                      data={productData}
+                      data={productListInfo}
                       filterable
                       columns={[
                         {
                           Header: '#',
-                          accessor: 'estoreId',
+                          accessor: 'id',
                           // filterable: false,
-                          sortable: true,
-                          width: 80,
+                          //sortable: true,
+                          width: 70,
+                          className: 'price-table',
                         },
                         {
                           Header: 'Product Name',
@@ -103,31 +83,36 @@ const ProductList = () => {
                           // filterable: false,
                           sortable: true,
                           width: 230,
+                          className: 'price-table',
                         },
                         {
                           Header: 'Reserved',
                           accessor: 'stockReserve',
                           // filterable: false,
                           // sortable: false,
-                          // width: 100,
+                          width: 100,
+                          className: 'price-table',
                         },
                         {
                           Header: 'SOH',
                           accessor: 'stockHand',
                           // filterable: false,
                           // sortable: false,
-                          // width: 100,
+                          width: 100,
+                          className: 'price-table',
                         },
                         {
                           Header: 'Sold',
                           accessor: 'stockSold',
                           // filterable: false,
                           // sortable: false,
-                          // width: 100,
+                          width: 100,
+                          className: 'price-table',
                         },
                         {
                           Header: 'Price',
                           accessor: 'finalPrice',
+                          className: 'price-table',
                           // filterable: false,
                           // sortable: false,
                           // width: 100,
@@ -145,6 +130,7 @@ const ProductList = () => {
                             filterable: false,
                             sortable: false,
                             width: 150,
+                            className: 'price-table',
                         },
                         // {
                         //   Header: 'Status',

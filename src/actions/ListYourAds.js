@@ -2,9 +2,9 @@ export const getListYourAds = () => ({
   type: 'LIST_YOUR_ADS_REQUEST',
 });
 
-export const getListYourAdsSuccess = (listyourads) => ({
+export const getListYourAdsSuccess = (advertiseNow) => ({
   type: 'LIST_YOUR_ADS_SUCCESS',
-  listyourads,
+  advertiseNow,
 });
 
 export const getListYourAdsFailure = (error) => ({

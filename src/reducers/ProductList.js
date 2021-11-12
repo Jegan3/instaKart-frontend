@@ -2,20 +2,19 @@ const initialState = {};
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case 'LIST_YOUR-ADS_REQUEST':
+    case 'PRODUCT_LIST_REQUEST':
       return {
         ...state,
         isLoading: true,
-        listyourads: false,
         error: false,
       };
-    case 'LIST_YOUR-ADS_SUCCESS':
+    case 'PRODUCT_LIST_SUCCESS':
       return {
         ...state,
         isLoading: false,
-        listyourads: action.advertiseNow,
+        productList: action.productList,
       };
-    case 'LIST_YOUR-ADS_FAILURE':
+    case 'PRODUCT_LIST_FAILURE':
       return {
         ...state,
         isLoading: false,
