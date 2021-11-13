@@ -4,8 +4,6 @@ import * as instakartActionCreators from '../actions/ProductList';
 import { doGet } from '../utils/fetchWrapper';
 
 export function* getProductList() {
-  // const { estoreId } = data;
-
   try {
     const response = yield doGet(`${envConfig.apiEndPoints.getProductList}?estoreId=6177d64b64f59d76a7e1d542`);
     yield put(instakartActionCreators.getProductListSuccess(response));

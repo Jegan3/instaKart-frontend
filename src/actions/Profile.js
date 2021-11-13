@@ -1,6 +1,5 @@
-export const getProfile = (profile) => ({
+export const getProfile = () => ({
   type: 'PROFILE_REQUEST',
-  profile,
 });
 
 export const getProfileSuccess = (profile) => ({

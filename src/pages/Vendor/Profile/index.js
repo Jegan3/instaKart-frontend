@@ -53,7 +53,10 @@ const Profile = () => {
 
   const dispatch = useDispatch();
   const storeInfo = useSelector((state) => state.storeInfoState.storeInfo);
-
+ 
+  useEffect(() => {
+    dispatch({ type: 'PROFILE_REQUEST' });
+  }, [])
 
   const onCompanyLogo = ({ fileList: newFileList }) => {
     let file = newFileList[0].originFileObj;
