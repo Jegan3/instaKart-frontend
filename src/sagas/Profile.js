@@ -1,11 +1,11 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import envConfig from 'envConfig'; //eslint-disable-line
 import * as instakartActionCreators from '../actions/Profile';
-import { doPost } from '../utils/fetchWrapper';
+import { doGet } from '../utils/fetchWrapper';
 
-export function* getProfile(data) {
+export function* getProfile() {
   try {
-    const response = yield doPost(envConfig.apiEndPoints.getProfile, data.profile);
+    const response = yield doGet(envConfig.apiEndPoints.getProfile);
     yield put(instakartActionCreators.getProfileSuccess(response));
   } catch (error) {
     yield put(instakartActionCreators.getProfileFailure(error));
