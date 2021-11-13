@@ -10,18 +10,18 @@ import Sidebar from '../../../components/Sidebar';
 import { history } from '../../../routes';
 import Loader from '../../../components/Loader';
 
-const ProductList = () => {
+const ProductList = ({ storeId }) => {
   const [status, setStatus] = useState()
 
   const dispatch = useDispatch();
-  const productListInfo = useSelector((state) => state.productListState.productList );
+  const productListInfo = useSelector((state) => state.productListState.productList);
   const isLoading = useSelector((state) => state.productListState.isLoading);
 
   useEffect(() => {
-    dispatch({ type: 'PRODUCT_LIST_REQUEST' });
+    dispatch({ type: 'PRODUCT_LIST_REQUEST', storeId });
   }, [])
 
-  
+  console.log('storeId', storeId)
   // const capitalizeFirstLetter = (string) => {
   //   console.log('string', string)
   //   string.charAt(0).toUpperCase() + string.slice(1)
@@ -38,8 +38,8 @@ const ProductList = () => {
 
   // } 
 
- productListInfo && productListInfo.map((info, i) => {
-    info.id = i + 1 
+  productListInfo && productListInfo.map((info, i) => {
+    info.id = i + 1
   })
 
   const viewProduct = (info) => {
@@ -57,7 +57,7 @@ const ProductList = () => {
       <div >
         {/* <Headerbar headerName="Product List" /> */}
         <div className="main-content">
-        {isLoading && <Loader />}
+          {isLoading && <Loader />}
           <Grid fluid>
             <Row>
               <Table
@@ -127,10 +127,10 @@ const ProductList = () => {
                         {
                           Header: 'Status',
                           accessor: 'status',
-                            filterable: false,
-                            sortable: false,
-                            width: 150,
-                            className: 'price-table',
+                          filterable: false,
+                          sortable: false,
+                          width: 150,
+                          className: 'price-table',
                         },
                         // {
                         //   Header: 'Status',

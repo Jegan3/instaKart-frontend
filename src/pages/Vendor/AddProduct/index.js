@@ -310,7 +310,7 @@ const AddProduct = ({ storeId }) => {
         finalPrice: `${symbol}${parseFloat(finalPrice).toFixed(2)}`,
         stockReserve,
         stockHand,
-        status,
+        status: status.value,
         productDescription,
         productWarranty,
         productShipping,
