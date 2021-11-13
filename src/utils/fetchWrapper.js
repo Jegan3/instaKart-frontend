@@ -25,14 +25,41 @@ function timeoutPromise(promise, timeout, error) {
   });
 }
 
-/** @description calls a native fetch method and returns a promise Object
+// /** @description calls a native fetch method and returns a promise Object
+// export const fetchURL = (url, urlPrefix = baseUrl) => timeoutPromise(fetch(
+//   urlPrefix.concat(url),
+//   Object.assign({}, {
+//     headers: {
+//       'Content-Type': 'application/json; charset=UTF-8',
+//       Accept: 'application/json; charset=UTF-8',
+//       'Access-Control-Allow-Origin': '*',
+//       'x-access-token': `${sessionStorage.access}`,
+//     },
+//   }),
+// ), TIMEOUT, 504);
+
+// export const doGet = (url, urlPrefix = baseUrl) => {
+//   const fetchData = fetchURL(url, urlPrefix).then((res) => {
+//     let response = null;
+//     response = res.json();
+//     if (res.ok) {
+//       return response;
+//     }
+//     return response.then((error) => { throw error; });
+//   });
+//   return fetchData;
+// };
+
+/** @description Sending a GET request.
+ * doGet method resolves or rejects the promise that is obtained
  * @param {string} url
  * @param {string} urlPrefix
- * @returns {Promise}
+ * @returns {object}
  */
-export const fetchURL = (url, urlPrefix = baseUrl) => timeoutPromise(fetch(
+export const doGet = (url, urlPrefix = baseUrl) => timeoutPromise(fetch(
   urlPrefix.concat(url),
   Object.assign({}, {
+    method: 'get',
     headers: {
       'Content-Type': 'application/json; charset=UTF-8',
       Accept: 'application/json; charset=UTF-8',
@@ -40,17 +67,8 @@ export const fetchURL = (url, urlPrefix = baseUrl) => timeoutPromise(fetch(
       'x-access-token': `${sessionStorage.access}`,
     },
   }),
-), TIMEOUT, 504);
-
-/** @description Sending a GET request to JSON API.
- * doGet method resolves or rejects the promise that is obtained
- * from the fetchURl method
- * @param {string} url
- * @param {string} urlPrefix
- * @returns {object}
- */
-export const doGet = (url, urlPrefix = baseUrl) => {
-  const fetchData = fetchURL(url, urlPrefix).then((res) => {
+), TIMEOUT, 504)
+  .then((res) => {
     let response = null;
     response = res.json();
     if (res.ok) {
@@ -58,14 +76,11 @@ export const doGet = (url, urlPrefix = baseUrl) => {
     }
     return response.then((error) => { throw error; });
   });
-  return fetchData;
-};
 
 /** @description Sending a POST request.
  * @param {string} url
  * @param {object} body
  * @param {string} urlPrefix
- * @returns {Promise}
  */
 export const doPost = (url, body, urlPrefix = baseUrl) => timeoutPromise(fetch(
   urlPrefix.concat(url),
