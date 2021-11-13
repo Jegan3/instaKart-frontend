@@ -42,7 +42,7 @@ const ListYourAds = () => {
       message.error("Please upload any banner or image");
     } else {
       const advertiseNow = {
-        advertise: 'primary banner',
+        advertise: 'primaryBanner',
         media: primaryBannerImg,
       };
       setAlertError(false)
@@ -66,7 +66,7 @@ const ListYourAds = () => {
       message.error("Please upload any banner or image");
     } else {
       const advertiseNow = {
-        advertise: 'secondary banner',
+        advertise: 'secondaryBanner',
         media: secondaryBannerImg,
       };
       // message.success("sucessfully Updated");

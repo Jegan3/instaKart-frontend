@@ -15,7 +15,7 @@ export function* listYourAds(data) {
 
 export function* getYourAds() {
   try {
-    const response = yield doGet(`${envConfig.apiEndPoints.getYourAds}?skip=3&limit=1`);
+    const response = yield doGet(envConfig.apiEndPoints.getYourAds);
     yield put(instakartActionCreators.getYourAdsSuccess(response));
   } catch (error) {
     yield put(instakartActionCreators.getYourAdsFailure(error));

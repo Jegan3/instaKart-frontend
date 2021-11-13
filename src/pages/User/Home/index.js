@@ -10,6 +10,7 @@ import Particle from '../../../components/Particle';
 
 const Home = () => {
 
+  const advertisement = useSelector((state) => state.getYourAds.advertisement);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -44,7 +45,7 @@ const Home = () => {
         E-Commerce Website
       </h2>
       <div className='intro-banner'>
-        <Banners />
+        <Banners primaryBanner={advertisement && advertisement.userAds} />
       </div>
       {/* {window.screen.width <= 464 ?
       <div className='arrival'>
