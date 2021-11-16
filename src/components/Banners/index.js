@@ -2,23 +2,15 @@
 import React from 'react';
 import { Carousel } from 'react-bootstrap';
 
-export const Banners = () => (
+export const Banners = ({ primaryBanner }) => (
   <div className="banners">
     <Carousel>
-      <Carousel.Item>
+      {primaryBanner && primaryBanner.primaryBanner.map((item,index) => <Carousel.Item >
         <img
           className="d-block w-100"
-          src="images/pic3.png"
-          alt="Third slide"
+          src={item}
         />
-      </Carousel.Item>
-      <Carousel.Item>
-        <img
-          className="d-block w-100"
-          src="images/pic4.png"
-          alt="fourth slide"
-        />
-      </Carousel.Item>
+      </Carousel.Item>)}
     </Carousel>
   </div>
 );

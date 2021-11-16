@@ -39,13 +39,12 @@ const ListYourAds = () => {
 
     if (!primaryBannerImg) {
       setAlertError(true);
-      message.error("Please fill all the fields");
+      message.error("Please upload any banner or image");
     } else {
       const advertiseNow = {
-        advertise: 'primary banner',
+        advertise: 'primaryBanner',
         media: primaryBannerImg,
       };
-      //message.success("sucessfully Updated");
       setAlertError(false)
       setPrimaryBannerImg()
       dispatch({ type: "LIST_YOUR_ADS_REQUEST", advertiseNow });
@@ -64,16 +63,15 @@ const ListYourAds = () => {
     //     };
     if (!secondaryBannerImg) {
       setAlertError2(true);
-      message.error("Please fill all the fields");
+      message.error("Please upload any banner or image");
     } else {
       const advertiseNow = {
-        advertise: 'secondary banner',
+        advertise: 'secondaryBanner',
         media: secondaryBannerImg,
       };
       // message.success("sucessfully Updated");
       setAlertError2(false)
       setSecondaryBannerImg()
-      console.log("advertiseNow", advertiseNow);
       dispatch({ type: "LIST_YOUR_ADS_REQUEST", advertiseNow });
     }
   };
@@ -106,7 +104,7 @@ const ListYourAds = () => {
     //     };
     if (!video) {
       setAlertError3(true);
-      message.error("Please fill all the fields");
+      message.error("Please upload any banner or image");
     } else {
       const advertiseNow = {
         advertise: 'video',

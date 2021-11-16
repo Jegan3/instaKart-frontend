@@ -1,13 +1,17 @@
 /*eslint-disable*/
 import React, { useEffect } from 'react';
-import Footer from '../../../components/Footer';
-import Header from '../../../components/Header';
+import { useDispatch, useSelector } from 'react-redux';
 import TextLoop from "react-text-loop";
+import Header from '../../../components/Header';
+import Footer from '../../../components/Footer';
 import { CarouselFirst, CarouselSecond, CarouselThird, CarouselFourth, CarouselMobile, CarouselNewEStore, } from '../../../components/Carousel';
 import { Banners, SecondaryBanners } from '../../../components/Banners';
 import Particle from '../../../components/Particle';
 
 const Home = () => {
+
+  const advertisement = useSelector((state) => state.getYourAds.advertisement);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     // dispatch it once mounted
@@ -15,6 +19,7 @@ const Home = () => {
       () => { window.dispatchEvent(new Event('resize')); },
       700
     );
+    dispatch({ type: 'GET_YOUR_ADS_REQUEST' });
   }, []);
 
   return (
@@ -40,7 +45,7 @@ const Home = () => {
         E-Commerce Website
       </h2>
       <div className='intro-banner'>
-        <Banners />
+        <Banners primaryBanner={advertisement && advertisement.userAds} />
       </div>
       {/* {window.screen.width <= 464 ?
       <div className='arrival'>

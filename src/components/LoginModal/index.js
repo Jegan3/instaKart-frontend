@@ -67,6 +67,7 @@ const LoginModal = ({ showPopup, hidePopup }) => {
     const regex = /\S+@\S+\.\S+/;
     return regex.test(email);
   };
+  
   const valid = validateEmail(email);
 
   const onUserName = (e) => {
@@ -95,11 +96,12 @@ const LoginModal = ({ showPopup, hidePopup }) => {
   };
 
   const Login = () => {
-    if (email === '' || password === '') {
+    if (email === '' && password === '') {
       setAlertError(true);
       setErrorMsg('Please fill all the fields');
     } else if (email === '') {
       setAlertError(true);
+      setErrorMsg('Please enter the valid Email');
     } else if (email && valid === false) {
       setAlertError(true)
       setValidate(true)
@@ -107,14 +109,13 @@ const LoginModal = ({ showPopup, hidePopup }) => {
       //message.error('Please enter the valid Email')
     } else if (password === '') {
       setAlertError(true);
+      setErrorMsg('Please enter the valid Password');
     } else if (termscondition === false) {
       setErrorMsg('Please accept the Terms & Conditions and Privacy Policy');
     } else {
       setLogin(true);
       const passcode = Buffer.from(password).toString("base64");
       const loginDetails = {
-        // email: 'gopinath.chandar@gmail.com',
-        // password: 'Football7&',
         email,
         password: passcode,
       };

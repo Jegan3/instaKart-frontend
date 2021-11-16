@@ -21,7 +21,8 @@ import { vendorCompanyDetailsWatchers } from './VendorCompanyDetails';
 import { productMessageWatchers } from './ProductMessage';
 import { paymentStatusWatchers } from './PaymentStatus';
 import { profileWatchers } from './Profile';
-import { listYourAdsWatchers } from './ListYourAds';
+import { getListYourAdsWatchers } from './ListYourAds';
+import { productListWatchers } from './ProductList';
 
 export default function* rootWatchers() {
   yield [
@@ -48,6 +49,7 @@ export default function* rootWatchers() {
     productMessageWatchers(),
     paymentStatusWatchers(),
     profileWatchers(),
-    listYourAdsWatchers(),
+    getListYourAdsWatchers(),
+    productListWatchers(),
   ];
 }

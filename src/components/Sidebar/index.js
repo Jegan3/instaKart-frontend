@@ -122,6 +122,7 @@ const Sidebar = () => {
   const onStore = (info) => {
     history.push({ pathname: '/storedetails', state: info.estoreId });
     dispatch({ type: 'STORE_INFO_REQUEST', storeId: info.estoreId });
+    dispatch({ type: 'PRODUCT_LIST_REQUEST', storeId: info.estoreId });
   }
 
   return (
