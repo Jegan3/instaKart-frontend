@@ -67,7 +67,7 @@ const LoginModal = ({ showPopup, hidePopup }) => {
     const regex = /\S+@\S+\.\S+/;
     return regex.test(email);
   };
-  
+
   const valid = validateEmail(email);
 
   const onUserName = (e) => {
@@ -101,7 +101,7 @@ const LoginModal = ({ showPopup, hidePopup }) => {
       setErrorMsg('Please fill all the fields');
     } else if (email === '') {
       setAlertError(true);
-      setErrorMsg('Please enter the valid Email');
+      setErrorMsg('Please fill all the fields');
     } else if (email && valid === false) {
       setAlertError(true)
       setValidate(true)
@@ -109,7 +109,7 @@ const LoginModal = ({ showPopup, hidePopup }) => {
       //message.error('Please enter the valid Email')
     } else if (password === '') {
       setAlertError(true);
-      setErrorMsg('Please enter the valid Password');
+      setErrorMsg('Please fill all the fields');
     } else if (termscondition === false) {
       setErrorMsg('Please accept the Terms & Conditions and Privacy Policy');
     } else {
