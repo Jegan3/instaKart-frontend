@@ -28,7 +28,7 @@ export const Locale = [
         cityName: 'Codrington',
       },
       {
-        _id: '',
+        _id: '617e2d70c0d2735a15df9e57',
         cityName: 'Others',
       },
     ],
@@ -83,7 +83,7 @@ export const Locale = [
         cityName: 'Hillaby',
       },
       {
-        _id: '',
+        _id: '617e2d70c0d2735a15df9e58',
         cityName: 'Others',
       },
     ],
@@ -122,7 +122,7 @@ export const Locale = [
         cityName: 'Sauteurs',
       },
       {
-        _id: '',
+        _id: '617e2d70c0d2735a15df9e59',
         cityName: 'Others',
       },
     ],
@@ -181,7 +181,7 @@ export const Locale = [
         cityName: 'New Amsterdam',
       },
       {
-        _id: '',
+        _id: '617e2d70c0d2735a15df9e5a',
         cityName: 'Others',
       },
     ],
@@ -240,7 +240,7 @@ export const Locale = [
         cityName: 'May Pen',
       },
       {
-        _id: '',
+        _id: '617e2d70c0d2735a15df9e5b',
         cityName: 'Others',
       },
     ],
@@ -299,7 +299,7 @@ export const Locale = [
         cityName: 'Market Shop',
       },
       {
-        _id: '',
+        _id: '617e2d70c0d2735a15df9e5c',
         cityName: 'Others',
       },
     ],
@@ -354,7 +354,7 @@ export const Locale = [
         cityName: 'Dennery',
       },
       {
-        _id: '',
+        _id: '617e2d70c0d2735a15df9e5d',
         cityName: 'Others',
       },
     ],
@@ -401,7 +401,7 @@ export const Locale = [
         cityName: 'Bvera Village',
       },
       {
-        _id: '',
+        _id: '617e2d70c0d2735a15df9e60',
         cityName: 'Others',
       },
     ],
@@ -456,7 +456,7 @@ export const Locale = [
         cityName: 'Wageningen',
       },
       {
-        _id: '',
+        _id: '617e2d70c0d2735a15df9e5e',
         cityName: 'Others',
       },
     ],
@@ -559,7 +559,7 @@ export const Locale = [
         cityName: 'Plymouth',
       },
       {
-        _id: '',
+        _id: '617e2d70c0d2735a15df9e5f',
         cityName: 'Others',
       },
     ],

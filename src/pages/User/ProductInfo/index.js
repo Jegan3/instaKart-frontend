@@ -7,7 +7,6 @@ import { history } from '../../../routes';
 import Footer from '../../../components/Footer';
 import Header from '../../../components/Header';
 import ImageSlider from '../../../components/ImageSlider';
-// import Desk from '../../../components/Desk';
 import ReactPlayer from "react-player";
 import { CarouselNewEStoreAds, CarouselReviewCard } from '../../../components/Carousel';
 import Loader from '../../../components/Loader';
@@ -86,38 +85,52 @@ const ProductInfo = ({ location }) => {
       totalPrice: `${currency}${parseFloat(productPrice * count).toFixed(2)}`,
       quantity: count,
     }
-    if (sessionStorage.type === 'user') {
-      // const productPrice = product.finalPrice.replace(/[^.0-9\.]+/g, '');
-      // const currency = product.finalPrice.replace(/\d+([,.]\d+)?\s*/g, '');
-
-      // const addToCart = {
-      //   productId: product._id,
-      //   totalPrice: `${currency}${parseFloat(productPrice * count).toFixed(2)}`,
-      //   quantity: count,
-      // }
-
-      dispatch({ type: 'ADD_CART_REQUEST', addToCart: addToCart });
-      history.push({ pathname: '/cart', state: 'addCart' });
-    } else if (sessionStorage.type === 'vendor') {
-      message.error('Please Login As User');
-    }
-
-    else {
-      // const productPrice = product.finalPrice.replace(/[^.0-9\.]+/g, '');
-      // const currency = product.finalPrice.replace(/\d+([,.]\d+)?\s*/g, '');
-
-      // const addToCart = {
-      //   productId: product._id,
-      //   totalPrice: `${currency}${parseFloat(productPrice * count).toFixed(2)}`,
-      //   quantity: count,
-      // }
-      // history.push({pathname: '/productinfo', state:addToCart})
-      dispatch({ type: 'ADD_CART_GLOBAL', addCartGlobal: addToCart });
-      setLogin(true)
-
-    }
+    dispatch({ type: 'ADD_CART_REQUEST', addToCart: addToCart });
+    history.push({ pathname: '/cart', state: 'addCart' });
     window.scrollTo(0, 0);
   }
+
+  // const onAddCart = () => {
+  //   const productPrice = product.finalPrice.replace(/[^.0-9\.]+/g, '');
+  //   const currency = product.finalPrice.replace(/\d+([,.]\d+)?\s*/g, '');
+
+  //   const addToCart = {
+  //     productId: product._id,
+  //     totalPrice: `${currency}${parseFloat(productPrice * count).toFixed(2)}`,
+  //     quantity: count,
+  //   }
+  //   if (sessionStorage.type === 'user') {
+  //     // const productPrice = product.finalPrice.replace(/[^.0-9\.]+/g, '');
+  //     // const currency = product.finalPrice.replace(/\d+([,.]\d+)?\s*/g, '');
+
+  //     // const addToCart = {
+  //     //   productId: product._id,
+  //     //   totalPrice: `${currency}${parseFloat(productPrice * count).toFixed(2)}`,
+  //     //   quantity: count,
+  //     // }
+
+  //     dispatch({ type: 'ADD_CART_REQUEST', addToCart: addToCart });
+  //     history.push({ pathname: '/cart', state: 'addCart' });
+  //   } else if (sessionStorage.type === 'vendor') {
+  //     message.error('Please Login As User');
+  //   }
+
+  //   else {
+  //     // const productPrice = product.finalPrice.replace(/[^.0-9\.]+/g, '');
+  //     // const currency = product.finalPrice.replace(/\d+([,.]\d+)?\s*/g, '');
+
+  //     // const addToCart = {
+  //     //   productId: product._id,
+  //     //   totalPrice: `${currency}${parseFloat(productPrice * count).toFixed(2)}`,
+  //     //   quantity: count,
+  //     // }
+  //     // history.push({pathname: '/productinfo', state:addToCart})
+  //     dispatch({ type: 'ADD_CART_GLOBAL', addCartGlobal: addToCart });
+  //     setLogin(true)
+
+  //   }
+  //   window.scrollTo(0, 0);
+  // }
 
   const onBuyNow = () => {
     const productPrice = product.finalPrice.replace(/[^.0-9\.]+/g, '');
@@ -131,18 +144,35 @@ const ProductInfo = ({ location }) => {
       quantity: count,
       productPrice: `${currency}${parseFloat(productPrice).toFixed(2)}`
     }
-
-    if (sessionStorage.type === 'user') {
-      history.push({ pathname: '/cart', state: 'buyNow' });
-      dispatch({ type: 'BUY_NOW', buyNow: buyNowProduct });
-    }
-    else if (sessionStorage.type === 'vendor') {
-      message.error('Please Login As User');
-    } else {
-      setLogin(true)
-    }
+    history.push({ pathname: '/cart', state: 'buyNow' });
+    dispatch({ type: 'BUY_NOW', buyNow: buyNowProduct });
     window.scrollTo(0, 0);
   }
+
+  // const onBuyNow = () => {
+  //   const productPrice = product.finalPrice.replace(/[^.0-9\.]+/g, '');
+  //   const currency = product.finalPrice.replace(/\d+([,.]\d+)?\s*/g, '');
+
+  //   const buyNowProduct = {
+  //     productId: product._id,
+  //     productName: product && product.productName,
+  //     productImage: product && product.productImages,
+  //     totalPrice: `${currency}${parseFloat(productPrice * count).toFixed(2)}`,
+  //     quantity: count,
+  //     productPrice: `${currency}${parseFloat(productPrice).toFixed(2)}`
+  //   }
+
+  //   if (sessionStorage.type === 'user') {
+  //     history.push({ pathname: '/cart', state: 'buyNow' });
+  //     dispatch({ type: 'BUY_NOW', buyNow: buyNowProduct });
+  //   }
+  //   else if (sessionStorage.type === 'vendor') {
+  //     message.error('Please Login As User');
+  //   } else {
+  //     setLogin(true)
+  //   }
+  //   window.scrollTo(0, 0);
+  // }
 
   const hideloginCart = () => {
     setLogin(false)
