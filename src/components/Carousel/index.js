@@ -698,7 +698,7 @@ export const CarouselNewEStoreAds = () => (
   </Carousel>
 );
 
-export const ThriftStoreNearYou = ({ thriftDetails, module }) => (
+export const ThriftStoreNearYou = ({ thriftDetails, module, setLogin }) => (
   <Carousel
     // ssr
     infinite
@@ -707,12 +707,12 @@ export const ThriftStoreNearYou = ({ thriftDetails, module }) => (
     responsive={responsiveThrift}
   >
     {thriftDetails ? thriftDetails.thriftStore.map((info) => (
-      <ThriftStoreNearYouCard key={info.estoreId} thriftStore={info.estoreId} imgUrl={info.storeLogo} path={`/thriftstoreinfo`} country={info.countryName} storeName={info.storeName} module={module} />
+      <ThriftStoreNearYouCard key={info.estoreId} thriftStore={info.estoreId} imgUrl={info.storeLogo} path={`/thriftstoreinfo`} country={info.countryName} storeName={info.storeName} setLogin={setLogin} module={module} />
     )) : []}
   </Carousel>
 );
 
-export const CarouselThriftNewAdditions = ({ thriftDetails, module }) => (
+export const CarouselThriftNewAdditions = ({ thriftDetails, module, setLogin }) => (
   <Carousel
     // ssr
     infinite
@@ -721,7 +721,7 @@ export const CarouselThriftNewAdditions = ({ thriftDetails, module }) => (
     responsive={responsiveThrift}
   >
     {thriftDetails ? thriftDetails.productsInfo.map((info) => (
-      <NewAdditionCard key={info.productId} product={info.productId} imgUrl={info.productImage} path={'/productinfo'} price={info.finalPrice} productName={info.productName} module={module} />
+      <NewAdditionCard key={info.productId} product={info.productId} imgUrl={info.productImage} path={'/productinfo'} price={info.finalPrice} productName={info.productName} setLogin={setLogin} module={module} />
     )) : []}
   </Carousel>
 );

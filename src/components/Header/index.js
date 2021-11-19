@@ -144,9 +144,10 @@ const Header = ({ basic, loginCart, hideloginCart, module }) => {
                     </NavItem>
                   </Nav>
                   <Nav pullRight>
-                    <NavItem eventKey={1} href="#">
-                      <p onClick={toListYourAds}>List Your Ads</p>
-                    </NavItem>
+                    {user &&
+                      <NavItem eventKey={1} href="#">
+                        <p onClick={toListYourAds}>List Your Ads</p>
+                      </NavItem>}
                     <NavItem eventKey={2} href="#">
                       <p onClick={aboutUs}>About Us</p>
                     </NavItem>
