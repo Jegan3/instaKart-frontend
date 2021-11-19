@@ -47,7 +47,6 @@ const Profile = () => {
   const [disabled, setDisabled] = useState(true);
   const [usAccount, setUsAccount] = useState('');
   const [validate, setValidate] = useState('');
-  // const [validateMobile, setValidateMobile] = useState("")
   const [alertError, setAlertError] = useState(false);
 
 
@@ -158,11 +157,6 @@ const Profile = () => {
       setEmail(e.target.value)
     }
   }
-
-  // const validateMobile = (mobile) => {
-
-  // };
-  // const validMob = validateMobile(mobile);
 
   const onMobile = e => {
     setMobile(e.target.value)

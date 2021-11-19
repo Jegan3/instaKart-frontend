@@ -157,6 +157,10 @@
     border-color: red;
   }
 
+  .my-input:focus{
+    border: none;
+  }
+
   .form-check-input {
     margin: 5px;
   }
