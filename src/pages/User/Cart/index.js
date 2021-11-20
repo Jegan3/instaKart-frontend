@@ -6,7 +6,12 @@ import { message } from 'antd';
 import TextField from '@material-ui/core/TextField';
 import ScrollAnimation from 'react-animate-on-scroll';
 import Button from '@material-ui/core/Button';
+import InputLabel from '@mui/material/InputLabel';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
 import Header from '../../../components/Header';
+import { Locale } from '../../../constants/Locale';
 import Footer from '../../../components/Footer';
 import Loader from '../../../components/Loader';
 import { history } from '../../../routes';
@@ -21,6 +26,7 @@ const Cart = ({ location }) => {
   const [zipCode, setZipCode] = useState();
   const [email, setEmail] = useState('');
   const [count, setCount] = useState();
+  const [validate, setValidate] = useState('');
   const [alertError, setAlertError] = useState(false);
 
   const dispatch = useDispatch();
@@ -46,7 +52,6 @@ const Cart = ({ location }) => {
   // wipay total 
   const wipayTotal = subTotal + adminFee;
   const orderTotal = subTotal + adminFee + wipayFee;
-
   useEffect(() => {
     dispatch({ type: 'CART_REQUEST' });
   }, [count]);
@@ -62,7 +67,6 @@ const Cart = ({ location }) => {
       setMobile(e.target.value)
     }
   }
-
   const onFullName = (e) => {
     if (e.target.value.match('^[a-zA-Z ]*$')) {
       setFullName(e.target.value);
@@ -81,17 +85,22 @@ const Cart = ({ location }) => {
     }
   }
 
-  const onEmail = (e) => {
-    if (e.target.value.match('^[a-zA-Z0-9_@./#&+-]*$')) {
-      setEmail(e.target.value);
-    }
+  const validateEmail = (email) => {
+    const regex = /\S+@\S+\.\S+/;
+    return regex.test(email);
   };
 
-  const onCountry = (e) => {
-    if (e.target.value.match('^[a-zA-Z]*$')) {
-      setCountry(e.target.value);
-    };
+  const valid = validateEmail(email);
+
+  const onEmail = (e) => {
+    if (e.target.value.match('^[a-zA-Z0-9_@./#&+-]*$')) {
+      setEmail(e.target.value)
+    }
   }
+
+  const onCountry = (e) => {
+    setCountry(e.target.value);
+  };
 
   const onCity = (e) => {
     if (e.target.value.match('^[a-zA-Z]*$')) {
@@ -179,6 +188,16 @@ const Cart = ({ location }) => {
     if (!fullName || !mobile || !address || !country || !city || !zipCode || !email) {
       setAlertError(true)
       message.error('Please fill all the fields')
+    } else if (mobile.length !== 10) {
+      message.error('Please enter the valid Mobile')
+    } else if (zipCode.length !== 5) {
+      message.error('Please enter the valid Zipcode')
+    } else if (email === '') {
+      setAlertError(true);
+    } else if (email && valid === false) {
+      setAlertError(true)
+      setValidate(true)
+      message.error('Please enter the valid Email')
     } else {
       message.success(` ${fullName} Thank you for Your Purchase!!`)
       const checkout = {
@@ -341,19 +360,22 @@ const Cart = ({ location }) => {
                                   className="checkout-feild"
                                   value={fullName}
                                   onChange={onFullName}
-                                  maxLength={30}
+                                  inputProps={{
+                                    maxLength: 30,
+                                  }}
                                   error={alertError && !fullName}
                                 />
                               </Col>
                               <Col xs={12}>
                                 <TextField
                                   label="Phone Number"
-                                  onChangeText={(text) => this.onTextChange(text)}
                                   className="checkout-feild"
                                   value={mobile}
                                   onChange={onMobile}
-                                  type="number"
-                                  maxLength={10}
+                                  type="text"
+                                  inputProps={{
+                                    maxLength: 10,
+                                  }}
                                   error={alertError && !mobile}
                                 />
                               </Col>
@@ -361,7 +383,9 @@ const Cart = ({ location }) => {
                                 <TextField id="standard-name"
                                   label="Address"
                                   className="checkout-feild"
-                                  maxLength={30}
+                                  inputProps={{
+                                    maxLength: 30,
+                                  }}
                                   value={address}
                                   onChange={onAddress}
                                   error={alertError && !address}
@@ -378,20 +402,44 @@ const Cart = ({ location }) => {
                                 />
                               </Col>
                               <Col xs={12}>
-                                <TextField id="standard-name"
-                                  label="Country"
-                                  className="checkout-feild"
-                                  value={country}
-                                  onChange={onCountry}
-                                  maxLength={30}
-                                  error={alertError && !country} />
+                                <FormControl variant="standard" >
+                                  <InputLabel >Country</InputLabel>
+                                  <Select
+                                    name="Country"
+                                    className="checkout-feild "
+                                    value={country}
+                                    onChange={onCountry}
+                                    MenuProps={{
+                                      PaperProps: {
+                                        sx: {
+                                          "& .MuiMenuItem-root": {
+                                            backgroundColor: "#2D3549",
+                                            color: 'White',
+                                          },
+                                          "& .MuiList-root": {
+                                            backgroundColor: "#2D3549",
+                                          },
+                                        }
+                                      }
+                                    }}
+                                  >
+                                    <MenuItem value="">
+                                      <em>None</em>
+                                    </MenuItem>
+                                    {Locale.map((item) => (
+                                      <MenuItem value={item._id}>{item.countryName}</MenuItem>
+                                    ))}
+                                  </Select>
+                                </FormControl>
                               </Col>
                               <Col xs={12}>
                                 <TextField id="standard-name"
                                   label="Zip-Code"
                                   className="checkout-feild"
-                                  maxLength={5}
-                                  type="number"
+                                  inputProps={{
+                                    maxLength: 5,
+                                  }}
+                                  type="text"
                                   value={zipCode}
                                   onChange={onZipCode}
                                   error={alertError && !zipCode}
@@ -401,7 +449,9 @@ const Cart = ({ location }) => {
                                 <TextField id="standard-name"
                                   label="Email"
                                   className="checkout-feild"
-                                  maxLength={50}
+                                  inputProps={{
+                                    maxLength: 50,
+                                  }}
                                   value={email}
                                   onChange={onEmail}
                                   error={alertError && !email}
