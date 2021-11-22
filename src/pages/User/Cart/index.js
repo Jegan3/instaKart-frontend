@@ -217,7 +217,9 @@ const Cart = ({ location }) => {
 
   return (
     <div>
-      <Header />
+      {location.state === 'addCart' ?
+        <Header /> : <Header cartIcon />
+      }
       <div className="checkout-page">
         <Grid fluid>
           <div className="checkout-details">

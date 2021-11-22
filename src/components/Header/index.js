@@ -25,7 +25,7 @@ const StyledBadge = withStyles((theme) => ({
   },
 }))(Badge);
 
-const Header = ({ basic, loginCart, hideloginCart, module }) => {
+const Header = ({ basic, loginCart, hideloginCart, module, cartIcon }) => {
   const [login, setLogin] = useState(false);
   const [country, setCountry] = useState(<div><FontAwesomeIcon icon={faMapMarkerAlt} className="location" /><p>Select your country </p><FontAwesomeIcon icon={faCaretDown} className="caret-down" /></div>);
 
@@ -41,7 +41,7 @@ const Header = ({ basic, loginCart, hideloginCart, module }) => {
   const user = validLogin && validLogin.user.type === 'user' || sessionStorage.type === 'user';
 
   useEffect(() => {
-    if (user && name && !basic) {
+    if (user && name && !basic && !cartIcon) {
       dispatch({ type: 'CART_REQUEST' });
     }
   }, [name]);
@@ -91,7 +91,9 @@ const Header = ({ basic, loginCart, hideloginCart, module }) => {
   };
 
   const toHome = () => {
-    history.push({ pathname: '/' });
+    if (location.pathname !== '/') {
+      history.push({ pathname: '/' });
+    };
   };
 
   const toListYourAds = () => {
@@ -111,7 +113,9 @@ const Header = ({ basic, loginCart, hideloginCart, module }) => {
   };
 
   const onCart = () => {
-    history.push({ pathname: '/cart', state: 'addCart' });
+    if (location.pathname !== '/cart') {
+      history.push({ pathname: '/cart', state: 'addCart' });
+    }
   };
 
   return (
@@ -198,7 +202,7 @@ const Header = ({ basic, loginCart, hideloginCart, module }) => {
                       <FontAwesomeIcon icon={faUserPlus} className="userPlus" />
                       {name ? <div className="text bold-text">{`Hi, ${name}`}</div> : <div className="bold-text">Sign In</div>}
                     </div>
-                    {user ?
+                    {user && !cartIcon &&
                       <IconButton
                         onClick={onCart}
                         className="cart-icon" aria-label="cart" >
@@ -206,7 +210,6 @@ const Header = ({ basic, loginCart, hideloginCart, module }) => {
                           <ShoppingCartIcon fontSize="large" />
                         </StyledBadge>
                       </IconButton>
-                      : null
                     }
                   </div>
                 </div>
