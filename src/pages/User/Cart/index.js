@@ -14,7 +14,6 @@ import Header from '../../../components/Header';
 import { Locale } from '../../../constants/Locale';
 import Footer from '../../../components/Footer';
 import Loader from '../../../components/Loader';
-import { history } from '../../../routes';
 
 const Cart = ({ location }) => {
   const [toggle, setToggle] = useState(true);
@@ -36,9 +35,14 @@ const Cart = ({ location }) => {
   const isLoadingAddCart = useSelector((state) => state.addCartState.isLoading);
   const checkout = useSelector((state) => state.checkoutState.checkout);
 
+  //store buyNow details in sessionstorage
+  if (buyNow) {
+    sessionStorage.buyNow = JSON.stringify(buyNow)
+  }
+
   //passing buyNowproduct details
   const buyNowDetails = []
-  buyNowDetails.push(buyNow);
+  buyNowDetails.push(buyNow || JSON.parse(sessionStorage.buyNow))
 
   //passing state and api value 
   const productList = location.state === 'addCart' ? cart && cart.cartInfo : buyNowDetails;
@@ -52,9 +56,16 @@ const Cart = ({ location }) => {
   // wipay total 
   const wipayTotal = subTotal + adminFee;
   const orderTotal = subTotal + adminFee + wipayFee;
+
   useEffect(() => {
-    dispatch({ type: 'CART_REQUEST' });
+    if (location.state !== 'buyNow') {
+      dispatch({ type: 'CART_REQUEST' });
+    }
   }, [count]);
+
+  // useEffect(() => {
+  //     dispatch({ type: 'CART_REQUEST' });   
+  // }, [count]);
 
   useEffect(() => {
     if (checkout && checkout.url) {
