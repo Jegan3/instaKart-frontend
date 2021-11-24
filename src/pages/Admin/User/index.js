@@ -24,9 +24,12 @@ const User = () => {
   // const [show, setShow] = useState(false);
   // const [info, setInfo] = useState();
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const userList = useSelector((state) => state.userListState.userList && state.userListState.userList.data);
 
+  useEffect(() => {
+    dispatch({ type: 'USER_LIST_REQUEST' });
+  }, [])
 
   // userList && userList.map((info, i) => {
   //   info.id = i + 1, info.status = `${info.status.charAt(0).toUpperCase()}${info.status.slice(1)}`
@@ -69,7 +72,7 @@ const User = () => {
                       },
                       {
                         Header: 'Transaction Id',
-                        accessor: 'transactionId',
+                        accessor: 'userId',
                         width: 150,
                       },
                       {
@@ -79,7 +82,7 @@ const User = () => {
                       },
                       {
                         Header: 'Country',
-                        accessor: 'country',
+                        accessor: 'countryName',
                       },
                       {
                         Header: 'Purchased',
