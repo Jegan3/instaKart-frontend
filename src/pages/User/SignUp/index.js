@@ -203,7 +203,7 @@ const SignUp = (props) => {
         <Col md={6} sm={12} className="signup-margin" >
           <Row>
             <Col lg={12} className="sub-heading">
-              Basic Informations
+              Basic Information
             </Col>
           </Row>
           <Form className="signup-form">
@@ -214,7 +214,7 @@ const SignUp = (props) => {
                   <input
                     type="text"
                     className={alertError && company === '' ? ' form-control my-input' : 'form-control formy'}
-                    placeholder="Enter you're company name"
+                    placeholder="Enter your company name"
                     value={company}
                     onChange={onEstore}
                     maxLength={30}
@@ -224,7 +224,7 @@ const SignUp = (props) => {
                   <label className="signup-label">Industry Type <span className="red-star">*</span></label>
                   <Select
                     name="Industry Type"
-                    placeholder="Choose you're industry type"
+                    placeholder="Choose your industry type"
                     value={industryType}
                     onChange={onIndustryType}
                     options={industryTypeOptions}
@@ -236,7 +236,7 @@ const SignUp = (props) => {
                   <label className="signup-label">Country <span className="red-star">*</span></label>
                   <Select
                     name="Country"
-                    placeholder="Choose you're country"
+                    placeholder="Choose your country"
                     value={country}
                     onChange={onCountry}
                     options={countryOptions}
@@ -247,7 +247,7 @@ const SignUp = (props) => {
                   <label className="signup-label">City <span className="red-star">*</span></label>
                   <Select
                     name="City"
-                    placeholder="Choose you're city"
+                    placeholder="Choose your city"
                     value={city}
                     onChange={onCity}
                     options={updatedCityOptions}
@@ -263,7 +263,7 @@ const SignUp = (props) => {
                   <input
                     type="text"
                     className={alertError && firstName === '' ? ' form-control my-input' : 'form-control formy'}
-                    placeholder="Enter you're first name"
+                    placeholder="Enter your first name"
                     value={firstName}
                     onChange={onFirstName}
                     maxLength={30}
@@ -274,7 +274,7 @@ const SignUp = (props) => {
                   <input
                     type="text"
                     className={alertError && lastName === '' ? ' form-control my-input' : 'form-control formy'}
-                    placeholder="Enter you're last name"
+                    placeholder="Enter your last name"
                     value={lastName}
                     onChange={onLastName}
                     maxLength={30}
@@ -284,7 +284,7 @@ const SignUp = (props) => {
                   <label className="signup-label">Country <span className="red-star">*</span></label>
                   <Select
                     name="Country"
-                    placeholder="Choose you're country"
+                    placeholder="Choose your country"
                     value={country}
                     onChange={onCountry}
                     options={countryOptions}
@@ -295,7 +295,7 @@ const SignUp = (props) => {
                   <label className="signup-label">City <span className="red-star">*</span></label>
                   <Select
                     name="City"
-                    placeholder="Choose you're city"
+                    placeholder="Choose your city"
                     value={city}
                     onChange={onCity}
                     options={updatedCityOptions}
@@ -310,7 +310,7 @@ const SignUp = (props) => {
                 <input
                   type="email"
                   className={alertError && email === '' ? ' form-control my-input' : 'form-control formy'}
-                  placeholder="Enter you're email"
+                  placeholder="Enter your email"
                   value={email}
                   onChange={onEmail}
                   maxLength={50}
@@ -335,7 +335,7 @@ const SignUp = (props) => {
                 <input
                   type={showPassword ? 'text' : 'password'}
                   className={alertError && password === '' ? ' form-control my-input' : 'form-control formy'}
-                  placeholder="Enter you're password"
+                  placeholder="Enter your password"
                   value={password}
                   onChange={onPassword}
                   maxLength={15}

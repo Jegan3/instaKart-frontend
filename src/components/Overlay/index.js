@@ -74,7 +74,7 @@ const Overlay = ({
             <label className="signup-label">Industry Type <span className="red-star">*</span></label>
             <Select
               name="Industry Type"
-              placeholder="Choose you're industry type"
+              placeholder="Choose your industry type"
               value={industryType}
               onChange={onIndustryType}
               options={industryTypeOptions}
