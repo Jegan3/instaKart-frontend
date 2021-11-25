@@ -23,6 +23,8 @@ import { paymentStatusWatchers } from './PaymentStatus';
 import { profileWatchers } from './Profile';
 import { getListYourAdsWatchers } from './ListYourAds';
 import { productListWatchers } from './ProductList';
+import { userListWatchers } from './UserList';
+
 
 export default function* rootWatchers() {
   yield [
@@ -51,5 +53,6 @@ export default function* rootWatchers() {
     profileWatchers(),
     getListYourAdsWatchers(),
     productListWatchers(),
+    userListWatchers(),
   ];
 }

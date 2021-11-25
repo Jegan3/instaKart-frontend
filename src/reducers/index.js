@@ -21,9 +21,10 @@ import addStoreState from './AddStore';
 import vendorCompanyDetailsState from './VendorCompanyDetails';
 import productMessageState from './ProductMessage';
 import resetState from './ResetPassword';
-import {listYourAds, getYourAds} from './ListYourAds';
+import { listYourAds, getYourAds } from './ListYourAds';
 import profileState from './Profile';
 import productListState from './ProductList';
+import userListState from './UserList';
 
 const combinedReducer = combineReducers({
   signupState,
@@ -51,6 +52,7 @@ const combinedReducer = combineReducers({
   getYourAds,
   profileState,
   productListState,
+  userListState,
 });
 
 const rootReducer = (state, action) => {

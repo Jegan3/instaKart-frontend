@@ -107,19 +107,19 @@ const Footer = () => (
               <div className="col-sm-4">
                 <p className="text-center">
                   <a
-                    href="https://www.facebook.com/"
+                    href="https://www.facebook.com/" target="_blank"
                     className="social"
                   >
                     <FontAwesomeIcon icon={faFacebook} size="1x" />
                   </a>
                   <a
-                    href="https://www.twitter.com/"
+                    href="https://www.twitter.com/" target="_blank"
                     className=" social"
                   >
                     <FontAwesomeIcon icon={faTwitter} size="1x" />
                   </a>
                   <a
-                    href="https://www.instagram.com/"
+                    href="https://www.instagram.com/" target="_blank"
                     className=" social"
                   >
                     <FontAwesomeIcon icon={faInstagram} size="1x" />

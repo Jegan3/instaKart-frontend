@@ -1,7 +1,6 @@
 /*eslint-disable*/
-import { TitleOutlined } from '@material-ui/icons';
 import React from 'react';
-import { Row, Col, Grid } from 'react-bootstrap';
+import { message } from 'antd';
 import { history } from '../../routes';
 
 export const Card = ({ imgUrl, alt, content, btnUrl, body, title, price, productName, className, country }) => {
@@ -59,15 +58,21 @@ export const Card = ({ imgUrl, alt, content, btnUrl, body, title, price, product
   )
 };
 
-export const ThriftStoreNearYouCard = ({ imgUrl, storeName, country, path, thriftStore, module }) => {
+export const ThriftStoreNearYouCard = ({ imgUrl, storeName, country, path, thriftStore, module, setLogin }) => {
 
   const Card = () => {
-    history.push({ pathname: path, state: { thriftStore: thriftStore, module: module } })
-    window.scrollTo(0, 0);
+    if (sessionStorage.type === 'user') {
+      history.push({ pathname: path, state: { thriftStore: thriftStore, module: module } })
+      window.scrollTo(0, 0);
+    } else if (sessionStorage.type === 'vendor') {
+      message.error('Please Login As User');
+    } else {
+      setLogin(true)
+    }
   }
 
   return (
-    <div className="card" onClick={Card} >
+    <div className="card" onClick={Card}>
       <div className="card-content">
         <img className="photos" src={imgUrl} />
       </div>
@@ -76,36 +81,36 @@ export const ThriftStoreNearYouCard = ({ imgUrl, storeName, country, path, thrif
           <a>{storeName}</a>
           <div className="listing-country">
             <i className="fas fa-map-marker-alt"></i>
-            <span >{country}</span>
+            <span>{country}</span>
           </div>
         </div>
         <div className="listing-rating">
           <div className="stars"> <i className="fa fa-star"></i> <i className="fa fa-star"></i> <i className="fa fa-star"></i> <i className="fa fa-star"></i> </div>
           <div className="ratings"> <span className="product-rating">4.6</span><span className="product-rating">/5</span></div>
-          {/* <div className="tooltip-fields">
-            <i className="fa fa-envelope"></i>
-            <i className="fa fa-mobile"></i>
-            <i className="fa fa-heart"></i>
-          </div> */}
           <div className="listing-country"> <span>46 ratings & 15 reviews</span> </div>
         </div>
       </div>
-    </div>)
+    </div>
+  )
 }
 
-export const NewAdditionCard = ({ imgUrl, product, path, price, productName, module }) => {
+export const NewAdditionCard = ({ imgUrl, product, path, price, productName, module, setLogin }) => {
 
   const Card = () => {
-    history.push({ pathname: path, state: { product: product, module: module } })
-    window.scrollTo(0, 0);
+    if (sessionStorage.type === 'user') {
+      history.push({ pathname: path, state: { product: product, module: module } })
+      window.scrollTo(0, 0);
+    } else if (sessionStorage.type === 'vendor') {
+      message.error('Please Login As User');
+    }
+    else {
+      setLogin(true)
+    }
   }
 
   return (
-    <div className=" property-card card" onClick={Card} >
+    <div className=" property-card card" onClick={Card}>
       <div className=" property card-ads">
-        {/* <div class="property-image-title">
-           Optional <h5>Card Title</h5> If you want it, turn on the CSS also.
-        </div> */}
         <img className="property-image" src={imgUrl} />
       </div>
       <div className="property-description">
@@ -119,15 +124,11 @@ export const NewAdditionCard = ({ imgUrl, product, path, price, productName, mod
         <div className="listing-rating card-listing-job">
           <div className="stars"> <i className="fa fa-star"></i> <i className="fa fa-star"></i> <i className="fa fa-star"></i> <i className="fa fa-star"></i> </div>
           <div className="ratings"> <span className="product-rating">4.6</span><span className="product-rating">/5</span></div>
-          {/* <div className="tooltip-fields">
-            <i className="fa fa-envelope"></i>
-            <i className="fa fa-mobile"></i>
-            <i className="fa fa-heart"></i>
-          </div> */}
           <div className="listing-country"> <span>46 ratings & 15 reviews</span> </div>
         </div>
       </div>
-    </div>)
+    </div>
+  )
 }
 
 export const ReviewCard = ({ title, content, date }) => {

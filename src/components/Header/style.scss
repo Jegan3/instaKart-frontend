@@ -7,14 +7,14 @@
     justify-content: inherit;
   }
 
-  .WithStyles\(ForwardRef\(Badge\)\)-badge-5 {
-    top: 0px;
-    left: 7px;
-    border: transparent;
-    padding: 0 4px;
-    color: #28a4d9;
-    font-size: 14px;
-    font-weight: 800;
+  .MuiBadge-badge {
+    top: 0px !important;
+    left: 10px !important;
+    border: transparent !important;
+    padding: 0 4px !important;
+    color: #28a4d9 !important;
+    font-size: 14px !important;
+    font-weight: 800 !important;
   }
 }
 

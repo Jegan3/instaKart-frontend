@@ -456,7 +456,7 @@ const VendorInfo = (props) => {
                 <label className="signup-label">Which do you prefer? {wipay === 'Yes' && <span className="red-star">*</span>}</label>
                 <Select
                   type="text"
-                  placeholder="Choose you're preference"
+                  placeholder="Choose your preference"
                   value={preference}
                   onChange={onPreference}
                   options={preferenceList}
@@ -468,7 +468,7 @@ const VendorInfo = (props) => {
                 <label className="signup-label">IK Payout Options <span className="red-star">*</span></label>
                 <Select
                   type="text"
-                  placeholder="Choose you're payout option"
+                  placeholder="Choose your payout option"
                   value={ikOptions}
                   onChange={onIkoptions}
                   options={ikOptionsList}

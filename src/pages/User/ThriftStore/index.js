@@ -1,5 +1,5 @@
 /*eslint-disable*/
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Row, Col, Grid } from 'react-bootstrap';
 import TextLoop from "react-text-loop";
@@ -9,6 +9,15 @@ import { CarouselThriftNewAdditions, ThriftStoreNearYou, CarouselThriftStoreCate
 import { ThriftBanners } from '../../../components/Banners';
 
 const ThriftStore = () => {
+  const [login, setLogin] = useState(false);
+
+  const setLoginModal = () => {
+    setLogin(!login);
+  }
+
+  const hideloginCart = () => {
+    setLogin(false)
+  }
 
   const dispatch = useDispatch();
   const thriftDetails = useSelector((state) => state.thriftDetailsState.thriftDetails);
@@ -20,7 +29,7 @@ const ThriftStore = () => {
   return (
     <Grid fluid className="padding-control thrift">
       <div>
-        <Header />
+        <Header loginCart={login} hideloginCart={hideloginCart} />
       </div>
       <h2 className="heading-text">
         The Caribbean&#39;s
@@ -63,7 +72,7 @@ const ThriftStore = () => {
           <div className="thrift-ads">
             <h3>THRIFT STORE NEAR YOU</h3>
             <h6>Buy & Sell Any Thing</h6>
-            <ThriftStoreNearYou thriftDetails={thriftDetails} module='Thrift Store' />
+            <ThriftStoreNearYou thriftDetails={thriftDetails} setLogin={setLoginModal} module='Thrift Store' />
           </div>
           <br />
         </div>
@@ -73,7 +82,7 @@ const ThriftStore = () => {
           <div className="thrift-ads">
             <h3>NEW ADDITIONS</h3>
             <h6>Buy & Sell Any Thing</h6>
-            <CarouselThriftNewAdditions thriftDetails={thriftDetails} module='Thrift Store' />
+            <CarouselThriftNewAdditions thriftDetails={thriftDetails} setLogin={setLoginModal} module='Thrift Store' />
           </div>
           <br />
         </div>

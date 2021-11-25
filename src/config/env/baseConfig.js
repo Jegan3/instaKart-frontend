@@ -28,6 +28,7 @@ export default {
     getYourAds: '/api/staticContentRouter/getAds',
     getProfile: '/api/vendor/vendorInfo',
     getProductList: '/api/vendor/product',
+    getUserList: '/api/admin/users',
   },
 
   apiBaseUrl: {

@@ -51,7 +51,7 @@ const ProductList = ({ storeId }) => {
   }
 
   return (
-    <div >
+    <div className="vendor-product-list">
       {/* <Upload showPopup={show} hidePopup={hidePopup} />  */}
       {/* <Sidebar /> */}
       <div >

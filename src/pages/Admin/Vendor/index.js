@@ -7,7 +7,6 @@ import { message } from 'antd';
 import Headerbar from '../../../components/Headerbar';
 import Table from '../../../components/Table';
 import StatsCard from '../../../components/StatsCard';
-import Sidebar from '../../../components/Sidebar';
 import Desk from '../../../components/Desk';
 import Loader from '../../../components/Loader';
 
@@ -101,7 +100,6 @@ const Vendor = () => {
         submit={onSubmit}
         reject={onReject}
       />
-      <Sidebar />
       <div className="rightside-panel">
         <Headerbar headerName="Vendor" setRtlCallback={onRtl} />
         <div className="main-content">
@@ -201,4 +199,4 @@ const Vendor = () => {
   );
 };
 
-export default Vendor ;
+export default Vendor;
