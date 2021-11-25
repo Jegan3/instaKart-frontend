@@ -42,7 +42,9 @@ const Cart = ({ location }) => {
 
   //passing buyNowproduct details
   const buyNowDetails = []
-  buyNowDetails.push(buyNow || JSON.parse(sessionStorage.buyNow))
+  if(location.state === 'buyNow'){
+    buyNowDetails.push(buyNow || JSON.parse(sessionStorage.buyNow));
+  }
 
   //passing state and api value 
   const productList = location.state === 'addCart' ? cart && cart.cartInfo : buyNowDetails;
