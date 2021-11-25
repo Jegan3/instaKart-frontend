@@ -44,9 +44,9 @@ const Home = () => {
         </TextLoop>
         E-Commerce Website
       </h2>
-      <div className='intro-banner'>
+      {advertisement && advertisement ? <div className='intro-banner'>
         <Banners primaryBanner={advertisement && advertisement.userAds} />
-      </div>
+      </div> : ''}
       {/* {window.screen.width <= 464 ?
       <div className='arrival'>
         <CarouselMobile />
@@ -63,12 +63,12 @@ const Home = () => {
         <CarouselThird />
         {/* <CarouselFourth /> */}
       </div>
-      <div className='bg-home-ban'>
+      {advertisement && advertisement ? <div className='bg-home-ban'>
         <div className='arrival'>
           <SecondaryBanners secondaryBanner={advertisement && advertisement.userAds}/>
         </div>
         <br />
-      </div>
+      </div> : ''}
       <div className='bg-home-pro'>
         <div className='particles-sub'>
           <Particle color='#f5f5f5' number='150' direction='bottom' />
@@ -100,7 +100,7 @@ const Home = () => {
         </div>
         <br />
       </div>
-      <div className='bg-home'>
+     {advertisement && advertisement ? <div className='bg-home'>
         <div className='arrival'>
           <h5>TimeCap VLogs</h5>
           <div className="promo-videos">
@@ -108,7 +108,7 @@ const Home = () => {
         </div>
         </div>
         <br />
-      </div>
+      </div> : ''}
       <div>
         <Footer />
       </div>
