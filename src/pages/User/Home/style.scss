@@ -14,14 +14,14 @@
   margin-left: 332px;
 }
 
-.arrivals {
-  margin-top: 2%;
-  width: 50% !important;
-  margin: auto;
-}
+// .arrivals {
+//   margin-top: 2%;
+//   width: 50% !important;
+//   margin: auto;
+// }
 
 .arrival {
-  width: 50% !important;
+  width: 75% !important;
   margin: auto;
 }
 
@@ -116,4 +116,16 @@
   canvas {
     position: absolute;
   }
+}
+
+.promo-videos {
+  background-color: transparent;
+  text-align: center;
+  width: 100%;
+  padding-top: 1%;
+}
+
+.homevideo-prop {
+  // background-color: black;
+  height: 400px !important;
 }

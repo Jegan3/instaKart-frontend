@@ -2,15 +2,21 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Row, Col, Form, Grid } from 'react-bootstrap';
-import ImgCrop from 'antd-img-crop';
+import { Image } from 'antd';
 import Cleave from "cleave.js/react";
 import { message, Modal, Upload, Button, } from 'antd';
 import Select from 'react-select';
 import { bankList } from '../../../constants/BankList';
 import Headerbar from '../../../components/Headerbar';
-import Overlay from '../../../components/Overlay';
+import ImgCrop from 'antd-img-crop';
 import Loader from '../../../components/Loader';
-import { Email } from '@material-ui/icons';
+
+
+// import Overlay from '../../../components/Overlay';
+// import Loader from '../../../components/Loader';
+// import { Email } from '@material-ui/icons';
+
+
 
 let fileList = [];
 
@@ -24,77 +30,61 @@ const preferenceList = [
   { value: 'Wipay Transfer', label: 'Wipay Transfer' },
 ]
 
+
 const Profile = () => {
-  const [companyName, setCompanyName] = useState("");
-  const [businessLocation, setbusinessLocation] = useState("");
-  const [companyLogo, setCompanyLogo] = useState("");
-  const [uploadAddress, setUploadAddress] = useState("");
-  const [uploadRegistration, setUploadRegistration] = useState([]);
-  const [uploadId, setUploadId] = useState([]);
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [mobile, setMobile] = useState('');
-  const [email, setEmail] = useState("");
-  const [bank, setBank] = useState();
-  const [bankAccount, setBankAccount] = useState('');
+
+  const [companyLogo, setCompanyLogo] = useState();;
+  const [businessLocation, setBusinessLocation] = useState();;
+  const [firstName, setFirstName] = useState();
+  const [lastName, setLastName] = useState();
+  const [companyName, setCompanyName] = useState();;
+  const [mobile, setMobile] = useState();
+  const [email, setEmail] = useState();
+  const [bank, setBank] = useState();;
+  const [bankAccount, setBankAccount] = useState();
   const [wipay, setWipay] = useState('')
-  const [wipayAccount, setWipayAccount] = useState('')
-  const [preference, setPreference] = useState('');
-  const [ikOptions, setIkoptions] = useState('');
-  const [previewVisible, setPreviewVisible] = useState(false)
-  const [previewImage, setPreviewImage] = useState('')
-  const [previewTitle, setPreviewTitle] = useState('')
+  const [wipayAccount, setWipayAccount] = useState()
+  const [preference, setPreference] = useState();;
+  const [ikOptions, setIkoptions] = useState();;
+  const [uploadAddress, setUploadAddress] = useState();
+  const [uploadRegistration, setUploadRegistration] = useState();
+  const [uploadId, setUploadId] = useState();
   const [disabled, setDisabled] = useState(true);
-  const [usAccount, setUsAccount] = useState('');
-  const [validate, setValidate] = useState('');
+  const [usAccount, setUsAccount] = useState();;
+  const [validate, setValidate] = useState();;
   const [alertError, setAlertError] = useState(false);
 
-
   const dispatch = useDispatch();
-  const storeInfo = useSelector((state) => state.storeInfoState.storeInfo);
+  const profileInfo = useSelector((state) => state.profileState.profile);
+  const isLoading = useSelector((state) => state.profileState.isLoading) ;
+  const bankSet = profileInfo && profileInfo.bank;
+  const ikOptionSet = profileInfo && profileInfo.ikOptions;
+
+  const profileLogo = profileInfo && profileInfo.logo;
+  const profileAddress = profileInfo && profileInfo.addressImage;
+  const profileId = profileInfo && profileInfo.idImage;
+  const profileRegistration = profileInfo && profileInfo.companyRegImage;
+
 
   useEffect(() => {
     dispatch({ type: 'PROFILE_REQUEST' });
   }, [])
 
-  const onCompanyLogo = ({ fileList: newFileList }) => {
+  const bankLists = [
+    { value: bankSet , label: bankSet},
+  ]
+
+  const ikOptionLists = [
+    { value: ikOptionSet , label: ikOptionSet},
+  ]
+
+   const onCompanyLogo = ({ fileList: newFileList }) => {
     let file = newFileList[0].originFileObj;
     const reader = new FileReader();
     reader.onload = () => {
       setCompanyLogo(reader.result);
     };
     reader.readAsDataURL(file);
-  }
-
-  const onChangeImageAddress = ({ fileList: newFileList }) => {
-    let file = newFileList[0].originFileObj;
-    const reader = new FileReader();
-    reader.onload = () => {
-      setUploadAddress(reader.result);
-    };
-    reader.readAsDataURL(file);
-  };
-
-  const onChangeImageRegistration = ({ fileList: newFileList }) => {
-    let file = newFileList[0].originFileObj;
-    const reader = new FileReader();
-    reader.onload = () => {
-      setUploadRegistration(reader.result);
-    };
-    reader.readAsDataURL(file);
-  };
-
-  const onChangeID = ({ fileList: newFileList }) => {
-    let file = newFileList[0].originFileObj;
-    const reader = new FileReader();
-    reader.onload = () => {
-      setUploadId(reader.result);
-    };
-    reader.readAsDataURL(file);
-  };
-
-  const onUsAccount = (e) => {
-    setUsAccount(e.target.value)
   }
 
   const onPreview = async file => {
@@ -127,10 +117,13 @@ const Profile = () => {
     }
   }
 
-  const onSurName = (e) => {
+  const onLastName = (e) => {
     if (e.target.value.match('^[a-zA-Z ]*$')) {
       setLastName(e.target.value)
     }
+  }
+  const onUsAccount = (e) => {
+    setUsAccount(e.target.value)
   }
 
   const onCompanyName = (e) => {
@@ -141,7 +134,7 @@ const Profile = () => {
 
   const onBusiness = (e) => {
     if (e.target.value.match('^[a-zA-Z ]*$')) {
-      setbusinessLocation(e.target.value)
+      setBusinessLocation(e.target.value)
     }
   }
 
@@ -160,6 +153,7 @@ const Profile = () => {
 
   const onMobile = e => {
     setMobile(e.target.value)
+    setProfileDetail('mobile')
   }
 
   const onWipay = (e) => {
@@ -171,6 +165,12 @@ const Profile = () => {
     }
   }
 
+  const onWipayNumber = (e) => {
+    if (e.target.value.match('^[0-9]*$')) {
+      setWipayAccount(e.target.value)
+    }
+  }
+
   const onPreference = (preference) => {
     setPreference(preference)
   }
@@ -179,16 +179,8 @@ const Profile = () => {
     setIkoptions(ikOptions)
   }
 
-  const onWipayNumber = (e) => {
-    if (e.target.value.match('^[0-9]*$')) {
-      setWipayAccount(e.target.value)
-    }
-  }
-
-  const onBankAccount = (e) => {
-    if (e.target.value.match('^[0-9]*$')) {
-      setBankAccount(e.target.value)
-    }
+  const onEdit = () => {
+   setDisabled(false)
   }
 
   const bankSelect = bankList.map(item => ({
@@ -201,22 +193,44 @@ const Profile = () => {
     setPreference({ value: 'Bank Transfer', label: 'Bank Transfer' })
   }
 
-  const handleCancel = () => setPreviewVisible(false);
+  const onBankAccount = (e) => {
+    if (e.target.value.match('^[0-9]*$')) {
+      setBankAccount(e.target.value)
+    }
+  }
 
+  const firstNameInfo = !firstName && firstName !== '' ? profileInfo && profileInfo.firstName : firstName;
+  const lastNameInfo = !lastName && lastName !== '' ? profileInfo && profileInfo.lastName : lastName;
+  const mobileInfo = !mobile && mobile !== '' ? profileInfo && profileInfo.mobile : mobile;
+  const emailInfo = !email && email !== '' ? profileInfo && profileInfo.email : email;
+  const businessLocationInfo = !businessLocation && businessLocation !== '' ? profileInfo && profileInfo.businessLocation : businessLocation;
+  const companyNameInfo = !companyName && companyName !== '' ? profileInfo && profileInfo.companyName : companyName;
+  const bankInfo = !bank && bank !== '' ? bankLists : bank ;
+  const ikOptionsInfo = !ikOptions && ikOptions !== '' ? ikOptionLists : ikOptions;
+  const bankAccountInfo = !bankAccount && bankAccount !== '' ? profileInfo && profileInfo.bankAccount : bankAccount;
+  const wipayAccountInfo = !wipayAccount && wipayAccount !== '' ? profileInfo && profileInfo.wipayAccount : wipayAccount;
+  //const usAccountInfo = !usAccount && usAccount !== '' ? profileInfo && profileInfo.usAccount : usAccount;
+  const usStatusInfo = !usAccount && usAccount !== '' ? profileInfo && profileInfo.usAccount : usAccount
+  const wipayStatusInfo = !wipay && wipay !== '' ? profileInfo && profileInfo.wipay : wipay
+
+
+//console.log('usstatus',usAccountStatusInfo)
+
+ 
+console.log('ikOptionsInfo',ikOptionsInfo)
+  
   const onSubmit = () => {
-    if (!firstName || !lastName || !mobile || !bank || !bankAccount || !ikOptions || !email || !companyName
-      || !businessLocation || !uploadAddress) {
+    if (!firstNameInfo || !lastNameInfo || !mobileInfo || !emailInfo || !companyNameInfo
+      || !businessLocationInfo || !ikOptionsInfo) {
       setAlertError(true)
       setDisabled(false)
       message.error('Please fill all the fields')
-    } else if (email === '') {
+    } else if (email === '' || email && valid === false) {
       setAlertError(true);
-    } else if (email && valid === false) {
-      setAlertError(true)
       setValidate(true)
       message.error('Please enter the valid Email')
-    } else if (mobile.length !== 12) {
-      message.error('Please enter the valid Mobile')
+      // } else if (mobileInfo.length !== 12) {
+      //   message.error('Please enter the valid Mobile')
     } else if (wipay === 'Yes' && (!wipayAccount || !preference)) {
       setAlertError(true)
       setDisabled(false)
@@ -227,33 +241,34 @@ const Profile = () => {
       message.success('Your Info Update Successfully');
       setDisabled(true)
       const Profile = {
-        firstName,
-        lastName,
-        companyName,
-        email,
-        uploadLogo: companyLogo,
-        bank: bank.value,
-        bankAccount,
-        businessLocation,
+        firstName: firstNameInfo,
+        lastName: lastNameInfo,
+        companyName: companyNameInfo,
+        email: emailInfo,
+        mobile: mobileInfo,
+        businessLocation: businessLocationInfo,
+        bank: bankInfo.value,
+        bankAccount: bankAccountInfo,
         wipay,
-        wipayAccount,
-        usAccount,
+        wipayAccount: wipayAccountInfo,
+        usAccount : usAccountInfo,
         uploadId,
         uploadAddress,
         uploadRegistration,
-        preference: preference.value,
-        ikOptions: ikOptions.value,
+        //preference: preference.value,
+        ikOptions: ikOptionsInfo.value,
       };
       dispatch({ type: 'PROFILE_REQUEST', Profile });
-      console.log(Profile);
+      console.log('profile', Profile)
     }
   }
 
-  const button = disabled ? 'Edit' : 'Save'
+  //const button = disabled ? 'Edit' : 'Save'
 
   return (
     <div className="wrapper">
-      <div className="rightside-panel vendor-profile-page">
+       {isLoading && <Loader />}
+      <div className="rightside-panel">
         <Headerbar headerName="Profile" />
         <div className='profile-page-dgn'>
           <Row className="top-row">
@@ -265,7 +280,7 @@ const Profile = () => {
                   </div>
                   <Col lg={12} className='avtar-info' >
                     <div className="photo">
-                      {companyLogo ? <img src={companyLogo} alt='' /> : <img src={storeInfo && storeInfo.storeInfo.companyLogo ? storeInfo.storeInfo.companyLogo : "images/Your-logo-here.png"} />}
+                      <img src={!companyLogo && companyLogo !== '' ? profileLogo : !companyLogo ? "images/Your-logo-here.png" : companyLogo} />
                     </div>
                     <div className="image-upload">
                       <ImgCrop rotate>
@@ -291,9 +306,9 @@ const Profile = () => {
                       <div className="label-myprofile">
                         <label className="card-info-label">Company Name  </label>
                         <input
-                          className={alertError && companyName === '' ? ` form-control my-input` : `form-control formy`}
-                          name="CompanyName"
+                          className={alertError && !companyNameInfo ? ` form-control my-input` : `form-control formy`}
                           disabled={disabled}
+                          value={companyNameInfo}
                           type="text"
                           placeholder="Company Name"
                           onChange={onCompanyName}
@@ -303,8 +318,9 @@ const Profile = () => {
                       <div className="label-myprofile">
                         <label className="card-info-label"> Business Location  </label>
                         <input
-                          className={alertError && businessLocation === '' ? ` form-control my-input` : `form-control formy`}
+                          className={alertError && !businessLocationInfo ? ` form-control my-input` : `form-control formy`}
                           disabled={disabled}
+                          value={businessLocationInfo}
                           type="text"
                           placeholder="Business Located"
                           onChange={onBusiness}
@@ -315,87 +331,29 @@ const Profile = () => {
                         <div >
                           <Col xs={4} sm={4} md={4} lg={4} xl={4} className="upload-proofs">
                             <div className="address-proof">
-                              <label className="card-info-label"> Address  </label>
-                              <ImgCrop rotate>
-                                <Upload
-                                  action="png"
-                                  accept="image/*"
-                                  type="file"
-                                  customRequest={fakeRequest}
-                                  className="upload-image"
-                                  listType="picture-card"
-                                  filelist={fileList}
-                                  onChange={onChangeImageAddress}
-                                  onPreview={onPreview}
-                                  disabled={disabled}
-                                >
-                                  {uploadAddress.length < 1 && '+ Upload'}
-                                </Upload>
-                              </ImgCrop>
-                              <Modal
-                                visible={previewVisible}
-                                title={previewTitle}
-                                footer={null}
-                                onCancel={handleCancel}
-                              >
-                                <img alt="example" style={{ width: '100%' }} src={previewImage} />
-                              </Modal>
+                              <label className="card-info-label">Address</label>
+                              <Image
+                                width={100}
+                                height={100}
+                                src={!uploadAddress && uploadAddress !== '' ? profileAddress : "images/Your-logo-here.png"} />
                             </div>
                           </Col>
                           <Col xs={4} sm={4} md={4} lg={4} xl={4} className="upload-proofs">
                             <div className="company-registration">
-                              <label className="card-info-label"> Registration  </label>
-                              <ImgCrop rotate>
-                                <Upload
-                                  action="png"
-                                  accept="image/*"
-                                  filelist={fileList}
-                                  customRequest={fakeRequest}
-                                  className="upload-image"
-                                  listType="picture-card"
-                                  onChange={onChangeImageRegistration}
-                                  onPreview={onPreview}
-                                  disabled={disabled}
-                                >
-                                  {uploadRegistration.length < 1 && '+ Upload'}
-                                </Upload>
-                              </ImgCrop>
-                              <Modal
-                                visible={previewVisible}
-                                title={previewTitle}
-                                footer={null}
-                                onCancel={handleCancel}
-                              >
-                                <img alt="example" style={{ width: '100%' }} src={previewImage} />
-                              </Modal>
+                              <label className="card-info-label">Registration</label>
+                              <Image
+                                width={100}
+                                height={100}
+                                src={!uploadAddress && uploadAddress !== '' ? profileRegistration : "images/Your-logo-here.png"} />
                             </div>
                           </Col>
                           <Col xs={4} sm={4} md={4} lg={4} xl={4} className="upload-proofs">
                             <div className="company-registration">
-                              <label className="card-info-label"> ID  </label>
-                              <ImgCrop rotate>
-                                <Upload
-                                  action="png"
-                                  accept="image/*"
-                                  filelist={fileList}
-                                  customRequest={fakeRequest}
-                                  className="upload-image"
-                                  listType="picture-card"
-                                  onChange={onChangeID}
-                                  onPreview={onPreview}
-                                  disabled={disabled}
-                                >
-                                  {uploadId.length < 1 && '+ Upload'}
-                                </Upload>
-                              </ImgCrop>
-                              <Modal
-                                visible={previewVisible}
-                                title={previewTitle}
-                                footer={null}
-                                onCancel={handleCancel}
-                              >
-                                <img alt="example" style={{ width: '100%' }} src={previewImage} />
-                              </Modal>
+                              <label className="card-info-label">ID</label>
+                              <Image
+                                width={100}
+                                height={100}
+                                src={!uploadAddress && uploadAddress !== '' ? profileId : "images/Your-logo-here.png"} />
                             </div>
                           </Col>
                         </div>
@@ -418,9 +376,9 @@ const Profile = () => {
                         <input
                           disabled={disabled}
                           type="text"
-                          className={alertError && firstName === '' ? ` form-control my-input` : `form-control formy`}
+                          className={alertError && !firstNameInfo ? ` form-control my-input` : `form-control formy`}
                           placeholder="Firstname"
-                          value={firstName}
+                          value={firstNameInfo}
                           onChange={onFirstName}
                           maxLength={30}>
                         </input>
@@ -430,10 +388,10 @@ const Profile = () => {
                         <input
                           disabled={disabled}
                           type="text"
-                          className={alertError && lastName === '' ? ` form-control my-input` : `form-control formy`}
+                          className={alertError && !lastNameInfo ? ` form-control my-input` : `form-control formy`}
                           placeholder="Lastname"
-                          value={lastName}
-                          onChange={onSurName}
+                          value={lastNameInfo}
+                          onChange={onLastName}
                           maxLength={30}>
                         </input>
                       </div>
@@ -443,8 +401,9 @@ const Profile = () => {
                         <label className="card-info-label">Email </label>
                         <input
                           disabled={disabled}
-                          className={alertError && email === '' || validateEmail(email) === false && validate ? ' form-control my-input' : 'form-control formy'}
+                          className={alertError && !emailInfo || validateEmail(email) === false && validate ? ' form-control my-input' : 'form-control formy'}
                           type="Email"
+                          value={emailInfo}
                           placeholder="Email"
                           onChange={onEmail}
                           maxLength={30}>
@@ -453,10 +412,10 @@ const Profile = () => {
                       <div className="label-myprofile">
                         <label className="card-info-label">Contact No <span className="red-star">*</span> </label>
                         <Cleave
-                          className={alertError && mobile === '' ? ` form-control my-input` : `form-control formy`}
+                          className={alertError && !mobileInfo ? ` form-control my-input` : `form-control formy`}
                           placeholder="Enter contact number"
                           disabled={disabled}
-                          value={mobile}
+                          value={mobileInfo}
                           onChange={onMobile}
                           options={{
                             blocks: [3, 3, 4],
@@ -474,12 +433,13 @@ const Profile = () => {
                     </div>
                     <Col xs={12} sm={6} md={6} lg={6}>
                       <div className="label-myprofile">
-                        <label className="card-info-label"> Bank <span className="red-star">*</span> </label>
+                        <label className="card-info-label"> Bank  </label>
                         <Select
                           type="text"
-                          className={`${alertError && !bank && `dropdown-alert`}`}
+                          className={`${alertError && !bankInfo && `dropdown-alert`}`}
+                          className=""
                           placeholder="Choose Bank."
-                          value={bank}
+                          value={bankInfo}
                           onChange={onBank}
                           options={bankSelect}
                           isSearchable={true}
@@ -496,7 +456,7 @@ const Profile = () => {
                             type="radio"
                             value='Yes'
                             onChange={onWipay}
-                            checked={wipay === 'Yes' ? true : false} />
+                            checked={wipayStatusInfo === true ? true : false} />
                           <label className="form-check-label" for="exampleRadios1">
                             Yes
                           </label>
@@ -506,7 +466,7 @@ const Profile = () => {
                             type="radio"
                             value='No'
                             onChange={onWipay}
-                            checked={wipay === 'No' ? true : false} />
+                            checked={wipayStatusInfo === false ? true : false} />
                           <label className="form-check-label" for="exampleRadios1">
                             No
                           </label>
@@ -529,25 +489,27 @@ const Profile = () => {
                     </Col>
                     <Col xs={12} sm={6} md={6} lg={6}>
                       <div className="label-myprofile">
-                        <label className="card-info-label"> Bank Account No <span className="red-star">*</span> </label>
+                        <label className="card-info-label"> Bank Account No </label>
                         <input
                           type="text"
-                          className={alertError && bank && !bankAccount ? ` form-control my-input` : `form-control formy`}
+                         // className={alertError && bank && !bankAccountInfo ? ` form-control my-input` : `form-control formy`}
+                         className="form-control formy`"
                           placeholder="Bank account number"
-                          value={bankAccount}
+                          value={bankAccountInfo}
                           onChange={onBankAccount}
                           disabled={!bank}
                           maxLength={15}>
                         </input>
                       </div>
                       <div className="label-myprofile">
-                        <label className="card-info-label">WiPay Account Number {wipay === 'Yes' && <span className="red-star">*</span>}</label>
+                        <label className="card-info-label">WiPay Account Number {wipay === 'Yes'}</label>
                         <input
                           type="text"
-                          className={alertError && wipayAccount === '' && wipay === 'Yes' ? ` form-control my-input` : `form-control formy`}
+                          className="form-control formy`"
+                          //className={alertError && !wipayAccountInfo && wipay === 'Yes' ? ` form-control my-input` : `form-control formy`}
                           placeholder="WiPay number"
                           maxLength={10}
-                          value={wipayAccount}
+                          value={wipayAccountInfo}
                           onChange={onWipayNumber}
                           disabled={wipay === 'No' || !wipay}
                         />
@@ -556,9 +518,9 @@ const Profile = () => {
                         <label className="card-info-label"> IK Payout Option <span className="red-star">*</span>  </label>
                         <Select
                           type="text"
-                          className={`${alertError && !ikOptions && `dropdown-alert`}`}
+                          className={`${alertError && !ikOptionsInfo && `dropdown-alert`}`}
                           placeholder=" payout option"
-                          value={ikOptions}
+                          value={ikOptionsInfo}
                           onChange={onIkoptions}
                           options={ikOptionsList}
                           isSearchable={false}
@@ -576,7 +538,7 @@ const Profile = () => {
                             type="radio"
                             value="Yes"
                             onChange={onUsAccount}
-                            checked={usAccount === 'Yes' ? true : false}
+                            checked={usStatusInfo === true ? true : false}
                           />
                           <label className="form-check-label" for="exampleRadios1">
                             Yes
@@ -587,7 +549,7 @@ const Profile = () => {
                             type="radio"
                             value="No"
                             onChange={onUsAccount}
-                            checked={usAccount === 'No' ? true : false}
+                            checked={usStatusInfo === false ? true : false}
                           />
                           <label className="form-check-label" for="exampleRadios1">
                             No
@@ -602,12 +564,18 @@ const Profile = () => {
           </Row>
           <Row className="bottom-row">
             <Col className="product-button">
+            {disabled === true ? <button
+                type="button"
+                className="btn btn-primary btn-block modal-butn"
+                onClick={onEdit} >
+                Edit
+              </button> :
               <button
                 type="button"
                 className="btn btn-primary btn-block modal-butn"
                 onClick={onSubmit} >
-                {button}
-              </button>
+                Submit
+              </button>}
             </Col>
           </Row>
         </div>

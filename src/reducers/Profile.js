@@ -6,7 +6,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         isLoading: true,
-        profile: false,
+        // profile: false,
         error: false,
       };
     case 'PROFILE_SUCCESS':
