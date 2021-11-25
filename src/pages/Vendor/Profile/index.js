@@ -12,12 +12,6 @@ import ImgCrop from 'antd-img-crop';
 import Loader from '../../../components/Loader';
 
 
-// import Overlay from '../../../components/Overlay';
-// import Loader from '../../../components/Loader';
-// import { Email } from '@material-ui/icons';
-
-
-
 let fileList = [];
 
 const ikOptionsList = [
@@ -50,13 +44,13 @@ const Profile = () => {
   const [uploadRegistration, setUploadRegistration] = useState();
   const [uploadId, setUploadId] = useState();
   const [disabled, setDisabled] = useState(true);
-  const [usAccount, setUsAccount] = useState();;
+  //const [usAccount, setUsAccount] = useState();;
   const [validate, setValidate] = useState();;
   const [alertError, setAlertError] = useState(false);
 
   const dispatch = useDispatch();
   const profileInfo = useSelector((state) => state.profileState.profile);
-  const isLoading = useSelector((state) => state.profileState.isLoading) ;
+  const isLoading = useSelector((state) => state.profileState.isLoading);
   const bankSet = profileInfo && profileInfo.bank;
   const ikOptionSet = profileInfo && profileInfo.ikOptions;
 
@@ -71,14 +65,14 @@ const Profile = () => {
   }, [])
 
   const bankLists = [
-    { value: bankSet , label: bankSet},
+    { value: bankSet, label: bankSet },
   ]
 
   const ikOptionLists = [
-    { value: ikOptionSet , label: ikOptionSet},
+    { value: ikOptionSet, label: ikOptionSet },
   ]
 
-   const onCompanyLogo = ({ fileList: newFileList }) => {
+  const onCompanyLogo = ({ fileList: newFileList }) => {
     let file = newFileList[0].originFileObj;
     const reader = new FileReader();
     reader.onload = () => {
@@ -122,9 +116,10 @@ const Profile = () => {
       setLastName(e.target.value)
     }
   }
-  const onUsAccount = (e) => {
-    setUsAccount(e.target.value)
-  }
+  // const onUsAccount = (e) => {
+  //   setUsAccount(e.target.value)
+  // }
+  // console.log('usstatus',usAccount)
 
   const onCompanyName = (e) => {
     if (e.target.value.match('^[a-zA-Z ]*$')) {
@@ -180,7 +175,7 @@ const Profile = () => {
   }
 
   const onEdit = () => {
-   setDisabled(false)
+    setDisabled(false)
   }
 
   const bankSelect = bankList.map(item => ({
@@ -205,20 +200,14 @@ const Profile = () => {
   const emailInfo = !email && email !== '' ? profileInfo && profileInfo.email : email;
   const businessLocationInfo = !businessLocation && businessLocation !== '' ? profileInfo && profileInfo.businessLocation : businessLocation;
   const companyNameInfo = !companyName && companyName !== '' ? profileInfo && profileInfo.companyName : companyName;
-  const bankInfo = !bank && bank !== '' ? bankLists : bank ;
+  const bankInfo = !bank && bank !== '' ? bankLists : bank;
   const ikOptionsInfo = !ikOptions && ikOptions !== '' ? ikOptionLists : ikOptions;
   const bankAccountInfo = !bankAccount && bankAccount !== '' ? profileInfo && profileInfo.bankAccount : bankAccount;
   const wipayAccountInfo = !wipayAccount && wipayAccount !== '' ? profileInfo && profileInfo.wipayAccount : wipayAccount;
-  //const usAccountInfo = !usAccount && usAccount !== '' ? profileInfo && profileInfo.usAccount : usAccount;
-  const usStatusInfo = !usAccount && usAccount !== '' ? profileInfo && profileInfo.usAccount : usAccount
-  const wipayStatusInfo = !wipay && wipay !== '' ? profileInfo && profileInfo.wipay : wipay
+  // const wipayStatusInfo = !wipay && wipay !== '' ? profileInfo && profileInfo.wipay : wipay
 
+  console.log('ikOptionsInfo', ikOptionsInfo)
 
-//console.log('usstatus',usAccountStatusInfo)
-
- 
-console.log('ikOptionsInfo',ikOptionsInfo)
-  
   const onSubmit = () => {
     if (!firstNameInfo || !lastNameInfo || !mobileInfo || !emailInfo || !companyNameInfo
       || !businessLocationInfo || !ikOptionsInfo) {
@@ -249,25 +238,25 @@ console.log('ikOptionsInfo',ikOptionsInfo)
         businessLocation: businessLocationInfo,
         bank: bankInfo.value,
         bankAccount: bankAccountInfo,
-        wipay,
+        wipay: wipayStatusInfo,
         wipayAccount: wipayAccountInfo,
-        usAccount : usAccountInfo,
+        // usAccount,
         uploadId,
         uploadAddress,
         uploadRegistration,
-        //preference: preference.value,
+        preference: preference.value,
         ikOptions: ikOptionsInfo.value,
       };
-      dispatch({ type: 'PROFILE_REQUEST', Profile });
-      console.log('profile', Profile)
+      //   dispatch({ type: 'PROFILE_REQUEST', Profile });
+      //   console.log('profile', Profile)
     }
+
   }
 
-  //const button = disabled ? 'Edit' : 'Save'
 
   return (
     <div className="wrapper">
-       {isLoading && <Loader />}
+      {isLoading && <Loader />}
       <div className="rightside-panel vendor-profile-page">
         <Headerbar headerName="Profile" />
         <div className='profile-page-dgn'>
@@ -456,7 +445,8 @@ console.log('ikOptionsInfo',ikOptionsInfo)
                             type="radio"
                             value='Yes'
                             onChange={onWipay}
-                            checked={wipayStatusInfo === true ? true : false} />
+                            checked={wipay ? wipay === 'Yes' ? true : false : profileInfo && profileInfo.wipay === true ? true : false}
+                          />
                           <label className="form-check-label" for="exampleRadios1">
                             Yes
                           </label>
@@ -466,7 +456,8 @@ console.log('ikOptionsInfo',ikOptionsInfo)
                             type="radio"
                             value='No'
                             onChange={onWipay}
-                            checked={wipayStatusInfo === false ? true : false} />
+                            checked={wipay ? wipay === 'No' ? true : false : profileInfo && profileInfo.wipay === false ? true : false}
+                          />
                           <label className="form-check-label" for="exampleRadios1">
                             No
                           </label>
@@ -492,8 +483,7 @@ console.log('ikOptionsInfo',ikOptionsInfo)
                         <label className="card-info-label"> Bank Account No </label>
                         <input
                           type="text"
-                         // className={alertError && bank && !bankAccountInfo ? ` form-control my-input` : `form-control formy`}
-                         className="form-control formy`"
+                          className="form-control formy`"
                           placeholder="Bank account number"
                           value={bankAccountInfo}
                           onChange={onBankAccount}
@@ -502,11 +492,10 @@ console.log('ikOptionsInfo',ikOptionsInfo)
                         </input>
                       </div>
                       <div className="label-myprofile">
-                        <label className="card-info-label">WiPay Account Number {wipay === 'Yes'}</label>
+                        <label className="card-info-label">WiPay Account Number {wipay === 'Yes' && <span className="red-star">*</span>}</label>
                         <input
                           type="text"
-                          className="form-control formy`"
-                          //className={alertError && !wipayAccountInfo && wipay === 'Yes' ? ` form-control my-input` : `form-control formy`}
+                          className={alertError && !wipayAccountInfo && wipay === 'Yes' ? ` form-control my-input` : `form-control formy`}
                           placeholder="WiPay number"
                           maxLength={10}
                           value={wipayAccountInfo}
@@ -528,7 +517,7 @@ console.log('ikOptionsInfo',ikOptionsInfo)
                         />
                       </div>
                     </Col>
-                    <div className="label-myprofile">
+                    {/* <div className="label-myprofile">
                       <Col md={6} sm={12} >
                         <label className="signup-label radio-label">US Account Available </label>
                         <div className="form-check">
@@ -538,7 +527,8 @@ console.log('ikOptionsInfo',ikOptionsInfo)
                             type="radio"
                             value="Yes"
                             onChange={onUsAccount}
-                            checked={usStatusInfo === true ? true : false}
+                            checked={usAccount === 'Yes' ? true : false}
+                            //checked={usStatusInfo === true ? true : false}
                           />
                           <label className="form-check-label" for="exampleRadios1">
                             Yes
@@ -549,14 +539,15 @@ console.log('ikOptionsInfo',ikOptionsInfo)
                             type="radio"
                             value="No"
                             onChange={onUsAccount}
-                            checked={usStatusInfo === false ? true : false}
+                            checked={usAccount === 'No' ? true : false}
+                           // checked={usStatusInfo === false ? true : false}
                           />
                           <label className="form-check-label" for="exampleRadios1">
                             No
                           </label>
                         </div>
                       </Col>
-                    </div>
+                    </div> */}
                   </Row>
                 </div>
               </Row>
@@ -564,18 +555,18 @@ console.log('ikOptionsInfo',ikOptionsInfo)
           </Row>
           <Row className="bottom-row">
             <Col className="product-button">
-            {disabled === true ? <button
+              {disabled === true ? <button
                 type="button"
                 className="btn btn-primary btn-block modal-butn"
                 onClick={onEdit} >
                 Edit
               </button> :
-              <button
-                type="button"
-                className="btn btn-primary btn-block modal-butn"
-                onClick={onSubmit} >
-                Submit
-              </button>}
+                <button
+                  type="button"
+                  className="btn btn-primary btn-block modal-butn"
+                  onClick={onSubmit} >
+                  Submit
+                </button>}
             </Col>
           </Row>
         </div>
