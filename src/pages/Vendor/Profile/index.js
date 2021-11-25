@@ -268,7 +268,7 @@ console.log('ikOptionsInfo',ikOptionsInfo)
   return (
     <div className="wrapper">
        {isLoading && <Loader />}
-      <div className="rightside-panel">
+      <div className="rightside-panel vendor-profile-page">
         <Headerbar headerName="Profile" />
         <div className='profile-page-dgn'>
           <Row className="top-row">
