@@ -59,39 +59,49 @@ import Loader from '../../../components/Loader';
 //   },
 // ]
 
+
 const StoreInfo = ({ storeId }) => {
-  const [storeLogo, setStoreLogo] = useState('');
-  const [aboutStore, setAboutStore] = useState('');
+  const [storeLogo, setStoreLogo] = useState();
+  const [aboutStore, setAboutStore] = useState();
+  const [fileList, setImageList] = useState([]);
   const [storeDetail, setStoreDetail] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [storeName, setStoreName] = useState('');
-  const [address, setAddress] = useState('');
-  const [country, setCountry] = useState();
-  const [city, setCity] = useState();
-  const [zipCode, setZipCode] = useState('');
-  const [emailId, setEmailId] = useState('');
-  const [fbId, setFbId] = useState('');
-  const [igId, setIgId] = useState('');
-  const [mobile, setMobile] = useState('');
+  const [storeName, setStoreName] = useState();
+  const [address, setAddress] = useState();
+  const [countryId, setCountryId] = useState();
+  const [cityId, setCityId] = useState();
+  const [zipCode, setZipCode] = useState();
+  const [emailId, setEmailId] = useState();
+  const [fbId, setFbId] = useState();
+  const [igId, setIgId] = useState();
+  const [mobile, setMobile] = useState();
   const [updatedCityOptions, setUpdatedCityOptions] = useState();
   const [openingTime, setOpeningTime] = useState();
   const [closingTime, setClosingTime] = useState();
   const [closed, setClosed] = useState();
   const [timing, setTiming] = useState([])
   const [alertError, setAlertError] = useState(false);
+  const [button, setButton] = useState(false)
+  const [abc,setAbc] = useState();
+  const [abcd,setAbcd] = useState();
+  const [disabled, setDisabled] = useState(true);
+
 
   const dispatch = useDispatch();
   const storeInfo = useSelector((state) => state.storeInfoState.storeInfo);
-  const profileInfo = useSelector((state) => state.thriftProfileState.profileInfo);
   const invalidProfileInfo = useSelector((state) => state.thriftProfileState.error);
-  const isLoading = useSelector((state) => state.thriftProfileState.isLoading || state.storeInfoState.isLoading);
-  // const registerNumber = storeInfo && storeInfo.vendorInfo.register_num;
+  const isLoading = useSelector((state) => state.storeInfoState.isLoading);
+  const profileInfo = useSelector((state) => state.thriftProfileState.profileInfo);
+ 
+  const countrySet = storeInfo && storeInfo.storeInfo.countryId;
+  const citySet = storeInfo && storeInfo.storeInfo.cityId;
 
-  //for update and submit!
-  const emailInfo = storeInfo && storeInfo.storeInfo.emailId;
-  let fileList = [];
+ 
 
-  // const { state } = props.location;
+  const countryLists = [
+    { _id: countrySet , countryName: countrySet},
+  ]
+  console.log('countryLists',countryLists && countryLists.countryName)
 
   useEffect(() => {
     dispatch({ type: 'STORE_INFO_REQUEST', storeId });
@@ -105,10 +115,35 @@ const StoreInfo = ({ storeId }) => {
     }
   }, [profileInfo, invalidProfileInfo]);
 
+  //country from Api
+  useEffect(() => { Locale.filter(item => { 
+  if (item._id === countrySet){
+    const abc = ({
+    value: item._id,
+    label: item.countryName
+  })
+  setAbc(abc);
+  }
+  })},[countrySet]);
+
+  //city from Api
+  useEffect(() => {
+    Locale.filter((item) => { item.cities.filter((item) => {
+          if (item._id === citySet) {
+          const abcd= ({
+            value: item._id,
+            label: item.cityName,
+          });
+          setAbcd(abcd);
+        }
+    });
+  },)
+ },[citySet]);
+ 
   // City Options
   useEffect(() => {
     Locale.filter((item) => {
-      if (country && item._id === country.value) {
+      if (countryId && item._id === countryId.value) {
         const city = item.cities.sort((a, b) => a.cityName.localeCompare(b.cityName)).map((data) => ({
           value: data._id,
           label: data.cityName,
@@ -116,10 +151,12 @@ const StoreInfo = ({ storeId }) => {
         setUpdatedCityOptions(city);
       }
     });
-  }, [country]);
+  }, [countryId]);
 
   const onAvatarImage = ({ fileList: newFileList }) => {
+   setImageList(newFileList);
     let file = newFileList[0].originFileObj;
+    //get64
     const reader = new FileReader();
     reader.onload = () => {
       setStoreLogo(reader.result);
@@ -139,6 +176,7 @@ const StoreInfo = ({ storeId }) => {
       setStoreDetail(true)
     }
   }
+  console.log('store', storeName)
 
   const onAddress = (e) => {
     if (e.target.value.match('^[a-zA-Z0-9 ]*$')) {
@@ -148,8 +186,8 @@ const StoreInfo = ({ storeId }) => {
   }
 
   // Country Options
-  const onCountry = (country) => {
-    setCountry(country)
+  const onCountry = (countryId) => {
+    setCountryId(countryId)
     // setStoreDetail(true)
   }
 
@@ -159,8 +197,22 @@ const StoreInfo = ({ storeId }) => {
     label: <div><img className="flag" src={item.flag} alt="new" /><span className="signup-flag">{item.countryName}</span></div>,
   }));
 
+   //country from Api
+   useEffect(() => { Locale.filter(item => { 
+    if (item._id === countrySet){
+      console.log('item.countryName',item.countryName)
+      const abc = ({
+      // return {
+      value: item._id,
+      label: <div><img className="flag" src={item.flag} alt="new" /><span className="signup-flag">{item.countryName}</span></div>,
+    })
+    setAbc(abc);
+    }
+    })},[countryId])
+
+
   const onCity = (city) => {
-    setCity(city)
+    setCityId(city)
     // setStoreDetail(true)
   }
 
@@ -231,29 +283,40 @@ const StoreInfo = ({ storeId }) => {
     }, 1000)
   }
 
-  const onSubmit = () => {
-    const storeLogoInfo = storeDetail ? storeLogo : storeInfo && storeInfo.storeInfo.storeLogo;
-    const aboutStoreInfo = storeDetail ? aboutStore : storeInfo && storeInfo.storeInfo.aboutStore;
-    const addressInfo = storeDetail ? address : storeInfo && storeInfo.storeInfo.address;
-    const countryIdInfo = country && country.value;
-    const cityIdInfo = city && city.value;
-    const zipCodeInfo = storeDetail ? zipCode : storeInfo && storeInfo.storeInfo.zipCode;
-    const emailIdInfo = storeDetail ? emailId : storeInfo && storeInfo.storeInfo.emailId;
-    const fbIdInfo = storeDetail ? fbId : storeInfo && storeInfo.storeInfo.fbId;
-    const igIdInfo = storeDetail ? igId : storeInfo && storeInfo.storeInfo.igId;
-    const mobileInfo = storeDetail ? mobile : storeInfo && storeInfo.storeInfo.mobile;
+  const onUpdate = () => {
+    setButton(true)
+    setDisabled(false)
+  }
 
-    if (!addressInfo || !countryIdInfo || !emailIdInfo || !mobileInfo) {
+  const storeNameInfo = !storeName && storeName !== '' ? storeInfo && storeInfo.storeInfo.storeName : storeName;
+  const storeLogoInfo = !storeLogo && storeLogo !== '' ? storeInfo && storeInfo.storeInfo.storeLogo : storeLogo;
+  const aboutStoreInfo = !aboutStore && aboutStore !== '' ? storeInfo && storeInfo.storeInfo.aboutStore : aboutStore;
+  const addressInfo = !address && address !== '' ? storeInfo && storeInfo.storeInfo.address : address;
+  const zipCodeInfo = !zipCode && zipCode !== '' ? storeInfo && storeInfo.storeInfo.zipCode : zipCode;
+  const emailIdInfo = !emailId && emailId !== '' ? storeInfo && storeInfo.storeInfo.emailId : emailId;
+  const fbIdInfo = !fbId && fbId !== '' ? storeInfo && storeInfo.storeInfo.fbId : fbId;
+  const igIdInfo = !igId && igId !== '' ? storeInfo && storeInfo.storeInfo.igId : igId;
+  const cityInfo = !cityId && cityId !== '' ? abcd : cityId;
+  const countryInfo = !countryId && countryId !== '' ? abc && abc : countryId;
+
+
+  const mobileInfo = !mobile && mobile !== '' ? storeInfo && storeInfo.storeInfo.mobile : mobile;
+
+  const onSubmit = () => {
+
+    if (!addressInfo || !countryInfo || !emailIdInfo || !mobileInfo) {
       setAlertError(true)
       message.error('Please fill all the fields')
+    } else if (disabled) {
+      setDisabled(false)
     } else {
       const profileInfo = {
-        // storeName,
+        storeName: storeNameInfo,
         storeLogo: storeLogoInfo,
         aboutStore: aboutStoreInfo,
         address: addressInfo,
-        countryId: countryIdInfo,
-        cityId: cityIdInfo,
+        countryId:countryId.value,
+        cityId: cityInfo.value,
         zipCode: zipCodeInfo,
         emailId: emailIdInfo,
         fbId: fbIdInfo,
@@ -264,6 +327,7 @@ const StoreInfo = ({ storeId }) => {
       };
       dispatch({ type: 'THRIFT_PROFILE_REQUEST', profileInfo });
     };
+    console.log('payoad', profileInfo)
   }
 
   return (
@@ -297,7 +361,7 @@ const StoreInfo = ({ storeId }) => {
                         <div className='load-info'>
                           <div>
                             <div className="photo">
-                              {storeDetail ? <img src={storeLogo} alt='' /> : <img src={storeInfo && storeInfo.storeInfo.storeLogo ? storeInfo.storeInfo.storeLogo : "images/logo-here.png"} />}
+{storeDetail ? <img src={fileList} alt='' /> : <img src={storeInfo && storeInfo.storeInfo.storeLogo ? storeInfo.storeInfo.storeLogo : "images/logo-here.png"} />}
                             </div>
                             <div className="image-upload">
                               <ImgCrop rotate>
@@ -308,6 +372,7 @@ const StoreInfo = ({ storeId }) => {
                                   type="file"
                                   accept="image/*"
                                   showUploadList={false}
+                                  disabled={disabled}
                                 >
                                   <label for="file-input">
                                     <i className="fa fa-camera" />
@@ -324,6 +389,7 @@ const StoreInfo = ({ storeId }) => {
                       <textarea className={alertError && !aboutStore && storeDetail ? ` form-control my-input` : `form-control formy`}
                         name="message"
                         placeholder='type something..'
+                        disabled={disabled}
                         value={storeDetail ? aboutStore : storeInfo && storeInfo.storeInfo.aboutStore}
                         onChange={onAboutStore}
                         maxLength={500}
@@ -374,18 +440,19 @@ const StoreInfo = ({ storeId }) => {
                         className="form-control"
                         placeholder="store name"
                         maxLength={30}
-                        value={storeInfo && storeInfo.storeInfo.storeName}
+                        value={storeNameInfo}
                         onChange={onStoreName}
-                        disabled
+                        disabled={disabled}
                       />
                     </Col>
                     <Col md={12}>
                       <label className="store-label">Address<span className="red-star">*</span></label>
-                      <textarea className={alertError && !address && storeDetail ? ` form-control my-input` : `form-control formy`}
+                      <textarea className={alertError && !addressInfo ? ` form-control my-input` : `form-control formy`}
                         type="text"
                         placeholder="address."
                         maxLength={100}
-                        value={storeDetail ? address : storeInfo && storeInfo.storeInfo.address}
+                        value={addressInfo}
+                        disabled={disabled}
                         onChange={onAddress}
                         rows="4">
                       </textarea>
@@ -399,16 +466,17 @@ const StoreInfo = ({ storeId }) => {
                         onChange={onAddress}
                       /> */}
                     </Col>
-                    <Col md={12} className={`clear-city ${alertError && !country && storeDetail && `dropdown-alert`}`}>
+                    <Col md={12} className={`clear-city ${alertError && `dropdown-alert`}`}>
                       <label className="store-label">Country <span className="red-star">*</span></label>
                       <Select
                         type="text"
                         className="prof-select "
                         placeholder="select country"
                         isSearchable={false}
-                        value={storeDetail ? country : storeInfo && storeInfo.storeInfo.country}
+                        value={countryInfo}
                         onChange={onCountry}
                         options={countryOptions}
+                        disabled={disabled}
                       />
                     </Col>
                     <Col md={12}>
@@ -419,11 +487,12 @@ const StoreInfo = ({ storeId }) => {
                             type="text"
                             className="prof-select "
                             placeholder="select city"
-                            value={storeDetail ? city : storeInfo && storeInfo.storeInfo.city}
+                            value={cityInfo}
                             onChange={onCity}
                             options={updatedCityOptions}
                             isSearchable={false}
-                            isDisabled={!country}
+                            isDisabled={!countryId}
+                            
                           />
                         </Col>
                         <Col md={6} className='zipcode'>
@@ -432,9 +501,10 @@ const StoreInfo = ({ storeId }) => {
                             type="text"
                             className="form-control"
                             maxLength={10}
-                            value={storeDetail ? zipCode : storeInfo && storeInfo.storeInfo.zipCode}
+                            value={zipCodeInfo}
                             onChange={onZipCode}
                             placeholder="Z1234"
+                            disabled={disabled}
                           />
                         </Col>
                       </Row>
@@ -448,9 +518,10 @@ const StoreInfo = ({ storeId }) => {
                     <label className="signup-label">Email ID <span className="red-star">*</span></label>
                     <input
                       type="text"
-                      className={alertError && !emailId && storeDetail ? `form-control my-input` : `form-control formy`}
+                      className={alertError && !emailIdInfo ? `form-control my-input` : `form-control formy`}
                       maxLength={30}
-                      value={storeDetail ? emailId : storeInfo && storeInfo.storeInfo.emailId}
+                      value={emailIdInfo}
+                      disabled={disabled}
                       onChange={onEmailId}
                       placeholder="@gmail.com"
                     />
@@ -462,8 +533,9 @@ const StoreInfo = ({ storeId }) => {
                       className="form-control"
                       maxLength={30}
                       placeholder="facebook"
-                      value={storeDetail ? fbId : storeInfo && storeInfo.storeInfo.fbId}
+                      value={fbIdInfo}
                       onChange={onFbId}
+                      disabled={disabled}
                     />
                   </Col>
                   <Col md={3}>
@@ -472,18 +544,20 @@ const StoreInfo = ({ storeId }) => {
                       type="text"
                       className="form-control"
                       maxLength={30}
-                      value={storeDetail ? igId : storeInfo && storeInfo.storeInfo.igId}
+                      value={igIdInfo}
                       onChange={onIgId}
                       placeholder="instagram"
+                      disabled={disabled}
                     />
                   </Col>
                   <Col md={3} className='zipcode'>
                     <label className="signup-label">Contact Number <span className="red-star">*</span></label>
                     <Cleave
-                      className={alertError && !mobile && storeDetail ? `form-control my-input` : `form-control formy`}
+                      className={alertError && !mobileInfo ? `form-control my-input` : `form-control formy`}
                       placeholder="contact number"
-                      value={storeDetail ? mobile : storeInfo && storeInfo.storeInfo.mobile}
+                      value={mobileInfo}
                       onChange={onMobile}
+                      disabled={disabled}
                       options={{
                         blocks: [3, 3, 4],
                         numericOnly: true
@@ -566,12 +640,22 @@ const StoreInfo = ({ storeId }) => {
               </Row>
               <Row md={12} className="margin-control">
                 <Col lg={2} md={3} sm={4} xs={6} className="product-button">
-                  <button
-                    type="button"
-                    className="btn btn-primary btn-block modal-butn"
-                    onClick={onSubmit}
-                  > {emailInfo && emailInfo ? 'Update ' : 'Submit'}
-                  </button>
+                  {button === false ?
+                    <button
+                      type="button"
+                      className="btn btn-primary btn-block modal-butn"
+                      onClick={onUpdate}
+                    >
+                      Update
+                    </button> :
+                    <button
+                      type="button"
+                      className="btn btn-primary btn-block modal-butn"
+                      onClick={onSubmit}
+                    >
+                      submit
+                      {/* {emailInfo && emailInfo ? 'Update ' : 'Submit'} */}
+                    </button>}
                 </Col>
               </Row>
             </Row>

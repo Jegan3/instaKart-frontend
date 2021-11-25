@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import TextLoop from "react-text-loop";
 import Header from '../../../components/Header';
 import Footer from '../../../components/Footer';
-import { CarouselFirst, CarouselSecond, CarouselThird, CarouselFourth, CarouselMobile, CarouselNewEStore, } from '../../../components/Carousel';
+import { CarouselFirst, CarouselSecond, CarouselThird, CarouselNewEStore, CarouselNewEStoreVideo } from '../../../components/Carousel';
 import { Banners, SecondaryBanners } from '../../../components/Banners';
 import Particle from '../../../components/Particle';
 
@@ -61,11 +61,11 @@ const Home = () => {
         <CarouselFirst />
         <CarouselSecond />
         <CarouselThird />
-        <CarouselFourth />
+        {/* <CarouselFourth /> */}
       </div>
       <div className='bg-home-ban'>
         <div className='arrival'>
-          <SecondaryBanners />
+          <SecondaryBanners secondaryBanner={advertisement && advertisement.userAds}/>
         </div>
         <br />
       </div>
@@ -103,7 +103,9 @@ const Home = () => {
       <div className='bg-home'>
         <div className='arrival'>
           <h5>TimeCap VLogs</h5>
-          <CarouselNewEStore />
+          <div className="promo-videos">
+          <CarouselNewEStoreVideo video={advertisement && advertisement.userAds}/>
+        </div>
         </div>
         <br />
       </div>

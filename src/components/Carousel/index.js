@@ -3,16 +3,35 @@ import React from 'react';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { Card, ThriftStoreNearYouCard, NewAdditionCard, ReviewCard } from '../Card';
+import ReactPlayer from "react-player";
 
 const responsive = {
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
-    items: 3,
+    items: 4,
     // slidesToSlide: 4,
   },
   tablet: {
     breakpoint: { max: 1024, min: 680 },
+    items: 3,
+    // slidesToSlide: 3,
+  },
+  mobile: {
+    breakpoint: { max: 680, min: 0 },
     items: 2,
+    // slidesToSlide: 2,
+  },
+};
+
+const responsiveVideo = {
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 1,
+    // slidesToSlide: 4,
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 680 },
+    items: 1,
     // slidesToSlide: 3,
   },
   mobile: {
@@ -112,31 +131,6 @@ const responsiveThriftCategory = {
   },
 };
 
-const businessRowFirst = [
-  {
-    id: 1,
-    title: 'CARD 1',
-    content: 'Food Avenue',
-    imgUrl: 'images/1_Food.png',
-    btnUrl: '/comingsoon',
-  },
-  {
-    id: 2,
-    title: 'CARD 2',
-    content: 'Fashion District',
-    imgUrl: 'images/2_Fashion.jpg',
-    btnUrl: '/comingsoon',
-  },
-  {
-    id: 3,
-    title: 'CARD 3',
-    content: 'Medical Supplies, Health & Wellness',
-    imgUrl: 'images/3_Health.png',
-    btnUrl: '/comingsoon',
-  },
-];
-
-
 const reviewCardDetails = [
   {
     id: 1,
@@ -198,8 +192,28 @@ const reviewCardDetails = [
   },
 ];
 
-
-const businessRowSecond = [
+const businessRowFirst = [
+  {
+    id: 1,
+    title: 'CARD 1',
+    content: 'Food Avenue',
+    imgUrl: 'images/1_Food.png',
+    btnUrl: '/comingsoon',
+  },
+  {
+    id: 2,
+    title: 'CARD 2',
+    content: 'Fashion District',
+    imgUrl: 'images/2_Fashion.jpg',
+    btnUrl: '/comingsoon',
+  },
+  {
+    id: 3,
+    title: 'CARD 3',
+    content: 'Medical Supplies, Health & Wellness',
+    imgUrl: 'images/3_Health.png',
+    btnUrl: '/comingsoon',
+  },
   {
     id: 4,
     title: 'CARD 4',
@@ -207,6 +221,16 @@ const businessRowSecond = [
     imgUrl: 'images/4_Speciality.png',
     btnUrl: '/comingsoon',
   },
+];
+
+const businessRowSecond = [
+  // {
+  //   id: 4,
+  //   title: 'CARD 4',
+  //   content: 'Speciality Services',
+  //   imgUrl: 'images/4_Speciality.png',
+  //   btnUrl: '/comingsoon',
+  // },
   {
     id: 5,
     title: 'CARD 5',
@@ -222,9 +246,6 @@ const businessRowSecond = [
     imgUrl: 'images/6_Grocery.png',
     btnUrl: '/comingsoon',
   },
-];
-
-const businessRowThird = [
   {
     id: 7,
     title: 'CARD 7',
@@ -239,6 +260,23 @@ const businessRowThird = [
     imgUrl: 'images/8_hardware.png',
     btnUrl: '/comingsoon',
   },
+];
+
+const businessRowThird = [
+  // {
+  //   id: 7,
+  //   title: 'CARD 7',
+  //   content: 'Appliances & Tech Gadgets',
+  //   imgUrl: 'images/7_applicance.jpg',
+  //   btnUrl: '/comingsoon',
+  // },
+  // {
+  //   id: 8,
+  //   title: 'CARD 8',
+  //   content: 'Automotive, Hardware, Industrial & Safety Supplies',
+  //   imgUrl: 'images/8_hardware.png',
+  //   btnUrl: '/comingsoon',
+  // },
   {
     id: 9,
     title: 'CARD 9',
@@ -246,9 +284,6 @@ const businessRowThird = [
     imgUrl: 'images/9_home.png',
     btnUrl: '/comingsoon',
   },
-];
-
-const businessRowFourth = [
   {
     id: 10,
     title: 'CARD 10',
@@ -271,6 +306,30 @@ const businessRowFourth = [
     btnUrl: '/comingsoon',
   },
 ];
+
+// const businessRowFourth = [
+//   {
+//     id: 10,
+//     title: 'CARD 10',
+//     content: 'Insta-Kart E-learning',
+//     imgUrl: 'images/10_TechGadgets.jpg',
+//     btnUrl: 'https://instakartelearning.com/chess-school/',
+//   },
+//   {
+//     id: 11,
+//     title: 'CARD 11',
+//     content: 'Social Media',
+//     imgUrl: 'images/11_TimeCap.png',
+//     btnUrl: '/comingsoon',
+//   },
+//   {
+//     id: 12,
+//     title: 'CARD 12',
+//     content: 'Wholesale Suppliers & Drop Shipping',
+//     imgUrl: 'images/12_WholesaleDS.jpg',
+//     btnUrl: '/comingsoon',
+//   },
+// ];
 
 const cardsDataNewEStore = [
   {
@@ -765,5 +824,20 @@ export const CarouselReviewCard = () => (
     {reviewCardDetails.map((card) => (
       <ReviewCard key={card.id} imgUrl={card.imgUrl} title={card.title} date={card.date} content={card.content} />
     ))}
+  </Carousel>
+);
+
+export const CarouselNewEStoreVideo = ({video}) => (
+  <Carousel
+    infinite
+    autoPlay
+    autoPlaySpeed={3000}
+    responsive={responsiveVideo}
+  >
+    {video ? video.video.map((item) => (
+      // <Card key={card.id} className='card' imgUrl={card.imgUrl} />
+      <ReactPlayer className="homevideo-prop" url={item} width="100%" height="100%" controls={true} />
+
+    )):[]}
   </Carousel>
 );

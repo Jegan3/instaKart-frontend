@@ -57,9 +57,10 @@ const combinedReducer = combineReducers({
 
 const rootReducer = (state, action) => {
   if (action.type === 'LOGOUT_SUCCESS') {
-    state = undefined;
+    return combinedReducer({ getYourAds: state.getYourAds }, action);
+  } else {
+    return combinedReducer(state, action);
   }
-  return combinedReducer(state, action);
 };
 
 export default rootReducer;

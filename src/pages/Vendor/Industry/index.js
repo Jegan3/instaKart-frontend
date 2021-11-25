@@ -15,14 +15,15 @@ const Industry = (props) => {
 
   const dispatch = useDispatch();
   const storeInfo = useSelector((state) => state.storeInfoState.storeInfo);
+  const naming = storeInfo && storeInfo.storeInfo.storeName;
 
   useEffect(() => {
     dispatch({ type: 'VENDOR_COMPANY_DETAILS_REQUEST' });
   }, [])
 
-  useEffect(() => {
-    dispatch({ type: 'STORE_INFO_REQUEST', storeId });
-  }, [])
+  // useEffect(() => {
+  //   dispatch({ type: 'STORE_INFO_REQUEST', storeId });
+  // }, [naming])
 
   // const profile = () => {
   //   setToggle(1)
