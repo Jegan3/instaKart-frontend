@@ -10,8 +10,8 @@ import Particle from '../../../components/Particle';
 
 const Home = () => {
 
-  const advertisement = useSelector((state) => state.getYourAds.advertisement);
   const dispatch = useDispatch();
+  const advertisement = useSelector((state) => state.getYourAds.advertisement);
 
   useEffect(() => {
     // dispatch it once mounted
@@ -44,7 +44,7 @@ const Home = () => {
         </TextLoop>
         E-Commerce Website
       </h2>
-      {advertisement && advertisement ? <div className='intro-banner'>
+      {advertisement && advertisement.userAds ? <div className='intro-banner'>
         <Banners primaryBanner={advertisement && advertisement.userAds} />
       </div> : ''}
       {/* {window.screen.width <= 464 ?
@@ -63,9 +63,9 @@ const Home = () => {
         <CarouselThird />
         {/* <CarouselFourth /> */}
       </div>
-      {advertisement && advertisement ? <div className='bg-home-ban'>
+      {advertisement && advertisement.userAds ? <div className='bg-home-ban'>
         <div className='arrival'>
-          <SecondaryBanners secondaryBanner={advertisement && advertisement.userAds}/>
+          <SecondaryBanners secondaryBanner={advertisement && advertisement.userAds} />
         </div>
         <br />
       </div> : ''}
@@ -100,12 +100,12 @@ const Home = () => {
         </div>
         <br />
       </div>
-     {advertisement && advertisement ? <div className='bg-home'>
+      {advertisement && advertisement.userAds ? <div className='bg-home'>
         <div className='arrival'>
           <h5>TimeCap VLogs</h5>
           <div className="promo-videos">
-          <CarouselNewEStoreVideo video={advertisement && advertisement.userAds}/>
-        </div>
+            <CarouselNewEStoreVideo video={advertisement && advertisement.userAds} />
+          </div>
         </div>
         <br />
       </div> : ''}
