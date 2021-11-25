@@ -52,7 +52,7 @@ const Profile = () => {
 
   const dispatch = useDispatch();
   const storeInfo = useSelector((state) => state.storeInfoState.storeInfo);
- 
+
   useEffect(() => {
     dispatch({ type: 'PROFILE_REQUEST' });
   }, [])
@@ -253,7 +253,7 @@ const Profile = () => {
 
   return (
     <div className="wrapper">
-      <div className="rightside-panel">
+      <div className="rightside-panel vendor-profile-page">
         <Headerbar headerName="Profile" />
         <div className='profile-page-dgn'>
           <Row className="top-row">

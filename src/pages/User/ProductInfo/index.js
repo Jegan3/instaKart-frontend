@@ -189,7 +189,7 @@ const ProductInfo = ({ location }) => {
   };
 
   return (
-    <div className="ads-control">
+    <div className="ads-control product-info-page">
       <Header loginCart={login} hideloginCart={hideloginCart} module={module} />
       <div className="jumbotron jumbotron-fluid"
         style={{ backgroundImage: `url(${!background ? product && product.productImages[0] : background})` }}
