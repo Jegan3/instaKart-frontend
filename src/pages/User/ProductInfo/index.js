@@ -320,17 +320,17 @@ const ProductInfo = ({ location }) => {
                 </Col>
               </div>
             </Row>
-            <div className="video-related">
+            {productVideo ?  <div className="video-related">
               <Row className='position-bottom'>
                 <div className>
                   <Col md={12}>
                     <div className="video-ads">
-                      {productVideo ? <ReactPlayer className="video-prop" url={productVideo} width="100%" height="100%" controls={true} /> : <ReactPlayer className="video-prop" url={'https://www.youtube.com/watch?v=1-wYsS4EwJk'} width="100%" height="100%" controls={true} />}
+                      <ReactPlayer className="video-prop" url={productVideo} width="100%" height="100%" controls={true} /> 
                     </div>
                   </Col>
                 </div>
               </Row>
-            </div>
+            </div> : ''}
             <div className="video-related">
               <Row className='position-bottom'>
                 <div ClassName="ik-ads">

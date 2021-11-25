@@ -430,6 +430,7 @@ const Cart = ({ location }) => {
                                           "& .MuiMenuItem-root": {
                                             backgroundColor: "#2D3549",
                                             color: 'White',
+                                            fontSize: '15px'
                                           },
                                           "& .MuiList-root": {
                                             backgroundColor: "#2D3549",
