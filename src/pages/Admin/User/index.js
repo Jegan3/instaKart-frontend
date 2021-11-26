@@ -1,7 +1,7 @@
 /*eslint-disable*/
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Col, Row, Grid } from 'react-bootstrap';
+import { Row, Grid } from 'react-bootstrap';
 import ReactTable from 'react-table';
 import Table from '../../../components/Table';
 import Headerbar from '../../../components/Headerbar';
@@ -47,38 +47,38 @@ const User = () => {
                         accessor: 'id',
                         filterable: false,
                         sortable: false,
-                        width: 50,
+                        width: 40,
                       },
                       {
                         Header: 'Transaction Id',
                         accessor: 'userId',
-                        width: 250,
+                        width: 230,
                       },
                       {
                         Header: 'E-Mail',
                         accessor: 'email',
-                        width: 250,
+                        width: 220,
                       },
                       {
                         Header: 'First Name',
                         accessor: 'firstName',
-                        width: 200,
+                        width: 140,
                       },
                       {
                         Header: 'Last Name',
                         accessor: 'lastName',
-                        width: 200,
+                        width: 140,
                       },
                       {
                         Header: 'Country Name',
                         accessor: 'countryName',
-                        width: 150,
+                        width: 140,
                       },
 
                       {
                         Header: 'City Name',
                         accessor: 'cityName',
-                        width: 150,
+                        width: 130,
                       },
                     ]}
                     defaultPageSize={10}

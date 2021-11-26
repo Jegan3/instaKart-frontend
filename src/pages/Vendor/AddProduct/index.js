@@ -199,7 +199,7 @@ const AddProduct = ({ storeId }) => {
   const onStockReserve = (e) => {
     setStockReserve(e.target.value)
   }
-  console.log(stockReserve);
+
   const onStockHand = (e) => {
     setStockHand(e.target.value)
   }
@@ -316,7 +316,6 @@ const AddProduct = ({ storeId }) => {
         productShipping,
         estoreId: storeId,
       };
-      console.log(addProduct)
       dispatch({ type: 'THRIFT_ADD_PRODUCT_REQUEST', addProduct });
     }
     setClear(true)

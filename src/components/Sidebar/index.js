@@ -175,25 +175,13 @@ const Sidebar = () => {
               </MenuItem>
               {vendorCompanyDetails && vendorCompanyDetails.industries.map((item) => <SubMenu title={item.industryType} icon={<FontAwesomeIcon icon={faNetworkWired} />
               }>
-                {/* <SubMenu> */}
-                {/* <SubMenu title="Thrift Store" icon={<FontAwesomeIcon icon={faNetworkWired} />}> */}
                 {item.stores.map((info) => <div>
 
                   <MenuItem onClick={() => onStore(info)}>
                     {info.storeName}
                   </MenuItem>
-                  {/* <MenuItem >
-                    Add Product <Link to="/addproduct" />
-                  </MenuItem>
-                  <MenuItem >
-                    Product List <Link to="/productlist" />
-                  </MenuItem> */}
                 </div>)}
-                {/* <MenuItem onClick={addNewStore}>
-                  Add store
-                </MenuItem> */}
               </SubMenu>)}
-              {/* <MenuItem icon={<FontAwesomeIcon icon={faUser} />}>Customer Review</MenuItem> */}
               <SubMenu title="Request" icon={<FontAwesomeIcon icon={faNetworkWired} />}>
                 <MenuItem onClick={addNewStore}>Add Store</MenuItem>
               </SubMenu>

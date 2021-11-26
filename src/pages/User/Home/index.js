@@ -44,7 +44,7 @@ const Home = () => {
         </TextLoop>
         E-Commerce Website
       </h2>
-      {advertisement && Object.keys(advertisement.userAds).length !== 0 ? <div className='intro-banner'>
+      {advertisement && Object.keys(advertisement.userAds).length !== 0 && advertisement.userAds.primaryBanner ? <div className='intro-banner'>
         <Banners primaryBanner={advertisement && advertisement.userAds} />
       </div> : ''}
       {/* {window.screen.width <= 464 ?
@@ -63,7 +63,7 @@ const Home = () => {
         <CarouselThird />
         {/* <CarouselFourth /> */}
       </div>
-      {advertisement && Object.keys(advertisement.userAds).length !== 0 ? <div className='bg-home-ban'>
+      {advertisement && Object.keys(advertisement.userAds).length !== 0 && advertisement.userAds.secondaryBanner ? <div className='bg-home-ban'>
         <div className='arrival'>
           <SecondaryBanners secondaryBanner={advertisement && advertisement.userAds} />
         </div>
@@ -100,7 +100,7 @@ const Home = () => {
         </div>
         <br />
       </div>
-      {advertisement && Object.keys(advertisement.userAds).length !== 0 ? <div className='bg-home'>
+      {advertisement && Object.keys(advertisement.userAds).length !== 0 && advertisement.userAds.video ? <div className='bg-home'>
         <div className='arrival'>
           <h5>TimeCap VLogs</h5>
           <div className="promo-videos">

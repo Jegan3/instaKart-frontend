@@ -82,8 +82,8 @@ const StoreInfo = ({ storeId }) => {
   const [timing, setTiming] = useState([])
   const [alertError, setAlertError] = useState(false);
   const [button, setButton] = useState(false)
-  const [abc,setAbc] = useState();
-  const [abcd,setAbcd] = useState();
+  const [countryDetails, setCountryDetails] = useState();
+  const [abcd, setCityDetails] = useState();
   const [disabled, setDisabled] = useState(true);
 
 
@@ -92,16 +92,15 @@ const StoreInfo = ({ storeId }) => {
   const invalidProfileInfo = useSelector((state) => state.thriftProfileState.error);
   const isLoading = useSelector((state) => state.storeInfoState.isLoading);
   const profileInfo = useSelector((state) => state.thriftProfileState.profileInfo);
- 
+
   const countrySet = storeInfo && storeInfo.storeInfo.countryId;
   const citySet = storeInfo && storeInfo.storeInfo.cityId;
 
- 
 
-  const countryLists = [
-    { _id: countrySet , countryName: countrySet},
-  ]
-  console.log('countryLists',countryLists && countryLists.countryName)
+
+  // const countryLists = [
+  //   { _id: countrySet, countryName: countrySet },
+  // ]
 
   useEffect(() => {
     dispatch({ type: 'STORE_INFO_REQUEST', storeId });
@@ -116,30 +115,33 @@ const StoreInfo = ({ storeId }) => {
   }, [profileInfo, invalidProfileInfo]);
 
   //country from Api
-  useEffect(() => { Locale.filter(item => { 
-  if (item._id === countrySet){
-    const abc = ({
-    value: item._id,
-    label: item.countryName
-  })
-  setAbc(abc);
-  }
-  })},[countrySet]);
+  useEffect(() => {
+    Locale.filter(item => {
+      if (item._id === countrySet) {
+        const countryDetails = ({
+          value: item._id,
+          label: item.countryName
+        })
+        setCountryDetails(countryDetails);
+      }
+    })
+  }, [countrySet]);
 
   //city from Api
   useEffect(() => {
-    Locale.filter((item) => { item.cities.filter((item) => {
-          if (item._id === citySet) {
-          const abcd= ({
+    Locale.filter((item) => {
+      item.cities.filter((item) => {
+        if (item._id === citySet) {
+          const abcd = ({
             value: item._id,
             label: item.cityName,
           });
-          setAbcd(abcd);
+          setCityDetails(abcd);
         }
-    });
-  },)
- },[citySet]);
- 
+      });
+    })
+  }, [citySet]);
+
   // City Options
   useEffect(() => {
     Locale.filter((item) => {
@@ -154,7 +156,7 @@ const StoreInfo = ({ storeId }) => {
   }, [countryId]);
 
   const onAvatarImage = ({ fileList: newFileList }) => {
-   setImageList(newFileList);
+    setImageList(newFileList);
     let file = newFileList[0].originFileObj;
     //get64
     const reader = new FileReader();
@@ -176,7 +178,6 @@ const StoreInfo = ({ storeId }) => {
       setStoreDetail(true)
     }
   }
-  console.log('store', storeName)
 
   const onAddress = (e) => {
     if (e.target.value.match('^[a-zA-Z0-9 ]*$')) {
@@ -197,18 +198,19 @@ const StoreInfo = ({ storeId }) => {
     label: <div><img className="flag" src={item.flag} alt="new" /><span className="signup-flag">{item.countryName}</span></div>,
   }));
 
-   //country from Api
-   useEffect(() => { Locale.filter(item => { 
-    if (item._id === countrySet){
-      console.log('item.countryName',item.countryName)
-      const abc = ({
-      // return {
-      value: item._id,
-      label: <div><img className="flag" src={item.flag} alt="new" /><span className="signup-flag">{item.countryName}</span></div>,
+  //country from Api
+  useEffect(() => {
+    Locale.filter(item => {
+      if (item._id === countrySet) {
+        const countryDetails = ({
+          // return {
+          value: item._id,
+          label: <div><img className="flag" src={item.flag} alt="new" /><span className="signup-flag">{item.countryName}</span></div>,
+        })
+        setCountryDetails(countryDetails);
+      }
     })
-    setAbc(abc);
-    }
-    })},[countryId])
+  }, [countryId])
 
 
   const onCity = (city) => {
@@ -297,7 +299,7 @@ const StoreInfo = ({ storeId }) => {
   const fbIdInfo = !fbId && fbId !== '' ? storeInfo && storeInfo.storeInfo.fbId : fbId;
   const igIdInfo = !igId && igId !== '' ? storeInfo && storeInfo.storeInfo.igId : igId;
   const cityInfo = !cityId && cityId !== '' ? abcd : cityId;
-  const countryInfo = !countryId && countryId !== '' ? abc && abc : countryId;
+  const countryInfo = !countryId && countryId !== '' ? countryDetails && countryDetails : countryId;
 
 
   const mobileInfo = !mobile && mobile !== '' ? storeInfo && storeInfo.storeInfo.mobile : mobile;
@@ -315,7 +317,7 @@ const StoreInfo = ({ storeId }) => {
         storeLogo: storeLogoInfo,
         aboutStore: aboutStoreInfo,
         address: addressInfo,
-        countryId:countryId.value,
+        countryId: countryId.value,
         cityId: cityInfo.value,
         zipCode: zipCodeInfo,
         emailId: emailIdInfo,
@@ -327,7 +329,7 @@ const StoreInfo = ({ storeId }) => {
       };
       dispatch({ type: 'THRIFT_PROFILE_REQUEST', profileInfo });
     };
-    console.log('payoad', profileInfo)
+    //console.log('payoad', profileInfo)
   }
 
   return (
@@ -361,7 +363,7 @@ const StoreInfo = ({ storeId }) => {
                         <div className='load-info'>
                           <div>
                             <div className="photo">
-{storeDetail ? <img src={fileList} alt='' /> : <img src={storeInfo && storeInfo.storeInfo.storeLogo ? storeInfo.storeInfo.storeLogo : "images/logo-here.png"} />}
+                              {storeDetail ? <img src={fileList} alt='' /> : <img src={storeInfo && storeInfo.storeInfo.storeLogo ? storeInfo.storeInfo.storeLogo : "images/logo-here.png"} />}
                             </div>
                             <div className="image-upload">
                               <ImgCrop rotate>
@@ -492,7 +494,7 @@ const StoreInfo = ({ storeId }) => {
                             options={updatedCityOptions}
                             isSearchable={false}
                             isDisabled={!countryId}
-                            
+
                           />
                         </Col>
                         <Col md={6} className='zipcode'>
@@ -654,7 +656,6 @@ const StoreInfo = ({ storeId }) => {
                       onClick={onSubmit}
                     >
                       submit
-                      {/* {emailInfo && emailInfo ? 'Update ' : 'Submit'} */}
                     </button>}
                 </Col>
               </Row>
