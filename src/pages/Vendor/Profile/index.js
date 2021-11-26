@@ -157,6 +157,7 @@ const Profile = () => {
       setPreference('')
     } else if (e.target.value === 'No') {
       setPreference({ value: 'Bank Transfer', label: 'Bank Transfer' })
+      setWipayAccount("")
     }
   }
 
@@ -296,7 +297,7 @@ const Profile = () => {
                         <label className="card-info-label">Company Name  </label>
                         <input
                           className={alertError && !companyNameInfo ? ` form-control my-input` : `form-control formy`}
-                          disabled={disabled}
+                          disabled
                           value={companyNameInfo}
                           type="text"
                           placeholder="Company Name"
@@ -308,7 +309,7 @@ const Profile = () => {
                         <label className="card-info-label"> Business Location  </label>
                         <input
                           className={alertError && !businessLocationInfo ? ` form-control my-input` : `form-control formy`}
-                          disabled={disabled}
+                          disabled
                           value={businessLocationInfo}
                           type="text"
                           placeholder="Business Located"
@@ -316,10 +317,10 @@ const Profile = () => {
                           maxLength={30}>
                         </input>
                       </div>
-                      <Row className="proof-upload">
-                        <div >
+                      <Row >
+                        <div className="proof-upload">
                           <Col xs={4} sm={4} md={4} lg={4} xl={4} className="upload-proofs">
-                            <div className="address-proof">
+                            <div className="proof-dsn">
                               <label className="card-info-label">Address</label>
                               <Image
                                 width={100}
@@ -328,7 +329,7 @@ const Profile = () => {
                             </div>
                           </Col>
                           <Col xs={4} sm={4} md={4} lg={4} xl={4} className="upload-proofs">
-                            <div className="company-registration">
+                            <div className="proof-dsn">
                               <label className="card-info-label">Registration</label>
                               <Image
                                 width={100}
@@ -337,7 +338,7 @@ const Profile = () => {
                             </div>
                           </Col>
                           <Col xs={4} sm={4} md={4} lg={4} xl={4} className="upload-proofs">
-                            <div className="company-registration">
+                            <div className="proof-dsn">
                               <label className="card-info-label">ID</label>
                               <Image
                                 width={100}
