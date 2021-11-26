@@ -26,7 +26,12 @@
 
   .avtar-info {
     text-align: center;
-    padding: 60px;
+    padding: 26px;
+  }
+
+  .proof-dsn {
+    display: inline-grid;
+
   }
 
   .photo img {
@@ -109,6 +114,7 @@
     display: flex;
     justify-content: center;
     margin: 25px 0px 0px 0px;
+    align-content: space-between;
   }
 
   .card-info-label {
@@ -157,7 +163,7 @@
     border-color: red;
   }
 
-  .my-input:focus{
+  .my-input:focus {
     border: none;
   }
 
