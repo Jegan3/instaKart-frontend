@@ -23,10 +23,6 @@ const ListYourAds = () => {
   const [primaryImgList, setPrimaryImgList] = useState([]);
   const [secondaryImgList, setSecondaryImgList] = useState([]);
 
-  console.log("primaryImgList",primaryImgList);
-  console.log("primaryBannerImg",primaryBannerImg);
-  console.log("crop",crop);
-
   const dispatch = useDispatch();
 
   const submitPrimary = () => {
@@ -93,7 +89,6 @@ const ListYourAds = () => {
       setPrimaryImgList([]);
       setPrimaryBannerImg('');
     }
-    console.log("file",file);
   };
 
   const onSecondaryImage = ({ fileList: newFileList }) => {

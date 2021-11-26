@@ -119,7 +119,6 @@ const Profile = () => {
   // const onUsAccount = (e) => {
   //   setUsAccount(e.target.value)
   // }
-  // console.log('usstatus',usAccount)
 
   const onCompanyName = (e) => {
     if (e.target.value.match('^[a-zA-Z ]*$')) {
@@ -207,8 +206,6 @@ const Profile = () => {
   const wipayAccountInfo = !wipayAccount && wipayAccount !== '' ? profileInfo && profileInfo.wipayAccount : wipayAccount;
   // const wipayStatusInfo = !wipay && wipay !== '' ? profileInfo && profileInfo.wipay : wipay
 
-  console.log('ikOptionsInfo', ikOptionsInfo)
-
   const onSubmit = () => {
     if (!firstNameInfo || !lastNameInfo || !mobileInfo || !emailInfo || !companyNameInfo
       || !businessLocationInfo || !ikOptionsInfo) {
@@ -249,11 +246,9 @@ const Profile = () => {
         ikOptions: ikOptionsInfo.value,
       };
       //   dispatch({ type: 'PROFILE_REQUEST', Profile });
-      //   console.log('profile', Profile)
     }
 
   }
-
 
   return (
     <div className="wrapper">
