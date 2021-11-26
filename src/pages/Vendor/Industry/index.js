@@ -1,9 +1,8 @@
 /*eslint-disable*/
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-// import { Link } from 'react-router-dom';
 import { Grid, Row, Col } from 'react-bootstrap';
-import { Menu, TimePicker, message } from 'antd';
+import { Menu} from 'antd';
 import Headerbar from '../../../components/Headerbar';
 import Loader from '../../../components/Loader';
 import StoreInfo from '../StoreInfo';
@@ -11,62 +10,42 @@ import AddProduct from '../AddProduct';
 import ProductList from '../ProductList';
 
 const Industry = (props) => {
-  const [current, setToggle] = useState('profile')
+  const [current, setToggle] = useState('storeinfo');
 
   const dispatch = useDispatch();
   const storeInfo = useSelector((state) => state.storeInfoState.storeInfo);
-  const naming = storeInfo && storeInfo.storeInfo.storeName;
-
+  const productListInfo = useSelector((state) => state.productListState.productList);
+  
   useEffect(() => {
     dispatch({ type: 'VENDOR_COMPANY_DETAILS_REQUEST' });
-  }, [])
+    dispatch({ type: 'PRODUCT_LIST_REQUEST', storeId });
+    setToggle('storeinfo')
+  }, [props.location.state])
 
-  // useEffect(() => {
-  //   dispatch({ type: 'STORE_INFO_REQUEST', storeId });
-  // }, [naming])
-
-  // const profile = () => {
-  //   setToggle(1)
-  // }
-
-  // const addProduct = () => {
-  //   setToggle(2)
-  // }
-
-  // const productList = () => {
-  //   setToggle(3)
-  // }
   const storeId = props.location.state
 
   const handleClick = e => {
-    console.log('click ', e);
     setToggle(e.key);
   };
 
   return (
     <div className="wrapper">
-      {/* {isLoading && <Loader />} */}
-      {/* <Sidebar /> */}
       <div className="rightside-panel">
         <Headerbar headerName={storeInfo && storeInfo.storeInfo.storeName} />
-        {/* <div className="main-content general-info"> */}
-        {/* <Grid fluid> */}
         <Menu onClick={handleClick} selectedKeys={[current]} mode="horizontal" className="card">
-          <Menu.Item key="profile" >
+          <Menu.Item key="storeinfo" >
             Store Info
           </Menu.Item>
           <Menu.Item key="addproduct" disabled={storeInfo && storeInfo.storeInfo.emailId === ''} >
             Add Product
           </Menu.Item>
-          <Menu.Item key="productlist" >
+          <Menu.Item key="productlist" disabled={productListInfo && productListInfo.length === 0}>
             Product List
           </Menu.Item>
         </Menu>
-        {current === 'profile' && <StoreInfo storeId={storeId} />}
+        {current === 'storeinfo' && <StoreInfo storeId={storeId} />}
         {current === 'addproduct' && <AddProduct storeId={storeId} />}
         {current === 'productlist' && <ProductList storeId={storeId} />}
-        {/* </Grid> */}
-        {/* </div> */}
       </div>
     </div>
   )
