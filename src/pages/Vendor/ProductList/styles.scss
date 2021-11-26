@@ -16,11 +16,6 @@
   background: $color-primary;
 }
 
-.product-button {
-  float: right;
-  padding-top: 15px;
-}
-
 .margin-control {
   .price-table {
     text-align: left;
@@ -28,4 +23,9 @@
     position: relative;
   }
 }
+}
+
+.product-button {
+  float: right;
+  padding-top: 15px;
 }
