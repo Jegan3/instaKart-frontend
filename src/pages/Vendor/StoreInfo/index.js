@@ -478,7 +478,7 @@ const StoreInfo = ({ storeId }) => {
                         value={countryInfo}
                         onChange={onCountry}
                         options={countryOptions}
-                        disabled={disabled}
+                        isDisabled={disabled && countryOptions}
                       />
                     </Col>
                     <Col md={12}>
