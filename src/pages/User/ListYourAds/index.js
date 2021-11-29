@@ -1,13 +1,12 @@
 /*eslint-disable*/
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Row, Col, Grid } from 'react-bootstrap';
 import { Upload, message } from 'antd';
 import ImgCrop from 'antd-img-crop';
 import ReactPlayer from "react-player";
 import Footer from '../../../components/Footer';
 import Header from '../../../components/Header';
-import Loader from '../../../components/Loader';
 
 const { Dragger } = Upload;
 
@@ -25,6 +24,64 @@ const ListYourAds = () => {
 
   const dispatch = useDispatch();
 
+  const onPrimaryImage = ({ fileList: newFileList }) => {
+    let file = newFileList.length && newFileList[newFileList.length - 1].originFileObj;
+
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        setPrimaryBannerImg(reader.result);
+      };
+      reader.readAsDataURL(file);
+      newFileList = newFileList.slice(-1);
+      setPrimaryImgList(newFileList);
+    }
+    else {
+      setPrimaryImgList([]);
+      setPrimaryBannerImg('');
+    }
+  };
+
+  const onSecondaryImage = ({ fileList: newFileList }) => {
+    let file = newFileList.length && newFileList[newFileList.length - 1].originFileObj;
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        setSecondaryBannerImg(reader.result);
+      };
+      reader.readAsDataURL(file);
+      newFileList = newFileList.slice(-1);
+      setSecondaryImgList(newFileList);
+    } else {
+      setSecondaryImgList([]);
+      setSecondaryBannerImg('');
+    }
+  };
+
+  const onChangeVideo = ({ fileList: newFileList }) => {
+    let file = newFileList[0].originFileObj;
+    const reader = new FileReader();
+    reader.onload = () => {
+      setVideo(reader.result);
+    };
+    reader.readAsDataURL(file);
+  }
+
+  const fakeRequest = ({ onSuccess }) => {
+    setTimeout(() => {
+      onSuccess("OK");
+    }, 1000);
+  };
+
+  const beforeUpload = (file) => {
+    if (video.length > 0) {
+      message.error(`You cannot upload more than one file`);
+    } else if (file.size > 31457280) {
+      message.error(`${file.name} exceeds the maximum upload size limit`);
+    }
+    return video.length < 1 && file.size < 31457280 ? true : Upload.LIST_IGNORE;
+  }
+
   const submitPrimary = () => {
     if (!primaryBannerImg) {
       setAlertError(true);
@@ -40,7 +97,6 @@ const ListYourAds = () => {
       dispatch({ type: "LIST_YOUR_ADS_REQUEST", advertiseNow });
     }
   };
-
 
   const submitSecondry = () => {
     if (!secondaryBannerImg) {
@@ -73,61 +129,6 @@ const ListYourAds = () => {
     }
   };
 
-  const onPrimaryImage = ({ fileList: newFileList }) => {
-    let file = newFileList.length && newFileList[newFileList.length - 1].originFileObj;
-   
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = () => {
-        setPrimaryBannerImg(reader.result);
-      };
-      reader.readAsDataURL(file);
-      newFileList = newFileList.slice(-1);
-      setPrimaryImgList(newFileList);
-    } 
-     else {
-      setPrimaryImgList([]);
-      setPrimaryBannerImg('');
-    }
-  };
-
-  const onSecondaryImage = ({ fileList: newFileList }) => {
-    let file = newFileList.length && newFileList[newFileList.length - 1].originFileObj;
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = () => {
-        setSecondaryBannerImg(reader.result);
-      };
-      reader.readAsDataURL(file);
-      newFileList = newFileList.slice(-1);
-      setSecondaryImgList(newFileList);
-    } else {
-      setSecondaryImgList([]);
-      setSecondaryBannerImg('');
-    }
-  };
-
-  const fakeRequest = ({ onSuccess }) => {
-    setTimeout(() => {
-      onSuccess("OK");
-    }, 1000);
-  };
-
-
-  const onChangeVideo = ({ fileList: newFileList }) => {
-    let file = newFileList[0].originFileObj;
-    setVideo(URL.createObjectURL(file));
-  };
-
-  const beforeUpload = (file) => {
-    if (video.length > 0) {
-      message.error(`You cannot upload more than one file`);
-    } else if (file.size > 31457280) {
-      message.error(`${file.name} exceeds the maximum upload size limit`);
-    }
-    return video.length < 1 && file.size < 31457280 ? true : Upload.LIST_IGNORE;
-  }
-
   return (
     <Grid fluid>
       <Header basic />
@@ -149,7 +150,7 @@ const ListYourAds = () => {
                       onCropChange={setCrop}
                       beforeCrop={false}
                     >
-                   <Dragger
+                      <Dragger
                         name="file"
                         className="drag-video"
                         accept="image/*"
@@ -191,39 +192,39 @@ const ListYourAds = () => {
         <div className="list-your card">
           <Row>
             <Col md={12}>
-              <label className="banner-label">  Secondary Banner </label>
+              <label className="banner-label">Secondary Banner </label>
             </Col>
             <Col md={12}>
               <Row className="margin-control">
                 <Col md={9}>
                   <div className="list-your">
-                  <ImgCrop
+                    <ImgCrop
                       // crop={crop}
                       zoom={true}
                       aspect={700 / 300}
-                      // onCropChange={setCrop}
+                    // onCropChange={setCrop}
                     >
-                    <Dragger
-                      name="file"
-                      className="drag-video"
-                      accept="image/*"
-                      fileList={secondaryImgList}
-                      customRequest={fakeRequest}
-                      onChange={onSecondaryImage}
-                    >
-                      {secondaryBannerImg ? (
-                        <div className="photo-ads">
-                          <img src={secondaryBannerImg} alt="" />
-                        </div>
-                      ) : (
-                        <div>
-                          <p className={alertError2 && !secondaryBannerImg ? `ant-upload-text-error` : `ant-upload-text`}>
-                            Click or drag file to this area to upload secondary
-                            banner
-                          </p>
-                        </div>
-                      )}
-                    </Dragger>
+                      <Dragger
+                        name="file"
+                        className="drag-video"
+                        accept="image/*"
+                        fileList={secondaryImgList}
+                        customRequest={fakeRequest}
+                        onChange={onSecondaryImage}
+                      >
+                        {secondaryBannerImg ? (
+                          <div className="photo-ads">
+                            <img src={secondaryBannerImg} alt="" />
+                          </div>
+                        ) : (
+                          <div>
+                            <p className={alertError2 && !secondaryBannerImg ? `ant-upload-text-error` : `ant-upload-text`}>
+                              Click or drag file to this area to upload secondary
+                              banner
+                            </p>
+                          </div>
+                        )}
+                      </Dragger>
                     </ImgCrop>
                   </div>
                 </Col>
