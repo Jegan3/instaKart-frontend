@@ -11,6 +11,9 @@ import Headerbar from '../../../components/Headerbar';
 import Sidebar from '../../../components/Sidebar';
 import Overlay from '../../../components/Overlay';
 import Loader from '../../../components/Loader';
+import { useHistory } from "react-router-dom";
+
+
 
 const { Dragger } = Upload;
 
@@ -39,6 +42,7 @@ const AddProduct = ({ storeId }) => {
   const [clear, setClear] = useState(false);
   const [status, setStatus] = useState(false);
   const [totalprice, setTotalPrice] = useState('');
+
 
   const dispatch = useDispatch();
   const thriftCategoryType = useSelector((state) => state.thriftCategoryState.thriftCategory);
@@ -239,17 +243,17 @@ const AddProduct = ({ storeId }) => {
 
   const onChangeVideo = async info => {
     const { status } = info.file;
-
+    let videoTo64 = await getBase64(info.file.originFileObj);
+    let videoConversion = videoTo64.split(" ")
+    setVideo(videoConversion)
     if (status === 'done') {
       message.success(`${info.file.name} file uploaded successfully.`);
     } else if (status === 'error') {
       message.error(`${info.file.name} file upload failed`);
     } else if (!info.fileList.length) {
       message.error(`${info.file.name} file deleted successfully`);
+      setVideo([])
     }
-    let videoTo64 = await getBase64(info.file.originFileObj);
-    let videoConversion = videoTo64.split(" ")
-    setVideo(videoConversion)
   }
 
   const onPreview = async file => {
@@ -260,6 +264,16 @@ const AddProduct = ({ storeId }) => {
     setPreviewImage(file.url || file.preview)
     setPreviewTitle(file.name || file.url.substring(file.url.lastIndexOf('/') + 1))
   };
+
+
+  // const onPreviewVideo = async file => {
+  //   if (!file.url && !file.preview) {
+  //     file.preview = await getBase64(file.originFileObj);
+  //   }
+  //   setPreviewVisible(true)
+  //   setPreviewVideo(file.url || file.preview)
+  //  // setPreviewTitle(file.name || file.url.substring(file.url.lastIndexOf('/') + 1))
+  // };
 
   const getBase64 = (file) => {
     return new Promise((resolve, reject) => {
@@ -288,6 +302,12 @@ const AddProduct = ({ storeId }) => {
   const handleCancel = () => setPreviewVisible(false);
 
   const symbol = `${thriftCategoryType && thriftCategoryType.symbol}`;
+
+
+  const history = useHistory();
+  const onCancel = () => {
+    history.goBack()
+  }
 
   //product price without discount
   const productPrice = !tax ? price : totalprice;
@@ -404,19 +424,24 @@ const AddProduct = ({ storeId }) => {
                   </Col>
                   <Col sm={12} md={12}>
                     <label className="signup-label">Upload Video </label>
-                    {video.length ?
-                      <ReactPlayer url={video} width="100%" height="221px" controls={true} /> :
-                      <Dragger
-                        name='file'
-                        className="drag-video"
-                        accept="video/*"
-                        customRequest={fakeRequest}
-                        onChange={onChangeVideo}
-                        beforeUpload={beforeUpload}
-                      >
-                        <p className="ant-upload-text">Click or drag file to this area to upload video</p>
-                        <p className="ant-upload-hint">You can upload only 1 video and maximum file size of the video should be less than 30 MB</p>
-                      </Dragger>}
+
+                    <Dragger
+                      name='file'
+                      className="drag-video"
+                      accept="video/*"
+                      customRequest={fakeRequest}
+                      onChange={onChangeVideo}
+                      beforeUpload={beforeUpload}
+                    //onPreview={onPreview}
+                    >
+                      {video.length ?
+                        <ReactPlayer url={video} width="100%" height="221px" controls={true} /> :
+                        <div>
+                          <p className="ant-upload-text">Click or drag file to this area to upload video</p>
+                          <p className="ant-upload-hint">You can upload only 1 video and maximum file size of the video should be less than 30 MB</p>
+                        </div>}
+                    </Dragger>
+
                   </Col>
                 </Row>
                 <Row>
@@ -596,7 +621,7 @@ const AddProduct = ({ storeId }) => {
                   <button
                     type="button"
                     className="btn btn-primary btn-block modal-butn"
-                  // onClick={onCancel}
+                    onClick={onCancel}
                   >
                     Cancel
                   </button>
