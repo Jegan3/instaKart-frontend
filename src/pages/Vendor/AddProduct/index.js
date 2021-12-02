@@ -435,7 +435,10 @@ const AddProduct = ({ storeId }) => {
                     //onPreview={onPreview}
                     >
                       {video.length ?
-                        <ReactPlayer url={video} width="100%" height="221px" controls={true} /> :
+                        <ReactPlayer
+                          className="add-product-video-upload"
+                          url={video}
+                          controls={true} /> :
                         <div>
                           <p className="ant-upload-text">Click or drag file to this area to upload video</p>
                           <p className="ant-upload-hint">You can upload only 1 video and maximum file size of the video should be less than 30 MB</p>
@@ -445,7 +448,7 @@ const AddProduct = ({ storeId }) => {
                   </Col>
                 </Row>
                 <Row>
-                  <Col md={6}>
+                  <Col lg={6}>
                     <Row className='pricerow-list'>
                       <Col sm={3} xs={6}>
                         <label className="signup-label">Price <span className="red-star">*</span></label>
@@ -525,7 +528,7 @@ const AddProduct = ({ storeId }) => {
                       </Col>
                     </Row>
                   </Col>
-                  <Col md={6}>
+                  <Col lg={6}>
                     <Row className="pricerow-list">
                       <Col sm={3} xs={4}>
                         <label className="signup-label">Stock Reserve </label>
