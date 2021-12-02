@@ -20,7 +20,6 @@ const { Dragger } = Upload;
 const AddProduct = ({ storeId }) => {
   const [productName, setProductName] = useState('');
   const [category, setCategory] = useState('');
-  const [productDetail, setproductetail] = useState(false);
   const [fileList, setImageList] = useState([])
   const [previewVisible, setPreviewVisible] = useState(false)
   const [previewImage, setPreviewImage] = useState('')
@@ -42,7 +41,7 @@ const AddProduct = ({ storeId }) => {
   const [clear, setClear] = useState(false);
   const [status, setStatus] = useState(false);
   const [totalprice, setTotalPrice] = useState('');
-
+  const [productImageList, setProductImageList] = useState([]);
 
   const dispatch = useDispatch();
   const thriftCategoryType = useSelector((state) => state.thriftCategoryState.thriftCategory);
@@ -233,6 +232,12 @@ const AddProduct = ({ storeId }) => {
 
     if (newFileList.length && newFileList[newFileList.length - 1].status === 'done' && !removed) {
       message.success(`${fileList[fileList.length - 1].name} file uploaded successfully`);
+      let file = newFileList[newFileList.length - 1].originFileObj;
+      const reader = new FileReader();
+      reader.onload = () => {
+        productImageList.push(reader.result);
+      };
+      reader.readAsDataURL(file);
     } else if (fileList.length && fileList[fileList.length - 1].status === 'error') {
       message.error(`${fileList[fileList.length - 1].name} file uploaded failed`);
     } else if (fileList.length && removed) {
@@ -264,16 +269,6 @@ const AddProduct = ({ storeId }) => {
     setPreviewImage(file.url || file.preview)
     setPreviewTitle(file.name || file.url.substring(file.url.lastIndexOf('/') + 1))
   };
-
-
-  // const onPreviewVideo = async file => {
-  //   if (!file.url && !file.preview) {
-  //     file.preview = await getBase64(file.originFileObj);
-  //   }
-  //   setPreviewVisible(true)
-  //   setPreviewVideo(file.url || file.preview)
-  //  // setPreviewTitle(file.name || file.url.substring(file.url.lastIndexOf('/') + 1))
-  // };
 
   const getBase64 = (file) => {
     return new Promise((resolve, reject) => {
@@ -323,7 +318,7 @@ const AddProduct = ({ storeId }) => {
       const addProduct = {
         productName,
         category: category.value,
-        productImages: fileList.map(info => info.thumbUrl),
+        productImages: productImageList,
         productVideo: video,
         productPrice: `${symbol}${parseFloat(productPrice).toFixed(2)}`,
         discount,
@@ -398,7 +393,7 @@ const AddProduct = ({ storeId }) => {
                 <Row>
                   <Col sm={12} md={12}>
                     <label className="signup-label">Upload Image <span className="red-star">*</span></label>
-                    <ImgCrop rotate>
+                    <ImgCrop >
                       <Upload
                         action="png"
                         accept="image/*"
