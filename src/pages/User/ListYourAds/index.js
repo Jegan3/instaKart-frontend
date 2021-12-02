@@ -177,7 +177,7 @@ const ListYourAds = () => {
                           </div>
                         ) : (
                           <div>
-                            <p className={alertError && !primaryBannerImg ? `ant-upload-text-error ads-line-height` : `ant-upload-text ads-line-height`}>
+                            <p className={alertError && !primaryBannerImg ? `ant-upload-text-error` : `ant-upload-text`}>
                               Click or drag file to this area to upload primary
                               banner
                             </p>
@@ -231,7 +231,7 @@ const ListYourAds = () => {
                           </div>
                         ) : (
                           <div>
-                            <p className={alertErrorTwo && !secondaryBannerImg ? `ant-upload-text-error ads-line-height` : `ant-upload-text ads-line-height`}>
+                            <p className={alertErrorTwo && !secondaryBannerImg ? `ant-upload-text-error` : `ant-upload-text`}>
                               Click or drag file to this area to upload secondary
                               banner
                             </p>
@@ -280,7 +280,7 @@ const ListYourAds = () => {
                           controls={true}
                         /> :
                         <div>
-                          <p className={alertErrorThree && !video ? `ant-upload-text-error ads-line-height` : `ant-upload-text ads-line-height`}>
+                          <p className={alertErrorThree && !video ? `ant-upload-text-error` : `ant-upload-text`}>
                             Click or drag file to this area to upload video
                           </p>
                         </div>}
