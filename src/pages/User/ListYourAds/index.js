@@ -16,8 +16,8 @@ const ListYourAds = () => {
   const [secondaryBannerImg, setSecondaryBannerImg] = useState('');
   const [video, setVideo] = useState(null);
   const [alertError, setAlertError] = useState(false);
-  const [alertError2, setAlertError2] = useState(false);
-  const [alertError3, setAlertError3] = useState(false);
+  const [alertErrorTwo, setalertErrorTwo] = useState(false);
+  const [alertErrorThree, setalertErrorThree] = useState(false);
   const [crop, setCrop] = useState();
   const [primaryImgList, setPrimaryImgList] = useState([]);
   const [secondaryImgList, setSecondaryImgList] = useState([]);
@@ -67,21 +67,18 @@ const ListYourAds = () => {
   //   reader.readAsDataURL(file);
   // }
 
-
   const onChangeVideo = ({ fileList: newFileList }) => {
     if (newFileList[0]) {
-    let file = newFileList[0].originFileObj;
+      let file = newFileList[0].originFileObj;
       const reader = new FileReader();
       reader.onload = () => {
         setVideo(reader.result);
       };
-    reader.readAsDataURL(file);
-} else {
-  setVideo('')
-}
+      reader.readAsDataURL(file);
+    } else {
+      setVideo('')
+    }
   }
-
-
 
   const fakeRequest = ({ onSuccess }) => {
     setTimeout(() => {
@@ -116,14 +113,14 @@ const ListYourAds = () => {
 
   const submitSecondry = () => {
     if (!secondaryBannerImg) {
-      setAlertError2(true);
+      setalertErrorTwo(true);
       message.error("Please upload any banner or image");
     } else {
       const advertiseNow = {
         advertise: 'secondaryBanner',
         media: secondaryBannerImg,
       };
-      setAlertError2(false);
+      setalertErrorTwo(false);
       setSecondaryBannerImg();
       setSecondaryImgList();
       dispatch({ type: "LIST_YOUR_ADS_REQUEST", advertiseNow });
@@ -132,14 +129,14 @@ const ListYourAds = () => {
 
   const submitVideo = () => {
     if (!video) {
-      setAlertError3(true);
+      setalertErrorThree(true);
       message.error("Please upload any banner or image");
     } else {
       const advertiseNow = {
         advertise: 'video',
         media: video,
       };
-      setAlertError3(false)
+      setalertErrorThree(false)
       setVideo()
       dispatch({ type: "LIST_YOUR_ADS_REQUEST", advertiseNow });
     }
@@ -157,12 +154,12 @@ const ListYourAds = () => {
             </Col>
             <Col md={12}>
               <Row className="margin-control ">
-                <Col md={9} >
+                <Col md={9} className="ads-upload-col">
                   <div className="list-your ">
                     <ImgCrop
                       crop={crop}
                       zoom={true}
-                      aspect={700 / 300}
+                      aspect={4/3}
                       onCropChange={setCrop}
                       beforeCrop={false}
                     >
@@ -190,7 +187,7 @@ const ListYourAds = () => {
                     </ImgCrop>
                   </div>
                 </Col>
-                <Col md={3}>
+                <Col md={3} className="modal-btn-col">
                   <div className="free-trail-col">
                     <button
                       type="button"
@@ -212,7 +209,7 @@ const ListYourAds = () => {
             </Col>
             <Col md={12}>
               <Row className="margin-control">
-                <Col md={9}>
+                <Col md={9} className="ads-upload-col">
                   <div className="list-your">
                     <ImgCrop
                       // crop={crop}
@@ -234,7 +231,7 @@ const ListYourAds = () => {
                           </div>
                         ) : (
                           <div>
-                            <p className={alertError2 && !secondaryBannerImg ? `ant-upload-text-error` : `ant-upload-text`}>
+                            <p className={alertErrorTwo && !secondaryBannerImg ? `ant-upload-text-error` : `ant-upload-text`}>
                               Click or drag file to this area to upload secondary
                               banner
                             </p>
@@ -244,7 +241,7 @@ const ListYourAds = () => {
                     </ImgCrop>
                   </div>
                 </Col>
-                <Col md={3}>
+                <Col md={3} className="modal-btn-col">
                   <div className="free-trail-col">
                     <button
                       type="button"
@@ -266,36 +263,35 @@ const ListYourAds = () => {
             </Col>
             <Col md={12}>
               <Row className="margin-control">
-                <Col md={9}>
+                <Col md={9} className="ads-upload-col">
                   <div className="list-your">
-                      <Dragger
-                        name="file"
-                        className="drag-video"
-                        accept="video/*"
-                        customRequest={fakeRequest}
-                        onChange={onChangeVideo}
-                        beforeUpload={beforeUpload}
-                      >  {video ?
+                    <Dragger
+                      name="file"
+                      className="drag-video"
+                      accept="video/*"
+                      customRequest={fakeRequest}
+                      onChange={onChangeVideo}
+                      beforeUpload={beforeUpload}>
+                      {video ?
                         <ReactPlayer
+                          className="video-player-test"
                           url={video}
                           width="100%"
-                          height="100%"
                           controls={true}
                         /> :
                         <div>
-                          <p className={alertError3 && !video ? `ant-upload-text-error` : `ant-upload-text`}>
+                          <p className={alertErrorThree && !video ? `ant-upload-text-error` : `ant-upload-text`}>
                             Click or drag file to this area to upload video
                           </p>
-                        </div> }
-                      </Dragger>
+                        </div>}
+                    </Dragger>
                   </div>
                 </Col>
-                <Col md={3}>
-
+                <Col md={3} className="modal-btn-col">
                   <div className="free-trail-col">
                     <button
                       type="button"
-                      className="adslistbtn modal-butn"
+                      className="adslistbtn modal-butn "
                       onClick={submitVideo}
                     >
                       Advertise For Free

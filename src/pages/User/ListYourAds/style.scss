@@ -10,21 +10,24 @@
     }
   }
 
-  .col-md-9 {
+  .ads-upload-col {
     padding: 30px 0px 30px 30px;
+
     @media screen and (max-width: 992px) {
       padding: 30px 30px 30px 30px;
     }
   }
 
-  .col-md-3 {
-    padding: 0px;
-    top: 275px;
+  .modal-btn-col {
     display: flex;
-    justify-content: center;
-    position: relative;
+    height: 330px;
+    padding-top: 30px;
+    flex-direction: column-reverse;
+
     @media screen and (max-width: 992px) {
       top: -15px;
+      height: 75px;
+      padding-top: 0px;
       position: relative;
       display: flex;
       justify-content: center;
@@ -72,12 +75,6 @@
     position: relative;
   }
 
-  .modal-butn {
-    cursor: pointer;
-    box-shadow: 0 6px 6px rgba(0, 0, 0, 0.6);
-    margin: 10px;
-  }
-
   .adslistbtn:hover,
   .adslistbtn:focus {
     opacity: 1;
@@ -92,18 +89,10 @@
     outline: 0 !important;
   }
 
-  .advertise {
-    margin: 3%;
-  }
-
   .price-label {
     margin: 10px;
     font-size: 17px;
     padding-left: 10px;
-  }
-
-  .price-col {
-    position: relative;
   }
 
   .price-col-error {
@@ -120,5 +109,17 @@
 
   .free-trail-col {
     text-align: center;
+    align-self: center;
+
+    .modal-butn {
+      cursor: pointer;
+      box-shadow: 0 6px 6px rgba(0, 0, 0, 0.6);
+      margin: 0px !important;
+    }
+  }
+
+  .video-player-test {
+    height: 300px !important;
+    background-color: black;
   }
 }
