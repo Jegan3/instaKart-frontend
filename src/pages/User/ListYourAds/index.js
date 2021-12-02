@@ -58,14 +58,30 @@ const ListYourAds = () => {
     }
   };
 
+  // const onChangeVideo = ({ fileList: newFileList }) => {
+  //   let file = newFileList[0].originFileObj;
+  //   const reader = new FileReader();
+  //   reader.onload = () => {
+  //     setVideo(reader.result);
+  //   };
+  //   reader.readAsDataURL(file);
+  // }
+
+
   const onChangeVideo = ({ fileList: newFileList }) => {
+    if (newFileList[0]) {
     let file = newFileList[0].originFileObj;
-    const reader = new FileReader();
-    reader.onload = () => {
-      setVideo(reader.result);
-    };
+      const reader = new FileReader();
+      reader.onload = () => {
+        setVideo(reader.result);
+      };
     reader.readAsDataURL(file);
+} else {
+  setVideo('')
+}
   }
+
+
 
   const fakeRequest = ({ onSuccess }) => {
     setTimeout(() => {
@@ -252,14 +268,6 @@ const ListYourAds = () => {
               <Row className="margin-control">
                 <Col md={9}>
                   <div className="list-your">
-                    {video ? (
-                      <ReactPlayer
-                        url={video}
-                        width="100%"
-                        height="100%"
-                        controls={true}
-                      />
-                    ) : (
                       <Dragger
                         name="file"
                         className="drag-video"
@@ -267,14 +275,19 @@ const ListYourAds = () => {
                         customRequest={fakeRequest}
                         onChange={onChangeVideo}
                         beforeUpload={beforeUpload}
-                      >
+                      >  {video ?
+                        <ReactPlayer
+                          url={video}
+                          width="100%"
+                          height="100%"
+                          controls={true}
+                        /> :
                         <div>
                           <p className={alertError3 && !video ? `ant-upload-text-error` : `ant-upload-text`}>
                             Click or drag file to this area to upload video
                           </p>
-                        </div>
+                        </div> }
                       </Dragger>
-                    )}
                   </div>
                 </Col>
                 <Col md={3}>
