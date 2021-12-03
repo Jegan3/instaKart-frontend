@@ -4,8 +4,10 @@
     padding: 15px 35px;
     overflow: visible;
 
-    .pricerow-list {
+    .pricerow-list-row {
       margin-top: 1%;
+      display: flex;
+      justify-content: space-around;
     }
 
     .ant-upload.ant-upload-drag {
