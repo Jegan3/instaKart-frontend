@@ -1,18 +1,16 @@
 /*eslint-disable*/
 import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Row, Col, Form, Grid } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 import { Image } from 'antd';
 import Cleave from "cleave.js/react";
-import { message, Modal, Upload, Button, } from 'antd';
+import { message, Upload } from 'antd';
 import Select from 'react-select';
 import { bankList } from '../../../constants/BankList';
 import Headerbar from '../../../components/Headerbar';
 import ImgCrop from 'antd-img-crop';
 import Loader from '../../../components/Loader';
 
-
-let fileList = [];
 
 const ikOptionsList = [
   { value: 'Fortnightly', label: 'Fortnightly ' },
@@ -47,6 +45,7 @@ const Profile = () => {
   //const [usAccount, setUsAccount] = useState();;
   const [validate, setValidate] = useState();;
   const [alertError, setAlertError] = useState(false);
+  const [fileList, setUploadCompanyLogo] = useState('');
 
   const dispatch = useDispatch();
   const profileInfo = useSelector((state) => state.profileState.profile);
@@ -58,7 +57,6 @@ const Profile = () => {
   const profileAddress = profileInfo && profileInfo.addressImage;
   const profileId = profileInfo && profileInfo.idImage;
   const profileRegistration = profileInfo && profileInfo.companyRegImage;
-
 
   useEffect(() => {
     dispatch({ type: 'PROFILE_REQUEST' });
@@ -73,30 +71,15 @@ const Profile = () => {
   ]
 
   const onCompanyLogo = ({ fileList: newFileList }) => {
-    let file = newFileList[0].originFileObj;
-    const reader = new FileReader();
-    reader.onload = () => {
-      setCompanyLogo(reader.result);
-    };
-    reader.readAsDataURL(file);
-  }
-
-  const onPreview = async file => {
-    if (!file.url && !file.preview) {
-      file.preview = await getBase64(file.originFileObj);
-    }
-    setPreviewVisible(true)
-    setPreviewImage(file.url || file.preview)
-    setPreviewTitle(file.name || file.url.substring(file.url.lastIndexOf('/') + 1))
-  };
-
-  const getBase64 = (file) => {
-    return new Promise((resolve, reject) => {
+    if (newFileList.length && newFileList[newFileList.length - 1].status === 'done') {
+      let file = newFileList[newFileList.length - 1].originFileObj;
       const reader = new FileReader();
+      reader.onload = () => {
+        setCompanyLogo(reader.result);
+      };
       reader.readAsDataURL(file);
-      reader.onload = () => resolve(reader.result);
-      reader.onerror = error => reject(error);
-    });
+    }
+    setUploadCompanyLogo(newFileList);
   }
 
   const fakeRequest = ({ onSuccess }) => {
@@ -268,7 +251,7 @@ const Profile = () => {
                       <img src={!companyLogo && companyLogo !== '' ? profileLogo : !companyLogo ? "images/Your-logo-here.png" : companyLogo} />
                     </div>
                     <div className="image-upload">
-                      <ImgCrop rotate>
+                      <ImgCrop >
                         <Upload
                           fileList={fileList}
                           disabled={disabled}

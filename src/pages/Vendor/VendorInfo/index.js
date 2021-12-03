@@ -44,7 +44,7 @@ const VendorInfo = (props) => {
   const [mobile, setMobile] = useState('');
   const [uploadId, setUploadId] = useState('');
   const [uploadIdName, setUploadIdName] = useState('');
-  const [uploadCompanyLogo, setUploadCompanyLogo] = useState('');
+  const [fileList, setUploadCompanyLogo] = useState('');
   const [uploadLogoName, setUploadLogoName] = useState('');
   const [bank, setBank] = useState();
   const [bankAccount, setBankAccount] = useState('');
@@ -59,6 +59,7 @@ const VendorInfo = (props) => {
   const [termscondition, setTermsCondition] = useState(false);
   const [usAccount, setUsAccount] = useState('');
   const [alertError, setAlertError] = useState(false);
+  const [companylogoImage, setCompanylogoImage] = useState([]);
 
   const dispatch = useDispatch();
   const vendor = useSelector((state) => state.vendorInfoState.vendorInfo);
@@ -118,13 +119,16 @@ const VendorInfo = (props) => {
   }
 
   const onUploadCompanyLogo = ({ fileList: newFileList }) => {
-    let file = newFileList[0].originFileObj;
-    const reader = new FileReader();
-    reader.onload = () => {
-      setUploadLogoName(file.name);
-      setUploadCompanyLogo(reader.result);
-    };
-    reader.readAsDataURL(file);
+    if (newFileList.length && newFileList[newFileList.length - 1].status === 'done') {
+      let file = newFileList[newFileList.length - 1].originFileObj;
+      const reader = new FileReader();
+      reader.onload = () => {
+        setCompanylogoImage(reader.result);
+        setUploadLogoName(file.name);
+      };
+      reader.readAsDataURL(file);
+    }
+    setUploadCompanyLogo(newFileList);
   }
 
   const bankSelect = bankList.map(item => ({
@@ -229,7 +233,7 @@ const VendorInfo = (props) => {
         mobile,
         email: vendorDetails.email,
         uploadId,
-        uploadLogo: uploadCompanyLogo,
+        uploadLogo: companylogoImage,
         bank: bank.value,
         bankAccount,
         uploadCompanyRegistration: uploadRegistration,
@@ -357,15 +361,13 @@ const VendorInfo = (props) => {
                 <div className='select-file'>
                   <label className="signup-label">Upload Company Logo</label>
                   <div className='file-input'>
-                    <ImgCrop rotate>
+                    <ImgCrop>
                       <Upload
                         action="png"
                         accept="image/*"
                         customRequest={fakeRequest}
                         fileList={fileList}
                         onChange={onUploadCompanyLogo}
-                        // type="file"
-
                         showUploadList={false}
                       >
                         <span className='button'>Choose</span>
