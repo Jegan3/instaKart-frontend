@@ -7,20 +7,15 @@ import { Upload, Modal, message } from 'antd';
 import ImgCrop from 'antd-img-crop';
 import Cleave from "cleave.js/react";
 import ReactPlayer from "react-player";
-import Headerbar from '../../../components/Headerbar';
-import Sidebar from '../../../components/Sidebar';
 import Overlay from '../../../components/Overlay';
 import Loader from '../../../components/Loader';
 import { useHistory } from "react-router-dom";
-
-
 
 const { Dragger } = Upload;
 
 const AddProduct = ({ storeId }) => {
   const [productName, setProductName] = useState('');
   const [category, setCategory] = useState('');
-  const [productDetail, setproductetail] = useState(false);
   const [fileList, setImageList] = useState([])
   const [previewVisible, setPreviewVisible] = useState(false)
   const [previewImage, setPreviewImage] = useState('')
@@ -42,7 +37,7 @@ const AddProduct = ({ storeId }) => {
   const [clear, setClear] = useState(false);
   const [status, setStatus] = useState(false);
   const [totalprice, setTotalPrice] = useState('');
-
+  const [productImageList, setProductImageList] = useState([]);
 
   const dispatch = useDispatch();
   const thriftCategoryType = useSelector((state) => state.thriftCategoryState.thriftCategory);
@@ -196,10 +191,6 @@ const AddProduct = ({ storeId }) => {
     setStatus(status)
   }
 
-  // const onFinalPrice = (e) => {
-  //   setFinalPrice(e.target.value)
-  // }
-
   const onStockReserve = (e) => {
     setStockReserve(e.target.value)
   }
@@ -209,30 +200,29 @@ const AddProduct = ({ storeId }) => {
   }
 
   const onProductDescription = (e) => {
-    // if (e.target.value.match('^[a-zA-Z0-9 !?",\'@#$%\^&*)(+=._-]*$')) {
     setProductDescription(e.target.value)
     // }
   }
 
   const onProductWarranty = (e) => {
-    //   if (e.target.value.match('^[a-zA-Z0-9 !?",\'@#$%\^&*)(+=._-]*$')) {
     setProductWarranty(e.target.value)
-    //}
   }
 
   const onProductShipping = (e) => {
-    // if (e.target.value.match('^[a-zA-Z0-9 !?",\'@#$%\^&*)(+=._-]*$')) {
     setProductShipping(e.target.value)
-    //}
   }
 
   const onChangeImage = ({ fileList: newFileList }) => {
-
     // To identify removed array
     const removed = fileList.find(item => item.status === 'removed')
-
     if (newFileList.length && newFileList[newFileList.length - 1].status === 'done' && !removed) {
       message.success(`${fileList[fileList.length - 1].name} file uploaded successfully`);
+      let file = newFileList[newFileList.length - 1].originFileObj;
+      const reader = new FileReader();
+      reader.onload = () => {
+        productImageList.push(reader.result);
+      };
+      reader.readAsDataURL(file);
     } else if (fileList.length && fileList[fileList.length - 1].status === 'error') {
       message.error(`${fileList[fileList.length - 1].name} file uploaded failed`);
     } else if (fileList.length && removed) {
@@ -264,16 +254,6 @@ const AddProduct = ({ storeId }) => {
     setPreviewImage(file.url || file.preview)
     setPreviewTitle(file.name || file.url.substring(file.url.lastIndexOf('/') + 1))
   };
-
-
-  // const onPreviewVideo = async file => {
-  //   if (!file.url && !file.preview) {
-  //     file.preview = await getBase64(file.originFileObj);
-  //   }
-  //   setPreviewVisible(true)
-  //   setPreviewVideo(file.url || file.preview)
-  //  // setPreviewTitle(file.name || file.url.substring(file.url.lastIndexOf('/') + 1))
-  // };
 
   const getBase64 = (file) => {
     return new Promise((resolve, reject) => {
@@ -323,7 +303,7 @@ const AddProduct = ({ storeId }) => {
       const addProduct = {
         productName,
         category: category.value,
-        productImages: fileList.map(info => info.thumbUrl),
+        productImages: productImageList,
         productVideo: video,
         productPrice: `${symbol}${parseFloat(productPrice).toFixed(2)}`,
         discount,
@@ -362,14 +342,11 @@ const AddProduct = ({ storeId }) => {
           makes no representations or warranties that the Website is appropriate for use in other locations. Those who access 
           or use the Website from other jurisdictions do so at their own volition and risk and are responsible for compliance 
           with local law." />
-      {/* <Sidebar /> */}
       <div >
-        {/* <Headerbar headerName="Add Product" /> */}
         <div className="main-content add-product">
           <Grid fluid>
             <Row>
               <Row className="form-content card">
-                {/* <Col md={6}> */}
                 <Row>
                   <Col sm={12} md={6}>
                     <label className="signup-label">Product Name <span className="red-star">*</span></label>
@@ -391,18 +368,16 @@ const AddProduct = ({ storeId }) => {
                       value={category}
                       onChange={onCategory}
                       options={thriftCategoryOptions}
-                    // menuIsOpen 
                     />
                   </Col>
                 </Row>
                 <Row>
                   <Col sm={12} md={12}>
                     <label className="signup-label">Upload Image <span className="red-star">*</span></label>
-                    <ImgCrop rotate>
+                    <ImgCrop >
                       <Upload
                         action="png"
                         accept="image/*"
-                        // multiple accept="image/*,audio/*,productVideo/*"
                         customRequest={fakeRequest}
                         className="upload-image"
                         listType="picture-card"
@@ -424,7 +399,6 @@ const AddProduct = ({ storeId }) => {
                   </Col>
                   <Col sm={12} md={12}>
                     <label className="signup-label">Upload Video </label>
-
                     <Dragger
                       name='file'
                       className="drag-video"
@@ -432,21 +406,22 @@ const AddProduct = ({ storeId }) => {
                       customRequest={fakeRequest}
                       onChange={onChangeVideo}
                       beforeUpload={beforeUpload}
-                    //onPreview={onPreview}
                     >
                       {video.length ?
-                        <ReactPlayer url={video} width="100%" height="221px" controls={true} /> :
+                        <ReactPlayer
+                          className="add-product-video-upload"
+                          url={video}
+                          controls={true} /> :
                         <div>
                           <p className="ant-upload-text">Click or drag file to this area to upload video</p>
                           <p className="ant-upload-hint">You can upload only 1 video and maximum file size of the video should be less than 30 MB</p>
                         </div>}
                     </Dragger>
-
                   </Col>
                 </Row>
                 <Row>
-                  <Col md={6}>
-                    <Row className='pricerow-list'>
+                  <Col lg={6}>
+                    <Row className='pricerow-list-row'>
                       <Col sm={3} xs={6}>
                         <label className="signup-label">Price <span className="red-star">*</span></label>
                         {thriftCategoryType && <Cleave
@@ -459,7 +434,6 @@ const AddProduct = ({ storeId }) => {
                             numeral: true,
                             delimiter: '',
                             blocks: [7]
-                            // numeralThousandsGroupStyle: 'thousand'
                           }}
                         />}
                       </Col>
@@ -493,21 +467,6 @@ const AddProduct = ({ storeId }) => {
                         />
                         <span className="percentage">%</span>
                       </Col>
-                      {/* <Col sm={3}>
-                      <label className="signup-label">Discount </label>
-                      <Cleave
-                        options={{
-                          numeral: true,
-                          delimiter: '.',
-                          blocks: [2, 4]
-                        }}
-                        className="form-control"
-                        maxLength={10}
-                        value={discount}
-                        onChange={onDiscount}
-                      />
-                      <span className="percentage">%</span>
-                    </Col> */}
                       <Col sm={3} xs={6}>
                         <label className="signup-label">Final Price  </label>
                         {thriftCategoryType && <Cleave
@@ -519,15 +478,14 @@ const AddProduct = ({ storeId }) => {
                           className="form-control"
                           maxLength={10}
                           value={parseFloat(finalPrice).toFixed(2)}
-                          // onChange={onFinalPrice}
                           disabled
                         />}
                       </Col>
                     </Row>
                   </Col>
-                  <Col md={6}>
-                    <Row className="pricerow-list">
-                      <Col sm={3} xs={4}>
+                  <Col lg={6}>
+                    <Row className="pricerow-list-row">
+                      <Col sm={4} xs={4}>
                         <label className="signup-label">Stock Reserve </label>
                         <Cleave
                           options={{
@@ -540,7 +498,7 @@ const AddProduct = ({ storeId }) => {
                           onChange={onStockReserve}
                         />
                       </Col>
-                      <Col sm={3} xs={4}>
+                      <Col sm={4} xs={4}>
                         <label className="signup-label">Stocks on Hand  </label>
                         <Cleave
                           options={{
@@ -553,10 +511,9 @@ const AddProduct = ({ storeId }) => {
                           onChange={onStockHand}
                         />
                       </Col>
-                      <Col sm={6} xs={4}>
-                        <label className="pricerow-list">Available</label>
+                      <Col sm={4} xs={4}>
+                        <label className="signup-label">Available</label>
                         <Select
-                          // key={info.original.id}
                           name="Status"
                           placeholder="Status"
                           className="prof-select "
@@ -607,7 +564,6 @@ const AddProduct = ({ storeId }) => {
                 </Row>
               </Row>
               <Row md={12} className="margin-control">
-                {/* <Col className="product-button"> */}
                 <Col lg={2} md={3} sm={4} xs={6} className="product-button">
                   <button
                     type="button"
