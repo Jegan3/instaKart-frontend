@@ -20,7 +20,7 @@ const AboutUs = () => (
       </ScrollAnimation>
     </Row>
     <Row className="content-sec">
-      <ScrollAnimation animateIn='bounceInRight'>
+      <ScrollAnimation className="animated-speed" animateIn='bounceInRight'>
         <div className="para-sec">
           <h2 className="about-header">Connecting Businesses Worldwide</h2>
           <p>Are you a business owner looking to reach out to more people? Do you want to take your brand to new heights online without the stress or expenses of setting up your personal website? Insta-Kart has got you covered with an established platform to exhibit your products and services and present your quality. Also, buyers can access such services in one single smooth action.</p>
@@ -30,7 +30,7 @@ const AboutUs = () => (
       </ScrollAnimation>
     </Row>
     <Row className="content-sec">
-      <ScrollAnimation animateIn='bounceInLeft'
+      <ScrollAnimation className="animated-speed" animateIn='bounceInLeft'
       >
         <div className="para-sec">
           <h2 className="about-header">Meet Our Team</h2>
@@ -41,7 +41,7 @@ const AboutUs = () => (
       </ScrollAnimation>
     </Row>
     <Row className="content-sec">
-      <ScrollAnimation animateIn='bounceInRight'
+      <ScrollAnimation className="animated-speed" animateIn='bounceInRight'
       >
         <div className="para-sec">
           <h2 className="about-header">Our Story</h2>
@@ -52,7 +52,7 @@ const AboutUs = () => (
       </ScrollAnimation>
     </Row>
     <Row className="content-sec">
-      <ScrollAnimation animateIn='bounceInLeft'
+      <ScrollAnimation  className="animated-speed" animateIn='bounceInLeft'
       >
         <div className="para-sec">
           <h2 className="about-header">What Do We Do?</h2>
@@ -62,7 +62,7 @@ const AboutUs = () => (
       </ScrollAnimation>
     </Row>
     <Row className="content-sec">
-      <ScrollAnimation animateIn='bounceInRight'
+      <ScrollAnimation className="animated-speed" animateIn='bounceInRight'
       >
         <div className="para-sec">
           <h2 className="about-header">Mission Statement</h2>
@@ -71,7 +71,7 @@ const AboutUs = () => (
       </ScrollAnimation>
     </Row>
     <Row className="content-sec">
-      <ScrollAnimation animateIn='bounceInLeft'
+      <ScrollAnimation className="animated-speed" animateIn='bounceInLeft'
       >
         <div className="para-sec">
           <h2 className="about-header">Our Vision</h2>
@@ -81,7 +81,7 @@ const AboutUs = () => (
       </ScrollAnimation>
     </Row>
     <Row className="content-sec">
-      <ScrollAnimation animateIn='bounceInRight'
+      <ScrollAnimation className="animated-speed" animateIn='bounceInRight'
       >
         <div className="para-sec">
           <h2 className="about-header">Core Values</h2>
@@ -95,7 +95,7 @@ const AboutUs = () => (
       </ScrollAnimation>
     </Row>
     <Row className="content-sec">
-      <ScrollAnimation animateIn='bounceInLeft'
+      <ScrollAnimation className="animated-speed" animateIn='bounceInLeft'
       >
         <div className="para-sec">
           <h2 className="about-header">What Makes Us Stand Out Among Competitors?</h2>
@@ -109,7 +109,7 @@ const AboutUs = () => (
       </ScrollAnimation>
     </Row>
     <Row className="content-sec">
-      <ScrollAnimation animateIn='bounceInRight'
+      <ScrollAnimation  className="animated-speed" animateIn='bounceInRight'
       >
         <div className="para-sec">
           <h2 className="about-header">Act With Integrity</h2>
@@ -118,7 +118,7 @@ const AboutUs = () => (
       </ScrollAnimation>
     </Row>
     <Row className="content-sec">
-      <ScrollAnimation animateIn='bounceInLeft'
+      <ScrollAnimation className="animated-speed" animateIn='bounceInLeft'
       >
         <div className="para-sec">
           <h2 className="about-header">Get In Touch</h2>

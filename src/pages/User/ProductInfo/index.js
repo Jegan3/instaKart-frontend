@@ -335,12 +335,12 @@ const ProductInfo = ({ location }) => {
               <Row className='position-bottom'>
                 <div ClassName="ik-ads">
                   <Col md={12}>
-                    <div className='bg-ads'>
+                    {/* <div className='bg-ads'>
                       <div className='arrival-ads'>
                         <span className="ik-ads">Reviews</span>
                         < CarouselReviewCard />
                       </div>
-                    </div>
+                    </div> */}
                   </Col>
                 </div>
               </Row>
