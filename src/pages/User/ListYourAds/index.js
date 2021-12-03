@@ -159,7 +159,7 @@ const ListYourAds = () => {
                     <ImgCrop
                       crop={crop}
                       zoom={true}
-                      aspect={4/3}
+                      aspect={4 / 3}
                       onCropChange={setCrop}
                       beforeCrop={false}
                     >
@@ -291,7 +291,7 @@ const ListYourAds = () => {
                   <div className="free-trail-col">
                     <button
                       type="button"
-                      className="adslistbtn modal-butn "
+                      className="adslistbtn modal-btn "
                       onClick={submitVideo}
                     >
                       Advertise For Free
