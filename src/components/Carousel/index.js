@@ -224,19 +224,11 @@ const businessRowFirst = [
 ];
 
 const businessRowSecond = [
-  // {
-  //   id: 4,
-  //   title: 'CARD 4',
-  //   content: 'Speciality Services',
-  //   imgUrl: 'images/4_Speciality.png',
-  //   btnUrl: '/comingsoon',
-  // },
   {
     id: 5,
     title: 'CARD 5',
-    content: 'IK Thrift Store',
+    content: 'Thrift Store',
     imgUrl: 'images/5_Thrift.png',
-    // btnUrl: 'http://vaibhavk13.sg-host.com/',
     btnUrl: '/thriftstore',
   },
   {
@@ -263,20 +255,6 @@ const businessRowSecond = [
 ];
 
 const businessRowThird = [
-  // {
-  //   id: 7,
-  //   title: 'CARD 7',
-  //   content: 'Appliances & Tech Gadgets',
-  //   imgUrl: 'images/7_applicance.jpg',
-  //   btnUrl: '/comingsoon',
-  // },
-  // {
-  //   id: 8,
-  //   title: 'CARD 8',
-  //   content: 'Automotive, Hardware, Industrial & Safety Supplies',
-  //   imgUrl: 'images/8_hardware.png',
-  //   btnUrl: '/comingsoon',
-  // },
   {
     id: 9,
     title: 'CARD 9',
@@ -287,9 +265,9 @@ const businessRowThird = [
   {
     id: 10,
     title: 'CARD 10',
-    content: 'Insta-Kart E-learning',
+    content: 'E-learning',
     imgUrl: 'images/10_TechGadgets.jpg',
-    btnUrl: 'https://instakartelearning.com/chess-school/',
+    btnUrl: '/comingsoon',
   },
   {
     id: 11,
@@ -306,30 +284,6 @@ const businessRowThird = [
     btnUrl: '/comingsoon',
   },
 ];
-
-// const businessRowFourth = [
-//   {
-//     id: 10,
-//     title: 'CARD 10',
-//     content: 'Insta-Kart E-learning',
-//     imgUrl: 'images/10_TechGadgets.jpg',
-//     btnUrl: 'https://instakartelearning.com/chess-school/',
-//   },
-//   {
-//     id: 11,
-//     title: 'CARD 11',
-//     content: 'Social Media',
-//     imgUrl: 'images/11_TimeCap.png',
-//     btnUrl: '/comingsoon',
-//   },
-//   {
-//     id: 12,
-//     title: 'CARD 12',
-//     content: 'Wholesale Suppliers & Drop Shipping',
-//     imgUrl: 'images/12_WholesaleDS.jpg',
-//     btnUrl: '/comingsoon',
-//   },
-// ];
 
 const cardsDataNewEStore = [
   {
@@ -489,7 +443,7 @@ const cardsDataMobile = [
   {
     id: 5,
     title: 'CARD 5',
-    content: 'IK Thrift Store',
+    content: 'Thrift Store',
     imgUrl: 'images/5_Thrift.png',
     btnUrl: '/advertisement',
   },
@@ -827,7 +781,7 @@ export const CarouselReviewCard = () => (
   </Carousel>
 );
 
-export const CarouselNewEStoreVideo = ({video}) => (
+export const CarouselNewEStoreVideo = ({ video }) => (
   <Carousel
     infinite
     autoPlay
@@ -837,7 +791,6 @@ export const CarouselNewEStoreVideo = ({video}) => (
     {video ? video.video.map((item) => (
       // <Card key={card.id} className='card' imgUrl={card.imgUrl} />
       <ReactPlayer className="homevideo-prop" url={item} width="100%" height="100%" controls={true} />
-
-    )):[]}
+    )) : []}
   </Carousel>
 );

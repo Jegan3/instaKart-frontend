@@ -17,7 +17,7 @@ export const Industries = [
   },
   {
     _id: '60924e9671ebf94bd5e85c96',
-    industryType: 'IK Thrift Store',
+    industryType: 'Thrift Store',
   },
   {
     _id: '60924e9671ebf94bd5e85c97',

@@ -14,13 +14,8 @@
   margin-left: 332px;
 }
 
-// .arrivals {
-//   margin-top: 2%;
-//   width: 50% !important;
-//   margin: auto;
-// }
-
-.arrival {
+.intro-banner-style {
+  padding-bottom: 3%;
   width: 75% !important;
   margin: auto;
 }
@@ -58,22 +53,23 @@
 }
 
 .bg-home-ban {
-  background-color: $color-background;
+  background-color: #28a4d9;
 
-  .arrival {
-    padding-top: 3% !important;
+  .secondary-banner-style {
+    padding-top: 3.5% !important;
     margin-bottom: 1.75% !important;
     padding-left: 0.75%;
     padding-right: 0.75%;
+    padding-bottom: 0%;
   }
 }
 
 .bg-home {
   background-color: #ffffff;
 
-  .arrival {
-    margin-bottom: 1.5% !important;
-    margin-top: 0% !important;
+  .time-cap {
+    padding-top: 5px;
+    padding-bottom: 35px;
 
     h5 {
       color: black;
@@ -87,20 +83,31 @@
 
 .bg-home-pro {
   position: relative !important;
-  background-color: #28a4d9;
+  background-color: #ffffff;
 
-  .arrival {
-    margin-bottom: 1.5% !important;
-    margin-top: 0% !important;
+  .new-promotion {
+    padding-bottom: 25px;
+    padding-top: 5px;
 
     h5 {
-      color: white;
+      color: black;
     }
   }
 
   .promotions {
     position: relative;
     z-index: 1;
+  }
+}
+
+.bg-home-pro-estore {
+  background-color:
+    #28a4d9;
+
+  .estore-near-you {
+    padding-bottom: 25px;
+    padding-top: 5px;
+
   }
 }
 
@@ -126,6 +133,5 @@
 }
 
 .homevideo-prop {
-  // background-color: black;
   height: 400px !important;
 }

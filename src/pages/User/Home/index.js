@@ -30,10 +30,6 @@ const Home = () => {
       <div>
         <Header />
       </div>
-      {/* <h2>
-        Welcome To The Caribbean&#39;s Unified <br />
-        e-Commerce Portal
-      </h2> */}
       <h2>
         The Caribbean&#39;s
         <TextLoop className='text-loop-home' springConfig={{ stiffness: 70, damping: 31 }}
@@ -57,14 +53,14 @@ const Home = () => {
         <CarouselThird />
         <CarouselFourth />
       </div>} */}
-      <div className='arrival'>
+      <div className='arrival intro-banner-style'>
         <CarouselFirst />
         <CarouselSecond />
         <CarouselThird />
         {/* <CarouselFourth /> */}
       </div>
       {advertisement && Object.keys(advertisement.userAds).length !== 0 && advertisement.userAds.secondaryBanner ? <div className='bg-home-ban'>
-        <div className='arrival'>
+        <div className='arrival secondary-banner-style'>
           <SecondaryBanners secondaryBanner={advertisement && advertisement.userAds} />
         </div>
         <br />
@@ -73,7 +69,7 @@ const Home = () => {
         <div className='particles-sub'>
           <Particle color='#f5f5f5' number='150' direction='bottom' />
         </div>
-        <div className='arrival'>
+        <div className='arrival new-promotion'>
           <h5>New Promotions</h5>
           <div className='promotions'>
             <CarouselNewEStore />
@@ -81,18 +77,11 @@ const Home = () => {
         </div>
         <br />
       </div>
-      <div className='bg-home'>
-        <div className='arrival'>
-          <h5>IK Ads</h5>
-          <CarouselNewEStore />
-        </div>
-        <br />
-      </div>
-      <div className='bg-home-pro'>
+      <div className='bg-home-pro-estore'>
         <div className='particles-sub'>
           <Particle color='#f5f5f5' number='150' direction='bottom' />
         </div>
-        <div className='arrival'>
+        <div className='arrival estore-near-you'>
           <h5>E-Stores Near You</h5>
           <div className='promotions'>
             <CarouselNewEStore />
@@ -101,7 +90,7 @@ const Home = () => {
         <br />
       </div>
       {advertisement && Object.keys(advertisement.userAds).length !== 0 && advertisement.userAds.video ? <div className='bg-home'>
-        <div className='arrival'>
+        <div className='arrival time-cap'>
           <h5>TimeCap VLogs</h5>
           <div className="promo-videos">
             <CarouselNewEStoreVideo video={advertisement && advertisement.userAds} />
