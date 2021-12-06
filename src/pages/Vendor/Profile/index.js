@@ -50,7 +50,7 @@ const Profile = () => {
   const [usAccount, setUsAccount] = useState();;
   const [validate, setValidate] = useState();;
   const [alertError, setAlertError] = useState(false);
-  // const [fileList, setUploadCompanyLogo] = useState('');
+ // const [fileList, setUploadCompanyLogo] = useState('');
 
   const dispatch = useDispatch();
   const profileInfo = useSelector((state) => state.profileState.profile);
