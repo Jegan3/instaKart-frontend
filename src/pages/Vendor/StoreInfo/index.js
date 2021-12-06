@@ -189,6 +189,7 @@ const StoreInfo = ({ storeId }) => {
   // Country Options
   const onCountry = (countryId) => {
     setCountryId(countryId)
+    setCityId('')
     // setStoreDetail(true)
   }
 
@@ -215,7 +216,6 @@ const StoreInfo = ({ storeId }) => {
 
   const onCity = (city) => {
     setCityId(city)
-    // setStoreDetail(true)
   }
 
   const onZipCode = (e) => {
@@ -279,6 +279,11 @@ const StoreInfo = ({ storeId }) => {
     }
   }
 
+  // const [mondayOpen, setMondayOpen] = useState(null);
+  // const onChange = time => {
+  //   setValue(time);
+  // };
+
   const fakeRequest = ({ onSuccess }) => {
     setTimeout(() => {
       onSuccess('OK')
@@ -317,7 +322,7 @@ const StoreInfo = ({ storeId }) => {
         storeLogo: storeLogoInfo,
         aboutStore: aboutStoreInfo,
         address: addressInfo,
-        countryId: countryId.value,
+        countryId: countryInfo.value,
         cityId: cityInfo.value,
         zipCode: zipCodeInfo,
         emailId: emailIdInfo,
