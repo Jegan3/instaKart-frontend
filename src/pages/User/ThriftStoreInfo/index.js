@@ -90,13 +90,14 @@ const ThriftStoreInfo = ({ location }) => {
             </div>
           </Col>
           <Col >
-            <div className='bg-adss'>
+          {/* commented temporarily */}
+            {/* <div className='bg-adss'>
               <div className='arrival-ads'>
                 <span className="ik-ads">Reviews</span>
                 < CarouselReviewCard />
               </div>
               <br />
-            </div>
+            </div> */}
           </Col>
           <Col sm={12}>
             <div className='bg-ads'>
