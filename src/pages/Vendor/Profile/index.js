@@ -1,27 +1,32 @@
 /*eslint-disable*/
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Row, Col } from 'react-bootstrap';
 import { Image } from 'antd';
 import Cleave from "cleave.js/react";
 import { message, Upload } from 'antd';
 import Select from 'react-select';
-import { bankList } from '../../../constants/BankList';
+import { BankList } from '../../../constants/BankList';
 import Headerbar from '../../../components/Headerbar';
 import ImgCrop from 'antd-img-crop';
 import Loader from '../../../components/Loader';
 
+let fileList = [];
 
-const ikOptionsList = [
+const ikOptionsSelect = [
   { value: 'Fortnightly', label: 'Fortnightly ' },
   { value: 'Monthly', label: 'Monthly ' },
 ]
 
-const preferenceList = [
+const preferenceSelect = [
   { value: 'Bank Transfer', label: 'Bank Transfer' },
   { value: 'Wipay Transfer', label: 'Wipay Transfer' },
 ]
 
+const bankSelect = BankList.map(item => ({
+  value: item.value,
+  label: item.label
+}))
 
 const Profile = () => {
 
@@ -42,45 +47,74 @@ const Profile = () => {
   const [uploadRegistration, setUploadRegistration] = useState();
   const [uploadId, setUploadId] = useState();
   const [disabled, setDisabled] = useState(true);
-  //const [usAccount, setUsAccount] = useState();;
+  const [usAccount, setUsAccount] = useState();;
   const [validate, setValidate] = useState();;
   const [alertError, setAlertError] = useState(false);
-  const [fileList, setUploadCompanyLogo] = useState('');
+ // const [fileList, setUploadCompanyLogo] = useState('');
 
   const dispatch = useDispatch();
   const profileInfo = useSelector((state) => state.profileState.profile);
-  const isLoading = useSelector((state) => state.profileState.isLoading);
-  const bankSet = profileInfo && profileInfo.bank;
-  const ikOptionSet = profileInfo && profileInfo.ikOptions;
+  // const isLoading = useSelector((state) => state.profileState.isLoading);
+
+  // Select dropdown lists
+  const bankLists = [
+    { value: profileInfo && profileInfo.bank, label: profileInfo && profileInfo.bank },
+  ]
+
+  const ikOptionsList = [
+    { value: profileInfo && profileInfo.ikOptions, label: profileInfo && profileInfo.ikOptions },
+  ]
+  
+  const preferenceList = [
+    { value: profileInfo && profileInfo.preference, label: profileInfo && profileInfo.preference },
+  ]
 
   const profileLogo = profileInfo && profileInfo.logo;
   const profileAddress = profileInfo && profileInfo.addressImage;
-  const profileId = profileInfo && profileInfo.idImage;
   const profileRegistration = profileInfo && profileInfo.companyRegImage;
+  const profileId = profileInfo && profileInfo.idImage;
+  const companyNameInfo = !companyName && companyName !== '' ? profileInfo && profileInfo.companyName : companyName;
+  const businessLocationInfo = !businessLocation && businessLocation !== '' ? profileInfo && profileInfo.businessLocation : businessLocation;
+  const firstNameInfo = !firstName && firstName !== '' ? profileInfo && profileInfo.firstName : firstName;
+  const lastNameInfo = !lastName && lastName !== '' ? profileInfo && profileInfo.lastName : lastName;
+  const emailInfo = !email && email !== '' ? profileInfo && profileInfo.email : email;
+  const mobileInfo = !mobile && mobile !== '' ? profileInfo && profileInfo.mobile : mobile;
+  const bankInfo = !bank ? bankLists : bank;
+  const bankAccountInfo = !bankAccount && bankAccount !== '' ? profileInfo && profileInfo.bankAccount : bankAccount;
+  const wipayAccountInfo = !wipayAccount && wipayAccount !== '' ? profileInfo && profileInfo.wipayAccount : wipayAccount;
+  const preferenceInfo = !preference ? preferenceList : preference;
+  const ikOptionsInfo = !ikOptions ? ikOptionsList : ikOptions;
 
   useEffect(() => {
     dispatch({ type: 'PROFILE_REQUEST' });
   }, [])
 
-  const bankLists = [
-    { value: bankSet, label: bankSet },
-  ]
-
-  const ikOptionLists = [
-    { value: ikOptionSet, label: ikOptionSet },
-  ]
-
   const onCompanyLogo = ({ fileList: newFileList }) => {
-    if (newFileList.length && newFileList[newFileList.length - 1].status === 'done') {
-      let file = newFileList[newFileList.length - 1].originFileObj;
-      const reader = new FileReader();
-      reader.onload = () => {
-        setCompanyLogo(reader.result);
-      };
-      reader.readAsDataURL(file);
-    }
-    setUploadCompanyLogo(newFileList);
+    let file = newFileList[0].originFileObj;
+    const reader = new FileReader();
+    reader.onload = () => {
+      setCompanyLogo(reader.result);
+    };
+    reader.readAsDataURL(file);
   }
+
+  // const onPreview = async file => {
+  //   if (!file.url && !file.preview) {
+  //     file.preview = await getBase64(file.originFileObj);
+  //   }
+  //   setPreviewVisible(true)
+  //   setPreviewImage(file.url || file.preview)
+  //   setPreviewTitle(file.name || file.url.substring(file.url.lastIndexOf('/') + 1))
+  // };
+
+  // const getBase64 = (file) => {
+  //   return new Promise((resolve, reject) => {
+  //     const reader = new FileReader();
+  //     reader.readAsDataURL(file);
+  //     reader.onload = () => resolve(reader.result);
+  //     reader.onerror = error => reject(error);
+  //   });
+  // }
 
   const fakeRequest = ({ onSuccess }) => {
     setTimeout(() => {
@@ -160,14 +194,10 @@ const Profile = () => {
   const onEdit = () => {
     setDisabled(false)
   }
-
-  const bankSelect = bankList.map(item => ({
-    value: item.value,
-    label: item.label
-  }))
-
+  
   const onBank = (bank) => {
     setBank(bank)
+    setBankAccount('')
     setPreference({ value: 'Bank Transfer', label: 'Bank Transfer' })
   }
 
@@ -177,17 +207,6 @@ const Profile = () => {
     }
   }
 
-  const firstNameInfo = !firstName && firstName !== '' ? profileInfo && profileInfo.firstName : firstName;
-  const lastNameInfo = !lastName && lastName !== '' ? profileInfo && profileInfo.lastName : lastName;
-  const mobileInfo = !mobile && mobile !== '' ? profileInfo && profileInfo.mobile : mobile;
-  const emailInfo = !email && email !== '' ? profileInfo && profileInfo.email : email;
-  const businessLocationInfo = !businessLocation && businessLocation !== '' ? profileInfo && profileInfo.businessLocation : businessLocation;
-  const companyNameInfo = !companyName && companyName !== '' ? profileInfo && profileInfo.companyName : companyName;
-  const bankInfo = !bank && bank !== '' ? bankLists : bank;
-  const ikOptionsInfo = !ikOptions && ikOptions !== '' ? ikOptionLists : ikOptions;
-  const bankAccountInfo = !bankAccount && bankAccount !== '' ? profileInfo && profileInfo.bankAccount : bankAccount;
-  const wipayAccountInfo = !wipayAccount && wipayAccount !== '' ? profileInfo && profileInfo.wipayAccount : wipayAccount;
-  // const wipayStatusInfo = !wipay && wipay !== '' ? profileInfo && profileInfo.wipay : wipay
 
   const onSubmit = () => {
     if (!firstNameInfo || !lastNameInfo || !mobileInfo || !emailInfo || !companyNameInfo
@@ -208,34 +227,34 @@ const Profile = () => {
     } else if (disabled) {
       setDisabled(false)
     } else {
-      message.success('Your Info Update Successfully');
+      // message.success('Your Info Update Successfully');
       setDisabled(true)
-      const Profile = {
+      const profile = {
         firstName: firstNameInfo,
         lastName: lastNameInfo,
         companyName: companyNameInfo,
-        email: emailInfo,
-        mobile: mobileInfo,
         businessLocation: businessLocationInfo,
+        mobile: mobileInfo,
+        email: emailInfo,
+        uploadId: profileId,
+        uploadLogo: profileLogo,
         bank: bankInfo.value,
         bankAccount: bankAccountInfo,
-        wipay: wipayStatusInfo,
+        uploadCompanyRegistration: uploadRegistration,
+        uploadAddress: profileAddress,
+        wipay,
         wipayAccount: wipayAccountInfo,
-        // usAccount,
-        uploadId,
-        uploadAddress,
-        uploadRegistration,
         preference: preference.value,
         ikOptions: ikOptionsInfo.value,
+        usAccount,
       };
-      //   dispatch({ type: 'PROFILE_REQUEST', Profile });
+      dispatch({ type: 'PROFILE_UPDATE_REQUEST', profile });
     }
-
   }
 
   return (
     <div className="wrapper">
-      {isLoading && <Loader />}
+      {/* {isLoading && <Loader />} */}
       <div className="rightside-panel vendor-profile-page">
         <Headerbar headerName="Profile" />
         <div className='profile-page-dgn'>
@@ -272,7 +291,7 @@ const Profile = () => {
                   <Col lg={12} >
                     <div clasName="personal-details" >
                       <div className="label-myprofile">
-                        <label className="card-info-label">Company Name  </label>
+                        <label className="card-info-label">Company Name</label>
                         <input
                           className={alertError && !companyNameInfo ? ` form-control my-input` : `form-control formy`}
                           disabled
@@ -284,7 +303,7 @@ const Profile = () => {
                         </input>
                       </div>
                       <div className="label-myprofile">
-                        <label className="card-info-label"> Business Location  </label>
+                        <label className="card-info-label"> Business Location</label>
                         <input
                           className={alertError && !businessLocationInfo ? ` form-control my-input` : `form-control formy`}
                           disabled
@@ -312,7 +331,7 @@ const Profile = () => {
                               <Image
                                 width={100}
                                 height={100}
-                                src={!uploadAddress && uploadAddress !== '' ? profileRegistration : "images/Your-logo-here.png"} />
+                                src={!uploadRegistration && uploadRegistration !== '' ? profileRegistration : "images/Your-logo-here.png"} />
                             </div>
                           </Col>
                           <Col xs={4} sm={4} md={4} lg={4} xl={4} className="upload-proofs">
@@ -321,7 +340,7 @@ const Profile = () => {
                               <Image
                                 width={100}
                                 height={100}
-                                src={!uploadAddress && uploadAddress !== '' ? profileId : "images/Your-logo-here.png"} />
+                                src={!uploadId && uploadId !== '' ? profileId : "images/Your-logo-here.png"} />
                             </div>
                           </Col>
                         </div>
@@ -340,7 +359,7 @@ const Profile = () => {
                     </div>
                     <Col xs={12} sm={6} md={6} lg={6} >
                       <div className="label-myprofile">
-                        <label className="card-info-label">First Name <span className="red-star">*</span> </label>
+                        <label className="card-info-label">First Name<span className="red-star">*</span> </label>
                         <input
                           disabled={disabled}
                           type="text"
@@ -352,7 +371,7 @@ const Profile = () => {
                         </input>
                       </div>
                       <div className="label-myprofile">
-                        <label className="card-info-label">Last Name <span className="red-star">*</span> </label>
+                        <label className="card-info-label">Last Name<span className="red-star">*</span> </label>
                         <input
                           disabled={disabled}
                           type="text"
@@ -366,7 +385,7 @@ const Profile = () => {
                     </Col>
                     <Col xs={12} sm={6} md={6} lg={6}>
                       <div className="label-myprofile">
-                        <label className="card-info-label">Email </label>
+                        <label className="card-info-label">Email</label>
                         <input
                           disabled={disabled}
                           className={alertError && !emailInfo || validateEmail(email) === false && validate ? ' form-control my-input' : 'form-control formy'}
@@ -378,7 +397,7 @@ const Profile = () => {
                         </input>
                       </div>
                       <div className="label-myprofile">
-                        <label className="card-info-label">Contact No <span className="red-star">*</span> </label>
+                        <label className="card-info-label">Contact No<span className="red-star">*</span> </label>
                         <Cleave
                           className={alertError && !mobileInfo ? ` form-control my-input` : `form-control formy`}
                           placeholder="Enter contact number"
@@ -401,7 +420,7 @@ const Profile = () => {
                     </div>
                     <Col xs={12} sm={6} md={6} lg={6}>
                       <div className="label-myprofile">
-                        <label className="card-info-label"> Bank  </label>
+                        <label className="card-info-label">Bank</label>
                         <Select
                           type="text"
                           className={`${alertError && !bankInfo && `dropdown-alert`}`}
@@ -448,10 +467,10 @@ const Profile = () => {
                           type="text"
                           className={`${alertError && wipay === "Yes" && !preference && `dropdown-alert`}`}
                           placeholder=" preference"
-                          value={preference}
+                          value={preferenceInfo}
                           disabled={disabled}
                           onChange={onPreference}
-                          options={preferenceList}
+                          options={preferenceSelect}
                           isSearchable={false}
                           isDisabled={wipay === 'No' || !wipay}
                         />
@@ -459,7 +478,7 @@ const Profile = () => {
                     </Col>
                     <Col xs={12} sm={6} md={6} lg={6}>
                       <div className="label-myprofile">
-                        <label className="card-info-label"> Bank Account No </label>
+                        <label className="card-info-label">Bank Account No</label>
                         <input
                           type="text"
                           className="form-control formy`"
@@ -483,14 +502,14 @@ const Profile = () => {
                         />
                       </div>
                       <div className="label-myprofile">
-                        <label className="card-info-label"> IK Payout Option <span className="red-star">*</span>  </label>
+                        <label className="card-info-label"> IK Payout Option <span className="red-star">*</span></label>
                         <Select
                           type="text"
                           className={`${alertError && !ikOptionsInfo && `dropdown-alert`}`}
                           placeholder=" payout option"
                           value={ikOptionsInfo}
                           onChange={onIkoptions}
-                          options={ikOptionsList}
+                          options={ikOptionsSelect}
                           isSearchable={false}
                           isDisabled={disabled ? ikOptionsList : null}
                         />

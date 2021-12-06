@@ -9,22 +9,8 @@ import ImgCrop from 'antd-img-crop';
 import { history } from '../../../routes';
 import Footer from '../../../components/Footer';
 import Header from '../../../components/Header';
-import Loader from '../../../components/Loader'
-
-const bankList = [
-  { value: 'First Citizens', label: 'First Citizens' },
-  { value: 'Republic Bank', label: 'Republic Bank' },
-  { value: 'JMMB', label: 'MMB' },
-  { value: 'Scotiabank', label: 'Scotiabank' },
-  { value: 'RBC Royal Bank', label: 'RBC Royal Bank' },
-  { value: 'First Caribbean', label: 'First Caribbean' },
-  { value: 'Citibank', label: 'Citibank' },
-  { value: 'Bank of Baroda', label: 'Bank of Baroda' },
-  { value: 'Agricultural Development Bank', label: 'Agricultural Development Bank ' },
-  { value: 'Ansa Merchant Bank', label: 'Ansa Merchant Bank' },
-  { value: 'CAF Trinidad & Tobago', label: 'CAF Trinidad & Tobago' },
-  { value: 'Others', label: 'Others' },
-];
+import Loader from '../../../components/Loader';
+import { BankList } from '../../../constants/BankList'
 
 let fileList = [];
 
@@ -37,6 +23,11 @@ const preferenceList = [
   { value: 'Bank Transfer', label: 'Bank Transfer' },
   { value: 'Wipay Transfer', label: 'Wipay Transfer' },
 ]
+
+const bankSelect = BankList.map(item => ({
+  value: item.value,
+  label: item.label
+}))
 
 const VendorInfo = (props) => {
   const [firstName, setFirstName] = useState('');
@@ -130,11 +121,6 @@ const VendorInfo = (props) => {
     }
     setUploadCompanyLogo(newFileList);
   }
-
-  const bankSelect = bankList.map(item => ({
-    value: item.value,
-    label: item.label
-  }))
 
   const onBank = (bank) => {
     setBank(bank)
