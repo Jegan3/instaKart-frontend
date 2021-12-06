@@ -4,20 +4,20 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Grid, Row, Col } from 'react-bootstrap';
 import ReactTable from 'react-table';
 import Table from '../../../components/Table';
-import Sidebar from '../../../components/Sidebar';
 import { history } from '../../../routes';
 import Loader from '../../../components/Loader';
 
 const ProductList = ({ storeId }) => {
 
   const dispatch = useDispatch();
-  const productListInfo = useSelector((state) => state.productListState.productList);
-  const isLoading = useSelector((state) => state.productListState.isLoading);
+  const productListInfo = useSelector((state) => state.productList.productList);
+  const productDeleteInfo = useSelector((state) => state.productDelete.productDelete);
 
   useEffect(() => {
     dispatch({ type: 'PRODUCT_LIST_REQUEST', storeId });
-  }, [])
+  }, [productDeleteInfo])
 
+  //For Index 
   productListInfo && productListInfo.map((info, i) => {
     info.id = i + 1
   })
@@ -30,11 +30,16 @@ const ProductList = ({ storeId }) => {
     });
   }
 
+  const onDelete = (info) => {
+    const { productId } = info.original
+    dispatch({ type: 'PRODUCT_DELETE_REQUEST', productId });
+  }
+
   return (
     <div className="vendor-product-list">
       <div >
         <div className="main-content">
-          {isLoading && <Loader />}
+          {/* {isLoading && <Loader />} */}
           <Grid fluid>
             <Row>
               <Table
@@ -48,52 +53,69 @@ const ProductList = ({ storeId }) => {
                         {
                           Header: '#',
                           accessor: 'id',
-                          width: 70,
+                          width: 50,
+                          className: 'price-table',
+                        },
+                        {
+                          Header: 'Product Id',
+                          accessor: 'productId',
+                          width: 220,
                           className: 'price-table',
                         },
                         {
                           Header: 'Product Name',
                           accessor: 'productName',
                           sortable: true,
-                          width: 230,
+                          width: 170,
                           className: 'price-table',
                         },
                         {
                           Header: 'Reserved',
                           accessor: 'stockReserve',
 
-                          width: 100,
+                          width: 70,
                           className: 'price-table',
                         },
                         {
                           Header: 'SOH',
                           accessor: 'stockHand',
-                          width: 100,
+                          width: 70,
                           className: 'price-table',
                         },
                         {
                           Header: 'Sold',
                           accessor: 'stockSold',
-                          width: 100,
+                          width: 70,
                           className: 'price-table',
                         },
                         {
                           Header: 'Price',
                           accessor: 'finalPrice',
                           className: 'price-table',
+                          width: 100,
                         },
                         {
                           Header: 'Status',
                           accessor: 'status',
                           filterable: false,
                           sortable: false,
-                          width: 150,
+                          width: 100,
                           className: 'price-table',
+                        },
+                        {
+                          Header: 'Remove',
+                          filterable: false,
+                          sortable: false,
+                          width: 70,
+                          Cell: (info) => (
+                            <span className="btn-sign" onClick={() => onDelete(info)}><i class="fas fa-trash"></i></span>
+                          ),
                         },
                         {
                           Header: 'Analyze',
                           filterable: false,
                           sortable: false,
+                          width: 70,
                           Cell: (info) => (
                             <span className="btn-sign" onClick={() => viewProduct(info)}><i class="fas fa-sign-in-alt"></i></span>
                           ),
