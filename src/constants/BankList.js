@@ -1,4 +1,4 @@
-export const bankList = [
+export const BankList = [
   {
     value: 'First Citizens',
     label: 'First Citizens',
