@@ -21,7 +21,7 @@ const Overlay = ({
 
   const onStoreName = (e) => {
     if (e.target.value.match('^[a-zA-Z0-9 ]*$'))
-      setStoreName(`${e.target.value.charAt(0).toUpperCase()}${e.target.value.slice(1)}`)
+      setStoreName(e.target.value.toLowerCase().split(' ').map(caps => `${caps.charAt(0).toUpperCase()}${caps.slice(1)}`).join(' '))
   }
 
   const onIndustryType = (industryType) => {
