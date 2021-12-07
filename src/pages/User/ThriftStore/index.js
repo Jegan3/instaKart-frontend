@@ -64,7 +64,7 @@ const ThriftStore = () => {
       <Row>
       </Row>
       <Row>
-        <div className="bg-thriftstore">
+        <div className="bg-thrift">
           <div className="thrift-ads">
             <h3>THRIFT STORE NEAR YOU</h3>
             <h6>Buy & Sell Any Thing</h6>
@@ -74,12 +74,12 @@ const ThriftStore = () => {
         </div>
       </Row>
       <Row>
-        <div className="bg-thrift">
+        <div className="bg-thriftstore">
           <div className="thrift-ads">
             <div className='particles-sub'>
               <Particle color='#f5f5f5' number='150' direction='top' />
             </div>
-            <h3>NEW ADDITIONS</h3>
+            <h3>NEW PROMOTIONS</h3>
             <h6>Buy & Sell Any Thing</h6>
             <CarouselThriftNewAdditions thriftDetails={thriftDetails} setLogin={setLoginModal} module='Thrift Store' />
           </div>
@@ -87,14 +87,6 @@ const ThriftStore = () => {
         </div>
       </Row>
       <Row>
-        <div className="bg-thriftstore">
-          <div className="thrift-ads">
-            <h3>NEW PROMOTIONS</h3>
-            <h6>Buy & Sell Any Thing</h6>
-            <CarouselThriftPromotions />
-          </div>
-          <br />
-        </div>
       </Row>
       <Row>
         <div className="bg-thrift">
