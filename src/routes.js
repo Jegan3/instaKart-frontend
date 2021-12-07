@@ -23,7 +23,7 @@ import Industry from './pages/Vendor/Industry';
 import ListYourAds from './pages/User/ListYourAds';
 import PaymentStatus from './pages/User/PaymentStatus';
 import User from './pages/Admin/User';
-import ErrorPage from './components/ErrorPage';
+// import ErrorPage from './components/ErrorPage';
 
 export const history = createBrowserHistory();
 
@@ -64,7 +64,7 @@ const Routes = () => (
         <Route path="/cart" component={Cart} />
         <Route path="/paymentstatus" component={PaymentStatus} />
         <Route path="/listyourads" component={ListYourAds} />
-        <Route path="*" component={ErrorPage} />
+        {/* <Route path="*" component={ErrorPage} /> */}
         <Route component={AuthenticatedRoutes} />
         {/* <Route path="*" component={ErrorPage} /> */}
       </Switch>
