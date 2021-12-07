@@ -165,7 +165,7 @@ const ListYourAds = () => {
                     <ImgCrop
                       crop={crop}
                       zoom={true}
-                      aspect={4 / 3}
+                      aspect={4/3}
                       onCropChange={setCrop}
                       beforeCrop={false}
                     >

@@ -1,19 +1,17 @@
 /*eslint-disable*/
 import React from 'react';
 import Header from '../../../components/Header';
-import Particles from "react-particles-js";
+import Particle from '../../../components/Particle';
 import Typical from "react-typical";
 import Footer from '../../../components/Footer';
 
 const ComingSoon = () => {
 
-  const toHome = () => {
-    history.push({ pathname: '/' });
-  };
-
   return (
-    <div className='comingsoon'
-    >
+    <div className="comingsoon">
+      <div className='particles-main'>
+        <Particle color='#28a4d9' number='500' direction='top' />
+      </div>
       <div>
         <Header />
       </div>
