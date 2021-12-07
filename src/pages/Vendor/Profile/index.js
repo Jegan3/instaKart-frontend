@@ -50,7 +50,7 @@ const Profile = () => {
   const [usAccount, setUsAccount] = useState();;
   const [validate, setValidate] = useState();;
   const [alertError, setAlertError] = useState(false);
- // const [fileList, setUploadCompanyLogo] = useState('');
+  // const [fileList, setUploadCompanyLogo] = useState('');
 
   const dispatch = useDispatch();
   const profileInfo = useSelector((state) => state.profileState.profile);
@@ -64,7 +64,7 @@ const Profile = () => {
   const ikOptionsList = [
     { value: profileInfo && profileInfo.ikOptions, label: profileInfo && profileInfo.ikOptions },
   ]
-  
+
   const preferenceList = [
     { value: profileInfo && profileInfo.preference, label: profileInfo && profileInfo.preference },
   ]
@@ -194,7 +194,7 @@ const Profile = () => {
   const onEdit = () => {
     setDisabled(false)
   }
-  
+
   const onBank = (bank) => {
     setBank(bank)
     setBankAccount('')
@@ -370,6 +370,8 @@ const Profile = () => {
                           maxLength={30}>
                         </input>
                       </div>
+                    </Col>
+                    <Col xs={12} sm={6} md={6} lg={6}>
                       <div className="label-myprofile">
                         <label className="card-info-label">Last Name<span className="red-star">*</span> </label>
                         <input
@@ -396,6 +398,8 @@ const Profile = () => {
                           maxLength={30}>
                         </input>
                       </div>
+                    </Col>
+                    <Col xs={12} sm={6} md={6} lg={6}>
                       <div className="label-myprofile">
                         <label className="card-info-label">Contact No<span className="red-star">*</span> </label>
                         <Cleave
@@ -434,6 +438,22 @@ const Profile = () => {
                         >
                         </Select>
                       </div>
+                    </Col>
+                    <Col xs={12} sm={6} md={6} lg={6}>
+                      <div className="label-myprofile">
+                        <label className="card-info-label">Bank Account No</label>
+                        <input
+                          type="text"
+                          className="form-control formy`"
+                          placeholder="Bank account number"
+                          value={bankAccountInfo}
+                          onChange={onBankAccount}
+                          disabled={!bank}
+                          maxLength={15}>
+                        </input>
+                      </div>
+                    </Col>
+                    <Col xs={12} sm={6} md={6} lg={6}>
                       <div className="label-myprofile">
                         <label className="select-label radio-label">WiPay</label>
                         <div className="form-check">
@@ -461,6 +481,8 @@ const Profile = () => {
                           </label>
                         </div>
                       </div>
+                    </Col>
+                    <Col xs={12} sm={6} md={6} lg={6}>
                       <div className="label-myprofile">
                         <label className="card-info-label">Which do you prefer? {wipay === 'Yes' && <span className="red-star">*</span>}</label>
                         <Select
@@ -478,18 +500,6 @@ const Profile = () => {
                     </Col>
                     <Col xs={12} sm={6} md={6} lg={6}>
                       <div className="label-myprofile">
-                        <label className="card-info-label">Bank Account No</label>
-                        <input
-                          type="text"
-                          className="form-control formy`"
-                          placeholder="Bank account number"
-                          value={bankAccountInfo}
-                          onChange={onBankAccount}
-                          disabled={!bank}
-                          maxLength={15}>
-                        </input>
-                      </div>
-                      <div className="label-myprofile">
                         <label className="card-info-label">WiPay Account Number {wipay === 'Yes' && <span className="red-star">*</span>}</label>
                         <input
                           type="text"
@@ -501,6 +511,8 @@ const Profile = () => {
                           disabled={wipay === 'No' || !wipay}
                         />
                       </div>
+                    </Col>
+                    <Col xs={12} sm={6} md={6} lg={6}>
                       <div className="label-myprofile">
                         <label className="card-info-label"> IK Payout Option <span className="red-star">*</span></label>
                         <Select

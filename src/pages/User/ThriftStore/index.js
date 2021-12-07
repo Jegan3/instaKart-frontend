@@ -7,6 +7,7 @@ import Footer from '../../../components/Footer';
 import Header from '../../../components/Header';
 import { CarouselThriftNewAdditions, ThriftStoreNearYou, CarouselThriftStoreCategoryUp, CarouselThriftPromotions, CarouselThriftStoreCategoryBottom, CarouselAdsDetails } from '../../../components/Carousel';
 import { ThriftBanners } from '../../../components/Banners';
+import Particle from '../../../components/Particle';
 
 const ThriftStore = () => {
   const [login, setLogin] = useState(false);
@@ -28,6 +29,9 @@ const ThriftStore = () => {
 
   return (
     <Grid fluid className="padding-control thrift">
+      <div className='particles-main'>
+        <Particle color='#28a4d9' number='700' direction='bottom' />
+      </div>
       <div>
         <Header loginCart={login} hideloginCart={hideloginCart} />
       </div>
@@ -72,6 +76,9 @@ const ThriftStore = () => {
       <Row>
         <div className="bg-thrift">
           <div className="thrift-ads">
+            <div className='particles-sub'>
+              <Particle color='#f5f5f5' number='150' direction='top' />
+            </div>
             <h3>NEW ADDITIONS</h3>
             <h6>Buy & Sell Any Thing</h6>
             <CarouselThriftNewAdditions thriftDetails={thriftDetails} setLogin={setLoginModal} module='Thrift Store' />
@@ -91,6 +98,9 @@ const ThriftStore = () => {
       </Row>
       <Row>
         <div className="bg-thrift">
+          <div className='particles-sub'>
+            <Particle color='#f5f5f5' number='150' direction='top' />
+          </div>
           <div className="thrift-ads">
             <h3>TIMECAP VLOGS</h3>
             <h6>Buy & Sell Any Thing</h6>

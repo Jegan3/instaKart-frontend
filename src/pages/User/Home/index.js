@@ -43,23 +43,15 @@ const Home = () => {
       {advertisement && Object.keys(advertisement.userAds).length !== 0 && advertisement.userAds.primaryBanner ? <div className='intro-banner'>
         <Banners primaryBanner={advertisement && advertisement.userAds} />
       </div> : ''}
-      {/* {window.screen.width <= 464 ?
-      <div className='arrival'>
-        <CarouselMobile />
-      </div> :
-      <div className='arrival'>
-        <CarouselFirst />
-        <CarouselSecond />
-        <CarouselThird />
-        <CarouselFourth />
-      </div>} */}
       <div className='arrival intro-banner-style'>
         <CarouselFirst />
         <CarouselSecond />
         <CarouselThird />
-        {/* <CarouselFourth /> */}
       </div>
       {advertisement && Object.keys(advertisement.userAds).length !== 0 && advertisement.userAds.secondaryBanner ? <div className='bg-home-ban'>
+        <div className='particles-sub'>
+          <Particle color='#f5f5f5' number='150' direction='bottom' />
+        </div>
         <div className='arrival secondary-banner-style'>
           <SecondaryBanners secondaryBanner={advertisement && advertisement.userAds} />
         </div>
@@ -67,7 +59,7 @@ const Home = () => {
       </div> : ''}
       <div className='bg-home-pro'>
         <div className='particles-sub'>
-          <Particle color='#f5f5f5' number='150' direction='bottom' />
+          <Particle color='#28a4d9' number='150' direction='top' />
         </div>
         <div className='arrival new-promotion'>
           <h5>New Promotions</h5>
@@ -91,7 +83,6 @@ const Home = () => {
       </div>
       {advertisement && Object.keys(advertisement.userAds).length !== 0 && advertisement.userAds.video ? <div className='bg-home'>
         <div className='arrival time-cap'>
-          <h5>TimeCap VLogs</h5>
           <div className="promo-videos">
             <CarouselNewEStoreVideo video={advertisement && advertisement.userAds} />
           </div>
