@@ -72,6 +72,7 @@ const Sidebar = () => {
   const vendorCompanyDetails = useSelector((state) => state.vendorCompanyDetailsState.vendorCompanyDetails);
   const addStore = useSelector((state) => state.addStoreState.addStore);
   const addStoreError = useSelector((state) => state.addStoreState.error);
+  const newStore =  vendorCompanyDetails && vendorCompanyDetails.industries[0].stores.slice(-1);
 
   const admin = (validLogin && validLogin.user.type === 'admin') || sessionStorage.type === 'admin';
 
@@ -93,6 +94,14 @@ const Sidebar = () => {
   useEffect(() => {
     setToggled(sidebar.show);
   }, [sidebar.show]);
+
+  useEffect(() => {
+    if (addStore && addStore.status){
+       history.push({ pathname: '/storedetails', state: newStore[0].estoreId });
+       dispatch({ type: 'STORE_INFO_REQUEST', storeId: newStore[0].estoreId });
+       dispatch({ type: 'PRODUCT_LIST_REQUEST', storeId: newStore[0].estoreId });
+    }
+  }, [vendorCompanyDetails])
 
   const onToggle = () => {
     setOpen(!open);

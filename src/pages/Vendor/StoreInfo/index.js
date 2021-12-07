@@ -1,14 +1,13 @@
 /*eslint-disable*/
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { Grid, Row, Col } from 'react-bootstrap';
 import Select from 'react-select';
 import Cleave from "cleave.js/react";
 import ReactTable from 'react-table';
 import ImgCrop from 'antd-img-crop';
 import { Upload } from 'antd';
-import { Menu, TimePicker, message } from 'antd';
+import { TimePicker, message } from 'antd';
 import moment from 'moment';
 import Table from '../../../components/Table';
 import { Locale } from '../../../constants/Locale';
@@ -83,8 +82,8 @@ const StoreInfo = ({ storeId }) => {
   const [alertError, setAlertError] = useState(false);
   const [button, setButton] = useState(false)
   const [countryDetails, setCountryDetails] = useState();
-  const [abcd, setCityDetails] = useState();
-  const [disabled, setDisabled] = useState(true);
+  const [cityDetails, setCityDetails] = useState();
+  const [disabled, setDisabled] = useState(false);
 
 
   const dispatch = useDispatch();
@@ -93,22 +92,31 @@ const StoreInfo = ({ storeId }) => {
   const isLoading = useSelector((state) => state.storeInfoState.isLoading);
   const profileInfo = useSelector((state) => state.thriftProfileState.profileInfo);
 
-  const countrySet = storeInfo && storeInfo.storeInfo.countryId;
-  const citySet = storeInfo && storeInfo.storeInfo.cityId;
+  const countryList = storeInfo && storeInfo.storeInfo.countryId;
+  const cityList = storeInfo && storeInfo.storeInfo.cityId;
+  const addressDetails = storeInfo && storeInfo.storeInfo.address;
 
-
-
-  // const countryLists = [
-  //   { _id: countrySet, countryName: countrySet },
-  // ]
 
   useEffect(() => {
-    dispatch({ type: 'STORE_INFO_REQUEST', storeId });
+    dispatch({ type: 'STORE_INFO_REQUEST', storeId, profileInfo });
   }, [])
+
+  useEffect(() => {
+    if (addressDetails && addressDetails) {
+      setDisabled(true);
+      setButton(false)
+    }
+    else {
+      setDisabled(false);
+      setButton(true)
+    }
+  }, [addressDetails])
 
   useEffect(() => {
     if (profileInfo && profileInfo.status) {
       message.success('Thanks!, Thrift Store Profile is successfully updated with us')
+      setButton(false)
+      setDisabled(true)
     } else if (invalidProfileInfo) {
       message.error('invalid Error');
     }
@@ -117,7 +125,7 @@ const StoreInfo = ({ storeId }) => {
   //country from Api
   useEffect(() => {
     Locale.filter(item => {
-      if (item._id === countrySet) {
+      if (item._id === countryList) {
         const countryDetails = ({
           value: item._id,
           label: item.countryName
@@ -125,22 +133,22 @@ const StoreInfo = ({ storeId }) => {
         setCountryDetails(countryDetails);
       }
     })
-  }, [countrySet]);
+  }, [countryList]);
 
   //city from Api
   useEffect(() => {
     Locale.filter((item) => {
       item.cities.filter((item) => {
-        if (item._id === citySet) {
-          const abcd = ({
+        if (item._id === cityList) {
+          const cityDetails = ({
             value: item._id,
             label: item.cityName,
           });
-          setCityDetails(abcd);
+          setCityDetails(cityDetails);
         }
       });
     })
-  }, [citySet]);
+  }, [cityList]);
 
   // City Options
   useEffect(() => {
@@ -156,14 +164,16 @@ const StoreInfo = ({ storeId }) => {
   }, [countryId]);
 
   const onAvatarImage = ({ fileList: newFileList }) => {
+    if (newFileList.length && newFileList[newFileList.length - 1].status === 'done') {
+      let file = newFileList[newFileList.length - 1].originFileObj;
+      const reader = new FileReader();
+      reader.onload = () => {
+        setStoreLogo(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
     setImageList(newFileList);
-    let file = newFileList[0].originFileObj;
-    //get64
-    const reader = new FileReader();
-    reader.onload = () => {
-      setStoreLogo(reader.result);
-    };
-    reader.readAsDataURL(file);
+    setStoreDetail(true)
   }
 
   const onAboutStore = (e) => {
@@ -202,7 +212,7 @@ const StoreInfo = ({ storeId }) => {
   //country from Api
   useEffect(() => {
     Locale.filter(item => {
-      if (item._id === countrySet) {
+      if (item._id === countryList) {
         const countryDetails = ({
           // return {
           value: item._id,
@@ -303,10 +313,8 @@ const StoreInfo = ({ storeId }) => {
   const emailIdInfo = !emailId && emailId !== '' ? storeInfo && storeInfo.storeInfo.emailId : emailId;
   const fbIdInfo = !fbId && fbId !== '' ? storeInfo && storeInfo.storeInfo.fbId : fbId;
   const igIdInfo = !igId && igId !== '' ? storeInfo && storeInfo.storeInfo.igId : igId;
-  const cityInfo = !cityId && cityId !== '' ? abcd : cityId;
-  const countryInfo = !countryId && countryId !== '' ? countryDetails && countryDetails : countryId;
-
-
+  const cityInfo = !cityId && cityId !== '' ? (countryList ? cityDetails && cityDetails : cityId) : cityId;
+  const countryInfo = !countryId && countryId !== '' ? (countryList ? countryDetails && countryDetails : countryId) : countryId;
   const mobileInfo = !mobile && mobile !== '' ? storeInfo && storeInfo.storeInfo.mobile : mobile;
 
   const onSubmit = () => {
@@ -368,10 +376,10 @@ const StoreInfo = ({ storeId }) => {
                         <div className='load-info'>
                           <div>
                             <div className="photo">
-                              {storeDetail ? <img src={fileList} alt='' /> : <img src={storeInfo && storeInfo.storeInfo.storeLogo ? storeInfo.storeInfo.storeLogo : "images/logo-here.png"} />}
+                              {storeLogo && storeDetail ? <img src={storeLogo} alt='' /> : <img src={storeInfo && storeInfo.storeInfo.storeLogo ? storeInfo.storeInfo.storeLogo : "images/logo-here.png"} />}
                             </div>
                             <div className="image-upload">
-                              <ImgCrop rotate>
+                              <ImgCrop>
                                 <Upload
                                   fileList={fileList}
                                   customRequest={fakeRequest}
@@ -510,7 +518,6 @@ const StoreInfo = ({ storeId }) => {
                             maxLength={10}
                             value={zipCodeInfo}
                             onChange={onZipCode}
-                            placeholder="Z1234"
                             disabled={disabled}
                           />
                         </Col>
@@ -530,7 +537,7 @@ const StoreInfo = ({ storeId }) => {
                       value={emailIdInfo}
                       disabled={disabled}
                       onChange={onEmailId}
-                      placeholder="@gmail.com"
+                      placeholder="Enter Your Email"
                     />
                   </Col>
                   <Col md={3}>
@@ -660,7 +667,7 @@ const StoreInfo = ({ storeId }) => {
                       className="btn btn-primary btn-block modal-butn"
                       onClick={onSubmit}
                     >
-                      submit
+                      Submit
                     </button>}
                 </Col>
               </Row>
