@@ -1,6 +1,6 @@
 /*eslint-disable*/
-import React, { useState } from 'react';
-import { useDispatch } from "react-redux";
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from "react-redux";
 import { Row, Col, Grid } from 'react-bootstrap';
 import { Upload, message } from 'antd';
 import ImgCrop from 'antd-img-crop';
@@ -23,6 +23,12 @@ const ListYourAds = () => {
   const [secondaryImgList, setSecondaryImgList] = useState([]);
 
   const dispatch = useDispatch();
+  const advertiseNowSuccess = useSelector((state) => state.listYourAds.advertisement);
+
+  useEffect(() => {
+    if (advertiseNowSuccess && advertiseNowSuccess.message)
+      message.success(advertiseNowSuccess.message)
+  }, [advertiseNowSuccess])
 
   const onPrimaryImage = ({ fileList: newFileList }) => {
     let file = newFileList.length && newFileList[newFileList.length - 1].originFileObj;
@@ -159,7 +165,7 @@ const ListYourAds = () => {
                     <ImgCrop
                       crop={crop}
                       zoom={true}
-                      aspect={4/3}
+                      aspect={4 / 3}
                       onCropChange={setCrop}
                       beforeCrop={false}
                     >
