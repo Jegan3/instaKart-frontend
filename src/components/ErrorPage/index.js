@@ -12,7 +12,7 @@ const ErrorPage = () => {
 
     return (
         <div className="errorpage">
-            <div className='particles-main'>
+            <div className='particles-error'>
                 <Particle color='#28a4d9' number='500' direction='top' />
             </div>
             <div>

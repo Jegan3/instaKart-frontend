@@ -1,4 +1,11 @@
 .errorpage {
+  .particles-error {
+    canvas {
+      position: fixed;
+      z-index: -1;
+      top: 0px;
+    }
+  }
 
   .title {
     color: black;
@@ -7,7 +14,6 @@
     font-size: 5vmin;
     margin-top: 31vmin;
   }
-
 
   .subtitle {
     color: black;
