@@ -27,6 +27,7 @@ const SignUp = (props) => {
   const [country, setCountry] = useState();
   const [city, setCity] = useState();
   const [updatedCityOptions, setUpdatedCityOptions] = useState();
+  const [validate, setValidate] = useState('');
 
   const dispatch = useDispatch();
   const validSignup = useSelector((state) => state.signupState.signup);
@@ -50,6 +51,8 @@ const SignUp = (props) => {
       setEmail('');
       setPassword('');
       setTermsCondition(false);
+      setValidate(false);
+      setAlertError(false);
       message.success('Thanks!, Signup form is successfully registered with us , You will receive an email from us shortly Note: If you using Outlook please check ur spam folder too');
     } else if (invalidSignup) {
       message.error(`An account with email ${email} already exists`);
@@ -73,6 +76,13 @@ const SignUp = (props) => {
       setLastName(e.target.value);
     }
   };
+
+  const validateEmail = (email) => {
+    const regex = /\S+@\S+\.\S+/;
+    return regex.test(email);
+  };
+
+  const valid = validateEmail(email);
 
   const onEmail = (e) => {
     if (e.target.value.match('^[a-zA-Z0-9_@./#&+-]*$')) {
@@ -147,6 +157,15 @@ const SignUp = (props) => {
     else if (type === 'vendor' && (!company || !industryType || !country || !city || !email || !password)) {
       setAlertError(true)
       message.error('Please fill all the fields');
+    } else if (password.length < 8) {
+      message.error(' minimum 8 characters required');
+      setAlertError(true)
+    } else if (type === 'user' && 'vendor'(!email && valid === false)) {
+      setAlertError(true)
+    } else if (valid === false) {
+      setAlertError(true)
+      message.error('Please enter the valid Email')
+      setValidate(true)
     } else if (termscondition === false) {
       message.error('Please accept the Terms & Conditions and Privacy Policy');
     } else {
@@ -192,6 +211,8 @@ const SignUp = (props) => {
     window.alert('OTP resent to your mail ID');
   };
 
+  const abcd = password.length < 8 ? 'true' : 'false'
+
   return (
     <Grid fluid>
       <Header basic />
@@ -213,7 +234,7 @@ const SignUp = (props) => {
                   <label className="signup-label">Company Name <span className="red-star">*</span></label>
                   <input
                     type="text"
-                    className={alertError && company === '' ? ' form-control my-input' : 'form-control formy'}
+                    className={alertError && !company ? ' form-control my-input' : 'form-control formy'}
                     placeholder="Enter your company name"
                     value={company}
                     onChange={onEstore}
@@ -309,7 +330,7 @@ const SignUp = (props) => {
                 <label className="signup-label">Email <span className="red-star">*</span></label>
                 <input
                   type="email"
-                  className={alertError && email === '' ? ' form-control my-input' : 'form-control formy'}
+                  className={alertError && email === '' || validateEmail(email) === false && validate ? ' form-control my-input' : 'form-control formy'}
                   placeholder="Enter your email"
                   value={email}
                   onChange={onEmail}
@@ -334,7 +355,7 @@ const SignUp = (props) => {
                 </label>
                 <input
                   type={showPassword ? 'text' : 'password'}
-                  className={alertError && password === '' ? ' form-control my-input' : 'form-control formy'}
+                  className={alertError && abcd ? 'form-control my-input' : 'form-control formy'}
                   placeholder="Enter your password"
                   value={password}
                   onChange={onPassword}
