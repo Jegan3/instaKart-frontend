@@ -64,6 +64,7 @@ const AddProduct = ({ storeId }) => {
       setProductDescription('');
       setProductWarranty('');
       setProductShipping('');
+      setAlertError(false);
       message.success(`Thanks!, ${productName} ${thriftAddProduct.message}`)
       setClear(false)
     } else if (clear && invalidAddProduct) {
@@ -297,7 +298,19 @@ const AddProduct = ({ storeId }) => {
       (!productName || !category || !price || !productDescription || !productWarranty) {
       setAlertError(true)
       message.error('Please fill all the fields')
-    } else if (!fileList.length) {
+    // } else if (productName.length <3 ) {
+    //   message.error('Please enter the valid Name')
+    //   setAlertError(true)
+    // }
+    // else if (productDescription.length < 20) {
+    //   message.error('Please enter the Description upto 500 words')
+    //   setAlertError(true)
+    // }
+    // else if (productWarranty.length < 20) {
+    //   message.error('Please enter the Warranty upto 500 words')
+    //   setAlertError(true)
+    }
+    else if (!fileList.length) {
       message.error('Please Upload the Images')
     } else {
       const addProduct = {
@@ -352,7 +365,7 @@ const AddProduct = ({ storeId }) => {
                     <label className="signup-label">Product Name <span className="red-star">*</span></label>
                     <input
                       type="text"
-                      className={alertError && !productName ? ` form-control my-input` : `form-control formy`}
+                      className={alertError && productName === '' ? ` form-control my-input` : `form-control formy`}
                       maxLength={30}
                       value={productName}
                       onChange={onProductName}
@@ -476,7 +489,7 @@ const AddProduct = ({ storeId }) => {
                             numeralThousandsGroupStyle: 'thousand'
                           }}
                           className="form-control"
-                          maxLength={10}
+                          maxLength={12}
                           value={parseFloat(finalPrice).toFixed(2)}
                           disabled
                         />}

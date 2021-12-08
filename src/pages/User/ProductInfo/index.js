@@ -2,7 +2,8 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Row, Col, Grid } from 'react-bootstrap';
-import { Rate, message } from 'antd';
+import { Rate, message, Modal } from 'antd';
+import { ExclamationCircleOutlined } from '@ant-design/icons';
 import { history } from '../../../routes';
 import Footer from '../../../components/Footer';
 import Header from '../../../components/Header';
@@ -23,6 +24,7 @@ const ProductInfo = ({ location }) => {
   const product = productDetails && productDetails.productInfo
   const addCart = useSelector((state) => state.addCartState.addCart);
   const isLoadingProduct = useSelector((state) => state.productInfoState.isLoading);
+  const userLogin = useSelector((state) => state.loginState.login);
   // For Header Menu 
   const module = location.state.module
 
@@ -31,18 +33,12 @@ const ProductInfo = ({ location }) => {
     thumbnail: item,
   }))
 
+  const userCountry = userLogin && userLogin.user.countryName || sessionStorage.countryName
   const productVideo = product && product.productVideo[0]
-
 
   useEffect(() => {
     dispatch({ type: 'PRODUCT_INFO_REQUEST', productId: location.state.product });
   }, [])
-
-  // useEffect(() => {
-  //   if (sessionStorage.type === 'user' && addCart && addCart.status) {
-  //     history.push({pathname: '/cart'});
-  //   }
-  // })
 
   const onDescription = () => {
     setToggle(1)
@@ -133,20 +129,36 @@ const ProductInfo = ({ location }) => {
   // }
 
   const onBuyNow = () => {
-    const productPrice = product.finalPrice.replace(/[^.0-9\.]+/g, '');
-    const currency = product.finalPrice.replace(/\d+([,.]\d+)?\s*/g, '');
+    if (userCountry !== ('Trinidad & Tobago' || 'Guyana')) {
+      const { confirm } = Modal;
+      confirm({
+        title: 'Do you Want to buy?',
+        icon: <ExclamationCircleOutlined />,
+        content: 'Would you like to inform the seller About your Enquiry? ',
+        onOk() {
+          return new Promise((resolve, reject) => {
+            setTimeout(Math.random() > 0.5 ? resolve : reject, 1000);
+          }).catch(() => console.log('Oops errors!'));
+        },
+        onCancel() { },
+      });
+    } else {
 
-    const buyNowProduct = {
-      productId: product._id,
-      productName: product && product.productName,
-      productImage: product && product.productImages,
-      totalPrice: `${currency}${parseFloat(productPrice * count).toFixed(2)}`,
-      quantity: count,
-      productPrice: `${currency}${parseFloat(productPrice).toFixed(2)}`
+      const productPrice = product.finalPrice.replace(/[^.0-9\.]+/g, '');
+      const currency = product.finalPrice.replace(/\d+([,.]\d+)?\s*/g, '');
+
+      const buyNowProduct = {
+        productId: product._id,
+        productName: product && product.productName,
+        productImage: product && product.productImages,
+        totalPrice: `${currency}${parseFloat(productPrice * count).toFixed(2)}`,
+        quantity: count,
+        productPrice: `${currency}${parseFloat(productPrice).toFixed(2)}`
+      }
+      history.push({ pathname: '/cart', state: 'buyNow' });
+      dispatch({ type: 'BUY_NOW', buyNow: buyNowProduct });
+      window.scrollTo(0, 0);
     }
-    history.push({ pathname: '/cart', state: 'buyNow' });
-    dispatch({ type: 'BUY_NOW', buyNow: buyNowProduct });
-    window.scrollTo(0, 0);
   }
 
   // const onBuyNow = () => {
@@ -309,9 +321,9 @@ const ProductInfo = ({ location }) => {
                             onClick={onIncrement}> + </span>
                         </div>
                       </div>
-                      <div className="col-sm-4">
+                      {userCountry === ('Trinidad & Tobago' || 'Guyana') && <div className="col-sm-4">
                         <button className='buybtn' onClick={onAddCart}>Add To Cart</button>
-                      </div>
+                      </div>}
                       <div className="col-sm-3">
                         <button className='buybtn' onClick={onBuyNow}>Buy Now</button>
                       </div>
@@ -320,12 +332,12 @@ const ProductInfo = ({ location }) => {
                 </Col>
               </div>
             </Row>
-            {productVideo ?  <div className="video-related">
+            {productVideo ? <div className="video-related">
               <Row className='position-bottom'>
                 <div className>
                   <Col md={12}>
                     <div className="video-ads">
-                      <ReactPlayer className="video-prop" url={productVideo} width="100%" height="100%" controls={true} /> 
+                      <ReactPlayer className="video-prop" url={productVideo} width="100%" height="100%" controls={true} />
                     </div>
                   </Col>
                 </div>
