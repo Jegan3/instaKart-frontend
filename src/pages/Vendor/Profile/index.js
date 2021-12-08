@@ -11,8 +11,6 @@ import Headerbar from '../../../components/Headerbar';
 import ImgCrop from 'antd-img-crop';
 import Loader from '../../../components/Loader';
 
-let fileList = [];
-
 const ikOptionsSelect = [
   { value: 'Fortnightly', label: 'Fortnightly ' },
   { value: 'Monthly', label: 'Monthly ' },
@@ -50,7 +48,7 @@ const Profile = () => {
   const [usAccount, setUsAccount] = useState();;
   const [validate, setValidate] = useState();;
   const [alertError, setAlertError] = useState(false);
-  // const [fileList, setUploadCompanyLogo] = useState('');
+  const [fileList, setUploadCompanyLogo] = useState('');
 
   const dispatch = useDispatch();
   const profileInfo = useSelector((state) => state.profileState.profile);
@@ -90,12 +88,15 @@ const Profile = () => {
   }, [])
 
   const onCompanyLogo = ({ fileList: newFileList }) => {
-    let file = newFileList[0].originFileObj;
-    const reader = new FileReader();
-    reader.onload = () => {
-      setCompanyLogo(reader.result);
-    };
-    reader.readAsDataURL(file);
+    if (newFileList.length && newFileList[newFileList.length - 1].status === 'done') {
+      let file = newFileList[newFileList.length - 1].originFileObj;
+      const reader = new FileReader();
+      reader.onload = () => {
+        setCompanyLogo(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
+    setUploadCompanyLogo(newFileList);
   }
 
   // const onPreview = async file => {
