@@ -150,7 +150,7 @@ const SignUp = (props) => {
     if (type === 'user' && (!firstName || !lastName || !email || !password)) {
       setAlertError(true)
       message.error('Please fill all the fields')
-    } else if (type === 'vendor' && (!company || !country || !city || !email || !password)) {
+    } else if (type === 'vendor' && (!company || !industry || !country || !city || !email || !password)) {
       setAlertError(true)
       message.error('Please fill all the fields');
     } else if (password.length < 8) {
@@ -162,8 +162,8 @@ const SignUp = (props) => {
       setAlertError(true)
       message.error('Please enter the valid Email')
       setValidate(true)
-    } else if (industryType.length === 0) {
-      message.error('Please fill all the fields');
+    // } else if (industryType.length === 0) {
+    //   message.error('Please fill all the fields');
     } else if (termscondition === false) {
       message.error('Please accept the Terms & Conditions and Privacy Policy');
     } else {
@@ -239,7 +239,7 @@ const SignUp = (props) => {
                     maxLength={30}
                   />
                 </Col>
-                <Col md={6} sm={12} className={`clear-industry ${alertError && !industryType && 'dropdown-alert'}`} >
+                <Col md={6} sm={12} className={`clear-industry ${alertError && (!industryType || industryType && industryType.length === 0) && 'dropdown-alert'}`} >
                   <label className="signup-label">Industry Type <span className="red-star">*</span></label>
                   <Select
                     name="Industry Type"

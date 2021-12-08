@@ -65,6 +65,7 @@ const Sidebar = () => {
   const [open, setOpen] = useState(false);
   const [toggled, setToggled] = useState(false);
   const [modal, setModal] = useState(false);
+  const [store, setStore] = useState(false)
 
   const dispatch = useDispatch();
   const sidebar = useSelector((state) => state.sidebarState);
@@ -72,7 +73,7 @@ const Sidebar = () => {
   const vendorCompanyDetails = useSelector((state) => state.vendorCompanyDetailsState.vendorCompanyDetails);
   const addStore = useSelector((state) => state.addStoreState.addStore);
   const addStoreError = useSelector((state) => state.addStoreState.error);
-  const newStore =  vendorCompanyDetails && vendorCompanyDetails.industries[0].stores.slice(-1);
+  const newStore = vendorCompanyDetails && vendorCompanyDetails.industries.length && vendorCompanyDetails.industries[0].stores.slice(-1);
 
   const admin = (validLogin && validLogin.user.type === 'admin') || sessionStorage.type === 'admin';
 
@@ -81,8 +82,10 @@ const Sidebar = () => {
   }, [])
 
   useEffect(() => {
-    if (addStore && addStore.status)
+    if (addStore && addStore.status) {
       message.success(addStore.message)
+      setStore(false)
+    }
     dispatch({ type: 'VENDOR_COMPANY_DETAILS_REQUEST' });
   }, [addStore])
 
@@ -96,10 +99,10 @@ const Sidebar = () => {
   }, [sidebar.show]);
 
   useEffect(() => {
-    if (addStore && addStore.status){
-       history.push({ pathname: '/storedetails', state: newStore[0].estoreId });
-       dispatch({ type: 'STORE_INFO_REQUEST', storeId: newStore[0].estoreId });
-       dispatch({ type: 'PRODUCT_LIST_REQUEST', storeId: newStore[0].estoreId });
+    if (addStore && addStore.status && !store) {
+      history.push({ pathname: '/storedetails', state: newStore[0].estoreId });
+      dispatch({ type: 'STORE_INFO_REQUEST', storeId: newStore[0].estoreId });
+      dispatch({ type: 'PRODUCT_LIST_REQUEST', storeId: newStore[0].estoreId });
     }
   }, [vendorCompanyDetails])
 
@@ -132,6 +135,7 @@ const Sidebar = () => {
     history.push({ pathname: '/storedetails', state: info.estoreId });
     dispatch({ type: 'STORE_INFO_REQUEST', storeId: info.estoreId });
     dispatch({ type: 'PRODUCT_LIST_REQUEST', storeId: info.estoreId });
+    setStore(true)
   }
 
   return (
@@ -185,7 +189,6 @@ const Sidebar = () => {
               {vendorCompanyDetails && vendorCompanyDetails.industries.map((item) => <SubMenu title={item.industryType} icon={<FontAwesomeIcon icon={faNetworkWired} />
               }>
                 {item.stores.map((info) => <div>
-
                   <MenuItem onClick={() => onStore(info)}>
                     {info.storeName}
                   </MenuItem>
