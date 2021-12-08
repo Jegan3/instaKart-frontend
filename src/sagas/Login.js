@@ -8,6 +8,7 @@ export function* getLogin(data) {
     const response = yield doPost(envConfig.apiEndPoints.getLogin, data.login);
     yield put(instakartActionCreators.getLoginSucccess(response));
     sessionStorage.firstName = response.user.firstName;
+    sessionStorage.countryName = response.user.countryName;
     sessionStorage.type = response.user.type;
     sessionStorage.access = response.auth;
   } catch (error) {

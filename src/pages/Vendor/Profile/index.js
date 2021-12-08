@@ -25,22 +25,25 @@ const bankSelect = BankList.map(item => ({
   value: item.value,
   label: item.label
 }))
+console.log('bankSelect', bankSelect)
+console.log('preferenceSelect', preferenceSelect)
 
 const Profile = () => {
 
   const [companyLogo, setCompanyLogo] = useState();;
+  const [profileDetail, setProfileDetail] = useState(false);
   const [businessLocation, setBusinessLocation] = useState();;
   const [firstName, setFirstName] = useState();
   const [lastName, setLastName] = useState();
   const [companyName, setCompanyName] = useState();;
   const [mobile, setMobile] = useState();
   const [email, setEmail] = useState();
-  const [bank, setBank] = useState();;
+  const [bank, setBank] = useState();
   const [bankAccount, setBankAccount] = useState();
-  const [wipay, setWipay] = useState('')
-  const [wipayAccount, setWipayAccount] = useState()
-  const [preference, setPreference] = useState();;
-  const [ikOptions, setIkoptions] = useState();;
+  const [wipay, setWipay] = useState('');
+  const [wipayAccount, setWipayAccount] = useState();
+  const [preference, setPreference] = useState();
+  const [ikOptions, setIkoptions] = useState();
   const [uploadAddress, setUploadAddress] = useState();
   const [uploadRegistration, setUploadRegistration] = useState();
   const [uploadId, setUploadId] = useState();
@@ -55,19 +58,19 @@ const Profile = () => {
   // const isLoading = useSelector((state) => state.profileState.isLoading);
 
   // Select dropdown lists
-  const bankLists = [
-    { value: profileInfo && profileInfo.bank, label: profileInfo && profileInfo.bank },
+  const bankList = [
+    { value: profileInfo && profileInfo.bank, label: profileInfo && profileInfo.bank }
   ]
 
   const ikOptionsList = [
-    { value: profileInfo && profileInfo.ikOptions, label: profileInfo && profileInfo.ikOptions },
+    { value: profileInfo && profileInfo.ikOptions, label: profileInfo && profileInfo.ikOptions }
   ]
 
   const preferenceList = [
-    { value: profileInfo && profileInfo.preference, label: profileInfo && profileInfo.preference },
+    { value: profileInfo && profileInfo.preference, label: profileInfo && profileInfo.preference }
   ]
 
-  const profileLogo = profileInfo && profileInfo.logo;
+  const profileLogo = !companyLogo && companyLogo !== '' ? profileInfo && profileInfo.logo : companyLogo;
   const profileAddress = profileInfo && profileInfo.addressImage;
   const profileRegistration = profileInfo && profileInfo.companyRegImage;
   const profileId = profileInfo && profileInfo.idImage;
@@ -77,15 +80,22 @@ const Profile = () => {
   const lastNameInfo = !lastName && lastName !== '' ? profileInfo && profileInfo.lastName : lastName;
   const emailInfo = !email && email !== '' ? profileInfo && profileInfo.email : email;
   const mobileInfo = !mobile && mobile !== '' ? profileInfo && profileInfo.mobile : mobile;
-  const bankInfo = !bank ? bankLists : bank;
+  const bankInfo = !bank ? bankList[0] : bank;
   const bankAccountInfo = !bankAccount && bankAccount !== '' ? profileInfo && profileInfo.bankAccount : bankAccount;
   const wipayAccountInfo = !wipayAccount && wipayAccount !== '' ? profileInfo && profileInfo.wipayAccount : wipayAccount;
-  const preferenceInfo = !preference ? preferenceList : preference;
-  const ikOptionsInfo = !ikOptions ? ikOptionsList : ikOptions;
+  const preferenceInfo = !preference ? preferenceList[0] : preference;
+  const ikOptionsInfo = !ikOptions ? ikOptionsList[0] : ikOptions;
+
+  // console.log('profileAddress', profileAddress)
+  // console.log('profileRegistration', profileRegistration)
+  // console.log('profileLogo', profileLogo)
+
 
   useEffect(() => {
     dispatch({ type: 'PROFILE_REQUEST' });
   }, [])
+
+  // console.log('profileAddress', profileAddress)
 
   const onCompanyLogo = ({ fileList: newFileList }) => {
     if (newFileList.length && newFileList[newFileList.length - 1].status === 'done') {
@@ -97,6 +107,7 @@ const Profile = () => {
       reader.readAsDataURL(file);
     }
     setUploadCompanyLogo(newFileList);
+    setProfileDetail(true)
   }
 
   // const onPreview = async file => {
@@ -245,11 +256,13 @@ const Profile = () => {
         uploadAddress: profileAddress,
         wipay,
         wipayAccount: wipayAccountInfo,
-        preference: preference.value,
+        preference: preferenceInfo.value,
         ikOptions: ikOptionsInfo.value,
         usAccount,
       };
       dispatch({ type: 'PROFILE_UPDATE_REQUEST', profile });
+      console.log('profile', profile)
+      message.success('Successfully Updated');
     }
   }
 
@@ -268,7 +281,7 @@ const Profile = () => {
                   </div>
                   <Col lg={12} className='avtar-info' >
                     <div className="photo">
-                      <img src={!companyLogo && companyLogo !== '' ? profileLogo : !companyLogo ? "images/Your-logo-here.png" : companyLogo} />
+                      {companyLogo && profileDetail ? <img src={companyLogo} alt='' /> : <img src={profileInfo && profileInfo.logo ? profileInfo && profileInfo.logo : "images/logo-here.png"} />}                      {/* <img src={!companyLogo && companyLogo !== '' ? profileLogo : !companyLogo ? "images/Your-logo-here.png" : companyLogo} /> */}
                     </div>
                     <div className="image-upload">
                       <ImgCrop >

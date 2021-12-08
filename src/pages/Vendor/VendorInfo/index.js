@@ -337,6 +337,7 @@ const VendorInfo = (props) => {
                     {/* <div className={`file-input ${alertError && !uploadAddress && `red`}`}> */}
                     <input
                       type='file'
+                      accept="image/*"
                       onChange={onUploadAddress} />
                     <span className='button'>Choose</span>
                     <span className='label' >{uploadAddressName ? uploadAddressName : 'No file selected'} </span>
@@ -369,6 +370,7 @@ const VendorInfo = (props) => {
                   <div className='file-input'>
                     <input
                       type='file'
+                      accept="image/*"
                       onChange={onUploadRegistration} />
                     <span className='button'>Choose</span>
                     <span className='label' >{uploadRegistrationName ? uploadRegistrationName : 'No file selected'} </span>
