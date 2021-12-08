@@ -10,8 +10,8 @@ import Loader from '../../../components/Loader';
 const ProductList = ({ storeId }) => {
 
   const dispatch = useDispatch();
-  const productListInfo = useSelector((state) => state.productList.productList);
-  const productDeleteInfo = useSelector((state) => state.productDelete.productDelete);
+  const productListInfo = useSelector((state) => state.productListState.productList);
+  const productDeleteInfo = useSelector((state) => state.productDeleteState.productDelete);
 
   useEffect(() => {
     dispatch({ type: 'PRODUCT_LIST_REQUEST', storeId });
