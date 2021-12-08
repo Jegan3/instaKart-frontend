@@ -12,7 +12,7 @@ export default {
     getThriftCategory: '/api/vendor/getCategories',
     getThriftAddProduct: '/api/vendor/addProduct',
     getThriftDetails: '/api/staticContentRouter/getProducts',
-    getThriftProfile: '/api/vendor/estoreInfo',
+    getStoreInfoUpdate: '/api/vendor/estoreInfo',
     getProductInfo: '/api/staticContentRouter/getProductInfo',
     getThriftStoreInfo: '/api/staticContentRouter/getStoreInfo',
     getAddCart: '/api/user/addToCart',

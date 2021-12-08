@@ -7,8 +7,7 @@ import vendorInfoState from './VendorInfo';
 import sidebarState from './Sidebar';
 import vendorListState from './VendorList';
 import vendorStatusState from './VendorStatus';
-import storeInfoState from './StoreInfo';
-import thriftProfileState from './ThriftProfile';
+import { storeInfoState, storeInfoUpdateState }from './StoreInfo';
 import thriftAddProductState from './ThriftAddProduct';
 import thriftCategoryState from './ThriftCategory';
 import thriftDetailsState from './ThriftDetails';
@@ -35,7 +34,7 @@ const combinedReducer = combineReducers({
   vendorListState,
   vendorStatusState,
   storeInfoState,
-  thriftProfileState,
+  storeInfoUpdateState,
   thriftAddProductState,
   thriftCategoryState,
   thriftDetailsState,

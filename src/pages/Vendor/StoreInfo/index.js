@@ -84,13 +84,14 @@ const StoreInfo = ({ storeId }) => {
   const [countryDetails, setCountryDetails] = useState();
   const [cityDetails, setCityDetails] = useState();
   const [disabled, setDisabled] = useState(false);
-
+  const [alertMsg, setAlertMsg] = useState(false);
 
   const dispatch = useDispatch();
   const storeInfo = useSelector((state) => state.storeInfoState.storeInfo);
-  const invalidProfileInfo = useSelector((state) => state.thriftProfileState.error);
+  //const invalidProfileUpdate = useSelector((state) => state.thriftProfileState.error);
   const isLoading = useSelector((state) => state.storeInfoState.isLoading);
-  const profileInfo = useSelector((state) => state.thriftProfileState.profileInfo);
+  const storeInfoUpdate = useSelector((state) => state.storeInfoUpdateState.storeInfoUpdate);
+  const invalidStoreInfoUpdate = useSelector((state) => state.storeInfoUpdateState.error);
 
   const countryList = storeInfo && storeInfo.storeInfo.countryId;
   const cityList = storeInfo && storeInfo.storeInfo.cityId;
@@ -98,7 +99,8 @@ const StoreInfo = ({ storeId }) => {
 
 
   useEffect(() => {
-    dispatch({ type: 'STORE_INFO_REQUEST', storeId, profileInfo });
+    dispatch({ type: 'STORE_INFO_REQUEST', storeId });
+    setAlertMsg(false)
   }, [])
 
   useEffect(() => {
@@ -113,14 +115,14 @@ const StoreInfo = ({ storeId }) => {
   }, [addressDetails])
 
   useEffect(() => {
-    if (profileInfo && profileInfo.status) {
-      message.success('Thanks!, Thrift Store Profile is successfully updated with us')
+    if (storeInfoUpdate && storeInfoUpdate.status && alertMsg) {
+      message.success(`${storeInfoUpdate.message}`)
       setButton(false)
       setDisabled(true)
-    } else if (invalidProfileInfo) {
+    } else if (invalidStoreInfoUpdate) {
       message.error('invalid Error');
     }
-  }, [profileInfo, invalidProfileInfo]);
+  }, [storeInfoUpdate, invalidStoreInfoUpdate]);
 
   //country from Api
   useEffect(() => {
@@ -200,6 +202,7 @@ const StoreInfo = ({ storeId }) => {
   const onCountry = (countryId) => {
     setCountryId(countryId)
     setCityId('')
+    setAlertError(false)
     // setStoreDetail(true)
   }
 
@@ -223,7 +226,6 @@ const StoreInfo = ({ storeId }) => {
     })
   }, [countryId])
 
-
   const onCity = (city) => {
     setCityId(city)
   }
@@ -239,6 +241,7 @@ const StoreInfo = ({ storeId }) => {
     if (e.target.value.match('^[a-zA-Z0-9_@./#&+-]*$')) {
       setEmailId(e.target.value);
       setStoreDetail(true)
+      setAlertError(false)
     }
   };
 
@@ -259,6 +262,7 @@ const StoreInfo = ({ storeId }) => {
   const onMobile = (e) => {
     setMobile(e.target.rawValue)
     setStoreDetail(true)
+    setAlertError(false)
   }
 
   const onOpeningTime = (info, timeString) => {
@@ -318,14 +322,13 @@ const StoreInfo = ({ storeId }) => {
   const mobileInfo = !mobile && mobile !== '' ? storeInfo && storeInfo.storeInfo.mobile : mobile;
 
   const onSubmit = () => {
-
-    if (!addressInfo || !countryInfo || !emailIdInfo || !mobileInfo) {
+    if (!addressInfo || !countryInfo || !emailIdInfo || !mobileInfo || !cityInfo) {
       setAlertError(true)
       message.error('Please fill all the fields')
     } else if (disabled) {
       setDisabled(false)
     } else {
-      const profileInfo = {
+      const storeUpdate = {
         storeName: storeNameInfo,
         storeLogo: storeLogoInfo,
         aboutStore: aboutStoreInfo,
@@ -340,7 +343,8 @@ const StoreInfo = ({ storeId }) => {
         timing,
         estoreId: storeId,
       };
-      dispatch({ type: 'THRIFT_PROFILE_REQUEST', profileInfo });
+      dispatch({ type: 'STORE_INFO_UPDATE_REQUEST', storeUpdate });
+      setAlertMsg(true)
     };
     //console.log('payoad', profileInfo)
   }
@@ -481,11 +485,11 @@ const StoreInfo = ({ storeId }) => {
                         onChange={onAddress}
                       /> */}
                     </Col>
-                    <Col md={12} className={`clear-city ${alertError && `dropdown-alert`}`}>
+                    <Col md={12} >
                       <label className="store-label">Country <span className="red-star">*</span></label>
                       <Select
                         type="text"
-                        className="prof-select "
+                        className={` clear-city ${alertError && !countryInfo ? `dropdown-alert` : `prof-select `}`}
                         placeholder="select country"
                         isSearchable={false}
                         value={countryInfo}
