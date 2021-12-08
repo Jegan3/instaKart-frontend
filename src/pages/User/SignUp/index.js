@@ -60,21 +60,18 @@ const SignUp = (props) => {
   }, [status, invalidSignup]);
 
   const onEstore = (e) => {
-    if (/^(?![\s-])[\A-Za-z\s-]*$/.test(e.target.value)) {
-      setCompany(e.target.value);
-    }
+    if (e.target.value.match('^[a-zA-Z0-9 ]*$'))
+      setCompany(e.target.value.toLowerCase().split(' ').map(caps => `${caps.charAt(0).toUpperCase()}${caps.slice(1)}`).join(' '))
   };
 
   const onFirstName = (e) => {
-    if (e.target.value.match('^[a-zA-Z0-9 ]*$')) {
-      setFirstName(e.target.value);
-    }
+    if (e.target.value.match('^[a-zA-Z0-9 ]*$'))
+      setFirstName(e.target.value.toLowerCase().split(' ').map(caps => `${caps.charAt(0).toUpperCase()}${caps.slice(1)}`).join(' '))
   };
 
   const onLastName = (e) => {
-    if (e.target.value.match('^[a-zA-Z0-9 ]*$')) {
-      setLastName(e.target.value);
-    }
+    if (e.target.value.match('^[a-zA-Z0-9 ]*$'))
+      setLastName(e.target.value.toLowerCase().split(' ').map(caps => `${caps.charAt(0).toUpperCase()}${caps.slice(1)}`).join(' '))
   };
 
   const validateEmail = (email) => {
@@ -153,8 +150,7 @@ const SignUp = (props) => {
     if (type === 'user' && (!firstName || !lastName || !email || !password)) {
       setAlertError(true)
       message.error('Please fill all the fields')
-    }
-    else if (type === 'vendor' && (!company || !industryType || !country || !city || !email || !password)) {
+    } else if (type === 'vendor' && (!company || !country || !city || !email || !password)) {
       setAlertError(true)
       message.error('Please fill all the fields');
     } else if (password.length < 8) {
@@ -166,6 +162,8 @@ const SignUp = (props) => {
       setAlertError(true)
       message.error('Please enter the valid Email')
       setValidate(true)
+    } else if (industryType.length === 0) {
+      message.error('Please fill all the fields');
     } else if (termscondition === false) {
       message.error('Please accept the Terms & Conditions and Privacy Policy');
     } else {
