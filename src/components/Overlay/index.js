@@ -46,23 +46,27 @@ const Overlay = ({
       setStoreName('')
       setModal(onHide)
       dispatch({ type: 'ADD_STORE_REQUEST', addStore });
-      // history.push({ pathname: '/thriftstorevendor' });
-      // message.success(` ${storeName}  created succesfully !!`);
 
     }
+  }
+
+  const closeBtn = () => {
+    onHide()
+    setIndustryType()
+    setStoreName('')
   }
 
   return (
     <Modal
       show={show}
-      onHide={onHide}
+      onHide={closeBtn}
       backdrop="static"
       keyboard={false}
       animation
       centered={centered}
       bsSize={"lg"}
     >
-      <Modal.Header className="no-border" closeButton={onHide}>
+      <Modal.Header className="no-border" closeButton>
         <Modal.Title>{title}</Modal.Title>
       </Modal.Header>
       {title === 'WARNING : LIMITATIONS OF LIABILITY' && <Modal.Body className="justify-content-center">
