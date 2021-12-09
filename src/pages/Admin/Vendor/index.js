@@ -40,6 +40,10 @@ const Vendor = () => {
   }).length
 
   useEffect(() => {
+    dispatch({ type: 'VENDOR_LIST_REQUEST' });
+  }, [])
+
+  useEffect(() => {
     if (validVendorStatus && validVendorStatus.status) {
       dispatch({ type: 'VENDOR_LIST_REQUEST' });
       message.success('Thanks!, Basic info form is successfully updated with us')
@@ -52,9 +56,6 @@ const Vendor = () => {
     info.id = i + 1, info.status = `${info.status.charAt(0).toUpperCase()}${info.status.slice(1)}`
   })
 
-  useEffect(() => {
-    dispatch({ type: 'VENDOR_LIST_REQUEST' });
-  }, [])
   const hidePopup = () => {
     setShow(false);
   };

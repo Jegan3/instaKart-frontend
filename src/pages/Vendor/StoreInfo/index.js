@@ -88,7 +88,6 @@ const StoreInfo = ({ storeId }) => {
 
   const dispatch = useDispatch();
   const storeInfo = useSelector((state) => state.storeInfoState.storeInfo);
-  //const invalidProfileUpdate = useSelector((state) => state.thriftProfileState.error);
   const isLoading = useSelector((state) => state.storeInfoState.isLoading);
   const storeInfoUpdate = useSelector((state) => state.storeInfoUpdateState.storeInfoUpdate);
   const invalidStoreInfoUpdate = useSelector((state) => state.storeInfoUpdateState.error);
