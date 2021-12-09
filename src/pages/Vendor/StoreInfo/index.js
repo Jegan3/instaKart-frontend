@@ -100,6 +100,7 @@ const StoreInfo = ({ storeId }) => {
   useEffect(() => {
     dispatch({ type: 'STORE_INFO_REQUEST', storeId });
     setAlertMsg(false)
+    // setAlertError(false)
   }, [])
 
   useEffect(() => {
@@ -320,11 +321,19 @@ const StoreInfo = ({ storeId }) => {
   const countryInfo = !countryId && countryId !== '' ? (countryList ? countryDetails && countryDetails : countryId) : countryId;
   const mobileInfo = !mobile && mobile !== '' ? storeInfo && storeInfo.storeInfo.mobile : mobile;
 
+  console.log('aboutStoreInfo',aboutStoreInfo)
+
   const onSubmit = () => {
-    if (!addressInfo || !countryInfo || !emailIdInfo || !mobileInfo || !cityInfo) {
+    if (!storeNameInfo || !aboutStoreInfo || !addressInfo || !countryInfo || !emailIdInfo || !mobileInfo || !cityInfo) {
       setAlertError(true)
       message.error('Please fill all the fields')
-    } else if (disabled) {
+    } else if (aboutStoreInfo.length < 10) {
+      message.error(' Please fill the About Store with minimum 8 characters');
+      setAlertError(true)
+    } else if (storeNameInfo.length < 3) {
+      message.error(' Please fill the Store Name with minimum 3 characters');
+      setAlertError(true)
+    }else if (disabled) {
       setDisabled(false)
     } else {
       const storeUpdate = {
@@ -404,7 +413,7 @@ const StoreInfo = ({ storeId }) => {
                     </Col>
                     <Col sm={12}>
                       <label className="signup-label">About Store < span className="red-star">*</span> </label>
-                      <textarea className={alertError && !aboutStore && storeDetail ? ` form-control my-input` : `form-control formy`}
+                      <textarea className={alertError && aboutStoreInfo.length < 10 ? ` form-control my-input` : `form-control formy`}
                         name="message"
                         placeholder='type something..'
                         disabled={disabled}
@@ -452,10 +461,9 @@ const StoreInfo = ({ storeId }) => {
                       />
                     </Col> */}
                     <Col md={12}>
-                      <label className="store-label">Store Name</label>
-                      <input
+                    <label className="signup-label">Store Name < span className="red-star">*</span> </label>
+                      <input className={alertError && !storeNameInfo.length < 3 ? ` form-control my-input` : `form-control formy`}
                         type="text"
-                        className="form-control"
                         placeholder="store name"
                         maxLength={30}
                         value={storeNameInfo}
@@ -663,7 +671,7 @@ const StoreInfo = ({ storeId }) => {
                       className="btn btn-primary btn-block modal-butn"
                       onClick={onUpdate}
                     >
-                      Update
+                      Edit
                     </button> :
                     <button
                       type="button"

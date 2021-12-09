@@ -462,7 +462,7 @@ const Profile = () => {
                           placeholder="Bank account number"
                           value={bankAccountInfo}
                           onChange={onBankAccount}
-                          disabled={!bank}
+                          disabled={disabled}
                           maxLength={15}>
                         </input>
                       </div>
