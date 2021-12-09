@@ -21,6 +21,7 @@ const ListYourAds = () => {
   const [crop, setCrop] = useState();
   const [primaryImgList, setPrimaryImgList] = useState([]);
   const [secondaryImgList, setSecondaryImgList] = useState([]);
+  const [videoAdsList, setVideoAdsList] = useState([]);
 
   const dispatch = useDispatch();
   const advertiseNowSuccess = useSelector((state) => state.listYourAds.advertisement);
@@ -32,7 +33,6 @@ const ListYourAds = () => {
 
   const onPrimaryImage = ({ fileList: newFileList }) => {
     let file = newFileList.length && newFileList[newFileList.length - 1].originFileObj;
-
     if (file) {
       const reader = new FileReader();
       reader.onload = () => {
@@ -64,15 +64,6 @@ const ListYourAds = () => {
     }
   };
 
-  // const onChangeVideo = ({ fileList: newFileList }) => {
-  //   let file = newFileList[0].originFileObj;
-  //   const reader = new FileReader();
-  //   reader.onload = () => {
-  //     setVideo(reader.result);
-  //   };
-  //   reader.readAsDataURL(file);
-  // }
-
   const onChangeVideo = ({ fileList: newFileList }) => {
     if (newFileList[0]) {
       let file = newFileList[0].originFileObj;
@@ -81,8 +72,11 @@ const ListYourAds = () => {
         setVideo(reader.result);
       };
       reader.readAsDataURL(file);
+      newFileList = newFileList.slice(-1);
+      setVideoAdsList(newFileList);
     } else {
-      setVideo('')
+      setVideoAdsList([]);
+      setVideo('');
     }
   }
 
@@ -144,6 +138,7 @@ const ListYourAds = () => {
       };
       setalertErrorThree(false)
       setVideo()
+      setVideoAdsList();
       dispatch({ type: "LIST_YOUR_ADS_REQUEST", advertiseNow });
     }
   };
@@ -165,7 +160,7 @@ const ListYourAds = () => {
                     <ImgCrop
                       crop={crop}
                       zoom={true}
-                      aspect={4/3}
+                      aspect={4 / 3}
                       onCropChange={setCrop}
                       beforeCrop={false}
                     >
@@ -275,6 +270,7 @@ const ListYourAds = () => {
                       name="file"
                       className="drag-video"
                       accept="video/*"
+                      fileList={videoAdsList}
                       customRequest={fakeRequest}
                       onChange={onChangeVideo}
                       beforeUpload={beforeUpload}>
