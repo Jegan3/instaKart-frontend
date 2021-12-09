@@ -79,7 +79,7 @@ const SignUp = (props) => {
     return regex.test(email);
   };
 
-  const valid = validateEmail(email);
+  const validEmail = validateEmail(email);
 
   const onEmail = (e) => {
     if (e.target.value.match('^[a-zA-Z0-9_@./#&+-]*$')) {
@@ -150,20 +150,16 @@ const SignUp = (props) => {
     if (type === 'user' && (!firstName || !lastName || !email || !password)) {
       setAlertError(true)
       message.error('Please fill all the fields')
-    } else if (type === 'vendor' && (!company || !industry || !country || !city || !email || !password)) {
+    } else if (type === 'vendor' && (!company || !industryType || !country || !city || !email || !password)) {
       setAlertError(true)
       message.error('Please fill all the fields');
     } else if (password.length < 8) {
-      message.error(' minimum 8 characters required');
+      message.error(' Please fill the password with minimum 8 characters');
       setAlertError(true)
-    } else if (type === 'user' && 'vendor'(!email && valid === false)) {
-      setAlertError(true)
-    } else if (valid === false) {
+    } else if (validEmail === false) {
       setAlertError(true)
       message.error('Please enter the valid Email')
       setValidate(true)
-    // } else if (industryType.length === 0) {
-    //   message.error('Please fill all the fields');
     } else if (termscondition === false) {
       message.error('Please accept the Terms & Conditions and Privacy Policy');
     } else {
@@ -208,8 +204,6 @@ const SignUp = (props) => {
   const resendOtp = () => {
     window.alert('OTP resent to your mail ID');
   };
-
-  const abcd = password.length < 8 ? 'true' : 'false'
 
   return (
     <Grid fluid>
@@ -353,7 +347,7 @@ const SignUp = (props) => {
                 </label>
                 <input
                   type={showPassword ? 'text' : 'password'}
-                  className={alertError && abcd ? 'form-control my-input' : 'form-control formy'}
+                  className={alertError && password.length < 8 ? 'form-control my-input' : 'form-control formy'}
                   placeholder="Enter your password"
                   value={password}
                   onChange={onPassword}
