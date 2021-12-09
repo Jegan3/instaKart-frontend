@@ -75,25 +75,15 @@ const VendorInfo = (props) => {
     }
   }, [vendor, invalidVendor]);
 
-
-  // const Option = props => {
-  //   return ( <div> <components.Option {...props}>
-  //   <input type="checkbox" checked={props.isSelected}
-  //   onChange={() => null} /> <label>{props.value}</label>
-  //   </components.Option> </div> );
-  //   };
-
   const onFirstName = (e) => {
-    if (e.target.value.match('^[a-zA-Z ]*$')) {
-      setFirstName(e.target.value)
-    }
-  }
+    if (e.target.value.match('^[a-zA-Z0-9 ]*$'))
+      setFirstName(e.target.value.toLowerCase().split(' ').map(caps => `${caps.charAt(0).toUpperCase()}${caps.slice(1)}`).join(' '))
+  };
 
-  const onSurName = (e) => {
-    if (e.target.value.match('^[a-zA-Z ]*$')) {
-      setLastName(e.target.value)
-    }
-  }
+  const onLastName = (e) => {
+    if (e.target.value.match('^[a-zA-Z0-9 ]*$'))
+      setLastName(e.target.value.toLowerCase().split(' ').map(caps => `${caps.charAt(0).toUpperCase()}${caps.slice(1)}`).join(' '))
+  };
 
   const onMobile = (e) => (
     setMobile(e.target.rawValue)
@@ -265,7 +255,7 @@ const VendorInfo = (props) => {
                   className={alertError && lastName === '' ? ` form-control my-input` : `form-control formy`}
                   placeholder="Surname"
                   value={lastName}
-                  onChange={onSurName}
+                  onChange={onLastName}
                   maxLength={30}
                 />
               </Col>
