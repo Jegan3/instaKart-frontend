@@ -18,6 +18,7 @@ const Overlay = ({
   const [modal, setModal] = useState(false);
 
   const dispatch = useDispatch();
+  const vendorCompanyDetails = useSelector((state) => state.vendorCompanyDetailsState.vendorCompanyDetails);
 
   const onStoreName = (e) => {
     if (e.target.value.match('^[a-zA-Z0-9 ]*$'))
@@ -28,7 +29,7 @@ const Overlay = ({
     setIndustryType(industryType);
   };
 
-  const industryTypeOptions = Industries.sort((a, b) => a.industryType.localeCompare(b.industryType)).map((item) => ({
+  const industryTypeOptions = vendorCompanyDetails && vendorCompanyDetails.industries.map((item) => ({
     value: item._id,
     label: item.industryType,
   }));
