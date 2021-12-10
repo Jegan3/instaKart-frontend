@@ -72,25 +72,25 @@ export const ThriftStoreNearYouCard = ({ imgUrl, storeName, country, path, thrif
   }
 
   return (
-    <div className="card" onClick={Card}>
-      <div className="card-content">
-        <img className="photos" src={imgUrl} />
+    <div className=" property-card card" onClick={Card}>
+    <div className=" property card-ads">
+      <img className="property-image" src={imgUrl ? imgUrl : "images/noimage.png"} />
+    </div>
+    <div className="property-description">
+      <div className="listing-job card-listing-job ">
+      <a>{storeName}</a>
       </div>
-      <div className="card-ads">
-        <div className="listing-job">
-          <a>{storeName}</a>
-          <div className="listing-country">
-            <i className="fas fa-map-marker-alt"></i>
-            <span>{country}</span>
-          </div>
-        </div>
-        <div className="listing-rating">
-          <div className="stars"> <i className="fa fa-star"></i> <i className="fa fa-star"></i> <i className="fa fa-star"></i> <i className="fa fa-star"></i> </div>
-          <div className="ratings"> <span className="product-rating">4.6</span><span className="product-rating">/5</span></div>
-          <div className="listing-country"> <span>46 ratings & 15 reviews</span> </div>
-        </div>
+      <div className="listing-job card-listing-job">
+      <i className="fas fa-map-marker-alt"></i>
+      <span>{country}</span>
+      </div>
+      <div className="listing-rating card-listing-job">
+        <div className="stars"> <i className="fa fa-star"></i> <i className="fa fa-star"></i> <i className="fa fa-star"></i> <i className="fa fa-star"></i> </div>
+        <div className="ratings"> <span className="product-rating">4.6</span><span className="product-rating">/5</span></div>
+        <div className="listing-country"> <span>46 ratings & 15 reviews</span> </div>
       </div>
     </div>
+  </div>
   )
 }
 

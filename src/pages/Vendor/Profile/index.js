@@ -86,10 +86,6 @@ const Profile = () => {
   const preferenceInfo = !preference ? preferenceList[0] : preference;
   const ikOptionsInfo = !ikOptions ? ikOptionsList[0] : ikOptions;
 
-  // console.log('profileAddress', profileAddress)
-  // console.log('profileRegistration', profileRegistration)
-  // console.log('profileLogo', profileLogo)
-
 
   useEffect(() => {
     dispatch({ type: 'PROFILE_REQUEST' });
@@ -161,13 +157,6 @@ const Profile = () => {
     }
   }
 
-  const validateEmail = (email) => {
-    const regex = /\S+@\S+\.\S+/;
-    return regex.test(email);
-  };
-
-  const valid = validateEmail(email);
-
   const onEmail = (e) => {
     if (e.target.value.match('^[a-zA-Z0-9_@./#&+-]*$')) {
       setEmail(e.target.value)
@@ -219,20 +208,23 @@ const Profile = () => {
     }
   }
 
-
   const onSubmit = () => {
     if (!firstNameInfo || !lastNameInfo || !mobileInfo || !emailInfo || !companyNameInfo
       || !businessLocationInfo || !ikOptionsInfo) {
       setAlertError(true)
       setDisabled(false)
       message.error('Please fill all the fields')
-    } else if (email === '' || email && valid === false) {
-      setAlertError(true);
-      setValidate(true)
-      message.error('Please enter the valid Email')
-      // } else if (mobileInfo.length !== 12) {
-      //   message.error('Please enter the valid Mobile')
-    } else if (wipay === 'Yes' && (!wipayAccount || !preference)) {
+    } else if (mobileInfo.length < 12) {
+      setAlertError(true)
+      message.error('Please enter the valid Mobile')
+    } else if (bankAccountInfo.length < 10) {
+      setAlertError(true)
+      message.error('Please enter the valid Bank Account')
+      //  } else if (wipayAccountInfo.length >= 0 && wipayAccountInfo.length < 10) {
+      //   setAlertError(true)
+      //   console.log('ddd', wipayAccountInfo.length );
+      //   message.error('Please enter the valid Wipay Account')
+    } else if (wipay === 'Yes' && wipayAccountInfo.length < 10) {
       setAlertError(true)
       setDisabled(false)
       message.error('Please fill all the fields')
@@ -262,6 +254,7 @@ const Profile = () => {
       };
       dispatch({ type: 'PROFILE_UPDATE_REQUEST', profile });
       console.log('profile', profile)
+
       message.success('Successfully Updated');
     }
   }
@@ -307,7 +300,7 @@ const Profile = () => {
                       <div className="label-myprofile">
                         <label className="card-info-label">Company Name</label>
                         <input
-                          className={alertError && !companyNameInfo ? ` form-control my-input` : `form-control formy`}
+                          className='form-control formy'
                           disabled
                           value={companyNameInfo}
                           type="text"
@@ -319,7 +312,7 @@ const Profile = () => {
                       <div className="label-myprofile">
                         <label className="card-info-label"> Business Location</label>
                         <input
-                          className={alertError && !businessLocationInfo ? ` form-control my-input` : `form-control formy`}
+                          className='form-control formy'
                           disabled
                           value={businessLocationInfo}
                           type="text"
@@ -375,7 +368,7 @@ const Profile = () => {
                       <div className="label-myprofile">
                         <label className="card-info-label">First Name<span className="red-star">*</span> </label>
                         <input
-                          disabled={disabled}
+                          disabled
                           type="text"
                           className={alertError && !firstNameInfo ? ` form-control my-input` : `form-control formy`}
                           placeholder="Firstname"
@@ -389,7 +382,7 @@ const Profile = () => {
                       <div className="label-myprofile">
                         <label className="card-info-label">Last Name<span className="red-star">*</span> </label>
                         <input
-                          disabled={disabled}
+                          disabled
                           type="text"
                           className={alertError && !lastNameInfo ? ` form-control my-input` : `form-control formy`}
                           placeholder="Lastname"
@@ -403,8 +396,8 @@ const Profile = () => {
                       <div className="label-myprofile">
                         <label className="card-info-label">Email</label>
                         <input
-                          disabled={disabled}
-                          className={alertError && !emailInfo || validateEmail(email) === false && validate ? ' form-control my-input' : 'form-control formy'}
+                          disabled
+                          className={alertError && !emailInfo ? ' form-control my-input' : 'form-control formy'}
                           type="Email"
                           value={emailInfo}
                           placeholder="Email"
@@ -417,7 +410,7 @@ const Profile = () => {
                       <div className="label-myprofile">
                         <label className="card-info-label">Contact No<span className="red-star">*</span> </label>
                         <Cleave
-                          className={alertError && !mobileInfo ? ` form-control my-input` : `form-control formy`}
+                          className={alertError && mobileInfo.length < 10 ? ` form-control my-input` : `form-control formy`}
                           placeholder="Enter contact number"
                           disabled={disabled}
                           value={mobileInfo}
@@ -441,7 +434,7 @@ const Profile = () => {
                         <label className="card-info-label">Bank</label>
                         <Select
                           type="text"
-                          className={`${alertError && !bankInfo && `dropdown-alert`}`}
+                          //className={`${alertError && !bankInfo && `dropdown-alert`}`}
                           className=""
                           placeholder="Choose Bank."
                           value={bankInfo}
@@ -458,7 +451,7 @@ const Profile = () => {
                         <label className="card-info-label">Bank Account No</label>
                         <input
                           type="text"
-                          className="form-control formy`"
+                          className={alertError && bankAccountInfo.length < 10 ? ' form-control my-input' : 'form-control formy'}
                           placeholder="Bank account number"
                           value={bankAccountInfo}
                           onChange={onBankAccount}
@@ -517,7 +510,7 @@ const Profile = () => {
                         <label className="card-info-label">WiPay Account Number {wipay === 'Yes' && <span className="red-star">*</span>}</label>
                         <input
                           type="text"
-                          className={alertError && !wipayAccountInfo && wipay === 'Yes' ? ` form-control my-input` : `form-control formy`}
+                          className={alertError && wipay === "Yes" && wipayAccountInfo.length < 10 ? ` form-control my-input` : `form-control formy`}
                           placeholder="WiPay number"
                           maxLength={10}
                           value={wipayAccountInfo}
