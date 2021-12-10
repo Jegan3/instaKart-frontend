@@ -96,7 +96,6 @@ const StoreInfo = ({ storeId }) => {
   const cityList = storeInfo && storeInfo.storeInfo.cityId;
   const addressDetails = storeInfo && storeInfo.storeInfo.address;
 
-
   useEffect(() => {
     dispatch({ type: 'STORE_INFO_REQUEST', storeId });
     setAlertMsg(false)
@@ -107,8 +106,7 @@ const StoreInfo = ({ storeId }) => {
     if (addressDetails && addressDetails) {
       setDisabled(true);
       setButton(false)
-    }
-    else {
+    } else {
       setDisabled(false);
       setButton(true)
     }
@@ -124,7 +122,7 @@ const StoreInfo = ({ storeId }) => {
     }
   }, [storeInfoUpdate, invalidStoreInfoUpdate]);
 
-  //country from Api
+  //Country from Api
   useEffect(() => {
     Locale.filter(item => {
       if (item._id === countryList) {
@@ -137,7 +135,7 @@ const StoreInfo = ({ storeId }) => {
     })
   }, [countryList]);
 
-  //city from Api
+  //City from Api
   useEffect(() => {
     Locale.filter((item) => {
       item.cities.filter((item) => {
@@ -164,6 +162,20 @@ const StoreInfo = ({ storeId }) => {
       }
     });
   }, [countryId]);
+
+    //Country from Api
+    useEffect(() => {
+      Locale.filter(item => {
+        if (item._id === countryList) {
+          const countryDetails = ({
+            // return {
+            value: item._id,
+            label: <div><img className="flag" src={item.flag} alt="new" /><span className="signup-flag">{item.countryName}</span></div>,
+          })
+          setCountryDetails(countryDetails);
+        }
+      })
+    }, [countryId])
 
   const onAvatarImage = ({ fileList: newFileList }) => {
     if (newFileList.length && newFileList[newFileList.length - 1].status === 'done') {
@@ -211,20 +223,6 @@ const StoreInfo = ({ storeId }) => {
     value: item._id,
     label: <div><img className="flag" src={item.flag} alt="new" /><span className="signup-flag">{item.countryName}</span></div>,
   }));
-
-  //country from Api
-  useEffect(() => {
-    Locale.filter(item => {
-      if (item._id === countryList) {
-        const countryDetails = ({
-          // return {
-          value: item._id,
-          label: <div><img className="flag" src={item.flag} alt="new" /><span className="signup-flag">{item.countryName}</span></div>,
-        })
-        setCountryDetails(countryDetails);
-      }
-    })
-  }, [countryId])
 
   const onCity = (city) => {
     setCityId(city)
@@ -321,19 +319,23 @@ const StoreInfo = ({ storeId }) => {
   const countryInfo = !countryId && countryId !== '' ? (countryList ? countryDetails && countryDetails : countryId) : countryId;
   const mobileInfo = !mobile && mobile !== '' ? storeInfo && storeInfo.storeInfo.mobile : mobile;
 
-  console.log('aboutStoreInfo',aboutStoreInfo)
-
   const onSubmit = () => {
-    if (!storeNameInfo || !aboutStoreInfo || !addressInfo || !countryInfo || !emailIdInfo || !mobileInfo || !cityInfo) {
+    if (!countryInfo || !emailIdInfo || !mobileInfo || !cityInfo) {
       setAlertError(true)
       message.error('Please fill all the fields')
     } else if (aboutStoreInfo.length < 10) {
-      message.error(' Please fill the About Store with minimum 8 characters');
+      message.error(' Please fill the About Store with minimum 10 characters');
       setAlertError(true)
     } else if (storeNameInfo.length < 3) {
       message.error(' Please fill the Store Name with minimum 3 characters');
       setAlertError(true)
-    }else if (disabled) {
+    } else if (addressInfo.length < 10) {
+      message.error(' Please fill the Address with minimum 10 characters');
+      setAlertError(true)
+    } else if (mobileInfo.length < 12) {
+      message.error(' Please fill the Contact Number with minimum 10 characters');
+      setAlertError(true)
+    } else if (disabled) {
       setDisabled(false)
     } else {
       const storeUpdate = {
@@ -415,7 +417,7 @@ const StoreInfo = ({ storeId }) => {
                       <label className="signup-label">About Store < span className="red-star">*</span> </label>
                       <textarea className={alertError && aboutStoreInfo.length < 10 ? ` form-control my-input` : `form-control formy`}
                         name="message"
-                        placeholder='type something..'
+                        placeholder='Type Something..'
                         disabled={disabled}
                         value={storeDetail ? aboutStore : storeInfo && storeInfo.storeInfo.aboutStore}
                         onChange={onAboutStore}
@@ -462,9 +464,9 @@ const StoreInfo = ({ storeId }) => {
                     </Col> */}
                     <Col md={12}>
                     <label className="signup-label">Store Name < span className="red-star">*</span> </label>
-                      <input className={alertError && !storeNameInfo.length < 3 ? ` form-control my-input` : `form-control formy`}
+                      <input className={alertError && storeNameInfo.length < 3 ? ` form-control my-input` : `form-control formy`}
                         type="text"
-                        placeholder="store name"
+                        placeholder="Enter Your Store Name"
                         maxLength={30}
                         value={storeNameInfo}
                         onChange={onStoreName}
@@ -472,10 +474,10 @@ const StoreInfo = ({ storeId }) => {
                       />
                     </Col>
                     <Col md={12}>
-                      <label className="store-label">Address<span className="red-star">*</span></label>
-                      <textarea className={alertError && !addressInfo ? ` form-control my-input` : `form-control formy`}
+                      <label className="store-label">Address <span className="red-star">*</span></label>
+                      <textarea className={alertError && addressInfo.length < 10 ? ` form-control my-input` : `form-control formy`}
                         type="text"
-                        placeholder="address."
+                        placeholder="Enter Your Address"
                         maxLength={100}
                         value={addressInfo}
                         disabled={disabled}
@@ -497,7 +499,7 @@ const StoreInfo = ({ storeId }) => {
                       <Select
                         type="text"
                         className={` clear-city ${alertError && !countryInfo ? `dropdown-alert` : `prof-select `}`}
-                        placeholder="select country"
+                        placeholder="Select Country"
                         isSearchable={false}
                         value={countryInfo}
                         onChange={onCountry}
@@ -512,7 +514,7 @@ const StoreInfo = ({ storeId }) => {
                           <Select
                             type="text"
                             className="prof-select "
-                            placeholder="select city"
+                            placeholder="Select City"
                             value={cityInfo}
                             onChange={onCity}
                             options={updatedCityOptions}
@@ -526,6 +528,7 @@ const StoreInfo = ({ storeId }) => {
                           <input
                             type="text"
                             className="form-control"
+                            placeholder="Enter Your Zip Code"
                             maxLength={10}
                             value={zipCodeInfo}
                             onChange={onZipCode}
@@ -544,11 +547,11 @@ const StoreInfo = ({ storeId }) => {
                     <input
                       type="text"
                       className={alertError && !emailIdInfo ? `form-control my-input` : `form-control formy`}
+                      placeholder="Enter Your Email ID"
                       maxLength={30}
                       value={emailIdInfo}
                       disabled={disabled}
                       onChange={onEmailId}
-                      placeholder="Enter Your Email"
                     />
                   </Col>
                   <Col md={3}>
@@ -557,7 +560,7 @@ const StoreInfo = ({ storeId }) => {
                       type="text"
                       className="form-control"
                       maxLength={30}
-                      placeholder="facebook"
+                      placeholder="Enter Your Facebook ID"
                       value={fbIdInfo}
                       onChange={onFbId}
                       disabled={disabled}
@@ -571,15 +574,15 @@ const StoreInfo = ({ storeId }) => {
                       maxLength={30}
                       value={igIdInfo}
                       onChange={onIgId}
-                      placeholder="instagram"
+                      placeholder="Enter Your Instagram ID"
                       disabled={disabled}
                     />
                   </Col>
                   <Col md={3} className='zipcode'>
                     <label className="signup-label">Contact Number <span className="red-star">*</span></label>
                     <Cleave
-                      className={alertError && !mobileInfo ? `form-control my-input` : `form-control formy`}
-                      placeholder="contact number"
+                      className={alertError &&  mobileInfo.length < 12 ? `form-control my-input` : `form-control formy`}
+                      placeholder="Enter Your Contact Number"
                       value={mobileInfo}
                       onChange={onMobile}
                       disabled={disabled}
