@@ -74,6 +74,7 @@ const Sidebar = () => {
   const addStore = useSelector((state) => state.addStoreState.addStore);
   const addStoreError = useSelector((state) => state.addStoreState.error);
   const newStore = vendorCompanyDetails && vendorCompanyDetails.industries.length && vendorCompanyDetails.industries[0].stores.slice(-1);
+  const profileStatus = useSelector((state) => state.profileState.profile && state.profileState.profile.status)
 
   const admin = (validLogin && validLogin.user.type === 'admin') || sessionStorage.type === 'admin';
 
@@ -119,16 +120,16 @@ const Sidebar = () => {
     history.push({ pathname: '/' });
   };
 
-  // const onModal = () => {
-  //   setModal(true)
-  // }
-
   const onHide = () => {
     setModal(false)
   }
 
   const addNewStore = () => {
-    setModal(true)
+    if (profileStatus !== "accepted") {
+      message.error('Please Wait For Sometime! Your Approval Is Pending From Admin')
+    } else {
+      setModal(true)
+    }
   }
 
   const onStore = (info) => {

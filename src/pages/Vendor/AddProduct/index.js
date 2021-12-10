@@ -202,7 +202,6 @@ const AddProduct = ({ storeId }) => {
 
   const onProductDescription = (e) => {
     setProductDescription(e.target.value)
-    // }
   }
 
   const onProductWarranty = (e) => {
@@ -294,24 +293,17 @@ const AddProduct = ({ storeId }) => {
   const productPrice = !tax ? price : totalprice;
 
   const onSubmit = () => {
-    if
-      (!productName || !category || !price || !productDescription || !productWarranty) {
+    if (!productName || !category || !price || !productDescription || !productWarranty) {
       setAlertError(true)
-      message.error('Please fill all the fields')
-    // } else if (productName.length <3 ) {
-    //   message.error('Please enter the valid Name')
-    //   setAlertError(true)
-    // }
-    // else if (productDescription.length < 20) {
-    //   message.error('Please enter the Description upto 500 words')
-    //   setAlertError(true)
-    // }
-    // else if (productWarranty.length < 20) {
-    //   message.error('Please enter the Warranty upto 500 words')
-    //   setAlertError(true)
-    }
-    else if (!fileList.length) {
-      message.error('Please Upload the Images')
+      message.error('Please Fill All The Fields')
+    } else if (productDescription.length < 10) {
+      message.error(' Please Fill The Product Description With Minimum 10 Characters');
+      setAlertError(true)
+    } else if (productName.length < 3) {
+      message.error('Please Fill The Product Name With Minimum 3 Characters')
+      setAlertError(true)
+    } else if (!fileList.length) {
+      message.error('Please Upload The Images')
     } else {
       const addProduct = {
         productName,
@@ -365,7 +357,7 @@ const AddProduct = ({ storeId }) => {
                     <label className="signup-label">Product Name <span className="red-star">*</span></label>
                     <input
                       type="text"
-                      className={alertError && productName === '' ? ` form-control my-input` : `form-control formy`}
+                      className={alertError && productName.length < 3 ? ` form-control my-input` : `form-control formy`}
                       maxLength={30}
                       value={productName}
                       onChange={onProductName}
@@ -542,7 +534,7 @@ const AddProduct = ({ storeId }) => {
                 <Row>
                   <Col sm={12} md={6}>
                     <label className="signup-label">Product Description <span className="red-star">*</span></label>
-                    <textarea className={alertError && !productDescription ? ` form-control my-input` : `form-control formy`}
+                    <textarea className={alertError && productDescription.length < 10 ? ` form-control my-input` : `form-control formy`}
                       name="message"
                       placeholder='type something..'
                       value={productDescription}
