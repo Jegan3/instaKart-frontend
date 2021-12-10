@@ -2,8 +2,8 @@
 import React from 'react';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import { Card, ThriftStoreNearYouCard, NewAdditionCard, ReviewCard } from '../Card';
 import ReactPlayer from "react-player";
+import { Card, ThriftStoreNearYouCard, NewAdditionCard, ReviewCard } from '../Card';
 
 const responsive = {
   desktop: {
@@ -417,63 +417,63 @@ const cardsDataMobile = [
     title: 'CARD 1',
     content: 'Food Avenue',
     imgUrl: 'images/1_Food.png',
-    btnUrl: '/advertisement',
+    btnUrl: '/comingsoon',
   },
   {
     id: 2,
     title: 'CARD 2',
     content: 'Fashion District',
     imgUrl: 'images/2_Fashion.jpg',
-    btnUrl: '/advertisement',
+    btnUrl: '/comingsoon',
   },
   {
     id: 3,
     title: 'CARD 3',
     content: 'Health & Wellness',
     imgUrl: 'images/3_Health.png',
-    btnUrl: '/advertisement',
+    btnUrl: '/comingsoon',
   },
   {
     id: 4,
     title: 'CARD 4',
     content: 'Speciality Services',
     imgUrl: 'images/4_Speciality.png',
-    btnUrl: '/advertisement',
+    btnUrl: '/comingsoon',
   },
   {
     id: 5,
     title: 'CARD 5',
     content: 'Thrift Store',
     imgUrl: 'images/5_Thrift.png',
-    btnUrl: '/advertisement',
+    btnUrl: '/comingsoon',
   },
   {
     id: 6,
     title: 'CARD 6',
     content: 'Grocery & Fresh Produce',
     imgUrl: 'images/6_Grocery.png',
-    btnUrl: '/advertisement',
+    btnUrl: '/comingsoon',
   },
   {
     id: 7,
     title: 'CARD 7',
     content: 'Appliances & Tech Gadgets',
     imgUrl: 'images/7_applicance.jpg',
-    btnUrl: '/advertisement',
+    btnsUrl: '/comingsoon',
   },
   {
     id: 8,
     title: 'CARD 8',
     content: 'Automotive, Hardware, Industrial & Safety Supplies',
     imgUrl: 'images/8_hardware.png',
-    btnUrl: '/advertisement',
+    btnUrl: '/comingsoon',
   },
   {
     id: 9,
     title: 'CARD 9',
     content: 'Home & Garden Supplies',
     imgUrl: 'images/9_home.png',
-    btnUrl: '/advertisement',
+    btnUrl: '/comingsoon',
   },
 ];
 
@@ -677,7 +677,7 @@ export const CarouselNewEStore = () => (
     responsive={responsive}
   >
     {cardsDataMobile.map((card) => (
-      <Card key={card.id} className='card' imgUrl={card.imgUrl} />
+      <Card key={card.id} className='card' imgUrl={card.imgUrl}  btnUrl={card.btnUrl} body />
     ))}
   </Carousel>
 );
