@@ -73,7 +73,6 @@ const Sidebar = () => {
   const vendorCompanyDetails = useSelector((state) => state.vendorCompanyDetailsState.vendorCompanyDetails);
   const addStore = useSelector((state) => state.addStoreState.addStore);
   const addStoreError = useSelector((state) => state.addStoreState.error);
-  const newStore = vendorCompanyDetails && vendorCompanyDetails.industries.length && vendorCompanyDetails.industries[0].stores.slice(-1);
   const profileStatus = useSelector((state) => state.profileState.profile && state.profileState.profile.status)
 
   const admin = (validLogin && validLogin.user.type === 'admin') || sessionStorage.type === 'admin';
@@ -86,8 +85,8 @@ const Sidebar = () => {
     if (addStore && addStore.status) {
       message.success(addStore.message)
       setStore(false)
+      dispatch({ type: 'VENDOR_COMPANY_DETAILS_REQUEST' });
     }
-    dispatch({ type: 'VENDOR_COMPANY_DETAILS_REQUEST' });
   }, [addStore])
 
   useEffect(() => {
@@ -101,9 +100,9 @@ const Sidebar = () => {
 
   useEffect(() => {
     if (addStore && addStore.status && !store) {
-      history.push({ pathname: '/storedetails', state: newStore[0].estoreId });
-      dispatch({ type: 'STORE_INFO_REQUEST', storeId: newStore[0].estoreId });
-      dispatch({ type: 'PRODUCT_LIST_REQUEST', storeId: newStore[0].estoreId });
+      history.push({ pathname: '/storedetails', state: addStore.estoreId });
+      dispatch({ type: 'STORE_INFO_REQUEST', storeId: addStore.estoreId });
+      dispatch({ type: 'PRODUCT_LIST_REQUEST', storeId: addStore.estoreId });
     }
   }, [vendorCompanyDetails])
 
