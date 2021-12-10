@@ -125,7 +125,7 @@ const Sidebar = () => {
 
   const addNewStore = () => {
     if (profileStatus !== "accepted") {
-      message.error('Please Wait For Sometime! Your Approval Is Pending From Admin')
+      message.error('Please Wait For Sometime! Your Approval Is Pending!')
     } else {
       setModal(true)
     }
