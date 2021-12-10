@@ -30,9 +30,10 @@
     padding: 0px !important
   }
 
-  .my-input{
+  .my-input {
     border-color: rgb(0, 191, 255) !important;
   }
+
   .video-related {
     background-color: transparent;
   }
@@ -132,12 +133,25 @@
   cursor: pointer;
 }
 
+.button-dsgn {
+  display: flex;
+  padding: 15px;
+}
+
+.qty-buynow-btn {
+  width: 35% !important;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding-right: 3px !important;
+  padding-left: 3px !important;
+}
+
 .quanity {
   color: white;
   font-size: 18px;
   font-weight: 700;
   font-family: serif;
-  padding-top: 7%;
   cursor: pointer;
 
   .quanitybtns {
@@ -148,10 +162,9 @@
 
 .buybtn {
   color: white;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 700;
   font-family: serif;
-  padding-top: 7%;
   cursor: pointer;
   border: transparent;
   background: transparent;

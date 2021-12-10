@@ -311,21 +311,23 @@ const ProductInfo = ({ location }) => {
                       </div>
                     </Col>
                     <Col md={12}>
-                      <div className="col-sm-5">
-                        <div className='quanity'>
-                          <span>QTY</span>
-                          <span className="quanitybtns"
-                            onClick={onDecrement}> - </span>
-                          {count}
-                          <span className="quanitybtns"
-                            onClick={onIncrement}> + </span>
+                      <div className='button-dsgn'>
+                        <div className="col-sm-5 qty-buynow-btn">
+                          <div className='quanity'>
+                            <span>QTY</span>
+                            <span className="quanitybtns"
+                              onClick={onDecrement}> - </span>
+                            {count}
+                            <span className="quanitybtns"
+                              onClick={onIncrement}> + </span>
+                          </div>
                         </div>
-                      </div>
-                      {userCountry === ('Trinidad & Tobago' || 'Guyana') && <div className="col-sm-4">
-                        <button className='buybtn' onClick={onAddCart}>Add To Cart</button>
-                      </div>}
-                      <div className="col-sm-3">
-                        <button className='buybtn' onClick={onBuyNow}>Buy Now</button>
+                        {userCountry === ('Trinidad & Tobago' || 'Guyana') && <div className="col-sm-4">
+                          <button className='buybtn' onClick={onAddCart}>Add To Cart</button>
+                        </div>}
+                        <div className="col-sm-3 qty-buynow-btn">
+                          <button className='buybtn' onClick={onBuyNow}>Buy Now</button>
+                        </div>
                       </div>
                     </Col>
                   </Row>
