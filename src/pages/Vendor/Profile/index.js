@@ -164,8 +164,7 @@ const Profile = () => {
   }
 
   const onMobile = e => {
-    setMobile(e.target.value)
-    setProfileDetail('mobile')
+    setMobile(e.target.rawValue)
   }
 
   const onWipay = (e) => {
@@ -214,7 +213,7 @@ const Profile = () => {
       setAlertError(true)
       setDisabled(false)
       message.error('Please fill all the fields')
-    } else if (mobileInfo.length < 12) {
+    } else if (mobileInfo.length < 10) {
       setAlertError(true)
       message.error('Please enter the valid Mobile')
     } else if (bankAccountInfo.length < 10) {
