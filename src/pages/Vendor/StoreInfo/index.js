@@ -59,7 +59,7 @@ import Loader from '../../../components/Loader';
 // ]
 
 
-const StoreInfo = ({ storeId }) => {
+const StoreInfo = ({ storeId, setStoreHeader }) => {
   const [storeLogo, setStoreLogo] = useState();
   const [aboutStore, setAboutStore] = useState();
   const [fileList, setImageList] = useState([]);
@@ -85,7 +85,6 @@ const StoreInfo = ({ storeId }) => {
   const [cityDetails, setCityDetails] = useState();
   const [disabled, setDisabled] = useState(false);
   const [alertMsg, setAlertMsg] = useState(false);
-
   const dispatch = useDispatch();
   const storeInfo = useSelector((state) => state.storeInfoState.storeInfo);
   const isLoading = useSelector((state) => state.storeInfoState.isLoading);
@@ -99,8 +98,8 @@ const StoreInfo = ({ storeId }) => {
   useEffect(() => {
     dispatch({ type: 'STORE_INFO_REQUEST', storeId });
     setAlertMsg(false)
-    // setAlertError(false)
-  }, [])
+    setStoreDetail(false)
+  }, [storeId])
 
   useEffect(() => {
     if (addressDetails && addressDetails) {
@@ -163,19 +162,19 @@ const StoreInfo = ({ storeId }) => {
     });
   }, [countryId]);
 
-    //Country from Api
-    useEffect(() => {
-      Locale.filter(item => {
-        if (item._id === countryList) {
-          const countryDetails = ({
-            // return {
-            value: item._id,
-            label: <div><img className="flag" src={item.flag} alt="new" /><span className="signup-flag">{item.countryName}</span></div>,
-          })
-          setCountryDetails(countryDetails);
-        }
-      })
-    }, [countryId])
+  //Country from Api
+  useEffect(() => {
+    Locale.filter(item => {
+      if (item._id === countryList) {
+        const countryDetails = ({
+          // return {
+          value: item._id,
+          label: <div><img className="flag" src={item.flag} alt="new" /><span className="signup-flag">{item.countryName}</span></div>,
+        })
+        setCountryDetails(countryDetails);
+      }
+    })
+  }, [countryId])
 
   const onAvatarImage = ({ fileList: newFileList }) => {
     if (newFileList.length && newFileList[newFileList.length - 1].status === 'done') {
@@ -191,7 +190,6 @@ const StoreInfo = ({ storeId }) => {
   }
 
   const onAboutStore = (e) => {
-    //   if (e.target.value.match('^[a-zA-Z0-9 !?",\'@#$%\^&*)(+=._-]*$')) {
     setAboutStore(e.target.value)
     setStoreDetail(true)
   }
@@ -199,6 +197,8 @@ const StoreInfo = ({ storeId }) => {
   const onStoreName = (e) => {
     if (e.target.value.match('^[a-zA-Z0-9 ]*$')) {
       setStoreName(e.target.value)
+      // call back for header store name
+      setStoreHeader(e.target.value)
       setStoreDetail(true)
     }
   }
@@ -215,7 +215,6 @@ const StoreInfo = ({ storeId }) => {
     setCountryId(countryId)
     setCityId('')
     setAlertError(false)
-    // setStoreDetail(true)
   }
 
   // Country Options
@@ -291,11 +290,6 @@ const StoreInfo = ({ storeId }) => {
     }
   }
 
-  // const [mondayOpen, setMondayOpen] = useState(null);
-  // const onChange = time => {
-  //   setValue(time);
-  // };
-
   const fakeRequest = ({ onSuccess }) => {
     setTimeout(() => {
       onSuccess('OK')
@@ -307,17 +301,17 @@ const StoreInfo = ({ storeId }) => {
     setDisabled(false)
   }
 
-  const storeNameInfo = !storeName && storeName !== '' ? storeInfo && storeInfo.storeInfo.storeName : storeName;
-  const storeLogoInfo = !storeLogo && storeLogo !== '' ? storeInfo && storeInfo.storeInfo.storeLogo : storeLogo;
-  const aboutStoreInfo = !aboutStore && aboutStore !== '' ? storeInfo && storeInfo.storeInfo.aboutStore : aboutStore;
-  const addressInfo = !address && address !== '' ? storeInfo && storeInfo.storeInfo.address : address;
-  const zipCodeInfo = !zipCode && zipCode !== '' ? storeInfo && storeInfo.storeInfo.zipCode : zipCode;
-  const emailIdInfo = !emailId && emailId !== '' ? storeInfo && storeInfo.storeInfo.emailId : emailId;
-  const fbIdInfo = !fbId && fbId !== '' ? storeInfo && storeInfo.storeInfo.fbId : fbId;
-  const igIdInfo = !igId && igId !== '' ? storeInfo && storeInfo.storeInfo.igId : igId;
-  const cityInfo = !cityId && cityId !== '' ? (countryList ? cityDetails && cityDetails : cityId) : cityId;
-  const countryInfo = !countryId && countryId !== '' ? (countryList ? countryDetails && countryDetails : countryId) : countryId;
-  const mobileInfo = !mobile && mobile !== '' ? storeInfo && storeInfo.storeInfo.mobile : mobile;
+  const storeNameInfo = !storeDetail || (!storeName && storeName !== '') ? storeInfo && storeInfo.storeInfo.storeName : storeName;
+  const storeLogoInfo = !storeDetail || (!storeLogo && storeLogo !== '') ? storeInfo && storeInfo.storeInfo.storeLogo : storeLogo;
+  const aboutStoreInfo = !storeDetail || (!aboutStore && aboutStore !== '') ? storeInfo && storeInfo.storeInfo.aboutStore : aboutStore;
+  const addressInfo = !storeDetail || (!address && address !== '') ? storeInfo && storeInfo.storeInfo.address : address;
+  const zipCodeInfo = !storeDetail || (!zipCode && zipCode !== '') ? storeInfo && storeInfo.storeInfo.zipCode : zipCode;
+  const emailIdInfo = !storeDetail || (!emailId && emailId !== '') ? storeInfo && storeInfo.storeInfo.emailId : emailId;
+  const fbIdInfo = !storeDetail || (!fbId && fbId !== '') ? storeInfo && storeInfo.storeInfo.fbId : fbId;
+  const igIdInfo = !storeDetail || (!igId && igId !== '') ? storeInfo && storeInfo.storeInfo.igId : igId;
+  const cityInfo = !storeDetail || (!cityId && cityId !== '') ? (countryList ? cityDetails && cityDetails : cityId) : cityId;
+  const countryInfo = !storeDetail || (!countryId && countryId !== '') ? (countryList ? countryDetails && countryDetails : countryId) : countryId;
+  const mobileInfo = !storeDetail || (!mobile && mobile !== '') ? storeInfo && storeInfo.storeInfo.mobile : mobile;
 
   const onSubmit = () => {
     if (!countryInfo || !emailIdInfo || !mobileInfo || !cityInfo) {
@@ -332,7 +326,7 @@ const StoreInfo = ({ storeId }) => {
     } else if (addressInfo.length < 10) {
       message.error(' Please fill the Address with minimum 10 characters');
       setAlertError(true)
-    } else if (mobileInfo.length < 12) {
+    } else if (mobileInfo.length < 10) {
       message.error(' Please fill the Contact Number with minimum 10 characters');
       setAlertError(true)
     } else if (disabled) {
@@ -356,33 +350,18 @@ const StoreInfo = ({ storeId }) => {
       dispatch({ type: 'STORE_INFO_UPDATE_REQUEST', storeUpdate });
       setAlertMsg(true)
     };
-    //console.log('payoad', profileInfo)
   }
 
   return (
     <div >
       {isLoading && <Loader />}
-      {/* <Sidebar /> */}
       <div >
-        {/* <Headerbar headerName="Profile" /> */}
         <div className="main-content general-info">
           <Grid fluid>
-            {/* <Menu mode="horizontal">
-        <Menu.Item >
-          Profile <Link to="/profile" />
-        </Menu.Item>
-        <Menu.Item >
-          Add Product <Link to="/addproduct" />
-        </Menu.Item>
-        <Menu.Item >
-          Product List <Link to="/productlist" />
-        </Menu.Item>
-        </Menu> */}
             <Row>
               <Row className="form-content card">
                 <Col md={6} className='left-info' >
                   <p className='reg-num'>
-                    {/* {registerNumber} */}
                   </p>
                   <Row>
                     <Col md={12} >
@@ -429,41 +408,8 @@ const StoreInfo = ({ storeId }) => {
                 </Col>
                 <Col md={6} className='right-info' >
                   <Row>
-                    {/* <Col md={12}>
-                      <label className="signup-label">Business Name</label>
-                      <input
-                        type="text"
-                        placeholder="business name"
-                        className="form-control"
-                        maxLength={30}
-                        value={storeInfo && storeInfo.storeInfo.companyName}
-                        disabled
-                      />
-                    </Col>
-                    <Col md={6}>
-                      <label className="signup-label">First Name</label>
-                      <input
-                        type="text"
-                        placeholder="first name"
-                        className="form-control"
-                        maxLength={30}
-                        value={storeInfo && storeInfo.storeInfo.firstName}
-                        disabled
-                      />
-                    </Col>
-                    <Col md={6}>
-                      <label className="signup-label">Last Name</label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        placeholder="last name"
-                        maxLength={30}
-                        value={storeInfo && storeInfo.storeInfo.lastName}
-                        disabled
-                      />
-                    </Col> */}
                     <Col md={12}>
-                    <label className="signup-label">Store Name < span className="red-star">*</span> </label>
+                      <label className="signup-label">Store Name < span className="red-star">*</span> </label>
                       <input className={alertError && storeNameInfo.length < 3 ? ` form-control my-input` : `form-control formy`}
                         type="text"
                         placeholder="Enter Your Store Name"
@@ -484,15 +430,6 @@ const StoreInfo = ({ storeId }) => {
                         onChange={onAddress}
                         rows="4">
                       </textarea>
-
-                      {/* <input
-                        type="text"
-                        placeholder="address."
-                        className={alertError && !address ? ` form-control my-input` : `form-control formy`}
-                        maxLength={100}
-                        value={address}
-                        onChange={onAddress}
-                      /> */}
                     </Col>
                     <Col md={12} >
                       <label className="store-label">Country <span className="red-star">*</span></label>
@@ -520,7 +457,6 @@ const StoreInfo = ({ storeId }) => {
                             options={updatedCityOptions}
                             isSearchable={false}
                             isDisabled={!countryId}
-
                           />
                         </Col>
                         <Col md={6} className='zipcode'>
@@ -581,7 +517,7 @@ const StoreInfo = ({ storeId }) => {
                   <Col md={3} className='zipcode'>
                     <label className="signup-label">Contact Number <span className="red-star">*</span></label>
                     <Cleave
-                      className={alertError &&  mobileInfo.length < 12 ? `form-control my-input` : `form-control formy`}
+                      className={alertError && mobileInfo.length < 10 ? `form-control my-input` : `form-control formy`}
                       placeholder="Enter Your Contact Number"
                       value={mobileInfo}
                       onChange={onMobile}
@@ -590,7 +526,6 @@ const StoreInfo = ({ storeId }) => {
                         blocks: [3, 3, 4],
                         numericOnly: true
                       }}
-                    // options={{ phone: true, phoneRegionCode: "US" }}
                     />
                   </Col>
                 </Col>
@@ -609,7 +544,6 @@ const StoreInfo = ({ storeId }) => {
                           sortable: false,
                           width: 130,
                         },
-
                         {
                           Header: 'Opening Time',
                           accessor: 'status',
@@ -659,7 +593,6 @@ const StoreInfo = ({ storeId }) => {
                         },
                       ]}
                       defaultPageSize={7}
-                      // showPaginationTop
                       showPaginationBottom={false}
                       className="-striped -highlight"
                     />

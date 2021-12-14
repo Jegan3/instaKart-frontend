@@ -73,6 +73,7 @@ const Sidebar = () => {
   const vendorCompanyDetails = useSelector((state) => state.vendorCompanyDetailsState.vendorCompanyDetails);
   const addStore = useSelector((state) => state.addStoreState.addStore);
   const addStoreError = useSelector((state) => state.addStoreState.error);
+  const storeInfoUpdate = useSelector((state) => state.storeInfoUpdateState.storeInfoUpdate);
   const profileStatus = useSelector((state) => state.profileState.profile && state.profileState.profile.status)
 
   const admin = (validLogin && validLogin.user.type === 'admin') || sessionStorage.type === 'admin';
@@ -86,8 +87,10 @@ const Sidebar = () => {
       message.success(addStore.message)
       setStore(false)
       dispatch({ type: 'VENDOR_COMPANY_DETAILS_REQUEST' });
+    } else if (storeInfoUpdate) {
+      dispatch({ type: 'VENDOR_COMPANY_DETAILS_REQUEST' });
     }
-  }, [addStore])
+  }, [addStore, storeInfoUpdate])
 
   useEffect(() => {
     if (addStoreError && addStoreError.message)
