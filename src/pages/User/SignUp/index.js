@@ -28,6 +28,7 @@ const SignUp = (props) => {
   const [city, setCity] = useState();
   const [updatedCityOptions, setUpdatedCityOptions] = useState();
   const [validate, setValidate] = useState('');
+  const [clear, setClear] = useState(false);
 
   const dispatch = useDispatch();
   const validSignup = useSelector((state) => state.signupState.signup);
@@ -39,10 +40,14 @@ const SignUp = (props) => {
   const { state } = props.location;
   const type = state ? 'vendor' : 'user';
 
+  console.log('type',type)
+    console.log('status',status)
+
+
   useEffect(() => {
     if (validSignup && !closeOtp && type === 'user') {
       setShowOtp(true);
-    } else if (status) {
+    } else if (status && clear) {
       setCompany('');
       setIndustryType('');
       setCountry('');
@@ -53,9 +58,11 @@ const SignUp = (props) => {
       setTermsCondition(false);
       setValidate(false);
       setAlertError(false);
+      setClear(false)
       message.success('Thanks!, Signup form is successfully registered with us , You will receive an email from us shortly Note: If you using Outlook please check ur spam folder too');
     } else if (invalidSignup) {
-      message.error(`An account with email ${email} already exists`);
+      setClear(false)
+      message.error(`An account with ${email} is not Successful `);
     }
   }, [status, invalidSignup]);
 
@@ -115,6 +122,7 @@ const SignUp = (props) => {
 
   const onCountry = (country) => {
     setCountry(country);
+    setCity('');
   };
 
   // Country Options
@@ -186,6 +194,7 @@ const SignUp = (props) => {
 
       dispatch({ type: 'SIGNUP_REQUEST', signup: type === 'vendor' ? signupDetailsVendors : signupDetailsUsers });
       setAlertMsg('');
+      setClear(true)
     }
   };
 
