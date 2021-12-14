@@ -25,8 +25,6 @@ const bankSelect = BankList.map(item => ({
   value: item.value,
   label: item.label
 }))
-console.log('bankSelect', bankSelect)
-console.log('preferenceSelect', preferenceSelect)
 
 const Profile = () => {
 
@@ -219,18 +217,13 @@ const Profile = () => {
     } else if (bankAccountInfo.length < 10) {
       setAlertError(true)
       message.error('Please enter the valid Bank Account')
-      //  } else if (wipayAccountInfo.length >= 0 && wipayAccountInfo.length < 10) {
-      //   setAlertError(true)
-      //   console.log('ddd', wipayAccountInfo.length );
-      //   message.error('Please enter the valid Wipay Account')
     } else if (wipay === 'Yes' && wipayAccountInfo.length < 10) {
       setAlertError(true)
       setDisabled(false)
-      message.error('Please fill all the fields')
+      message.error('Please enter the valid Wipay Account')
     } else if (disabled) {
       setDisabled(false)
     } else {
-      // message.success('Your Info Update Successfully');
       setDisabled(true)
       const profile = {
         firstName: firstNameInfo,
@@ -252,8 +245,6 @@ const Profile = () => {
         usAccount,
       };
       dispatch({ type: 'PROFILE_UPDATE_REQUEST', profile });
-      console.log('profile', profile)
-
       message.success('Successfully Updated');
     }
   }
@@ -434,7 +425,6 @@ const Profile = () => {
                         <Select
                           type="text"
                           //className={`${alertError && !bankInfo && `dropdown-alert`}`}
-                          className=""
                           placeholder="Choose Bank."
                           value={bankInfo}
                           onChange={onBank}
