@@ -9,58 +9,6 @@ import { faBars, faCog, faHome, faUser, faBuilding, faTag, faFolderPlus, faUserT
 import { history } from '../../routes';
 import Overlay from '../../components/Overlay';
 
-// const industry = [
-//   {
-//     industryId: '1',
-//     industryName: 'Thrift',
-//     store:[
-//       {
-//         storeId: '1',
-//         storeName: 'Store 1'
-//       },
-//       {
-//         storeId: '2',
-//         storeName: 'Store 2'
-
-//       }
-
-//     ]
-//   },
-//   {
-//     industryId: '2',
-//     industryName: 'food',
-//     store:[
-//       {
-//         storeId: '1',
-//         storeName: 'Store 3'
-//       },
-//       {
-//         storeId: '2',
-//         storeName: 'Store 4'
-
-//       }
-
-//     ]
-//   },
-//   {
-//     industryId: '3',
-//     industryName: 'indus',
-//     store:[
-//       {
-//         storeId: '1',
-//         storeName: 'Store 5'
-//       },
-//       {
-//         storeId: '2',
-//         storeName: 'Store 6'
-
-//       }
-
-//     ]
-
-//   },
-// ]
-
 const Sidebar = () => {
   const [open, setOpen] = useState(false);
   const [toggled, setToggled] = useState(false);
@@ -80,6 +28,7 @@ const Sidebar = () => {
 
   useEffect(() => {
     dispatch({ type: 'VENDOR_COMPANY_DETAILS_REQUEST' });
+    dispatch({ type: 'PROFILE_REQUEST' });
   }, [])
 
   useEffect(() => {
