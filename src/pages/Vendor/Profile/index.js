@@ -84,13 +84,6 @@ const Profile = () => {
   const preferenceInfo = !preference ? preferenceList[0] : preference;
   const ikOptionsInfo = !ikOptions ? ikOptionsList[0] : ikOptions;
 
-
-  useEffect(() => {
-    dispatch({ type: 'PROFILE_REQUEST' });
-  }, [])
-
-  // console.log('profileAddress', profileAddress)
-
   const onCompanyLogo = ({ fileList: newFileList }) => {
     if (newFileList.length && newFileList[newFileList.length - 1].status === 'done') {
       let file = newFileList[newFileList.length - 1].originFileObj;
@@ -103,24 +96,6 @@ const Profile = () => {
     setUploadCompanyLogo(newFileList);
     setProfileDetail(true)
   }
-
-  // const onPreview = async file => {
-  //   if (!file.url && !file.preview) {
-  //     file.preview = await getBase64(file.originFileObj);
-  //   }
-  //   setPreviewVisible(true)
-  //   setPreviewImage(file.url || file.preview)
-  //   setPreviewTitle(file.name || file.url.substring(file.url.lastIndexOf('/') + 1))
-  // };
-
-  // const getBase64 = (file) => {
-  //   return new Promise((resolve, reject) => {
-  //     const reader = new FileReader();
-  //     reader.readAsDataURL(file);
-  //     reader.onload = () => resolve(reader.result);
-  //     reader.onerror = error => reject(error);
-  //   });
-  // }
 
   const fakeRequest = ({ onSuccess }) => {
     setTimeout(() => {
@@ -424,7 +399,6 @@ const Profile = () => {
                         <label className="card-info-label">Bank</label>
                         <Select
                           type="text"
-                          //className={`${alertError && !bankInfo && `dropdown-alert`}`}
                           placeholder="Choose Bank."
                           value={bankInfo}
                           onChange={onBank}

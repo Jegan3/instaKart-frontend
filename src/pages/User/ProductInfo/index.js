@@ -150,7 +150,7 @@ const ProductInfo = ({ location }) => {
       const buyNowProduct = {
         productId: product._id,
         productName: product && product.productName,
-        productImage: product && product.productImages,
+        productImage: product && product.productImages[0],
         totalPrice: `${currency}${parseFloat(productPrice * count).toFixed(2)}`,
         quantity: count,
         productPrice: `${currency}${parseFloat(productPrice).toFixed(2)}`
