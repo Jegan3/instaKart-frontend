@@ -70,7 +70,8 @@ const StoreInfo = ({ storeId, setStoreHeader }) => {
   const [countryId, setCountryId] = useState();
   const [cityId, setCityId] = useState();
   const [zipCode, setZipCode] = useState();
-  const [emailId, setEmailId] = useState();
+  const [email, setEmail] = useState('');
+  const [validate, setValidate] = useState('');
   const [fbId, setFbId] = useState();
   const [igId, setIgId] = useState();
   const [mobile, setMobile] = useState();
@@ -85,23 +86,49 @@ const StoreInfo = ({ storeId, setStoreHeader }) => {
   const [cityDetails, setCityDetails] = useState();
   const [disabled, setDisabled] = useState(false);
   const [alertMsg, setAlertMsg] = useState(false);
+
   const dispatch = useDispatch();
   const storeInfo = useSelector((state) => state.storeInfoState.storeInfo);
   const isLoading = useSelector((state) => state.storeInfoState.isLoading);
   const storeInfoUpdate = useSelector((state) => state.storeInfoUpdateState.storeInfoUpdate);
   const invalidStoreInfoUpdate = useSelector((state) => state.storeInfoUpdateState.error);
+  const storeSubmit = useSelector((state) => state.storeInfoUpdateState.submit);
 
   const countryList = storeInfo && storeInfo.storeInfo.countryId;
   const cityList = storeInfo && storeInfo.storeInfo.cityId;
   const addressDetails = storeInfo && storeInfo.storeInfo.address;
 
   useEffect(() => {
-    dispatch({ type: 'STORE_INFO_REQUEST', storeId });
-    setAlertMsg(false)
-    setStoreDetail(false)
-  }, [storeId])
+    dispatch({ type: 'STORE_INFO_UPDATE_CHECK' });
+  }, [])
 
   useEffect(() => {
+    if (button) {
+      message.error("please save your changes")
+    } else if (storeId) {
+      dispatch({ type: 'STORE_INFO_REQUEST', storeId });
+      dispatch({ type: 'STORE_INFO_UPDATE_CHECK' });
+      setStoreLogo()
+      setAboutStore()
+      setStoreName()
+      setAddress()
+      setCountryId()
+      setZipCode()
+      setCityId()
+      setEmail()
+      setFbId()
+      setIgId()
+      setMobile()
+      setAlertMsg(false)
+      setStoreDetail(false)
+      setValidate(false)
+    }
+  }, [storeId])
+
+  console.log("storeId", storeId)
+
+  useEffect(() => {
+    // For New Store Enable
     if (addressDetails && addressDetails) {
       setDisabled(true);
       setButton(false)
@@ -162,20 +189,6 @@ const StoreInfo = ({ storeId, setStoreHeader }) => {
     });
   }, [countryId]);
 
-  //Country from Api
-  useEffect(() => {
-    Locale.filter(item => {
-      if (item._id === countryList) {
-        const countryDetails = ({
-          // return {
-          value: item._id,
-          label: <div><img className="flag" src={item.flag} alt="new" /><span className="signup-flag">{item.countryName}</span></div>,
-        })
-        setCountryDetails(countryDetails);
-      }
-    })
-  }, [countryId])
-
   const onAvatarImage = ({ fileList: newFileList }) => {
     if (newFileList.length && newFileList[newFileList.length - 1].status === 'done') {
       let file = newFileList[newFileList.length - 1].originFileObj;
@@ -225,6 +238,7 @@ const StoreInfo = ({ storeId, setStoreHeader }) => {
 
   const onCity = (city) => {
     setCityId(city)
+    setStoreDetail(true)
   }
 
   const onZipCode = (e) => {
@@ -234,11 +248,18 @@ const StoreInfo = ({ storeId, setStoreHeader }) => {
     }
   }
 
-  const onEmailId = (e) => {
+  const validateEmail = (email) => {
+    const regex = /\S+@\S+\.\S+/;
+    return regex.test(email);
+  };
+
+  const validEmail = validateEmail(emailIdInfo);
+
+  const onEmail = (e) => {
     if (e.target.value.match('^[a-zA-Z0-9_@./#&+-]*$')) {
-      setEmailId(e.target.value);
+      setEmail(e.target.value);
       setStoreDetail(true)
-      setAlertError(false)
+
     }
   };
 
@@ -259,7 +280,7 @@ const StoreInfo = ({ storeId, setStoreHeader }) => {
   const onMobile = (e) => {
     setMobile(e.target.rawValue)
     setStoreDetail(true)
-    setAlertError(false)
+    // setAlertError(false)
   }
 
   const onOpeningTime = (info, timeString) => {
@@ -299,6 +320,7 @@ const StoreInfo = ({ storeId, setStoreHeader }) => {
   const onUpdate = () => {
     setButton(true)
     setDisabled(false)
+    dispatch({ type: 'STORE_INFO_EDIT' });
   }
 
   const storeNameInfo = !storeDetail || (!storeName && storeName !== '') ? storeInfo && storeInfo.storeInfo.storeName : storeName;
@@ -306,7 +328,7 @@ const StoreInfo = ({ storeId, setStoreHeader }) => {
   const aboutStoreInfo = !storeDetail || (!aboutStore && aboutStore !== '') ? storeInfo && storeInfo.storeInfo.aboutStore : aboutStore;
   const addressInfo = !storeDetail || (!address && address !== '') ? storeInfo && storeInfo.storeInfo.address : address;
   const zipCodeInfo = !storeDetail || (!zipCode && zipCode !== '') ? storeInfo && storeInfo.storeInfo.zipCode : zipCode;
-  const emailIdInfo = !storeDetail || (!emailId && emailId !== '') ? storeInfo && storeInfo.storeInfo.emailId : emailId;
+  const emailIdInfo = !storeDetail || (!email && email !== '') ? storeInfo && storeInfo.storeInfo.emailId : email;
   const fbIdInfo = !storeDetail || (!fbId && fbId !== '') ? storeInfo && storeInfo.storeInfo.fbId : fbId;
   const igIdInfo = !storeDetail || (!igId && igId !== '') ? storeInfo && storeInfo.storeInfo.igId : igId;
   const cityInfo = !storeDetail || (!cityId && cityId !== '') ? (countryList ? cityDetails && cityDetails : cityId) : cityId;
@@ -318,16 +340,20 @@ const StoreInfo = ({ storeId, setStoreHeader }) => {
       setAlertError(true)
       message.error('Please fill all the fields')
     } else if (aboutStoreInfo.length < 10) {
-      message.error(' Please fill the About Store with minimum 10 characters');
+      message.error('Please fill the About Store with minimum 10 characters');
       setAlertError(true)
     } else if (storeNameInfo.length < 3) {
-      message.error(' Please fill the Store Name with minimum 3 characters');
+      message.error('Please fill the Store Name with minimum 3 characters');
       setAlertError(true)
+    } else if (validEmail === false) {
+      setAlertError(true)
+      message.error('Please enter the valid Email')
+      setValidate(true)
     } else if (addressInfo.length < 10) {
-      message.error(' Please fill the Address with minimum 10 characters');
+      message.error('Please fill the Address with minimum 10 characters');
       setAlertError(true)
     } else if (mobileInfo.length < 10) {
-      message.error(' Please fill the Contact Number with minimum 10 characters');
+      message.error('Please fill the Contact Number with minimum 10 characters');
       setAlertError(true)
     } else if (disabled) {
       setDisabled(false)
@@ -398,7 +424,7 @@ const StoreInfo = ({ storeId, setStoreHeader }) => {
                         name="message"
                         placeholder='Type Something..'
                         disabled={disabled}
-                        value={storeDetail ? aboutStore : storeInfo && storeInfo.storeInfo.aboutStore}
+                        value={aboutStoreInfo}
                         onChange={onAboutStore}
                         maxLength={500}
                         rows="4">
@@ -447,7 +473,7 @@ const StoreInfo = ({ storeId, setStoreHeader }) => {
                     <Col md={12}>
                       <Row>
                         <Col md={6}>
-                          <label className="store-label">City</label>
+                          <label className="store-label">City <span className="red-star">*</span></label>
                           <Select
                             type="text"
                             className="prof-select "
@@ -482,12 +508,12 @@ const StoreInfo = ({ storeId, setStoreHeader }) => {
                     <label className="signup-label">Email ID <span className="red-star">*</span></label>
                     <input
                       type="text"
-                      className={alertError && !emailIdInfo ? `form-control my-input` : `form-control formy`}
+                      className={alertError && emailIdInfo === '' || validateEmail(emailIdInfo) === false && validate ? `form-control my-input` : `form-control formy`}
                       placeholder="Enter Your Email ID"
                       maxLength={30}
-                      value={emailIdInfo}
                       disabled={disabled}
-                      onChange={onEmailId}
+                      value={emailIdInfo}
+                      onChange={onEmail}
                     />
                   </Col>
                   <Col md={3}>

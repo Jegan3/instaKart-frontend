@@ -23,17 +23,22 @@ const Sidebar = () => {
   const addStoreError = useSelector((state) => state.addStoreState.error);
   const storeInfoUpdate = useSelector((state) => state.storeInfoUpdateState.storeInfoUpdate);
   const profileStatus = useSelector((state) => state.profileState.profile && state.profileState.profile.status)
+  const storeSubmit = useSelector((state) => state.storeInfoUpdateState.submit);
 
   const admin = (validLogin && validLogin.user.type === 'admin') || sessionStorage.type === 'admin';
 
+  console.log("storeSubmit", storeSubmit)
+  console.log("profileStatus", profileStatus)
+
   useEffect(() => {
+    dispatch({ type: 'PROFILE_REQUEST' });
     dispatch({ type: 'VENDOR_COMPANY_DETAILS_REQUEST' });
     dispatch({ type: 'PROFILE_REQUEST' });
   }, [])
 
   useEffect(() => {
     if (addStore && addStore.status) {
-      message.success(addStore.message)
+      // message.success(addStore.message)
       setStore(false)
       dispatch({ type: 'VENDOR_COMPANY_DETAILS_REQUEST' });
     } else if (storeInfoUpdate) {
@@ -53,7 +58,7 @@ const Sidebar = () => {
   useEffect(() => {
     if (addStore && addStore.status && !store) {
       history.push({ pathname: '/storedetails', state: addStore.estoreId });
-      dispatch({ type: 'STORE_INFO_REQUEST', storeId: addStore.estoreId });
+      // dispatch({ type: 'STORE_INFO_REQUEST', storeId: addStore.estoreId });
       dispatch({ type: 'PRODUCT_LIST_REQUEST', storeId: addStore.estoreId });
     }
   }, [vendorCompanyDetails])
@@ -83,9 +88,20 @@ const Sidebar = () => {
     }
   }
 
+  const onProfile = () => {
+    history.push({ pathname: storeSubmit ? "/profile" : "/storedetails" });
+    // dispatch({ type: 'STORE_INFO_REQUEST', storeId: info.estoreId });
+  }
+
+
+  const onUserDetails = () => {
+    history.push({ pathname: storeSubmit ? "/user" : "/storedetails" });
+    // dispatch({ type: 'STORE_INFO_REQUEST', storeId: info.estoreId });
+  }
+
   const onStore = (info) => {
     history.push({ pathname: '/storedetails', state: info.estoreId });
-    dispatch({ type: 'STORE_INFO_REQUEST', storeId: info.estoreId });
+    // dispatch({ type: 'STORE_INFO_REQUEST', storeId: info.estoreId });
     dispatch({ type: 'PRODUCT_LIST_REQUEST', storeId: info.estoreId });
     setStore(true)
   }
@@ -132,11 +148,12 @@ const Sidebar = () => {
         </SidebarContent> :
           <SidebarContent>
             <Menu iconShape>
-              <MenuItem icon={<FontAwesomeIcon icon={faUserAlt} />}>
-                Profile <Link to="/profile" />
+              <MenuItem icon={<FontAwesomeIcon icon={faUserAlt} />} onClick={onProfile}>
+                Profile
               </MenuItem>
-              <MenuItem icon={<FontAwesomeIcon icon={faHome} />}>
-                User Details <Link to="/user" />
+              <MenuItem icon={<FontAwesomeIcon icon={faHome} />} onClick={onUserDetails}>
+                {/* User Details <Link to="/user" /> */}
+                User Details
               </MenuItem>
               {vendorCompanyDetails && vendorCompanyDetails.industries.map((item) => <SubMenu title={item.industryType} icon={<FontAwesomeIcon icon={faNetworkWired} />
               }>
