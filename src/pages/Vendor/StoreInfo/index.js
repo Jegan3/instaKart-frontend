@@ -98,6 +98,18 @@ const StoreInfo = ({ storeId, setStoreHeader }) => {
   const cityList = storeInfo && storeInfo.storeInfo.cityId;
   const addressDetails = storeInfo && storeInfo.storeInfo.address;
 
+  const storeNameInfo = !storeDetail || (!storeName && storeName !== '') ? storeInfo && storeInfo.storeInfo.storeName : storeName;
+  const storeLogoInfo = !storeDetail || (!storeLogo && storeLogo !== '') ? storeInfo && storeInfo.storeInfo.storeLogo : storeLogo;
+  const aboutStoreInfo = !storeDetail || (!aboutStore && aboutStore !== '') ? storeInfo && storeInfo.storeInfo.aboutStore : aboutStore;
+  const addressInfo = !storeDetail || (!address && address !== '') ? storeInfo && storeInfo.storeInfo.address : address;
+  const zipCodeInfo = !storeDetail || (!zipCode && zipCode !== '') ? storeInfo && storeInfo.storeInfo.zipCode : zipCode;
+  const emailIdInfo = !storeDetail || (!email && email !== '') ? storeInfo && storeInfo.storeInfo.emailId : email;
+  const fbIdInfo = !storeDetail || (!fbId && fbId !== '') ? storeInfo && storeInfo.storeInfo.fbId : fbId;
+  const igIdInfo = !storeDetail || (!igId && igId !== '') ? storeInfo && storeInfo.storeInfo.igId : igId;
+  const cityInfo = !storeDetail || (!cityId && cityId !== '') ? (countryList ? cityDetails && cityDetails : cityId) : cityId;
+  const countryInfo = !storeDetail || (!countryId && countryId !== '') ? (countryList ? countryDetails && countryDetails : countryId) : countryId;
+  const mobileInfo = !storeDetail || (!mobile && mobile !== '') ? storeInfo && storeInfo.storeInfo.mobile : mobile;
+
   useEffect(() => {
     dispatch({ type: 'STORE_INFO_UPDATE_CHECK' });
   }, [])
@@ -248,9 +260,9 @@ const StoreInfo = ({ storeId, setStoreHeader }) => {
     }
   }
 
-  const validateEmail = (email) => {
+  const validateEmail = (emailIdInfo) => {
     const regex = /\S+@\S+\.\S+/;
-    return regex.test(email);
+    return regex.test(emailIdInfo);
   };
 
   const validEmail = validateEmail(emailIdInfo);
@@ -259,7 +271,6 @@ const StoreInfo = ({ storeId, setStoreHeader }) => {
     if (e.target.value.match('^[a-zA-Z0-9_@./#&+-]*$')) {
       setEmail(e.target.value);
       setStoreDetail(true)
-
     }
   };
 
@@ -323,17 +334,17 @@ const StoreInfo = ({ storeId, setStoreHeader }) => {
     dispatch({ type: 'STORE_INFO_EDIT' });
   }
 
-  const storeNameInfo = !storeDetail || (!storeName && storeName !== '') ? storeInfo && storeInfo.storeInfo.storeName : storeName;
-  const storeLogoInfo = !storeDetail || (!storeLogo && storeLogo !== '') ? storeInfo && storeInfo.storeInfo.storeLogo : storeLogo;
-  const aboutStoreInfo = !storeDetail || (!aboutStore && aboutStore !== '') ? storeInfo && storeInfo.storeInfo.aboutStore : aboutStore;
-  const addressInfo = !storeDetail || (!address && address !== '') ? storeInfo && storeInfo.storeInfo.address : address;
-  const zipCodeInfo = !storeDetail || (!zipCode && zipCode !== '') ? storeInfo && storeInfo.storeInfo.zipCode : zipCode;
-  const emailIdInfo = !storeDetail || (!email && email !== '') ? storeInfo && storeInfo.storeInfo.emailId : email;
-  const fbIdInfo = !storeDetail || (!fbId && fbId !== '') ? storeInfo && storeInfo.storeInfo.fbId : fbId;
-  const igIdInfo = !storeDetail || (!igId && igId !== '') ? storeInfo && storeInfo.storeInfo.igId : igId;
-  const cityInfo = !storeDetail || (!cityId && cityId !== '') ? (countryList ? cityDetails && cityDetails : cityId) : cityId;
-  const countryInfo = !storeDetail || (!countryId && countryId !== '') ? (countryList ? countryDetails && countryDetails : countryId) : countryId;
-  const mobileInfo = !storeDetail || (!mobile && mobile !== '') ? storeInfo && storeInfo.storeInfo.mobile : mobile;
+  // const storeNameInfo = !storeDetail || (!storeName && storeName !== '') ? storeInfo && storeInfo.storeInfo.storeName : storeName;
+  // const storeLogoInfo = !storeDetail || (!storeLogo && storeLogo !== '') ? storeInfo && storeInfo.storeInfo.storeLogo : storeLogo;
+  // const aboutStoreInfo = !storeDetail || (!aboutStore && aboutStore !== '') ? storeInfo && storeInfo.storeInfo.aboutStore : aboutStore;
+  // const addressInfo = !storeDetail || (!address && address !== '') ? storeInfo && storeInfo.storeInfo.address : address;
+  // const zipCodeInfo = !storeDetail || (!zipCode && zipCode !== '') ? storeInfo && storeInfo.storeInfo.zipCode : zipCode;
+  // const emailIdInfo = !storeDetail || (!email && email !== '') ? storeInfo && storeInfo.storeInfo.emailId : email;
+  // const fbIdInfo = !storeDetail || (!fbId && fbId !== '') ? storeInfo && storeInfo.storeInfo.fbId : fbId;
+  // const igIdInfo = !storeDetail || (!igId && igId !== '') ? storeInfo && storeInfo.storeInfo.igId : igId;
+  // const cityInfo = !storeDetail || (!cityId && cityId !== '') ? (countryList ? cityDetails && cityDetails : cityId) : cityId;
+  // const countryInfo = !storeDetail || (!countryId && countryId !== '') ? (countryList ? countryDetails && countryDetails : countryId) : countryId;
+  // const mobileInfo = !storeDetail || (!mobile && mobile !== '') ? storeInfo && storeInfo.storeInfo.mobile : mobile;
 
   const onSubmit = () => {
     if (!countryInfo || !emailIdInfo || !mobileInfo || !cityInfo) {
