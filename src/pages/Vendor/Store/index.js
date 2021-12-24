@@ -18,6 +18,9 @@ const Store = (props, { setStoreHeader }) => {
   const storeInfo = useSelector((state) => state.storeInfoState.storeInfo);
   const productListInfo = useSelector((state) => state.productListState.productList);
 
+  const storeId = props.location.state || sessionStorage.newStoreId
+  const upDatedHeaderName = upDatedHeader ? storeInfo && storeInfo.storeInfo.storeName : header;
+
   useEffect(() => {
     dispatch({ type: 'VENDOR_COMPANY_DETAILS_REQUEST' });
     dispatch({ type: 'PRODUCT_LIST_REQUEST', storeId });
@@ -29,9 +32,6 @@ const Store = (props, { setStoreHeader }) => {
     setHeader(info)
     setUpdatedHeader(false)
   }
-
-  const storeId = props.location.state
-  const upDatedHeaderName = upDatedHeader ? storeInfo && storeInfo.storeInfo.storeName : header;
 
   const handleClick = e => {
     setToggle(e.key);
