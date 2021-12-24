@@ -34,11 +34,11 @@ const Sidebar = () => {
     dispatch({ type: 'PROFILE_REQUEST' });
     dispatch({ type: 'VENDOR_COMPANY_DETAILS_REQUEST' });
     dispatch({ type: 'PROFILE_REQUEST' });
+    dispatch({ type: 'STORE_INFO_UPDATE_CHECK' });
   }, [])
 
   useEffect(() => {
     if (addStore && addStore.status) {
-      // message.success(addStore.message)
       setStore(false)
       dispatch({ type: 'VENDOR_COMPANY_DETAILS_REQUEST' });
     } else if (storeInfoUpdate) {
@@ -58,7 +58,6 @@ const Sidebar = () => {
   useEffect(() => {
     if (addStore && addStore.status && !store) {
       history.push({ pathname: '/storedetails', state: addStore.estoreId });
-      // dispatch({ type: 'STORE_INFO_REQUEST', storeId: addStore.estoreId });
       dispatch({ type: 'PRODUCT_LIST_REQUEST', storeId: addStore.estoreId });
     }
   }, [vendorCompanyDetails])
@@ -83,25 +82,25 @@ const Sidebar = () => {
   const addNewStore = () => {
     if (profileStatus !== "accepted") {
       message.error('Please Wait For Sometime! Your Approval Is Pending!')
+    } else if (!storeSubmit) {
+      message.error("Please Save Your Changes")
     } else {
       setModal(true)
     }
   }
 
   const onProfile = () => {
+    !storeSubmit && message.error("Please Save Your Changes")
     history.push({ pathname: storeSubmit ? "/profile" : "/storedetails" });
-    // dispatch({ type: 'STORE_INFO_REQUEST', storeId: info.estoreId });
   }
 
-
   const onUserDetails = () => {
+    !storeSubmit && message.error("Please Save Your Changes")
     history.push({ pathname: storeSubmit ? "/user" : "/storedetails" });
-    // dispatch({ type: 'STORE_INFO_REQUEST', storeId: info.estoreId });
   }
 
   const onStore = (info) => {
     history.push({ pathname: '/storedetails', state: info.estoreId });
-    // dispatch({ type: 'STORE_INFO_REQUEST', storeId: info.estoreId });
     dispatch({ type: 'PRODUCT_LIST_REQUEST', storeId: info.estoreId });
     setStore(true)
   }
@@ -152,7 +151,6 @@ const Sidebar = () => {
                 Profile
               </MenuItem>
               <MenuItem icon={<FontAwesomeIcon icon={faHome} />} onClick={onUserDetails}>
-                {/* User Details <Link to="/user" /> */}
                 User Details
               </MenuItem>
               {vendorCompanyDetails && vendorCompanyDetails.industries.map((item) => <SubMenu title={item.industryType} icon={<FontAwesomeIcon icon={faNetworkWired} />

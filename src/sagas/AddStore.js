@@ -7,6 +7,7 @@ export function* getAddStore(data) {
   try {
     const response = yield doPost(envConfig.apiEndPoints.getAddStore, data.addStore);
     yield put(instakartActionCreators.getAddStoreSuccess(response));
+    sessionStorage.newStoreId = response.estoreId;
   } catch (error) {
     yield put(instakartActionCreators.getAddStoreFailure(error));
   }

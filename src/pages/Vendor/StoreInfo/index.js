@@ -110,13 +110,15 @@ const StoreInfo = ({ storeId, setStoreHeader }) => {
   const countryInfo = !storeDetail || (!countryId && countryId !== '') ? (countryList ? countryDetails && countryDetails : countryId) : countryId;
   const mobileInfo = !storeDetail || (!mobile && mobile !== '') ? storeInfo && storeInfo.storeInfo.mobile : mobile;
 
-  useEffect(() => {
-    dispatch({ type: 'STORE_INFO_UPDATE_CHECK' });
-  }, [])
+  // useEffect(() => {
+  //   dispatch({ type: 'STORE_INFO_UPDATE_CHECK' });
+  // }, [])
 
+  console.log('storeId', storeId)
   useEffect(() => {
     if (button) {
-      message.error("please save your changes")
+      message.error("Please Save Your Changes")
+      dispatch({ type: 'STORE_INFO_EDIT' });
     } else if (storeId) {
       dispatch({ type: 'STORE_INFO_REQUEST', storeId });
       dispatch({ type: 'STORE_INFO_UPDATE_CHECK' });
@@ -137,7 +139,9 @@ const StoreInfo = ({ storeId, setStoreHeader }) => {
     }
   }, [storeId])
 
-  console.log("storeId", storeId)
+
+  console.log("storeId from store info", storeId)
+  console.log("addressDetails", addressDetails)
 
   useEffect(() => {
     // For New Store Enable
@@ -147,6 +151,7 @@ const StoreInfo = ({ storeId, setStoreHeader }) => {
     } else {
       setDisabled(false);
       setButton(true)
+      dispatch({ type: 'STORE_INFO_EDIT' });
     }
   }, [addressDetails])
 
@@ -291,7 +296,6 @@ const StoreInfo = ({ storeId, setStoreHeader }) => {
   const onMobile = (e) => {
     setMobile(e.target.rawValue)
     setStoreDetail(true)
-    // setAlertError(false)
   }
 
   const onOpeningTime = (info, timeString) => {
@@ -333,18 +337,6 @@ const StoreInfo = ({ storeId, setStoreHeader }) => {
     setDisabled(false)
     dispatch({ type: 'STORE_INFO_EDIT' });
   }
-
-  // const storeNameInfo = !storeDetail || (!storeName && storeName !== '') ? storeInfo && storeInfo.storeInfo.storeName : storeName;
-  // const storeLogoInfo = !storeDetail || (!storeLogo && storeLogo !== '') ? storeInfo && storeInfo.storeInfo.storeLogo : storeLogo;
-  // const aboutStoreInfo = !storeDetail || (!aboutStore && aboutStore !== '') ? storeInfo && storeInfo.storeInfo.aboutStore : aboutStore;
-  // const addressInfo = !storeDetail || (!address && address !== '') ? storeInfo && storeInfo.storeInfo.address : address;
-  // const zipCodeInfo = !storeDetail || (!zipCode && zipCode !== '') ? storeInfo && storeInfo.storeInfo.zipCode : zipCode;
-  // const emailIdInfo = !storeDetail || (!email && email !== '') ? storeInfo && storeInfo.storeInfo.emailId : email;
-  // const fbIdInfo = !storeDetail || (!fbId && fbId !== '') ? storeInfo && storeInfo.storeInfo.fbId : fbId;
-  // const igIdInfo = !storeDetail || (!igId && igId !== '') ? storeInfo && storeInfo.storeInfo.igId : igId;
-  // const cityInfo = !storeDetail || (!cityId && cityId !== '') ? (countryList ? cityDetails && cityDetails : cityId) : cityId;
-  // const countryInfo = !storeDetail || (!countryId && countryId !== '') ? (countryList ? countryDetails && countryDetails : countryId) : countryId;
-  // const mobileInfo = !storeDetail || (!mobile && mobile !== '') ? storeInfo && storeInfo.storeInfo.mobile : mobile;
 
   const onSubmit = () => {
     if (!countryInfo || !emailIdInfo || !mobileInfo || !cityInfo) {
