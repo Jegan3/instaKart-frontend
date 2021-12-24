@@ -1,26 +1,33 @@
 /*eslint-disable*/
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Grid, Row, Col } from 'react-bootstrap';
+import { Grid, Row } from 'react-bootstrap';
 import ReactTable from 'react-table';
 import Table from '../../../components/Table';
 import { history } from '../../../routes';
 import Loader from '../../../components/Loader';
+import Overlay from '../../../components/Overlay';
 
 const ProductList = ({ storeId }) => {
-
   const dispatch = useDispatch();
   const productListInfo = useSelector((state) => state.productListState.productList);
   const productDeleteInfo = useSelector((state) => state.productDeleteState.productDelete);
 
+  const [modal, setModal] = useState(false);
+  const [productId, setProductId] = useState('');
+
   useEffect(() => {
     dispatch({ type: 'PRODUCT_LIST_REQUEST', storeId });
-  }, [productDeleteInfo])
+  }, [productDeleteInfo]);
 
-  //For Index 
+  // For Index
   productListInfo && productListInfo.map((info, i) => {
-    info.id = i + 1
-  })
+    info.id = i + 1;
+  });
+
+  const onHide = () => {
+    setModal(false);
+  };
 
   const viewProduct = (info) => {
     const { original } = info;
@@ -28,16 +35,18 @@ const ProductList = ({ storeId }) => {
       pathname: `/addproduct/${original.id}`,
       state: original,
     });
-  }
+  };
 
   const onDelete = (info) => {
-    const { productId } = info.original
-    dispatch({ type: 'PRODUCT_DELETE_REQUEST', productId });
-  }
+    const { productId } = info.original;
+    setModal(true);
+    setProductId(productId);
+  };
 
   return (
     <div className="vendor-product-list">
       <div >
+        <Overlay show={modal} onHide={onHide} productId={productId} title="Are you sure want to delete this product ?" />
         <div className="main-content">
           {/* {isLoading && <Loader />} */}
           <Grid fluid>
@@ -108,7 +117,7 @@ const ProductList = ({ storeId }) => {
                           sortable: false,
                           width: 70,
                           Cell: (info) => (
-                            <span className="btn-sign" onClick={() => onDelete(info)}><i class="fas fa-trash"></i></span>
+                            <span className="btn-sign" onClick={() => onDelete(info)}><i className="fas fa-trash"></i></span>
                           ),
                         },
                         {
@@ -117,7 +126,7 @@ const ProductList = ({ storeId }) => {
                           sortable: false,
                           width: 70,
                           Cell: (info) => (
-                            <span className="btn-sign" onClick={() => viewProduct(info)}><i class="fas fa-sign-in-alt"></i></span>
+                            <span className="btn-sign" onClick={() => viewProduct(info)}><i className="fas fa-sign-in-alt"></i></span>
                           ),
                         },
                       ]
@@ -127,29 +136,8 @@ const ProductList = ({ storeId }) => {
                       showPaginationBottom
                       className="-striped -highlight"
                     />
-                  </Row>
-                }
+                  </Row>}
               />
-            </Row>
-            <Row md={12} className="margin-control">
-              <Col lg={2} md={3} sm={4} xs={6} className="product-button">
-                <button
-                  type="button"
-                  className="btn btn-primary btn-block modal-butn"
-                // onClick={onSubmit}
-                >
-                  Submit
-                </button>
-              </Col>
-              <Col lg={2} md={3} sm={4} xs={6} className="product-button">
-                <button
-                  type="button"
-                  className="btn btn-primary btn-block modal-butn"
-                // onClick={onCancel}
-                >
-                  Cancel
-                </button>
-              </Col>
             </Row>
           </Grid>
         </div>

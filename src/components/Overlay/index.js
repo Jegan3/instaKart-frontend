@@ -1,14 +1,10 @@
 /*eslint-disable*/
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Modal } from 'react-bootstrap';
+import { Modal, Row, Col } from 'react-bootstrap';
 import Select from 'react-select';
-import { Row, Col } from 'react-bootstrap';
-import { message } from 'antd';
-import { Industries } from '../../constants/Industries';
-import { history } from '../../routes';
 
-const Overlay = ({
+const Overlay = ({ productId,
   show, onHide, centered, title, warningText, warningSubText, body, alert, alertClass, primary, secondary, onSubmitPrimary, onSubmitSecondary, footer,
 }) => {
 
@@ -37,8 +33,7 @@ const Overlay = ({
   const submit = () => {
     if (!industryType || !storeName) {
       setAlertError(true)
-    }
-    else {
+    } else {
       const addStore = {
         storeName,
         industryName: industryType.label,
@@ -47,8 +42,17 @@ const Overlay = ({
       setStoreName('')
       setModal(onHide)
       dispatch({ type: 'ADD_STORE_REQUEST', addStore });
-
     }
+  }
+
+  const onYes = () => {
+    setModal(false);
+    onHide()
+    dispatch({ type: 'PRODUCT_DELETE_REQUEST', productId });
+  }
+
+  const onNo = () => {
+    onHide()
   }
 
   const closeBtn = () => {
@@ -65,7 +69,7 @@ const Overlay = ({
       keyboard={false}
       animation
       centered={centered}
-      bsSize={"lg"}
+      bsSize={"medium"}
     >
       <Modal.Header className="no-border" closeButton>
         <Modal.Title>{title}</Modal.Title>
@@ -110,8 +114,29 @@ const Overlay = ({
             </button>
           </Col>
         </Row>
-      </Modal.Body>
-      }
+      </Modal.Body>}
+      {title === 'Are you sure want to delete this product ?' && <Modal.Body className="text">
+        <Row>
+          <Col md={4} sm={12} className="signup-submit pull-left" >
+            <button
+              type="button"
+              className="btn btn-primary btn-lg btn-block modal-button"
+              onClick={onYes}
+            >
+              Yes
+            </button>
+          </Col>
+          <Col md={4} sm={12} className="signup-submit pull-right" >
+            <button
+              type="button"
+              className="btn btn-primary btn-lg btn-block modal-button"
+              onClick={onNo}
+            >
+              No
+            </button>
+          </Col>
+        </Row>
+      </Modal.Body>}
       {/* <Modal.Footer className="no-border">
       {alert && <span className={`w-100 text-center text-${alertClass}`}><p>{alert}</p></span>}
       <div className="mx-auto">
@@ -123,4 +148,5 @@ const Overlay = ({
     </Modal>
   )
 }
+
 export default Overlay;
