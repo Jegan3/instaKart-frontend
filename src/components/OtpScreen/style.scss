@@ -1,55 +1,86 @@
 .enter-otp-text {
-    color: #3aaa9b;
+  color: #28a4d9;
 }
 
 .otp-input {
-    margin: 2%;
-    color: #28a4d9;
+  margin: 2%;
+  color: #28a4d9;
+}
+
+.password {
+  font-size: 15px;
+}
+
+.time-left {
+  color: #28a4d9;
+  font-size: 15px;
+  left: 5px;
+  position: relative;
+}
+
+.send-mail {
+  color: red !important;
+  font-size: 13px;
+  margin: 10px;
+  font-weight: 500;
+}
+
+.admin {
+  font-size: 14px;
+  margin-left: 5px;
 }
 
 .otp-resend {
-    vertical-align: 0% !important;
-    font-weight: 600 !important;
-    margin-left: 3% !important;
-    color: #28a4d9;
+  vertical-align: 0% !important;
+  font-weight: 00 !important;
+  margin-left: 5px;
+  color: #28a4d9;
+}
+
+.admin-resend {
+  vertical-align: 0% !important;
+  font-weight: 500 !important;
+  margin: 3% !important;
+  //color: rgb(247, 16, 16);
+  font-size: 15px;
 }
 
 .otp-input-container {
-    justify-content: center !important;
+  justify-content: center !important;
 }
 
 .otp-input-style {
-    width: 2.2em !important;
-    height: 2.2em !important;
-    font-weight: bold;
-    font-size: 1.2em;
-    border: none;
-    border-bottom: 2px solid #d0d6d6;
-    outline: 0;
+  width: 2.2em !important;
+  height: 2.2em !important;
+  font-weight: bold;
+  font-size: 1.2em;
+  border: none;
+  border-bottom: 2px solid #d0d6d6;
+  outline: 0;
 }
 
 .otp-focus {
-    border-color: #28a4d9;
+  border-color: #28a4d9;
 }
 
 .otp-close {
-    border-bottom: none !important;
+  border-bottom: none !important;
 }
 
 .btn-otp {
-    width: 30%;
+  width: 30%;
 }
 
 .otp-msg-success {
-    display: block;
-    margin-top: 3%;
-    white-space: nowrap;
-    color: green;
+  display: block;
+  margin-top: 3%;
+  white-space: nowrap;
+  color: green;
 }
 
 .otp-msg-error {
-    display: block;
-    margin-top: 3%;
-    white-space: nowrap;
-    color: red;
+  display: block;
+  margin-top: 3%;
+  white-space: nowrap;
+  color: red;
 }

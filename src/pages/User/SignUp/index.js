@@ -40,19 +40,17 @@ const SignUp = (props) => {
   const { state } = props.location;
   const type = state ? 'vendor' : 'user';
 
-  console.log('type',type)
-    console.log('status',status)
-
 
   useEffect(() => {
-    if (validSignup && !closeOtp && type === 'user') {
+    if (validSignup && clear && !closeOtp && type === 'user') {
       setShowOtp(true);
     } else if (status && clear) {
       setCompany('');
       setIndustryType('');
+      setFirstName('');
+      setLastName('');
       setCountry('');
       setCity('');
-      setFirstName('');
       setEmail('');
       setPassword('');
       setTermsCondition(false);
@@ -155,7 +153,7 @@ const SignUp = (props) => {
   }, [country]);
 
   const Submit = () => {
-    if (type === 'user' && (!firstName || !lastName || !email || !password)) {
+    if (type === 'user' && (!firstName || !lastName || !email || !password || !country || !city)) {
       setAlertError(true)
       message.error('Please fill all the fields')
     } else if (type === 'vendor' && (!company || !industryType || !country || !city || !email || !password)) {
@@ -181,7 +179,6 @@ const SignUp = (props) => {
         password: passcode,
         type,
       };
-
       const signupDetailsVendors = {
         company,
         industryType,
@@ -191,10 +188,10 @@ const SignUp = (props) => {
         password: passcode,
         type,
       };
-
       dispatch({ type: 'SIGNUP_REQUEST', signup: type === 'vendor' ? signupDetailsVendors : signupDetailsUsers });
       setAlertMsg('');
       setClear(true)
+      setCloseOtp(false);
     }
   };
 
@@ -211,13 +208,23 @@ const SignUp = (props) => {
   };
 
   const resendOtp = () => {
-    window.alert('OTP resent to your mail ID');
+    const passcode = Buffer.from(password).toString("base64");
+    const signupDetailsUsers = {
+      firstName,
+      lastName,
+      countryId: country && country.value,
+      cityId: city && city.value,
+      email,
+      password: passcode,
+      type : 'user',
+    };
+    dispatch({ type: 'SIGNUP_REQUEST', signup: signupDetailsUsers });
   };
 
   return (
     <Grid fluid>
       <Header basic />
-      <OtpScreen show={showOtp} handleClose={handleClose} onSubmitOtp={onSubmitOtp} resendOtp={resendOtp} email={email} />
+      <OtpScreen show={showOtp} handleClose={handleClose} onSubmitOtp={onSubmitOtp} setResendOtp={resendOtp} email={email}  />
       <Row>
         <Col md={6} sm={12} className="signup-margin" >
           <Image className="left-side" src="images/pic5.jpeg" />
