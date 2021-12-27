@@ -1,17 +1,16 @@
 /*eslint-disable*/
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Grid, Row, Col } from 'react-bootstrap';
 import { Menu } from 'antd';
 import Headerbar from '../../../components/Headerbar';
-import Loader from '../../../components/Loader';
 import StoreInfo from '../StoreInfo';
 import AddProduct from '../AddProduct';
 import ProductList from '../ProductList';
 
-const Store = (props, { setStoreHeader }) => {
+const Store = (props) => {
   const [current, setToggle] = useState('storeinfo');
   const [header, setHeader] = useState();
+  const [productEdit, setProductEdit] = useState(false);
   const [upDatedHeader, setUpdatedHeader] = useState(true);
 
   const dispatch = useDispatch();
@@ -22,15 +21,27 @@ const Store = (props, { setStoreHeader }) => {
   const upDatedHeaderName = upDatedHeader ? storeInfo && storeInfo.storeInfo.storeName : header;
 
   useEffect(() => {
+    if (productEdit) {
+      setToggle('addproduct')
+    }
+  }, [productEdit])
+
+  useEffect(() => {
+    if (!productEdit) {
+      setToggle('storeinfo')
+    }
     dispatch({ type: 'VENDOR_COMPANY_DETAILS_REQUEST' });
     dispatch({ type: 'PRODUCT_LIST_REQUEST', storeId });
     setUpdatedHeader(true)
-    setToggle('storeinfo')
   }, [props.location.state])
 
   const storeHeader = info => {
     setHeader(info)
     setUpdatedHeader(false)
+  }
+
+  const editPage = () => {
+    setProductEdit(true)
   }
 
   const handleClick = e => {
@@ -46,15 +57,15 @@ const Store = (props, { setStoreHeader }) => {
             Store Info
           </Menu.Item>
           <Menu.Item key="addproduct" disabled={storeInfo && storeInfo.storeInfo.emailId === ''} >
-            Add Product
+            {productEdit ? <div>Edit Product </div> : <div>Add Product</div>}
           </Menu.Item>
           <Menu.Item key="productlist" disabled={productListInfo && productListInfo.length === 0}>
             Product List
           </Menu.Item>
         </Menu>
         {current === 'storeinfo' && <StoreInfo setStoreHeader={storeHeader} storeId={storeId} />}
-        {current === 'addproduct' && <AddProduct storeId={storeId} />}
-        {current === 'productlist' && <ProductList storeId={storeId} />}
+        {current === 'addproduct' && <AddProduct storeId={storeId} editPage={productEdit} />}
+        {current === 'productlist' && <ProductList storeId={storeId} productEdit={editPage} />}
       </div>
     </div>
   )

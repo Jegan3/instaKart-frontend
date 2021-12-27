@@ -5,10 +5,10 @@ import { Grid, Row } from 'react-bootstrap';
 import ReactTable from 'react-table';
 import Table from '../../../components/Table';
 import { history } from '../../../routes';
-import Loader from '../../../components/Loader';
 import Overlay from '../../../components/Overlay';
 
-const ProductList = ({ storeId }) => {
+const ProductList = ({ storeId, productEdit }) => {
+
   const dispatch = useDispatch();
   const productListInfo = useSelector((state) => state.productListState.productList);
   const productDeleteInfo = useSelector((state) => state.productDeleteState.productDelete);
@@ -31,8 +31,9 @@ const ProductList = ({ storeId }) => {
 
   const viewProduct = (info) => {
     const { original } = info;
+    productEdit()
     history.push({
-      pathname: `/addproduct/${original.id}`,
+      pathname: `/storedetails`,
       state: original,
     });
   };
