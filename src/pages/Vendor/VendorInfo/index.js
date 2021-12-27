@@ -50,7 +50,7 @@ const VendorInfo = (props) => {
   const [termscondition, setTermsCondition] = useState(false);
   const [usAccount, setUsAccount] = useState('');
   const [alertError, setAlertError] = useState(false);
-  const [companylogoImage, setCompanylogoImage] = useState([]);
+  const [companyLogoImage, setCompanyLogoImage] = useState([]);
 
   const dispatch = useDispatch();
   const vendor = useSelector((state) => state.vendorInfoState.vendorInfo);
@@ -104,7 +104,7 @@ const VendorInfo = (props) => {
       let file = newFileList[newFileList.length - 1].originFileObj;
       const reader = new FileReader();
       reader.onload = () => {
-        setCompanylogoImage(reader.result);
+        setCompanyLogoImage(reader.result);
         setUploadLogoName(file.name);
       };
       reader.readAsDataURL(file);
@@ -114,8 +114,8 @@ const VendorInfo = (props) => {
 
   const onBank = (bank) => {
     setBank(bank)
+    setBankAccount('')
     setPreference({ value: 'Bank Transfer', label: 'Bank Transfer' })
-
   }
 
   const onBankAccount = (e) => {
@@ -190,13 +190,18 @@ const VendorInfo = (props) => {
   }
 
   const Submit = () => {
-    if (!firstName || !lastName || !mobile || !ikOptions) {
-      // !uploadId || !uploadAddress || !bank || !bankAccount ||
+    if (!firstName || !lastName || !mobile || !ikOptions || !companyLogoImage || !uploadId || !bank) {
       setAlertError(true)
       message.error('Please fill all the fields')
-    } else if (wipay === 'Yes' && (!wipayAccount || !preference)) {
+    } else if (mobile.length < 10) {
       setAlertError(true)
-      message.error('Please fill all the fields')
+      message.error('Please enter the valid Mobile')
+    } else if (bankAccount.length < 10) {
+      setAlertError(true)
+      message.error('Please enter the valid Bank Account')
+    } else if (wipay === 'Yes' && wipayAccount.length < 10) {
+      setAlertError(true)
+      message.error('Please enter the valid Wipay Account')
     } else if (termscondition === false) {
       message.error('Please accept the Terms & Conditions and Privacy Policy')
     } else {
@@ -209,7 +214,7 @@ const VendorInfo = (props) => {
         mobile,
         email: vendorDetails.email,
         uploadId,
-        uploadLogo: companylogoImage,
+        uploadLogo: companyLogoImage,
         bank: bank.value,
         bankAccount,
         uploadCompanyRegistration: uploadRegistration,
@@ -232,7 +237,7 @@ const VendorInfo = (props) => {
         <Col className="vendorinfo" >
           <Row className="margin-control">
             <Col lg={12} className="sub-heading">
-              Basic Information
+              Vendor Form
             </Col>
           </Row>
           <Form className="signup-form">
@@ -273,7 +278,7 @@ const VendorInfo = (props) => {
               <Col md={6} sm={12}>
                 <label className="signup-label">Contact Number <span className="red-star">*</span></label>
                 <Cleave
-                  className={alertError && mobile === '' ? ` form-control my-input` : `form-control formy`}
+                  className={alertError && mobile.length < 10 ? ` form-control my-input` : `form-control formy`}
                   placeholder="Enter contact number"
                   value={mobile}
                   onChange={onMobile}
@@ -309,14 +314,35 @@ const VendorInfo = (props) => {
             <Row className="vendor-content card">
               <Col md={6} sm={12} >
                 <div className='select-file'>
-                  <label className="signup-label">Upload ID</label>
-                  <div className='file-input'>
-                    {/* <div className={`file-input ${alertError && !uploadId && `red`}`}> */}
+                  <label className="signup-label">Upload ID <span className="red-star">*</span></label>
+                  {/* <div className='file-input'> */}
+                  <div className={`file-input ${alertError && !uploadId && `red`}`}>
                     <input
                       type='file'
+                      accept="image/*"
                       onChange={onUploadId} />
                     <span className='button'>Choose</span>
                     <span className='label' >{uploadIdName ? uploadIdName : 'No file selected'} </span>
+                  </div>
+                </div>
+              </Col>
+              <Col md={6} sm={12} >
+                <div className='select-file'>
+                  <label className="signup-label">Upload Company Logo <span className="red-star">*</span></label>
+                  <div className={`file-input ${alertError && !uploadLogoName && `red`}`}>
+                    <ImgCrop>
+                      <Upload
+                        action="png"
+                        accept="image/*"
+                        customRequest={fakeRequest}
+                        fileList={fileList}
+                        onChange={onUploadCompanyLogo}
+                        showUploadList={false}
+                      >
+                        <span className='button'>Choose</span>
+                      </Upload>
+                    </ImgCrop>
+                    <span className='label' >{uploadLogoName ? uploadLogoName : 'No file selected'} </span>
                   </div>
                 </div>
               </Col>
@@ -336,27 +362,8 @@ const VendorInfo = (props) => {
               </Col>
               <Col md={6} sm={12} >
                 <div className='select-file'>
-                  <label className="signup-label">Upload Company Logo</label>
-                  <div className='file-input'>
-                    <ImgCrop>
-                      <Upload
-                        action="png"
-                        accept="image/*"
-                        customRequest={fakeRequest}
-                        fileList={fileList}
-                        onChange={onUploadCompanyLogo}
-                        showUploadList={false}
-                      >
-                        <span className='button'>Choose</span>
-                      </Upload>
-                    </ImgCrop>
-                    <span className='label' >{uploadLogoName ? uploadLogoName : 'No file selected'} </span>
-                  </div>
-                </div>
-              </Col>
-              <Col md={6} sm={12} >
-                <div className='select-file'>
-                  <label className="signup-label">Upload Company Registration</label>
+                  <label className="signup-label">Upload Company Registration </label>
+                  {/* <div className={`file-input ${alertError && !uploadRegistrationName && `red`}`}> */}
                   <div className='file-input'>
                     <input
                       type='file'
@@ -386,12 +393,12 @@ const VendorInfo = (props) => {
                 <input
                   type="text"
                   // className="form-control my-input"
-                  className={alertError && bankAccount === '' ? ` form-control my-input` : `form-control formy`}
+                  className={alertError && bankAccount.length < 10 ? ` form-control my-input` : `form-control formy`}
                   placeholder="Bank account number"
                   value={bankAccount}
                   onChange={onBankAccount}
                   maxLength={15}
-                  disabled={!bank}
+                //disabled={!bank}
                 />
               </Col>
               <Col md={6} sm={12} >
@@ -424,7 +431,7 @@ const VendorInfo = (props) => {
                 <input
                   type="text"
                   className="form-control formy"
-                  // className={alertError && wipayAccount === '' && wipay === 'Yes' ? ` form-control my-input` : `form-control formy`}
+                  className={alertError && wipayAccount === '' && wipay === 'Yes' ? ` form-control my-input` : `form-control formy`}
                   placeholder="WiPay number"
                   maxLength={10}
                   value={wipayAccount}
