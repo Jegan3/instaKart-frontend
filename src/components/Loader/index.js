@@ -1,27 +1,20 @@
 import React from 'react';
-import loading from './loading.svg';
 
-const Loader = () => {
-  const style = {
-    position: 'fixed',
-    display: 'flex',
-    justifyContent: 'center',
-    height: '10vh',
-    width: '10vw',
-    top: 0,
-    bottom: 0,
-    left: 0,
-    right: 0,
-    backgroundColor: 'transparent',
-    zIndex: 5,
-    margin: 'auto',
-  };
+const Loader = () => (
 
-  return (
-    <div style={style}>
-      <img src={loading} alt="loading" />
+  <div className="loadernew">
+    <div className="text">
+      <p className="text-effect">I</p>
+      <p className="text-effect">N</p>
+      <p className="text-effect">S</p>
+      <p className="text-effect">T</p>
+      <p className="text-effect">A</p>
+      <p className="text-effect">K</p>
+      <p className="text-effect">A</p>
+      <p className="text-effect">R</p>
+      <p className="text-effect">T</p>
     </div>
-  );
-};
+  </div>
+);
 
 export default Loader;
