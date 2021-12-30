@@ -52,7 +52,7 @@ const Store = (props) => {
     <div className="wrapper">
       <div className="rightside-panel">
         <Headerbar headerName={upDatedHeaderName} />
-        <Menu onClick={handleClick} selectedKeys={[current]} mode="horizontal" className="card">
+        <Menu onClick={handleClick} selectedKeys={[current]} mode="horizontal" disabledOverflow = {true} className="card">
           <Menu.Item key="storeinfo" >
             Store Info
           </Menu.Item>
