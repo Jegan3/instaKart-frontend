@@ -42,7 +42,7 @@ const Cart = ({ location }) => {
 
   //passing buyNowproduct details
   const buyNowDetails = []
-  if(location.state === 'buyNow'){
+  if (location.state === 'buyNow') {
     buyNowDetails.push(buyNow || JSON.parse(sessionStorage.buyNow));
   }
 
@@ -443,7 +443,7 @@ const Cart = ({ location }) => {
                                       <em>None</em>
                                     </MenuItem>
                                     {Locale.map((item) => (
-                                      <MenuItem value={item._id}>{item.countryName}</MenuItem>
+                                      <MenuItem value={item._id}><img className="flag" src={item.flag} alt="new" /><span className="signup-flag">{item.countryName}</span></MenuItem>
                                     ))}
                                   </Select>
                                 </FormControl>
@@ -473,7 +473,7 @@ const Cart = ({ location }) => {
                                   error={alertError && !email}
                                 />
                               </Col>
-                              <Col xs={12}>
+                              <Col lg={12} className='payment-optn'>
                                 <div className="checkoutbtn">
                                   <Button
                                     variant="contained"
@@ -481,6 +481,15 @@ const Cart = ({ location }) => {
                                     onClick={submit}
                                   >
                                     Checkout
+                                  </Button>
+                                </div>
+                                <div className="checkoutbtn">
+                                  <Button
+                                    variant="contained"
+                                    color="primary"
+                                    onClick={submit}
+                                  >
+                                    Cash ON Delivery
                                   </Button>
                                 </div>
                               </Col>

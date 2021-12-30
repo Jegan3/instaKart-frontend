@@ -21,6 +21,7 @@ const ProductInfo = ({ location }) => {
 
   const dispatch = useDispatch();
   const productDetails = useSelector((state) => state.productInfoState.productInfo);
+  const sellerMessage = useSelector((state) => state.productMessageState.productMessage);
   const product = productDetails && productDetails.productInfo
   const addCart = useSelector((state) => state.addCartState.addCart);
   const isLoadingProduct = useSelector((state) => state.productInfoState.isLoading);
@@ -39,6 +40,11 @@ const ProductInfo = ({ location }) => {
   useEffect(() => {
     dispatch({ type: 'PRODUCT_INFO_REQUEST', productId: location.state.product });
   }, [])
+
+  useEffect(() => {
+    if (sellerMessage && sellerMessage.message)
+      message.success(sellerMessage.message)
+  }, [sellerMessage])
 
   const onDescription = () => {
     setToggle(1)
@@ -195,7 +201,6 @@ const ProductInfo = ({ location }) => {
       productId: product._id,
       message: productMessage,
     };
-    message.success('Hi.(name) this msg has successfully sent to Seller!')
     setProductMessage('')
     dispatch({ type: 'PRODUCT_MESSAGE_REQUEST', enquiry });
   };

@@ -46,7 +46,7 @@ const Vendor = () => {
   useEffect(() => {
     if (validVendorStatus && validVendorStatus.status) {
       dispatch({ type: 'VENDOR_LIST_REQUEST' });
-      message.success('Thanks!, Basic info form is successfully updated with us')
+      message.success(validVendorStatus.message)
     } else if (invalidVendorStatus) {
       message.error('invalid Error');
     }
