@@ -1,4 +1,7 @@
-const initialState = {};
+const initialState = {
+  storeInfo: undefined,
+  storeInfoUpdate: undefined,
+};
 
 export const storeInfoState = (state = initialState, action) => {
   switch (action.type) {

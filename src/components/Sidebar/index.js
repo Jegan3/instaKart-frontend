@@ -72,7 +72,8 @@ const Sidebar = () => {
   };
 
   const toHome = () => {
-    history.push({ pathname: '/' });
+    !storeSubmit && message.error("Please Save Your Changes")
+    history.push({ pathname: storeSubmit ? '/' : "/storedetails" });
   };
 
   const onHide = () => {
