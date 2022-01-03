@@ -9,6 +9,7 @@ const Loader = () => (
       <p className="text-effect">S</p>
       <p className="text-effect">T</p>
       <p className="text-effect">A</p>
+      <p className="text-effect">-</p>
       <p className="text-effect">K</p>
       <p className="text-effect">A</p>
       <p className="text-effect">R</p>
