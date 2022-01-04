@@ -66,7 +66,7 @@ const VendorInfo = (props) => {
 
   useEffect(() => {
     if (vendor && vendor.status) {
-      message.success('Thanks!, Basic info form is successfully updated with us')
+      message.success(vendor.message)
       setTimeout(() => {
         history.push({ pathname: '/' })
       }, 3000);
