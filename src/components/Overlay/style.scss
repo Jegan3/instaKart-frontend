@@ -1,8 +1,29 @@
-.warning-text{
+.warning-text {
   font-size: 13px;
   font-weight: 500;
   font-family: Garamond;
 }
+
 // .no-border{
 //   border-radius: 15px;
 // }  
+
+.Addstore-proceed {
+  float: right !important;
+  width: 200px;
+}
+
+.modal-title {
+
+  text-align: center;
+}
+
+.productlist-delete-yes {
+  float: left !important;
+  width: 150px;
+}
+
+.productlist-delete-no {
+  float: right !important;
+  width: 150px;
+}

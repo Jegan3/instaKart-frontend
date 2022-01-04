@@ -104,7 +104,7 @@ const Overlay = ({ productId,
           </Col>
         </Row>
         <Row>
-          <Col md={4} sm={12} className="signup-submit pull-right" >
+          <Col md={4} sm={12} className="signup-submit Addstore-proceed" >
             <button
               type="button"
               className="btn btn-primary btn-lg btn-block modal-button"
@@ -117,7 +117,7 @@ const Overlay = ({ productId,
       </Modal.Body>}
       {title === 'Are you sure want to delete this product ?' && <Modal.Body className="text">
         <Row>
-          <Col md={4} sm={12} className="signup-submit pull-left" >
+          <Col md={4} sm={12} className="signup-submit productlist-delete-yes" >
             <button
               type="button"
               className="btn btn-primary btn-lg btn-block modal-button"
@@ -126,7 +126,7 @@ const Overlay = ({ productId,
               Yes
             </button>
           </Col>
-          <Col md={4} sm={12} className="signup-submit pull-right" >
+          <Col md={4} sm={12} className="signup-submit productlist-delete-no" >
             <button
               type="button"
               className="btn btn-primary btn-lg btn-block modal-button"
