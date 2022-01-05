@@ -4,8 +4,8 @@ import { Carousel } from 'react-bootstrap';
 
 export const Banners = ({ primaryBanner }) => (
   <div className="banners">
-    <Carousel>
-      {primaryBanner && primaryBanner.primaryBanner.map((item, index) => <Carousel.Item >
+    <Carousel pauseOnHover={false}>
+      { primaryBanner && primaryBanner.primaryBanner.map((item, index) => <Carousel.Item >
         <img
           className="d-block w-100"
           src={item}
