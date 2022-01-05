@@ -654,20 +654,6 @@ export const CarouselFourth = () => (
   </Carousel>
 );
 
-export const CarouselMobile = () => (
-  <Carousel
-    // ssr
-    infinite
-    autoPlay
-    autoPlaySpeed={3000}
-    responsive={responsive}
-  >
-    {cardsDataMobile.map((card) => (
-      <Card key={card.id} className='card' content={card.content} imgUrl={card.imgUrl} />
-    ))}
-  </Carousel>
-);
-
 export const CarouselNewEStore = () => (
   <Carousel
     // ssr
@@ -675,13 +661,13 @@ export const CarouselNewEStore = () => (
     autoPlay
     autoPlaySpeed={3000}
     responsive={responsive}
+    pauseOnHover={false}
   >
     {cardsDataMobile.map((card) => (
-      <Card key={card.id} className='card' imgUrl={card.imgUrl}  btnUrl={card.btnUrl} body />
+      <Card key={card.id} className='card' imgUrl={card.imgUrl} btnUrl={card.btnUrl} body />
     ))}
   </Carousel>
 );
-
 
 export const CarouselStoreInfo = () => (
   <Carousel
@@ -787,6 +773,7 @@ export const CarouselNewEStoreVideo = ({ video }) => (
     autoPlay
     autoPlaySpeed={3000}
     responsive={responsiveVideo}
+    pauseOnHover={false}
   >
     {video ? video.video.map((item) => (
       // <Card key={card.id} className='card' imgUrl={card.imgUrl} />
