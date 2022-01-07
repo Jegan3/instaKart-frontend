@@ -576,15 +576,15 @@ const thriftStoreCategoryBottom = [
   },
 ];
 
-export const ThriftStoreInfoCategories = () => (
+export const ThriftStoreInfoCategories = ({ product }) => (
   <Carousel
     responsive={responsiveThriftStoreInfoCategories}
     //centerMode={true}
     infinite={true}
   >
-    {cardsStoreInfo.map((card) => (
-      <Card title={card.title} className='card' imgUrl={card.imgUrl} />
-    ))}
+    {product ? product.product.map((card) => (
+      <Card title={card.productName} className='card' imgUrl={card.productImages} />
+    )) : []}
   </Carousel>
 );
 

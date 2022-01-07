@@ -8,6 +8,67 @@ import Footer from '../../../components/Footer';
 import Header from '../../../components/Header';
 import { MaterialTabs } from '../../../components/TabScroll';
 
+const LocaleTemp = [
+  {
+    categoryName: 'Appliances',
+    _id: '60df336164d2edca4efe65a1',
+    product: [
+      {
+        _id: '609251ec115d58506a6e9282',
+        productName: 'edit product',
+        productImages: ['https://instakartstaging.s3.amazonaws.com/thriftstore/4e28408a-38cb-4a5f-b99a-39fb5e22e205.jpeg'],
+      },
+      {
+        _id: '609251ec115d58506a6e9282',
+        productName: 'edit product',
+        productImages: ['https://instakartstaging.s3.amazonaws.com/thriftstore/4e28408a-38cb-4a5f-b99a-39fb5e22e205.jpeg'],
+      },
+    ],
+  },
+  {
+    categoryName: 'Baby Product',
+    _id: '60df336164d2edca4efe65a1',
+    product: [
+      {
+        _id: '609251ec115d58506a6e9282',
+        productName: 'edit product',
+        productImages: ['https://instakartstaging.s3.amazonaws.com/thriftstore/4e28408a-38cb-4a5f-b99a-39fb5e22e205.jpeg'],
+      },
+      {
+        _id: '609251ec115d58506a6e9282',
+        productName: 'edit product',
+        productImages: ['https://instakartstaging.s3.amazonaws.com/thriftstore/4e28408a-38cb-4a5f-b99a-39fb5e22e205.jpeg'],
+      },
+      {
+        _id: '609251ec115d58506a6e9282',
+        productName: 'edit product',
+        productImages: ['https://instakartstaging.s3.amazonaws.com/thriftstore/4e28408a-38cb-4a5f-b99a-39fb5e22e205.jpeg'],
+      },
+    ],
+  },
+  {
+    categoryName: 'Book',
+    _id: '60df336164d2edca4efe65a1',
+    product: [
+      {
+        _id: '609251ec115d58506a6e9282',
+        productName: 'edit product',
+        productImages: ['https://instakartstaging.s3.amazonaws.com/thriftstore/4e28408a-38cb-4a5f-b99a-39fb5e22e205.jpeg'],
+      },
+      {
+        _id: '609251ec115d58506a6e9282',
+        productName: 'edit product',
+        productImages: ['https://instakartstaging.s3.amazonaws.com/thriftstore/4e28408a-38cb-4a5f-b99a-39fb5e22e205.jpeg'],
+      },
+      {
+        _id: '609251ec115d58506a6e9282',
+        productName: 'edit product',
+        productImages: ['https://instakartstaging.s3.amazonaws.com/thriftstore/4e28408a-38cb-4a5f-b99a-39fb5e22e205.jpeg'],
+      },
+    ],
+  },
+];
+
 const ThriftStoreInfo = ({ location }) => {
 
   const dispatch = useDispatch();
@@ -78,19 +139,18 @@ const ThriftStoreInfo = ({ location }) => {
           </Row>
         </Grid>
       </div>
-
       <div>
         <Row>
           <Col>
             <div className="products-storeinfo">
               <span className="ik-ads">Products</span>
               <div className='scroll-tab'>
-                < MaterialTabs />
+                <MaterialTabs storeInfo={LocaleTemp} />
               </div>
             </div>
           </Col>
           <Col >
-          {/* commented temporarily */}
+            {/* commented temporarily */}
             {/* <div className='bg-adss'>
               <div className='arrival-ads'>
                 <span className="ik-ads">Reviews</span>

@@ -12,7 +12,7 @@ import { ThriftStoreInfoCategories } from '../Carousel';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
-
+  
   return (
     <div
       role="tabpanel"
@@ -43,12 +43,18 @@ function a11yProps(index) {
   };
 }
 
-export const MaterialTabs = () => {
+export const  MaterialTabs = ({storeInfo}) => {
   const [value, setValue] = React.useState(0);
+  const [product, setProduct] = React.useState();
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
+    const abcd = storeInfo[newValue];
+    setProduct(abcd);
   };
+  console.log('storeInfo',storeInfo)
+  console.log('value',value)
+  console.log('product',product)
 
   return (
     <div className='tab-scroll'>
@@ -66,21 +72,27 @@ export const MaterialTabs = () => {
           scrollButtons="auto"
           aria-label="scrollable auto tabs example"
         >
-          <Tab label="Item One" {...a11yProps(0)} />
+          {storeInfo.map(info => <Tab label={info.categoryName} {...a11yProps(value)} />)}
+          {/* <Tab label="Item One" {...a11yProps(0)} />
           <Tab label="Item Two" {...a11yProps(1)} />
           <Tab label="Item Three" {...a11yProps(2)} />
           <Tab label="Item Four" {...a11yProps(3)} />
           <Tab label="Item Five" {...a11yProps(4)} />
           <Tab label="Item Six" {...a11yProps(5)} />
-          <Tab label="Item Seven" {...a11yProps(6)} />
+          <Tab label="Item Seven" {...a11yProps(6)} /> */}
         </Tabs>
       </AppBar>
-      <TabPanel value={value} index={0}>
+      {/* {storeInfo.filter(info => {if(info) {<TabPanel productId={info._id} value={value} index={0}>
         <ScrollAnimation animateIn='fadeIn' duration={5}>
           <ThriftStoreInfoCategories />
         </ScrollAnimation>
+      </TabPanel>}})} */}
+      <TabPanel value={value} index={value}>
+        <ScrollAnimation animateIn='fadeIn' duration={5}>
+          <ThriftStoreInfoCategories product={product} />
+        </ScrollAnimation>
       </TabPanel>
-      <TabPanel value={value} index={1}>
+      {/* <TabPanel value={value} index={1}>
         <ScrollAnimation animateIn='fadeIn' duration={5}>
           Item 2
         </ScrollAnimation>
@@ -109,7 +121,7 @@ export const MaterialTabs = () => {
         <ScrollAnimation animateIn='fadeIn' duration={5}>
           Item Seven
         </ScrollAnimation>
-      </TabPanel>
+      </TabPanel> */}
     </div>
   );
 }
