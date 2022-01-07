@@ -1,5 +1,5 @@
 /*eslint-disable*/
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -44,13 +44,18 @@ function a11yProps(index) {
 }
 
 export const  MaterialTabs = ({storeInfo}) => {
-  const [value, setValue] = React.useState(0);
-  const [product, setProduct] = React.useState();
+  const [value, setValue] = useState(0);
+  const [product, setProduct] = useState();
+
+  useEffect(() => {
+    const product = storeInfo[0];
+    setProduct(product);
+  }, []);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
-    const abcd = storeInfo[newValue];
-    setProduct(abcd);
+    const product = storeInfo[newValue];
+    setProduct(product);
   };
   console.log('storeInfo',storeInfo)
   console.log('value',value)

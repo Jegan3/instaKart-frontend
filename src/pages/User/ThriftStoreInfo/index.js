@@ -32,17 +32,17 @@ const LocaleTemp = [
       {
         _id: '609251ec115d58506a6e9282',
         productName: 'edit product',
-        productImages: ['https://instakartstaging.s3.amazonaws.com/thriftstore/4e28408a-38cb-4a5f-b99a-39fb5e22e205.jpeg'],
+        productImages: ['https://instakartstaging.s3.amazonaws.com/thriftstore/b46239c1-78fd-4248-a8ef-49bc041efff1.jpeg'],
       },
       {
         _id: '609251ec115d58506a6e9282',
         productName: 'edit product',
-        productImages: ['https://instakartstaging.s3.amazonaws.com/thriftstore/4e28408a-38cb-4a5f-b99a-39fb5e22e205.jpeg'],
+        productImages: ['https://instakartstaging.s3.amazonaws.com/thriftstore/b46239c1-78fd-4248-a8ef-49bc041efff1.jpeg'],
       },
       {
         _id: '609251ec115d58506a6e9282',
         productName: 'edit product',
-        productImages: ['https://instakartstaging.s3.amazonaws.com/thriftstore/4e28408a-38cb-4a5f-b99a-39fb5e22e205.jpeg'],
+        productImages: ['https://instakartstaging.s3.amazonaws.com/thriftstore/b46239c1-78fd-4248-a8ef-49bc041efff1.jpeg'],
       },
     ],
   },
@@ -53,17 +53,17 @@ const LocaleTemp = [
       {
         _id: '609251ec115d58506a6e9282',
         productName: 'edit product',
-        productImages: ['https://instakartstaging.s3.amazonaws.com/thriftstore/4e28408a-38cb-4a5f-b99a-39fb5e22e205.jpeg'],
+        productImages: ['https://instakartstaging.s3.amazonaws.com/thriftstore/bd3f4c45-9731-447c-ae49-3c3d2832c09b.jpeg'],
       },
       {
         _id: '609251ec115d58506a6e9282',
         productName: 'edit product',
-        productImages: ['https://instakartstaging.s3.amazonaws.com/thriftstore/4e28408a-38cb-4a5f-b99a-39fb5e22e205.jpeg'],
+        productImages: ['https://instakartstaging.s3.amazonaws.com/thriftstore/bd3f4c45-9731-447c-ae49-3c3d2832c09b.jpeg'],
       },
       {
         _id: '609251ec115d58506a6e9282',
         productName: 'edit product',
-        productImages: ['https://instakartstaging.s3.amazonaws.com/thriftstore/4e28408a-38cb-4a5f-b99a-39fb5e22e205.jpeg'],
+        productImages: ['https://instakartstaging.s3.amazonaws.com/thriftstore/bd3f4c45-9731-447c-ae49-3c3d2832c09b.jpeg'],
       },
     ],
   },
