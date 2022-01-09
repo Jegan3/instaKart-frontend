@@ -12,13 +12,30 @@ const Store = (props) => {
   const [header, setHeader] = useState();
   const [productEdit, setProductEdit] = useState(false);
   const [upDatedHeader, setUpdatedHeader] = useState(true);
+  const [productEnable, setProductEnable] = useState(false)
+  const [listEnable, setListEnable] = useState(false)
 
   const dispatch = useDispatch();
   const storeInfo = useSelector((state) => state.storeInfoState.storeInfo);
   const productListInfo = useSelector((state) => state.productListState.productList);
-
+  const addProductEnable = useSelector((state) => state.storeInfoUpdateState.storeInfoUpdate);
+  const ListEnable = useSelector((state) => state.thriftAddProductState.thriftAddProduct);
+ 
   const storeId = props.location.state || sessionStorage.newStoreId
   const upDatedHeaderName = upDatedHeader ? storeInfo && storeInfo.storeInfo.storeName : header;
+  const productSuccess = addProductEnable && addProductEnable.status;
+  const listSuccess = ListEnable && ListEnable.status;
+  
+  useEffect(() => {
+    if (productSuccess || storeInfo && storeInfo.storeInfo.emailId ) {
+      setProductEnable(true)
+    } if ( listSuccess) {
+      setListEnable(true)
+    }
+    if (productListInfo && productListInfo.length > 0 ) {
+      setListEnable(true)
+    }
+  }, [productSuccess, listSuccess, storeInfo, productListInfo])
 
   useEffect(() => {
     if (productEdit) {
@@ -56,10 +73,14 @@ const Store = (props) => {
           <Menu.Item key="storeinfo" >
             Store Info
           </Menu.Item>
-          <Menu.Item key="addproduct" disabled={storeInfo && storeInfo.storeInfo.emailId === ''} >
+          <Menu.Item key="addproduct" 
+         disabled={!productEnable} 
+          >
             {productEdit ? <div>Edit Product </div> : <div>Add Product</div>}
           </Menu.Item>
-          <Menu.Item key="productlist" disabled={productListInfo && productListInfo.length === 0}>
+          <Menu.Item key="productlist" 
+         disabled={!listEnable}
+          >
             Product List
           </Menu.Item>
         </Menu>
