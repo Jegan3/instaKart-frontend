@@ -33,6 +33,7 @@ export const profileUpdateState = (state = initialState, action) => {
         isLoading: true,
         // profile: false,
         error: false,
+        profileUpdate: '',
       };
     case 'PROFILE_UPDATE_SUCCESS':
       return {

@@ -53,7 +53,14 @@ const Profile = () => {
 
   const dispatch = useDispatch();
   const profileInfo = useSelector((state) => state.profileState.profile);
-  // const isLoading = useSelector((state) => state.profileState.isLoading);
+  const profileUpdate = useSelector((state) => state.profileUpdateState.profileUpdate);
+  const profileSuccess = profileUpdate && profileUpdate.message;
+
+  useEffect(() => {
+    if (profileSuccess) {
+      message.success(profileSuccess)
+    }
+  }, [profileSuccess])
 
   // Select dropdown lists
   const bankList = [
@@ -220,7 +227,6 @@ const Profile = () => {
         usAccount,
       };
       dispatch({ type: 'PROFILE_UPDATE_REQUEST', profile });
-      message.success('Successfully Updated');
     }
   }
 

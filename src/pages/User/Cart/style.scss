@@ -12,6 +12,54 @@
   font-family: monospace;
 }
 
+.scroll-fix {
+  position: sticky;
+  top: 3%;
+}
+
+.fluid-scroll {
+  overflow-x: inherit !important;
+  overflow-y: inherit !important;
+  margin: unset;
+}
+.clr {
+  background-color: gainsboro !important;
+}
+
+.give-code {
+  margin-top: 3%;
+  white-space: nowrap;
+  padding: 10px 0px 10px 0px;
+}
+
+.summary {
+  margin: 0% 0% 7%;
+  padding: 2px 0px 15px 0px;
+  font-size: 25px;
+  border-bottom: 1px solid white;
+}
+
+.bottom {
+  border-bottom: 1px solid white;
+  padding-bottom: 10%;
+}
+
+.price {
+  margin: 9% 0%;
+}
+
+.items-list {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 700;
+  font-family: monospace;
+  cursor: pointer;
+
+  .items {
+    font-size: 16px;
+  }
+}
+
 .basket {
   font-size: 30px;
   text-align: center;
@@ -32,7 +80,6 @@
   font-weight: 800;
   font-family: monospace;
   font-size: 20px;
-  text-align: end;
 }
 
 .total {
@@ -40,7 +87,6 @@
   font-weight: 800;
   font-family: monospace;
   font-size: 17px;
-  text-align: end;
 
   .sub-total {
     color: gray;
@@ -284,11 +330,5 @@
 
   .shop-cart {
     padding-bottom: 10%;
-  }
-
-  .payment-optn {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
   }
 }

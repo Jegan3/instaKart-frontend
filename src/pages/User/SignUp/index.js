@@ -57,10 +57,10 @@ const SignUp = (props) => {
       setValidate(false);
       setAlertError(false);
       setClear(false)
-      message.success('Thanks!, Signup form is successfully registered with us , You will receive an email from us shortly Note: If you using Outlook please check ur spam folder too');
+      message.success(validSignup.message);
     } else if (invalidSignup) {
       setClear(false)
-      message.error(`An account with ${email} is not Successful `);
+      message.error(`${email} ${invalidSignup.data} `);
     }
   }, [status, invalidSignup]);
 

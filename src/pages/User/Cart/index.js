@@ -234,10 +234,10 @@ const Cart = ({ location }) => {
         <Header /> : <Header cartIcon />
       }
       <div className="checkout-page">
-        <Grid fluid>
-          <div className="checkout-details">
+        <Grid fluid className="fluid-scroll">
+          <div className="checkout-details" >
             <Row>
-              <Col md={7}>
+              <Col md={8}>
                 <div className="product-card">
                   <Col md={12} >
                     <div className="shop-cart">
@@ -289,219 +289,115 @@ const Cart = ({ location }) => {
                             </div>
                           </Col>
                         </Row>
-                        <Row>
-                          <div className="col-sm-12" >
-                            <div className="final-total col-sm-9 ">
-                              <div className="sub-total">
-                                Subtotal
-                              </div>
-                            </div>
-                            <div className="total col-sm-3">
-                              <div className="sub-price">
-                                {`${currency}${parseFloat(subTotal).toFixed(2)}`}
-                              </div>
-                            </div>
-                          </div>
-                          <div className=" col-sm-12 " >
-                            <div className="total col-sm-9 ">
-                              <div className="sub-total">
-                                Admin Fee<span className="tax-info">(2.5%)</span>
-                              </div>
-                            </div>
-                            <div className="total col-sm-3">
-                              <div className="admin-service">
-                                {`${currency}${parseFloat(adminFee).toFixed(2)}`}
-                              </div>
-                            </div>
-                          </div>
-                          <div className=" col-sm-12 " >
-                            <div className="total col-sm-9 ">
-                              <div className="sub-total">
-                                Wipay Fee<span className="tax-info">(3.5% + $0.25 USD)</span>
-                              </div>
-                            </div>
-                            <div className="total col-sm-3">
-                              <div className="admin-service">
-                                {`${currency}${parseFloat(wipayFee).toFixed(2)}`}
-                              </div>
-                            </div>
-                          </div>
-                          <div>
-                            <div className=" col-sm-12 " >
-                              <div className="final-total col-sm-9 ">
-                                <div className="sub-total">
-                                  Order Total
-                                </div>
-                              </div>
-                              <div className="total col-sm-3">
-                                <div className="sub-price">
-                                  {`${currency}${parseFloat(orderTotal).toFixed(2)}`}
-                                </div>
-                              </div>
-                            </div>
-                            <div className="btn-end col-sm-5">
-                              <div className="proceed-butn">
-                                {location.state === 'addCart' && <div>
-                                  <button
-                                    type="button "
-                                    className="proceedbtn  modal-button"
-                                    onClick={onProceedBuy}
-                                  >
-                                    Proceed to Buy
-                                  </button>
-                                </div>}
-                              </div>
-                            </div>
-                          </div>
-                        </Row>
                       </Row>}
                   </Row>}
                 </div>
               </Col>
-              {(!toggle || location.state === 'buyNow') &&
-                <Col md={5}>
-                  <ScrollAnimation animateIn='bounceInDown' duration={3}>
-                    <div className="product-card">
-                      <Row>
-                        <Col md={12}>
-                          <div className="billing-card">
-                            <Row>
-                              <Col xs={12}>
-                                <h4 className="address-title">Shipping Address</h4>
-                              </Col>
-                              <Col xs={12} >
-                                <TextField id="standard-name"
-                                  label="Full Name"
-                                  className="checkout-feild"
-                                  value={fullName}
-                                  onChange={onFullName}
-                                  inputProps={{
-                                    maxLength: 30,
-                                  }}
-                                  error={alertError && !fullName}
-                                />
-                              </Col>
-                              <Col xs={12}>
-                                <TextField
-                                  label="Phone Number"
-                                  className="checkout-feild"
-                                  value={mobile}
-                                  onChange={onMobile}
-                                  type="text"
-                                  inputProps={{
-                                    maxLength: 10,
-                                  }}
-                                  error={alertError && !mobile}
-                                />
-                              </Col>
-                              <Col xs={12}>
-                                <TextField id="standard-name"
-                                  label="Address"
-                                  className="checkout-feild"
-                                  inputProps={{
-                                    maxLength: 30,
-                                  }}
-                                  value={address}
-                                  onChange={onAddress}
-                                  error={alertError && !address}
-                                />
-                              </Col>
-                              <Col xs={12}>
-                                <TextField id="standard-name"
-                                  label="City"
-                                  className="checkout-feild"
-                                  value={city}
-                                  onChange={onCity}
-                                  maxLength={30}
-                                  error={alertError && !city}
-                                />
-                              </Col>
-                              <Col xs={12}>
-                                <FormControl variant="standard" >
-                                  <InputLabel >Country</InputLabel>
-                                  <Select
-                                    name="Country"
-                                    className="checkout-feild "
-                                    value={country}
-                                    onChange={onCountry}
-                                    MenuProps={{
-                                      PaperProps: {
-                                        sx: {
-                                          "& .MuiMenuItem-root": {
-                                            backgroundColor: "#2D3549",
-                                            color: 'White',
-                                            fontSize: '15px'
-                                          },
-                                          "& .MuiList-root": {
-                                            backgroundColor: "#2D3549",
-                                          },
-                                        }
-                                      }
-                                    }}
-                                  >
-                                    <MenuItem value="">
-                                      <em>None</em>
-                                    </MenuItem>
-                                    {Locale.map((item) => (
-                                      <MenuItem value={item._id}><img className="flag" src={item.flag} alt="new" /><span className="signup-flag">{item.countryName}</span></MenuItem>
-                                    ))}
-                                  </Select>
-                                </FormControl>
-                              </Col>
-                              <Col xs={12}>
-                                <TextField id="standard-name"
-                                  label="Zip-Code"
-                                  className="checkout-feild"
-                                  inputProps={{
-                                    maxLength: 5,
-                                  }}
-                                  type="text"
-                                  value={zipCode}
-                                  onChange={onZipCode}
-                                  error={alertError && !zipCode}
-                                />
-                              </Col>
-                              <Col xs={12}>
-                                <TextField id="standard-name"
-                                  label="Email"
-                                  className="checkout-feild"
-                                  inputProps={{
-                                    maxLength: 50,
-                                  }}
-                                  value={email}
-                                  onChange={onEmail}
-                                  error={alertError && !email}
-                                />
-                              </Col>
-                              <Col lg={12} className='payment-optn'>
-                                <div className="checkoutbtn">
-                                  <Button
-                                    variant="contained"
-                                    color="primary"
-                                    onClick={submit}
-                                  >
-                                    Checkout
-                                  </Button>
-                                </div>
-                                <div className="checkoutbtn">
-                                  <Button
-                                    variant="contained"
-                                    color="primary"
-                                    onClick={submit}
-                                  >
-                                    Cash ON Delivery
-                                  </Button>
-                                </div>
-                              </Col>
-                            </Row>
-                          </div>
+                <Col md={4} className="scroll-fix">
+                   <div className="product-card list">
+                    <Row>
+                      <Col md={12} >
+                        <div className="billing-card clr">
                           <Row>
+                            <Col md={12}>
+                              <div className="summary">
+                                <span>
+                                  Summary
+                                </span>
+                              </div>
+                            </Col>
+                            <Col md={12}>
+                              <div className="items-list">
+                                <span className="items">
+                                  ITEMS
+                                </span>
+                                <span className="items">
+                                  $132
+                                </span>
+                              </div>
+                            </Col>
+                            <Col md={12}>
+                              <div className='bottom'>
+                                <label className="give-code ">GIVE CODE</label>
+                                <input
+                                  type="text"
+                                  className="form-control "
+                                  placeholder="Enter Code"
+                                  // value={storeName}
+                                  // onChange={onStoreName}
+                                  maxLength={30}
+                                />
+                              </div>
+                            </Col>
+                            <Col md={12}>
+                              <div className="items-list">
+                                <span className="items">
+                                Subtotal
+                                </span>
+                                <span className="items">
+                                {`${currency}${parseFloat(subTotal).toFixed(2)}`}
+                                </span>
+                              </div>
+                            </Col>
+                            <Col md={12}>
+                              <div className="items-list">
+                              <div className="sub-total">
+                                Admin Fee<span className="tax-info">(2.5%)</span>
+                              </div>
+                              <div className="admin-service">
+                                {`${currency}${parseFloat(adminFee).toFixed(2)}`}
+                              </div>
+                              </div>
+                            </Col>
+                            <Col md={12}>
+                              <div className="items-list">
+                              <div className="sub-total">
+                                Wipay Fee<span className="tax-info">(3.5% + $0.25 USD)</span>
+                              </div>
+                              <div className="admin-service">
+                                {`${currency}${parseFloat(wipayFee).toFixed(2)}`}
+                              </div>
+                              </div>
+                            </Col>
+                            <Col md={12}>
+                              <div className="items-list">
+                                <span className="items">
+                                Order Total
+                                </span>
+                                <span className="items">
+                                {`${currency}${parseFloat(orderTotal).toFixed(2)}`}
+                                </span>
+                              </div>
+                            </Col>
+
+                            <Col xs={12}>
+                              <div className="checkoutbtn">
+                                <Button
+                                  variant="contained"
+                                  color="primary"
+                                 // className="proceedbtn  modal-button"
+                                 // onClick={submit}
+                                >
+                                  Proceed to Buy
+                                </Button>
+                              </div>
+                              <div className="checkoutbtn">
+                                <Button
+                                  variant="contained"
+                                  color="primary"
+                                 // className="proceedbtn  modal-button"
+                                 // onClick={submit}
+                                >
+                                  Cash on Delivery
+                                </Button>
+                              </div>
+                            </Col>
                           </Row>
-                        </Col>
-                      </Row>
-                    </div>
-                  </ScrollAnimation>
-                </Col>}
+                        </div>
+                      </Col>
+                    </Row>
+                  </div> 
+                </Col>
             </Row>
           </div>
         </Grid>
