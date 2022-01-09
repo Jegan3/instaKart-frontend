@@ -331,7 +331,7 @@ const Profile = () => {
                     </div>
                     <Col xs={12} sm={6} md={6} lg={6} >
                       <div className="label-myprofile">
-                        <label className="card-info-label">First Name<span className="red-star">*</span> </label>
+                        <label className="card-info-label">First Name <span className="red-star">*</span> </label>
                         <input
                           disabled
                           type="text"
@@ -345,7 +345,7 @@ const Profile = () => {
                     </Col>
                     <Col xs={12} sm={6} md={6} lg={6}>
                       <div className="label-myprofile">
-                        <label className="card-info-label">Last Name<span className="red-star">*</span> </label>
+                        <label className="card-info-label">Last Name <span className="red-star">*</span> </label>
                         <input
                           disabled
                           type="text"
@@ -373,7 +373,7 @@ const Profile = () => {
                     </Col>
                     <Col xs={12} sm={6} md={6} lg={6}>
                       <div className="label-myprofile">
-                        <label className="card-info-label">Contact No<span className="red-star">*</span> </label>
+                        <label className="card-info-label">Contact No <span className="red-star">*</span> </label>
                         <Cleave
                           className={alertError && mobileInfo.length < 10 ? ` form-control my-input` : `form-control formy`}
                           placeholder="Enter contact number"
