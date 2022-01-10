@@ -9,7 +9,7 @@ import Header from '../../../components/Header';
 import Footer from '../../../components/Footer';
 import { Locale } from '../../../constants/Locale';
 
-const Checkout = () => {
+const Checkout = (props) => {
 
   const [fullName, setFullName] = useState();
   const [mobile, setMobile] = useState('');
@@ -24,6 +24,7 @@ const Checkout = () => {
   const [alertError, setAlertError] = useState(false);
 
   const dispatch = useDispatch();
+  const currencyValue = props.location.state;
 
   const onFullName = (e) => {
     if (e.target.value.match('^[a-zA-Z ]*$')) {
