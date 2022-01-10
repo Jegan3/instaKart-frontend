@@ -1,6 +1,6 @@
 /*eslint-disable*/
 import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Row, Col } from 'react-bootstrap';
 import Cleave from "cleave.js/react";
 import Select from "react-select";
@@ -19,12 +19,38 @@ const Checkout = (props) => {
   const [cityOptions, setCityOptions] = useState();
   const [zipCode, setZipCode] = useState();
   const [email, setEmail] = useState();
-  const [wipay, setWipay] = useState();
-  const [cashOnDelivery, setCashOnDelivery] = useState();
+  const [paymentOption, setPaymentOption] = useState("wipay");
   const [alertError, setAlertError] = useState(false);
 
   const dispatch = useDispatch();
+  const checkout = useSelector((state) => state.checkoutState.checkout);
   const currencyValue = props.location.state;
+
+  const currency = currencyValue.currency
+  const cartTotalPrice = currencyValue.cartTotalPrice
+
+  useEffect(() => {
+    if (checkout && checkout.url) {
+      window.location.assign(checkout.url);
+    }
+  }, [checkout]);
+
+  useEffect(() => {
+    Locale.filter((item) => {
+      if (country && item._id === country.value) {
+        const list = item.cities.filter(({ cityName }) => cityName !== 'Others').sort((a, b) => a.cityName.localeCompare(b.cityName));
+        const others = item.cities.find(({ cityName }) => cityName === 'Others');
+
+        list.push(others)
+
+        const cityList = list.map((data) => ({
+          value: data._id,
+          label: data.cityName,
+        }));
+        setCityOptions(cityList);
+      }
+    });
+  }, [country]);
 
   const onFullName = (e) => {
     if (e.target.value.match('^[a-zA-Z ]*$')) {
@@ -55,22 +81,7 @@ const Checkout = (props) => {
     setCity(city);
   };
 
-  useEffect(() => {
-    Locale.filter((item) => {
-      if (country && item._id === country.value) {
-        const list = item.cities.filter(({ cityName }) => cityName !== 'Others').sort((a, b) => a.cityName.localeCompare(b.cityName));
-        const others = item.cities.find(({ cityName }) => cityName === 'Others');
 
-        list.push(others)
-
-        const cityList = list.map((data) => ({
-          value: data._id,
-          label: data.cityName,
-        }));
-        setCityOptions(cityList);
-      }
-    });
-  }, [country]);
 
   const onZipCode = (e) => {
     if (e.target.value.match('^[0-9]*$')) {
@@ -84,13 +95,9 @@ const Checkout = (props) => {
     }
   }
 
-  const onWipay = (e) => {
-    setWipay(e.target.value);
-  };
-
-  const onCashOnDelivery = (e) => {
-    setCashOnDelivery(e.target.value);
-  };
+  const OnPaymentOption = (e) => {
+    setPaymentOption(e.target.value)
+  }
 
   const onSubmit = () => {
     if (!fullName || !mobile || !address || !country || !city || !zipCode || !email) {
@@ -106,15 +113,19 @@ const Checkout = (props) => {
       setAlertError(true)
       setValidate(true)
       message.error('Please enter the valid Email')
+    } else if (paymentOption === "cashOnDelivery") {
+      message.error('Cash on delivery is not available currently')
     } else {
       const checkout = {
         fullName,
         mobile,
         address,
-        city,
-        country,
+        country: country && country.value,
+        city: city && city.value,
         zipCode,
         email,
+        cartTotalPrice,
+        currency
       };
       dispatch({ type: 'CHECKOUT_REQUEST', checkout });
     };
@@ -226,52 +237,6 @@ const Checkout = (props) => {
           <div className='shipping-card-right'>
             <h3 className="shipping-header-label">Select Delivery Address</h3>
             <div className='shipping-card-inner'>
-              <Col>
-                <address>
-                  <h3>Manikandan</h3>
-                  DoorNo 123 east street,<br />
-                  Pozhichalur 600074,<br />
-                  Chennai, TamilNadu<br />
-                  India
-                </address>
-              </Col>
-              <Col>
-                <button className="btn btn-primary modal-butn deliver-btn">
-                  Deliver to this Address
-                </button>
-              </Col>
-            </div>
-            <div className='shipping-card-inner'>
-              <Col>
-                <address>
-                  <h3>Manikandan</h3>
-                  DoorNo 123 east street,<br />
-                  Pozhichalur 600074,<br />
-                  Chennai, TamilNadu<br />
-                  India
-                </address>
-              </Col>
-              <Col>
-                <button className="btn btn-primary modal-butn deliver-btn">
-                  Deliver to this Address
-                </button>
-              </Col>
-            </div>
-            <div className='shipping-card-inner'>
-              <Col>
-                <address>
-                  <h3>Manikandan</h3>
-                  DoorNo 123 east street,<br />
-                  Pozhichalur 600074,<br />
-                  Chennai, TamilNadu<br />
-                  India
-                </address>
-              </Col>
-              <Col>
-                <button className="btn btn-primary modal-butn deliver-btn">
-                  Deliver to this Address
-                </button>
-              </Col>
             </div>
           </div>
         </Col>
@@ -285,9 +250,9 @@ const Checkout = (props) => {
                 className="radio-btn"
                 type="radio"
                 name="PaymentOption"
-                value={wipay}
-                onChange={onWipay}
-                checked
+                value='wipay'
+                onChange={OnPaymentOption}
+                checked={paymentOption === "wipay" ? true : false}
               />
               <label className="radio-label">
                 WiPay Payment
@@ -296,8 +261,9 @@ const Checkout = (props) => {
                 className="radio-btn"
                 type="radio"
                 name="PaymentOption"
-                value={cashOnDelivery}
-                onChange={onCashOnDelivery}
+                value='cashOnDelivery'
+                onChange={OnPaymentOption}
+                checked={paymentOption === "cashOnDelivery" ? true : false}
               />
               <label className="radio-label">
                 Cash On Delivery

@@ -70,12 +70,6 @@ const Cart = ({ location }) => {
   //     dispatch({ type: 'CART_REQUEST' });   
   // }, [count]);
 
-  useEffect(() => {
-    if (checkout && checkout.url) {
-      window.location.assign(checkout.url);
-    }
-  }, [checkout]);
-
   const onMobile = (e) => {
     if (e.target.value.match('^[0-9]*$')) {
       setMobile(e.target.value)
@@ -205,7 +199,6 @@ const Cart = ({ location }) => {
     };
     history.push({ pathname: '/checkout', state: currencyDetails });
     window.scrollTo(0, 0);
-    console.log('currencyDetails', currencyDetails)
   }
 
   return (
