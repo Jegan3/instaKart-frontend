@@ -14,6 +14,7 @@ import Header from '../../../components/Header';
 import { Locale } from '../../../constants/Locale';
 import Footer from '../../../components/Footer';
 import Loader from '../../../components/Loader';
+import { history } from '../../../routes';
 
 const Cart = ({ location }) => {
   const [toggle, setToggle] = useState(true);
@@ -197,35 +198,14 @@ const Cart = ({ location }) => {
     setCount(0)
   }
 
-  const submit = () => {
-    if (!fullName || !mobile || !address || !country || !city || !zipCode || !email) {
-      setAlertError(true)
-      message.error('Please fill all the fields')
-    } else if (mobile.length !== 10) {
-      message.error('Please enter the valid Mobile')
-    } else if (zipCode.length !== 5) {
-      message.error('Please enter the valid Zipcode')
-    } else if (email === '') {
-      setAlertError(true);
-    } else if (email && valid === false) {
-      setAlertError(true)
-      setValidate(true)
-      message.error('Please enter the valid Email')
-    } else {
-      message.success(` ${fullName} Thank you for Your Purchase!!`)
-      const checkout = {
-        fullName,
-        mobile,
-        address,
-        city,
-        country,
-        zipCode,
-        email,
-        cartTotalPrice: wipayTotal.toFixed(2),
-        currency
-      };
-      dispatch({ type: 'CHECKOUT_REQUEST', checkout });
+  const onProceed = () => {
+    const currencyDetails = {
+      cartTotalPrice: wipayTotal.toFixed(2),
+      currency
     };
+    history.push({ pathname: '/checkout', state: currencyDetails });
+    window.scrollTo(0, 0);
+    console.log('currencyDetails', currencyDetails)
   }
 
   return (
@@ -293,111 +273,111 @@ const Cart = ({ location }) => {
                   </Row>}
                 </div>
               </Col>
-                <Col md={4} className="scroll-fix">
-                   <div className="product-card list">
-                    <Row>
-                      <Col md={12} >
-                        <div className="billing-card clr">
-                          <Row>
-                            <Col md={12}>
-                              <div className="summary">
-                                <span>
-                                  Summary
-                                </span>
-                              </div>
-                            </Col>
-                            <Col md={12}>
-                              <div className="items-list">
-                                <span className="items">
-                                  ITEMS
-                                </span>
-                                <span className="items">
-                                  $132
-                                </span>
-                              </div>
-                            </Col>
-                            <Col md={12}>
-                              <div className='bottom'>
-                                <label className="give-code ">GIVE CODE</label>
-                                <input
-                                  type="text"
-                                  className="form-control "
-                                  placeholder="Enter Code"
-                                  // value={storeName}
-                                  // onChange={onStoreName}
-                                  maxLength={30}
-                                />
-                              </div>
-                            </Col>
-                            <Col md={12}>
-                              <div className="items-list">
-                                <span className="items">
+              <Col md={4} className="scroll-fix">
+                <div className="product-card list">
+                  <Row>
+                    <Col md={12} >
+                      <div className="billing-card clr">
+                        <Row>
+                          <Col md={12}>
+                            <div className="summary">
+                              <span>
+                                Summary
+                              </span>
+                            </div>
+                          </Col>
+                          <Col md={12}>
+                            <div className="items-list">
+                              <span className="items">
+                                ITEMS
+                              </span>
+                              <span className="items">
+                                $132
+                              </span>
+                            </div>
+                          </Col>
+                          <Col md={12}>
+                            <div className='bottom'>
+                              <label className="give-code ">GIVE CODE</label>
+                              <input
+                                type="text"
+                                className="form-control "
+                                placeholder="Enter Code"
+                                // value={storeName}
+                                // onChange={onStoreName}
+                                maxLength={30}
+                              />
+                            </div>
+                          </Col>
+                          <Col md={12}>
+                            <div className="items-list">
+                              <span className="items">
                                 Subtotal
-                                </span>
-                                <span className="items">
+                              </span>
+                              <span className="items">
                                 {`${currency}${parseFloat(subTotal).toFixed(2)}`}
-                                </span>
-                              </div>
-                            </Col>
-                            <Col md={12}>
-                              <div className="items-list">
+                              </span>
+                            </div>
+                          </Col>
+                          <Col md={12}>
+                            <div className="items-list">
                               <div className="sub-total">
                                 Admin Fee<span className="tax-info">(2.5%)</span>
                               </div>
                               <div className="admin-service">
                                 {`${currency}${parseFloat(adminFee).toFixed(2)}`}
                               </div>
-                              </div>
-                            </Col>
-                            <Col md={12}>
-                              <div className="items-list">
+                            </div>
+                          </Col>
+                          <Col md={12}>
+                            <div className="items-list">
                               <div className="sub-total">
                                 Wipay Fee<span className="tax-info">(3.5% + $0.25 USD)</span>
                               </div>
                               <div className="admin-service">
                                 {`${currency}${parseFloat(wipayFee).toFixed(2)}`}
                               </div>
-                              </div>
-                            </Col>
-                            <Col md={12}>
-                              <div className="items-list">
-                                <span className="items">
+                            </div>
+                          </Col>
+                          <Col md={12}>
+                            <div className="items-list">
+                              <span className="items">
                                 Order Total
-                                </span>
-                                <span className="items">
+                              </span>
+                              <span className="items">
                                 {`${currency}${parseFloat(orderTotal).toFixed(2)}`}
-                                </span>
-                              </div>
-                            </Col>
+                              </span>
+                            </div>
+                          </Col>
 
-                            <Col xs={12}>
-                              <div className="checkoutbtn">
-                                <Button
-                                  variant="contained"
-                                  color="primary"
-                                 // className="proceedbtn  modal-button"
-                                 // onClick={submit}
-                                >
-                                  Proceed to Buy
-                                </Button>
-                              </div>
-                              <div className="checkoutbtn">
-                                <Button
-                                  variant="contained"
-                                  color="primary"
-                                 // className="proceedbtn  modal-button"
-                                 // onClick={submit}
-                                >
-                                  Cash on Delivery
-                                </Button>
-                              </div>
-                            </Col>
-                          </Row>
-                        </div>
-                      </Col>
-                    </Row>
-                  </div> 
-                </Col>
+                          <Col xs={12}>
+                            <div className="checkoutbtn">
+                              <Button
+                                variant="contained"
+                                color="primary"
+                                // className="proceedbtn  modal-button"
+                                onClick={onProceed}
+                              >
+                                Proceed to Buy
+                              </Button>
+                            </div>
+                            <div className="checkoutbtn">
+                              <Button
+                                variant="contained"
+                                color="primary"
+                              // className="proceedbtn  modal-button"
+                              // onClick={submit}
+                              >
+                                Cash on Delivery
+                              </Button>
+                            </div>
+                          </Col>
+                        </Row>
+                      </div>
+                    </Col>
+                  </Row>
+                </div>
+              </Col>
             </Row>
           </div>
         </Grid>
