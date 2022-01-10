@@ -52,7 +52,7 @@ export const MaterialTabs = ({ storeInfo }) => {
       const product = storeInfo[0];
       setProduct(product);
     }
-  }, []);
+  }, [storeInfo]);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -96,7 +96,7 @@ export const MaterialTabs = ({ storeInfo }) => {
       </TabPanel>}})} */}
       <TabPanel value={value} index={value}>
         <ScrollAnimation animateIn='fadeIn' duration={5}>
-          <ThriftStoreInfoCategories product={product} />
+          <ThriftStoreInfoCategories product={product} module='Thrift Store' />
         </ScrollAnimation>
       </TabPanel>
       {/* <TabPanel value={value} index={1}>

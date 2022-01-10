@@ -3,7 +3,7 @@ import React from 'react';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import ReactPlayer from "react-player";
-import { Card, ThriftStoreNearYouCard, NewAdditionCard, ReviewCard } from '../Card';
+import { Card, ThriftStoreNearYouCard, NewAdditionCard, ReviewCard, ThriftStoreInfoCategoriesCard } from '../Card';
 
 const responsive = {
   desktop: {
@@ -576,14 +576,14 @@ const thriftStoreCategoryBottom = [
   },
 ];
 
-export const ThriftStoreInfoCategories = ({ product }) => (
+export const ThriftStoreInfoCategories = ({ product, module }) => (
   <Carousel
     responsive={responsiveThriftStoreInfoCategories}
     //centerMode={true}
     infinite={true}
   >
     {product ? product.product.map((card) => (
-      <Card title={card.productName} className='card' imgUrl={card.productImages[0]} />
+      <ThriftStoreInfoCategoriesCard title={card.productName} product={card._id} className='card' imgUrl={card.productImages[0]} path={'/productinfo'} module={module} />
     )) : []}
   </Carousel>
 );

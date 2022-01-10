@@ -159,3 +159,32 @@ export const ReviewCard = ({ title, content, date }) => {
     </div>
   )
 }
+
+export const ThriftStoreInfoCategoriesCard = ({ title, className, imgUrl, product, path, module }) => {
+console.log('module',module)
+  const Card = () => {
+    if (sessionStorage.type === 'user') {
+      history.push({ pathname: path, state: { product: product, module: module } })
+      window.scrollTo(0, 0);
+    } else if (sessionStorage.type === 'vendor') {
+      message.error('Please Login As User');
+    }
+    else {
+      setLogin(true)
+    }
+  }
+
+  return (
+    <div>
+        <div className={className} onClick={Card}>
+          <div className="card-thriftStore">
+            <img src={imgUrl} alt="Avatar" className="photos " />
+            <div className="middle">
+              <div className="text">{title}
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  )
+}
