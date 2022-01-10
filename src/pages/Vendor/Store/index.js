@@ -19,20 +19,21 @@ const Store = (props) => {
   const storeInfo = useSelector((state) => state.storeInfoState.storeInfo);
   const productListInfo = useSelector((state) => state.productListState.productList);
   const addProductEnable = useSelector((state) => state.storeInfoUpdateState.storeInfoUpdate);
-  const ListEnable = useSelector((state) => state.thriftAddProductState.thriftAddProduct);
- 
+  const ListEnable = useSelector((state) => state.addProductState.addProduct);
+
   const storeId = props.location.state || sessionStorage.newStoreId
+  const productId = productEdit ? props.location.state : false
   const upDatedHeaderName = upDatedHeader ? storeInfo && storeInfo.storeInfo.storeName : header;
   const productSuccess = addProductEnable && addProductEnable.status;
   const listSuccess = ListEnable && ListEnable.status;
-  
+
   useEffect(() => {
-    if (productSuccess || storeInfo && storeInfo.storeInfo.emailId ) {
+    if (productSuccess || storeInfo && storeInfo.storeInfo.emailId) {
       setProductEnable(true)
-    } if ( listSuccess) {
+    } if (listSuccess) {
       setListEnable(true)
     }
-    if (productListInfo && productListInfo.length > 0 ) {
+    if (productListInfo && productListInfo.length > 0) {
       setListEnable(true)
     }
   }, [productSuccess, listSuccess, storeInfo, productListInfo])
@@ -69,23 +70,23 @@ const Store = (props) => {
     <div className="wrapper">
       <div className="rightside-panel">
         <Headerbar headerName={upDatedHeaderName} />
-        <Menu onClick={handleClick} selectedKeys={[current]} mode="horizontal" disabledOverflow = {true} className="card">
+        <Menu onClick={handleClick} selectedKeys={[current]} mode="horizontal" disabledOverflow={true} className="card">
           <Menu.Item key="storeinfo" >
             Store Info
           </Menu.Item>
-          <Menu.Item key="addproduct" 
-         disabled={!productEnable} 
+          <Menu.Item key="addproduct"
+            disabled={!productEnable}
           >
             {productEdit ? <div>Edit Product </div> : <div>Add Product</div>}
           </Menu.Item>
-          <Menu.Item key="productlist" 
-         disabled={!listEnable}
+          <Menu.Item key="productlist"
+            disabled={!listEnable}
           >
             Product List
           </Menu.Item>
         </Menu>
         {current === 'storeinfo' && <StoreInfo setStoreHeader={storeHeader} storeId={storeId} />}
-        {current === 'addproduct' && <AddProduct storeId={storeId} editPage={productEdit} />}
+        {current === 'addproduct' && <AddProduct storeId={storeId} productId={productId} editPage={productEdit} />}
         {current === 'productlist' && <ProductList storeId={storeId} productEdit={editPage} />}
       </div>
     </div>

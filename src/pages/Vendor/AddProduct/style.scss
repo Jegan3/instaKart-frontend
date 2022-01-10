@@ -99,6 +99,11 @@
     .btns-style {
       padding-top: 5px;
     }
+
+    .delete-button {
+      text-align: right;
+      padding-right: 2px;
+    }
   }
 
   .add-product-video-upload {
@@ -110,6 +115,7 @@
   .ant-upload.ant-upload-drag .ant-upload {
     padding: 0px 0;
   }
+
 }
 
 .upload-red {
