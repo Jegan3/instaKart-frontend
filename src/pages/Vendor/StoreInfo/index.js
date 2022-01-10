@@ -92,7 +92,6 @@ const StoreInfo = ({ storeId, setStoreHeader }) => {
   const isLoading = useSelector((state) => state.storeInfoState.isLoading);
   const storeInfoUpdate = useSelector((state) => state.storeInfoUpdateState.storeInfoUpdate);
   const invalidStoreInfoUpdate = useSelector((state) => state.storeInfoUpdateState.error);
-  const storeSubmit = useSelector((state) => state.storeInfoUpdateState.submit);
 
   const countryList = storeInfo && storeInfo.storeInfo.countryId;
   const cityList = storeInfo && storeInfo.storeInfo.cityId;
@@ -110,18 +109,10 @@ const StoreInfo = ({ storeId, setStoreHeader }) => {
   const countryInfo = !storeDetail || (!countryId && countryId !== '') ? (countryList ? countryDetails && countryDetails : countryId) : countryId;
   const mobileInfo = !storeDetail || (!mobile && mobile !== '') ? storeInfo && storeInfo.storeInfo.mobile : mobile;
 
-  // useEffect(() => {
-  //   dispatch({ type: 'STORE_INFO_UPDATE_CHECK' });
-  // }, [])
-
-  console.log('storeId', storeId)
   useEffect(() => {
-    if (button) {
-      message.error("Please Save Your Changes")
-      dispatch({ type: 'STORE_INFO_EDIT' });
-    } else if (storeId) {
+    if (storeId) {
       dispatch({ type: 'STORE_INFO_REQUEST', storeId });
-      dispatch({ type: 'STORE_INFO_UPDATE_CHECK' });
+      dispatch({ type: 'STORE_INFO_CHECK' });
       setStoreLogo()
       setAboutStore()
       setStoreName()
@@ -148,10 +139,10 @@ const StoreInfo = ({ storeId, setStoreHeader }) => {
     if (addressDetails && addressDetails) {
       setDisabled(true);
       setButton(false)
+      dispatch({ type: 'STORE_INFO_SUBMIT' });
     } else {
       setDisabled(false);
       setButton(true)
-      dispatch({ type: 'STORE_INFO_EDIT' });
     }
   }, [addressDetails])
 
@@ -335,7 +326,6 @@ const StoreInfo = ({ storeId, setStoreHeader }) => {
   const onUpdate = () => {
     setButton(true)
     setDisabled(false)
-    dispatch({ type: 'STORE_INFO_EDIT' });
   }
 
   const onSubmit = () => {
@@ -377,6 +367,7 @@ const StoreInfo = ({ storeId, setStoreHeader }) => {
         estoreId: storeId,
       };
       dispatch({ type: 'STORE_INFO_UPDATE_REQUEST', storeUpdate });
+      dispatch({ type: 'STORE_INFO_SUBMIT' });
       setAlertMsg(true)
     };
   }

@@ -1,6 +1,5 @@
 const initialState = {
-  storeInfo: undefined,
-  storeInfoUpdate: undefined,
+  submit: true,
 };
 
 export const storeInfoState = (state = initialState, action) => {
@@ -25,7 +24,12 @@ export const storeInfoState = (state = initialState, action) => {
         error: action.error,
         submit: true,
       };
-    case 'STORE_INFO_UPDATE_CHECK':
+    case 'STORE_INFO_CHECK':
+      return {
+        ...state,
+        submit: false,
+      };
+    case 'STORE_INFO_SUBMIT':
       return {
         ...state,
         submit: true,
@@ -57,15 +61,15 @@ export const storeInfoUpdateState = (state = initialState, action) => {
         error: action.error,
         submit: true,
       };
-    case 'STORE_INFO_UPDATE_CHECK':
-      return {
-        ...state,
-        submit: true,
-      };
-    case 'STORE_INFO_EDIT':
+    case 'STORE_INFO_CHECK':
       return {
         ...state,
         submit: false,
+      };
+    case 'STORE_INFO_SUBMIT':
+      return {
+        ...state,
+        submit: true,
       };
     default:
       return state;

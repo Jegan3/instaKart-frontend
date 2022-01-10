@@ -48,8 +48,8 @@ const Store = (props) => {
     if (!productEdit) {
       setToggle('storeinfo')
     }
-    dispatch({ type: 'VENDOR_COMPANY_DETAILS_REQUEST' });
-    dispatch({ type: 'PRODUCT_LIST_REQUEST', storeId });
+    // dispatch({ type: 'VENDOR_COMPANY_DETAILS_REQUEST' });
+    // dispatch({ type: 'PRODUCT_LIST_REQUEST', storeId });
     setUpdatedHeader(true)
   }, [props.location.state])
 

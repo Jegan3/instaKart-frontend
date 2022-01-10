@@ -23,18 +23,15 @@ const Sidebar = () => {
   const addStoreError = useSelector((state) => state.addStoreState.error);
   const storeInfoUpdate = useSelector((state) => state.storeInfoUpdateState.storeInfoUpdate);
   const profileStatus = useSelector((state) => state.profileState.profile && state.profileState.profile.status)
-  const storeSubmit = useSelector((state) => state.storeInfoUpdateState.submit);
+  const storeSubmit = useSelector((state) => state.storeInfoState.submit);
+  const storeUpdateSubmit = useSelector((state) => state.storeInfoUpdateState.submit);
 
   const admin = (validLogin && validLogin.user.type === 'admin') || sessionStorage.type === 'admin';
-
-  console.log("storeSubmit", storeSubmit)
-  console.log("profileStatus", profileStatus)
 
   useEffect(() => {
     dispatch({ type: 'PROFILE_REQUEST' });
     dispatch({ type: 'VENDOR_COMPANY_DETAILS_REQUEST' });
     dispatch({ type: 'PROFILE_REQUEST' });
-    dispatch({ type: 'STORE_INFO_UPDATE_CHECK' });
   }, [])
 
   useEffect(() => {
@@ -72,8 +69,11 @@ const Sidebar = () => {
   };
 
   const toHome = () => {
-    !storeSubmit && message.error("Please Save Your Changes")
-    history.push({ pathname: storeSubmit ? '/' : "/storedetails" });
+    if (storeUpdateSubmit) {
+      history.push({ pathname: '/' });
+    } else {
+      message.error("Please Save Your Changes")
+    }
   };
 
   const onHide = () => {
@@ -83,7 +83,7 @@ const Sidebar = () => {
   const addNewStore = () => {
     if (profileStatus !== "accepted") {
       message.error('Please Wait For Sometime! Your Approval Is Pending!')
-    } else if (!storeSubmit) {
+    } else if (!storeUpdateSubmit) {
       message.error("Please Save Your Changes")
     } else {
       setModal(true)
@@ -91,19 +91,29 @@ const Sidebar = () => {
   }
 
   const onProfile = () => {
-    !storeSubmit && message.error("Please Save Your Changes")
-    history.push({ pathname: storeSubmit ? "/profile" : "/storedetails" });
+    if (storeUpdateSubmit) {
+      history.push({ pathname: '/profile' });
+    } else {
+      message.error("Please Save Your Changes")
+    }
   }
 
   const onUserDetails = () => {
-    !storeSubmit && message.error("Please Save Your Changes")
-    history.push({ pathname: storeSubmit ? "/user" : "/storedetails" });
+    if (storeUpdateSubmit) {
+      history.push({ pathname: '/user' });
+    } else {
+      message.error("Please Save Your Changes")
+    }
   }
 
   const onStore = (info) => {
-    history.push({ pathname: '/storedetails', state: info.estoreId });
-    dispatch({ type: 'PRODUCT_LIST_REQUEST', storeId: info.estoreId });
-    setStore(true)
+    if (storeUpdateSubmit) {
+      history.push({ pathname: '/storedetails', state: info.estoreId });
+      dispatch({ type: 'PRODUCT_LIST_REQUEST', storeId: info.estoreId });
+      setStore(true)
+    } else {
+      message.error("Please Save Your Changes")
+    }
   }
 
   return (

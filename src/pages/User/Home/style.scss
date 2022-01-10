@@ -58,7 +58,7 @@
 }
 
 .bg-home-ban {
-  background-color: #28a4d9;
+  background-color: $color-theme;
 
   .secondary-banner-style {
     padding-top: 3.5% !important;
@@ -70,7 +70,7 @@
 }
 
 .bg-home {
-  background-color: #f5f5f5;
+  background-color: $color-background;
 
   .time-cap {
     padding-top: 5px;
