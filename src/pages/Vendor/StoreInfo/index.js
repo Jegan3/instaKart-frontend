@@ -76,10 +76,6 @@ const StoreInfo = ({ storeId, setStoreHeader }) => {
   const [igId, setIgId] = useState();
   const [mobile, setMobile] = useState();
   const [updatedCityOptions, setUpdatedCityOptions] = useState();
-  const [openingTime, setOpeningTime] = useState();
-  const [closingTime, setClosingTime] = useState();
-  const [closed, setClosed] = useState();
-  const [timing, setTiming] = useState([])
   const [alertError, setAlertError] = useState(false);
   const [button, setButton] = useState(false)
   const [countryDetails, setCountryDetails] = useState();
@@ -129,10 +125,6 @@ const StoreInfo = ({ storeId, setStoreHeader }) => {
       setValidate(false)
     }
   }, [storeId])
-
-
-  console.log("storeId from store info", storeId)
-  console.log("addressDetails", addressDetails)
 
   useEffect(() => {
     // For New Store Enable
@@ -289,34 +281,6 @@ const StoreInfo = ({ storeId, setStoreHeader }) => {
     setStoreDetail(true)
   }
 
-  const onOpeningTime = (info, timeString) => {
-    info.original.openingTime = moment(timeString, ["h:mm A"]).format("HH:mm");
-    if (!timing.length) {
-      setTiming([...timing, info.original])
-    } else {
-      timing.includes(info.original) ? { ...timing, openingTime: moment(timeString, ["h:mm A"]).format("HH:mm") } : setTiming([...timing, info.original])
-    }
-  }
-
-  const onClosingTime = (info, timeString) => {
-    info.original.closingTime = moment(timeString, ["h:mm A"]).format("HH:mm");
-    if (!timing.length) {
-      setTiming([...timing, info.original])
-    } else {
-      timing.includes(info.original) ? { ...timing, closingTime: moment(timeString, ["h:mm A"]).format("HH:mm") } : setTiming([...timing, info.original])
-    }
-  }
-
-  const onClosed = (info, e) => {
-    setClosed(e.target.checked[info.index])
-    info.original.closed = e.target.checked
-    if (!timing.length) {
-      setTiming([...timing, info.original])
-    } else {
-      timing.includes(info.original) ? { ...timing, closed: e.target.checked } : setTiming([...timing, info.original])
-    }
-  }
-
   const fakeRequest = ({ onSuccess }) => {
     setTimeout(() => {
       onSuccess('OK')
@@ -363,7 +327,6 @@ const StoreInfo = ({ storeId, setStoreHeader }) => {
         fbId: fbIdInfo,
         igId: igIdInfo,
         mobile: mobileInfo,
-        timing,
         estoreId: storeId,
       };
       dispatch({ type: 'STORE_INFO_UPDATE_REQUEST', storeUpdate });
@@ -549,75 +512,6 @@ const StoreInfo = ({ storeId, setStoreHeader }) => {
                     />
                   </Col>
                 </Col>
-              </Row>
-              <Row className="general-table">
-                <Table
-                  title=""
-                  content={
-                    <ReactTable
-                      data={storeInfo && storeInfo.storeInfo.timing}
-                      columns={[
-                        {
-                          Header: 'Day',
-                          accessor: 'title',
-                          filterable: false,
-                          sortable: false,
-                          width: 130,
-                        },
-                        {
-                          Header: 'Opening Time',
-                          accessor: 'status',
-                          filterable: false,
-                          sortable: false,
-                          width: 220,
-                          Cell: (info) => (
-                            <TimePicker
-                              use12Hours
-                              format="h:mm A"
-                              defaultValue={moment(info.original.openingTime, "HH:mm")}
-                              value={openingTime}
-                              onChange={(value) => onOpeningTime(info, value)} />
-                          )
-                        },
-                        {
-                          Header: 'Closing Time',
-                          accessor: 'total',
-                          filterable: false,
-                          sortable: false,
-                          Cell: (info) => (
-                            <TimePicker
-                              use12Hours
-                              format="h:mm A"
-                              defaultValue={moment(info.original.closingTime, "HH:mm")}
-                              value={closingTime}
-                              onChange={(time, timeString) => onClosingTime(info, time, timeString)} />
-                          ),
-                          width: 220,
-                        },
-                        {
-                          Header: 'Closed',
-                          accessor: 'id',
-                          filterable: false,
-                          sortable: false,
-                          Cell: (info) => (
-                            <div>
-                              <input
-                                type="checkbox"
-                                className='closed-header'
-                                defaultChecked={info.original.closed}
-                                checked={closed}
-                                onChange={(e) => onClosed(info, e)} />
-                            </div>
-                          ),
-                          width: 100,
-                        },
-                      ]}
-                      defaultPageSize={7}
-                      showPaginationBottom={false}
-                      className="-striped -highlight"
-                    />
-                  }
-                />
               </Row>
               <Row md={12} className="margin-control">
                 <Col lg={2} md={3} sm={4} xs={6} className="product-button">

@@ -28,7 +28,6 @@ const AddProduct = ({ storeId, productId, editPage }) => {
   const [taxPrice, setTaxPrice] = useState();
   const [finalPrice, setFinalPrice] = useState();
   const [productDescription, setProductDescription] = useState();
-  const [stockReserve, setStockReserve] = useState();
   const [stockHand, setStockHand] = useState();
   const [productWarranty, setProductWarranty] = useState();
   const [productShipping, setProductShipping] = useState();
@@ -93,7 +92,6 @@ const AddProduct = ({ storeId, productId, editPage }) => {
       setDiscount('');
       setFinalPrice('');
       setVideo([]);
-      setStockReserve('')
       setStockHand('')
       setStatus(false)
       setProductDescription('');
@@ -252,10 +250,6 @@ const AddProduct = ({ storeId, productId, editPage }) => {
     setStatus(status)
   }
 
-  const onStockReserve = (e) => {
-    setStockReserve(e.target.value)
-  }
-
   const onStockHand = (e) => {
     setStockHand(e.target.value)
   }
@@ -372,7 +366,6 @@ const AddProduct = ({ storeId, productId, editPage }) => {
   const productTaxInfo = !tax && !priceField && productEdit && tax !== '' ? productInfo && productInfo.tax : tax;
   const productImagesInfo = productEdit && imageEdit ? imageInfo : fileList;
   const productVideoInfo = videoEdit && productEdit ? productInfo && productInfo.productVideo : video;
-  const stockReserveInfo = !stockReserve && productEdit && stockReserve !== '' ? productInfo && productInfo.stockReserve : stockReserve;
   const stockHandInfo = !stockHand && productEdit && stockHand !== '' ? productInfo && productInfo.stockHand : stockHand;
   const productDescriptionInfo = !productDescription && productEdit && productDescription !== '' ? productInfo && productInfo.productDescription : productDescription;
   const productWarrantyInfo = !productWarranty && productEdit && productWarranty !== '' ? productInfo && productInfo.productWarranty : productWarranty;
@@ -409,7 +402,6 @@ const AddProduct = ({ storeId, productId, editPage }) => {
         discount: discountInfo,
         tax: productTaxInfo,
         finalPrice: `${symbol}${parseFloat(finalPrice).toFixed(2)}`,
-        stockReserve: stockReserveInfo,
         stockHand: stockHandInfo,
         status: statusInfo.value,
         productDescription: productDescriptionInfo,
@@ -590,20 +582,7 @@ const AddProduct = ({ storeId, productId, editPage }) => {
                   </Col>
                   <Col lg={6}>
                     <Row className="pricerow-list-row">
-                      <Col sm={4} xs={4}>
-                        <label className="signup-label">Stock Reserve </label>
-                        <Cleave
-                          options={{
-                            numeral: true,
-                            numeralThousandsGroupStyle: 'thousand'
-                          }}
-                          className="form-control"
-                          maxLength={10}
-                          value={stockReserveInfo}
-                          onChange={onStockReserve}
-                        />
-                      </Col>
-                      <Col sm={4} xs={4}>
+                      <Col sm={6} xs={6}>
                         <label className="signup-label">Stocks on Hand  </label>
                         <Cleave
                           options={{
@@ -616,7 +595,7 @@ const AddProduct = ({ storeId, productId, editPage }) => {
                           onChange={onStockHand}
                         />
                       </Col>
-                      <Col sm={4} xs={4}>
+                      <Col sm={6} xs={6}>
                         <label className="signup-label">Available</label>
                         <Select
                           name="Status"
