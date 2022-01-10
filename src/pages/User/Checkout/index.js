@@ -87,8 +87,6 @@ const Checkout = () => {
     setWipay(e.target.value);
   };
 
-  console.log("wipay", wipay)
-
   const onCashOnDelivery = (e) => {
     setCashOnDelivery(e.target.value);
   };
@@ -213,9 +211,8 @@ const Checkout = () => {
               <input
                 className="shipping-radio-btn-size"
                 type="radio"
-                value="$10"
-                name="primaryAdsPrice"
-                id="10$ PerDay"
+                value="defaultAddress"
+                name="defaultAddress"
               // onChange={primaryHandleChange}
               />
               <label className="radio-btn-label">
@@ -280,17 +277,16 @@ const Checkout = () => {
       </Row>
       <Row className="shipping-bottom-wrapper">
         <div className='shipping-card-bottom'>
-          <Row>
-            <h3 className="payment-header-label">Payment Method</h3>
-          </Row>
+          <h3 className="payment-header-label">Payment Method</h3>
           <Row>
             <div className='radio-box'>
               <input
                 className="radio-btn"
                 type="radio"
-                name="WiPayPayment"
+                name="PaymentOption"
                 value={wipay}
                 onChange={onWipay}
+                checked
               />
               <label className="radio-label">
                 WiPay Payment
@@ -298,7 +294,7 @@ const Checkout = () => {
               <input
                 className="radio-btn"
                 type="radio"
-                name="CashOnDelivery"
+                name="PaymentOption"
                 value={cashOnDelivery}
                 onChange={onCashOnDelivery}
               />
@@ -308,19 +304,19 @@ const Checkout = () => {
               <span class="marker"></span>
             </div>
           </Row>
-          <Row>
-            <Col sm={3} className='checkout-btn'>
-              <div className='checkout-btn-align'>
-                <button
-                  type="button"
-                  className="btn btn-primary modal-butn shipping-btn"
-                  onClick={onSubmit} >
-                  CHECKOUT
-                </button>
-              </div>
-            </Col>
-          </Row>
         </div>
+        <Row>
+          <Col sm={3} className='checkout-btn'>
+            <div className='checkout-btn-align'>
+              <button
+                type="button"
+                className="btn btn-primary modal-butn shipping-btn"
+                onClick={onSubmit} >
+                CHECKOUT
+              </button>
+            </div>
+          </Col>
+        </Row>
       </Row>
       <Footer />
     </div>
