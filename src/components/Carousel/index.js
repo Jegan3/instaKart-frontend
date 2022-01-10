@@ -583,7 +583,7 @@ export const ThriftStoreInfoCategories = ({ product }) => (
     infinite={true}
   >
     {product ? product.product.map((card) => (
-      <Card title={card.productName} className='card' imgUrl={card.productImages} />
+      <Card title={card.productName} className='card' imgUrl={card.productImages[0]} />
     )) : []}
   </Carousel>
 );

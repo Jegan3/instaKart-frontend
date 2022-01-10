@@ -12,7 +12,7 @@ import { ThriftStoreInfoCategories } from '../Carousel';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
-  
+
   return (
     <div
       role="tabpanel"
@@ -43,13 +43,15 @@ function a11yProps(index) {
   };
 }
 
-export const  MaterialTabs = ({storeInfo}) => {
+export const MaterialTabs = ({ storeInfo }) => {
   const [value, setValue] = useState(0);
   const [product, setProduct] = useState();
 
   useEffect(() => {
-    const product = storeInfo[0];
-    setProduct(product);
+    if (storeInfo) {
+      const product = storeInfo[0];
+      setProduct(product);
+    }
   }, []);
 
   const handleChange = (event, newValue) => {
@@ -57,9 +59,9 @@ export const  MaterialTabs = ({storeInfo}) => {
     const product = storeInfo[newValue];
     setProduct(product);
   };
-  console.log('storeInfo',storeInfo)
-  console.log('value',value)
-  console.log('product',product)
+  console.log('storeInfo', storeInfo)
+  console.log('value', value)
+  console.log('product', product)
 
   return (
     <div className='tab-scroll'>
@@ -77,7 +79,7 @@ export const  MaterialTabs = ({storeInfo}) => {
           scrollButtons="auto"
           aria-label="scrollable auto tabs example"
         >
-          {storeInfo.map(info => <Tab label={info.categoryName} {...a11yProps(value)} />)}
+          {storeInfo && storeInfo.map(info => <Tab label={info.categoryName} {...a11yProps(value)} />)}
           {/* <Tab label="Item One" {...a11yProps(0)} />
           <Tab label="Item Two" {...a11yProps(1)} />
           <Tab label="Item Three" {...a11yProps(2)} />
