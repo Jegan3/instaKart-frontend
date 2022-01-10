@@ -5,7 +5,6 @@ import { vendorInfoWatchers } from './VendorInfo';
 import { vendorListWatchers } from './VendorList';
 import { vendorStatusWatchers } from './VendorStatus';
 import { StoreInfoWatchers } from './StoreInfo';
-import { thriftAddProductWatchers } from './ThriftAddProduct';
 import { thriftCategoryWatchers } from './ThriftCategory';
 import { thriftDetailsWatchers } from './ThriftDetails';
 import { productInfoWatchers } from './ProductInfo';
@@ -23,6 +22,7 @@ import { profileWatchers } from './Profile';
 import { getListYourAdsWatchers } from './ListYourAds';
 import { productListWatchers } from './ProductList';
 import { userListWatchers } from './UserList';
+import { productWatchers } from './Product';
 
 
 export default function* rootWatchers() {
@@ -34,7 +34,6 @@ export default function* rootWatchers() {
     vendorListWatchers(),
     vendorStatusWatchers(),
     StoreInfoWatchers(),
-    thriftAddProductWatchers(),
     thriftCategoryWatchers(),
     thriftDetailsWatchers(),
     productInfoWatchers(),
@@ -52,5 +51,6 @@ export default function* rootWatchers() {
     getListYourAdsWatchers(),
     productListWatchers(),
     userListWatchers(),
+    productWatchers(),
   ];
 }

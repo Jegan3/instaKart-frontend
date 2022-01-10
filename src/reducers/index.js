@@ -7,8 +7,7 @@ import vendorInfoState from './VendorInfo';
 import sidebarState from './Sidebar';
 import vendorListState from './VendorList';
 import vendorStatusState from './VendorStatus';
-import { storeInfoState, storeInfoUpdateState }from './StoreInfo';
-import thriftAddProductState from './ThriftAddProduct';
+import { storeInfoState, storeInfoUpdateState } from './StoreInfo';
 import thriftCategoryState from './ThriftCategory';
 import thriftDetailsState from './ThriftDetails';
 import thriftStoreInfoState from './ThriftStoreInfo ';
@@ -21,9 +20,10 @@ import vendorCompanyDetailsState from './VendorCompanyDetails';
 import productMessageState from './ProductMessage';
 import resetState from './ResetPassword';
 import { listYourAds, getYourAds } from './ListYourAds';
-import { profileState, profileUpdateState }from './Profile';
+import { profileState, profileUpdateState } from './Profile';
 import { productListState, productDeleteState } from './ProductList';
 import userListState from './UserList';
+import { addProductState, getProductState, editProductState } from './Product';
 
 const combinedReducer = combineReducers({
   signupState,
@@ -35,7 +35,7 @@ const combinedReducer = combineReducers({
   vendorStatusState,
   storeInfoState,
   storeInfoUpdateState,
-  thriftAddProductState,
+  addProductState,
   thriftCategoryState,
   thriftDetailsState,
   thriftStoreInfoState,
@@ -50,10 +50,12 @@ const combinedReducer = combineReducers({
   listYourAds,
   getYourAds,
   profileState,
-  profileUpdateState, 
+  profileUpdateState,
   productListState,
   productDeleteState,
   userListState,
+  getProductState,
+  editProductState,
 });
 
 const rootReducer = (state, action) => {
