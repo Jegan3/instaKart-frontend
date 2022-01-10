@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import TextLoop from "react-text-loop";
 import Header from '../../../components/Header';
 import Footer from '../../../components/Footer';
-import { CarouselFirst, CarouselSecond, CarouselThird, CarouselNewEStore, CarouselNewEStoreVideo } from '../../../components/Carousel';
+import { CarouselFirst, CarouselSecond, CarouselThird, CarouselNewEStoreVideo } from '../../../components/Carousel';
 import { Banners, SecondaryBanners } from '../../../components/Banners';
 import Particle from '../../../components/Particle';
 
@@ -57,30 +57,7 @@ const Home = () => {
         </div>
         <br />
       </div> : ''}
-      <div className='bg-home-pro'>
-        <div className='particles-sub'>
-          <Particle color='#28a4d9' number='150' direction='top' />
-        </div>
-        <div className='arrival new-promotion'>
-          <h5>New Promotions</h5>
-          <div className='promotions'>
-            <CarouselNewEStore />
-          </div>
-        </div>
-        <br />
-      </div>
-      <div className='bg-home-pro-estore'>
-        <div className='particles-sub'>
-          <Particle color='#f5f5f5' number='150' direction='bottom' />
-        </div>
-        <div className='arrival estore-near-you'>
-          <h5>E-Stores Near You</h5>
-          <div className='promotions'>
-            <CarouselNewEStore />
-          </div>
-        </div>
-        <br />
-      </div>
+
       {advertisement && Object.keys(advertisement.userAds).length !== 0 && advertisement.userAds.video ? <div className='bg-home'>
         <div className='arrival time-cap'>
           <div className="promo-videos">

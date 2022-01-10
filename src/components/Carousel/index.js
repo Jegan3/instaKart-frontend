@@ -654,20 +654,6 @@ export const CarouselFourth = () => (
   </Carousel>
 );
 
-export const CarouselNewEStore = () => (
-  <Carousel
-    // ssr
-    infinite
-    autoPlay
-    autoPlaySpeed={3000}
-    responsive={responsive}
-    pauseOnHover={false}
-  >
-    {cardsDataMobile.map((card) => (
-      <Card key={card.id} className='card' imgUrl={card.imgUrl} btnUrl={card.btnUrl} body />
-    ))}
-  </Carousel>
-);
 
 export const CarouselStoreInfo = () => (
   <Carousel
@@ -739,19 +725,6 @@ export const CarouselAdsDetails = () => (
   </Carousel>
 );
 
-export const CarouselThriftPromotions = () => (
-  <Carousel
-    // ssr
-    infinite
-    // autoPlay
-    autoPlaySpeed={3000}
-    responsive={responsiveThrift}
-  >
-    {cardsDataMobile.map((card) => (
-      <Card key={card.id} imgUrl={card.imgUrl} className="card-thriftcards" body />
-    ))}
-  </Carousel>
-);
 
 export const CarouselReviewCard = () => (
   <Carousel
