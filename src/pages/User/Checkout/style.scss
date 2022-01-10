@@ -192,10 +192,10 @@ $mark:#28a4d9;
     &:after {
       content: '';
       position: absolute;
-      border: 12px solid rgba(0, 0, 0, 0);
+      border: 10px solid rgba(0, 0, 0, 0);
       border-left: 15px solid #28a4d9;
       left: 100%;
-      top: -2px;
+      top: 0px;
     }
   }
 

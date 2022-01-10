@@ -40,7 +40,6 @@ const SignUp = (props) => {
   const { state } = props.location;
   const type = state ? 'vendor' : 'user';
 
-
   useEffect(() => {
     if (validSignup && clear && !closeOtp && type === 'user') {
       setShowOtp(true);
@@ -63,6 +62,25 @@ const SignUp = (props) => {
       message.error(`${email} ${invalidSignup.data} `);
     }
   }, [status, invalidSignup]);
+
+  // City Options
+  useEffect(() => {
+    Locale.filter((item) => {
+      if (country && item._id === country.value) {
+        // to sort alphabetically and push others at last item 
+        const list = item.cities.filter(({ cityName }) => cityName !== 'Others').sort((a, b) => a.cityName.localeCompare(b.cityName));
+        const others = item.cities.find(({ cityName }) => cityName === 'Others');
+
+        list.push(others)
+
+        const cityList = list.map((data) => ({
+          value: data._id,
+          label: data.cityName,
+        }));
+        setUpdatedCityOptions(cityList);
+      }
+    });
+  }, [country]);
 
   const onEstore = (e) => {
     if (e.target.value.match('^[a-zA-Z0-9 ]*$'))
@@ -216,7 +234,7 @@ const SignUp = (props) => {
       cityId: city && city.value,
       email,
       password: passcode,
-      type : 'user',
+      type: 'user',
     };
     dispatch({ type: 'SIGNUP_REQUEST', signup: signupDetailsUsers });
   };
@@ -224,7 +242,7 @@ const SignUp = (props) => {
   return (
     <Grid fluid>
       <Header basic />
-      <OtpScreen show={showOtp} handleClose={handleClose} onSubmitOtp={onSubmitOtp} setResendOtp={resendOtp} email={email}  />
+      <OtpScreen show={showOtp} handleClose={handleClose} onSubmitOtp={onSubmitOtp} setResendOtp={resendOtp} email={email} />
       <Row>
         <Col md={6} sm={12} className="signup-margin" >
           <Image className="left-side" src="images/pic5.jpeg" />
