@@ -145,7 +145,7 @@ const ThriftStoreInfo = ({ location }) => {
             <div className="products-storeinfo">
               <span className="ik-ads">Products</span>
               <div className='scroll-tab'>
-                <MaterialTabs storeInfo={LocaleTemp} />
+                <MaterialTabs storeInfo={thriftStoreInfotype && thriftStoreInfotype.storeInfo.categoryDetails} />
               </div>
             </div>
           </Col>
