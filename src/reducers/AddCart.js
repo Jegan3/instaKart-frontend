@@ -1,4 +1,6 @@
-const initialState = {};
+const initialState = {
+  addCartGlobal: false,
+};
 
 export default (state = initialState, action) => {
   switch (action.type) {
@@ -7,6 +9,7 @@ export default (state = initialState, action) => {
         ...state,
         isLoading: true,
         error: false,
+        addCart: null,
       };
     case 'ADD_CART_SUCCESS':
       return {
@@ -24,7 +27,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         isLoading: false,
-        addCartGlobal: action.addCartGlobal,
+        addCartGlobal: true,
       };
     case 'BUY_NOW':
       return {

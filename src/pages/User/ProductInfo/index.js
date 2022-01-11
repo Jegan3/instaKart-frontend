@@ -88,6 +88,7 @@ const ProductInfo = ({ location }) => {
       quantity: count,
     }
     dispatch({ type: 'ADD_CART_REQUEST', addToCart: addToCart });
+    dispatch({ type: 'ADD_CART_GLOBAL' });
     history.push({ pathname: '/cart', state: 'addCart' });
     window.scrollTo(0, 0);
   }
