@@ -32,6 +32,7 @@ const Header = ({ basic, loginCart, hideloginCart, module, cartIcon }) => {
   const dispatch = useDispatch();
   const validLogin = useSelector((state) => state.loginState.login);
   const cart = useSelector((state) => state.cartState.cart);
+  const addCartGlobal = useSelector((state) => state.addCartState.addCartGlobal);
 
   const name = validLogin && validLogin.user.firstName || sessionStorage.firstName ? sessionStorage.firstName : false;
   const cartCount = cart && cart.cartInfo.map(item => (item.quantity)).reduce((prev, curr) => prev + curr, 0);
@@ -41,7 +42,7 @@ const Header = ({ basic, loginCart, hideloginCart, module, cartIcon }) => {
   const user = validLogin && validLogin.user.type === 'user' || sessionStorage.type === 'user';
 
   useEffect(() => {
-    if (user && name && !basic && !cartIcon) {
+    if (user && name && !basic && !cartIcon && !addCartGlobal) {
       dispatch({ type: 'CART_REQUEST' });
     }
   }, [name]);

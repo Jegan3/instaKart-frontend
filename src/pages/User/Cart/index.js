@@ -18,16 +18,7 @@ import { history } from '../../../routes';
 
 const Cart = ({ location }) => {
   const [toggle, setToggle] = useState(true);
-  const [fullName, setFullName] = useState('');
-  const [mobile, setMobile] = useState('');
-  const [address, setAddress] = useState('');
-  const [city, setCity] = useState();
-  const [country, setCountry] = useState();
-  const [zipCode, setZipCode] = useState();
-  const [email, setEmail] = useState('');
   const [count, setCount] = useState();
-  const [validate, setValidate] = useState('');
-  const [alertError, setAlertError] = useState(false);
 
   const dispatch = useDispatch();
   const buyNow = useSelector((state) => state.addCartState.buyNow);
@@ -35,12 +26,12 @@ const Cart = ({ location }) => {
   const isLoadingCart = useSelector((state) => state.cartState.isLoading);
   const isLoadingAddCart = useSelector((state) => state.addCartState.isLoading);
   const checkout = useSelector((state) => state.checkoutState.checkout);
+  const addCarted = useSelector((state) => state.addCartState.addCart);
 
   //store buyNow details in sessionstorage
   if (buyNow) {
     sessionStorage.buyNow = JSON.stringify(buyNow)
   }
-
   //passing buyNowproduct details
   const buyNowDetails = []
   if (location.state === 'buyNow') {
@@ -51,6 +42,7 @@ const Cart = ({ location }) => {
   const productList = location.state === 'addCart' ? cart && cart.cartInfo : buyNowDetails;
   const currency = productList && productList.length && productList[0].totalPrice.replace(/\d+([,.]\d+)?\s*/g, '');
   const subTotal = productList && productList.map(item => parseFloat(item.totalPrice.replace(/[^.0-9\.]+/g, ''))).reduce((prev, curr) => prev + curr, 0)
+  const cartCount = productList && productList.map(item => (item.quantity)).reduce((prev, curr) => prev + curr, 0);
 
   // admin charges
   const adminFee = subTotal * 0.025;
@@ -61,67 +53,23 @@ const Cart = ({ location }) => {
   const orderTotal = subTotal + adminFee + wipayFee;
 
   useEffect(() => {
-    if (location.state !== 'buyNow') {
-      dispatch({ type: 'CART_REQUEST' });
+    if (addCarted && location.state === 'addCart') {
+      dispatch({ type: 'CART_REQUEST' })
     }
-  }, [count]);
+  }, [addCarted]);
 
-  // useEffect(() => {
-  //     dispatch({ type: 'CART_REQUEST' });   
-  // }, [count]);
-
-  const onMobile = (e) => {
-    if (e.target.value.match('^[0-9]*$')) {
-      setMobile(e.target.value)
+  useEffect(() => {
+    if (checkout && checkout.url) {
+      window.location.assign(checkout.url);
     }
-  }
-  const onFullName = (e) => {
-    if (e.target.value.match('^[a-zA-Z ]*$')) {
-      setFullName(e.target.value);
-    }
-  };
+  }, [checkout]);
 
-  const onAddress = (e) => {
-    if (e.target.value.match('^[a-zA-Z0-9 ]*$')) {
-      setAddress(e.target.value)
-    }
-  }
-
-  const onZipCode = (e) => {
-    if (e.target.value.match('^[0-9]*$')) {
-      setZipCode(e.target.value)
-    }
-  }
-
-  const validateEmail = (email) => {
-    const regex = /\S+@\S+\.\S+/;
-    return regex.test(email);
-  };
-
-  const valid = validateEmail(email);
-
-  const onEmail = (e) => {
-    if (e.target.value.match('^[a-zA-Z0-9_@./#&+-]*$')) {
-      setEmail(e.target.value)
-    }
-  }
-
-  const onCountry = (e) => {
-    setCountry(e.target.value);
-  };
-
-  const onCity = (e) => {
-    if (e.target.value.match('^[a-zA-Z]*$')) {
-      setCity(e.target.value);
-    }
-  };
 
   const onProceedBuy = () => {
     setToggle(false)
   }
 
   const onDecrement = (info) => {
-
     if (location.state === 'addCart' && info.quantity > 1) {
 
       const productPrice = info.productPrice.replace(/[^.0-9\.]+/g, '');
@@ -189,7 +137,7 @@ const Cart = ({ location }) => {
       quantity: 0,
     }
     dispatch({ type: 'ADD_CART_REQUEST', addToCart: addToCart });
-    setCount(0)
+    setCount(0);
   }
 
   const onProceed = () => {
@@ -204,25 +152,25 @@ const Cart = ({ location }) => {
   return (
     <div>
       {location.state === 'addCart' ?
-        <Header /> : <Header cartIcon />
+        <Header page='cart' /> : <Header cartIcon page='cart' />
       }
       <div className="checkout-page">
         <Grid fluid className="fluid-scroll">
           <div className="checkout-details" >
-            <Row>
-              <Col md={8}>
-                <div className="product-card">
-                  <Col md={12} >
-                    <div className="shop-cart">
-                      <span className="titleproduct">
-                        Shopping Cart
-                      </span>
-                    </div>
-                  </Col>
-                  {isLoadingCart || isLoadingAddCart ? <Loader /> : <Row>
-                    {!subTotal ? <div className='basket'>
-                      Your Bucket Is Empty
-                    </div> :
+            {isLoadingCart || isLoadingAddCart ? <Loader /> : <Row>
+              {!subTotal ? <div className='basket'>
+                Your Bucket Is Empty
+              </div> : <Row>
+                <Col md={8}>
+                  <div className="product-card">
+                    <Col md={12} >
+                      <div className="shop-cart">
+                        <span className="titleproduct">
+                          Shopping Cart
+                        </span>
+                      </div>
+                    </Col>
+                    <Row>
                       <Row>
                         <Row>
                           <Col md={12}>
@@ -262,116 +210,106 @@ const Cart = ({ location }) => {
                             </div>
                           </Col>
                         </Row>
-                      </Row>}
-                  </Row>}
-                </div>
-              </Col>
-              <Col md={4} className="scroll-fix">
-                <div className="product-card list">
-                  <Row>
-                    <Col md={12} >
-                      <div className="billing-card clr">
-                        <Row>
-                          <Col md={12}>
-                            <div className="summary">
-                              <span>
-                                Summary
-                              </span>
-                            </div>
-                          </Col>
-                          <Col md={12}>
-                            <div className="items-list">
-                              <span className="items">
-                                ITEMS
-                              </span>
-                              <span className="items">
-                                $132
-                              </span>
-                            </div>
-                          </Col>
-                          <Col md={12}>
-                            <div className='bottom'>
-                              <label className="give-code ">GIVE CODE</label>
-                              <input
-                                type="text"
-                                className="form-control "
-                                placeholder="Enter Code"
-                                // value={storeName}
-                                // onChange={onStoreName}
-                                maxLength={30}
-                              />
-                            </div>
-                          </Col>
-                          <Col md={12}>
-                            <div className="items-list">
-                              <span className="items">
-                                Subtotal
-                              </span>
-                              <span className="items">
-                                {`${currency}${parseFloat(subTotal).toFixed(2)}`}
-                              </span>
-                            </div>
-                          </Col>
-                          <Col md={12}>
-                            <div className="items-list">
-                              <div className="sub-total">
-                                Admin Fee<span className="tax-info">(2.5%)</span>
+                      </Row>
+                    </Row>
+                  </div>
+                </Col>
+                <Col md={4} className="scroll-fix">
+                  <div className="product-card list">
+                    <Row>
+                      <Col md={12} >
+                        <div className="billing-card clr">
+                          <Row>
+                            <Col md={12}>
+                              <div className="summary">
+                                <span>
+                                  Summary
+                                </span>
                               </div>
-                              <div className="admin-service">
-                                {`${currency}${parseFloat(adminFee).toFixed(2)}`}
+                            </Col>
+                            <Col md={12}>
+                              <div className="items-list">
+                                <span className="items">
+                                  ITEMS
+                                </span>
+                                <span className="items">
+                                  {cartCount}
+                                </span>
                               </div>
-                            </div>
-                          </Col>
-                          <Col md={12}>
-                            <div className="items-list">
-                              <div className="sub-total">
-                                Wipay Fee<span className="tax-info">(3.5% + $0.25 USD)</span>
+                            </Col>
+                            <Col md={12}>
+                              <div className='bottom'>
+                                <label className="give-code ">GIVE CODE</label>
+                                <input
+                                  type="text"
+                                  className="form-control "
+                                  placeholder="Enter Code"
+                                  // value={storeName}
+                                  // onChange={onStoreName}
+                                  maxLength={30}
+                                />
                               </div>
-                              <div className="admin-service">
-                                {`${currency}${parseFloat(wipayFee).toFixed(2)}`}
+                            </Col>
+                            <Col md={12}>
+                              <div className="items-list">
+                                <span className="items">
+                                  Subtotal
+                                </span>
+                                <span className="items">
+                                  {`${currency}${parseFloat(subTotal).toFixed(2)}`}
+                                </span>
                               </div>
-                            </div>
-                          </Col>
-                          <Col md={12}>
-                            <div className="items-list">
-                              <span className="items">
-                                Order Total
-                              </span>
-                              <span className="items">
-                                {`${currency}${parseFloat(orderTotal).toFixed(2)}`}
-                              </span>
-                            </div>
-                          </Col>
-
-                          <Col xs={12}>
-                            <div className="checkoutbtn">
-                              <Button
-                                variant="contained"
-                                color="primary"
-                                // className="proceedbtn  modal-button"
-                                onClick={onProceed}
-                              >
-                                Proceed to Buy
-                              </Button>
-                            </div>
-                            <div className="checkoutbtn">
-                              <Button
-                                variant="contained"
-                                color="primary"
-                              // className="proceedbtn  modal-button"
-                              // onClick={submit}
-                              >
-                                Cash on Delivery
-                              </Button>
-                            </div>
-                          </Col>
-                        </Row>
-                      </div>
-                    </Col>
-                  </Row>
-                </div>
-              </Col>
-            </Row>
+                            </Col>
+                            <Col md={12}>
+                              <div className="items-list">
+                                <div className="sub-total">
+                                  Admin Fee<span className="tax-info">(2.5%)</span>
+                                </div>
+                                <div className="admin-service">
+                                  {`${currency}${parseFloat(adminFee).toFixed(2)}`}
+                                </div>
+                              </div>
+                            </Col>
+                            <Col md={12}>
+                              <div className="items-list">
+                                <div className="sub-total">
+                                  Wipay Fee<span className="tax-info">(3.5% + $0.25 USD)</span>
+                                </div>
+                                <div className="admin-service">
+                                  {`${currency}${parseFloat(wipayFee).toFixed(2)}`}
+                                </div>
+                              </div>
+                            </Col>
+                            <Col md={12}>
+                              <div className="items-list">
+                                <span className="items">
+                                  Order Total
+                                </span>
+                                <span className="items">
+                                  {`${currency}${parseFloat(orderTotal).toFixed(2)}`}
+                                </span>
+                              </div>
+                            </Col>
+                            <Col xs={12}>
+                              <div className="checkoutbtn">
+                                <Button
+                                  variant="contained"
+                                  color="primary"
+                                  // className="proceedbtn  modal-button"
+                                  onClick={onProceed}
+                                >
+                                  Proceed to Buy
+                                </Button>
+                              </div>
+                            </Col>
+                          </Row>
+                        </div>
+                      </Col>
+                    </Row>
+                  </div>
+                </Col>
+              </Row>}
+            </Row>}
           </div>
         </Grid>
       </div>
