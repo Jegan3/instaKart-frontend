@@ -28,13 +28,13 @@ const AddProduct = ({ storeId, productId, editPage }) => {
   const [taxPrice, setTaxPrice] = useState();
   const [finalPrice, setFinalPrice] = useState();
   const [productDescription, setProductDescription] = useState();
-  const [stockHand, setStockHand] = useState();
+  // const [stockHand, setStockHand] = useState();
   const [productWarranty, setProductWarranty] = useState();
   const [productShipping, setProductShipping] = useState();
   const [modal, setModal] = useState(false);
   const [alertError, setAlertError] = useState(false);
   const [clear, setClear] = useState(false);
-  const [status, setStatus] = useState(false);
+  // const [status, setStatus] = useState(false);
   const [totalprice, setTotalPrice] = useState('');
   const [productImageList, setProductImageList] = useState([]);
   const [productEdit] = useState(editPage);
@@ -45,10 +45,6 @@ const AddProduct = ({ storeId, productId, editPage }) => {
   const [videoEdit, setVideoEdit] = useState(true)
   const [removed, setRemoved] = useState([])
 
-  // const [long, setLong] = useState([])
-
-  // console.log('long', long);
-
   const dispatch = useDispatch();
   const thriftCategoryType = useSelector((state) => state.thriftCategoryState.thriftCategory);
   const addProduct = useSelector((state) => state.addProductState.addProduct);
@@ -56,7 +52,7 @@ const AddProduct = ({ storeId, productId, editPage }) => {
   const invalidAddProduct = useSelector((state) => state.addProductState.error);
   const productInfo = useSelector((state) => state.getProductState.product)
 
-  const priceInfo = productInfo && productInfo.productPrice.replace(/[^\d.-]/g, '');
+  const priceInfo = productInfo && productInfo.productPrice.replace(/[^\d.-]/g, '') - ((productInfo && productInfo.tax * 100) / 100);
   const finalPriceInfo = productInfo && productInfo.finalPrice.replace(/[^\d.-]/g, '');
   const categoryList = productInfo && productInfo.category;
 
@@ -64,23 +60,27 @@ const AddProduct = ({ storeId, productId, editPage }) => {
   (image.length === 0) && productInfo && productInfo.productImages.forEach(element => { image.push({ thumbUrl: element }) });
   const imageInfo = image.filter(value => !(value.status === "removed"));
 
-  // (productImageList.length === 0) &&  imageInfo.forEach(element => {productImageList.push(element)});
-
-  // const abcd = productImageList.filter(value =>!(value.status === "removed"));
-  // console.log('abcd',abcd);
-
-  // fileList.forEach((element, index, array) => {console.log("length",( array))});
-
-
-
-
   const videoInfo = productInfo && productInfo.productVideo
 
-  const statusOptions = [
-    { value: 'available', label: 'Available' },
-    { value: 'sold', label: 'Sold' },
-    { value: 'reserve', label: 'Reserve' },
-  ];
+  const productNameInfo = !productName && productEdit && productName !== '' ? productInfo && productInfo.productName : productName;
+  const categoryInfo = !category && productEdit && category !== '' ? categoryDetails : category;
+  const productPriceInfo = !price && !priceField && productEdit && price !== '' ? priceInfo : price;
+  const productFinalPriceInfo = !finalPrice && !priceField && productEdit && price !== '' ? finalPriceInfo : finalPrice;
+  const discountInfo = !discount && !priceField && productEdit && discount !== '' ? productInfo && productInfo.discount : discount;
+  const productTaxInfo = !tax && !priceField && productEdit && tax !== '' ? productInfo && productInfo.tax : tax;
+  const productImagesInfo = productEdit && imageEdit ? imageInfo : fileList;
+  const productVideoInfo = videoEdit && productEdit ? productInfo && productInfo.productVideo : video;
+  //  const stockHandInfo = !stockHand && productEdit && stockHand !== '' ? productInfo && productInfo.stockHand : stockHand;
+  const productDescriptionInfo = !productDescription && productEdit && productDescription !== '' ? productInfo && productInfo.productDescription : productDescription;
+  const productWarrantyInfo = !productWarranty && productEdit && productWarranty !== '' ? productInfo && productInfo.productWarranty : productWarranty;
+  const productShippingInfo = !productShipping && productEdit && productShipping !== '' ? productInfo && productInfo.productShipping : productShipping;
+  // const statusInfo = !status && productEdit && status !== '' ? productInfo && productInfo.status : status;
+
+  // const statusOptions = [
+  //   { value: 'available', label: 'Available' },
+  //   { value: 'sold', label: 'Sold' },
+  //   { value: 'reserve', label: 'Reserve' },
+  // ];
 
   useEffect(() => {
     if (clear && addProduct && addProduct.status) {
@@ -92,8 +92,8 @@ const AddProduct = ({ storeId, productId, editPage }) => {
       setDiscount('');
       setFinalPrice('');
       setVideo([]);
-      setStockHand('')
-      setStatus(false)
+      // setStockHand('')
+      // setStatus(false)
       setProductDescription('');
       setProductWarranty('');
       setProductImageList([]);
@@ -106,12 +106,6 @@ const AddProduct = ({ storeId, productId, editPage }) => {
       setClear(false)
     }
   }, [addProduct, invalidAddProduct])
-
-  // useEffect(() => {
-  // if (productImageList){
-  //   productImageList = productImageList && productImageList.filter(ar => !removed.find(rm => (rm.removedItem && removedItem.name === ar.name ) ))
-  // } 
-  // }, [fileList])
 
   useEffect(() => {
     if (productEdit) {
@@ -133,34 +127,34 @@ const AddProduct = ({ storeId, productId, editPage }) => {
   }, [categoryList]);
 
   useEffect(() => {
-    if (price && discount && tax) {
+    if (productPriceInfo && discountInfo && productTaxInfo) {
       setFinalPrice(finalPrice)
-    } else if (price && discount) {
+    } else if (productPriceInfo && discountInfo) {
       setFinalPrice(discountPrice)
-    } else if (price && tax) {
+    } else if (productPriceInfo && productTaxInfo) {
       setFinalPrice(taxPrice)
-    } else if (price) {
-      setFinalPrice(price)
+    } else if (productPriceInfo) {
+      setFinalPrice(productPriceInfo)
     } else {
       setFinalPrice(0)
     }
-  }, [price])
+  }, [productPriceInfo])
 
   useEffect(() => {
-    if (discount) {
+    if (discountInfo) {
       setFinalPrice(discountPrice)
     } else {
       setFinalPrice(finalPrice)
     }
-  }, [discount])
+  }, [discountInfo])
 
   useEffect(() => {
-    if (tax) {
+    if (productTaxInfo) {
       setFinalPrice(taxPrice)
     } else {
       setFinalPrice(finalPrice)
     }
-  }, [tax])
+  }, [productTaxInfo])
 
   const onModal = () => {
     setModal(true)
@@ -185,11 +179,10 @@ const AddProduct = ({ storeId, productId, editPage }) => {
   }));
 
   const onPrice = (e) => {
-    setPriceField(true)
     setPrice(e.target.value.substring(e.target.value.lastIndexOf('$') + 1))
     const a = e.target.value.substring(e.target.value.lastIndexOf('$') + 1)
-    const b = tax
-    const c = discount
+    const b = productTaxInfo
+    const c = discountInfo
     const d = a * (b / 100)
     const h = + a + d
     const f = h * (c / 100)
@@ -201,13 +194,12 @@ const AddProduct = ({ storeId, productId, editPage }) => {
   }
 
   const onTax = (e) => {
-    // setPriceField(true)
-    if (discount) {
+    if (discountInfo) {
       setTax(e.target.value)
       const c = e.target.value
-      const d = (c / 100) * price
-      const f = + price + d
-      const g = f * (discount / 100)
+      const d = (c / 100) * productPriceInfo
+      const f = + productPriceInfo + d
+      const g = f * (discountInfo / 100)
       const h = f - g
       setTaxPrice(h)
       setFinalPrice(h)
@@ -215,8 +207,8 @@ const AddProduct = ({ storeId, productId, editPage }) => {
     } else {
       setTax(e.target.value)
       const c = e.target.value
-      const d = (c / 100) * price
-      const f = +price + +d
+      const d = (c / 100) * productPriceInfo
+      const f = +productPriceInfo + +d
       setTaxPrice(f)
       setFinalPrice(f)
       setTotalPrice(f)
@@ -224,20 +216,19 @@ const AddProduct = ({ storeId, productId, editPage }) => {
   }
 
   const onDiscount = (e) => {
-    // setPriceField(true)
-    if (tax) {
+    if (productTaxInfo) {
       setDiscount(e.target.value)
-      const a = price
+      const a = productPriceInfo
       const b = e.target.value
-      const c = a * (tax / 100)
-      const d = +price + c
+      const c = a * (productTaxInfo / 100)
+      const d = +productPriceInfo + c
       const f = d * (b / 100)
       const g = d - f
       setDiscountPrice(g)
       setFinalPrice(g)
     } else {
       setDiscount(e.target.value)
-      const a = price
+      const a = productPriceInfo
       const b = e.target.value
       const c = a * (b / 100)
       const d = a - c
@@ -246,13 +237,13 @@ const AddProduct = ({ storeId, productId, editPage }) => {
     }
   }
 
-  const onStatus = (status) => {
-    setStatus(status)
-  }
+  // const onStatus = (status) => {
+  //   setStatus(status)
+  // }
 
-  const onStockHand = (e) => {
-    setStockHand(e.target.value)
-  }
+  // const onStockHand = (e) => {
+  //   setStockHand(e.target.value)
+  // }
 
   const onProductDescription = (e) => {
     setProductDescription(e.target.value)
@@ -284,11 +275,13 @@ const AddProduct = ({ storeId, productId, editPage }) => {
     } else if (fileList.length && fileList[fileList.length - 1].status === 'error') {
       message.error(`${fileList[fileList.length - 1].name} file uploaded failed`);
     }
-    // else if (fileList.length && removed) {
-    //   //message.error(`${removed.name} file deleted successfully`);
-    // }
+    else if (fileList.length && removedItem) {
+      message.error(`${removedItem.name} file deleted successfully`);
+      // productImageList.filter(info => info.name === removedItem.name )
+    }
     setImageList(newFileList);
-    removed.push({ removed: removedItem })
+    // removed.push(removedItem)
+    //console.log('removedItem', removedItem);
   };
 
   const onChangeVideo = async info => {
@@ -358,26 +351,12 @@ const AddProduct = ({ storeId, productId, editPage }) => {
     history.goBack()
   }
 
-  const productNameInfo = !productName && productEdit && productName !== '' ? productInfo && productInfo.productName : productName;
-  const categoryInfo = !category && productEdit && category !== '' ? categoryDetails : category;
-  const productPriceInfo = !price && !priceField && productEdit && price !== '' ? priceInfo : price;
-  const productFinalPriceInfo = !finalPrice && !priceField && productEdit && finalPrice !== '' ? finalPriceInfo : finalPrice;
-  const discountInfo = !discount && !priceField && productEdit && discount !== '' ? productInfo && productInfo.discount : discount;
-  const productTaxInfo = !tax && !priceField && productEdit && tax !== '' ? productInfo && productInfo.tax : tax;
-  const productImagesInfo = productEdit && imageEdit ? imageInfo : fileList;
-  const productVideoInfo = videoEdit && productEdit ? productInfo && productInfo.productVideo : video;
-  const stockHandInfo = !stockHand && productEdit && stockHand !== '' ? productInfo && productInfo.stockHand : stockHand;
-  const productDescriptionInfo = !productDescription && productEdit && productDescription !== '' ? productInfo && productInfo.productDescription : productDescription;
-  const productWarrantyInfo = !productWarranty && productEdit && productWarranty !== '' ? productInfo && productInfo.productWarranty : productWarranty;
-  const productShippingInfo = !productShipping && productEdit && productShipping !== '' ? productInfo && productInfo.productShipping : productShipping;
-  const statusInfo = !status && productEdit && status !== '' ? productInfo && productInfo.status : status;
-
-  const imagesList = productEdit ? productImagesInfo : productImageList;
-
   //product price without discount
   const productPrice = !productTaxInfo ? productPriceInfo : totalprice;
 
   const onSubmit = () => {
+    const imagesList = productEdit ? imageInfo.concat(productImageList) : productImageList;
+    console.log('imageInfo', imagesList);
     if (!productNameInfo || !categoryInfo || !productPriceInfo || !productDescriptionInfo || !productWarrantyInfo) {
       setAlertError(true)
       message.error('Please Fill All The Fields')
@@ -401,16 +380,21 @@ const AddProduct = ({ storeId, productId, editPage }) => {
         productPrice: `${symbol}${parseFloat(productPrice).toFixed(2)}`,
         discount: discountInfo,
         tax: productTaxInfo,
-        finalPrice: `${symbol}${parseFloat(finalPrice).toFixed(2)}`,
-        stockHand: stockHandInfo,
-        status: statusInfo.value,
+        finalPrice: `${symbol}${parseFloat(productFinalPriceInfo).toFixed(2)}`,
+        // stockHand: stockHandInfo,
+        // status: statusInfo.value,
         productDescription: productDescriptionInfo,
         productWarranty: productWarrantyInfo,
         productShipping: productShippingInfo,
         estoreId: storeId,
       };
       console.log('addproduct', addProduct);
-      dispatch({ type: 'ADD_PRODUCT_REQUEST', addProduct });
+      if (productEdit) {
+        dispatch({ type: 'EDIT_PRODUCT_REQUEST', addProduct })
+      }
+      else {
+        dispatch({ type: 'ADD_PRODUCT_REQUEST', addProduct });
+      }
     }
     setClear(true)
   };
@@ -580,7 +564,7 @@ const AddProduct = ({ storeId, productId, editPage }) => {
                       </Col>
                     </Row>
                   </Col>
-                  <Col lg={6}>
+                  {/* <Col lg={6}>
                     <Row className="pricerow-list-row">
                       <Col sm={6} xs={6}>
                         <label className="signup-label">Stocks on Hand  </label>
@@ -608,7 +592,7 @@ const AddProduct = ({ storeId, productId, editPage }) => {
                         />
                       </Col>
                     </Row>
-                  </Col>
+                  </Col> */}
                 </Row>
                 <Row>
                   <Col sm={12} md={6}>
