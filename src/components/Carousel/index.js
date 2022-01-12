@@ -3,7 +3,7 @@ import React from 'react';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import ReactPlayer from "react-player";
-import { Card, ThriftStoreNearYouCard, NewAdditionCard, ReviewCard, ThriftStoreInfoCategoriesCard } from '../Card';
+import { Card, ThriftStoreNearYouCard, NewAdditionCard, NewPromotionCard, ReviewCard, ThriftStoreInfoCategoriesCard } from '../Card';
 
 const responsive = {
   desktop: {
@@ -697,7 +697,7 @@ export const ThriftStoreNearYou = ({ thriftDetails, module, setLogin }) => (
   </Carousel>
 );
 
-export const CarouselThriftNewAdditions = ({ thriftDetails, module, setLogin }) => (
+export const CarouselThriftNewPromotions = ({ newPromotionProducts, module, setLogin }) => (
   <Carousel
     // ssr
     infinite
@@ -705,7 +705,21 @@ export const CarouselThriftNewAdditions = ({ thriftDetails, module, setLogin }) 
     autoPlaySpeed={3000}
     responsive={responsiveThrift}
   >
-    {thriftDetails ? thriftDetails.productsInfo.map((info) => (
+    {newPromotionProducts ? newPromotionProducts.map((info) => (
+      <NewPromotionCard key={info.productId} product={info.productId} imgUrl={info.productImage} path={'/productinfo'} finalPrice={info.finalPrice} productPrice={info.productPrice} discount={info.discount} productName={info.productName} setLogin={setLogin} module={module} />
+    )) : []}
+  </Carousel>
+);
+
+export const CarouselThriftNewAdditions = ({ newAdditionProducts, module, setLogin }) => (
+  <Carousel
+    // ssr
+    infinite
+    // autoPlay
+    autoPlaySpeed={3000}
+    responsive={responsiveThrift}
+  >
+    {newAdditionProducts ? newAdditionProducts.map((info) => (
       <NewAdditionCard key={info.productId} product={info.productId} imgUrl={info.productImage} path={'/productinfo'} price={info.finalPrice} productName={info.productName} setLogin={setLogin} module={module} />
     )) : []}
   </Carousel>

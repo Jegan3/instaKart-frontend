@@ -5,7 +5,7 @@ import { Row, Col, Grid } from 'react-bootstrap';
 import TextLoop from "react-text-loop";
 import Footer from '../../../components/Footer';
 import Header from '../../../components/Header';
-import { CarouselThriftNewAdditions, ThriftStoreNearYou, CarouselThriftStoreCategoryUp, CarouselThriftStoreCategoryBottom } from '../../../components/Carousel';
+import { CarouselThriftNewAdditions, CarouselThriftNewPromotions, ThriftStoreNearYou, CarouselThriftStoreCategoryUp, CarouselThriftStoreCategoryBottom } from '../../../components/Carousel';
 import { ThriftBanners } from '../../../components/Banners';
 import Particle from '../../../components/Particle';
 
@@ -22,6 +22,16 @@ const ThriftStore = () => {
 
   const dispatch = useDispatch();
   const thriftDetails = useSelector((state) => state.thriftDetailsState.thriftDetails);
+
+  const productInfo = thriftDetails && thriftDetails.productsInfo
+
+  const newPromotionProducts = productInfo && productInfo.filter((value) => value.discount)
+  const newAdditionProducts = productInfo && productInfo.filter((value) => !value.discount)
+
+
+  console.log("newPromotionProducts", newPromotionProducts)
+  console.log("newAdditionProducts", newAdditionProducts)
+
 
   useEffect(() => {
     dispatch({ type: 'THRIFT_DETAILS_REQUEST' });
@@ -82,15 +92,22 @@ const ThriftStore = () => {
               <Particle color='#f5f5f5' number='150' direction='top' />
             </div>
             <h3>NEW PROMOTIONS</h3>
-            <CarouselThriftNewAdditions thriftDetails={thriftDetails} setLogin={setLoginModal} module='Thrift Store' />
+            <CarouselThriftNewPromotions newPromotionProducts={newPromotionProducts} setLogin={setLoginModal} module='Thrift Store' />
           </div>
           <br />
         </div>
       </Row>
       <Row>
-      </Row>
-      <Row>
-
+        <div className="bg-thrift">
+          <div className="thrift-ads">
+            <div className='particles-sub'>
+              <Particle color='#f5f5f5' number='150' direction='top' />
+            </div>
+            <h3>NEW ADDITIONS</h3>
+            <CarouselThriftNewAdditions newAdditionProducts={newAdditionProducts} setLogin={setLoginModal} module='Thrift Store' />
+          </div>
+          <br />
+        </div>
       </Row>
       <div>
         <Footer />
