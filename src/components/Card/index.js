@@ -73,24 +73,62 @@ export const ThriftStoreNearYouCard = ({ imgUrl, storeName, country, path, thrif
 
   return (
     <div className=" property-card card" onClick={Card}>
-    <div className=" property card-ads">
-      <img className="property-image" src={imgUrl ? imgUrl : "images/noimage.png"} />
+      <div className=" property card-ads">
+        <img className="property-image" src={imgUrl ? imgUrl : "images/noimage.png"} />
+      </div>
+      <div className="property-description">
+        <div className="listing-job card-listing-job ">
+          <a>{storeName}</a>
+        </div>
+        <div className="listing-job card-listing-job">
+          <i className="fas fa-map-marker-alt"></i>
+          <span>{country}</span>
+        </div>
+        <div className="listing-rating card-listing-job">
+          <div className="stars"> <i className="fa fa-star"></i> <i className="fa fa-star"></i> <i className="fa fa-star"></i> <i className="fa fa-star"></i> </div>
+          <div className="ratings"> <span className="product-rating">4.6</span><span className="product-rating">/5</span></div>
+          <div className="listing-country"> <span>46 ratings & 15 reviews</span> </div>
+        </div>
+      </div>
     </div>
-    <div className="property-description">
-      <div className="listing-job card-listing-job ">
-      <a>{storeName}</a>
+  )
+}
+
+export const NewPromotionCard = ({ imgUrl, product, path, finalPrice, productPrice, discount, productName, module, setLogin }) => {
+
+  const Card = () => {
+    if (sessionStorage.type === 'user') {
+      history.push({ pathname: path, state: { product: product, module: module } })
+      window.scrollTo(0, 0);
+    } else if (sessionStorage.type === 'vendor') {
+      message.error('Please Login As User');
+    }
+    else {
+      setLogin(true)
+    }
+  }
+
+  return (
+    <div className=" property-card card" onClick={Card}>
+      <div className=" property card-ads">
+        <img className="property-image" src={imgUrl} />
+        <div className="discount">{discount}%OFF</div>
       </div>
-      <div className="listing-job card-listing-job">
-      <i className="fas fa-map-marker-alt"></i>
-      <span>{country}</span>
-      </div>
-      <div className="listing-rating card-listing-job">
-        <div className="stars"> <i className="fa fa-star"></i> <i className="fa fa-star"></i> <i className="fa fa-star"></i> <i className="fa fa-star"></i> </div>
-        <div className="ratings"> <span className="product-rating">4.6</span><span className="product-rating">/5</span></div>
-        <div className="listing-country"> <span>46 ratings & 15 reviews</span> </div>
+      <div className="property-description">
+        <div className="listing-job card-listing-job ">
+          <a>{productName}</a>
+        </div>
+        <div className="listing-job card-listing-job">
+          <span className="currency">{finalPrice}</span>
+          <span className="striked-out">{productPrice}</span>
+        </div>
+        <div className="listing-rating card-listing-job">
+          <div className="stars"> <i className="fa fa-star"></i> <i className="fa fa-star"></i> <i className="fa fa-star"></i> <i className="fa fa-star"></i> </div>
+          <div className="ratings"> <span className="product-rating">4.6</span><span className="product-rating">/5</span></div>
+          <div className="listing-country"> <span>46 ratings & 15 reviews</span> </div>
+        </div>
       </div>
     </div>
-  </div>
   )
 }
 
@@ -119,7 +157,6 @@ export const NewAdditionCard = ({ imgUrl, product, path, price, productName, mod
         </div>
         <div className="listing-job card-listing-job">
           <span className="currency">{price}</span>
-          <span className="striked-out">{price}</span><span className="discount">20%off</span>
         </div>
         <div className="listing-rating card-listing-job">
           <div className="stars"> <i className="fa fa-star"></i> <i className="fa fa-star"></i> <i className="fa fa-star"></i> <i className="fa fa-star"></i> </div>
@@ -161,7 +198,7 @@ export const ReviewCard = ({ title, content, date }) => {
 }
 
 export const ThriftStoreInfoCategoriesCard = ({ title, className, imgUrl, product, path, module }) => {
-console.log('module',module)
+  console.log('module', module)
   const Card = () => {
     if (sessionStorage.type === 'user') {
       history.push({ pathname: path, state: { product: product, module: module } })
@@ -176,15 +213,15 @@ console.log('module',module)
 
   return (
     <div>
-        <div className={className} onClick={Card}>
-          <div className="card-thriftStore">
-            <img src={imgUrl} alt="Avatar" className="photos " />
-            <div className="middle">
-              <div className="text">{title}
-              </div>
+      <div className={className} onClick={Card}>
+        <div className="card-thriftStore">
+          <img src={imgUrl} alt="Avatar" className="photos " />
+          <div className="middle">
+            <div className="text">{title}
             </div>
           </div>
         </div>
+      </div>
     </div>
   )
 }
