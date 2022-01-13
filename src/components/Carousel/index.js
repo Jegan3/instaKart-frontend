@@ -748,10 +748,7 @@ export const CarouselReviewCard = () => (
 export const CarouselNewEStoreVideo = ({ video }) => (
   <Carousel
     infinite
-    autoPlay
-    autoPlaySpeed={3000}
     responsive={responsiveVideo}
-    pauseOnHover={false}
   >
     {video ? video.video.map((item) => (
       // <Card key={card.id} className='card' imgUrl={card.imgUrl} />

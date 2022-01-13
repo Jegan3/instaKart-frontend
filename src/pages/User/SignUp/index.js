@@ -144,6 +144,7 @@ const SignUp = (props) => {
   // Country Options
   const countryOptions = Locale.map((item) => ({
     value: item._id,
+    isDisabled: item._id !=='609270b7b5c92470d9443af5' && type === 'vendor' && true,
     label: <div><img className="flag" src={item.flag} alt="new" /><span className="signup-flag">{item.countryName}</span></div>,
   }));
 
