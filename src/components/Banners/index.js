@@ -5,7 +5,7 @@ import { Carousel } from 'react-bootstrap';
 export const Banners = ({ primaryBanner }) => (
   <div className="banners">
     <Carousel pauseOnHover={false}>
-      { primaryBanner && primaryBanner.primaryBanner.map((item, index) => <Carousel.Item >
+      {primaryBanner && primaryBanner.primaryBanner.map((item, index) => <Carousel.Item >
         <img
           className="d-block w-100"
           src={item}
@@ -38,7 +38,7 @@ export const ThriftBanners = () => (
 
 export const SecondaryBanners = ({ secondaryBanner }) => (
   <div className="banners">
-    <Carousel>
+    <Carousel pauseOnHover={false}>
       {secondaryBanner && secondaryBanner.secondaryBanner.map((item, index) => <Carousel.Item >
         <img
           className="d-block w-100"
