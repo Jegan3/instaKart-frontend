@@ -94,7 +94,7 @@ export const ThriftStoreNearYouCard = ({ imgUrl, storeName, country, path, thrif
   )
 }
 
-export const NewPromotionCard = ({ imgUrl, product, path, finalPrice, productPrice, discount, productName, module, setLogin }) => {
+export const ThriftProductsCard = ({ imgUrl, product, path, finalPrice, productPrice, discount, productName, module, setLogin }) => {
 
   const Card = () => {
     if (sessionStorage.type === 'user') {
@@ -112,7 +112,9 @@ export const NewPromotionCard = ({ imgUrl, product, path, finalPrice, productPri
     <div className=" property-card card" onClick={Card}>
       <div className=" property card-ads">
         <img className="property-image" src={imgUrl} />
-        <div className="discount">{discount}%OFF</div>
+        {discount && <div className="discount" >
+          {discount}%OFF
+        </div>}
       </div>
       <div className="property-description">
         <div className="listing-job card-listing-job ">
@@ -122,47 +124,12 @@ export const NewPromotionCard = ({ imgUrl, product, path, finalPrice, productPri
           <span className="currency">{finalPrice}</span>
           <span className="striked-out">{productPrice}</span>
         </div>
-        <div className="listing-rating card-listing-job">
+        {/* For feature use */}
+        {/* <div className="listing-rating card-listing-job">
           <div className="stars"> <i className="fa fa-star"></i> <i className="fa fa-star"></i> <i className="fa fa-star"></i> <i className="fa fa-star"></i> </div>
           <div className="ratings"> <span className="product-rating">4.6</span><span className="product-rating">/5</span></div>
           <div className="listing-country"> <span>46 ratings & 15 reviews</span> </div>
-        </div>
-      </div>
-    </div>
-  )
-}
-
-export const NewAdditionCard = ({ imgUrl, product, path, price, productName, module, setLogin }) => {
-
-  const Card = () => {
-    if (sessionStorage.type === 'user') {
-      history.push({ pathname: path, state: { product: product, module: module } })
-      window.scrollTo(0, 0);
-    } else if (sessionStorage.type === 'vendor') {
-      message.error('Please Login As User');
-    }
-    else {
-      setLogin(true)
-    }
-  }
-
-  return (
-    <div className=" property-card card" onClick={Card}>
-      <div className=" property card-ads">
-        <img className="property-image" src={imgUrl} />
-      </div>
-      <div className="property-description">
-        <div className="listing-job card-listing-job ">
-          <a>{productName}</a>
-        </div>
-        <div className="listing-job card-listing-job">
-          <span className="currency">{price}</span>
-        </div>
-        <div className="listing-rating card-listing-job">
-          <div className="stars"> <i className="fa fa-star"></i> <i className="fa fa-star"></i> <i className="fa fa-star"></i> <i className="fa fa-star"></i> </div>
-          <div className="ratings"> <span className="product-rating">4.6</span><span className="product-rating">/5</span></div>
-          <div className="listing-country"> <span>46 ratings & 15 reviews</span> </div>
-        </div>
+        </div> */}
       </div>
     </div>
   )

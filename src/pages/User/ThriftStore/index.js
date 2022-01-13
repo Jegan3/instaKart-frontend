@@ -5,7 +5,7 @@ import { Row, Col, Grid } from 'react-bootstrap';
 import TextLoop from "react-text-loop";
 import Footer from '../../../components/Footer';
 import Header from '../../../components/Header';
-import { CarouselThriftNewAdditions, CarouselThriftNewPromotions, ThriftStoreNearYou, CarouselThriftStoreCategoryUp, CarouselThriftStoreCategoryBottom } from '../../../components/Carousel';
+import { ThriftProducts, ThriftStoreNearYou, CarouselThriftStoreCategoryUp, CarouselThriftStoreCategoryBottom } from '../../../components/Carousel';
 import { ThriftBanners } from '../../../components/Banners';
 import Particle from '../../../components/Particle';
 
@@ -27,11 +27,6 @@ const ThriftStore = () => {
 
   const newPromotionProducts = productInfo && productInfo.filter((value) => value.discount)
   const newAdditionProducts = productInfo && productInfo.filter((value) => !value.discount)
-
-
-  console.log("newPromotionProducts", newPromotionProducts)
-  console.log("newAdditionProducts", newAdditionProducts)
-
 
   useEffect(() => {
     dispatch({ type: 'THRIFT_DETAILS_REQUEST' });
@@ -92,7 +87,7 @@ const ThriftStore = () => {
               <Particle color='#f5f5f5' number='150' direction='top' />
             </div>
             <h3>NEW PROMOTIONS</h3>
-            <CarouselThriftNewPromotions newPromotionProducts={newPromotionProducts} setLogin={setLoginModal} module='Thrift Store' />
+            <ThriftProducts products={newPromotionProducts} setLogin={setLoginModal} module='Thrift Store' />
           </div>
           <br />
         </div>
@@ -104,7 +99,7 @@ const ThriftStore = () => {
               <Particle color='#f5f5f5' number='150' direction='top' />
             </div>
             <h3>NEW ADDITIONS</h3>
-            <CarouselThriftNewAdditions newAdditionProducts={newAdditionProducts} setLogin={setLoginModal} module='Thrift Store' />
+            <ThriftProducts products={newAdditionProducts} setLogin={setLoginModal} module='Thrift Store' />
           </div>
           <br />
         </div>
