@@ -28,13 +28,13 @@ const AddProduct = ({ storeId, productId, editPage }) => {
   const [taxPrice, setTaxPrice] = useState();
   const [finalPrice, setFinalPrice] = useState();
   const [productDescription, setProductDescription] = useState();
-  // const [stockHand, setStockHand] = useState();
+  const [stockHand, setStockHand] = useState();
   const [productWarranty, setProductWarranty] = useState();
   const [productShipping, setProductShipping] = useState();
   const [modal, setModal] = useState(false);
   const [alertError, setAlertError] = useState(false);
   const [clear, setClear] = useState(false);
-  // const [status, setStatus] = useState(false);
+  const [status, setStatus] = useState(false);
   const [totalprice, setTotalPrice] = useState('');
   const [productImageList, setProductImageList] = useState([]);
   const [productEdit] = useState(editPage);
@@ -70,17 +70,17 @@ const AddProduct = ({ storeId, productId, editPage }) => {
   const productTaxInfo = !tax && !priceField && productEdit && tax !== '' ? productInfo && productInfo.tax : tax;
   const productImagesInfo = productEdit && imageEdit ? imageInfo : fileList;
   const productVideoInfo = videoEdit && productEdit ? productInfo && productInfo.productVideo : video;
-  //  const stockHandInfo = !stockHand && productEdit && stockHand !== '' ? productInfo && productInfo.stockHand : stockHand;
+   const stockHandInfo = !stockHand && productEdit && stockHand !== '' ? productInfo && productInfo.stockHand : stockHand;
   const productDescriptionInfo = !productDescription && productEdit && productDescription !== '' ? productInfo && productInfo.productDescription : productDescription;
   const productWarrantyInfo = !productWarranty && productEdit && productWarranty !== '' ? productInfo && productInfo.productWarranty : productWarranty;
   const productShippingInfo = !productShipping && productEdit && productShipping !== '' ? productInfo && productInfo.productShipping : productShipping;
-  // const statusInfo = !status && productEdit && status !== '' ? productInfo && productInfo.status : status;
+  const statusInfo = !status && productEdit && status !== '' ? productInfo && productInfo.status : status;
 
-  // const statusOptions = [
-  //   { value: 'available', label: 'Available' },
-  //   { value: 'sold', label: 'Sold' },
-  //   { value: 'reserve', label: 'Reserve' },
-  // ];
+  const statusOptions = [
+    { value: 'available', label: 'Available' },
+    { value: 'sold', label: 'Sold' },
+    { value: 'reserve', label: 'Reserve' },
+  ];
 
   useEffect(() => {
     if (clear && addProduct && addProduct.status) {
@@ -92,8 +92,8 @@ const AddProduct = ({ storeId, productId, editPage }) => {
       setDiscount('');
       setFinalPrice('');
       setVideo([]);
-      // setStockHand('')
-      // setStatus(false)
+      setStockHand('')
+      setStatus(false)
       setProductDescription('');
       setProductWarranty('');
       setProductImageList([]);
@@ -237,13 +237,13 @@ const AddProduct = ({ storeId, productId, editPage }) => {
     }
   }
 
-  // const onStatus = (status) => {
-  //   setStatus(status)
-  // }
+  const onStatus = (status) => {
+    setStatus(status)
+  }
 
-  // const onStockHand = (e) => {
-  //   setStockHand(e.target.value)
-  // }
+  const onStockHand = (e) => {
+    setStockHand(e.target.value)
+  }
 
   const onProductDescription = (e) => {
     setProductDescription(e.target.value)
@@ -533,7 +533,7 @@ const AddProduct = ({ storeId, productId, editPage }) => {
                         <span className="percentage">%</span>
                       </Col>
                       <Col sm={3} xs={6}>
-                        <label className="signup-label">Discount </label>
+                        <label className="signup-label">Discount</label>
                         <Cleave
                           className="form-control"
                           maxLength={10}
@@ -548,7 +548,7 @@ const AddProduct = ({ storeId, productId, editPage }) => {
                         <span className="percentage">%</span>
                       </Col>
                       <Col sm={3} xs={6}>
-                        <label className="signup-label">Final Price  </label>
+                        <label className="signup-label">Final Price</label>
                         {thriftCategoryType && <Cleave
                           options={{
                             prefix: thriftCategoryType.symbol,
@@ -564,7 +564,7 @@ const AddProduct = ({ storeId, productId, editPage }) => {
                       </Col>
                     </Row>
                   </Col>
-                  {/* <Col lg={6}>
+                  <Col lg={6}>
                     <Row className="pricerow-list-row">
                       <Col sm={6} xs={6}>
                         <label className="signup-label">Stocks on Hand  </label>
@@ -592,7 +592,7 @@ const AddProduct = ({ storeId, productId, editPage }) => {
                         />
                       </Col>
                     </Row>
-                  </Col> */}
+                  </Col>
                 </Row>
                 <Row>
                   <Col sm={12} md={6}>
