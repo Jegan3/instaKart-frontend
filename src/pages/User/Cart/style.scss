@@ -1,334 +1,148 @@
-.checkout-page {
+.cart-page-dsn {
   margin: 0%;
   padding: 15px;
-}
 
-.titleproduct {
-  font-size: 25px;
-  padding-top: 7%;
-  cursor: pointer;
-  margin: 5% 0px;
-  font-weight: 800;
-  font-family: monospace;
-}
-
-.scroll-fix {
-  position: sticky;
-  top: 3%;
-}
-
-.fluid-scroll {
-  overflow-x: inherit !important;
-  overflow-y: inherit !important;
-  margin: unset;
-}
-.clr {
-  background-color: gainsboro !important;
-}
-
-.give-code {
-  margin-top: 3%;
-  white-space: nowrap;
-  padding: 10px 0px 10px 0px;
-}
-
-.summary {
-  margin: 0% 0% 7%;
-  padding: 2px 0px 15px 0px;
-  font-size: 25px;
-  border-bottom: 1px solid white;
-}
-
-.bottom {
-  border-bottom: 1px solid white;
-  padding-bottom: 10%;
-}
-
-.price {
-  margin: 9% 0%;
-}
-
-.items-list {
-  display: flex;
-  justify-content: space-between;
-  font-weight: 700;
-  font-family: monospace;
-  cursor: pointer;
-
-  .items {
-    font-size: 16px;
-  }
-}
-
-.basket {
-  font-size: 30px;
-  text-align: center;
-  font-family: cursive;
-  font-weight: 900;
-}
-
-.itemsproduct {
-  float: right;
-  cursor: pointer;
-  font-weight: 800;
-  font-family: monospace;
-  font-size: 20px;
-}
-
-.final-total {
-  cursor: pointer;
-  font-weight: 800;
-  font-family: monospace;
-  font-size: 20px;
-}
-
-.total {
-  cursor: pointer;
-  font-weight: 800;
-  font-family: monospace;
-  font-size: 17px;
-
-  .sub-total {
-    color: gray;
-    font-weight: 800;
-    font-family: monospace;
+  .fluid-scroll {
+    overflow-x: inherit !important;
+    overflow-y: inherit !important;
+    margin: unset;
   }
 
-  .sub-price {
-    font-size: 20px;
-    position: relative;
-    font-family: monospace;
-  }
+  .cart-details {
+    margin: 7% 2%;
+    padding: 5%;
+    padding-bottom: 7%;
+    padding-top: 5%;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(63, 63, 68, 0.1);
+    background-color: #ffffff;
 
-  .admin-service {
-    font-size: 17px;
-    font-weight: 700;
-    font-family: monospace;
-    color: gray;
-    cursor: pointer;
-  }
-
-  .tax-info {
-    font-size: 10px;
-    font-weight: 700;
-    font-family: monospace;
-    color: gray;
-    padding-left: 5px;
-  }
-}
-
-.subprice {
-  font-size: 20px;
-  position: relative;
-  float: right;
-  bottom: 10px;
-  left: 20px;
-  margin: 9%;
-  font-family: monospace;
-}
-
-.quanity-check {
-  cursor: pointer;
-  font-family: monospace;
-
-  .quanitybtn {
-    cursor: pointer;
-  }
-}
-
-.checkout-details {
-  margin: 7% 2%;
-  padding: 7%;
-  padding-bottom: 7%;
-  padding-top: 5%;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(63, 63, 68, 0.1);
-  background-color: #ffffff;
-
-  .product-items {
-    padding-right: 15px;
-    padding-left: 15px;
-  }
-
-  .address-title {
-    color: #ffffff;
-    margin: 1% 0px;
-    font-weight: 800;
-    font-family: initial;
-    font-size: 30px;
-  }
-
-  .checkout-feild {
-    margin: 3% 0%;
-
-    .MuiSvgIcon-root {
-      color: #ffffff;
-      font-size: 20px;
-    }
-  }
-
-  .name-price {
-    font-weight: 800;
-    font-family: initial;
-  }
-
-  .product-info-details {
-    padding-bottom: 10px;
-    border-bottom: 1px solid lightgrey;
-    text-align: end;
-    margin: 1%;
-
-    img {
-      width: 8rem
+    .shop-cart {
+      padding: 0px 45px 45px 45px;
+      font-size: 25px;
+      font-weight: 800;
+      font-family: Roboto, Helvetica Neue, Arial, sans-serif;
     }
 
-    .product-remove {
-      font-size: 15px;
-      font-weight: 700;
-      left: 15px;
-      position: relative;
-      font-family: monospace;
-      color: gray;
-      cursor: pointer;
+    .product-info-details {
+      padding-bottom: 20px;
+      border-bottom: 1px solid lightgrey;
+      text-align: end;
+      margin: 1%;
+      font-family: Roboto, Helvetica Neue, Arial, sans-serif;
+      font-weight: 600;
+      font-size: 16px;
 
-      :hover {
-        color: black;
+      .cart-items {
+        display: flex;
+        justify-content: space-between;
+
+        .img-position {
+          display: grid;
+          width: 14%;
+          padding-right: 0px !important;
+          padding-left: 0px !important;
+        }
+
+        img {
+          width: 10rem
+        }
+
+        .product-name-position {
+          display: grid;
+          width: 28%;
+          text-align: initial;
+          position: relative;
+          padding-right: 0px !important;
+          padding-left: 20px !important;
+        }
+
+        .quanity-check-position {
+          display: grid;
+          text-align: center;
+          position: relative;
+          cursor: pointer;
+        }
+
+        .product-price-position {
+          display: grid;
+          text-align: end;
+        }
+
+        .product-remove {
+          font-size: 15px;
+          left: 0px;
+          position: relative;
+          color: gray;
+          cursor: pointer;
+        }
+
+        .product-remove:hover {
+          color: rgb(0, 0, 0);
+        }
       }
     }
 
-    .productlist {
-      font-size: 18px;
-      font-weight: 700;
-      position: relative;
-      font-family: monospace;
-      cursor: pointer;
-      padding-bottom: 1%;
+    .scroll-fix {
+      position: sticky;
+      top: 3%;
+
+      .clr {
+        background-color: gainsboro !important;
+      }
+
+      .give-code {
+        margin-top: 3%;
+        white-space: nowrap;
+        padding: 10px 0px 10px 0px;
+      }
+
+      .summary {
+        margin: 0% 0% 7%;
+        padding: 2px 0px 15px 0px;
+        font-size: 25px;
+        border-bottom: 1px solid white;
+      }
+
+      .bottom {
+        border-bottom: 1px solid white;
+        padding-bottom: 10%;
+      }
+
+      .items-list {
+        display: flex;
+        justify-content: space-between;
+        font-weight: 700;
+        font-family: Roboto, Helvetica Neue, Arial, sans-serif;
+        cursor: pointer;
+
+        .items {
+          font-size: 16px;
+        }
+      }
+
+      .billing-card {
+        background-color: #2F374B;
+        padding: 8%;
+        margin: 1%;
+      }
+
+      .checkout-label {
+        margin-top: 3%;
+        font-size: 15px;
+      }
+
+      .checkoutbtn {
+        text-align: center;
+        margin: 5%;
+
+        .MuiButton-containedPrimary {
+          color: #fff;
+          font-size: 13px;
+          padding: 10px 25px;
+          background-color: #3f51b5;
+        }
+      }
     }
 
-    .nowrap {
-      white-space: nowrap;
-    }
-
-    .product-name {
-      padding-right: 12px;
-    }
-
-    .product-price {
-      font-size: 18px;
-      font-weight: 700;
-      font-family: monospace;
-      cursor: pointer;
-    }
-  }
-
-  .billing-card {
-    background-color: #2F374B;
-    padding: 8%;
-    margin: 1%;
-  }
-
-  .checkout-label {
-    margin-top: 3%;
-    font-size: 15px;
-  }
-
-  .MuiFormLabel-root {
-    color: #ffffff;
-    font-size: 14px;
-    font-weight: 500;
-    font-family: initial;
-  }
-
-  .MuiFormControl-root {
-    width: 100%;
-  }
-
-  .MuiInput-underline:before {
-    border-bottom: 1px solid#ffffff !important;
-  }
-
-  .MuiInput-underline:hover {
-    border-bottom: transparent !important;
-  }
-
-  .MuiFormLabel-root.Mui-focused {
-    color: #ffffff;
-  }
-
-  .MuiInput-underline:after {
-    border-bottom: 1px solid #28a4d9 !important;
-  }
-
-  .MuiInput-underline {
-    border-bottom: transparent !important;
-  }
-
-  .MuiInputBase-input {
-    color: #ffffff;
-    font-size: 13px;
-    border-bottom: 1px solid#ffffff;
-  }
-
-  .MuiTypography-h6 {
-    color: #ffffff;
-    font-size: 14px;
-    font-weight: 500;
-    font-family: initial;
-    line-height: 0;
-    margin-top: 10px;
-  }
-
-  .checkoutbtn {
-    text-align: center;
-    margin: 5%;
-
-    .MuiButton-containedPrimary {
-      color: #fff;
-      font-size: 13px;
-      padding: 10px 25px;
-      background-color: #3f51b5;
-    }
-  }
-
-  .MuiCard-root {
-    background-color: #515863;
-  }
-
-  .subtotal {
-    font-size: 30px;
-    margin: 1%;
-    text-overflow: ellipsis;
-    cursor: pointer;
-    font-weight: 800;
-    font-family: monospace;
-  }
-
-  .btn-end {
-    float: right;
-    margin: 2%;
-    margin-top: 5%;
-
-    .proceed-butn {
-      white-space: nowrap;
-      position: relative;
-      font-family: monospace;
-    }
-  }
-
-  .proceedbtn {
-    border-color: #28a4d9 !important;
-    color: #28a4d9 !important;
-    display: block;
-    border-width: 1px;
-    background-color: transparent !important;
-    padding: 8px 16px;
-    font-size: 18px;
-    line-height: 1.3333333;
-    border-radius: 6px;
-    opacity: .8;
-    float: right;
-  }
-
-  .shop-cart {
-    padding-bottom: 10%;
   }
 }

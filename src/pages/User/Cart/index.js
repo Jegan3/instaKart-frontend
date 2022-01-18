@@ -1,24 +1,14 @@
 /*eslint-disable*/
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Grid, Row, Col } from 'react-bootstrap';
-import { message } from 'antd';
-import TextField from '@material-ui/core/TextField';
-import ScrollAnimation from 'react-animate-on-scroll';
 import Button from '@material-ui/core/Button';
-import InputLabel from '@mui/material/InputLabel';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
-import MenuItem from '@mui/material/MenuItem';
 import Header from '../../../components/Header';
-import { Locale } from '../../../constants/Locale';
 import Footer from '../../../components/Footer';
 import Loader from '../../../components/Loader';
 import { history } from '../../../routes';
 
 const Cart = ({ location }) => {
-  const [toggle, setToggle] = useState(true);
-  const [count, setCount] = useState();
 
   const dispatch = useDispatch();
   const buyNow = useSelector((state) => state.addCartState.buyNow);
@@ -63,11 +53,6 @@ const Cart = ({ location }) => {
       window.location.assign(checkout.url);
     }
   }, [checkout]);
-
-
-  const onProceedBuy = () => {
-    setToggle(false)
-  }
 
   const onDecrement = (info) => {
     if (location.state === 'addCart' && info.quantity > 1) {
@@ -154,67 +139,57 @@ const Cart = ({ location }) => {
       {location.state === 'addCart' ?
         <Header page='cart' /> : <Header cartIcon page='cart' />
       }
-      <div className="checkout-page">
+      <div className="cart-page-dsn">
         <Grid fluid className="fluid-scroll">
-          <div className="checkout-details" >
+          <div className="cart-details" >
             {isLoadingCart || isLoadingAddCart ? <Loader /> : <Row>
               {!subTotal ? <div className='basket'>
                 Your Bucket Is Empty
               </div> : <Row>
-                <Col md={8}>
+                <Row>
+                  <Col md={12} >
+                    <div className="shop-cart">
+                      Shopping Cart
+                    </div>
+                  </Col>
+                </Row>
+                <Col md={7}>
                   <div className="product-card">
-                    <Col md={12} >
-                      <div className="shop-cart">
-                        <span className="titleproduct">
-                          Shopping Cart
-                        </span>
-                      </div>
-                    </Col>
                     <Row>
-                      <Row>
-                        <Row>
-                          <Col md={12}>
-                            <div className="product-items">
-                              {productList && productList.map((info) =>
-                                <Row className="product-info-details">
-                                  <div >
-                                    <Col sm={3}>
-                                      <img className="img-fluid" src={info && info.productImage} />
-                                    </Col>
-                                    <Col sm={3}>
-                                      <div className="productlist">
-                                        <div className="product-name">{info && info.productName}</div>
-                                      </div>
-                                    </Col>
-                                    <Col sm={3}>
-                                      <div className="productlist nowrap">
-                                        <div className='quanity-check'>
-                                          <span>QTY</span>
-                                          <span className="quanitybtn"
-                                            onClick={() => onDecrement(info)}> - </span>
-                                          {info && info.quantity}
-                                          <span className="quanitybtn"
-                                            onClick={() => onIncrement(info)}> + </span>
-                                        </div>
-                                      </div>
-                                    </Col>
-                                    <Col sm={3}>
-                                      <div className="product-price">
-                                        <div className="product-name">{info && info.totalPrice}</div>
-                                      </div>
-                                      <br />
-                                      {location.state === 'addCart' && <div className="product-remove" onClick={() => onRemove(info)}>Remove</div>}
-                                    </Col>
+                      <Col md={12}>
+                        <div className="product-items">
+                          {productList && productList.map((info) =>
+                            <Row className="product-info-details">
+                              <div className='cart-items'>
+                                <Col sm={2} className='img-position'>
+                                  <img className="img-fluid" src={info && info.productImage} />
+                                </Col>
+                                <Col sm={5} className='product-name-position'>
+                                  <div>{info && info.productName}</div>
+                                </Col>
+                                <Col sm={3} className='quanity-check-position'>
+                                  <div className='quanity-check'>
+                                    <span>QTY</span>
+                                    <span className="quanitybtn"
+                                      onClick={() => onDecrement(info)}> - </span>
+                                    {info && info.quantity}
+                                    <span className="quanitybtn"
+                                      onClick={() => onIncrement(info)}> + </span>
                                   </div>
-                                </Row>)}
-                            </div>
-                          </Col>
-                        </Row>
-                      </Row>
+                                </Col>
+                                <Col sm={2} className="product-price-position">
+                                  <div>{info && info.totalPrice}</div>
+                                  <br />
+                                  {location.state === 'addCart' && <div className="product-remove" onClick={() => onRemove(info)}>Remove</div>}
+                                </Col>
+                              </div>
+                            </Row>)}
+                        </div>
+                      </Col>
                     </Row>
                   </div>
                 </Col>
-                <Col md={4} className="scroll-fix">
+                <Col md={5} className="scroll-fix">
                   <div className="product-card list">
                     <Row>
                       <Col md={12} >
@@ -244,8 +219,6 @@ const Cart = ({ location }) => {
                                   type="text"
                                   className="form-control "
                                   placeholder="Enter Code"
-                                  // value={storeName}
-                                  // onChange={onStoreName}
                                   maxLength={30}
                                 />
                               </div>
@@ -253,7 +226,7 @@ const Cart = ({ location }) => {
                             <Col md={12}>
                               <div className="items-list">
                                 <span className="items">
-                                  Subtotal
+                                  Sub Total
                                 </span>
                                 <span className="items">
                                   {`${currency}${parseFloat(subTotal).toFixed(2)}`}
@@ -295,7 +268,6 @@ const Cart = ({ location }) => {
                                 <Button
                                   variant="contained"
                                   color="primary"
-                                  // className="proceedbtn  modal-button"
                                   onClick={onProceed}
                                 >
                                   Proceed to Buy
