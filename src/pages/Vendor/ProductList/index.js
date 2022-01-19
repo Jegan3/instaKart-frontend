@@ -6,19 +6,29 @@ import ReactTable from 'react-table';
 import Table from '../../../components/Table';
 import { history } from '../../../routes';
 import Overlay from '../../../components/Overlay';
+import { message } from 'antd';
 
 const ProductList = ({ storeId, productEdit }) => {
+
+  const [modal, setModal] = useState(false);
+  const [productId, setProductId] = useState('');
+  const [remove, setRemove] = useState(false)
 
   const dispatch = useDispatch();
   const productListInfo = useSelector((state) => state.productListState.productList);
   const productDeleteInfo = useSelector((state) => state.productDeleteState.productDelete);
 
-  const [modal, setModal] = useState(false);
-  const [productId, setProductId] = useState('');
+  const productMessage = productDeleteInfo && productDeleteInfo.message;
 
   useEffect(() => {
     dispatch({ type: 'PRODUCT_LIST_REQUEST', storeId });
   }, [productDeleteInfo]);
+
+  useEffect(() => {
+    if (productMessage && remove) {
+      message.success(productMessage)
+    }
+  }, [productMessage])
 
   // For Index
   productListInfo && productListInfo.map((info, i) => {
@@ -41,6 +51,7 @@ const ProductList = ({ storeId, productEdit }) => {
   const onDelete = (info) => {
     const { productId } = info.original;
     setModal(true);
+    setRemove(true);
     setProductId(productId);
   };
 

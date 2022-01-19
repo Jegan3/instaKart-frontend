@@ -367,7 +367,7 @@ const ProductInfo = ({ location }) => {
             </div>
             <div className="video-related">
               <Row className='position-bottom'>
-                <div ClassName="ik-ads">
+                {/* <div ClassName="ik-ads">
                   <Col md={12}>
                     <div className='bg-ads'>
                       <div className='arrival-ads'>
@@ -376,7 +376,7 @@ const ProductInfo = ({ location }) => {
                       </div>
                     </div>
                   </Col>
-                </div>
+                </div> */}
               </Row>
             </div>
           </Grid>

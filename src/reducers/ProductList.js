@@ -32,6 +32,7 @@ export const productDeleteState = (state = initialState, action) => {
         ...state,
         isLoading: true,
         error: false,
+        productDelete: '',
       };
     case 'PRODUCT_DELETE_SUCCESS':
       return {

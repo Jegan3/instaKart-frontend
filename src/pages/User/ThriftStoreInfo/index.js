@@ -159,7 +159,7 @@ const ThriftStoreInfo = ({ location }) => {
               <br />
             </div> */}
           </Col>
-          <Col sm={12}>
+          {/* <Col sm={12}>
             <div className='bg-ads'>
               <div className='arrival-ads'>
                 <span className="ik-ads">Similar stores</span>
@@ -167,7 +167,7 @@ const ThriftStoreInfo = ({ location }) => {
               </div>
               <br />
             </div>
-          </Col>
+          </Col> */}
         </Row>
       </div>
       <Footer />
