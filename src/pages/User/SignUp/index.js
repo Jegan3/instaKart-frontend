@@ -42,7 +42,7 @@ const SignUp = (props) => {
 
   // Temporary Fix for Trinidad & Tobago
   useEffect(() => {
-    setCountry(countryOptions[9]);
+    type === 'vendor' && setCountry(countryOptions[9]);
   }, [])
 
   useEffect(() => {
@@ -421,7 +421,7 @@ const SignUp = (props) => {
                   className="btn btn-primary btn-lg btn-block modal-button"
                   onClick={Submit}
                 >
-                  Proceed
+                  Submit
                 </button>
               </Col>
               <Col md={12} sm={12} className="login-error-signup" >
