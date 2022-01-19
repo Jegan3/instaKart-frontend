@@ -1,16 +1,15 @@
 
 /*eslint-disable*/
 import React, { useEffect } from 'react';
+import { Row, Col } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import Footer from '../../../components/Footer';
-import Header from '../../../components/Header';
-import Particle from '../../../components/Particle';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
-import { Row, Col } from 'react-bootstrap';
+import Footer from '../../../components/Footer';
+import Header from '../../../components/Header';
 
 const CategoryPage = () => {
 
@@ -23,16 +22,10 @@ const CategoryPage = () => {
   return (
 
     <div className='body-container home'>
-      <div className='particles-main'>
-        <Particle color='#28a4d9' number='700' direction='top' />
-      </div>
       <div>
         <Header />
       </div>
       <div>
-        <div className='particles-sub'>
-          <Particle color='#f5f5f5' number='150' direction='bottom' />
-        </div>
         <div className='arrival secondary-banner-style'>
           <Row>
             <Col md={12}>

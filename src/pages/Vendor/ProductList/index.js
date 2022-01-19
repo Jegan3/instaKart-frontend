@@ -133,7 +133,7 @@ const ProductList = ({ storeId, productEdit }) => {
                           ),
                         },
                         {
-                          Header: 'Analyze',
+                          Header: 'Edit',
                           filterable: false,
                           sortable: false,
                           width: 70,
