@@ -216,7 +216,7 @@ const Checkout = (props) => {
                 placeholder="Enter Your Email"
                 value={email}
                 onChange={onEmail}
-                maxLength={30}>
+                maxLength={50}>
               </input>
             </div>
             <div className='radio-btn-align'>

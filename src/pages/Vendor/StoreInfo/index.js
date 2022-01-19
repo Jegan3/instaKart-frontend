@@ -467,7 +467,7 @@ const StoreInfo = ({ storeId, setStoreHeader }) => {
                       type="text"
                       className={alertError && emailIdInfo === '' || validateEmail(emailIdInfo) === false && validate ? `form-control my-input` : `form-control formy`}
                       placeholder="Enter Your Email ID"
-                      maxLength={30}
+                      maxLength={50}
                       disabled={disabled}
                       value={emailIdInfo}
                       onChange={onEmail}
