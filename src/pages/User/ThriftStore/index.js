@@ -5,7 +5,7 @@ import { Row, Col, Grid } from 'react-bootstrap';
 import TextLoop from "react-text-loop";
 import Footer from '../../../components/Footer';
 import Header from '../../../components/Header';
-import { ThriftProducts, ThriftStoreNearYou, CarouselThriftStoreCategoryUp, CarouselThriftStoreCategoryBottom } from '../../../components/Carousel';
+import { ThriftProducts, ThriftStoreNearYou, ThriftStoreCategory } from '../../../components/Carousel';
 import { ThriftBanners } from '../../../components/Banners';
 import Particle from '../../../components/Particle';
 
@@ -22,14 +22,15 @@ const ThriftStore = () => {
 
   const dispatch = useDispatch();
   const thriftDetails = useSelector((state) => state.thriftDetailsState.thriftDetails);
+  const thriftCategoryType = useSelector((state) => state.thriftCategoryState.thriftCategory);
 
   const productInfo = thriftDetails && thriftDetails.productsInfo
-
   const newPromotionProducts = productInfo && productInfo.filter((value) => value.discount)
   const newAdditionProducts = productInfo && productInfo.filter((value) => !value.discount)
 
   useEffect(() => {
     dispatch({ type: 'THRIFT_DETAILS_REQUEST' });
+    dispatch({ type: 'THRIFT_CATEGORY_REQUEST' });
   }, [])
 
   return (
@@ -59,12 +60,7 @@ const ThriftStore = () => {
       </Row>
       <h2>Shop By Categories</h2>
       <Row className="cards-row ">
-        <Row>
-          <CarouselThriftStoreCategoryUp />
-        </Row>
-        <Row>
-          <CarouselThriftStoreCategoryBottom />
-        </Row>
+        <ThriftStoreCategory thriftCategoryType={thriftCategoryType} setLogin={setLoginModal} module='Thrift Store' />
       </Row>
       <Row>
       </Row>
@@ -80,7 +76,7 @@ const ThriftStore = () => {
           <br />
         </div>
       </Row>
-      <Row>
+      {newPromotionProducts && <Row>
         <div className="bg-thriftstore">
           <div className="thrift-ads">
             <div className='particles-sub'>
@@ -91,7 +87,7 @@ const ThriftStore = () => {
           </div>
           <br />
         </div>
-      </Row>
+      </Row>}
       <Row>
         <div className="bg-thrift">
           <div className="thrift-ads">

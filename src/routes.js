@@ -22,6 +22,7 @@ import ListYourAds from './pages/User/ListYourAds';
 import PaymentStatus from './pages/User/PaymentStatus';
 import User from './pages/Admin/User';
 import Checkout from './pages/User/Checkout';
+import CategoryPage from './pages/User/CategoryPage';
 // import ErrorPage from './components/ErrorPage';
 
 export const history = createBrowserHistory();
@@ -62,6 +63,7 @@ const Routes = () => (
         <Route path="/paymentstatus" component={PaymentStatus} />
         <Route path="/listyourads" component={ListYourAds} />
         <Route path="/checkout" component={Checkout} />
+        <Route path="/categorypage" component={CategoryPage} />
         {/* <Route path="*" component={ErrorPage} /> */}
         <Route component={AuthenticatedRoutes} />
         {/* <Route path="*" component={ErrorPage} /> */}

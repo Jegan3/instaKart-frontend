@@ -3,7 +3,7 @@ import React from 'react';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import ReactPlayer from "react-player";
-import { Card, ThriftStoreNearYouCard, ThriftProductsCard, ReviewCard, ThriftStoreInfoCategoriesCard } from '../Card';
+import { ThriftCategoryCard, Card, ThriftStoreNearYouCard, ThriftProductsCard, ReviewCard, ThriftStoreInfoCategoriesCard } from '../Card';
 
 const responsive = {
   desktop: {
@@ -203,28 +203,28 @@ const businessRowFirst = [
     title: 'CARD 1',
     content: 'Food Avenue',
     imgUrl: 'images/1_Food.png',
-    btnUrl: '/comingsoon',
+    path: '/comingsoon',
   },
   {
     id: 2,
     title: 'CARD 2',
     content: 'Fashion District',
     imgUrl: 'images/2_Fashion.jpg',
-    btnUrl: '/comingsoon',
+    path: '/comingsoon',
   },
   {
     id: 3,
     title: 'CARD 3',
     content: 'Medical Supplies, Health & Wellness',
     imgUrl: 'images/3_Health.png',
-    btnUrl: '/comingsoon',
+    path: '/comingsoon',
   },
   {
     id: 4,
     title: 'CARD 4',
     content: 'Speciality Services',
     imgUrl: 'images/4_Speciality.png',
-    btnUrl: '/comingsoon',
+    path: '/comingsoon',
   },
 ];
 
@@ -234,28 +234,28 @@ const businessRowSecond = [
     title: 'CARD 5',
     content: 'Thrift Store',
     imgUrl: 'images/5_Thrift.png',
-    btnUrl: '/thriftstore',
+    path: '/thriftstore',
   },
   {
     id: 6,
     title: 'CARD 6',
     content: 'Grocery & Fresh Produce',
     imgUrl: 'images/6_Grocery.png',
-    btnUrl: '/comingsoon',
+    path: '/comingsoon',
   },
   {
     id: 7,
     title: 'CARD 7',
     content: 'Appliances & Tech Gadgets',
     imgUrl: 'images/7_applicance.jpg',
-    btnUrl: '/comingsoon',
+    path: '/comingsoon',
   },
   {
     id: 8,
     title: 'CARD 8',
     content: 'Automotive, Hardware, Industrial & Safety Supplies',
     imgUrl: 'images/8_hardware.png',
-    btnUrl: '/comingsoon',
+    path: '/comingsoon',
   },
 ];
 
@@ -265,28 +265,28 @@ const businessRowThird = [
     title: 'CARD 9',
     content: 'Home & Garden Supplies',
     imgUrl: 'images/9_home.png',
-    btnUrl: '/comingsoon',
+    path: '/comingsoon',
   },
   {
     id: 10,
     title: 'CARD 10',
     content: 'E-learning',
     imgUrl: 'images/10_TechGadgets.jpg',
-    btnUrl: '/comingsoon',
+    path: '/comingsoon',
   },
   {
     id: 11,
     title: 'CARD 11',
     content: 'Social Media',
     imgUrl: 'images/11_TimeCap.png',
-    btnUrl: '/comingsoon',
+    path: '/comingsoon',
   },
   {
     id: 12,
     title: 'CARD 12',
     content: 'Wholesale Suppliers & Drop Shipping',
     imgUrl: 'images/12_WholesaleDS.jpg',
-    btnUrl: '/comingsoon',
+    path: '/comingsoon',
   },
 ];
 
@@ -333,254 +333,6 @@ const cardsDataNewEStore = [
   },
 ];
 
-const cardsStoreInfo = [
-  {
-    id: 1,
-    title: 'CARD 1',
-    imgUrl: 'images/pizza.jpg',
-  },
-  {
-    id: 2,
-    title: 'CARD 2',
-    imgUrl: 'images/italian.jpg',
-  },
-  {
-    id: 3,
-    title: 'CARD 3',
-    imgUrl: 'images/new.jpg',
-  },
-  {
-    id: 4,
-    title: 'CARD 4',
-    imgUrl: 'images/sales.jpg',
-  },
-  {
-    id: 5,
-    title: 'CARD 1',
-    imgUrl: 'images/pizza.jpg',
-  },
-  {
-    id: 6,
-    title: 'CARD 2',
-    imgUrl: 'images/italian.jpg',
-  },
-  {
-    id: 7,
-    title: 'CARD 3',
-    imgUrl: 'images/new.jpg',
-  },
-  {
-    id: 8,
-    title: 'CARD 4',
-    imgUrl: 'images/sales.jpg',
-  },
-  {
-    id: 9,
-    title: 'CARD 1',
-    imgUrl: 'images/pizza.jpg',
-  },
-  {
-    id: 10,
-    title: 'CARD 2',
-    imgUrl: 'images/italian.jpg',
-  },
-  {
-    id: 11,
-    title: 'CARD 3',
-    imgUrl: 'images/new.jpg',
-  },
-  {
-    id: 12,
-    title: 'CARD 4',
-    imgUrl: 'images/sales.jpg',
-  },
-  {
-    id: 13,
-    title: 'CARD 1',
-    imgUrl: 'images/pizza.jpg',
-  },
-  {
-    id: 14,
-    title: 'CARD 2',
-    imgUrl: 'images/italian.jpg',
-  },
-  {
-    id: 15,
-    title: 'CARD 3',
-    imgUrl: 'images/new.jpg',
-  },
-  {
-    id: 16,
-    title: 'CARD 4',
-    imgUrl: 'images/sales.jpg',
-  },
-];
-
-const cardsDataMobile = [
-  {
-    id: 1,
-    title: 'CARD 1',
-    content: 'Food Avenue',
-    imgUrl: 'images/1_Food.png',
-    btnUrl: '/comingsoon',
-  },
-  {
-    id: 2,
-    title: 'CARD 2',
-    content: 'Fashion District',
-    imgUrl: 'images/2_Fashion.jpg',
-    btnUrl: '/comingsoon',
-  },
-  {
-    id: 3,
-    title: 'CARD 3',
-    content: 'Health & Wellness',
-    imgUrl: 'images/3_Health.png',
-    btnUrl: '/comingsoon',
-  },
-  {
-    id: 4,
-    title: 'CARD 4',
-    content: 'Speciality Services',
-    imgUrl: 'images/4_Speciality.png',
-    btnUrl: '/comingsoon',
-  },
-  {
-    id: 5,
-    title: 'CARD 5',
-    content: 'Thrift Store',
-    imgUrl: 'images/5_Thrift.png',
-    btnUrl: '/comingsoon',
-  },
-  {
-    id: 6,
-    title: 'CARD 6',
-    content: 'Grocery & Fresh Produce',
-    imgUrl: 'images/6_Grocery.png',
-    btnUrl: '/comingsoon',
-  },
-  {
-    id: 7,
-    title: 'CARD 7',
-    content: 'Appliances & Tech Gadgets',
-    imgUrl: 'images/7_applicance.jpg',
-    btnsUrl: '/comingsoon',
-  },
-  {
-    id: 8,
-    title: 'CARD 8',
-    content: 'Automotive, Hardware, Industrial & Safety Supplies',
-    imgUrl: 'images/8_hardware.png',
-    btnUrl: '/comingsoon',
-  },
-  {
-    id: 9,
-    title: 'CARD 9',
-    content: 'Home & Garden Supplies',
-    imgUrl: 'images/9_home.png',
-    btnUrl: '/comingsoon',
-  },
-];
-
-const fisrtAdsDetails = [
-  {
-    id: 1,
-    title: 'CARD 1',
-    imgUrl: 'images/comingsoon.gif',
-  },
-  {
-    id: 2,
-    title: 'CARD 2',
-    imgUrl: 'images/comingsoon.gif',
-  },
-  {
-    id: 3,
-    title: 'CARD 3',
-    imgUrl: 'images/comingsoon.gif',
-  },
-  {
-    id: 4,
-    title: 'CARD 4',
-    imgUrl: 'images/comingsoon.gif',
-  },
-  {
-    id: 5,
-    title: 'CARD 5',
-    imgUrl: 'images/comingsoon.gif',
-  },
-  {
-    id: 6,
-    title: 'CARD 6',
-    imgUrl: 'images/comingsoon.gif',
-  },
-];
-
-const thriftStoreCategoryUp = [
-  {
-    id: 1,
-    title: 'Appliances',
-    imgUrl: 'images/Appliances.jpg',
-  },
-  {
-    id: 2,
-    title: 'Books',
-    imgUrl: 'images/Books.jpg',
-  },
-  {
-    id: 3,
-    title: 'Baby Products',
-    imgUrl: 'images/Toys & Baby Products.jpg',
-  },
-  {
-    id: 4,
-    title: 'Clothing',
-    imgUrl: 'images/Clothing.jpg',
-  },
-  {
-    id: 5,
-    title: 'Donate',
-    imgUrl: 'images/Donation.jpg',
-  },
-  {
-    id: 6,
-    title: 'Furniture',
-    imgUrl: 'images/Furniture.jpg',
-  },
-];
-
-const thriftStoreCategoryBottom = [
-  {
-    id: 7,
-    title: 'Footwear',
-    imgUrl: 'images/Footware.jpg',
-  },
-  {
-    id: 8,
-    title: 'Miscellaneous',
-    imgUrl: 'images/Misc.png',
-  },
-  {
-    id: 9,
-    title: 'Electronics & Mobile Phones',
-    imgUrl: 'images/Mobile Phones.jpg',
-  },
-  {
-    id: 10,
-    title: 'Real Estate',
-    imgUrl: 'images/Real-Estate.jpg',
-  },
-  {
-    id: 11,
-    title: 'Hand & Power Tools',
-    imgUrl: 'images/Tools.jpg',
-  },
-  {
-    id: 12,
-    title: 'Vehicles',
-    imgUrl: 'images/Vehicles.jpg',
-  },
-];
-
 export const ThriftStoreInfoCategories = ({ product, module }) => (
   <Carousel
     responsive={responsiveThriftStoreInfoCategories}
@@ -588,31 +340,33 @@ export const ThriftStoreInfoCategories = ({ product, module }) => (
     infinite={true}
   >
     {product ? product.product.map((card) => (
-      <ThriftStoreInfoCategoriesCard title={card.productName} product={card._id} className='card' imgUrl={card.productImages[0]} path={'/productinfo'} module={module} />
+      <ThriftStoreInfoCategoriesCard title={card.productName} product={card._id} className='card'
+        imgUrl={card.productImages[0]} path={'/productinfo'} module={module} />
     )) : []}
   </Carousel>
 );
 
-export const CarouselThriftStoreCategoryUp = () => (
-  <Carousel
-    responsive={responsiveThriftCategory}
-  >
-    {thriftStoreCategoryUp.map((card) => (
-      <Card title={card.title} className='card' imgUrl={card.imgUrl} />
-    ))}
-  </Carousel>
+export const ThriftStoreCategory = ({ thriftCategoryType, module }) => (
+  <span>
+    <Carousel
+      responsive={responsiveThriftCategory}
+    >
+      {thriftCategoryType ? thriftCategoryType.categoryDetails.slice(0, 6).map((item) => (
+        <ThriftCategoryCard title={item.categoryName} thriftCategoryType={item._id} className='card' imgUrl={item.categoryImage}
+          path={'/categorypage'} module={module} />
+      )) : []}
+    </Carousel>
+    <Carousel
+      responsive={responsiveThriftCategory}
+    >
+      {thriftCategoryType ? thriftCategoryType.categoryDetails.slice(6, 12).map((item) => (
+        <ThriftCategoryCard title={item.categoryName} thriftCategoryType={item._id} className='card' imgUrl={item.categoryImage}
+          path={'/categorypage'} module={module} />
+      )) : []}
+    </Carousel>
+  </span>
 );
 
-
-export const CarouselThriftStoreCategoryBottom = () => (
-  <Carousel
-    responsive={responsiveThriftCategory}
-  >
-    {thriftStoreCategoryBottom.map((card) => (
-      <Card title={card.title} className='card' imgUrl={card.imgUrl} />
-    ))}
-  </Carousel>
-);
 // Because this is an inframe, so the SSR mode doesn't not do well here.
 // It will work on real devices.
 export const CarouselFirst = () => (
@@ -621,7 +375,7 @@ export const CarouselFirst = () => (
     responsive={responsive}
   >
     {businessRowFirst.map((card) => (
-      <Card key={card.id} className='card' content={card.content} imgUrl={card.imgUrl} btnUrl={card.btnUrl} />
+      <Card key={card.id} className='card' content={card.content} imgUrl={card.imgUrl} path={card.path} />
     ))}
   </Carousel>
 );
@@ -632,7 +386,7 @@ export const CarouselSecond = () => (
     responsive={responsive}
   >
     {businessRowSecond.map((card) => (
-      <Card key={card.id} className='card' content={card.content} imgUrl={card.imgUrl} btnUrl={card.btnUrl} />
+      <Card key={card.id} className='card' content={card.content} imgUrl={card.imgUrl} path={card.path} />
     ))}
   </Carousel>
 );
@@ -643,33 +397,7 @@ export const CarouselThird = () => (
     responsive={responsive}
   >
     {businessRowThird.map((card) => (
-      <Card key={card.id} className='card' content={card.content} imgUrl={card.imgUrl} btnUrl={card.btnUrl} />
-    ))}
-  </Carousel>
-);
-
-export const CarouselFourth = () => (
-  <Carousel
-    // ssr
-    responsive={responsive}
-  >
-    {businessRowFourth.map((card) => (
-      <Card key={card.id} className='card' content={card.content} imgUrl={card.imgUrl} btnUrl={card.btnUrl} />
-    ))}
-  </Carousel>
-);
-
-
-export const CarouselStoreInfo = () => (
-  <Carousel
-    // ssr
-    infinite
-    autoPlay
-    autoPlaySpeed={3000}
-    responsive={responsive}
-  >
-    {cardsDataNewEStore.map((card) => (
-      <Card key={card.id} className='card' imgUrl={card.imgUrl} />
+      <Card key={card.id} className='card' content={card.content} imgUrl={card.imgUrl} path={card.path} />
     ))}
   </Carousel>
 );
@@ -712,22 +440,9 @@ export const ThriftProducts = ({ products, module, setLogin }) => (
     responsive={responsiveThrift}
   >
     {products ? products.map((info) => (
-      <ThriftProductsCard key={info.productId} product={info.productId} imgUrl={info.productImage} path={'/productinfo'} finalPrice={info.finalPrice} productPrice={info.productPrice} discount={info.discount} productName={info.productName} setLogin={setLogin} module={module} />
+      <ThriftProductsCard key={info.productId}
+        product={info.productId} imgUrl={info.productImage} path={'/productinfo'} finalPrice={info.finalPrice} productPrice={info.productPrice} discount={info.discount} productName={info.productName} setLogin={setLogin} module={module} />
     )) : []}
-  </Carousel>
-);
-
-export const CarouselAdsDetails = () => (
-  <Carousel
-    // ssr
-    infinite
-    // autoPlay
-    autoPlaySpeed={3000}
-    responsive={responsiveThrift}
-  >
-    {fisrtAdsDetails.map((card) => (
-      <Card key={card.id} imgUrl={card.imgUrl} className="card-thriftcards" body />
-    ))}
   </Carousel>
 );
 
@@ -751,7 +466,6 @@ export const CarouselNewEStoreVideo = ({ video }) => (
     responsive={responsiveVideo}
   >
     {video ? video.video.map((item) => (
-      // <Card key={card.id} className='card' imgUrl={card.imgUrl} />
       <ReactPlayer className="homevideo-prop" url={item} width="100%" height="100%" controls={true} />
     )) : []}
   </Carousel>
