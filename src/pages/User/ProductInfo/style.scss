@@ -61,9 +61,24 @@
         font-weight: 700;
       }
 
+      .product-discount {
+        display: flex;
+
+        .productinfo {
+          font-size: 18px !important;
+        }
+      }
+
       .sale {
         color: whitesmoke;
         font-family: serif;
+      }
+
+      .Discount {
+        font-size: 20px;
+        color: whitesmoke;
+        font-family: serif;
+        margin: 35px;
       }
 
       .see-all {
@@ -189,43 +204,43 @@
   }
 }
 
-.review-rate {
-  display: flex;
-  position: relative;
-  bottom: 10px;
+// .review-rate {
+//   display: flex;
+//   position: relative;
+//   bottom: 10px;
 
-  p {
-    padding: 8px;
-    font-size: 15px !important;
-    color: $color-background;
-  }
+//   p {
+//     padding: 8px;
+//     font-size: 15px !important;
+//     color: $color-background;
+//   }
 
-  .ant-rate {
-    color: $color-theme;
-  }
+//   .ant-rate {
+//     color: $color-theme;
+//   }
 
-  i {
-    font-size: 16px;
-    color: #ff9700;
-    vertical-align: middle;
-  }
+//   i {
+//     font-size: 16px;
+//     color: #ff9700;
+//     vertical-align: middle;
+//   }
 
-  .comment-meta-main {
-    background: #f7f8f9;
-    border-bottom: none;
-  }
+//   .comment-meta-main {
+//     background: #f7f8f9;
+//     border-bottom: none;
+//   }
 
-  .comment-content {
-    padding: 30px;
-    background: #fff;
-    border: 1px solid #eee;
-    border-bottom: none;
-  }
+//   .comment-content {
+//     padding: 30px;
+//     background: #fff;
+//     border: 1px solid #eee;
+//     border-bottom: none;
+//   }
 
-  .comment-respond {
-    padding-bottom: 20px;
-  }
-}
+//   .comment-respond {
+//     padding-bottom: 20px;
+//   }
+// }
 
 .bg-ads {
   padding: 0% 5% 5% 5%;

@@ -225,24 +225,27 @@ const ProductInfo = ({ location }) => {
                     <Col sm={12}>
                       <Row>
                         <Col sm={4}>
-                          <h3 className="sale">{product && product.finalPrice}</h3>
+                          <div class="product-discount">
+                            <h3 className="sale">{product && product.finalPrice}</h3> <span class="striked-out productinfo">{product && product.productPrice}</span>
+                          </div>
                         </Col>
+                        {/* // For future use
                         <Col sm={4}>
                           <div className="review-rate" title="good">
-                            {/* <div className="stars">
+                            <div className="stars">
                               <i className="fa fa-star"></i>
                               <i className="fa fa-star"></i>
                               <i className="fa fa-star"></i>
                               <i className="fa fa-star"></i>
                               <i className="fa fa-star"></i>
-                            </div> */}
+                            </div>
                             <Rate disabled defaultValue={3} />
                             <p>807</p>
                           </div>
                         </Col>
                         <Col sm={4}>
                           <h3 className="see-all">Reviews</h3>
-                        </Col>
+                        </Col> */}
                       </Row>
                     </Col>
                     <Col sm={12}>
