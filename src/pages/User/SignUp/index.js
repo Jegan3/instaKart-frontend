@@ -375,7 +375,7 @@ const SignUp = (props) => {
                     <Tooltip
                       title={
                         <div className="tool-list">
-                          <p className="tool-tip">•	Be at least 8 characters</p>
+                          <p className="tool-tip">•	Password should be between 8-15 characters</p>
                           <p className="tool-tip">•	Have at least one number</p>
                           <p className="tool-tip">•	Have at least one upper case letter</p>
                         </div>}

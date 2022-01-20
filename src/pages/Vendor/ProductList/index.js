@@ -91,13 +91,6 @@ const ProductList = ({ storeId, productEdit }) => {
                           className: 'price-table',
                         },
                         {
-                          Header: 'Reserved',
-                          accessor: 'stockReserve',
-
-                          width: 70,
-                          className: 'price-table',
-                        },
-                        {
                           Header: 'SOH',
                           accessor: 'stockHand',
                           width: 70,
@@ -118,27 +111,27 @@ const ProductList = ({ storeId, productEdit }) => {
                         {
                           Header: 'Status',
                           accessor: 'status',
-                          filterable: false,
+                          // filterable: false,
                           sortable: false,
                           width: 100,
                           className: 'price-table',
                         },
                         {
-                          Header: 'Remove',
-                          filterable: false,
-                          sortable: false,
-                          width: 70,
-                          Cell: (info) => (
-                            <span className="btn-sign" onClick={() => onDelete(info)}><i className="fas fa-trash"></i></span>
-                          ),
-                        },
-                        {
                           Header: 'Edit',
                           filterable: false,
                           sortable: false,
-                          width: 70,
+                          width: 50,
                           Cell: (info) => (
                             <span className="btn-sign" onClick={() => viewProduct(info)}><i className="fas fa-sign-in-alt"></i></span>
+                          ),
+                        },
+                        {
+                          Header: 'Remove',
+                          filterable: false,
+                          sortable: false,
+                          width: 50,
+                          Cell: (info) => (
+                            <span className="btn-sign" onClick={() => onDelete(info)}><i className="fas fa-trash"></i></span>
                           ),
                         },
                       ]
