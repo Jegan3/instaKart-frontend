@@ -91,7 +91,7 @@ const ThriftStoreInfo = ({ location }) => {
         <Grid fluid>
           <Row className="bg-trans">
             <Col sm={12}>
-              <ScrollAnimation animateIn='bounceInDown' duration={3}>
+              <ScrollAnimation animateIn='bounceInDown' duration={7}>
                 <h1 className='title-store'>
                   {storeName}
                 </h1>
@@ -113,7 +113,7 @@ const ThriftStoreInfo = ({ location }) => {
               </ScrollAnimation>
             </Col>
             <Col sm={12}>
-              <ScrollAnimation animateIn='bounceInDown' duration={21}>
+              <ScrollAnimation animateIn='bounceInDown' duration={7}>
                 <div>
                   <h1 className='address-store'>
                     Business Address:

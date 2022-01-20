@@ -14,7 +14,7 @@ export const Card = ({ imgUrl, alt, content, className, path }) => {
     <div>
       <div className={className}>
         <div className="card-content">
-          <img className="photos" src={imgUrl} onClick={Button} alt={alt || 'Image'} />
+          <img className="photos" src={imgUrl} alt={alt || 'Image'} />
           {content && <button onClick={Button}>{content}</button>}
         </div>
       </div>

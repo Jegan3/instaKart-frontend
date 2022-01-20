@@ -49,14 +49,6 @@
     font-weight: 500;
   }
 
-  .striked-out {
-    color: rgb(141, 141, 141);
-    text-decoration: line-through;
-    font-size: 100%;
-    position: relative;
-    left: 10px;
-  }
-
   .discount {
     color: $color-theme;
     font-size: 100%;
@@ -360,4 +352,12 @@
 .property-card:hover .property-social-icons:hover {
   background-color: blue;
   cursor: pointer;
+}
+
+.striked-out {
+  color: rgb(141, 141, 141);
+  text-decoration: line-through;
+  font-size: 100%;
+  position: relative;
+  left: 10px;
 }
