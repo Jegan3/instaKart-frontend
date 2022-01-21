@@ -59,6 +59,21 @@
         font-family: serif;
         color: $color-background;
         font-weight: 700;
+
+        .discount {
+          height: 45px;
+          position: relative;
+          bottom: 25px;
+          left: 10px;
+        }
+
+        .off {
+          font-size: 15px;
+          position: relative;
+          bottom: 20px;
+          color: #2ca5d9;
+          left: 7px;
+        }
       }
 
       .product-discount {
