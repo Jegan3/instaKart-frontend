@@ -226,7 +226,7 @@ const ProductInfo = ({ location }) => {
                       <Row>
                         <Col sm={4}>
                           <div class="product-discount">
-                            <h3 className="sale">{product && product.finalPrice}</h3> <span class="striked-out productinfo">{product && product.productPrice}</span>
+                            <h3 className="sale">{product && product.finalPrice}</h3> <span class="striked-out productinfo">{product && product.discount && product.productPrice}</span>
                           </div>
                         </Col>
                         {/* // For future use
