@@ -145,7 +145,9 @@ const ListYourAds = () => {
 
   return (
     <Grid fluid>
-      <Header basic />
+      <Row>
+        <Header basic />
+      </Row>
       <div className="Listyour-ads">
         <h2 className="advertise"> Advertise Your Product For Better Sales </h2>
         <div className="list-your card">

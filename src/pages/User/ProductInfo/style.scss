@@ -1,14 +1,11 @@
 .product-info-page {
-  overflow: auto;
-
   .jumbotron {
     position: relative;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
     background-attachment: fixed;
-    padding-top: 0px;
-    padding-bottom: 0px;
+    padding: 0px;
     margin-bottom: 0px;
 
     &:before {
@@ -26,20 +23,12 @@
     object-fit: cover;
   }
 
-  .container-fluid {
-    padding: 0px !important
-  }
-
   .my-input {
     border-color: rgb(0, 191, 255) !important;
   }
 
   .video-related {
     background-color: transparent;
-  }
-
-  .jumbotron .container {
-    width: 100%;
   }
 
   .ads-page {

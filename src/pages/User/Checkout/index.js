@@ -1,7 +1,7 @@
 /*eslint-disable*/
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col, Grid } from 'react-bootstrap';
 import Cleave from "cleave.js/react";
 import Select from "react-select";
 import { message } from 'antd';
@@ -132,161 +132,167 @@ const Checkout = (props) => {
   }
 
   return (
-    <div>
-      <Header />
-      <Row className="shipping-wrapper-page">
-        <Col md={7} >
-          <div className='shipping-card-left'>
-            <h3 className="shipping-header-label">Shipping Address</h3>
-            <div className="label-shipping">
-              <label className="shipping-label-info">Full Name <span className="red-star">*</span> </label>
-              <input
-                type="text"
-                className={alertError && !fullName ? ` form-control my-input` : `form-control formy`}
-                placeholder="Fullname"
-                value={fullName}
-                onChange={onFullName}
-                maxLength={30}>
-              </input>
-            </div>
-            <div className="label-shipping">
-              <label className="shipping-label-info">Phone Number <span className="red-star">*</span> </label>
-              <Cleave
-                placeholder="Enter contact number"
-                className={alertError && mobile.length < 10 ? ` form-control my-input` : `form-control formy`}
-                value={mobile}
-                onChange={onMobile}
-                options={{
-                  blocks: [3, 3, 4],
-                  numericOnly: true
-                }}
-              />
-            </div>
-            <div className="label-shipping">
-              <label className="shipping-label-info">Address <span className="red-star">*</span> </label>
-              <input
-                type="text"
-                className={alertError && !address ? ` form-control my-input` : `form-control formy`}
-                placeholder="Address"
-                value={address}
-                onChange={onAddress}
-                maxLength={30}>
-              </input>
-            </div>
-            <div className="label-shipping">
-              <label className="shipping-label-info">Country <span className="red-star">*</span> </label>
-              <Select
-                name="Country"
-                className={`clear-country ${alertError && !country && 'dropdown-alert'}`}
-                placeholder="Choose your country"
-                value={country}
-                onChange={onCountry}
-                options={countryOptions}
-                isSearchable={false}
-              />
-            </div>
-            <div className="label-shipping">
-              <label className="shipping-label-info">City <span className="red-star">*</span> </label>
-              <Select
-                name="City"
-                className={`clear-city ${alertError && !city && 'dropdown-alert'}`}
-                placeholder="Choose your city"
-                value={city}
-                onChange={onCity}
-                options={cityOptions}
-                isSearchable={false}
-              />
-            </div>
-            <div className="label-shipping">
-              <label className="shipping-label-info">Zip-Code <span className="red-star">*</span> </label>
-              <input
-                className={alertError && !zipCode ? ' form-control my-input' : 'form-control formy'}
-                type="text"
-                placeholder="Enter Your Zip Code"
-                value={zipCode}
-                onChange={onZipCode}
-                maxLength={5}>
-              </input>
-            </div>
-            <div className="label-shipping">
-              <label className="shipping-label-info">Email <span className="red-star">*</span> </label>
-              <input
-                type="text"
-                className={alertError && !email ? ' form-control my-input' : 'form-control formy'}
-                placeholder="Enter Your Email"
-                value={email}
-                onChange={onEmail}
-                maxLength={50}>
-              </input>
-            </div>
-            <div className='radio-btn-align'>
-              <input
-                className="shipping-radio-btn-size"
-                type="radio"
-                value="defaultAddress"
-                name="defaultAddress"
-              // onChange={primaryHandleChange}
-              />
-              <label className="radio-btn-label">
-                Use as my default address
-              </label>
-            </div>
-          </div>
-        </Col>
-        <Col md={5} >
-          <div className='shipping-card-right'>
-            <h3 className="shipping-header-label">Select Delivery Address</h3>
-            <div className='shipping-card-inner'>
-            </div>
-          </div>
-        </Col>
+    <Grid fluid>
+      <Row>
+        <Header />
       </Row>
-      <Row className="shipping-bottom-wrapper">
-        <div className='shipping-card-bottom'>
-          <h3 className="payment-header-label">Payment Method</h3>
-          <Row>
-            <div className='radio-box'>
-              <input
-                className="radio-btn"
-                type="radio"
-                name="PaymentOption"
-                value='wipay'
-                onChange={OnPaymentOption}
-                checked={paymentOption === "wipay" ? true : false}
-              />
-              <label className="radio-label">
-                WiPay Payment
-              </label>
-              <input
-                className="radio-btn"
-                type="radio"
-                name="PaymentOption"
-                value='cashOnDelivery'
-                onChange={OnPaymentOption}
-                checked={paymentOption === "cashOnDelivery" ? true : false}
-              />
-              <label className="radio-label">
-                Cash On Delivery
-              </label>
-              <span class="marker"></span>
+      <Row>
+        <Row className="shipping-wrapper-page">
+          <Col md={7} >
+            <div className='shipping-card-left'>
+              <h3 className="shipping-header-label">Shipping Address</h3>
+              <div className="label-shipping">
+                <label className="shipping-label-info">Full Name <span className="red-star">*</span> </label>
+                <input
+                  type="text"
+                  className={alertError && !fullName ? ` form-control my-input` : `form-control formy`}
+                  placeholder="Fullname"
+                  value={fullName}
+                  onChange={onFullName}
+                  maxLength={30}>
+                </input>
+              </div>
+              <div className="label-shipping">
+                <label className="shipping-label-info">Phone Number <span className="red-star">*</span> </label>
+                <Cleave
+                  placeholder="Enter contact number"
+                  className={alertError && mobile.length < 10 ? ` form-control my-input` : `form-control formy`}
+                  value={mobile}
+                  onChange={onMobile}
+                  options={{
+                    blocks: [3, 3, 4],
+                    numericOnly: true
+                  }}
+                />
+              </div>
+              <div className="label-shipping">
+                <label className="shipping-label-info">Address <span className="red-star">*</span> </label>
+                <input
+                  type="text"
+                  className={alertError && !address ? ` form-control my-input` : `form-control formy`}
+                  placeholder="Address"
+                  value={address}
+                  onChange={onAddress}
+                  maxLength={30}>
+                </input>
+              </div>
+              <div className="label-shipping">
+                <label className="shipping-label-info">Country <span className="red-star">*</span> </label>
+                <Select
+                  name="Country"
+                  className={`clear-country ${alertError && !country && 'dropdown-alert'}`}
+                  placeholder="Choose your country"
+                  value={country}
+                  onChange={onCountry}
+                  options={countryOptions}
+                  isSearchable={false}
+                />
+              </div>
+              <div className="label-shipping">
+                <label className="shipping-label-info">City <span className="red-star">*</span> </label>
+                <Select
+                  name="City"
+                  className={`clear-city ${alertError && !city && 'dropdown-alert'}`}
+                  placeholder="Choose your city"
+                  value={city}
+                  onChange={onCity}
+                  options={cityOptions}
+                  isSearchable={false}
+                />
+              </div>
+              <div className="label-shipping">
+                <label className="shipping-label-info">Zip-Code <span className="red-star">*</span> </label>
+                <input
+                  className={alertError && !zipCode ? ' form-control my-input' : 'form-control formy'}
+                  type="text"
+                  placeholder="Enter Your Zip Code"
+                  value={zipCode}
+                  onChange={onZipCode}
+                  maxLength={5}>
+                </input>
+              </div>
+              <div className="label-shipping">
+                <label className="shipping-label-info">Email <span className="red-star">*</span> </label>
+                <input
+                  type="text"
+                  className={alertError && !email ? ' form-control my-input' : 'form-control formy'}
+                  placeholder="Enter Your Email"
+                  value={email}
+                  onChange={onEmail}
+                  maxLength={50}>
+                </input>
+              </div>
+              <div className='radio-btn-align'>
+                <input
+                  className="shipping-radio-btn-size"
+                  type="radio"
+                  value="defaultAddress"
+                  name="defaultAddress"
+                // onChange={primaryHandleChange}
+                />
+                <label className="radio-btn-label">
+                  Use as my default address
+                </label>
+              </div>
             </div>
-          </Row>
-        </div>
-        <Row>
-          <Col sm={3} className='checkout-btn'>
-            <div className='checkout-btn-align'>
-              <button
-                type="button"
-                className="btn btn-primary modal-butn shipping-btn"
-                onClick={onSubmit} >
-                CHECKOUT
-              </button>
+          </Col>
+          <Col md={5} >
+            <div className='shipping-card-right'>
+              <h3 className="shipping-header-label">Select Delivery Address</h3>
+              <div className='shipping-card-inner'>
+              </div>
             </div>
           </Col>
         </Row>
+        <Row className="shipping-bottom-wrapper">
+          <div className='shipping-card-bottom'>
+            <h3 className="payment-header-label">Payment Method</h3>
+            <Row>
+              <div className='radio-box'>
+                <input
+                  className="radio-btn"
+                  type="radio"
+                  name="PaymentOption"
+                  value='wipay'
+                  onChange={OnPaymentOption}
+                  checked={paymentOption === "wipay" ? true : false}
+                />
+                <label className="radio-label">
+                  WiPay Payment
+                </label>
+                <input
+                  className="radio-btn"
+                  type="radio"
+                  name="PaymentOption"
+                  value='cashOnDelivery'
+                  onChange={OnPaymentOption}
+                  checked={paymentOption === "cashOnDelivery" ? true : false}
+                />
+                <label className="radio-label">
+                  Cash On Delivery
+                </label>
+                <span className="marker"></span>
+              </div>
+            </Row>
+          </div>
+          <Row>
+            <Col sm={3} className='checkout-btn'>
+              <div className='checkout-btn-align'>
+                <button
+                  type="button"
+                  className="btn btn-primary modal-butn shipping-btn"
+                  onClick={onSubmit} >
+                  CHECKOUT
+                </button>
+              </div>
+            </Col>
+          </Row>
+        </Row>
       </Row>
-      <Footer />
-    </div>
+      <Row>
+        <Footer />
+      </Row>
+    </Grid>
   );
 };
 

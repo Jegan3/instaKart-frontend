@@ -135,158 +135,160 @@ const Cart = ({ location }) => {
   }
 
   return (
-    <div>
-      {location.state === 'addCart' ?
-        <Header page='cart' /> : <Header cartIcon page='cart' />
-      }
-      <div className="cart-page-dsn">
-        <Grid fluid className="fluid-scroll">
-          <div className="cart-details" >
-            {isLoadingCart || isLoadingAddCart ? <Loader /> : <Row>
-              {!subTotal ? <div className='basket'>
-                Your Bucket Is Empty
-              </div> : <Row>
-                <Row>
-                  <Col md={12} >
-                    <div className="shop-cart">
-                      Shopping Cart
-                    </div>
-                  </Col>
-                </Row>
-                <Col md={7}>
-                  <div className="product-card">
-                    <Row>
-                      <Col md={12}>
-                        <div className="product-items">
-                          {productList && productList.map((info) =>
-                            <Row className="product-info-details">
-                              <div className='cart-items'>
-                                <Col sm={2} className='img-position'>
-                                  <img className="img-fluid" src={info && info.productImage} />
-                                </Col>
-                                <Col sm={5} className='product-name-position'>
-                                  <div>{info && info.productName}</div>
-                                </Col>
-                                <Col sm={3} className='quanity-check-position'>
-                                  <div className='quanity-check'>
-                                    <span>QTY</span>
-                                    <span className="quanitybtn"
-                                      onClick={() => onDecrement(info)}> - </span>
-                                    {info && info.quantity}
-                                    <span className="quanitybtn"
-                                      onClick={() => onIncrement(info)}> + </span>
-                                  </div>
-                                </Col>
-                                <Col sm={2} className="product-price-position">
-                                  <div>{info && info.totalPrice}</div>
-                                  <br />
-                                  {location.state === 'addCart' && <div className="product-remove" onClick={() => onRemove(info)}>Remove</div>}
-                                </Col>
-                              </div>
-                            </Row>)}
-                        </div>
-                      </Col>
-                    </Row>
+    <Grid fluid className="fluid-scroll">
+      <Row>
+        {location.state === 'addCart' ?
+          <Header page='cart' /> : <Header cartIcon page='cart' />
+        }
+      </Row>
+      <Row>
+        <div className="cart-details" >
+          {isLoadingCart || isLoadingAddCart ? <Loader /> : <Row>
+            {!subTotal ? <div className='basket'>
+              Your Bucket Is Empty
+            </div> : <Row>
+              <Row>
+                <Col md={12} >
+                  <div className="shop-cart">
+                    Shopping Cart
                   </div>
                 </Col>
-                <Col md={5} className="scroll-fix">
-                  <div className="product-card list">
-                    <Row>
-                      <Col md={12} >
-                        <div className="billing-card clr">
-                          <Row>
-                            <Col md={12}>
-                              <div className="summary">
-                                <span>
-                                  Summary
-                                </span>
-                              </div>
-                            </Col>
-                            <Col md={12}>
-                              <div className="items-list">
-                                <span className="items">
-                                  ITEMS
-                                </span>
-                                <span className="items">
-                                  {cartCount}
-                                </span>
-                              </div>
-                            </Col>
-                            <Col md={12}>
-                              <div className='bottom'>
-                                <label className="give-code ">GIVE CODE</label>
-                                <input
-                                  type="text"
-                                  className="form-control "
-                                  placeholder="Enter Code"
-                                  maxLength={30}
-                                />
-                              </div>
-                            </Col>
-                            <Col md={12}>
-                              <div className="items-list">
-                                <span className="items">
-                                  Sub Total
-                                </span>
-                                <span className="items">
-                                  {`${currency}${parseFloat(subTotal).toFixed(2)}`}
-                                </span>
-                              </div>
-                            </Col>
-                            <Col md={12}>
-                              <div className="items-list">
-                                <div className="sub-total">
-                                  Admin Fee<span className="tax-info">(2.5%)</span>
+              </Row>
+              <Col md={7}>
+                <div className="product-card">
+                  <Row>
+                    <Col md={12}>
+                      <div className="product-items">
+                        {productList && productList.map((info) =>
+                          <Row className="product-info-details">
+                            <div className='cart-items'>
+                              <Col sm={2} className='img-position'>
+                                <img className="img-fluid" src={info && info.productImage} />
+                              </Col>
+                              <Col sm={5} className='product-name-position'>
+                                <div>{info && info.productName}</div>
+                              </Col>
+                              <Col sm={3} className='quanity-check-position'>
+                                <div className='quanity-check'>
+                                  <span>QTY</span>
+                                  <span className="quanitybtn"
+                                    onClick={() => onDecrement(info)}> - </span>
+                                  {info && info.quantity}
+                                  <span className="quanitybtn"
+                                    onClick={() => onIncrement(info)}> + </span>
                                 </div>
-                                <div className="admin-service">
-                                  {`${currency}${parseFloat(adminFee).toFixed(2)}`}
-                                </div>
+                              </Col>
+                              <Col sm={2} className="product-price-position">
+                                <div>{info && info.totalPrice}</div>
+                                <br />
+                                {location.state === 'addCart' && <div className="product-remove" onClick={() => onRemove(info)}>Remove</div>}
+                              </Col>
+                            </div>
+                          </Row>)}
+                      </div>
+                    </Col>
+                  </Row>
+                </div>
+              </Col>
+              <Col md={5} className="scroll-fix">
+                <div className="product-card list">
+                  <Row>
+                    <Col md={12} >
+                      <div className="billing-card clr">
+                        <Row>
+                          <Col md={12}>
+                            <div className="summary">
+                              <span>
+                                Summary
+                              </span>
+                            </div>
+                          </Col>
+                          <Col md={12}>
+                            <div className="items-list">
+                              <span className="items">
+                                ITEMS
+                              </span>
+                              <span className="items">
+                                {cartCount}
+                              </span>
+                            </div>
+                          </Col>
+                          <Col md={12}>
+                            <div className='bottom'>
+                              <label className="give-code ">GIVE CODE</label>
+                              <input
+                                type="text"
+                                className="form-control "
+                                placeholder="Enter Code"
+                                maxLength={30}
+                              />
+                            </div>
+                          </Col>
+                          <Col md={12}>
+                            <div className="items-list">
+                              <span className="items">
+                                Sub Total
+                              </span>
+                              <span className="items">
+                                {`${currency}${parseFloat(subTotal).toFixed(2)}`}
+                              </span>
+                            </div>
+                          </Col>
+                          <Col md={12}>
+                            <div className="items-list">
+                              <div className="sub-total">
+                                Admin Fee<span className="tax-info">(2.5%)</span>
                               </div>
-                            </Col>
-                            <Col md={12}>
-                              <div className="items-list">
-                                <div className="sub-total">
-                                  Wipay Fee<span className="tax-info">(3.5% + $0.25 USD)</span>
-                                </div>
-                                <div className="admin-service">
-                                  {`${currency}${parseFloat(wipayFee).toFixed(2)}`}
-                                </div>
+                              <div className="admin-service">
+                                {`${currency}${parseFloat(adminFee).toFixed(2)}`}
                               </div>
-                            </Col>
-                            <Col md={12}>
-                              <div className="items-list">
-                                <span className="items">
-                                  Order Total
-                                </span>
-                                <span className="items">
-                                  {`${currency}${parseFloat(orderTotal).toFixed(2)}`}
-                                </span>
+                            </div>
+                          </Col>
+                          <Col md={12}>
+                            <div className="items-list">
+                              <div className="sub-total">
+                                Wipay Fee<span className="tax-info">(3.5% + $0.25 USD)</span>
                               </div>
-                            </Col>
-                            <Col xs={12}>
-                              <div className="checkoutbtn">
-                                <Button
-                                  variant="contained"
-                                  color="primary"
-                                  onClick={onProceed}
-                                >
-                                  Proceed to Buy
-                                </Button>
+                              <div className="admin-service">
+                                {`${currency}${parseFloat(wipayFee).toFixed(2)}`}
                               </div>
-                            </Col>
-                          </Row>
-                        </div>
-                      </Col>
-                    </Row>
-                  </div>
-                </Col>
-              </Row>}
+                            </div>
+                          </Col>
+                          <Col md={12}>
+                            <div className="items-list">
+                              <span className="items">
+                                Order Total
+                              </span>
+                              <span className="items">
+                                {`${currency}${parseFloat(orderTotal).toFixed(2)}`}
+                              </span>
+                            </div>
+                          </Col>
+                          <Col xs={12}>
+                            <div className="checkoutbtn">
+                              <Button
+                                variant="contained"
+                                color="primary"
+                                onClick={onProceed}
+                              >
+                                Proceed to Buy
+                              </Button>
+                            </div>
+                          </Col>
+                        </Row>
+                      </div>
+                    </Col>
+                  </Row>
+                </div>
+              </Col>
             </Row>}
-          </div>
-        </Grid>
-      </div>
-      <Footer />
-    </div>
+          </Row>}
+        </div>
+      </Row>
+      <Row>
+        <Footer />
+      </Row>
+    </Grid>
   )
 }
 

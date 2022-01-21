@@ -247,7 +247,9 @@ const SignUp = (props) => {
 
   return (
     <Grid fluid>
-      <Header basic />
+      <Row>
+        <Header basic />
+      </Row>
       <OtpScreen show={showOtp} handleClose={handleClose} onSubmitOtp={onSubmitOtp} setResendOtp={resendOtp} email={email} />
       <Row>
         <Col md={6} sm={12} className="signup-margin" >

@@ -1,148 +1,149 @@
-.cart-page-dsn {
-  margin: 0%;
-  padding: 15px;
+.fluid-scroll {
+  overflow-x: inherit !important;
+  overflow-y: inherit !important;
+  margin: unset;
+}
 
-  .fluid-scroll {
-    overflow-x: inherit !important;
-    overflow-y: inherit !important;
-    margin: unset;
+.cart-details {
+  margin: 7% 2%;
+  padding: 5%;
+  padding-bottom: 7%;
+  padding-top: 5%;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(63, 63, 68, 0.1);
+  background-color: #ffffff;
+
+  .shop-cart {
+    padding: 0px 45px 45px 45px;
+    font-size: 25px;
+    font-weight: 800;
+    font-family: Roboto, Helvetica Neue, Arial, sans-serif;
   }
 
-  .cart-details {
-    margin: 7% 2%;
-    padding: 5%;
-    padding-bottom: 7%;
-    padding-top: 5%;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(63, 63, 68, 0.1);
-    background-color: #ffffff;
+  .product-info-details {
+    padding-bottom: 20px;
+    border-bottom: 1px solid lightgrey;
+    text-align: end;
+    margin: 1%;
+    font-family: Roboto, Helvetica Neue, Arial, sans-serif;
+    font-weight: 600;
+    font-size: 16px;
 
-    .shop-cart {
-      padding: 0px 45px 45px 45px;
-      font-size: 25px;
-      font-weight: 800;
-      font-family: Roboto, Helvetica Neue, Arial, sans-serif;
-    }
+    .cart-items {
+      display: flex;
+      justify-content: space-between;
 
-    .product-info-details {
-      padding-bottom: 20px;
-      border-bottom: 1px solid lightgrey;
-      text-align: end;
-      margin: 1%;
-      font-family: Roboto, Helvetica Neue, Arial, sans-serif;
-      font-weight: 600;
-      font-size: 16px;
-
-      .cart-items {
-        display: flex;
-        justify-content: space-between;
-
-        .img-position {
-          display: grid;
-          width: 14%;
-          padding-right: 0px !important;
-          padding-left: 0px !important;
-        }
-
-        img {
-          width: 10rem
-        }
-
-        .product-name-position {
-          display: grid;
-          width: 28%;
-          text-align: initial;
-          position: relative;
-          padding-right: 0px !important;
-          padding-left: 20px !important;
-        }
-
-        .quanity-check-position {
-          display: grid;
-          text-align: center;
-          position: relative;
-          cursor: pointer;
-        }
-
-        .product-price-position {
-          display: grid;
-          text-align: end;
-        }
-
-        .product-remove {
-          font-size: 15px;
-          left: 0px;
-          position: relative;
-          color: gray;
-          cursor: pointer;
-        }
-
-        .product-remove:hover {
-          color: rgb(0, 0, 0);
-        }
-      }
-    }
-
-    .scroll-fix {
-      position: sticky;
-      top: 3%;
-
-      .clr {
-        background-color: gainsboro !important;
+      .img-position {
+        display: grid;
+        width: 14%;
+        padding-right: 0px !important;
+        padding-left: 0px !important;
       }
 
-      .give-code {
-        margin-top: 3%;
-        white-space: nowrap;
-        padding: 10px 0px 10px 0px;
+      img {
+        width: 10rem
       }
 
-      .summary {
-        margin: 0% 0% 7%;
-        padding: 2px 0px 15px 0px;
-        font-size: 25px;
-        border-bottom: 1px solid white;
+      .product-name-position {
+        display: grid;
+        width: 28%;
+        text-align: initial;
+        position: relative;
+        padding-right: 0px !important;
+        padding-left: 20px !important;
       }
 
-      .bottom {
-        border-bottom: 1px solid white;
-        padding-bottom: 10%;
-      }
-
-      .items-list {
-        display: flex;
-        justify-content: space-between;
-        font-weight: 700;
-        font-family: Roboto, Helvetica Neue, Arial, sans-serif;
-        cursor: pointer;
-
-        .items {
-          font-size: 16px;
-        }
-      }
-
-      .billing-card {
-        background-color: #2F374B;
-        padding: 8%;
-        margin: 1%;
-      }
-
-      .checkout-label {
-        margin-top: 3%;
-        font-size: 15px;
-      }
-
-      .checkoutbtn {
+      .quanity-check-position {
+        display: grid;
         text-align: center;
-        margin: 5%;
+        position: relative;
+        cursor: pointer;
+      }
 
-        .MuiButton-containedPrimary {
-          color: #fff;
-          font-size: 13px;
-          padding: 10px 25px;
-          background-color: #3f51b5;
-        }
+      .product-price-position {
+        display: grid;
+        text-align: end;
+      }
+
+      .product-remove {
+        font-size: 15px;
+        left: 0px;
+        position: relative;
+        color: gray;
+        cursor: pointer;
+      }
+
+      .product-remove:hover {
+        color: rgb(0, 0, 0);
+      }
+    }
+  }
+
+  .scroll-fix {
+    position: sticky;
+    top: 3%;
+
+    .clr {
+      background-color: gainsboro !important;
+    }
+
+    .give-code {
+      margin-top: 3%;
+      white-space: nowrap;
+      padding: 10px 0px 10px 0px;
+    }
+
+    .summary {
+      margin: 0% 0% 7%;
+      padding: 2px 0px 15px 0px;
+      font-size: 25px;
+      border-bottom: 1px solid white;
+    }
+
+    .bottom {
+      border-bottom: 1px solid white;
+      padding-bottom: 10%;
+    }
+
+    .items-list {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 700;
+      font-family: Roboto, Helvetica Neue, Arial, sans-serif;
+      cursor: pointer;
+
+      .items {
+        font-size: 16px;
       }
     }
 
+    .billing-card {
+      background-color: #2F374B;
+      padding: 8%;
+      margin: 1%;
+    }
+
+    .checkout-label {
+      margin-top: 3%;
+      font-size: 15px;
+    }
+
+    .checkoutbtn {
+      text-align: center;
+      margin: 5%;
+
+      .MuiButton-containedPrimary {
+        color: #fff;
+        font-size: 13px;
+        padding: 10px 25px;
+        background-color: #3f51b5;
+      }
+    }
   }
+}
+
+.basket {
+  font-size: 25px;
+  font-family: Roboto, Helvetica Neue, Arial, sans-serif;
+  font-weight: 600;
+  text-align: center;
 }
