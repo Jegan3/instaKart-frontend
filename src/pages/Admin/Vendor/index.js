@@ -182,7 +182,7 @@ const Vendor = () => {
                         filterable: false,
                         sortable: false,
                         Cell: (info) => (
-                          <span className="btn-sign" onClick={() => handleShow(info)}><i class="fas fa-sign-in-alt"></i></span>
+                          <span className="btn-sign" onClick={() => handleShow(info)}><i className="fas fa-sign-in-alt"></i></span>
                         ),
                       },
                     ]}
