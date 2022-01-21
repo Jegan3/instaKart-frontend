@@ -496,7 +496,7 @@ const AddProduct = ({ storeId, productId, editPage }) => {
                           <p className="ant-upload-hint">You can upload only 1 video and maximum file size of the video should be less than 30 MB</p>
                         </div>}
                     </Dragger>
-                    {(videoInfo && videoInfo.length !== 0) && videoEdit && <div className='delete-button'><i class="fas fa-trash" onClick={onVideoDelete}></i></div>}
+                    {(videoInfo && videoInfo.length !== 0) && videoEdit && <div className='delete-button'><i className="fas fa-trash" onClick={onVideoDelete}></i></div>}
                   </Col>
                 </Row>
                 <Row>

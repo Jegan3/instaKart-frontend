@@ -157,7 +157,7 @@ export const ReviewCard = ({ title, content, date }) => {
         </p>
       </div>
       <div className='heart-icon'>
-        <i class="fas fa-heart"></i>
+        <i className="fas fa-heart"></i>
       </div>
     </div>
   )

@@ -7,7 +7,9 @@ import Header from '../../../components/Header';
 
 const AboutUs = () => (
   <Grid fluid>
-    <Header basic />
+    <Row>
+      <Header basic />
+    </Row>
     <Row className="content-sec">
       <ScrollAnimation animateIn='fadeIn'
       >
@@ -52,7 +54,7 @@ const AboutUs = () => (
       </ScrollAnimation>
     </Row>
     <Row className="content-sec">
-      <ScrollAnimation  className="animated-speed" animateIn='bounceInLeft'
+      <ScrollAnimation className="animated-speed" animateIn='bounceInLeft'
       >
         <div className="para-sec">
           <h2 className="about-header">What Do We Do?</h2>
@@ -109,7 +111,7 @@ const AboutUs = () => (
       </ScrollAnimation>
     </Row>
     <Row className="content-sec">
-      <ScrollAnimation  className="animated-speed" animateIn='bounceInRight'
+      <ScrollAnimation className="animated-speed" animateIn='bounceInRight'
       >
         <div className="para-sec">
           <h2 className="about-header">Act With Integrity</h2>
