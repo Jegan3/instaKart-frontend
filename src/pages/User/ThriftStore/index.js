@@ -93,7 +93,7 @@ const ThriftStore = () => {
         </Row> :
         <Row></Row>}
       <Row>
-        <div className="bg-thriftstore">
+        <div className={Array.isArray(newPromotionProducts) && newPromotionProducts.length ? 'bg-thrift' : 'bg-thriftstore'}>
           <div className="thrift-ads">
             <div className="particles-sub">
               <Particle color="#f5f5f5" number="150" direction="top" />
