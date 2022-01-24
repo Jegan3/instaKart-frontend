@@ -140,7 +140,7 @@ const ThriftStoreInfo = ({ location }) => {
         </Grid>
       </div>
       <div>
-        <Row>
+        <Row className='products'>
           <Col>
             <div className="products-storeinfo">
               <span className="ik-ads">Products</span>
