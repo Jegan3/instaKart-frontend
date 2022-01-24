@@ -7,7 +7,6 @@
     min-height: auto;
     border-radius: 7px;
     color: #565656;
-    // max-height: 35px;
     transition: border 0.1s linear;
   }
 }
@@ -45,12 +44,6 @@
   & :hover {
     background-color: transparent;
   }
-}
-
-.container-fluid {
-  overflow-x: hidden;
-  overflow-y: hidden;
-  margin: unset;
 }
 
 .left-side {
@@ -97,19 +90,10 @@
   outline: 0;
 }
 
-// .prof-select {
-//   .css-1pahdxg-control {
-//     box-shadow: 0 0 0 1px #28a4d9 !important;
-//     border-color: #28a4d9 !important;
-//     border-radius: 7px;
-//   }
-// }
-
 .css-1pahdxg-control {
   box-shadow: 0 0 0 1px #28a4d9 !important;
   border-color: #28a4d9 !important;
   border-radius: 7px;
-  // height: 35px;
 }
 
 .btn-primary {

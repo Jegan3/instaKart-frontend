@@ -33,80 +33,79 @@ const ThriftStore = () => {
   }, []);
 
   return (
-    <Grid fluid className="padding-control thrift">
-      <div className="particles-main">
-        <Particle color="#28a4d9" number="700" direction="bottom" />
-      </div>
-      <div>
+    <Grid fluid className="thrift">
+      <Row>
         <Header loginCart={login} hideloginCart={hideloginCart} />
-      </div>
-      <h2 className="heading-text">
-        The Caribbean&#39;s
-        <TextLoop
-          className="text-loop"
-          springConfig={{ stiffness: 70, damping: 31 }}
-          adjustingSpeed={500}
-        >
-          <span>Largest</span>
-          <span>Biggest</span>
-          <span>Greatest</span>
-        </TextLoop>
-        Thrift Shop
-      </h2>
-      <Row >
-        <Col>
-          <div className="intro-banner">
-            <ThriftBanners />
-          </div>
-        </Col>
-      </Row>
-      <h2>Shop By Categories</h2>
-      <Row className="cards-row ">
-        <ThriftStoreCategory thriftCategoryType={thriftCategoryType} setLogin={setLoginModal} module="Thrift Store" />
       </Row>
       <Row>
-      </Row>
-      <Row>
-        <div className="bg-thrift">
-          <div className="thrift-ads">
-            <div className="particles-sub">
-              <Particle color="#f5f5f5" number="150" direction="top" />
-            </div>
-            <h3>THRIFT STORE NEAR YOU</h3>
-            <ThriftStoreNearYou thriftDetails={thriftDetails} setLogin={setLoginModal} module="Thrift Store" />
-          </div>
-          <br />
+        <div className="particles-main">
+          <Particle color="#28a4d9" number="700" direction="bottom" />
         </div>
-      </Row>
-      {Array.isArray(newPromotionProducts) && newPromotionProducts.length ?
+        <h2 className="heading-text">
+          The Caribbean&#39;s
+          <TextLoop
+            className="text-loop"
+            springConfig={{ stiffness: 70, damping: 31 }}
+            adjustingSpeed={500}
+          >
+            <span>Largest</span>
+            <span>Biggest</span>
+            <span>Greatest</span>
+          </TextLoop>
+          Thrift Shop
+        </h2>
+        <Row >
+          <Col>
+            <div className="intro-banner">
+              <ThriftBanners />
+            </div>
+          </Col>
+        </Row>
+        <h2>Shop By Categories</h2>
+        <Row className="cards-row ">
+          <ThriftStoreCategory thriftCategoryType={thriftCategoryType} setLogin={setLoginModal} module="Thrift Store" />
+        </Row>
         <Row>
-          <div className="bg-thriftstore">
+        </Row>
+        <Row>
+          <div className="bg-thrift">
             <div className="thrift-ads">
               <div className="particles-sub">
                 <Particle color="#f5f5f5" number="150" direction="top" />
               </div>
-              <h3>NEW PROMOTIONS</h3>
-              <ThriftProducts products={newPromotionProducts} setLogin={setLoginModal} module="Thrift Store" />
+              <h3>THRIFT STORE NEAR YOU</h3>
+              <ThriftStoreNearYou thriftDetails={thriftDetails} setLogin={setLoginModal} module="Thrift Store" />
             </div>
             <br />
           </div>
-        </Row> :
-        <Row></Row>}
-      <Row>
-        <div className={Array.isArray(newPromotionProducts) && newPromotionProducts.length ? 'bg-thrift' : 'bg-thriftstore'}>
-          <div className="thrift-ads">
-            <div className="particles-sub">
-              <Particle color="#f5f5f5" number="150" direction="top" />
+        </Row>
+        {Array.isArray(newPromotionProducts) && newPromotionProducts.length ?
+          <Row>
+            <div className="bg-thriftstore">
+              <div className="thrift-ads">
+                <h3>NEW PROMOTIONS</h3>
+                <ThriftProducts products={newPromotionProducts} setLogin={setLoginModal} module="Thrift Store" />
+              </div>
+              <br />
             </div>
-            <h3>NEW ADDITIONS</h3>
-            <ThriftProducts products={newAdditionProducts} setLogin={setLoginModal} module="Thrift Store" />
+          </Row> :
+          <Row></Row>}
+        <Row>
+          <div className={Array.isArray(newPromotionProducts) && newPromotionProducts.length ? 'bg-thrift' : 'bg-thriftstore'}>
+            <div className="thrift-ads">
+              <div className="particles-sub">
+                <Particle color="#f5f5f5" number="150" direction="top" />
+              </div>
+              <h3>NEW ADDITIONS</h3>
+              <ThriftProducts products={newAdditionProducts} setLogin={setLoginModal} module="Thrift Store" />
+            </div>
+            <br />
           </div>
-          <br />
-        </div>
+        </Row>
       </Row>
-      <div>
+      <Row>
         <Footer />
-      </div>
+      </Row>
     </Grid>
   );
 };
