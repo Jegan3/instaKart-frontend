@@ -38,12 +38,10 @@ const AddProduct = ({ storeId, productId, editPage }) => {
   const [totalprice, setTotalPrice] = useState('');
   const [productImageList, setProductImageList] = useState([]);
   const [productEdit] = useState(editPage);
-  const [priceField, setPriceField] = useState(false);
   const [categoryDetails, setCategoryDetails] = useState()
   const [image, setImage] = useState([])
   const [imageEdit, setImageEdit] = useState(true);
   const [videoEdit, setVideoEdit] = useState(true)
-  const [removed, setRemoved] = useState([])
 
   const dispatch = useDispatch();
   const thriftCategoryType = useSelector((state) => state.thriftCategoryState.thriftCategory);
@@ -52,7 +50,8 @@ const AddProduct = ({ storeId, productId, editPage }) => {
   const invalidAddProduct = useSelector((state) => state.addProductState.error);
   const productInfo = useSelector((state) => state.getProductState.product)
 
-  const priceInfo = productInfo && productInfo.productPrice.replace(/[^\d.-]/g, '') - ((productInfo && productInfo.tax * 100) / 100);
+  const taxInfo = productInfo && productInfo.tax;
+  const priceInfo = taxInfo ? productInfo && productInfo.productPrice.replace(/[^\d.-]/g, '') - ((productInfo && productInfo.tax * 100) / 100) : productInfo && productInfo.productPrice.replace(/[^\d.-]/g, '');
   const finalPriceInfo = productInfo && productInfo.finalPrice.replace(/[^\d.-]/g, '');
   const categoryList = productInfo && productInfo.category;
 
@@ -62,12 +61,19 @@ const AddProduct = ({ storeId, productId, editPage }) => {
 
   const videoInfo = productInfo && productInfo.productVideo
 
+
+  const statusOptions = [
+    { value: 'available', label: 'Available' },
+    { value: 'sold', label: 'Sold' },
+    { value: 'reserve', label: 'Reserve' },
+  ];
+
   const productNameInfo = !productName && productEdit && productName !== '' ? productInfo && productInfo.productName : productName;
   const categoryInfo = !category && productEdit && category !== '' ? categoryDetails : category;
-  const productPriceInfo = !price && !priceField && productEdit && price !== '' ? priceInfo : price;
-  const productFinalPriceInfo = !finalPrice && !priceField && productEdit && price !== '' ? finalPriceInfo : finalPrice;
-  const discountInfo = !discount && !priceField && productEdit && discount !== '' ? productInfo && productInfo.discount : discount;
-  const productTaxInfo = !tax && !priceField && productEdit && tax !== '' ? productInfo && productInfo.tax : tax;
+  const productPriceInfo = !price && productEdit && price !== '' ? priceInfo : price;
+  const productFinalPriceInfo = !finalPrice && productEdit && price !== '' ? finalPriceInfo : finalPrice;
+  const productDiscountInfo = !discount && productEdit && discount !== '' ? productInfo && productInfo.discount : discount;
+  const productTaxInfo = !tax && productEdit && tax !== '' ? productInfo && productInfo.tax : tax;
   const productImagesInfo = productEdit && imageEdit ? imageInfo : fileList;
   const productVideoInfo = videoEdit && productEdit ? productInfo && productInfo.productVideo : video;
   const stockHandInfo = !stockHand && productEdit && stockHand !== '' ? productInfo && productInfo.stockHand : stockHand;
@@ -76,11 +82,6 @@ const AddProduct = ({ storeId, productId, editPage }) => {
   const productShippingInfo = !productShipping && productEdit && productShipping !== '' ? productInfo && productInfo.productShipping : productShipping;
   const statusInfo = !status && productEdit && status !== '' ? productInfo && productInfo.status : status;
 
-  const statusOptions = [
-    { value: 'available', label: 'Available' },
-    { value: 'sold', label: 'Sold' },
-    { value: 'reserve', label: 'Reserve' },
-  ];
 
   useEffect(() => {
     if (clear && addProduct && addProduct.status) {
@@ -127,9 +128,9 @@ const AddProduct = ({ storeId, productId, editPage }) => {
   }, [categoryList]);
 
   useEffect(() => {
-    if (productPriceInfo && discountInfo && productTaxInfo) {
+    if (productPriceInfo && productDiscountInfo && productTaxInfo) {
       setFinalPrice(finalPrice)
-    } else if (productPriceInfo && discountInfo) {
+    } else if (productPriceInfo && productDiscountInfo) {
       setFinalPrice(discountPrice)
     } else if (productPriceInfo && productTaxInfo) {
       setFinalPrice(taxPrice)
@@ -141,12 +142,12 @@ const AddProduct = ({ storeId, productId, editPage }) => {
   }, [productPriceInfo])
 
   useEffect(() => {
-    if (discountInfo) {
+    if (productDiscountInfo) {
       setFinalPrice(discountPrice)
     } else {
       setFinalPrice(finalPrice)
     }
-  }, [discountInfo])
+  }, [productDiscountInfo])
 
   useEffect(() => {
     if (productTaxInfo) {
@@ -182,7 +183,7 @@ const AddProduct = ({ storeId, productId, editPage }) => {
     setPrice(e.target.value.substring(e.target.value.lastIndexOf('$') + 1))
     const a = e.target.value.substring(e.target.value.lastIndexOf('$') + 1)
     const b = productTaxInfo
-    const c = discountInfo
+    const c = productDiscountInfo
     const d = a * (b / 100)
     const h = + a + d
     const f = h * (c / 100)
@@ -194,12 +195,12 @@ const AddProduct = ({ storeId, productId, editPage }) => {
   }
 
   const onTax = (e) => {
-    if (discountInfo) {
+    if (productDiscountInfo) {
       setTax(e.target.value)
       const c = e.target.value
       const d = (c / 100) * productPriceInfo
       const f = + productPriceInfo + d
-      const g = f * (discountInfo / 100)
+      const g = f * (productDiscountInfo / 100)
       const h = f - g
       setTaxPrice(h)
       setFinalPrice(h)
@@ -378,7 +379,7 @@ const AddProduct = ({ storeId, productId, editPage }) => {
         //productImages: imagesList,
         productVideo: video,
         productPrice: `${symbol}${parseFloat(productPrice).toFixed(2)}`,
-        discount: discountInfo,
+        discount: productDiscountInfo,
         tax: productTaxInfo,
         finalPrice: `${symbol}${parseFloat(productFinalPriceInfo).toFixed(2)}`,
         // stockHand: stockHandInfo,
@@ -388,9 +389,8 @@ const AddProduct = ({ storeId, productId, editPage }) => {
         productShipping: productShippingInfo,
         estoreId: storeId,
       };
-      console.log('addproduct', addProduct);
       if (productEdit) {
-        dispatch({ type: 'EDIT_PRODUCT_REQUEST', addProduct })
+        dispatch({ type: 'EDIT_PRODUCT_REQUEST', addProduct, productId })
       }
       else {
         dispatch({ type: 'ADD_PRODUCT_REQUEST', addProduct });
@@ -537,7 +537,7 @@ const AddProduct = ({ storeId, productId, editPage }) => {
                         <Cleave
                           className="form-control"
                           maxLength={10}
-                          value={discountInfo}
+                          value={productDiscountInfo}
                           onChange={onDiscount}
                           options={{
                             numeral: true,

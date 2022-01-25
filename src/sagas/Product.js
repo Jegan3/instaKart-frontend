@@ -25,7 +25,7 @@ export function* getProduct(data) {
 export function* editProduct(data) {
   const { productId } = data;
   try {
-    const response = yield doPut(`${envConfig.apiEndPoints.editProduct}/${productId}`);
+    const response = yield doPut(`${envConfig.apiEndPoints.editProduct}/${productId}`, data.addProduct);
     yield put(instakartActionCreators.editProductSuccess(response));
   } catch (error) {
     yield put(instakartActionCreators.editProductFailure(error));
