@@ -223,7 +223,7 @@ const ProductInfo = ({ location }) => {
                   <Col md={7}>
                     <Row>
                       <Col sm={12}>
-                        <h1 className='product-title'>{product && product.productName}<img className='discount' src='images/sale.png' /><span className="off">13 % </span></h1>
+                        <h1 className='product-title'>{product && product.productName}<img className='discount' src='images/sale.png' /><span className="off">{product && product.discount} % </span></h1>
                       </Col>
                       <Col sm={12}>
                         <Row>
