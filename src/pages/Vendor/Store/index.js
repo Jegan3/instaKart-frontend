@@ -21,8 +21,8 @@ const Store = (props) => {
   const addProductEnable = useSelector((state) => state.storeInfoUpdateState.storeInfoUpdate);
   const ListEnable = useSelector((state) => state.addProductState.addProduct);
 
-  const storeId = props.location.state || sessionStorage.newStoreId
-  const productId = productEdit ? props.location.state : false
+  const storeId = props.location.state.storeId || sessionStorage.newStoreId
+  const productId = productEdit ? props.location.state.productId : false
   const upDatedHeaderName = upDatedHeader ? storeInfo && storeInfo.storeInfo.storeName : header;
   const productSuccess = addProductEnable && addProductEnable.status;
   const listSuccess = ListEnable && ListEnable.status;

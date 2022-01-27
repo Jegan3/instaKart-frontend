@@ -44,7 +44,7 @@ const ProductList = ({ storeId, productEdit }) => {
     productEdit()
     history.push({
       pathname: `/storedetails`,
-      state: original.productId,
+      state: { productId: original.productId, storeId: storeId },
     });
   };
 

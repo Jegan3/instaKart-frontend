@@ -54,7 +54,7 @@ const Sidebar = () => {
 
   useEffect(() => {
     if (addStore && addStore.status && !store) {
-      history.push({ pathname: '/storedetails', state: addStore.estoreId });
+      history.push({ pathname: '/storedetails', state: { storeId: addStore.estoreId } });
       dispatch({ type: 'PRODUCT_LIST_REQUEST', storeId: addStore.estoreId });
     }
   }, [vendorCompanyDetails])
@@ -108,7 +108,7 @@ const Sidebar = () => {
 
   const onStore = (info) => {
     if (storeUpdateSubmit) {
-      history.push({ pathname: '/storedetails', state: info.estoreId });
+      history.push({ pathname: '/storedetails', state: { storeId: info.estoreId } });
       dispatch({ type: 'PRODUCT_LIST_REQUEST', storeId: info.estoreId });
       setStore(true)
     } else {
