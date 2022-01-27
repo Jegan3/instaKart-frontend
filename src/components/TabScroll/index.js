@@ -59,9 +59,6 @@ export const MaterialTabs = ({ storeInfo }) => {
     const product = storeInfo[newValue];
     setProduct(product);
   };
-  console.log('storeInfo', storeInfo)
-  console.log('value', value)
-  console.log('product', product)
 
   return (
     <div className='tab-scroll'>

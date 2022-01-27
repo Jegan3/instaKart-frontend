@@ -164,7 +164,6 @@ export const ReviewCard = ({ title, content, date }) => {
 }
 
 export const ThriftStoreInfoCategoriesCard = ({ title, className, imgUrl, product, path, module }) => {
-  console.log('module', module)
   const Card = () => {
     if (sessionStorage.type === 'user') {
       history.push({ pathname: path, state: { product: product, module: module } })

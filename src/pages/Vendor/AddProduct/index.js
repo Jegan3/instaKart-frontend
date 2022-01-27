@@ -274,15 +274,17 @@ const AddProduct = ({ storeId, productId, editPage, editSuccess }) => {
         productImageList.push({
           thumbUrl: reader.result,
           name: file.name,
+          uid: file.uid,
         });
       };
       reader.readAsDataURL(file.originFileObj);
     } else if (fileList.length && fileList[fileList.length - 1].status === 'error') {
       message.error(`${fileList[fileList.length - 1].name} file uploaded failed`);
+    } else if (fileList.length && removedItem) {
+      message.error(`${removedItem.name} file deleted successfully`);
+      const productList = productImageList.filter(item => item.uid !== removedItem.uid)
+      setProductImageList(productList)
     }
-    // else if (fileList.length && removedItem) {
-    //   message.error( 'file deleted successfully');
-    // }
     setImageList(newFileList);
   };
 
@@ -346,7 +348,6 @@ const AddProduct = ({ storeId, productId, editPage, editSuccess }) => {
   const handleCancel = () => setPreviewVisible(false);
 
   const symbol = `${thriftCategoryType && thriftCategoryType.symbol}`;
-
 
   const history = useHistory();
   const onCancel = () => {

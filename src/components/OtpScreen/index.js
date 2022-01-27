@@ -53,8 +53,6 @@ const OtpScreen = ({ show, handleClose, email, setResendOtp }) => {
     setOtp(value)
   };
 
-  //console.log('value', otp.length)
-
   const onSubmitOtp = () => {
     if (otp < 6) {
       setAlert('Please enter the valid verification code');
