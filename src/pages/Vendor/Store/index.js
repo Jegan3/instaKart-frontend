@@ -62,8 +62,17 @@ const Store = (props) => {
     setProductEdit(true)
   }
 
+  const editSuccess = () => {
+    setProductEdit(false)
+    setToggle('productlist')
+  }
+
   const handleClick = e => {
     setToggle(e.key);
+  };
+
+  const onProductList = () => {
+    setProductEdit(false)
   };
 
   return (
@@ -81,12 +90,13 @@ const Store = (props) => {
           </Menu.Item>
           <Menu.Item key="productlist"
             disabled={!listEnable}
+            onClick={onProductList}
           >
             Product List
           </Menu.Item>
         </Menu>
         {current === 'storeinfo' && <StoreInfo setStoreHeader={storeHeader} storeId={storeId} />}
-        {current === 'addproduct' && <AddProduct storeId={storeId} productId={productId} editPage={productEdit} />}
+        {current === 'addproduct' && <AddProduct storeId={storeId} productId={productId} editPage={productEdit} editSuccess={editSuccess} />}
         {current === 'productlist' && <ProductList storeId={storeId} productEdit={editPage} />}
       </div>
     </div>

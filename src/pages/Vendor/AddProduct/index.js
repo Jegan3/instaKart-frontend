@@ -13,7 +13,7 @@ import { useHistory } from "react-router-dom";
 
 const { Dragger } = Upload;
 
-const AddProduct = ({ storeId, productId, editPage }) => {
+const AddProduct = ({ storeId, productId, editPage, editSuccess }) => {
   const [productName, setProductName] = useState();
   const [category, setCategory] = useState();
   const [fileList, setImageList] = useState([])
@@ -48,7 +48,8 @@ const AddProduct = ({ storeId, productId, editPage }) => {
   const addProduct = useSelector((state) => state.addProductState.addProduct);
   const isLoading = useSelector((state) => state.addProductState.isLoading);
   const invalidAddProduct = useSelector((state) => state.addProductState.error);
-  const productInfo = useSelector((state) => state.getProductState.product)
+  const productInfo = useSelector((state) => state.getProductState.product);
+  const editProduct = useSelector((state) => state.editProductState.editProduct);
 
   const taxInfo = productInfo && productInfo.tax;
   const priceInfo = taxInfo ? productInfo && productInfo.productPrice.replace(/[^\d.-]/g, '') - ((productInfo && productInfo.tax * 100) / 100) : productInfo && productInfo.productPrice.replace(/[^\d.-]/g, '');
@@ -82,7 +83,6 @@ const AddProduct = ({ storeId, productId, editPage }) => {
   const productShippingInfo = !productShipping && productEdit && productShipping !== '' ? productInfo && productInfo.productShipping : productShipping;
   const statusInfo = !status && productEdit && status !== '' ? productInfo && productInfo.status : status;
 
-
   useEffect(() => {
     if (clear && addProduct && addProduct.status) {
       setProductName('');
@@ -106,7 +106,11 @@ const AddProduct = ({ storeId, productId, editPage }) => {
       message.error(`Sorry!, ${productName} ${addProduct && addProduct.error}`);
       setClear(false)
     }
-  }, [addProduct, invalidAddProduct])
+    else if(clear && editProduct && editProduct.status){
+      message.success(`${productNameInfo} ${editProduct && editProduct.message}`)
+      editSuccess()
+    }
+  }, [addProduct, invalidAddProduct, editProduct])
 
   useEffect(() => {
     if (productEdit) {
@@ -276,13 +280,10 @@ const AddProduct = ({ storeId, productId, editPage }) => {
     } else if (fileList.length && fileList[fileList.length - 1].status === 'error') {
       message.error(`${fileList[fileList.length - 1].name} file uploaded failed`);
     }
-    else if (fileList.length && removedItem) {
-      message.error(`${removedItem.name} file deleted successfully`);
-      // productImageList.filter(info => info.name === removedItem.name )
-    }
+    // else if (fileList.length && removedItem) {
+    //   message.error( 'file deleted successfully');
+    // }
     setImageList(newFileList);
-    // removed.push(removedItem)
-    //console.log('removedItem', removedItem);
   };
 
   const onChangeVideo = async info => {
@@ -357,7 +358,6 @@ const AddProduct = ({ storeId, productId, editPage }) => {
 
   const onSubmit = () => {
     const imagesList = productEdit ? imageInfo.concat(productImageList) : productImageList;
-    console.log('imageInfo', imagesList);
     if (!productNameInfo || !categoryInfo || !productPriceInfo || !productDescriptionInfo || !productWarrantyInfo) {
       setAlertError(true)
       message.error('Please Fill All The Fields')
@@ -430,7 +430,7 @@ const AddProduct = ({ storeId, productId, editPage }) => {
                     <label className="signup-label">Product Name <span className="red-star">*</span></label>
                     <input
                       type="text"
-                      className={alertError && productNameInfo.length < 3 ? ` form-control my-input` : `form-control formy`}
+                      className={alertError && productNameInfo && productNameInfo.length < 3 ? ` form-control my-input` : `form-control formy`}
                       maxLength={30}
                       value={productNameInfo}
                       onChange={onProductName}
@@ -593,7 +593,7 @@ const AddProduct = ({ storeId, productId, editPage }) => {
                 <Row>
                   <Col sm={12} md={6}>
                     <label className="signup-label">Product Description <span className="red-star">*</span></label>
-                    <textarea className={alertError && productDescriptionInfo.length < 10 ? ` form-control my-input` : `form-control formy`}
+                    <textarea className={alertError && productDescriptionInfo && productDescriptionInfo.length < 10 ? ` form-control my-input` : `form-control formy`}
                       name="message"
                       placeholder='type something..'
                       value={productDescriptionInfo}
