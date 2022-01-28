@@ -75,12 +75,17 @@ const Store = (props) => {
     setProductEdit(false)
   };
 
+  const onStoreInfo = () => {
+    setProductEdit(false)
+  };
+
   return (
     <div className="wrapper">
       <div className="rightside-panel">
         <Headerbar headerName={upDatedHeaderName} />
         <Menu onClick={handleClick} selectedKeys={[current]} mode="horizontal" disabledOverflow={true} className="card">
-          <Menu.Item key="storeinfo" >
+          <Menu.Item key="storeinfo"
+            onClick={onStoreInfo}>
             Store Info
           </Menu.Item>
           <Menu.Item key="addproduct"
