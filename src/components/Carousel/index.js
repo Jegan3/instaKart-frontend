@@ -441,9 +441,10 @@ export const ThriftProducts = ({ products, module, setLogin }) => (
   >
     {products ? products.map((info) => (
       <ThriftProductsCard key={info.productId}
-        product={info.productId} imgUrl={info.productImage} path={'/productinfo'} finalPrice={info.finalPrice} productPrice={info.productPrice} discount={info.discount} productName={info.productName} setLogin={setLogin} module={module} />
+        product={info.productId} imgUrl={info.productImage} path={'/productinfo'} finalPrice={info.finalPrice} taxPrice={info.tax} productPrice={info.productPrice} discount={info.discount} productName={info.productName} setLogin={setLogin} module={module} />
     )) : []}
   </Carousel>
+
 );
 
 export const CarouselReviewCard = () => (
