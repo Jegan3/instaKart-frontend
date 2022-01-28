@@ -35,7 +35,6 @@ const AddProduct = ({ storeId, productId, editPage, editSuccess }) => {
   const [alertError, setAlertError] = useState(false);
   const [clear, setClear] = useState(false);
   const [status, setStatus] = useState(false);
-  const [totalprice, setTotalPrice] = useState('');
   const [productImageList, setProductImageList] = useState([]);
   const [productEdit] = useState(editPage);
   const [categoryDetails, setCategoryDetails] = useState()
@@ -51,8 +50,7 @@ const AddProduct = ({ storeId, productId, editPage, editSuccess }) => {
   const productInfo = useSelector((state) => state.getProductState.product);
   const editProduct = useSelector((state) => state.editProductState.editProduct);
 
-  const taxInfo = productInfo && productInfo.tax;
-  const priceInfo = taxInfo ? productInfo && productInfo.productPrice.replace(/[^\d.-]/g, '') - ((productInfo && productInfo.tax * 100) / 100) : productInfo && productInfo.productPrice.replace(/[^\d.-]/g, '');
+  const priceInfo = productInfo && productInfo.productPrice.replace(/[^\d.-]/g, '');
   const finalPriceInfo = productInfo && productInfo.finalPrice.replace(/[^\d.-]/g, '');
   const categoryList = productInfo && productInfo.category;
 
@@ -106,7 +104,23 @@ const AddProduct = ({ storeId, productId, editPage, editSuccess }) => {
       message.error(`Sorry!, ${productName} ${addProduct && addProduct.error}`);
       setClear(false)
     }
-    else if(clear && editProduct && editProduct.status){
+    else if (clear && editProduct && editProduct.status) {
+      setProductName('');
+      setCategory('');
+      setImageList([]);
+      setPrice('');
+      setTax('');
+      setDiscount('');
+      setFinalPrice('');
+      setVideo([]);
+      setImage([]);
+      setStockHand('')
+      setStatus(false)
+      setProductDescription('');
+      setProductWarranty('');
+      setProductImageList([]);
+      setProductShipping('');
+      setAlertError(false);
       message.success(`${productNameInfo} ${editProduct && editProduct.message}`)
       editSuccess()
     }
@@ -118,6 +132,10 @@ const AddProduct = ({ storeId, productId, editPage, editSuccess }) => {
     }
     dispatch({ type: 'THRIFT_CATEGORY_REQUEST' });
   }, [])
+
+  useEffect(() => {
+    setImage([]);
+  }, [productInfo])
 
   useEffect(() => {
     thriftCategoryType && thriftCategoryType.categoryDetails.filter(item => {
@@ -208,7 +226,6 @@ const AddProduct = ({ storeId, productId, editPage, editSuccess }) => {
       const h = f - g
       setTaxPrice(h)
       setFinalPrice(h)
-      setTotalPrice(f)
     } else {
       setTax(e.target.value)
       const c = e.target.value
@@ -216,7 +233,6 @@ const AddProduct = ({ storeId, productId, editPage, editSuccess }) => {
       const f = +productPriceInfo + +d
       setTaxPrice(f)
       setFinalPrice(f)
-      setTotalPrice(f)
     }
   }
 
@@ -354,9 +370,6 @@ const AddProduct = ({ storeId, productId, editPage, editSuccess }) => {
     history.goBack()
   }
 
-  //product price without discount
-  const productPrice = !productTaxInfo ? productPriceInfo : totalprice;
-
   const onSubmit = () => {
     const imagesList = productEdit ? imageInfo.concat(productImageList) : productImageList;
     if (!productNameInfo || !categoryInfo || !productPriceInfo || !productDescriptionInfo || !productWarrantyInfo) {
@@ -369,9 +382,9 @@ const AddProduct = ({ storeId, productId, editPage, editSuccess }) => {
       message.error('Please Fill The Product Name With Minimum 3 Characters')
       setAlertError(true)
     }
-    // else if (!imagesList) {
-    //   message.error('Please Upload The Images')
-    // }
+    else if (!imagesList) {
+      message.error('Please Upload The Images')
+    }
     else {
       const addProduct = {
         productName: productNameInfo,
@@ -379,7 +392,7 @@ const AddProduct = ({ storeId, productId, editPage, editSuccess }) => {
         productImages: imagesList.map(info => info.thumbUrl),
         //productImages: imagesList,
         productVideo: video,
-        productPrice: `${symbol}${parseFloat(productPrice).toFixed(2)}`,
+        productPrice: `${symbol}${parseFloat(productPriceInfo).toFixed(2)}`,
         discount: productDiscountInfo,
         tax: productTaxInfo,
         finalPrice: `${symbol}${parseFloat(productFinalPriceInfo).toFixed(2)}`,
