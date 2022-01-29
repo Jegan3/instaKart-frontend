@@ -7,6 +7,8 @@ import ImgCrop from 'antd-img-crop';
 import ReactPlayer from "react-player";
 import Footer from '../../../components/Footer';
 import Header from '../../../components/Header';
+import Loader from '../../../components/Loader';
+
 
 const { Dragger } = Upload;
 
@@ -25,6 +27,8 @@ const ListYourAds = () => {
 
   const dispatch = useDispatch();
   const advertiseNowSuccess = useSelector((state) => state.listYourAds.advertisement);
+  const isLoading = useSelector((state) => state.listYourAds.isLoading);
+
 
   useEffect(() => {
     if (advertiseNowSuccess && advertiseNowSuccess.message)
@@ -145,6 +149,7 @@ const ListYourAds = () => {
 
   return (
     <Grid fluid>
+      {isLoading && <Loader />}
       <Row>
         <Header basic />
       </Row>

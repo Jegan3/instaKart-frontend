@@ -87,6 +87,7 @@ const StoreInfo = ({ storeId, setStoreHeader }) => {
   const storeInfo = useSelector((state) => state.storeInfoState.storeInfo);
   const isLoading = useSelector((state) => state.storeInfoState.isLoading);
   const storeInfoUpdate = useSelector((state) => state.storeInfoUpdateState.storeInfoUpdate);
+  const isUpdateLoading = useSelector((state) => state.storeInfoUpdateState.isLoading);
   const invalidStoreInfoUpdate = useSelector((state) => state.storeInfoUpdateState.error);
 
   const countryList = storeInfo && storeInfo.storeInfo.countryId;
@@ -337,7 +338,7 @@ const StoreInfo = ({ storeId, setStoreHeader }) => {
 
   return (
     <div >
-      {isLoading && <Loader />}
+      {(isLoading || isUpdateLoading) && <Loader />}
       <div >
         <div className="main-content general-info">
           <Grid fluid>

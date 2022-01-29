@@ -52,6 +52,8 @@ const Profile = () => {
   const [fileList, setUploadCompanyLogo] = useState('');
 
   const dispatch = useDispatch();
+  const isLoading = useSelector((state) => state.profileState.isLoading);
+  const isUpdateLoading = useSelector((state) => state.profileUpdateState.isLoading);
   const profileInfo = useSelector((state) => state.profileState.profile);
   const profileUpdate = useSelector((state) => state.profileUpdateState.profileUpdate);
   const profileSuccess = profileUpdate && profileUpdate.message;
@@ -232,7 +234,7 @@ const Profile = () => {
 
   return (
     <div className="wrapper">
-      {/* {isLoading && <Loader />} */}
+      {(isLoading || isUpdateLoading) && <Loader />}
       <div className="rightside-panel vendor-profile-page">
         <Headerbar headerName="Profile" />
         <div className='profile-page-dgn'>
