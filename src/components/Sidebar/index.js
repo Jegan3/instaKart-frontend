@@ -161,9 +161,9 @@ const Sidebar = () => {
               <MenuItem icon={<FontAwesomeIcon icon={faUserAlt} />} onClick={onProfile}>
                 Profile
               </MenuItem>
-              <MenuItem icon={<FontAwesomeIcon icon={faHome} />} onClick={onUserDetails}>
+              {/* <MenuItem icon={<FontAwesomeIcon icon={faHome} />} onClick={onUserDetails}>
                 User Details
-              </MenuItem>
+              </MenuItem> */}
               {vendorCompanyDetails && vendorCompanyDetails.industries.map((item) => <SubMenu title={item.industryType} icon={<FontAwesomeIcon icon={faNetworkWired} />
               }>
                 {item.stores.map((info) => <div>

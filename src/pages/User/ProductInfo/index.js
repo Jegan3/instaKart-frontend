@@ -25,9 +25,24 @@ const ProductInfo = ({ location }) => {
   const product = productDetails && productDetails.productInfo
   const addCart = useSelector((state) => state.addCartState.addCart);
   const isLoadingProduct = useSelector((state) => state.productInfoState.isLoading);
+  const isLoading = useSelector((state) => state.productMessageState.isLoading);
+
   const userLogin = useSelector((state) => state.loginState.login);
   // For Header Menu 
   const module = location.state.module
+
+  const onlyProductprice = product && product.productPrice
+  const taxPrice = product && product.tax
+  const finalPrice = product && product.finalPrice
+  const discount = product && product.discount
+
+  const priceInfo = onlyProductprice && onlyProductprice.replace(/[^\d.-]/g, '')
+  const taxInfo = ((taxPrice / 100) * priceInfo)
+  const symbol = onlyProductprice && onlyProductprice.replace(/\d./g, "")
+  const price = (+priceInfo + + taxInfo).toFixed(2)
+  const totalPrice = `${symbol}${price} `
+  const totalPriceInfo = taxPrice ? totalPrice : onlyProductprice;
+
 
   const productImages = product && product.productImages.map(item => ({
     original: item,
@@ -217,19 +232,20 @@ const ProductInfo = ({ location }) => {
             style={{ backgroundImage: `url(${!background ? product && product.productImages[0] : background})` }}
           >
             <div className='ads-page'>
-              {isLoadingProduct && <Loader />}
+              {(isLoadingProduct || isLoading) && <Loader />}
               <Row className='position-top justify-content-center'>
                 <div className="product-sides">
                   <Col md={7}>
                     <Row>
                       <Col sm={12}>
-                        <h1 className='product-title'>{product && product.productName}<img className='discount' src='images/sale.png' /><span className="off">{product && product.discount} % </span></h1>
+                        <h1 className='product-title'>{product && product.productName}{discount && <img className='discount' src='images/sale.png' />}{discount && <span className="off">{product && product.discount} % </span>}</h1>
                       </Col>
                       <Col sm={12}>
                         <Row>
                           <Col sm={4}>
                             <div className="product-discount">
-                              <h3 className="sale">{product && product.finalPrice}</h3> <span className="striked-out productinfo">{product && product.discount && product.productPrice}</span>
+                              <h3 className="sale">{finalPrice}</h3> {discount && <span className="striked-out productinfo">{totalPriceInfo}</span>}
+
                             </div>
                           </Col>
                           {/* // For future use

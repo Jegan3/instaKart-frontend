@@ -8,11 +8,14 @@ import Footer from '../../../components/Footer';
 import { CarouselFirst, CarouselSecond, CarouselThird, CarouselNewEStoreVideo } from '../../../components/Carousel';
 import { Banners, SecondaryBanners } from '../../../components/Banners';
 import Particle from '../../../components/Particle';
+import Loader from '../../../components/Loader';
+
 
 const Home = () => {
 
   const dispatch = useDispatch();
   const advertisement = useSelector((state) => state.getYourAds.advertisement);
+  const isLoading = useSelector((state) => state.getYourAds.isLoading);
 
   useEffect(() => {
     // dispatch it once mounted
@@ -25,6 +28,7 @@ const Home = () => {
 
   return (
     <Grid fluid>
+      {isLoading && <Loader />}
       <Row>
         <Header />
       </Row>

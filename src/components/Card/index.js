@@ -93,7 +93,14 @@ export const ThriftStoreNearYouCard = ({ imgUrl, storeName, country, path, thrif
   )
 }
 
-export const ThriftProductsCard = ({ imgUrl, product, path, finalPrice, productPrice, discount, productName, module, setLogin }) => {
+export const ThriftProductsCard = ({ imgUrl, product, path, finalPrice, taxPrice, productPrice, discount, productName, module, setLogin }) => {
+
+  const priceInfo = productPrice.replace(/[^\d.-]/g, '')
+  const taxInfo = ((taxPrice / 100) * priceInfo)
+  const symbol = productPrice.replace(/\d./g, "")
+  const price = (+priceInfo + + taxInfo).toFixed(2)
+  const totalPrice = `${symbol}${price} `
+  const totalPriceInfo = taxPrice ? totalPrice : productPrice;
 
   const Card = () => {
     if (sessionStorage.type === 'user') {
@@ -121,7 +128,7 @@ export const ThriftProductsCard = ({ imgUrl, product, path, finalPrice, productP
         </div>
         <div className="listing-job card-listing-job">
           <span className="currency">{finalPrice}</span>
-          {discount && <span className="striked-out">{productPrice}</span>}
+          {discount && <span className="striked-out">{totalPriceInfo}</span>}
         </div>
         {/* For feature use */}
         {/* <div className="listing-rating card-listing-job">
