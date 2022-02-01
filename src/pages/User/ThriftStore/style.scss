@@ -69,6 +69,12 @@ s .card-body {
   }
 }
 
+.particles-sub {
+  canvas {
+    left: 0px !important;
+  }
+}
+
 .thrift-ads {
   width: 75% !important;
   margin: auto;
