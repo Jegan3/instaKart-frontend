@@ -1,3 +1,4 @@
+/*eslint-disable*/
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Row, Col, Grid } from 'react-bootstrap';
@@ -31,6 +32,9 @@ const ThriftStore = () => {
     dispatch({ type: 'THRIFT_DETAILS_REQUEST' });
     dispatch({ type: 'THRIFT_CATEGORY_REQUEST' });
   }, []);
+
+
+
 
   return (
     <Grid fluid className="thrift">
@@ -90,18 +94,20 @@ const ThriftStore = () => {
             </div>
           </Row> :
           <Row></Row>}
-        <Row>
-          <div className={Array.isArray(newPromotionProducts) && newPromotionProducts.length ? 'bg-thrift' : 'bg-thriftstore'}>
-            <div className="thrift-ads">
-              <div className="particles-sub">
-                <Particle color="#f5f5f5" number="150" direction="top" />
+        {Array.isArray(newAdditionProducts) && newAdditionProducts.length ?
+          <Row>
+            <div className={Array.isArray(newPromotionProducts) && newPromotionProducts.length ? 'bg-thrift' : 'bg-thriftstore'}>
+              <div className="thrift-ads">
+                <div className="particles-sub">
+                  <Particle color="#f5f5f5" number="150" direction="top" />
+                </div>
+                <h3>NEW ADDITIONS</h3>
+                <ThriftProducts products={newAdditionProducts} setLogin={setLoginModal} module="Thrift Store" />
               </div>
-              <h3>NEW ADDITIONS</h3>
-              <ThriftProducts products={newAdditionProducts} setLogin={setLoginModal} module="Thrift Store" />
+              <br />
             </div>
-            <br />
-          </div>
-        </Row>
+          </Row> :
+          <Row></Row>}
       </Row>
       <Row>
         <Footer />
