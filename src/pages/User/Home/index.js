@@ -8,8 +8,6 @@ import Footer from '../../../components/Footer';
 import { CarouselFirst, CarouselSecond, CarouselThird, CarouselNewEStoreVideo } from '../../../components/Carousel';
 import { Banners, SecondaryBanners } from '../../../components/Banners';
 import Particle from '../../../components/Particle';
-import Loader from '../../../components/Loader';
-
 
 const Home = () => {
 
@@ -28,7 +26,6 @@ const Home = () => {
 
   return (
     <Grid fluid>
-      {isLoading && <Loader />}
       <Row>
         <Header />
       </Row>

@@ -230,7 +230,7 @@ $color-background: #f5f5f5;
 }
 
 ::-webkit-scrollbar-track {
-  background-color: #ebebeb;
+  background-color: #16222a;
   -webkit-border-radius: 10px;
   border-radius: 10px;
 }
@@ -238,5 +238,11 @@ $color-background: #f5f5f5;
 ::-webkit-scrollbar-thumb {
   -webkit-border-radius: 10px;
   border-radius: 10px;
-  background: $color-theme;
+  background: #16222a;
+
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #545d63;
+
 }
