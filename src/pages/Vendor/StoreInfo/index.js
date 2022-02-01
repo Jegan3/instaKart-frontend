@@ -344,40 +344,36 @@ const StoreInfo = ({ storeId, setStoreHeader }) => {
           <Grid fluid>
             <Row>
               <Row className="form-content card">
-                <Col md={6} className='left-info' >
-                  <p className='reg-num'>
-                  </p>
+                <Col lg={6} className='left-info' >
                   <Row>
                     <Col md={12} >
                       <div className='avtar-info' >
-                        <div className='load-info'>
-                          <div>
-                            <div className="photo">
-                              {storeLogo && storeDetail ? <img src={storeLogo} alt='' /> : <img src={storeInfo && storeInfo.storeInfo.storeLogo ? storeInfo.storeInfo.storeLogo : "images/logo-here.png"} />}
-                            </div>
-                            <div className="image-upload">
-                              <ImgCrop>
-                                <Upload
-                                  fileList={fileList}
-                                  customRequest={fakeRequest}
-                                  onChange={onAvatarImage}
-                                  type="file"
-                                  accept="image/*"
-                                  showUploadList={false}
-                                  disabled={disabled}
-                                >
-                                  <label for="file-input">
-                                    <i className="fa fa-camera" />
-                                  </label>
-                                </Upload>
-                              </ImgCrop>
-                            </div>
+                        <div>
+                          <div className="photo">
+                            {storeLogo && storeDetail ? <img src={storeLogo} alt='' /> : <img src={storeInfo && storeInfo.storeInfo.storeLogo ? storeInfo.storeInfo.storeLogo : "images/logo-here.png"} />}
+                          </div>
+                          <div className="image-upload">
+                            <ImgCrop>
+                              <Upload
+                                fileList={fileList}
+                                customRequest={fakeRequest}
+                                onChange={onAvatarImage}
+                                type="file"
+                                accept="image/*"
+                                showUploadList={false}
+                                disabled={disabled}
+                              >
+                                <label for="file-input">
+                                  <i className="fa fa-camera" />
+                                </label>
+                              </Upload>
+                            </ImgCrop>
                           </div>
                         </div>
                       </div>
                     </Col>
                     <Col sm={12}>
-                      <label className="signup-label">About Store < span className="red-star">*</span> </label>
+                      <label className="store-label">About Store < span className="red-star">*</span> </label>
                       <textarea className={alertError && aboutStoreInfo.length < 10 ? ` form-control my-input` : `form-control formy`}
                         name="message"
                         placeholder='Type Something..'
@@ -390,10 +386,10 @@ const StoreInfo = ({ storeId, setStoreHeader }) => {
                     </Col>
                   </Row>
                 </Col>
-                <Col md={6} className='right-info' >
+                <Col lg={6} className='right-info' >
                   <Row>
                     <Col md={12}>
-                      <label className="signup-label">Store Name < span className="red-star">*</span> </label>
+                      <label className="store-label">Store Name < span className="red-star">*</span> </label>
                       <input className={alertError && storeNameInfo.length < 3 ? ` form-control my-input` : `form-control formy`}
                         type="text"
                         placeholder="Enter Your Store Name"
@@ -429,7 +425,7 @@ const StoreInfo = ({ storeId, setStoreHeader }) => {
                       />
                     </Col>
                     <Col md={12}>
-                      <Row>
+                      <Row className='country-dsn'>
                         <Col md={6}>
                           <label className="store-label">City <span className="red-star">*</span></label>
                           <Select
@@ -443,7 +439,7 @@ const StoreInfo = ({ storeId, setStoreHeader }) => {
                             isDisabled={!countryId}
                           />
                         </Col>
-                        <Col md={6} className='zipcode'>
+                        <Col md={6}>
                           <label className="store-label">ZIP Code</label>
                           <input
                             type="text"
@@ -461,9 +457,9 @@ const StoreInfo = ({ storeId, setStoreHeader }) => {
                 </Col>
               </Row>
               <Row className="form-content card resta">
-                <Col md={12}>
-                  <Col md={3} className='zipcode'>
-                    <label className="signup-label">Email ID <span className="red-star">*</span></label>
+                <Col md={12} className='bottom-content-dsn'>
+                  <Col md={3}>
+                    <label className="store-label">Email ID <span className="red-star">*</span></label>
                     <input
                       type="text"
                       className={alertError && emailIdInfo === '' || validateEmail(emailIdInfo) === false && validate ? `form-control my-input` : `form-control formy`}
@@ -475,7 +471,7 @@ const StoreInfo = ({ storeId, setStoreHeader }) => {
                     />
                   </Col>
                   <Col md={3}>
-                    <label className="signup-label">Facebook ID</label>
+                    <label className="store-label">Facebook ID</label>
                     <input
                       type="text"
                       className="form-control"
@@ -487,7 +483,7 @@ const StoreInfo = ({ storeId, setStoreHeader }) => {
                     />
                   </Col>
                   <Col md={3}>
-                    <label className="signup-label">Instagram ID</label>
+                    <label className="store-label">Instagram ID</label>
                     <input
                       type="text"
                       className="form-control"
@@ -498,8 +494,8 @@ const StoreInfo = ({ storeId, setStoreHeader }) => {
                       disabled={disabled}
                     />
                   </Col>
-                  <Col md={3} className='zipcode'>
-                    <label className="signup-label">Contact Number <span className="red-star">*</span></label>
+                  <Col md={3}>
+                    <label className="store-label">Contact Number <span className="red-star">*</span></label>
                     <Cleave
                       className={alertError && mobileInfo.length < 10 ? `form-control my-input` : `form-control formy`}
                       placeholder="Enter Your Contact Number"
