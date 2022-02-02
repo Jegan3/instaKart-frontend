@@ -1,0 +1,68 @@
+/* Config */
+.particles {
+  $color-bg: #fff;
+  $color-particle: #28a4d9;
+
+  $spacing: 2560px;
+  $time-1: 60s;
+  $time-2: 120s;
+  $time-3: 180s;
+
+  /* mixins */
+  @function particles($max) {
+    $val: 0px 0px $color-particle;
+
+    @for $i from 1 through $max {
+      $val: #{$val},
+      random($spacing)+px random($spacing)+px $color-particle;
+    }
+
+    @return $val;
+  }
+
+  @mixin particles($max) {
+    box-shadow: particles($max);
+    border-radius: 50%;
+  }
+
+  .animation-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+
+  }
+
+  .particle-one {
+    animation: animParticle $time-1 linear infinite;
+    @include particles(1000);
+    height: 3px;
+    width: 3px;
+  }
+
+  .particle-two {
+    animation: animParticle $time-2 linear infinite;
+    @include particles(800);
+    height: 3px;
+    width: 3px;
+  }
+
+  .particle-three {
+    animation: animParticle $time-3 linear infinite;
+    @include particles(1200);
+    height: 3px;
+    width: 3px;
+  }
+
+  @keyframes animParticle {
+    from {
+      transform: translateY(0px);
+    }
+
+    to {
+      transform: translateY($spacing * -1);
+    }
+  }
+}

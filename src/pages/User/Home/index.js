@@ -26,14 +26,12 @@ const Home = () => {
 
   return (
     <Grid fluid>
+      <Particle />
       <Row>
         <Header />
       </Row>
       <Row>
         <div className='body-container home'>
-          <div className='particles-main'>
-            <Particle color='#28a4d9' number='700' direction='top' />
-          </div>
           <h2>
             The Caribbean&#39;s
             <TextLoop className='text-loop-home' springConfig={{ stiffness: 70, damping: 31 }}
@@ -53,9 +51,6 @@ const Home = () => {
             <CarouselThird />
           </div>
           {advertisement && Object.keys(advertisement.userAds).length !== 0 && advertisement.userAds.secondaryBanner ? <div className='bg-home-ban'>
-            <div className='particles-sub'>
-              <Particle color='#f5f5f5' number='150' direction='bottom' />
-            </div>
             <div className='arrival secondary-banner-style'>
               <SecondaryBanners secondaryBanner={advertisement && advertisement.userAds} />
             </div>
