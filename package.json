@@ -30,7 +30,6 @@
     "bootstrap": "3.3.7",
     "classnames": "^2.2.5",
     "cleave.js": "^1.6.0",
-    "google-maps-react": "^2.0.6",
     "history": "^4.7.2",
     "moment": "^2.22.2",
     "npm": "^7.16.0",
