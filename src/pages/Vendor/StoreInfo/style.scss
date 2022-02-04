@@ -5,20 +5,19 @@
     border-radius: 3px;
   }
 
+  .form-content {
+    padding-left: 5px;
+    padding-right: 5px;
+
+  }
+
   .ant-picker-input>input {
     text-align: center;
   }
 
-  .zipcode {
-    padding-bottom: 20px;
-  }
+  .country-dsn {
+    margin: 5px -15px 20px -15px;
 
-  .avatar-text {
-    font-family: "Righteous", cursive;
-    font-size: 2em;
-    font-weight: 600;
-    top: 25px;
-    position: relative;
   }
 
   .image-upload {
@@ -29,31 +28,12 @@
     cursor: grab;
   }
 
-  .load-info {
-    height: fit-content;
-    margin: auto;
-    min-height: 100px;
-  }
-
-  .reg-num {
-    font-size: 24px;
-    margin: 20px;
-    text-align: center;
-    font-family: Garamond;
-    font-weight: 600;
-  }
-
   .image-upload input {
     display: none;
   }
 
   .photo {
     height: fit-content !important;
-  }
-
-  .loading-info {
-    top: 30px;
-    position: relative;
   }
 
   .photo img {
@@ -76,12 +56,8 @@
   }
 
   .left-info {
-    margin: 3% 0px;
+    margin-top: 58px;
   }
-
-  // .right-info {
-  //   margin: 1% 0px;
-  // }
 
   .avtar-info {
     text-align: center;
@@ -103,9 +79,17 @@
   }
 
   .store-label {
-    margin-top: 4%;
+    margin-top: 20px;
+    margin-bottom: 5px;
     line-height: 27px;
     white-space: nowrap;
+  }
+
+  .bottom-content-dsn {
+    margin-bottom: 18px;
+    padding-left: 2px;
+    padding-right: 2px;
+
   }
 }
 
