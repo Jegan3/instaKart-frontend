@@ -53,7 +53,7 @@ const Footer = () => (
           <ul>
             <li className="footer-info" onClick={AboutUs}>About Us</li>
             <li className="footer-info" onClick={OpenTermsCondition}>Terms and Conditions</li>
-            <li>FAQ</li>
+            <li className="footer-info">FAQ</li>
           </ul>
         </div>
       </Col>
@@ -69,7 +69,10 @@ const Footer = () => (
       <Col md={4} sm={4}>
         <div>
           <ul>
-            <li className="footer-info" >support@insta-kart.com</li>
+            <li >
+              <a className="footer-info support-link" href="
+              https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox?compose=DmwnWsTJvKMrvnkNxNhmNHScsZcNwlxcMsJVvBgVTtQwpkrJflXkxDcZZkFclcnRNkHFHGFXXdbq" target="_blank">support@insta-kart.com </a>
+            </li>
             <li className="footer-info" >+1 868 388 1164</li>
             <li className="footer-info" >+1 868 388 1164</li>
           </ul>
@@ -85,7 +88,7 @@ const Footer = () => (
       <Col sm={4} className="social-icon">
         <p >
           <a
-            href="https://www.facebook.com/" target="_blank"
+            href="https://www.facebook.com/insta.kart.2021" target="_blank"
           // className="social"
           >
             <FontAwesomeIcon icon={faFacebook} size="1x" />

@@ -75,13 +75,22 @@
 
   .footer-info {
     cursor: pointer;
+
+    &:hover {
+      color: rgb(255, 255, 255);
+    }
   }
 
-  .support {
-    color: grey;
+  .support-link {
     font-size: 14px;
-    font-weight: bold;
+    color: gray;
+
+    &:hover {
+      color: rgb(255, 255, 255);
+    }
   }
+
+
 
   .number {
     font-size: 24px;
