@@ -27,11 +27,13 @@ const Sidebar = () => {
   const storeUpdateSubmit = useSelector((state) => state.storeInfoUpdateState.submit);
 
   const admin = (validLogin && validLogin.user.type === 'admin') || sessionStorage.type === 'admin';
+  const vendor = (validLogin && validLogin.user.type === 'vendor') || sessionStorage.type === 'vendor';
 
   useEffect(() => {
-    dispatch({ type: 'PROFILE_REQUEST' });
-    dispatch({ type: 'VENDOR_COMPANY_DETAILS_REQUEST' });
-    dispatch({ type: 'PROFILE_REQUEST' });
+    if (vendor) {
+      dispatch({ type: 'PROFILE_REQUEST' });
+      dispatch({ type: 'VENDOR_COMPANY_DETAILS_REQUEST' });
+    }
   }, [])
 
   useEffect(() => {
