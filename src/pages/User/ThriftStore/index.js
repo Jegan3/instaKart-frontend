@@ -33,18 +33,13 @@ const ThriftStore = () => {
     dispatch({ type: 'THRIFT_CATEGORY_REQUEST' });
   }, []);
 
-
-
-
   return (
     <Grid fluid className="thrift">
+      <Particle />
       <Row>
         <Header loginCart={login} hideloginCart={hideloginCart} />
       </Row>
       <Row>
-        <div className="particles-main">
-          <Particle color="#28a4d9" number="700" direction="bottom" />
-        </div>
         <h2 className="heading-text">
           The Caribbean&#39;s
           <TextLoop
@@ -74,9 +69,6 @@ const ThriftStore = () => {
         <Row>
           <div className="bg-thrift">
             <div className="thrift-ads">
-              <div className="particles-sub">
-                <Particle color="#f5f5f5" number="150" direction="top" />
-              </div>
               <h3>THRIFT STORE NEAR YOU</h3>
               <ThriftStoreNearYou thriftDetails={thriftDetails} setLogin={setLoginModal} module="Thrift Store" />
             </div>
@@ -98,9 +90,6 @@ const ThriftStore = () => {
           <Row>
             <div className={Array.isArray(newPromotionProducts) && newPromotionProducts.length ? 'bg-thrift' : 'bg-thriftstore'}>
               <div className="thrift-ads">
-                <div className="particles-sub">
-                  <Particle color="#f5f5f5" number="150" direction="top" />
-                </div>
                 <h3>NEW ADDITIONS</h3>
                 <ThriftProducts products={newAdditionProducts} setLogin={setLoginModal} module="Thrift Store" />
               </div>
