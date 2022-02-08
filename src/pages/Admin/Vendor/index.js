@@ -144,12 +144,15 @@ const Vendor = () => {
                     filterable
                     columns={[
                       {
-                        Header: '#',
-                        accessor: 'id',
-                        // filterable: false,
+                        Header: 'Avatar',
+                        Cell: (info) => (
+                          <div className="avatar-photo">
+                            <img src="images/avatar.jpeg" />
+                          </div>
+                        ),
                         filterable: false,
                         sortable: false,
-                        width: 50,
+                        width: 100,
                       },
                       {
                         Header: 'Vendor Id',
@@ -163,7 +166,7 @@ const Vendor = () => {
                       {
                         Header: 'E-Mail',
                         accessor: 'email',
-                        width: 200,
+                        width: 280,
                       },
                       {
                         Header: 'Country',
@@ -176,13 +179,15 @@ const Vendor = () => {
                       {
                         Header: 'Status',
                         accessor: 'status',
+                        width: 150,
                       },
                       {
                         Header: 'Analyze',
                         filterable: false,
                         sortable: false,
+                        width: 100,
                         Cell: (info) => (
-                          <span className="btn-sign" onClick={() => handleShow(info)}><i className="fas fa-sign-in-alt"></i></span>
+                          <span className="btn-sign" onClick={() => handleShow(info)}>View</span>
                         ),
                       },
                     ]}
