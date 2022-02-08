@@ -62,7 +62,7 @@ const ThriftStore = () => {
         </Row>
         <h2>Shop By Categories</h2>
         <Row className="cards-row ">
-          <ThriftStoreCategory thriftCategoryType={thriftCategoryType} setLogin={setLoginModal} module="Thrift Store" />
+          <ThriftStoreCategory thriftCategoryType={thriftCategoryType}  module="Thrift Store" />
         </Row>
         <Row>
         </Row>
