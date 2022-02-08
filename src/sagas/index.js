@@ -23,6 +23,7 @@ import { getListYourAdsWatchers } from './ListYourAds';
 import { productListWatchers } from './ProductList';
 import { userListWatchers } from './UserList';
 import { productWatchers } from './Product';
+import { categoryPageWatchers } from './CategoryPage';
 
 
 export default function* rootWatchers() {
@@ -52,5 +53,6 @@ export default function* rootWatchers() {
     productListWatchers(),
     userListWatchers(),
     productWatchers(),
+    categoryPageWatchers(),
   ];
 }

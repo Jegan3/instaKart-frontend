@@ -24,6 +24,7 @@ import { profileState, profileUpdateState } from './Profile';
 import { productListState, productDeleteState } from './ProductList';
 import userListState from './UserList';
 import { addProductState, getProductState, editProductState } from './Product';
+import categoryPageState from './CategoryPage';
 
 const combinedReducer = combineReducers({
   signupState,
@@ -56,6 +57,7 @@ const combinedReducer = combineReducers({
   userListState,
   getProductState,
   editProductState,
+  categoryPageState,
 });
 
 const rootReducer = (state, action) => {

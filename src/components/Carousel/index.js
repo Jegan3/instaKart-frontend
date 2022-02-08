@@ -346,13 +346,28 @@ export const ThriftStoreInfoCategories = ({ product, module }) => (
   </Carousel>
 );
 
-export const ThriftStoreCategory = ({ thriftCategoryType, module }) => (
+export const ThriftStoreNearYou = ({ thriftDetails, module, setLogin }) => (
+  <Carousel
+    // ssr
+    infinite
+    // autoPlay
+    autoPlaySpeed={3000}
+    responsive={responsiveThrift}
+  >
+    {thriftDetails ? thriftDetails.thriftStore.map((info) => (
+      <ThriftStoreNearYouCard key={info.estoreId} thriftStore={info.estoreId} imgUrl={info.storeLogo}
+        path={`/thriftstoreinfo`} country={info.countryName} storeName={info.storeName} setLogin={setLogin} module={module} />
+    )) : []}
+  </Carousel>
+);
+
+export const ThriftStoreCategory = ({ thriftCategoryType, module, categoryId }) => (
   <span>
     <Carousel
       responsive={responsiveThriftCategory}
     >
       {thriftCategoryType ? thriftCategoryType.categoryDetails.slice(0, 6).map((item) => (
-        <ThriftCategoryCard title={item.categoryName} thriftCategoryType={item._id} className='card' imgUrl={item.categoryImage}
+        <ThriftCategoryCard title={item.categoryName} categoryId={item._id} className='card' imgUrl={item.categoryImage}
           path={'/categorypage'} module={module} />
       )) : []}
     </Carousel>
@@ -360,7 +375,7 @@ export const ThriftStoreCategory = ({ thriftCategoryType, module }) => (
       responsive={responsiveThriftCategory}
     >
       {thriftCategoryType ? thriftCategoryType.categoryDetails.slice(6, 12).map((item) => (
-        <ThriftCategoryCard title={item.categoryName} thriftCategoryType={item._id} className='card' imgUrl={item.categoryImage}
+        <ThriftCategoryCard title={item.categoryName} categoryId={item._id} className='card' imgUrl={item.categoryImage}
           path={'/categorypage'} module={module} />
       )) : []}
     </Carousel>
@@ -416,19 +431,6 @@ export const CarouselNewEStoreAds = () => (
   </Carousel>
 );
 
-export const ThriftStoreNearYou = ({ thriftDetails, module, setLogin }) => (
-  <Carousel
-    // ssr
-    infinite
-    // autoPlay
-    autoPlaySpeed={3000}
-    responsive={responsiveThrift}
-  >
-    {thriftDetails ? thriftDetails.thriftStore.map((info) => (
-      <ThriftStoreNearYouCard key={info.estoreId} thriftStore={info.estoreId} imgUrl={info.storeLogo} path={`/thriftstoreinfo`} country={info.countryName} storeName={info.storeName} setLogin={setLogin} module={module} />
-    )) : []}
-  </Carousel>
-);
 
 // New promotion and new addition carousel card
 export const ThriftProducts = ({ products, module, setLogin }) => (

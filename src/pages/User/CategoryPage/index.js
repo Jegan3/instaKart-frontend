@@ -1,6 +1,7 @@
 
 /*eslint-disable*/
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Row, Col } from 'react-bootstrap';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -10,44 +11,24 @@ import { CardActionArea } from '@mui/material';
 import Footer from '../../../components/Footer';
 import Header from '../../../components/Header';
 import { history } from '../../../routes';
+import ErrorPage from '../../../components/ErrorPage';
 
 
-const productInfo = [
-  {
-    productId: "61e1a23eff6cac3aaf499720",
-    productName: "store1 test 1",
-    productImage: "https://instakartstaging.s3.amazonaws.com/thriftstore/7e7c782b-cc18-43d5-82d3-867b809b1e80.jpeg",
-    discount: "13",
-    finalPrice: "TT$111.00",
-    productPrice: "TT$111.00",
-  },
-  {
-    productId: "61e1a23eff6cac3aaf499720",
-    productName: "store1 test 1",
-    discount: "13",
-    productImage: "https://instakartstaging.s3.amazonaws.com/thriftstore/ea638456-64ab-4a49-bf93-cf9df67cbaf2.jpeg",
-    finalPrice: "TT$111.00",
-    productPrice: "TT$111.00",
-  },
-  {
-    productId: "61e1a23eff6cac3aaf499720",
-    productName: "store1 test 1",
-    productImage: "https://instakartstaging.s3.amazonaws.com/thriftstore/c2a4ff28-4f0e-42fb-b29f-0faa4ec935fc.jpeg",
-    discount: "13",
-    finalPrice: "TT$111.00",
-    productPrice: "TT$111.00",
-  },
-  {
-    productId: "61e1a23eff6cac3aaf499720",
-    productName: "store1 test 1",
-    productImage: "https://instakartstaging.s3.amazonaws.com/thriftstore/8b9020bc-313c-4aeb-8675-232a9eb4c866.jpeg",
-    discount: "13",
-    finalPrice: "TT$111.00",
-    productPrice: "TT$111.00",
-  },
-]
+const CategoryPage = (props) => {
 
-const CategoryPage = () => {
+  const dispatch = useDispatch();
+  const categoryList = useSelector((state) => state.categoryPageState.categoryPage);
+  const productInfo = categoryList && categoryList.productsInfo;
+  const noProducts = useSelector((state) => state.categoryPageState.error);
+
+  const list = props.location.state;
+  const categoryId = list.categoryId
+  console.log('noProducts', list)
+
+  useEffect(() => {
+    dispatch({ type: 'CATEGORY_PAGE_REQUEST', categoryId });
+  }, [])
+
 
   const button = () => {
     history.push({ pathname: "./productinfo" })
@@ -63,7 +44,7 @@ const CategoryPage = () => {
       <div>
         <div className='category-body'>
           <Row>
-            <Col md={12}>
+            {!noProducts ? <Col md={12}>
               {productInfo && productInfo.map((item) => (
                 <Col xl={4} md={3} sm={4} xs={6} >
                   <div className="checking" onClick={button}>
@@ -88,7 +69,11 @@ const CategoryPage = () => {
                   </div>
                 </Col>
               ))}
-            </Col>
+            </Col> :
+              <Col md={12}>
+                <ErrorPage error={noProducts} />
+              </Col>
+            }
           </Row>
         </div>
         <br />

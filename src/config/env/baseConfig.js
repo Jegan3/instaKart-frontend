@@ -31,6 +31,7 @@ export default {
     getProfile: '/api/vendor/vendorInfo',
     getProductList: '/api/vendor/product',
     getUserList: '/api/admin/users',
+    getCategoryPage: '/api/staticContentRouter/getFilteredProducts',
   },
 
   apiBaseUrl: {
