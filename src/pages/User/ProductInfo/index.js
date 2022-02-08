@@ -30,6 +30,8 @@ const ProductInfo = ({ location }) => {
   const userLogin = useSelector((state) => state.loginState.login);
   // For Header Menu 
   const module = location.state.module
+  // For Vendor ViweProduct
+  const viewProduct = location.state.vendor
 
   const onlyProductprice = product && product.productPrice
   const taxPrice = product && product.tax
@@ -284,10 +286,10 @@ const ProductInfo = ({ location }) => {
                               Shipping & Pickup
                             </button>
                           </Col>
-                          <Col sm={3} className="btnads">
+                          <Col sm={3} className="btnads">{!viewProduct &&
                             <button className={`butn-ads ${toggle === 4 && `active`}`} onClick={onMessage}>
                               Message Seller
-                            </button>
+                            </button>}
                           </Col>
                         </Row>
                       </Col>
@@ -305,7 +307,7 @@ const ProductInfo = ({ location }) => {
                             <div>
                               <h3 className="prod-details">{product && product.productShipping}</h3>
                             </div>}
-                          {toggle === 4 &&
+                          {toggle === 4 && !viewProduct &&
                             <div className="product-info-message">
                               <textarea className=" form-control my-input"
                                 name="message"
@@ -338,7 +340,7 @@ const ProductInfo = ({ location }) => {
                           />
                         </div>
                       </Col>
-                      <Col md={12}>
+                      <Col md={12}>{!viewProduct &&
                         <div className='button-dsgn'>
                           <div className="col-sm-5 qty-buynow-btn">
                             <div className='quanity'>
@@ -356,7 +358,7 @@ const ProductInfo = ({ location }) => {
                           <div className="col-sm-3 qty-buynow-btn">
                             <button className='buybtn' onClick={onBuyNow}>Buy Now</button>
                           </div>
-                        </div>
+                        </div>}
                       </Col>
                     </Row>
                   </Col>

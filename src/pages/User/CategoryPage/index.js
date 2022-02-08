@@ -1,6 +1,6 @@
 
 /*eslint-disable*/
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Row, Col } from 'react-bootstrap';
 import Card from '@mui/material/Card';
@@ -8,6 +8,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
+import { message } from 'antd';
 import Footer from '../../../components/Footer';
 import Header from '../../../components/Header';
 import { history } from '../../../routes';
@@ -15,6 +16,7 @@ import ErrorPage from '../../../components/ErrorPage';
 
 
 const CategoryPage = (props) => {
+  const [login, setLogin] = useState(false);
 
   const dispatch = useDispatch();
   const categoryList = useSelector((state) => state.categoryPageState.categoryPage);
@@ -29,17 +31,27 @@ const CategoryPage = (props) => {
     dispatch({ type: 'CATEGORY_PAGE_REQUEST', categoryId });
   }, [])
 
+  const hideloginCart = () => {
+    setLogin(false);
+  };
 
   const button = () => {
-    history.push({ pathname: "./productinfo" })
-    window.scrollTo(0, 0);
+    if (sessionStorage.type === 'user') {
+      history.push({ pathname: "/productinfo" })
+      window.scrollTo(0, 0);
+    } else if (sessionStorage.type === 'vendor') {
+      message.error('Please Login As User');
+    }
+    else {
+      setLogin(true)
+    }
   }
 
   return (
 
     <div className='category-page'>
       <div>
-        <Header />
+        <Header loginCart={login} hideloginCart={hideloginCart} />
       </div>
       <div>
         <div className='category-body'>

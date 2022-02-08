@@ -12,7 +12,8 @@ const LoginModal = ({ showPopup, hidePopup }) => {
   const [resetPassword, setResetPassword] = useState(false);
   const [termscondition, setTermsCondition] = useState(false);
   const [login, setLogin] = useState(false);
-  const [showLogin, setShowLogin] = useState(showPopup); const [errorMsg, setErrorMsg] = useState('');
+  const [showLogin, setShowLogin] = useState(showPopup); 
+  const [errorMsg, setErrorMsg] = useState('');
   const [alertError, setAlertError] = useState(false);
   const [successmsg, setSuccessMsg] = useState(false);
   const [failuremsg, setFailureMsg] = useState(false);

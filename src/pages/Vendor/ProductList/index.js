@@ -39,12 +39,20 @@ const ProductList = ({ storeId, productEdit }) => {
     setModal(false);
   };
 
-  const viewProduct = (info) => {
+  const editProduct = (info) => {
     const { original } = info;
     productEdit()
     history.push({
       pathname: `/storedetails`,
       state: { productId: original.productId, storeId: storeId },
+    });
+  };
+
+  const viewProduct = (info) => {
+    const { original } = info;
+    history.push({
+      pathname: `/productinfo`,
+      state: { product: original.productId, vendor: true },
     });
   };
 
@@ -117,12 +125,23 @@ const ProductList = ({ storeId, productEdit }) => {
                           className: 'price-table',
                         },
                         {
+                          Header: 'Viwe Product',
+                          //accessor: 'status',
+                          // filterable: false,
+                          sortable: false,
+                          width: 50,
+                          className: 'price-table',
+                          Cell: (info) => (
+                            <span className="btn-sign" onClick={() => viewProduct(info)}><i className="fas fa-sign-in-alt"></i></span>
+                          ),
+                        },
+                        {
                           Header: 'Edit',
                           filterable: false,
                           sortable: false,
                           width: 50,
                           Cell: (info) => (
-                            <span className="btn-sign" onClick={() => viewProduct(info)}><i className="fas fa-sign-in-alt"></i></span>
+                            <span className="btn-sign" onClick={() => editProduct(info)}><i className="fas fa-sign-in-alt"></i></span>
                           ),
                         },
                         {

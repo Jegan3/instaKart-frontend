@@ -22,18 +22,11 @@ export const Card = ({ imgUrl, alt, content, className, path }) => {
   )
 };
 
-export const ThriftCategoryCard = ({ imgUrl, title, className, path, setLogin, module, categoryId }) => {
+export const ThriftCategoryCard = ({ imgUrl, title, className, path, module, categoryId }) => {
 
   const Card = () => {
-    if (sessionStorage.type === 'user') {
-      history.push({ pathname: path, state: { categoryId, module } })
-      window.scrollTo(0, 0);
-    } else if (sessionStorage.type === 'vendor') {
-      message.error('Please Login As User');
-    }
-    else {
-      setLogin(true)
-    }
+    history.push({ pathname: path, state: { categoryId, module } })
+    window.scrollTo(0, 0);
   }
 
   return (
