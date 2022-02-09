@@ -13,8 +13,6 @@ import Footer from '../../../components/Footer';
 import Header from '../../../components/Header';
 import { history } from '../../../routes';
 import ErrorPage from '../../../components/ErrorPage';
-
-
 const CategoryPage = (props) => {
   const [login, setLogin] = useState(false);
 
@@ -35,9 +33,9 @@ const CategoryPage = (props) => {
     setLogin(false);
   };
 
-  const button = () => {
+  const button = (item) => {
     if (sessionStorage.type === 'user') {
-      history.push({ pathname: "/productinfo" })
+      history.push({ pathname: '/productinfo', state: { product: item.productId } })
       window.scrollTo(0, 0);
     } else if (sessionStorage.type === 'vendor') {
       message.error('Please Login As User');
@@ -59,7 +57,7 @@ const CategoryPage = (props) => {
             {!noProducts ? <Col md={12}>
               {productInfo && productInfo.map((item) => (
                 <Col xl={4} md={3} sm={4} xs={6} >
-                  <div className="checking" onClick={button}>
+                  <div className="checking" onClick={() => button(item)}>
                     <Card sx={{ maxWidth: 300 }}>
                       <CardActionArea>
                         <CardMedia
