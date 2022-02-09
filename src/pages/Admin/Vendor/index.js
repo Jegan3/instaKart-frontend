@@ -179,6 +179,11 @@ const Vendor = () => {
                       {
                         Header: 'Status',
                         accessor: 'status',
+                        Cell: (info) => (
+                          <span className={info.value === 'Accepted' ? "greencolor" : "redcolor"}>
+                            {info.value}
+                          </span>
+                        ),
                         width: 150,
                       },
                       {
@@ -186,8 +191,8 @@ const Vendor = () => {
                         filterable: false,
                         sortable: false,
                         width: 100,
-                        Cell: (info) => (
-                          <span className="btn-sign" onClick={() => handleShow(info)}>View</span>
+                        Cell: (i) => (
+                          <span className="btn-sign" onClick={() => handleShow(i)}>View</span>
                         ),
                       },
                     ]}
