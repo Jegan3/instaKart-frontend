@@ -8,6 +8,8 @@ import Header from '../../../components/Header';
 import { ThriftProducts, ThriftStoreNearYou, ThriftStoreCategory } from '../../../components/Carousel';
 import { ThriftBanners } from '../../../components/Banners';
 import Particle from '../../../components/Particle';
+import Loader from '../../../components/Loader';
+
 
 const ThriftStore = () => {
   const [login, setLogin] = useState(false);
@@ -23,6 +25,8 @@ const ThriftStore = () => {
   const dispatch = useDispatch();
   const thriftDetails = useSelector((state) => state.thriftDetailsState.thriftDetails);
   const thriftCategoryType = useSelector((state) => state.thriftCategoryState.thriftCategory);
+  const isLoading = useSelector((state) => state.thriftDetailsState.isLoading);
+
 
   const productInfo = thriftDetails && thriftDetails.productsInfo;
   const newPromotionProducts = productInfo && productInfo.filter((value) => value.discount);
@@ -35,6 +39,7 @@ const ThriftStore = () => {
 
   return (
     <Grid fluid className="thrift">
+      {isLoading && <Loader />}
       <Particle />
       <Row>
         <Header loginCart={login} hideloginCart={hideloginCart} />
@@ -62,7 +67,7 @@ const ThriftStore = () => {
         </Row>
         <h2>Shop By Categories</h2>
         <Row className="cards-row ">
-          <ThriftStoreCategory thriftCategoryType={thriftCategoryType}  module="Thrift Store" />
+          <ThriftStoreCategory thriftCategoryType={thriftCategoryType} module="Thrift Store" />
         </Row>
         <Row>
         </Row>

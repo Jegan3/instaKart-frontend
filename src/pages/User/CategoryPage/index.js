@@ -13,6 +13,8 @@ import Footer from '../../../components/Footer';
 import Header from '../../../components/Header';
 import { history } from '../../../routes';
 import ErrorPage from '../../../components/ErrorPage';
+import Loader from '../../../components/Loader';
+
 const CategoryPage = (props) => {
   const [login, setLogin] = useState(false);
 
@@ -20,6 +22,8 @@ const CategoryPage = (props) => {
   const categoryList = useSelector((state) => state.categoryPageState.categoryPage);
   const productInfo = categoryList && categoryList.productsInfo;
   const noProducts = useSelector((state) => state.categoryPageState.error);
+  const isLoading = useSelector((state) => state.categoryPageState.isLoading);
+
 
   const list = props.location.state;
   const categoryId = list.categoryId
@@ -53,12 +57,13 @@ const CategoryPage = (props) => {
       </div>
       <div>
         <div className='category-body'>
+          {isLoading && <Loader />}
           <Row>
             {!noProducts ? <Col md={12}>
               {productInfo && productInfo.map((item) => (
-                <Col xl={4} md={3} sm={4} xs={6} >
+                <Col md={4} sm={6} lg={3}>
                   <div className="checking" onClick={() => button(item)}>
-                    <Card sx={{ maxWidth: 300 }}>
+                    <Card sx={{ maxWidth: 300 }} className="card-height">
                       <CardActionArea>
                         <CardMedia
                           component="img"
@@ -69,7 +74,7 @@ const CategoryPage = (props) => {
                           <Typography gutterBottom variant="h8" component="div">
                             <span className="product-name">{item.productName}</span>
                           </Typography>
-                          <Typography variant="body2" color="text.secondary">
+                          <Typography variant="body2" color="text.secondary" className='price-position'>
                             <span className="final-price">{item.finalPrice}</span>
                             {item.discount && <span className="striked-price">{item.productPrice}</span>}
                           </Typography>
