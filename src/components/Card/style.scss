@@ -49,16 +49,7 @@
     font-weight: 500;
   }
 
-  .discount {
-    color: $color-theme;
-    font-size: 100%;
-    position: absolute;
-    background-color: rgb(255, 255, 255);
-    margin: 5px;
-    border-radius: 3px;
-    padding: 2px;
-    top: 2px;
-  }
+ 
 
   .card-listing-job {
     padding-left: 0% !important;
@@ -361,3 +352,14 @@
   position: relative;
   left: 10px;
 }
+
+ .discount {
+    color: $color-theme;
+    font-size: 100%;
+    position: absolute;
+    background-color: rgb(255, 255, 255);
+    margin: 5px;
+    border-radius: 3px;
+    padding: 2px;
+    top: 2px;
+  }
