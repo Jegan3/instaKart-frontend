@@ -56,9 +56,9 @@ const CategoryPage = (props) => {
           <Row>
             {!noProducts ? <Col md={12}>
               {productInfo && productInfo.map((item) => (
-                <Col xl={4} md={3} sm={4} xs={6} >
+                <Col md={4} sm={6} lg={3}>
                   <div className="checking" onClick={() => button(item)}>
-                    <Card sx={{ maxWidth: 300 }}>
+                    <Card sx={{ maxWidth: 300 }} className="card-height">
                       <CardActionArea>
                         <CardMedia
                           component="img"
@@ -69,7 +69,7 @@ const CategoryPage = (props) => {
                           <Typography gutterBottom variant="h8" component="div">
                             <span className="product-name">{item.productName}</span>
                           </Typography>
-                          <Typography variant="body2" color="text.secondary">
+                          <Typography variant="body2" color="text.secondary" className='price-position'>
                             <span className="final-price">{item.finalPrice}</span>
                             {item.discount && <span className="striked-price">{item.productPrice}</span>}
                           </Typography>
