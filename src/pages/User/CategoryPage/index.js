@@ -64,7 +64,7 @@ const CategoryPage = (props) => {
                 <Col md={4} sm={6} lg={3}>
                   <div className="checking" onClick={() => button(item)}>
                     <Card sx={{ maxWidth: 300 }} className="card-height">
-                      <CardActionArea>
+                      <CardActionArea className='effect-height'>
                         {item.discount && <div className="discount" >
                           {item.discount}%OFF
                         </div>}
