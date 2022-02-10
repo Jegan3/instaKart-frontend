@@ -60,6 +60,9 @@ const CategoryPage = (props) => {
                   <div className="checking" onClick={() => button(item)}>
                     <Card sx={{ maxWidth: 300 }}>
                       <CardActionArea>
+                        {item.discount && <div className="discount" >
+                          {item.discount}%OFF
+                        </div>}
                         <CardMedia
                           component="img"
                           height="190"
