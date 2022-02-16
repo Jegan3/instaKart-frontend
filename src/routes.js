@@ -2,27 +2,32 @@ import React from 'react';
 import { createBrowserHistory } from 'history';
 import { Router, Route, Switch } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
-import Home from './pages/User/Home';
-import Vendor from './pages/Admin/Vendor';
+
 import Dashboard from './pages/Admin/Dashboard';
-import SignUp from './pages/User/SignUp';
-import TermsConditions from './pages/User/TermsConditions';
+import User from './pages/Admin/User';
+import Vendor from './pages/Admin/Vendor';
+import VendorDetails from './pages/Admin/Vendor/VendorDetail';
+
 import AboutUs from './pages/User/AboutUs';
-import VendorInfo from './pages/Vendor/VendorInfo';
-import ThriftStore from './pages/User/ThriftStore';
-import ComingSoon from './pages/User/ComingSoon';
-import StoreInfo from './pages/Vendor/StoreInfo';
-import UpdatePassword from './pages/User/UpdatePassword';
-import Profile from './pages/Vendor/Profile';
-import ProductInfo from './pages/User/ProductInfo';
-import ThriftStoreInfo from './pages/User/ThriftStoreInfo';
 import Cart from './pages/User/Cart';
-import Store from './pages/Vendor/Store';
+import CategoryPage from './pages/User/CategoryPage';
+import Checkout from './pages/User/Checkout';
+import ComingSoon from './pages/User/ComingSoon';
+import Home from './pages/User/Home';
 import ListYourAds from './pages/User/ListYourAds';
 import PaymentStatus from './pages/User/PaymentStatus';
-import User from './pages/Admin/User';
-import Checkout from './pages/User/Checkout';
-import CategoryPage from './pages/User/CategoryPage';
+import ProductInfo from './pages/User/ProductInfo';
+import SignUp from './pages/User/SignUp';
+import TermsConditions from './pages/User/TermsConditions';
+import ThriftStore from './pages/User/ThriftStore';
+import ThriftStoreInfo from './pages/User/ThriftStoreInfo';
+import UpdatePassword from './pages/User/UpdatePassword';
+
+import Profile from './pages/Vendor/Profile';
+import Store from './pages/Vendor/Store';
+import StoreInfo from './pages/Vendor/StoreInfo';
+import VendorInfo from './pages/Vendor/VendorInfo';
+
 // import ErrorPage from './components/ErrorPage';
 
 export const history = createBrowserHistory();
@@ -38,6 +43,7 @@ const AuthenticatedRoutes = () => (
           <Route path="/storedetails" component={Store} />
           <Route path="/dashboard" component={Dashboard} />
           <Route path="/vendor" component={Vendor} />
+          <Route path="/vendordetails" component={VendorDetails} />
           <Route path="/user" component={User} />
         </Switch>
       </Switch>
