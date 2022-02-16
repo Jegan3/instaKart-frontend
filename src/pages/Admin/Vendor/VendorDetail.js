@@ -5,7 +5,7 @@ import { useState } from 'react';
 import Headerbar from '../../../components/Headerbar';
 import VendorOverview from './VendorOverview';
 import VendorProfile from './VendorProfile';
-import VendorProducts from './VendorProducts';
+import VendorProducts from './VendorStores';
 
 const VendorDetails = () => {
 
@@ -38,7 +38,7 @@ const VendorDetails = () => {
                     </div>
                     <div className="bottom-details-info">
                       <Row className='vendor-name-info'>
-                        <Col md={4} className="vendor-name-card">
+                        <Col md={3} className="vendor-name-card">
                           <div className="name-detail">
                             <div className="profile-img">
                               <img src="images/avatar.jpeg" className="avatar-img img-fluid" />
@@ -48,21 +48,21 @@ const VendorDetails = () => {
                             </div>
                           </div>
                         </Col>
-                        <Col md={8} className="vendor-options-card">
-                          <Row>
-                            <Col sm={3}>
+                        <Col md={9} className="vendor-options-card">
+                          <Row className='vendor-toggle-btn'>
+                            <Col sm={3} className="vendor-btn">
                               <button className={`vendor-btn-style ${toggle === 1 && `btn-active`}`} onClick={onProfile}>
                                 Profile
                               </button>
                             </Col>
-                            <Col sm={3}>
+                            <Col sm={3} className="vendor-btn">
                               <button className={`vendor-btn-style ${toggle === 2 && `btn-active`}`} onClick={onOverview}>
                                 OverView
                               </button>
                             </Col>
-                            <Col sm={3}>
+                            <Col sm={3} className="vendor-btn">
                               <button className={`vendor-btn-style ${toggle === 3 && `btn-active`}`} onClick={onProducts}>
-                                Products
+                                Stores
                               </button>
                             </Col>
                           </Row>
@@ -72,7 +72,7 @@ const VendorDetails = () => {
                   </div>
                 </Col>
               </Row>
-              <Row>
+              <Row className='vendor-details-bottom-card'>
                 {toggle === 1 &&
                   <div>
                     <VendorProfile />
