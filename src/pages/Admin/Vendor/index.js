@@ -9,6 +9,7 @@ import Table from '../../../components/Table';
 import StatsCard from '../../../components/StatsCard';
 import Desk from '../../../components/Desk';
 import Loader from '../../../components/Loader';
+import { history } from '../../../routes';
 
 const Vendor = () => {
   const [rtl, setRtl] = useState();
@@ -65,10 +66,9 @@ const Vendor = () => {
     setRtl(rtl)
   }
 
-  const handleShow = (info) => {
-    setShow(true);
-    setInfo(info.original)
-  }
+  const handleShow = () => {
+    history.push({ pathname: '/vendordetails' });
+  };
 
   const onClose = () => {
     setShow(false)

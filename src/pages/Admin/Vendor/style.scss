@@ -82,3 +82,136 @@ circle-icon {
 .redcolor {
   color: #fa0101
 }
+
+
+// Vendor Details Style
+
+.vendor-details-page {
+
+  .rightside-panel {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    min-width: 280px;
+  }
+
+  .vendor-main-content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    background-color: #f5f5f5;
+  }
+
+  .vendor-details-top-card {
+    margin: 0px !important;
+  }
+
+  .image-card {
+    background: white;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    border: none;
+    box-shadow: 0px 2px 8px rgba(80, 79, 80, 0.15);
+    ;
+  }
+
+  .rounded {
+    border-radius: 8px !important;
+  }
+
+  .img-fluid {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .bottom-details-info {
+    padding: 1.875rem !important;
+  }
+
+  .vendor-name-info {
+    display: flex;
+  }
+
+  .vendor-name-card {
+    width: 70%;
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+
+  .vendor-options-card {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+
+  .name-detail {
+    position: relative;
+    left: 30px;
+  }
+
+  .profile-img {
+    margin-top: -60px;
+  }
+
+  .profile-img img {
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, .1);
+  }
+
+  .avatar-img {
+    height: 120px;
+    width: 120px;
+  }
+
+  .vendor-details-bottom-card {
+    margin: 0px !important;
+
+  }
+
+  .personal-card {
+    height: 470px;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    border: none;
+    box-shadow: 0px 2px 8px rgba(80, 79, 80, 0.15);
+  }
+
+  .info-label {
+    font-family: 400;
+    font-size: 20px;
+    padding: 14px;
+  }
+
+  .other-card {
+    height: 220px;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    border: none;
+    box-shadow: 0px 2px 8px rgba(80, 79, 80, 0.15);
+  }
+
+  .vendor-info-card {
+    display: flex;
+    padding: 18px;
+  }
+
+  .vendor-btn-style {
+    color: blue;
+    background-color: aqua;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border: 0px;
+    border-radius: 3px;
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+}
