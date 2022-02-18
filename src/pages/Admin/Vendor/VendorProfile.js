@@ -7,7 +7,30 @@ const VendorProfile = () => {
     <div>
       <Row className='vendor-details-bottom-card'>
         <div className='detail-card'>
-          <Col sm={6}>
+          <Col sm={4}>
+            <div className='other-card'>
+              <label className='info-label'>
+                Business
+              </label>
+              <Row className='vendor-info-card'>
+                <Col sm={4} >
+                  <label>Company Name</label>
+                </Col >
+                <Col sm={8}>
+                  <div>Dhinam</div>
+                </Col>
+              </Row>
+              <Row className='vendor-info-card'>
+                <Col sm={4} >
+                  <label>Industry Type</label>
+                </Col >
+                <Col sm={8}>
+                  <div>Appliances & Tech</div>
+                </Col>
+              </Row>
+            </div>
+          </Col>
+          <Col sm={4}>
             <div className='personal-card'>
               <label className='info-label'>
                 Personal
@@ -54,30 +77,7 @@ const VendorProfile = () => {
               </Row>
             </div>
           </Col>
-          <Col sm={6}>
-            <div className='other-card'>
-              <label className='info-label'>
-                Business
-              </label>
-              <Row className='vendor-info-card'>
-                <Col sm={4} >
-                  <label>Company Name</label>
-                </Col >
-                <Col sm={8}>
-                  <div>Dhinam</div>
-                </Col>
-              </Row>
-              <Row className='vendor-info-card'>
-                <Col sm={4} >
-                  <label>Industry Type</label>
-                </Col >
-                <Col sm={8}>
-                  <div>Appliances & Tech</div>
-                </Col>
-              </Row>
-            </div>
-          </Col>
-          <Col sm={6}>
+          <Col sm={4}>
             <div className='other-card'>
               <label className='info-label'>
                 Account
