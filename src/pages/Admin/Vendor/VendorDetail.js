@@ -5,8 +5,8 @@ import { useState } from 'react';
 import Headerbar from '../../../components/Headerbar';
 import VendorOverview from './VendorOverview';
 import VendorProfile from './VendorProfile';
-import VendorProducts from './VendorStores';
 import Tracking from './Tracking';
+import VendorStores from './VendorStores';
 
 const VendorDetails = () => {
 
@@ -92,7 +92,7 @@ const VendorDetails = () => {
                 </div>}
               {toggle === 3 &&
                 <div>
-                  <VendorProducts />
+                  <VendorStores />
                 </div>}
               {toggle === 4 &&
                 <div>
