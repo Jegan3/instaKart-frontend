@@ -6,6 +6,7 @@ import Headerbar from '../../../components/Headerbar';
 import VendorOverview from './VendorOverview';
 import VendorProfile from './VendorProfile';
 import VendorProducts from './VendorStores';
+import Tracking from './Tracking';
 
 const VendorDetails = () => {
 
@@ -21,6 +22,10 @@ const VendorDetails = () => {
 
   const onProducts = () => {
     setToggle(3)
+  }
+
+  const onTracking = () => {
+    setToggle(4)
   }
 
   return (
@@ -47,21 +52,26 @@ const VendorDetails = () => {
                           </div>
                         </div>
                       </Col>
-                      <Col md={9} className="vendor-options-card">
-                        <Row className='vendor-toggle-btn'>
-                          <Col sm={3} className="vendor-btn">
+                      <Col md={8} className="vendor-options-card">
+                        <Row>
+                          <Col sm={3}>
                             <button className={`vendor-btn-style ${toggle === 1 && `btn-active`}`} onClick={onProfile}>
                               Profile
                             </button>
                           </Col>
-                          <Col sm={3} className="vendor-btn">
+                          <Col sm={3}>
                             <button className={`vendor-btn-style ${toggle === 2 && `btn-active`}`} onClick={onOverview}>
                               OverView
                             </button>
                           </Col>
-                          <Col sm={3} className="vendor-btn">
+                          <Col sm={3}>
                             <button className={`vendor-btn-style ${toggle === 3 && `btn-active`}`} onClick={onProducts}>
-                              Stores
+                              Products
+                            </button>
+                          </Col>
+                          <Col sm={3}>
+                            <button className={`vendor-btn-style ${toggle === 4 && `btn-active`}`} onClick={onTracking}>
+                              Tracking
                             </button>
                           </Col>
                         </Row>
@@ -71,7 +81,7 @@ const VendorDetails = () => {
                 </div>
               </Col>
             </Row>
-            <Row className='vendor-details-bottom-card'>
+            <Row>
               {toggle === 1 &&
                 <div>
                   <VendorProfile />
@@ -84,11 +94,15 @@ const VendorDetails = () => {
                 <div>
                   <VendorProducts />
                 </div>}
+              {toggle === 4 &&
+                <div>
+                  <Tracking />
+                </div>}
             </Row>
           </Grid>
         </div>
-      </div>
-    </div>
+      </div >
+    </div >
   );
 };
 
