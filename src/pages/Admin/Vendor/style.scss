@@ -61,7 +61,6 @@ circle-icon {
   flex-direction: column;
   flex-grow: 1;
   background-color: #f5f5f5;
-  // height: 100%;
 }
 
 .rightside-panel {
@@ -83,24 +82,14 @@ circle-icon {
   color: #fa0101
 }
 
-
 // Vendor Details Style
 
-.vendor-details-page {
+.vendor-main-content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  background-color: #f5f5f5;
 
-  .rightside-panel {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    min-width: 280px;
-  }
-
-  .vendor-main-content {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    background-color: #f5f5f5;
-  }
 
   .vendor-details-top-card {
     margin: 0px !important;
@@ -120,7 +109,7 @@ circle-icon {
   }
 
   .img-fluid {
-    max-width: 100%;
+    width: 100%;
     height: auto;
   }
 
@@ -140,9 +129,9 @@ circle-icon {
 
   .vendor-options-card {
     display: flex;
-    justify-content: flex-end;
+    justify-content: end;
     align-items: flex-end;
-    width: 100%;
+    width: 80%;
     padding-right: 15px;
     padding-left: 15px;
   }
@@ -166,11 +155,6 @@ circle-icon {
     width: 120px;
   }
 
-  .vendor-details-bottom-card {
-    margin: 0px !important;
-
-  }
-
   .personal-card {
     height: 470px;
     padding: 20px;
@@ -188,7 +172,7 @@ circle-icon {
   }
 
   .other-card {
-    height: 220px;
+    height: 250px;
     padding: 20px;
     background: white;
     border-radius: 8px;
@@ -202,16 +186,143 @@ circle-icon {
     padding: 18px;
   }
 
+  .vendor-toggle-btn {
+    display: flex;
+    justify-content: space-between;
+  }
+
   .vendor-btn-style {
-    color: blue;
-    background-color: aqua;
+    color: #8055D4;
+    background-color: #CCC1F0;
     padding-left: 15px;
     padding-right: 15px;
     padding-top: 8px;
     padding-bottom: 8px;
     border: 0px;
     border-radius: 3px;
-    margin-left: 15px;
-    margin-right: 15px;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.15)
+  }
+
+  .btn-active {
+    color: rgb(255, 255, 255);
+    background-color: #6546D2;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border: 0px;
+    border-radius: 3px;
+
+  }
+
+  .vendor-btn {
+    padding: 0px;
+    margin-left: 5px;
+    margin-right: 38px;
+  }
+
+  //Vendor stores page style
+
+
+  .vendor-details-bottom-card {
+    margin: 0px !important;
+
+    .vendor-details-card {
+      margin: 0px !important;
+
+    }
+
+    .vendor-card {
+      margin: 0px !important;
+
+    }
+
+    .vendor-stores-card {
+      display: flex;
+      height: 260px;
+      width: 100%;
+      padding: 20px;
+      background: white;
+      border-radius: 8px;
+      margin-bottom: 30px;
+      margin-left: 0px !important;
+      margin-right: 0px !important;
+      border: none;
+      box-shadow: 0px 2px 8px rgba(80, 79, 80, 0.15);
+    }
+
+    .store-detail-card {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .vendor-logo {
+      width: 150px;
+      height: 150px;
+      box-shadow: 5px 5px 8px rgba(80, 79, 80, 0.15);
+    }
+
+    .vendor-logo-dsn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card-btm-details {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      padding-top: 40px;
+      position: relative;
+      width: 95%;
+      margin-left: 5px;
+    }
+
+    .store-info-name-label {
+      font-family: 400;
+      font-size: 15px;
+      display: flex;
+      justify-content: end;
+    }
+
+    .store-info-product-label {
+      font-family: 400;
+      font-size: 20px;
+      padding: 8px;
+    }
+
+    .store-info-order-label {
+      font-family: 400;
+      font-size: 20px;
+      padding: 8px;
+    }
+
+    .total-value {
+      display: flex;
+      justify-content: space-between;
+      text-align: center;
+    }
+
+    .count-dsn {
+      font-family: 400;
+      font-size: 20px;
+      color: #28a4d9;
+
+    }
+
+    .card-products-categry {
+      padding: 10px;
+    }
+
+    .card-social-icon-facebook {
+      padding: 10px;
+      color: #28a4d9;
+    }
+
+    .card-social-icon-insta {
+      padding: 10px;
+      color: #bc2a8d;
+    }
+
   }
 }
