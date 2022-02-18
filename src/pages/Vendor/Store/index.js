@@ -45,6 +45,11 @@ const Store = (props) => {
   }, [productEdit])
 
   useEffect(() => {
+    if (sessionStorage.type === 'admin')
+      setToggle('productlist')
+  }, [])
+
+  useEffect(() => {
     if (!productEdit) {
       setToggle('storeinfo')
     }
