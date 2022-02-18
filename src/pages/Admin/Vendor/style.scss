@@ -225,7 +225,7 @@ circle-icon {
 
 
   .vendor-details-bottom-card {
-    margin: 0px !important;
+    margin: 3%;
 
     .vendor-details-card {
       margin: 0px !important;
@@ -326,3 +326,119 @@ circle-icon {
 
   }
 }
+
+//tracking page
+.tracking{
+  margin:3%;
+  box-shadow: 0 1px 1rem -4px #000;
+  background: #fff;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 250ms ease-in-out;
+  overflow: visible;
+  .tracking-card{
+ padding:5%;
+
+ .header-tracking{
+   text-align:center;
+   .track{
+font-size:30px;
+font-weight:600;
+   }
+   .tracking-id{
+     font-size:20px;
+font-weight:600;
+   }
+ }
+  }
+  .shipment{
+    text-align: center;
+    font-size: large;
+    margin:4%;
+  }
+  .header-list{
+    display: flex;
+                    .order{
+                      font-size: 30px;
+                    }
+                    .exp-year{
+                       margin-left: auto;
+                       order: 2;
+                    .expected{
+                       font-size: 25px;
+                    }
+                    .year{
+                      font-size: 18px;
+                    }
+  }
+}
+}
+
+
+.search{
+  margin: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Lato' !important;
+}
+.search-box{
+  width: fit-content;
+  height: fit-content;
+  position: relative;
+}
+.input-search{
+  height: 50px;
+  width: 50px;
+  border-style: none;
+  padding: 10px;
+  font-size: 18px;
+  letter-spacing: 2px;
+  outline: none;
+  border-radius: 25px;
+  transition: all 2s ease-in-out;
+  background-color: pink;
+  padding-right: 40px;
+  color:#fff;
+}
+.input-search::placeholder{
+  color: blue;
+  font-size: 18px;
+  letter-spacing: 2px;
+  font-weight: 100;
+}
+.btn-search{
+  width: 50px;
+  height: 50px;
+  border-style: none;
+  font-size: 20px;
+  font-weight: bold;
+  outline: none;
+  cursor: pointer;
+  border-radius: 50%;
+  position: absolute;
+  right: 0px;
+  color:#000 ;
+  background-color:transparent;
+  pointer-events: painted;  
+}
+.btn-search:focus ~ .input-search{
+  width: 300px;
+  border-radius: 0px;
+  background-color: wheat;
+  border:1px solid rgba(44, 44, 43, 0.5);
+  // border-bottom:1px solid rgba(255,255,255,.5);
+  transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
+}
+.input-search:focus{
+  width: 300px;
+  border-radius: 0px;
+  background-color: transparent;
+  border-bottom:1px solid rgba(255,255,255,.5);
+  transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
+}
+
+
+
+
+
