@@ -20,7 +20,7 @@ const VendorDetails = () => {
     setToggle(2)
   }
 
-  const onProducts = () => {
+  const onStores = () => {
     setToggle(3)
   }
 
@@ -42,7 +42,7 @@ const VendorDetails = () => {
                   </div>
                   <div className="bottom-details-info">
                     <Row className='vendor-name-info'>
-                      <Col md={3} className="vendor-name-card">
+                      <Col md={4} className="vendor-name-card">
                         <div className="name-detail">
                           <div className="profile-img">
                             <img src="images/avatar.jpeg" className="avatar-img img-fluid" />
@@ -54,22 +54,22 @@ const VendorDetails = () => {
                       </Col>
                       <Col md={8} className="vendor-options-card">
                         <Row>
-                          <Col sm={3}>
+                          <Col sm={3} className="btn-center-style">
                             <button className={`vendor-btn-style ${toggle === 1 && `btn-active`}`} onClick={onProfile}>
                               Profile
                             </button>
                           </Col>
-                          <Col sm={3}>
+                          <Col sm={3} className="btn-center-style">
                             <button className={`vendor-btn-style ${toggle === 2 && `btn-active`}`} onClick={onOverview}>
                               OverView
                             </button>
                           </Col>
-                          <Col sm={3}>
-                            <button className={`vendor-btn-style ${toggle === 3 && `btn-active`}`} onClick={onProducts}>
-                              Products
+                          <Col sm={3} className="btn-center-style">
+                            <button className={`vendor-btn-style ${toggle === 3 && `btn-active`}`} onClick={onStores}>
+                              Stores
                             </button>
                           </Col>
-                          <Col sm={3}>
+                          <Col sm={3} className="btn-center-style">
                             <button className={`vendor-btn-style ${toggle === 4 && `btn-active`}`} onClick={onTracking}>
                               Tracking
                             </button>
