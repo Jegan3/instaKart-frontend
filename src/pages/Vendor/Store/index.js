@@ -14,6 +14,8 @@ const Store = (props) => {
   const [upDatedHeader, setUpdatedHeader] = useState(true);
   const [productEnable, setProductEnable] = useState(false)
   const [listEnable, setListEnable] = useState(false)
+  const [adminToggle, setAdminToggle] = useState(false)
+
 
   const dispatch = useDispatch();
   const storeInfo = useSelector((state) => state.storeInfoState.storeInfo);
@@ -47,7 +49,8 @@ const Store = (props) => {
   useEffect(() => {
     if (sessionStorage.type === 'admin')
       setToggle('productlist')
-  }, [])
+    setAdminToggle(true)
+  }, [adminToggle])
 
   useEffect(() => {
     if (!productEdit) {
